@@ -69,7 +69,7 @@
       "UV.oqed_fixed_graph_residual",
       "UV.oqed_fixed_graph_forest"
     ],
-    "scope": "The actual dimensionful heat measure supplies every kernel endpoint budget; polynomial selected-basis, signed residual and actual sector-envelope alternatives give uniform bounds for the literal OQED kernel products. The same-action BRST/Slavnov-Taylor part remains dependent on an unformalized graded functional framework; no unspecified completed vertices are presumed bounded."
+    "scope": "The actual dimensionful heat measure supplies every kernel endpoint budget; polynomial selected-basis, signed residual and actual sector-envelope alternatives give uniform bounds for the literal OQED kernel products. Finite-coordinate completed graded Legendre/ST algebra is now proved, while the same-action continuum BRST/Slavnov-Taylor clause still depends on an unformalized functional-domain link; no unspecified completed vertices are presumed bounded."
   },
   "lem:OQED-grouped-convergence": {
     "status": "verified",
@@ -331,9 +331,13 @@
       "UV.normalized_spectral_covariance",
       "UV.mixed_source_spectral_covariance_integrand",
       "UV.mixed_source_amputation",
-      "UV.fieldDamping_endpoint_cancellation"
+      "UV.fieldDamping_endpoint_cancellation",
+      "UV.free_source_normalization_spectral_cut",
+      "UV.free_source_normalization_hilbert_block",
+      "UV.free_source_normalization_smeared",
+      "UV.sourceOperator_mixed_amputation_eq_one_iff"
     ],
-    "scope": "Actual smeared Hermitian covariance forms in a common spectral representation have exact undamped source covariance, transferred integrability, the mixed half-factor and its amputated square-root factor. The arbitrary strongly commuting unbounded-operator joint spectral representation and common reducing-core construction are not yet formalized."
+    "scope": "Actual smeared Hermitian covariance forms in a common spectral representation have exact undamped covariance, transferred integrability, the mixed half-factor and its amputated square-root factor. Actual C*-functional calculus constructs the self-adjoint inverse-square-root normalizer and all operator/smeared identities on bounded positive spectral blocks, including arbitrary Hilbert-space blocks; positive spectral lower bounds derive invertibility. The arbitrary strongly commuting unbounded-operator joint spectral representation and dense common reducing-core construction remain unformalized."
   },
   "prop:Ward-vertex-growth": {
     "status": "verified",
@@ -370,9 +374,17 @@
       "UV.brst_partition_coefficient_ward",
       "UV.finite_log_polynomial_ward",
       "UV.exterior_contract_left_leibniz",
-      "UV.exterior_source_hessian_anticommutes"
+      "UV.exterior_source_hessian_anticommutes",
+      "UV.graded_chain_rule_on_completion",
+      "UV.graded_legendre_left_field_derivative",
+      "UV.graded_legendre_left_antifield_derivative",
+      "UV.graded_legendre_right_field_derivative",
+      "UV.canonical_antibracket_even",
+      "UV.connected_ward_legendre_slavnov_taylor",
+      "UV.finite_log_legendre_slavnov_taylor",
+      "UV.graded_legendre_ST_coefficient"
     ],
-    "scope": "A precise parity-involution algebra, odd nilpotent BRST derivative, actual signed master action, canonical antifield derivatives and source Ward operator are defined. Invariant expectation derives coefficientwise partition Ward identities and finite-log connected Ward closure; concrete exterior contractions validate the odd calculus. The full graded Legendre transform, admitted infinite functional domain and effective-action Slavnov-Taylor identity remain unproved."
+    "scope": "A precise parity-involution algebra, odd nilpotent BRST derivative, signed master action, canonical antifield derivatives and invariant-expectation partition/finite-log Ward identities are proved. An actual finite-coordinate inverse-gradient Legendre chart with dense polynomial completion derives the graded chain rule, both signed Legendre derivatives, the even-antibracket factor and the effective-action ST equation from connected Ward data. Neither derivative identities nor the ST conclusion are chart premises. The continuum spacetime functional-calculus realization, full general logarithm/formal loop-series construction and their common-domain link remain unformalized."
   },
   "prop:OQED-bubble-tube": {
     "status": "verified",
@@ -410,14 +422,14 @@
     "scope": "Actual four-dimensional Gaussian loops are identified with the proper-time representation, including finite shell normalization. The standard log integral plus the literal entire omitted-time remainder is constructed as their unique cut-plane analytic continuation. The exact source representation, vanishing at zero, reality, sharp norm bound and compact-uniform normalization limit are proved; no loop-matching or decomposition conclusion is assumed."
   },
   "cor:Gaussian-growth-obstruction": {
-    "status": "partial",
+    "status": "verified",
     "lean": [
+      "UV.gaussian_growth_obstruction",
       "UV.gaussian_remainder_growth_lower",
-      "UV.gaussian_remainder_exceeds_every_power",
-      "UV.gaussian_remainder_not_polynomially_bounded",
-      "UV.gaussian_remainder_add_polynomial_not_bounded"
+      "UV.gaussian_remainder_add_polynomial_not_bounded",
+      "UV.gaussian_upper_boundary_add_polynomial_not_bounded"
     ],
-    "scope": "The actual remainder has the exact rectangle exponential lower bound, grows faster than every power, and no addition of an actual finite complex polynomial makes it polynomially bounded. Only the standard-log upper-rim boundary growth/comparison needed to transfer the obstruction to the normalized bubble remains."
+    "scope": "The actual Gaussian remainder has the exact source exponential lower bound. Genuine logarithmic-singularity dominated convergence constructs the standard and normalized-bubble upper-rim boundaries, whose logarithmic/polynomial budget is derived by quadratic factorization and translated-log potentials. No finite complex polynomial addition makes either the remainder or the actual normalized-bubble boundary polynomially bounded."
   },
   "prop:OQED-scalar-CM-enclosure": {
     "status": "verified",
@@ -450,29 +462,43 @@
     "scope": "For any positive C2 radial multiplier tending to zero, the actual finite Dirac determinant and reference-subtracted constant-background trace-log variations yield the negative-log radial Hessian. Its exact annular flux proves failure of componentwise exterior absolute integrability without monotonicity or a decay-rate hypothesis. The later separate spectral-norm identity is outside the named corollary."
   },
   "prop:stable-bubble-nonanalytic": {
-    "status": "partial",
+    "status": "verified",
     "lean": [
-      "UV.scalarBubbleIntegrand_integrable",
-      "UV.stableCoordinateConvolution_exact_tail",
-      "UV.stableCosineTransform_not_contDiffAt",
-      "UV.sixthSymmetricDifference_tendsto"
+      "UV.stable_bubble_nonanalytic",
+      "UV.scalarBubble_stable_coordinate_square",
+      "UV.stablePoissonKernel_inverseFourier",
+      "UV.stableCosineTransform_not_contDiffAt"
     ],
-    "scope": "The actual stable-half massive bubble is finite. Generic positive Poisson convolution has the exact source tail under a derived fifth-moment envelope, and a genuine cosine-transform sixth-difference/Fatou obstruction is proved from an infinite sixth moment. Actual Green/Poisson Fourier identification, the required coordinate moments and full C5 regularity remain."
+    "scope": "The literal stable-half massive bubble is finite for every real momentum, C5 on real R4, and genuinely not C6 at zero; no local holomorphic function of P^2 can restrict to it. Actual Gaussian/Poisson/Green Fourier identities identify its coordinate covariance, whose exact 3a/(4pi^2 m^2) norm^(-5) tail gives the finite lower moments and infinite sixth moment used in a checked finite-difference/Fatou argument."
   },
   "cor:OQED-fixed-transfer-obstruction": {
-    "status": "partial",
+    "status": "verified",
     "lean": [
       "UV.doubleWardBubble_unit_ray_limit",
-      "UV.fixedTransferScalar_joint_limit"
+      "UV.fixedTransferScalar_joint_limit",
+      "UV.fixedTransferBubble_exists_nonintegrable_component"
     ],
-    "scope": "Full forward/reverse Ward identities and actual dressed inverses derive the finite Clifford contraction and the exact nonzero-transfer ray/joint scaled asymptote, without diagonal continuity. Extracting the uniform open-direction bound and actual tensor-component nonintegrability remains."
+    "scope": "Full forward/reverse Ward identities and actual dressed inverses derive the exact finite Clifford contraction and the source nonzero-transfer ray limit, without diagonal continuity. The joint scaled limit yields a uniform negative open direction region; expanding momentum balls with growing volume prove actual tensor-component nonintegrability. No ray-to-integral inference is assumed."
   },
   "lem:Ward-common-cutoff": {
-    "status": "partial",
+    "status": "verified",
     "lean": [
-      "UV.laplace_bare_ward_remainder_integrable",
-      "UV.laplace_bare_ward_weighted_cutoff_integrable"
+      "UV.ward_common_cutoff",
+      "UV.ward_common_cutoff_polarization",
+      "UV.laplace_bare_ward_remainder_integrable"
     ],
-    "scope": "For the actual finite-positive Laplace profile and explicit Clifford tensor, original component integrability derives genuine Ward-remainder integrability and an unsplit weighted cutoff majorant. The final common-cutoff integral equality and explicit dimensional a^2 pushforward wrapper remain."
+    "scope": "For the literal scaled finite-positive Laplace profile and explicit Clifford tensor, original componentwise tensor integrability derives the actual Ward-remainder integrability and unsplit cutoff majorant. Exact compact tent cutoffs, Haar translation and dominated convergence prove the source common-domain Ward integral identity with its dimensional and Fourier/coupling factors. No separately divergent contracted terms are integrated."
+  },
+  "prop:QED-general-obstruction": {
+    "status": "verified",
+    "lean": [
+      "UV.qed_general_obstruction",
+      "UV.laplace_qed_square_integrable_of_original",
+      "UV.laplace_qed_integrable_iff",
+      "UV.bareWardPolarization_zero",
+      "UV.bareWardPolarization_small_momentum",
+      "UV.qedKappa_massless"
+    ],
+    "scope": "For every finite nonzero positive Laplace law and nonnegative mass, the exact square-integrability test derives original Fourier-normalized tensor integrability at every real momentum, continuity, the exact positive isotropic kappa integral, its massless specialization and the genuine little-o Ward contraction. The separate converse and iff derive the test from the original charged tensor at any fixed real momentum when the charge is nonzero; no differentiability at zero or extra radial integrability is assumed."
   }
 }

@@ -1,6 +1,7 @@
 import UV.CliffordWard
 import UV.DepthAsymptotics
 import Mathlib.Analysis.SpecialFunctions.Trigonometric.Deriv
+import Mathlib.Analysis.Convolution
 
 /-! Actual fixed-transfer Ward contractions, with their matrix inverses and
 the kernel ratios retained throughout. -/
@@ -339,5 +340,157 @@ theorem doubleWardBubble_unit_ray_limit
       (𝓝 (-8 * e ^ 2 * (Real.cosh (a * ⟪n, P⟫) - 1))) := by
   simp_rw [doubleWardBubble_scalar G a M e hm hw, Complex.ofReal_re]
   exact fixedTransferScalar_unit_ray_limit a M e hm hP n hn
+
+/-- A nonzero joint scaled limit yields expanding positive-volume balls with
+    a fixed absolute lower bound, and hence forbids absolute integrability. -/
+theorem scaled_joint_nonzero_limit_not_integrable
+    {f : DiracMomentum → ℝ} {n : DiracMomentum} {c : ℝ} (hc : c ≠ 0)
+    (ht : Tendsto (fun q : ℝ × DiracMomentum => f (q.1 • q.2))
+      (atTop ×ˢ 𝓝 n) (𝓝 c)) : ¬ Integrable f := by
+  intro hi
+  let C := ‖c‖ / 2
+  have hcp : 0 < ‖c‖ := norm_pos_iff.mpr hc
+  have hC : 0 < C := half_pos hcp
+  have he : ∀ᶠ q : ℝ × DiracMomentum in atTop ×ˢ 𝓝 n, C < ‖f (q.1 • q.2)‖ :=
+    ht.norm.eventually (Ioi_mem_nhds (half_lt_self hcp))
+  obtain ⟨pa, hpa, δ, hδ, hb⟩ := Metric.eventually_prod_nhds_iff.mp he
+  obtain ⟨R, hR⟩ := eventually_atTop.mp hpa
+  let v := volume.real (Metric.ball (0 : DiracMomentum) 1)
+  have hv : 0 < v := by
+    dsimp [v]
+    rw [fourDimensional_unitBall_volume]
+    positivity
+  have hineq (T : ℝ) (hTR : R ≤ T) (hT : 0 < T) :
+      C * (δ * T) ^ 4 * v ≤ ∫ k : DiracMomentum, ‖f k‖ := by
+    have hlocal (k : DiracMomentum) (hk : k ∈ Metric.ball (T • n) (δ * T)) : C ≤ ‖f k‖ := by
+      have hvect : T⁻¹ • k - n = T⁻¹ • (k - T • n) := by
+        rw [smul_sub, ← mul_smul, inv_mul_cancel₀ hT.ne', one_smul]
+      have hd : dist (T⁻¹ • k) n < δ := by
+        rw [dist_eq_norm_sub, hvect, norm_smul, Real.norm_eq_abs, abs_inv, abs_of_pos hT]
+        rw [← div_eq_inv_mul]
+        apply (div_lt_iff₀ hT).mpr
+        simpa only [Metric.mem_ball, dist_eq_norm_sub] using hk
+      have h := hb (hR T hTR) hd
+      rw [← mul_smul, mul_inv_cancel₀ hT.ne', one_smul] at h
+      exact h.le
+    have hr : 0 ≤ δ * T := mul_nonneg hδ.le hT.le
+    have hball : volume.real (Metric.ball (T • n) (δ * T)) = (δ * T) ^ 4 * v := by
+      rw [measureReal_def, Measure.addHaar_ball volume (T • n) hr, ENNReal.toReal_mul]
+      simp only [finrank_euclideanSpace, Fintype.card_fin, ENNReal.toReal_ofReal (pow_nonneg hr _)]
+      rfl
+    have hcint : IntegrableOn (fun _ : DiracMomentum => C) (Metric.ball (T • n) (δ * T)) :=
+      integrableOn_const measure_ball_lt_top.ne
+    calc
+      _ = ∫ _ : DiracMomentum in Metric.ball (T • n) (δ * T), C := by
+        simp only [setIntegral_const, smul_eq_mul, hball]
+        ring
+      _ ≤ ∫ k : DiracMomentum in Metric.ball (T • n) (δ * T), ‖f k‖ :=
+        integral_mono_ae hcint hi.norm.integrableOn
+          (ae_restrict_mem measurableSet_ball |>.mono (fun k hk => hlocal k hk))
+      _ ≤ ∫ k : DiracMomentum, ‖f k‖ :=
+        setIntegral_le_integral hi.norm (Eventually.of_forall (fun k => norm_nonneg (f k)))
+  have hK : 0 < C * δ ^ 4 * v := by positivity
+  have hg : Tendsto (fun T : ℝ => C * (δ * T) ^ 4 * v) atTop atTop := by
+    have h := (tendsto_pow_atTop (by norm_num : (4 : ℕ) ≠ 0)).const_mul_atTop hK
+    convert h using 1
+    ext T
+    ring
+  have hh := hg.eventually (eventually_gt_atTop (∫ k : DiracMomentum, ‖f k‖))
+  obtain ⟨T, hTmax, hbig⟩ := (eventually_ge_atTop (max R 1) |>.and hh).exists
+  have hTR : R ≤ T := (le_max_left R 1).trans hTmax
+  have hTp : 0 < T := zero_lt_one.trans_le ((le_max_right R 1).trans hTmax)
+  exact (not_lt_of_ge (hineq T hTR hTp)) hbig
+
+theorem fixedTransfer_negative_joint_limit {a e m : ℝ} (ha : 0 < a) (he : e ≠ 0)
+    (hm : 0 < m) (M : ℝ) {P : DiracMomentum} (hP : P ≠ 0) :
+    ∃ (n : DiracMomentum) (c : ℝ), ‖n‖ = 1 ∧ c < 0 ∧
+      Tendsto (fun q : ℝ × DiracMomentum => fixedTransferScalar a M m e P (q.1 • q.2))
+        (atTop ×ˢ 𝓝 n) (𝓝 c) := by
+  have hp : 0 < ‖P‖ := norm_pos_iff.mpr hP
+  let n : DiracMomentum := ‖P‖⁻¹ • P
+  have hnorm : ‖n‖ = 1 := by
+    dsimp [n]
+    rw [norm_smul, Real.norm_eq_abs, abs_inv, abs_of_pos hp]
+    exact inv_mul_cancel₀ hp.ne'
+  have hinner : ⟪n, P⟫ = ‖P‖ := by
+    dsimp [n]
+    rw [inner_smul_left, starRingEnd_apply, star_trivial, real_inner_self_eq_norm_sq]
+    field_simp [hp.ne']
+  have hn : n ≠ 0 := norm_ne_zero_iff.mp (by rw [hnorm]; norm_num)
+  refine ⟨n, -8 * e ^ 2 * (Real.cosh (a * ‖P‖) - 1), hnorm, ?_, ?_⟩
+  · have hcosh : 1 < Real.cosh (a * ‖P‖) := Real.one_lt_cosh.mpr (mul_ne_zero ha.ne' hp.ne')
+    exact mul_neg_of_neg_of_pos (mul_neg_of_neg_of_pos (by norm_num) (sq_pos_of_ne_zero he))
+      (sub_pos.mpr hcosh)
+  · simpa only [hnorm, hinner, div_one] using fixedTransferScalar_joint_limit a M e hm hP n hn
+
+/-- Uniform negativity holds on an open neighborhood of a unit direction;
+    restricting to unit vectors gives the required open angular region. -/
+theorem fixedTransfer_uniform_negative_region {a e m : ℝ} (ha : 0 < a) (he : e ≠ 0)
+    (hm : 0 < m) (M : ℝ) {P : DiracMomentum} (hP : P ≠ 0) :
+    ∃ (n : DiracMomentum) (R δ η : ℝ), ‖n‖ = 1 ∧ 0 < R ∧ 0 < δ ∧ 0 < η ∧
+      ∀ r, R ≤ r → ∀ v : DiracMomentum, dist v n < δ →
+        fixedTransferScalar a M m e P (r • v) ≤ -η := by
+  obtain ⟨n, c, hn, hc, ht⟩ := fixedTransfer_negative_joint_limit ha he hm M hP
+  have hhalf : c < c / 2 := by linarith
+  have hevent : ∀ᶠ q : ℝ × DiracMomentum in atTop ×ˢ 𝓝 n,
+      fixedTransferScalar a M m e P (q.1 • q.2) < c / 2 := ht.eventually (Iio_mem_nhds hhalf)
+  obtain ⟨pa, hpa, δ, hδ, hb⟩ := Metric.eventually_prod_nhds_iff.mp hevent
+  obtain ⟨R, hR⟩ := eventually_atTop.mp hpa
+  refine ⟨n, max R 1, δ, -c / 2, hn,
+    zero_lt_one.trans_le (le_max_right R 1), hδ, by linarith, ?_⟩
+  intro r hr v hv
+  have h := (hb (hR r ((le_max_left R 1).trans hr)) hv).le
+  simpa only [neg_div, neg_neg] using h
+
+theorem fixedTransferScalar_not_integrable {a e m : ℝ} (ha : 0 < a) (he : e ≠ 0)
+    (hm : 0 < m) (M : ℝ) {P : DiracMomentum} (hP : P ≠ 0) :
+    ¬ Integrable (fixedTransferScalar a M m e P) := by
+  obtain ⟨n, c, _, hc, ht⟩ := fixedTransfer_negative_joint_limit ha he hm M hP
+  exact scaled_joint_nonzero_limit_not_integrable hc.ne ht
+
+theorem doubleWardBubble_uniform_negative_region
+    (G : DiracMomentum → DiracMomentum → Fin 4 → DiracMatrix)
+    {a e m : ℝ} (ha : 0 < a) (he : e ≠ 0) (hm : 0 < m) (M : ℝ)
+    (hw : DressedWardCompatible a M m G) {P : DiracMomentum} (hP : P ≠ 0) :
+    ∃ (n : DiracMomentum) (R δ η : ℝ), ‖n‖ = 1 ∧ 0 < R ∧ 0 < δ ∧ 0 < η ∧
+      ∀ r, R ≤ r → ∀ v : DiracMomentum, dist v n < δ →
+        (doubleWardBubble G a M m e P (r • v)).re ≤ -η := by
+  simp_rw [doubleWardBubble_scalar G a M e hm hw, Complex.ofReal_re]
+  exact fixedTransfer_uniform_negative_region ha he hm M hP
+
+theorem doubleWardBubble_not_integrable
+    (G : DiracMomentum → DiracMomentum → Fin 4 → DiracMatrix)
+    {a e m : ℝ} (ha : 0 < a) (he : e ≠ 0) (hm : 0 < m) (M : ℝ)
+    (hw : DressedWardCompatible a M m G) {P : DiracMomentum} (hP : P ≠ 0) :
+    ¬ Integrable (doubleWardBubble G a M m e P) := by
+  intro hi
+  have hr := hi.re
+  change Integrable (fun k : DiracMomentum => (doubleWardBubble G a M m e P k).re) at hr
+  have heq : (fun k : DiracMomentum => (doubleWardBubble G a M m e P k).re) =
+      fixedTransferScalar a M m e P := by
+    ext k
+    rw [doubleWardBubble_scalar G a M e hm hw, Complex.ofReal_re]
+  rw [heq] at hr
+  exact fixedTransferScalar_not_integrable ha he hm M hP hr
+
+/-- The principal componentwise nonintegrability assertion of
+    cor:OQED-fixed-transfer-obstruction, for the actual two-vertex bubble. -/
+theorem fixedTransferBubble_exists_nonintegrable_component
+    (G : DiracMomentum → DiracMomentum → Fin 4 → DiracMatrix)
+    {a e m : ℝ} (ha : 0 < a) (he : e ≠ 0) (hm : 0 < m) (M : ℝ)
+    (hw : DressedWardCompatible a M m G) {P : DiracMomentum} (hP : P ≠ 0) :
+    ∃ μ ν, ¬ Integrable (fun k : DiracMomentum => fixedTransferBubbleComponent G a M m e P k μ ν) := by
+  by_contra! hAll
+  have hi : Integrable (fun k : DiracMomentum => ∑ μ, ∑ ν,
+      ((P μ : ℂ) * (P ν : ℂ)) * fixedTransferBubbleComponent G a M m e P k μ ν) :=
+    integrable_finset_sum _ (fun μ _ => integrable_finset_sum _
+      (fun ν _ => (hAll μ ν).const_mul ((P μ : ℂ) * (P ν : ℂ))))
+  have heq : (fun k : DiracMomentum => ∑ μ, ∑ ν,
+      ((P μ : ℂ) * (P ν : ℂ)) * fixedTransferBubbleComponent G a M m e P k μ ν) =
+      doubleWardBubble G a M m e P := by
+    ext k
+    exact (doubleWardBubble_eq_sum_components G a M m e P k).symm
+  rw [heq] at hi
+  exact doubleWardBubble_not_integrable G ha he hm M hw hP hi
 
 end UV

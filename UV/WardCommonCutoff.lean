@@ -539,4 +539,243 @@ theorem laplace_bare_ward_weighted_cutoff_integrable (ρ : Measure ℝ) [IsFinit
   simpa only [union_compl_self, integrableOn_univ] using hall
 
 
+def wardTentCutoff (R : ℝ) (k : DiracMomentum) : ℝ := max (1 - ‖k‖ / R) 0
+
+theorem wardTentCutoff_continuous (R : ℝ) : Continuous (wardTentCutoff R) := by
+  unfold wardTentCutoff
+  fun_prop
+
+theorem wardTentCutoff_bounds {R : ℝ} (hR : 0 < R) (k : DiracMomentum) :
+    0 ≤ wardTentCutoff R k ∧ wardTentCutoff R k ≤ 1 := by
+  unfold wardTentCutoff
+  exact ⟨le_max_right _ _, max_le (sub_le_self 1 (div_nonneg (norm_nonneg k) hR.le)) zero_le_one⟩
+
+theorem wardTentCutoff_zero {R : ℝ} (hR : 0 < R) {k : DiracMomentum} (hk : R ≤ ‖k‖) :
+    wardTentCutoff R k = 0 := by
+  unfold wardTentCutoff
+  apply max_eq_right
+  exact sub_nonpos.mpr ((one_le_div hR).mpr hk)
+
+theorem wardTentCutoff_shift_difference {R : ℝ} (hR : 0 < R) (Q k : DiracMomentum) :
+    |wardTentCutoff R k - wardTentCutoff R (k - Q)| ≤ ‖Q‖ / R := by
+  have hh := abs_norm_sub_norm_le k (k - Q)
+  have he : k - (k - Q) = Q := by abel
+  rw [he] at hh
+  calc
+    _ ≤ |(1 - ‖k‖ / R) - (1 - ‖k - Q‖ / R)| := abs_max_sub_max_le_abs _ _ 0
+    _ = |‖k‖ - ‖k - Q‖| / R := by
+      rw [show (1 - ‖k‖ / R) - (1 - ‖k - Q‖ / R) = (‖k - Q‖ - ‖k‖) / R by ring,
+        abs_div, abs_of_pos hR, abs_sub_comm]
+    _ ≤ _ := div_le_div_of_nonneg_right hh hR.le
+
+theorem wardTentCutoff_weighted_shift_difference {R : ℝ} (hR : 1 ≤ R)
+    (Q k : DiracMomentum) :
+    |wardTentCutoff R k - wardTentCutoff R (k - Q)| * (1 + ‖k‖) ≤ ‖Q‖ * (2 + ‖Q‖) := by
+  have hRpos : 0 < R := lt_of_lt_of_le zero_lt_one hR
+  by_cases hk : ‖k‖ ≤ R + ‖Q‖
+  · calc
+      _ ≤ (‖Q‖ / R) * (1 + ‖k‖) := mul_le_mul_of_nonneg_right
+        (wardTentCutoff_shift_difference hRpos Q k) (by positivity)
+      _ ≤ _ := by
+        rw [div_mul_eq_mul_div]
+        apply (div_le_iff₀ hRpos).mpr
+        have hh : ‖Q‖ * (1 + ‖k‖) ≤ (‖Q‖ * (2 + ‖Q‖)) * R := by
+          have h₁ := mul_le_mul_of_nonneg_left hk (norm_nonneg Q)
+          have h₂ := mul_le_mul_of_nonneg_left hR (by positivity : 0 ≤ ‖Q‖ * (1 + ‖Q‖))
+          nlinarith
+        exact hh
+  · have hkR : R ≤ ‖k‖ := by have := norm_nonneg Q; linarith
+    have hmR : R ≤ ‖k - Q‖ := by have hh := norm_sub_norm_le k Q; linarith
+    rw [wardTentCutoff_zero hRpos hkR, wardTentCutoff_zero hRpos hmR]
+    simp only [sub_self, abs_zero, zero_mul]
+    exact mul_nonneg (norm_nonneg Q) (by positivity)
+
+theorem wardTentCutoff_tendsto (k : DiracMomentum) :
+    Tendsto (fun n : ℕ => wardTentCutoff (n + 1) k) atTop (𝓝 1) := by
+  have hn : Tendsto (fun n : ℕ => (n : ℝ) + 1) atTop atTop := by
+    exact tendsto_atTop_mono (fun _ => le_add_of_nonneg_right zero_le_one) tendsto_natCast_atTop_atTop
+  have hd : Tendsto (fun n : ℕ => ‖k‖ / ((n : ℝ) + 1)) atTop (𝓝 0) :=
+    by simpa only [div_eq_mul_inv, mul_zero] using tendsto_const_nhds.mul (tendsto_inv_atTop_zero.comp hn)
+  have hh := ((tendsto_const_nhds (x := (1 : ℝ))).sub hd).max (tendsto_const_nhds (x := (0 : ℝ)))
+  simpa only [wardTentCutoff, sub_zero, max_eq_left zero_le_one] using hh
+
+theorem ward_tent_product_integrable {C : DiracMomentum → ℂ} (hC : Continuous C)
+    {R : ℝ} (hR : 0 < R) (Q : DiracMomentum) :
+    Integrable (fun k => (wardTentCutoff R (k - Q) : ℂ) * C k) := by
+  have hcont : Continuous (fun k => (wardTentCutoff R (k - Q) : ℂ) * C k) :=
+    (Complex.continuous_ofReal.comp ((wardTentCutoff_continuous R).comp
+      (continuous_id.sub continuous_const))).mul hC
+  apply hcont.integrable_of_hasCompactSupport
+  apply HasCompactSupport.of_support_subset_isCompact (isCompact_closedBall Q R)
+  intro k hk
+  by_contra hbad
+  have hr : R ≤ ‖k - Q‖ := by
+    have hh : R < dist k Q := not_le.mp hbad
+    exact (by simpa only [dist_eq_norm] using hh.le)
+  change ((wardTentCutoff R (k - Q) : ℂ) * C k) ≠ 0 at hk
+  exact hk (by rw [wardTentCutoff_zero hR hr, Complex.ofReal_zero, zero_mul])
+
+/-- An integrable translation difference has zero integral under a one-power
+weighted L1 bound on the unsplit function. Tent cutoffs provide a common
+compact domain, and their boundary errors vanish by dominated convergence. -/
+theorem integral_translation_difference_eq_zero_of_weighted_integrable
+    {C : DiracMomentum → ℂ} (hC : Continuous C) (Q : DiracMomentum)
+    (hW : Integrable (fun k => ‖C k‖ / (1 + ‖k‖)))
+    (hD : Integrable (fun k => C k - C (k + Q))) :
+    (∫ k, C k - C (k + Q)) = 0 := by
+  let D : ℕ → DiracMomentum → ℂ := fun n k =>
+    (wardTentCutoff (n + 1) k : ℂ) * (C k - C (k + Q))
+  let E : ℕ → DiracMomentum → ℂ := fun n k =>
+    ((wardTentCutoff (n + 1) k - wardTentCutoff (n + 1) (k - Q) : ℝ) : ℂ) * C k
+  have hDm (n : ℕ) : AEStronglyMeasurable (D n) volume := by
+    exact ((Complex.continuous_ofReal.comp (wardTentCutoff_continuous (n + 1))).mul
+      (hC.sub (hC.comp (continuous_id.add continuous_const)))).aestronglyMeasurable
+  have hEm (n : ℕ) : AEStronglyMeasurable (E n) volume := by
+    exact ((Complex.continuous_ofReal.comp ((wardTentCutoff_continuous (n + 1)).sub
+      ((wardTentCutoff_continuous (n + 1)).comp (continuous_id.sub continuous_const)))).mul hC).aestronglyMeasurable
+  have hDb (n : ℕ) : ∀ᵐ k, ‖D n k‖ ≤ ‖C k - C (k + Q)‖ := by
+    filter_upwards with k
+    dsimp [D]
+    rw [norm_mul, Complex.norm_real,
+      Real.norm_of_nonneg (wardTentCutoff_bounds (by positivity : (0 : ℝ) < n + 1) k).1]
+    exact mul_le_of_le_one_left (norm_nonneg _) (wardTentCutoff_bounds (by positivity : (0 : ℝ) < (n : ℝ) + 1) k).2
+  have hEb (n : ℕ) : ∀ᵐ k, ‖E n k‖ ≤
+      (‖Q‖ * (2 + ‖Q‖)) * (‖C k‖ / (1 + ‖k‖)) := by
+    filter_upwards with k
+    dsimp [E]
+    rw [norm_mul, Complex.norm_real, Real.norm_eq_abs]
+    have hh := wardTentCutoff_weighted_shift_difference (by have hn : (0 : ℝ) ≤ n := Nat.cast_nonneg n; linarith : (1 : ℝ) ≤ n + 1) Q k
+    have hden : 0 < 1 + ‖k‖ := by positivity
+    have hcoef := (le_div_iff₀ hden).mpr hh
+    have hb := mul_le_mul_of_nonneg_right hcoef (norm_nonneg (C k))
+    convert hb using 1
+    ring
+  have hDl : ∀ᵐ k, Tendsto (fun n => D n k) atTop (𝓝 (C k - C (k + Q))) := by
+    filter_upwards with k
+    have hh := (Complex.continuous_ofReal.tendsto 1).comp (wardTentCutoff_tendsto k)
+    simpa only [Complex.ofReal_one, one_mul] using hh.mul_const (C k - C (k + Q))
+  have hEl : ∀ᵐ k, Tendsto (fun n => E n k) atTop (𝓝 (0 : ℂ)) := by
+    filter_upwards with k
+    have hh := (wardTentCutoff_tendsto k).sub (wardTentCutoff_tendsto (k - Q))
+    have hh' := (Complex.continuous_ofReal.tendsto 0).comp (by simpa only [sub_self] using hh)
+    simpa only [Complex.ofReal_zero, zero_mul] using hh'.mul_const (C k)
+  have hDlim := tendsto_integral_of_dominated_convergence (fun k => ‖C k - C (k + Q)‖)
+    hDm hD.norm hDb hDl
+  have hElim := tendsto_integral_of_dominated_convergence
+    (fun k => (‖Q‖ * (2 + ‖Q‖)) * (‖C k‖ / (1 + ‖k‖)))
+    hEm (hW.const_mul _) hEb hEl
+  have heq : ∀ n, (∫ k, D n k) = ∫ k, E n k := by
+    intro n
+    have hR : (0 : ℝ) < n + 1 := by positivity
+    have h₀ := ward_tent_product_integrable hC hR (0 : DiracMomentum)
+    simp only [sub_zero] at h₀
+    have hCplus : Continuous (fun k : DiracMomentum => C (k + Q)) := hC.comp (continuous_id.add continuous_const)
+    have hPlus := ward_tent_product_integrable hCplus hR (0 : DiracMomentum)
+    simp only [sub_zero] at hPlus
+    have hMinus := ward_tent_product_integrable hC hR Q
+    have hshift := integral_add_right_eq_self (μ := (volume : Measure DiracMomentum))
+      (fun k : DiracMomentum => (wardTentCutoff (n + 1) (k - Q) : ℂ) * C k) Q
+    simp only [add_sub_cancel_right] at hshift
+    have hDeq : D n = (fun k => (wardTentCutoff (n + 1) k : ℂ) * C k -
+        (wardTentCutoff (n + 1) k : ℂ) * C (k + Q)) := by funext k; dsimp [D]; ring
+    have hEeq : E n = (fun k => (wardTentCutoff (n + 1) k : ℂ) * C k -
+        (wardTentCutoff (n + 1) (k - Q) : ℂ) * C k) := by
+      funext k
+      dsimp [E]
+      push_cast
+      ring
+    rw [hDeq, hEeq, integral_sub h₀ hPlus, integral_sub h₀ hMinus, hshift]
+  have hElim' : Tendsto (fun n => ∫ k, D n k) atTop (𝓝 (0 : ℂ)) := by
+    simpa only [heq, integral_zero] using hElim
+  exact tendsto_nhds_unique hDlim hElim'
+
+theorem laplace_bare_ward_integral_eq (ρ : Measure ℝ) [IsFiniteMeasure ρ]
+    (hp : ∀ᵐ τ ∂ρ, 0 ≤ τ) {m : ℝ} (hm : 0 < m) (Q : DiracMomentum)
+    (hH : ∀ μ ν, Integrable (bareWardTensor (wardLaplaceKernel ρ 1) m Q μ ν))
+    (ν : Fin 4) :
+    (∫ k, bareWardContracted (wardLaplaceKernel ρ 1) m Q ν k) =
+      ∫ k, bareWardRemainder (wardLaplaceKernel ρ 1) m Q ν k := by
+  let A := bareWardContracted (wardLaplaceKernel ρ 1) m Q ν
+  let J := bareWardRemainder (wardLaplaceKernel ρ 1) m Q ν
+  let C := bareWardCutoffTerm (wardLaplaceKernel ρ 1) m Q ν
+  have hA : Integrable A := bare_ward_contracted_integrable hm _ Q hH ν
+  have hJ : Integrable J := laplace_bare_ward_remainder_integrable ρ hp hm Q hH ν
+  have hC : Continuous C := bareWardCutoffTerm_continuous hm (wardLaplaceKernel_continuous ρ hp 1) Q ν
+  have hW : Integrable (fun k => ‖C k‖ / (1 + ‖k‖)) :=
+    laplace_bare_ward_weighted_cutoff_integrable ρ hp hm Q hH ν
+  have hpoint : (fun k => A k - J k) =ᵐ[volume] (fun k => C k - C (k + Q)) := by
+    filter_upwards with k
+    have hh := bare_ward_pointwise_common_domain (wardLaplaceKernel ρ 1) m Q ν k
+    change A k = J k + C k - C (k + Q) at hh
+    linear_combination hh
+  have hD : Integrable (fun k => C k - C (k + Q)) := by
+    apply (hA.sub hJ).congr
+    simpa only [Pi.sub_apply] using hpoint
+  have hz := integral_translation_difference_eq_zero_of_weighted_integrable hC Q hW hD
+  have hz' : (∫ k, A k - J k) = 0 := by rwa [integral_congr_ae hpoint]
+  rw [integral_sub hA hJ] at hz'
+  exact sub_eq_zero.mp hz'
+
+theorem wardLaplaceKernel_pushforward (ρ : Measure ℝ) (a : ℝ) :
+    wardLaplaceKernel ρ a = wardLaplaceKernel (ρ.map (fun τ : ℝ => a ^ 2 * τ)) 1 := by
+  funext u
+  unfold wardLaplaceKernel laplace
+  simp only [one_pow, one_mul]
+  rw [integral_map (by fun_prop : AEMeasurable (fun τ : ℝ => a ^ 2 * τ) ρ)
+    (by fun_prop : AEStronglyMeasurable (fun τ : ℝ => Real.exp (-τ * max u 0))
+      (ρ.map (fun τ : ℝ => a ^ 2 * τ)))]
+  congr 1
+  funext τ
+  congr 1
+  ring
+
+theorem ward_heat_support_nonnegative (ρ : Measure ℝ)
+    (hp : ∀ᵐ τ ∂ρ, 0 ≤ τ) (a : ℝ) :
+    ∀ᵐ τ ∂ρ.map (fun τ : ℝ => a ^ 2 * τ), 0 ≤ τ := by
+  rw [ae_map_iff (by fun_prop : AEMeasurable (fun τ : ℝ => a ^ 2 * τ) ρ) measurableSet_Ici]
+  filter_upwards [hp] with τ hτ
+  exact mul_nonneg (sq_nonneg a) hτ
+
+/-- The massive common-domain Ward lemma for the literal finite positive
+Laplace kernel, with the dimensional scale a² retained. Only the original
+tensor component L1 hypotheses are assumed. -/
+theorem ward_common_cutoff (ρ : Measure ℝ) [IsFiniteMeasure ρ]
+    (hp : ∀ᵐ τ ∂ρ, 0 ≤ τ) (a : ℝ) {m : ℝ} (hm : 0 < m) (Q : DiracMomentum)
+    (hH : ∀ μ ν, Integrable (bareWardTensor (wardLaplaceKernel ρ a) m Q μ ν)) :
+    (∀ ν, Integrable (bareWardRemainder (wardLaplaceKernel ρ a) m Q ν)) ∧
+    ∀ ν, (∑ μ, (Q μ : ℂ) * ∫ k, bareWardTensor (wardLaplaceKernel ρ a) m Q μ ν k) =
+      ∫ k, bareWardRemainder (wardLaplaceKernel ρ a) m Q ν k := by
+  rw [wardLaplaceKernel_pushforward] at hH ⊢
+  let σ := ρ.map (fun τ : ℝ => a ^ 2 * τ)
+  have hσ : ∀ᵐ τ ∂σ, 0 ≤ τ := ward_heat_support_nonnegative ρ hp a
+  refine ⟨fun ν => laplace_bare_ward_remainder_integrable σ hσ hm Q hH ν, ?_⟩
+  intro ν
+  calc
+    _ = ∫ k, ∑ μ, (Q μ : ℂ) * bareWardTensor (wardLaplaceKernel σ 1) m Q μ ν k := by
+      rw [integral_finset_sum _ (fun μ _ => (hH μ ν).const_mul (Q μ : ℂ))]
+      simp only [integral_const_mul]
+    _ = ∫ k, bareWardContracted (wardLaplaceKernel σ 1) m Q ν k :=
+      integral_congr_ae (Eventually.of_forall (fun k => bare_ward_tensor_contraction hm _ Q k ν))
+    _ = _ := laplace_bare_ward_integral_eq σ hσ hm Q hH ν
+
+def bareWardPolarization (F : ℝ → ℝ) (m e : ℝ) (Q : DiracMomentum) (μ ν : Fin 4) : ℂ :=
+  ((-(e ^ 2) * (2 * Real.pi) ^ (-4 : ℤ) : ℝ) : ℂ) * ∫ k, bareWardTensor F m Q μ ν k
+
+theorem ward_common_cutoff_polarization (ρ : Measure ℝ) [IsFiniteMeasure ρ]
+    (hp : ∀ᵐ τ ∂ρ, 0 ≤ τ) (a : ℝ) {m : ℝ} (hm : 0 < m) (e : ℝ) (Q : DiracMomentum)
+    (hH : ∀ μ ν, Integrable (bareWardTensor (wardLaplaceKernel ρ a) m Q μ ν)) (ν : Fin 4) :
+    (∑ μ, (Q μ : ℂ) * bareWardPolarization (wardLaplaceKernel ρ a) m e Q μ ν) =
+      ((-(e ^ 2) * (2 * Real.pi) ^ (-4 : ℤ) : ℝ) : ℂ) *
+        ∫ k, bareWardRemainder (wardLaplaceKernel ρ a) m Q ν k := by
+  have hh := (ward_common_cutoff ρ hp a hm Q hH).2 ν
+  unfold bareWardPolarization
+  calc
+    _ = ((-(e ^ 2) * (2 * Real.pi) ^ (-4 : ℤ) : ℝ) : ℂ) *
+        ∑ μ, (Q μ : ℂ) * ∫ k, bareWardTensor (wardLaplaceKernel ρ a) m Q μ ν k := by
+      rw [Finset.mul_sum]
+      apply Finset.sum_congr rfl
+      intro μ _
+      ring
+    _ = _ := by rw [hh]
+
 end UV

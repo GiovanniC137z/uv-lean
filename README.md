@@ -14,10 +14,11 @@ A Lean 4 verification project for Giovanni Joseph Chiappone's *Conditional All-O
 - Signed residual Gram/sphere coercivity, simultaneous weighted sectors, graphwise finite-order convergence, and summed-label amplitudes under summable derived majorants.
 - Literal scalar bubble depth derivatives, complex-depth and external-momentum holomorphy, exact depth/crossover limits, positive proper-time Laplace representation, and signed Taylor enclosures.
 - Actual common zero-depth subtraction with its uniform logarithmic limit/slope, and the universal unsubtracted Euler finite part with explicit error constants.
-- The Gaussian loop’s unique normalized cut-plane continuation, entire remainder, exact upper/lower bounds, and growth obstruction for the remainder plus any finite polynomial.
+- The Gaussian loop’s unique normalized cut-plane continuation, actual upper-rim boundary, entire remainder, exact upper/lower bounds, and growth obstruction for both the remainder and normalized boundary after any finite polynomial addition.
+- The literal stable-half bubble’s real C5 regularity and failure of C6 at zero, with exact Poisson/Green Fourier identities and coordinate-space tail.
 - Actual joint external holomorphy, derivative/contour exchange and Cauchy estimate components from common graph majorants.
-- Clifford-matrix derivation of Ward/contact obstructions, exact constant-background exhaustion, the general radial-profile contact obstruction, and smooth positive-time probes violating heat-covariance reflection positivity.
-- Exact finite-mode field-redefinition/Jacobian cancellation and Hilbert-overlap residue positivity with a constructed invertible spectral normalization.
+- Clifford-matrix derivation of zero/nonzero-transfer Ward and contact obstructions, the exact common-cutoff Ward identity, the general bare-QED one-loop integrability criterion including zero mass, and smooth positive-time probes violating heat-covariance reflection positivity.
+- Exact finite-mode field-redefinition/Jacobian cancellation, bounded spectral-cut source normalization by C*-functional calculus, and Hilbert-overlap residue positivity with a constructed invertible spectral normalization.
 - Neumann/Schur/analytic inverse certificates and actual simple-pole residue, Taylor coefficient and geometric remainder components.
 - Exhaustion-independent finite common-routing sums and the gapped positive-measure meromorphic counterexample.
 
