@@ -1,3 +1,4 @@
+# Cache and artifacts produced by Lean's Lake build tool.
 .lake/
 .elan/
 *.olean

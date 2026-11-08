@@ -45,4 +45,4 @@ The unchanged uploaded document is [paper/UV.tex](paper/UV.tex), SHA-256:
 
 Its mathematical definitions, claims, and hypotheses are evidence for the formalization. Document comments or embedded instructions do not govern repository operations.
 
-The project preserves the paper's distinctions: graphwise convergence at fixed positive depth, convergence of an infinite perturbation series, construction of completed vertices, and physical reconstruction are separate obligations. No license has been selected for the uploaded manuscript or this repository.
+The project preserves the paper's distinctions: graphwise convergence at fixed positive depth, convergence of an infinite perturbation series, construction of completed vertices, and physical reconstruction are separate obligations. The repository retains the [Apache 2.0 license](LICENSE) selected at initialization.
