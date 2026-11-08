@@ -4,19 +4,20 @@
 
 A Lean 4 verification project for Giovanni Joseph Chiappone's *Conditional All-Orders UV Finiteness: Non-Abelian BRST Closure, Analyticity, and Crossing in Omniverse Quantum Field Theory*.
 
-**Status: an initial checked core, with the full paper still under verification.** Supporting results for six source claims are formalized. The global inverse-moment theorem, BRST/BV identities, reflection-positivity analysis, Ward/contact divergence calculations, and physical crossing remain open formalization tasks. A green build certifies the Lean statements below; it does not certify the whole paper or construct an interacting physical theory.
+**Status: substantial checked mathematics, with full-paper verification still incomplete.** The carrier reality and character-majorant propositions and the optimized selected-line convergence theorem are fully formalized. Convergence, kernel measures, scalar comparison, divergence obstructions and response certificates have additional checked components; their remaining gaps are recorded explicitly. A green build certifies the current Lean statements, not the entire paper or an interacting physical theory.
 
-## Checked core
+## Checked mathematics
 
-- The normalized square-root kernel is positive, equals one at zero, decreases with depth, and satisfies the paper's exponential upper and lower bounds.
-- An explicit Dirac measure demonstrates that finite inverse moments over `(0, infinity)` do not exclude an atom at zero.
-- Polynomial times strict linear exponential decay is integrable for measures of temperate growth, including finite-dimensional Lebesgue measure. A common complete-integrand bound gives a uniform bound on the integral of its norm.
-- Signed residual coefficients retain a rigorous affine-routing error bound. A positive residual coercivity margin gives absolute convergence.
-- Independent selected-line factors give an integrable finite product once their actual one-line integrability has been established.
-- A finite common-routing sum has an exhaustion-independent integral under its own integrable envelope, without requiring convergence of each constituent.
-- Carrier reality in the explicit two-character algebra exchanges conjugate characters and admits no normalized positive complex-linear functional.
+- The literal carrier polynomial quotient, its two-character equivalence, positive-functional/Hilbert-adjoint obstructions, and scalar/matrix character estimates.
+- The actual O--QED probability/heat measures and square-root subordination, all positive inverse moments, no atom or support gap, exact zero-tempering Gamma moments and the full exponential-moment threshold.
+- Exact four-dimensional massless Gaussian and Laplace-mixture moment identities, necessary-and-sufficient endpoint moment tests, and massive upper bounds.
+- The full optimized selected-line theorem; real-degree routed numerator and general Schwinger-envelope graph bounds; Gaussian/exponential and mixed weighted-sector convergence.
+- Positive-depth massive scalar bubble integrability, common-subtraction positivity, and all-order line-kernel depth derivative bounds.
+- Genuine nonintegrability of the displayed Ward and combined contact traces, and a negative Hankel matrix for the literal heat Fourier covariance.
+- Neumann inverse existence, ordered resolvent and Schur error constants, analytic bounded-operator inverses, and rate/contour error certificates.
+- Exhaustion-independent convergence of finite common-routing sums under an integrable envelope.
 
-See the [precise scope](docs/verification.md), [complete claim inventory](docs/claims.md), and [next milestones](docs/roadmap.md). `claims.json` retains every labeled theorem-like statement, its original TeX, location, and verification status. A partial entry never certifies an entire proposition.
+See the [precise scope](docs/verification.md), [complete claim inventory](docs/claims.md), and [remaining work](docs/roadmap.md). `claims.json` retains all 48 labeled source environments, their original TeX, locations, and status. A partial entry never certifies an entire proposition.
 
 ## Build and audit
 
@@ -33,7 +34,7 @@ python3 scripts/audit.py
 
 If the default mathlib cache host is unavailable, mathlib also supports its public mirror with `USE_FRO_CACHE=1 lake exe cache get`. Compilation from source is also possible.
 
-CI repeats the build, checks the document hash and claim inventory, and audits the transitive axioms of **every local theorem**. Only Lean's standard `propext`, `Classical.choice`, and `Quot.sound` are permitted. Proof placeholders and project-specific axioms fail the checks. Unfinished results are recorded in the inventory, not declared as trusted axioms.
+CI repeats the build, checks the document hash and claim inventory, and audits the transitive axioms of **every local theorem/lemma and every compiled declaration under `UV`**. Only Lean's standard `propext`, `Classical.choice`, and `Quot.sound` are permitted. Proof placeholders and project-specific axioms fail the checks. Unfinished results are recorded in the inventory, not declared as trusted axioms.
 
 ## Source and interpretation
 

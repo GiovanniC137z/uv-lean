@@ -28,12 +28,15 @@
       "title_tex": "Carrier reality and positive adjoints",
       "source_line": 934,
       "statement_tex": "On the scalar carrier algebra, the reality operation \\(\\ddagger\\)\ninterchanges the two character representations:\n\\begin{equation}\n \\chi_\\kappa(A^\\ddagger)\n       =\\overline{\\chi_{-\\kappa}(A)}.\n \\label{eq:reality-character-interchange}\n\\end{equation}\nThere is no normalized complex-linear functional \\(\\omega\\) on the\nfull unital algebra satisfying\n\\(\\omega(A^\\ddagger A)\\geq0\\) for every \\(A\\).\nIn particular, \\(\\ddagger\\) cannot be the adjoint of a unital\nrepresentation of this algebra on a nonzero positive Hilbert space.",
-      "status": "partial",
+      "status": "verified",
       "lean": [
-        "UV.Carrier.no_normalized_positive_functional",
-        "UV.Carrier.character_reality"
+        "UV.Carrier.quotientCharacterEquiv_root",
+        "UV.Carrier.quotientCharacterEquiv_reality",
+        "UV.Carrier.no_positive_functional_on_quotient",
+        "UV.Carrier.no_reality_preserving_hilbert_representation",
+        "UV.Carrier.no_reality_preserving_innerProduct_representation"
       ],
-      "scope": "The involution and no-positive-functional obstruction are proved in the explicit two-character algebra C x C. The quotient-algebra isomorphism and Hilbert-representation corollary remain."
+      "scope": "Literal polynomial quotient identified with its two characters; declared reality, character interchange, normalized positive-functional obstruction and nonzero Hilbert adjoint-representation obstruction are proved."
     },
     {
       "label": "prop:source-exchange",
@@ -51,9 +54,16 @@
       "title_tex": "Character estimates for complete graphs",
       "source_line": 1258,
       "statement_tex": "For scalar carrier coefficients define\n\\begin{equation}\n \\norm{A}_{\\chi}:=\\max_{\\kappa=\\pm1}|\\chi_\\kappa(A)|.\n \\label{eq:character-norm}\n\\end{equation}\nThis is a submultiplicative norm. Let \\(\\nu\\) be a positive\nintegration measure. If a measurable complete graph integrand is\n\\(g(\\xi)=\\sum_\\kappa\\mathsf P_\\kappa g_\\kappa(\\xi)\\)\nand \\(|g_\\kappa(\\xi)|\\leq M_\\kappa(\\xi)\\), with\n\\(M_\\pm\\in L^1(\\dd\\nu)\\), then\n\\begin{equation}\n\\begin{aligned}\n \\int\\norm{g(\\xi)}_\\chi\\dd\\nu\n &\\leq\\int(M_++M_-)\\dd\\nu<\\infty,\\\\\n \\int g\\,\\dd\\nu\n &=\\sum_\\kappa\\mathsf P_\\kappa\\int g_\\kappa\\,\\dd\\nu.\n\\end{aligned}\n \\label{eq:character-integral-majorant}\n\\end{equation}\nThe same statement holds uniformly in external parameters whenever\nthe two majorants are uniform. For matrix coefficients replace the\nabsolute value by a fixed submultiplicative matrix norm.",
-      "status": "pending",
-      "lean": [],
-      "scope": "Not yet formalized."
+      "status": "verified",
+      "lean": [
+        "UV.Carrier.quotient_character_norm_submultiplicative",
+        "UV.Carrier.quotient_character_majorant_integrable",
+        "UV.Carrier.quotient_character_integral_norm_bound",
+        "UV.Carrier.quotient_projector_integral_reconstruction",
+        "UV.Carrier.character_pair_uniform_estimate",
+        "UV.Carrier.character_pair_norm_submultiplicative"
+      ],
+      "scope": "Character norm, integrable domination, norm bound and projector integral reconstruction hold in the literal quotient. Uniform parameter and matrix-coefficient cases are covered by complete normed-ring character pairs."
     },
     {
       "label": "thm:global-uv",
@@ -61,9 +71,16 @@
       "title_tex": "Global Euclidean convergence",
       "source_line": 1428,
       "statement_tex": "Assume \\eqref{eq:routing}--\\eqref{eq:IR-conditions}, finite\n\\(\\Mzero\\), and fixed \\(a>0\\). Either of the following is sufficient\nfor \\(\\sup_{p\\in\\mathcal K}\\mathcal A_G(p)<\\infty\\):\n\\begin{description}[leftmargin=1cm]\n\\item[(G)] There is \\(\\tau_*>0\\) with\n\\(\\supp\\rho\\subset[\\tau_*,\\infty)\\).\n\\item[(M)] \\(\\rho(\\{0\\})=0\\) and\n\\(M_{1+D/2}[\\rho]<\\infty\\).\n\\end{description}\nThe joint absolute majorant in loop momenta, Schwinger parameters,\nand Laplace--Stieltjes parameters is integrable. All Euclidean\nintegration-order exchanges used in the proof are therefore valid.\nNo UV-divergent subtraction is needed to define this graph.\nThis conclusion concerns the stated Euclidean comparison integral;\nit does not establish a physical spectral representation or the\nvalidity of an undressed operational cut.",
-      "status": "pending",
-      "lean": [],
-      "scope": "Not yet formalized."
+      "status": "partial",
+      "lean": [
+        "UV.extendedInverseMoment_lt_top_iff",
+        "UV.inverseMoment_lower_order_finite",
+        "UV.massless_laplace_moment",
+        "UV.positive_gap_selected_endpoint",
+        "UV.global_schwinger_graph",
+        "UV.actual_joint_majorant_integrable"
+      ],
+      "scope": "Direct selected-basis proof covers actual general Schwinger infrared envelopes, original real-degree polynomial numerator, bounded external shifts, actual selected/nonselected factors and explicit uniform affine-Jacobian bound. The positive-gap alternative supplies all required moments. An actual joint-parameter Fubini lift is proved. Bare rectangular full-column-rank routing to a selected row minor and a single exact source-statement wrapper remain."
     },
     {
       "label": "cor:damped-basis",
@@ -71,9 +88,12 @@
       "title_tex": "Damping a full-rank set of loop lines",
       "source_line": 1630,
       "statement_tex": "Retain the routing, numerator, and infrared hypotheses of\nTheorem~\\ref{thm:global-uv}, and let \\(S\\subset E_{\\rm u}(G)\\) be a set of \\(L\\) uncut\nvirtual lines for which \\(C_S\\) is invertible. For each \\(i\\in S\\), suppose\n\\(\\Ph_i\\) has a finite positive representing measure \\(\\rho_i\\)\nwith either a positive gap or\n\\[\n \\rho_i(\\{0\\})=0,\\qquad M_{1+D/2}[\\rho_i]<\\infty.\n\\]\nOn every remaining line, it is enough that the multiplier be measurable\nand bounded on the nonnegative real axis; the identity multiplier is allowed.\nThen the graph with these line-dependent multipliers is absolutely\nconvergent, uniformly on \\(\\mathcal K\\).",
-      "status": "pending",
-      "lean": [],
-      "scope": "Not yet formalized."
+      "status": "partial",
+      "lean": [
+        "UV.actual_selected_line_integrable",
+        "UV.selected_product_integrable"
+      ],
+      "scope": "Actual nonnegative-supported, atom-free Laplace lines are integrable under the endpoint moment. Independent products are checked. Affine routing change of variables, Jacobian and complete graph assembly remain."
     },
     {
       "label": "thm:optimized-selected-lines",
@@ -81,11 +101,15 @@
       "title_tex": "Line-specific inverse moments on a full-rank routing",
       "source_line": 1718,
       "statement_tex": "Fix the finite routing and compact real external set of\n\\eqref{eq:routing}. Choose $S$ with $|S|=L$ and invertible $C_S$, and\nwrite $\\ell_j=q_j$ for $j\\in S$. On selected line $j$, take the actual\nnonnegative comparison factor\n\\begin{equation}\n C_j^{\\Ph}(\\ell_j)\n  :=\\frac{\\Ph_j(a_j^2|\\ell_j|^2)}{|\\ell_j|^2+m_j^2},\n \\qquad a_j>0,\\quad m_j\\geq0,\n \\label{eq:optimized-selected-factor}\n\\end{equation}\nwith a finite positive representing measure $\\rho_j$.\nAssume the \\emph{complete product} of the numerator and all\nunselected virtual-line factors, expressed in these variables, obeys\n\\begin{equation}\n \\left|N_G(k(\\ell,p),p)\\prod_{i\\notin S} C_i^{\\rm full}(q_i)\\right|\n \\leq\\sum_{\\alpha\\in\\mathcal A}c_\\alpha\n       \\prod_{j\\in S}(1+|\\ell_j|^{d_{j\\alpha}}),\n \\label{eq:anisotropic-complete-envelope}\n\\end{equation}\nuniformly in $p\\in\\mathcal K$, with $\\mathcal A$ finite,\n$c_\\alpha\\geq0$ and $d_{j\\alpha}\\geq0$. Thus an unselected\nmassless denominator must be controlled as part of the \\emph{full}\nenvelope; it is not assumed bounded merely because its multiplier is.\nSet $d_j=\\max_\\alpha d_{j\\alpha}$ and suppose\n\\begin{equation}\n \\rho_j(\\{0\\})=0,\\qquad\n M_{1+d_j/2}[\\rho_j]<\\infty\\quad(j\\in S).\n \\label{eq:optimized-moment-budget}\n\\end{equation}\nThen the specified complete graph is absolutely convergent,\nuniformly over $\\mathcal K$, including mixed soft and UV regions\nin the selected variables. The following one-line integral does\n\\emph{not} include the Fourier factor $(2\\pi)^{-4}$:\n\\begin{equation}\n \\begin{aligned}\n Q_{d,j}(m_j)\n  &:=\\int_{\\RR^4}\\frac{|q|^d\\Ph_j(a_j^2|q|^2)}{q^2+m_j^2}\n         \\dd^4q\\\\\n  &\\leq\\pi^2\\Gamma(1+d/2)a_j^{-2-d}\n          M_{1+d/2}[\\rho_j].\n \\end{aligned}\n \\label{eq:optimized-one-line-moment}\n\\end{equation}\nFor $m_j=0$ this is an equality, possibly infinite. Under the\n\\emph{separate no-atom hypothesis}, finiteness of the displayed\ninverse moment is necessary and sufficient for that particular\nnonnegative weighted one-line integral. It remains a sufficient,\nnot generally necessary, condition for the complete graph.",
-      "status": "partial",
+      "status": "verified",
       "lean": [
-        "UV.selected_product_integrable"
+        "UV.optimized_selected_lines",
+        "UV.exists_four_dimensional_routing",
+        "UV.actual_massless_selected_line_lintegral",
+        "UV.actual_massless_selected_line_integrable_iff",
+        "UV.actual_selected_line_integral_le"
       ],
-      "scope": "Finite independent-line product domination is checked. The massless four-dimensional radial/Gamma identity, inverse-moment implication, affine routing Jacobian and full anisotropic sum remain."
+      "scope": "Actual full Laplace factors, finite measures, nonnegative support/no atom, highest line-specific moments, all real anisotropic degrees, finite complete-integrand envelope, uniform external parameters, massive upper bound and exact massless equality/iff are proved. Bare invertible selected matrix constructs the affine routing; its C tensor I4 determinant and Fourier-normalized bound are derived."
     },
     {
       "label": "cor:optimized-selected-tail",
@@ -115,11 +139,12 @@
       "statement_tex": "Retain the fixed routing and compact external set in\n\\eqref{eq:routing}, and assume \\(0\\leq C_i(q)\\leq\\mathcal I_i<\\infty\\).\nEither of the following conditions gives uniform absolute convergence\nof the graph.\n\n\\textit{Quadratic case.} Suppose\n\\(0\\leq\\Ph_i(a_i^2q_i^2)\\leq B_i^{\\rm env}e^{-d_i|q_i|^2}\\), with\n\\(d_i>0\\), and the complete numerator satisfies\n\\begin{equation}\n |N_G(k,p)|\\leq C(1+\\norm{k}^D)\n            \\exp\\!\\left(\\sum_i v_i|q_i|^2\\right),\n \\label{eq:vertex-quadratic-budget}\n\\end{equation}\nwhere \\(v_i\\geq0\\) are fixed and \\(D\\geq0\\). Put\n\\begin{equation}\n H_{\\rm res}:=C^T\\diag(d_i-v_i)C.\n \\label{eq:residual-Gram-matrix}\n\\end{equation}\nIt is sufficient that \\(H_{\\rm res}\\succ0\\); individual\n\\(d_i-v_i\\) need not all be positive. A Laplace gap supplies\n\\(d_i=a_i^2\\tau_{i,*}\\).\n\n\\textit{Linear case.} Suppose instead\n\\(0\\leq\\Ph_i(a_i^2q_i^2)\\leq B_i^{\\rm env}e^{-a_i|q_i|}\\) and replace\n\\(v_i|q_i|^2\\) in \\eqref{eq:vertex-quadratic-budget} by\n\\(v_i|q_i|\\). Put \\(h_i=a_i-v_i\\). The residual coefficients may\nhave either sign, provided\n\\begin{equation}\n \\gamma_h:=\\min_{\\substack{\\omega\\in(\\RR^4)^L\\\\\\norm{\\omega}=1}}\n     \\sum_i h_i\\left|\\sum_{\\ell=1}^L C_{i\\ell}\\omega_\\ell\\right|>0.\n \\label{eq:signed-linear-coercivity}\n\\end{equation}\nIn particular, nonnegative \\(h_i\\) and full loop rank of the rows\nwith \\(h_i>0\\) suffice. Here \\(B_i^{\\rm env}>0\\) are finite\nupper-envelope constants, not necessarily the masses \\(\\Ph_i(0)\\)\nof the representing measures. The growth coefficients have\ninverse-momentum-squared units in the quadratic case and\ninverse-momentum units in the linear case.\nAll constants and the positive coercivity margin are uniform on the\nexternal set. The asserted conclusion is Euclidean and does not\nsupply a Lorentzian continuation.",
       "status": "partial",
       "lean": [
-        "UV.residual_linear_convergence",
+        "UV.residual_linear_real_degree_convergence",
+        "UV.residual_quadratic_real_degree_convergence",
         "UV.signed_affine_coercivity",
-        "UV.uniform_integral_norm_bound"
+        "UV.euclidean_loop_real_degree_integrable"
       ],
-      "scope": "Linear coercivity, signed affine-shift control and polynomial-exponential integrability are checked for natural polynomial degree. The full-rank/singular-value certificate, real degrees, and quadratic case remain."
+      "scope": "Real numerator degrees, linear and quadratic residual analytic convergence, signed affine control and arbitrary finite 4L loop spaces are checked. Deriving the matrix/singular-value coercivity certificates and uniform graph constants remains."
     },
     {
       "label": "def:sector-envelope",
@@ -137,9 +162,14 @@
       "title_tex": "Conditional forest convergence",
       "source_line": 2203,
       "statement_tex": "Assume an admissible finite sector decomposition and the stated\ninfrared control. In each sector, suppose the covered kernel product\nhas a simultaneous bound that either gives\n\\(\\omega_\\Ph(\\mathfrak h,j)<0\\) for every residual scale,\nor gives Gaussian coercive control of that scale with the remaining\nscales still integrable. Then the graph is absolutely UV convergent\non \\(\\mathcal K\\).",
-      "status": "pending",
-      "lean": [],
-      "scope": "Not yet formalized."
+      "status": "partial",
+      "lean": [
+        "UV.sector_power_integral",
+        "UV.mixed_sector_envelope_integrable",
+        "UV.conditional_forest_convergence",
+        "UV.conditional_forest_convergence_weighted"
+      ],
+      "scope": "Scale-power integrals, mixed Gaussian/power sectors, finite angular measures and general Jacobian-weighted measurable covers are proved. The explicit weighted covering/envelope hypotheses must be discharged for any chosen graph; uniform external-parameter bound assembly remains."
     },
     {
       "label": "cor:all-orders",
@@ -207,9 +237,12 @@
       "title_tex": "Heat damping does not preserve OS positivity",
       "source_line": 3293,
       "statement_tex": "For \\(t>0\\) and \\(\\omega>0\\), the following time covariance\nfails reflection positivity:\n\\begin{equation}\n C_t(u)=\\int_{\\RR}\\frac{\\dd p}{2\\pi}\\,\n       \\frac{e^{\\ii pu}e^{-tp^2}}{p^2+\\omega^2}\n \\label{eq:heat-time-covariance}\n\\end{equation}",
-      "status": "pending",
-      "lean": [],
-      "scope": "Not yet formalized."
+      "status": "partial",
+      "lean": [
+        "UV.heatTimeFourierCovariance_eq_real",
+        "UV.heatTimeFourierHankelMatrix_not_posSemidef"
+      ],
+      "scope": "Literal complex heat Fourier covariance equals its real cosine representation and has a non-PSD positive-time two-point Hankel matrix at every sufficiently small spacing. Gaussian moment integrability and two dominated derivatives are derived. Transfer to smooth positive-time probes and spatial wave packets remains."
     },
     {
       "label": "ass:OS-completion",
@@ -302,9 +335,20 @@
         "UV.kernel_zero",
         "UV.kernel_lower",
         "UV.kernel_upper",
-        "UV.kernel_le_one"
+        "UV.oqedMeasure_no_atom",
+        "UV.oqedMeasure_no_positive_gap",
+        "UV.oqedInverseMoment_finite",
+        "UV.oqedInverseMoment_zero",
+        "UV.oqedMeasure_zero_probability",
+        "UV.oqedInverseMoment_bound",
+        "UV.oqedExponentialMoment_endpoint",
+        "UV.oqedExponentialMoment_finite",
+        "UV.oqedMeasure_probability",
+        "UV.oqedLaplace",
+        "UV.oqedExponentialMoment_exact",
+        "UV.oqedExponentialMoment_finite_iff"
       ],
-      "scope": "Normalization at zero and the elementary exponential envelope are checked. The probability density, subordination, all inverse moments, Bessel formulas and exponential-moment endpoint remain."
+      "scope": "Literal density, probability normalization at every nonnegative tempering, genuine square-root Laplace subordination, all positive inverse-moment finiteness/Gamma bounds, no atom/support gap, exact zero-tempering Gamma moments, and full exact exponential-moment threshold including divergence are proved. Bessel/general-tempering inverse-moment formulas and their listed polynomial specializations remain."
     },
     {
       "label": "prop:OQED-depth-stability",
@@ -312,9 +356,13 @@
       "title_tex": "Depth derivatives and one-line asymptotics",
       "source_line": 5741,
       "statement_tex": "For $F_{a,M}$ of \\eqref{eq:OQED-normalized-kernel} and every\ninteger $n\\geq0$,\n\\begin{equation}\n \\partial_a^nF_{a,M}(u)=(-h_M(u))^nF_{a,M}(u),\\qquad\n h_M(u)=\\sqrt{u+M^2}-M.\n \\label{eq:OQED-depth-derivatives}\n\\end{equation}\nFor $a\\in[a_-,a_+]$, $0<a_-\\leq a_+$, and $0\\leq M\\leq M_+$,\n\\begin{equation}\n |\\partial_a^nF_{a,M}(q^2)|\n \\leq e^{a_+M_+}|q|^n e^{-a_-|q|}.\n \\label{eq:OQED-depth-uniform-envelope}\n\\end{equation}\nIn particular, such derivatives preserve an established complete\ngraph bound when the additional polynomial numerator degree and\ninfrared factors are controlled. Also, for $u>0$,\n$\\partial_MF_{a,M}(u)>0$.\n\nDefine a Fourier-normalized one-line comparison for $d\\geq0$:\n\\begin{equation}\n \\mathscr Q_d(a,M,m)\n :=\\int_{\\RR^4}\\frac{\\dd^4q}{(2\\pi)^4}\n   \\frac{|q|^dF_{a,M}(q^2)}{q^2+m^2},\n \\quad m\\geq0.\n \\label{eq:OQED-one-line-depth}\n\\end{equation}\nFor every fixed $m,M\\geq0$, it is finite at $a>0$, and\n\\begin{equation}\n \\lim_{a\\downarrow0}a^{d+2}\\mathscr Q_d(a,M,m)\n =\\frac{\\Gamma(d+2)}{8\\pi^2}.\n \\label{eq:OQED-zero-depth-one-line}\n\\end{equation}\nThe convergence is uniform for $(m,M)$ in bounded nonnegative sets.\nFor fixed $m>0$, the two different strong-depth limits are\n\\begin{equation}\n \\begin{aligned}\n \\lim_{a\\to\\infty}a^{d+4}\\mathscr Q_d(a,0,m)\n   &=\\frac{\\Gamma(d+4)}{8\\pi^2m^2},\\\\\n \\lim_{a\\to\\infty}a^{(d+4)/2}\\mathscr Q_d(a,M,m)\n   &=\\frac{(2M)^{(d+4)/2}\\Gamma((d+4)/2)}\n           {16\\pi^2m^2},\\quad M>0.\n \\end{aligned}\n \\label{eq:OQED-strong-depth-one-line}\n\\end{equation}\nThese asymptotics hold in their stated regimes, not uniformly over\narbitrary joint limits of $a$ and $M$.",
-      "status": "pending",
-      "lean": [],
-      "scope": "Not yet formalized."
+      "status": "partial",
+      "lean": [
+        "UV.kernel_iteratedDeriv_depth",
+        "UV.kernel_depth_derivative_bound",
+        "UV.kernel_zero_depth_error"
+      ],
+      "scope": "All-order depth derivative formula, compact-parameter exponential envelope and quantitative zero-depth kernel error are checked. One-line asymptotic constants, uniform limits and auxiliary-mass derivative remain."
     },
     {
       "label": "cor:OQED-exponential-line-tail",
@@ -332,9 +380,16 @@
       "title_tex": "Depth monotonicity of the literal scalar bubble",
       "source_line": 5867,
       "statement_tex": "Fix $m>0$, $M\\geq0$, and real Euclidean $P$. Put\n$H_{M,P}(q):=h_M(q^2)+h_M((q+P)^2)$. For each $a>0$,\n$a\\mapsto B_{a,M,m}(P)$ is completely monotone:\n\\begin{equation}\n \\begin{aligned}\n &(-1)^n\\partial_a^n B_{a,M,m}(P)\\\\\n &\\quad=\\int\\frac{\\dd^4q}{(2\\pi)^4}\n \\frac{H_{M,P}(q)^n e^{-aH_{M,P}(q)}}\n {(q^2+m^2)((q+P)^2+m^2)}>0\n \\end{aligned}\n \\label{eq:OQED-bubble-depth-derivatives}\n\\end{equation}\nfor every integer $n\\geq0$. For $a\\geq a_->0$,\n$0\\leq M\\leq M_+$, and any real $P$,\n\\begin{equation}\n |\\partial_a^nB_{a,M,m}(P)|\\leq\n c_{n,a_-}B_{a_-/2,M_+,m}(0),\n \\label{eq:OQED-bubble-depth-uniform}\n\\end{equation}\nwhere $c_{0,a_-}=1$ and\n$c_{n,a_-}=(2n/(\\mathrm e\\,a_-))^n$ for $n\\geq1$.\nThe bubble is holomorphic in the \\emph{depth} $a$ on\n$\\Re a>0$ at fixed real $P$. For fixed $a>0$ it is\nnondecreasing in the auxiliary mass $M$ (strictly for\n$P$ in the stated real domain). None of these statements\nimplies analyticity in complex external momentum when $M=0$,\nor reflection positivity of a physical two-point function.",
-      "status": "pending",
-      "lean": [],
-      "scope": "Not yet formalized."
+      "status": "partial",
+      "lean": [
+        "UV.scalarBubbleIntegrand_integrable",
+        "UV.scalarBubble_antitone_depth",
+        "UV.scalarBubble_le_zero_transfer",
+        "UV.scalarBubble_iteratedDeriv",
+        "UV.scalarBubble_strict_complete_monotonicity",
+        "UV.scalarBubbleMoment_uniform_bound"
+      ],
+      "scope": "Actual Fourier-normalized massive scalar bubble is integrable and strictly completely monotone in depth; all-order differentiation under the integral and a uniform factorial budget are proved. The sharp source constant, auxiliary-mass uniformization and holomorphic depth half-plane remain."
     },
     {
       "label": "thm:OQED-strong-depth-crossover",
@@ -354,9 +409,11 @@
       "statement_tex": "Fix the support, branch, source/endpoint conventions, and positive\nline depths of the O--QED record. Suppose a finite completed loop graph\nhas full-rank flat routing and the infrared hypotheses of\nTheorem~\\ref{thm:global-uv}. On a full-rank set of loop lines use\n\\(F_{a_i,M_i}\\), with \\(a_i>0\\), \\(M_i\\geq0\\), and bound all\nother multipliers as in Corollary~\\ref{cor:damped-basis}.\nIf the full completed numerator has a finite polynomial bound of degree\n\\(D_G\\), the graph is absolutely Euclidean convergent, uniformly on\nthe admitted compact external set. The kernel part of this assertion\nis established by \\eqref{eq:OQED-inverse-moments}, not left as an\nunevaluated assumption.\n\nAlternatively, assume bounded covariance envelopes and a complete\nnumerator bound\n\\begin{equation}\n |N_G(k,p)|\\leq C(1+\\norm{k}^{D_G})\n          \\exp\\!\\left(\\sum_i v_i|q_i|\\right),\\qquad v_i\\geq0.\n\\label{eq:OQED-vertex-budget}\n\\end{equation}\nIn this second alternative, every exponentially bounded line has its\nspecified \\(a_i>0\\); for a merely bounded unselected multiplier set\n\\(a_i=v_i=0\\) in the bound, without changing its model definition.\nIt is sufficient that the signed residuals \\(h_i=a_i-v_i\\) obey\n\\eqref{eq:signed-linear-coercivity}; a positive right side in\n\\eqref{eq:signed-linear-basis-certificate} is one explicit certificate.\nThe simpler nonnegative-residual, full-loop-rank test remains sufficient.\nThese bounds concern the product of all vertices and numerators in the\ngraph, including contact vertices. The constants \\(e^{a_iM_i}\\) belong\nto the envelope, not to a renormalization of the kernel measure.\n\nIf either condition, or the verified forest alternative, holds for\nall graphs and insertions of one fixed completed action, and the\nindependent anomaly-free BRST hypotheses hold for the same action in\nboth characters, its admitted coefficients are graphwise UV finite and\nsatisfy the identities of Section~\\ref{sec:brst} at every finite order.\nThis last implication does not certify an unspecified completion.",
       "status": "partial",
       "lean": [
-        "UV.oqed_complete_integrand_convergence"
+        "UV.oqed_complete_integrand_convergence",
+        "UV.global_schwinger_graph",
+        "UV.oqedLaplace"
       ],
-      "scope": "A sufficient subclass with a polynomial bound times the normalized kernel of the full loop norm is checked. Deriving this complete-integrand bound from routed propagators and actual completed vertices remains."
+      "scope": "Actual kernel subordination and all inverse-moment budgets now connect to the general selected-basis Schwinger graph theorem. Full source-statement assembly, the residual/forest alternatives and the same-action BRST conclusion still require matching; no unspecified completed vertices are presumed bounded."
     },
     {
       "label": "prop:OQED-Ward-bubble-obstruction",
@@ -364,9 +421,12 @@
       "title_tex": "A Ward-compatible two-vertex bubble fails the graphwise test",
       "source_line": 6188,
       "statement_tex": "Use the flat vacuum coefficient \\(S_{a,M}=F_{a,M}S_0\\),\n\\(a>0\\), \\(m_e>0\\), \\(M\\geq0\\), and \\(e\\ne0\\).\nAssume the vertex satisfies the dressed Ward identity and is continuous\nat \\((p',p)=(k,k)\\) for every \\(k\\ne0\\). Consider precisely the\ntwo-vertex term of the source's polarization skeleton at \\(P=0\\),\nwithout its contact contribution. Its trace over external Euclidean\nindices is not absolutely integrable. More precisely, if\n\\[\n I_W^{\\mu\\nu}(k):=-e^2\\Tr\\bigl[\n       \\Gamma^\\mu(k,k)S_{a,M}(k)\n       \\Gamma^\\nu(k,k)S_{a,M}(k)\\bigr],\n\\]\nthen, for \\(u=k^2>0\\), \\(\\Omega=\\sqrt{u+M^2}\\),\n\\begin{equation}\n\\begin{aligned}\n \\sum_{\\mu=1}^4I_W^{\\mu\\mu}(k)=e^2\\biggl[\n &\\frac{8(u+2m_e^2)}{(u+m_e^2)^2}\n -\\frac{8a u}{\\Omega(u+m_e^2)}\\\\\n &-\\frac{4a^2u}{u+M^2}\\biggr]\n \\longrightarrow-4e^2a^2 .\n\\end{aligned}\n\\label{eq:OQED-Ward-bubble-trace}\n\\end{equation}\nThus this particular two-vertex graph cannot meet a graphwise\nabsolute-convergence theorem on an external set containing zero.",
-      "status": "pending",
-      "lean": [],
-      "scope": "Not yet formalized."
+      "status": "partial",
+      "lean": [
+        "UV.wardTrace_tendsto",
+        "UV.wardTrace_not_integrable"
+      ],
+      "scope": "Displayed scalar Ward trace has the exact nonzero asymptote and is not integrable on four-dimensional loop momentum. Derivation from Ward-compatible matrix vertices/Clifford traces and exact radial exhaustion remain."
     },
     {
       "label": "cor:OQED-fixed-transfer-obstruction",
@@ -397,9 +457,13 @@
       "title_tex": "A contact cancellation that is not absolute convergence",
       "source_line": 6404,
       "statement_tex": "In this constant-background realization the combined coefficient is\n\\begin{equation}\n\\begin{aligned}\n J_{\\rm cb}^{\\mu\\nu}(k)\n &=e^2\\Tr[\\mathcal D_{,\\mu\\nu}S\n           -\\mathcal D_{,\\mu}S\\mathcal D_{,\\nu}S]\\\\\n &=e^2\\partial_\\mu\\partial_\\nu\\log\\det\\mathcal D(k).\n\\end{aligned}\n\\label{eq:OQED-contact-Hessian}\n\\end{equation}\nIt has the exact tensor form, with \\(u=k^2\\), \\(\\Omega=\\sqrt{u+M^2}\\),\n\\begin{equation}\n\\begin{split}\n \\frac{J_{\\rm cb}^{\\mu\\nu}}{e^2}\n =4a\\left(\\frac{\\delta^{\\mu\\nu}}{\\Omega}\n               -\\frac{k^\\mu k^\\nu}{\\Omega^3}\\right)\n   +\\frac{4\\delta^{\\mu\\nu}}{u+m_e^2}\n               -\\frac{8k^\\mu k^\\nu}{(u+m_e^2)^2}.\n\\end{split}\n\\label{eq:OQED-contact-explicit}\n\\end{equation}\nThe leading constant of the two-vertex term cancels, but the summed\ntensor is still not componentwise absolutely integrable. In fact,\n\\begin{equation}\n\\begin{split}\n \\sum_\\mu J_{\\rm cb}^{\\mu\\mu}(k)\n =e^2\\left[\n \\frac{4a(3u+4M^2)}{(u+M^2)^{3/2}}\n       +\\frac{8(u+2m_e^2)}{(u+m_e^2)^2}\\right]>0,\n\\end{split}\n\\label{eq:OQED-contact-trace}\n\\end{equation}\nand its radial exhaustion is exactly\n\\begin{equation}\n \\int_{|k|<R}\\frac{\\dd^4k}{(2\\pi)^4}\n            \\sum_\\mu J_{\\rm cb}^{\\mu\\mu}(k)\n  =\\frac{e^2}{2\\pi^2}\\left[\n        \\frac{aR^4}{\\sqrt{R^2+M^2}}+\\frac{R^4}{R^2+m_e^2}\\right].\n\\label{eq:OQED-contact-exhaustion}\n\\end{equation}",
-      "status": "pending",
-      "lean": [],
-      "scope": "Not yet formalized."
+      "status": "partial",
+      "lean": [
+        "UV.contactTrace_lower",
+        "UV.contactTrace_pos",
+        "UV.contactTrace_not_integrable"
+      ],
+      "scope": "Displayed combined bubble/contact scalar trace is positive, has an inverse-linear lower bound and is not integrable in four dimensions. Matrix Hessian/tensor derivation and exact radial exhaustion remain."
     },
     {
       "label": "cor:OQED-general-contact-obstruction",
@@ -437,9 +501,12 @@
       "title_tex": "Subtracted literal bubble at vanishing depth",
       "source_line": 6819,
       "statement_tex": "Fix $m>0$ and $M\\geq0$. For real Euclidean $P$, $w=P^2\\geq0$,\ndefine $C_{a,M,m}(q):=F_{a,M}(q^2)/(q^2+m^2)$ and\n\\begin{equation}\n D_{a,M,m}(w):=B_{a,M,m}(0)-B_{a,M,m}(P).\n \\label{eq:OQED-subtracted-bubble-def}\n\\end{equation}\nAt every $a>0$ this is an absolutely convergent \\emph{common}\nintegral and satisfies\n\\begin{equation}\n 0\\leq D_{a,M,m}(w)\\leq\\frac{w}{64\\pi^2m^2}.\n \\label{eq:OQED-subtraction-uniform-bound}\n\\end{equation}\nAs $a\\downarrow0$ with $M$ fixed,\n\\begin{equation}\n \\boxed{\\displaystyle\n \\lim_{a\\downarrow0}D_{a,M,m}(w)\n   =\\frac1{16\\pi^2}\\int_0^1\n      \\log\\left(1+\\frac{x(1-x)w}{m^2}\\right)\\dd x.}\n \\label{eq:OQED-subtraction-limit}\n\\end{equation}\nConvergence is uniform when $w$ and $M$ range over compact\nsubsets of $[0,\\infty)$ and $m$ ranges over a compact subset of\n$(0,\\infty)$. In addition,\n\\begin{equation}\n \\lim_{a\\downarrow0}D_{a,M,m}'(0)\n  =\\frac1{96\\pi^2m^2}.\n \\label{eq:OQED-subtraction-slope-limit}\n\\end{equation}\nIn contrast, the \\emph{unsubtracted} comparison has the\nuniversal finite-part asymptotic\n\\begin{equation}\n B_{a,M,m}(0)=\\frac1{8\\pi^2}\n  \\left[\\log\\frac1{2am}-\\gamma_{\\mathrm E}-\\frac12\\right]\n  +o(1),\\quad a\\downarrow0,\n \\label{eq:OQED-unsubtracted-log-depth}\n\\end{equation}\nwhere $\\gamma_{\\mathrm E}$ is Euler's constant. In this\nnormalization the constant inside the logarithm is specified,\nnot absorbed into an arbitrary reference momentum scale.\nThe comparison makes no assertion about a jointly completed\nO--QED kernel-off gauge functional or about uniform Lorentzian\nboundary values.",
-      "status": "pending",
-      "lean": [],
-      "scope": "Not yet formalized."
+      "status": "partial",
+      "lean": [
+        "UV.scalarBubble_difference_square",
+        "UV.scalarSubtractedBubble_nonneg"
+      ],
+      "scope": "Actual common subtraction equals its nonnegative difference-square integral at positive depth. Uniform subtraction bound, zero-depth logarithmic limit/slope and unsubtracted finite part remain."
     },
     {
       "label": "prop:OQED-zero-depth-finite-part",
@@ -457,9 +524,17 @@
       "title_tex": "Certification from an approximate response",
       "source_line": 7187,
       "statement_tex": "Suppose only an approximate response \\(Y\\) and a certified bound\n\\(\\|X-Y\\|\\leq\\epsilon_\\Pi\\) are available on the common complex domain.\nAssume \\(R_Y=(D_0^{-1}-Y)^{-1}\\) exists there and\n\\(\\|R_Y\\|\\leq B_Y\\), with \\(q:=B_Y\\epsilon_\\Pi<1\\), uniformly on\nthe domain under consideration. Then the exact inverse exists and\n\\begin{equation}\n\\begin{aligned}\n \\|R_X\\|&\\leq\\frac{B_Y}{1-q},\\\\\n \\|\\delta K_X-\\delta K_Y\\|\n       &\\leq E_K:=\\frac{\\|U\\|\\|V\\|B_Y^2\\epsilon_\\Pi}{1-q},\\\\\n |\\Gamma_X^{(1)}-\\Gamma_Y^{(1)}|&\\leq2\\Lambda_*E_K\n                 \\quad\\text{at the common baseline pole}.\n\\end{aligned}\n\\label{eq:OQED-aposteriori-Schur}\n\\end{equation}\nThe norms of \\(U,V\\) are their uniform bounds on that domain, or\ntheir pointwise bounds when only a pointwise statement is made.\nFor the graph-domain realization, \\(B_Y\\) is the\n\\(\\mathcal H_{\\rm EM}\\to\\mathcal D_{\\rm EM}\\) bound and\n\\(\\epsilon_\\Pi\\) the \\(\\mathcal D_{\\rm EM}\\to\\mathcal H_{\\rm EM}\\)\nbound. Analyticity of \\(X,Y,D_0,U,V\\) in the indicated bounded-operator\nspaces gives holomorphic inverses and Schur corrections; the norm\ninequalities alone do not establish that analytic hypothesis.",
-      "status": "pending",
-      "lean": [],
-      "scope": "Not yet formalized."
+      "status": "partial",
+      "lean": [
+        "UV.response_inverse_perturbation",
+        "UV.response_resolvent_error",
+        "UV.response_schur_error",
+        "UV.response_aposteriori_rate_error",
+        "UV.response_rate_positive_of_error",
+        "UV.response_analytic_inverse",
+        "UV.response_analytic_schur"
+      ],
+      "scope": "Actual Neumann inverse, ordered resolvent/Schur/rate constants, positive-rate certificate and holomorphic inverse/Schur families are proved for bounded Banach operator spaces. Graph-domain generalization and identification with the physical baseline pole remain."
     },
     {
       "label": "prop:OQED-finite-pole-enclosure",

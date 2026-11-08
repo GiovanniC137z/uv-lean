@@ -1,32 +1,72 @@
 {
   "prop:carrier-reality-adjoint": {
-    "status": "partial",
-    "lean": ["UV.Carrier.no_normalized_positive_functional", "UV.Carrier.character_reality"],
-    "scope": "The involution and no-positive-functional obstruction are proved in the explicit two-character algebra C x C. The quotient-algebra isomorphism and Hilbert-representation corollary remain."
+    "status": "verified",
+    "lean": [
+      "UV.Carrier.quotientCharacterEquiv_root",
+      "UV.Carrier.quotientCharacterEquiv_reality",
+      "UV.Carrier.no_positive_functional_on_quotient",
+      "UV.Carrier.no_reality_preserving_hilbert_representation",
+      "UV.Carrier.no_reality_preserving_innerProduct_representation"
+    ],
+    "scope": "Literal polynomial quotient identified with its two characters; declared reality, character interchange, normalized positive-functional obstruction and nonzero Hilbert adjoint-representation obstruction are proved."
   },
   "thm:optimized-selected-lines": {
-    "status": "partial",
-    "lean": ["UV.selected_product_integrable"],
-    "scope": "Finite independent-line product domination is checked. The massless four-dimensional radial/Gamma identity, inverse-moment implication, affine routing Jacobian and full anisotropic sum remain."
+    "status": "verified",
+    "lean": [
+      "UV.optimized_selected_lines",
+      "UV.exists_four_dimensional_routing",
+      "UV.actual_massless_selected_line_lintegral",
+      "UV.actual_massless_selected_line_integrable_iff",
+      "UV.actual_selected_line_integral_le"
+    ],
+    "scope": "Actual full Laplace factors, finite measures, nonnegative support/no atom, highest line-specific moments, all real anisotropic degrees, finite complete-integrand envelope, uniform external parameters, massive upper bound and exact massless equality/iff are proved. Bare invertible selected matrix constructs the affine routing; its C tensor I4 determinant and Fourier-normalized bound are derived."
   },
   "prop:residual-coercivity": {
     "status": "partial",
-    "lean": ["UV.residual_linear_convergence", "UV.signed_affine_coercivity", "UV.uniform_integral_norm_bound"],
-    "scope": "Linear coercivity, signed affine-shift control and polynomial-exponential integrability are checked for natural polynomial degree. The full-rank/singular-value certificate, real degrees, and quadratic case remain."
+    "lean": [
+      "UV.residual_linear_real_degree_convergence",
+      "UV.residual_quadratic_real_degree_convergence",
+      "UV.signed_affine_coercivity",
+      "UV.euclidean_loop_real_degree_integrable"
+    ],
+    "scope": "Real numerator degrees, linear and quadratic residual analytic convergence, signed affine control and arbitrary finite 4L loop spaces are checked. Deriving the matrix/singular-value coercivity certificates and uniform graph constants remains."
   },
   "prop:OQED-moment-certificate": {
     "status": "partial",
-    "lean": ["UV.kernel_zero", "UV.kernel_lower", "UV.kernel_upper", "UV.kernel_le_one"],
-    "scope": "Normalization at zero and the elementary exponential envelope are checked. The probability density, subordination, all inverse moments, Bessel formulas and exponential-moment endpoint remain."
+    "lean": [
+      "UV.kernel_zero",
+      "UV.kernel_lower",
+      "UV.kernel_upper",
+      "UV.oqedMeasure_no_atom",
+      "UV.oqedMeasure_no_positive_gap",
+      "UV.oqedInverseMoment_finite",
+      "UV.oqedInverseMoment_zero",
+      "UV.oqedMeasure_zero_probability",
+      "UV.oqedInverseMoment_bound",
+      "UV.oqedExponentialMoment_endpoint",
+      "UV.oqedExponentialMoment_finite",
+      "UV.oqedMeasure_probability",
+      "UV.oqedLaplace",
+      "UV.oqedExponentialMoment_exact",
+      "UV.oqedExponentialMoment_finite_iff"
+    ],
+    "scope": "Literal density, probability normalization at every nonnegative tempering, genuine square-root Laplace subordination, all positive inverse-moment finiteness/Gamma bounds, no atom/support gap, exact zero-tempering Gamma moments, and full exact exponential-moment threshold including divergence are proved. Bessel/general-tempering inverse-moment formulas and their listed polynomial specializations remain."
   },
   "thm:OQED-fixed-graph": {
     "status": "partial",
-    "lean": ["UV.oqed_complete_integrand_convergence"],
-    "scope": "A sufficient subclass with a polynomial bound times the normalized kernel of the full loop norm is checked. Deriving this complete-integrand bound from routed propagators and actual completed vertices remains."
+    "lean": [
+      "UV.oqed_complete_integrand_convergence",
+      "UV.global_schwinger_graph",
+      "UV.oqedLaplace"
+    ],
+    "scope": "Actual kernel subordination and all inverse-moment budgets now connect to the general selected-basis Schwinger graph theorem. Full source-statement assembly, the residual/forest alternatives and the same-action BRST conclusion still require matching; no unspecified completed vertices are presumed bounded."
   },
   "lem:OQED-grouped-convergence": {
     "status": "partial",
-    "lean": ["UV.grouped_integrable", "UV.grouped_exhaustion_limit"],
+    "lean": [
+      "UV.grouped_integrable",
+      "UV.grouped_exhaustion_limit"
+    ],
     "scope": "The real-valued finite sum is absolutely integrable and has an exhaustion-independent integral under its supplied common envelope. Holomorphic continuation and action/routing identification remain."
   },
   "ass:OS-completion": {
@@ -34,5 +74,114 @@
   },
   "ass:cut-matching": {
     "scope": "Cut-discontinuity compatibility is an explicit assumption in the source; it has not been established or encoded as a project axiom."
+  },
+  "prop:character-majorants": {
+    "status": "verified",
+    "lean": [
+      "UV.Carrier.quotient_character_norm_submultiplicative",
+      "UV.Carrier.quotient_character_majorant_integrable",
+      "UV.Carrier.quotient_character_integral_norm_bound",
+      "UV.Carrier.quotient_projector_integral_reconstruction",
+      "UV.Carrier.character_pair_uniform_estimate",
+      "UV.Carrier.character_pair_norm_submultiplicative"
+    ],
+    "scope": "Character norm, integrable domination, norm bound and projector integral reconstruction hold in the literal quotient. Uniform parameter and matrix-coefficient cases are covered by complete normed-ring character pairs."
+  },
+  "thm:global-uv": {
+    "status": "partial",
+    "lean": [
+      "UV.extendedInverseMoment_lt_top_iff",
+      "UV.inverseMoment_lower_order_finite",
+      "UV.massless_laplace_moment",
+      "UV.positive_gap_selected_endpoint",
+      "UV.global_schwinger_graph",
+      "UV.actual_joint_majorant_integrable"
+    ],
+    "scope": "Direct selected-basis proof covers actual general Schwinger infrared envelopes, original real-degree polynomial numerator, bounded external shifts, actual selected/nonselected factors and explicit uniform affine-Jacobian bound. The positive-gap alternative supplies all required moments. An actual joint-parameter Fubini lift is proved. Bare rectangular full-column-rank routing to a selected row minor and a single exact source-statement wrapper remain."
+  },
+  "cor:damped-basis": {
+    "status": "partial",
+    "lean": [
+      "UV.actual_selected_line_integrable",
+      "UV.selected_product_integrable"
+    ],
+    "scope": "Actual nonnegative-supported, atom-free Laplace lines are integrable under the endpoint moment. Independent products are checked. Affine routing change of variables, Jacobian and complete graph assembly remain."
+  },
+  "thm:forest": {
+    "status": "partial",
+    "lean": [
+      "UV.sector_power_integral",
+      "UV.mixed_sector_envelope_integrable",
+      "UV.conditional_forest_convergence",
+      "UV.conditional_forest_convergence_weighted"
+    ],
+    "scope": "Scale-power integrals, mixed Gaussian/power sectors, finite angular measures and general Jacobian-weighted measurable covers are proved. The explicit weighted covering/envelope hypotheses must be discharged for any chosen graph; uniform external-parameter bound assembly remains."
+  },
+  "prop:OQED-depth-stability": {
+    "status": "partial",
+    "lean": [
+      "UV.kernel_iteratedDeriv_depth",
+      "UV.kernel_depth_derivative_bound",
+      "UV.kernel_zero_depth_error"
+    ],
+    "scope": "All-order depth derivative formula, compact-parameter exponential envelope and quantitative zero-depth kernel error are checked. One-line asymptotic constants, uniform limits and auxiliary-mass derivative remain."
+  },
+  "prop:OQED-bubble-depth-monotone": {
+    "status": "partial",
+    "lean": [
+      "UV.scalarBubbleIntegrand_integrable",
+      "UV.scalarBubble_antitone_depth",
+      "UV.scalarBubble_le_zero_transfer",
+      "UV.scalarBubble_iteratedDeriv",
+      "UV.scalarBubble_strict_complete_monotonicity",
+      "UV.scalarBubbleMoment_uniform_bound"
+    ],
+    "scope": "Actual Fourier-normalized massive scalar bubble is integrable and strictly completely monotone in depth; all-order differentiation under the integral and a uniform factorial budget are proved. The sharp source constant, auxiliary-mass uniformization and holomorphic depth half-plane remain."
+  },
+  "prop:OQED-Ward-bubble-obstruction": {
+    "status": "partial",
+    "lean": [
+      "UV.wardTrace_tendsto",
+      "UV.wardTrace_not_integrable"
+    ],
+    "scope": "Displayed scalar Ward trace has the exact nonzero asymptote and is not integrable on four-dimensional loop momentum. Derivation from Ward-compatible matrix vertices/Clifford traces and exact radial exhaustion remain."
+  },
+  "prop:OQED-constant-contact": {
+    "status": "partial",
+    "lean": [
+      "UV.contactTrace_lower",
+      "UV.contactTrace_pos",
+      "UV.contactTrace_not_integrable"
+    ],
+    "scope": "Displayed combined bubble/contact scalar trace is positive, has an inverse-linear lower bound and is not integrable in four dimensions. Matrix Hessian/tensor derivation and exact radial exhaustion remain."
+  },
+  "thm:OQED-subtracted-zero-depth": {
+    "status": "partial",
+    "lean": [
+      "UV.scalarBubble_difference_square",
+      "UV.scalarSubtractedBubble_nonneg"
+    ],
+    "scope": "Actual common subtraction equals its nonnegative difference-square integral at positive depth. Uniform subtraction bound, zero-depth logarithmic limit/slope and unsubtracted finite part remain."
+  },
+  "cor:OQED-aposteriori-Schur": {
+    "status": "partial",
+    "lean": [
+      "UV.response_inverse_perturbation",
+      "UV.response_resolvent_error",
+      "UV.response_schur_error",
+      "UV.response_aposteriori_rate_error",
+      "UV.response_rate_positive_of_error",
+      "UV.response_analytic_inverse",
+      "UV.response_analytic_schur"
+    ],
+    "scope": "Actual Neumann inverse, ordered resolvent/Schur/rate constants, positive-rate certificate and holomorphic inverse/Schur families are proved for bounded Banach operator spaces. Graph-domain generalization and identification with the physical baseline pole remain."
+  },
+  "prop:OS-counterexample": {
+    "status": "partial",
+    "lean": [
+      "UV.heatTimeFourierCovariance_eq_real",
+      "UV.heatTimeFourierHankelMatrix_not_posSemidef"
+    ],
+    "scope": "Literal complex heat Fourier covariance equals its real cosine representation and has a non-PSD positive-time two-point Hankel matrix at every sufficiently small spacing. Gaussian moment integrability and two dominated derivatives are derived. Transfer to smooth positive-time probes and spatial wave packets remains."
   }
 }
