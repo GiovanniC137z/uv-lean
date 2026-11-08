@@ -4,18 +4,22 @@
 
 A Lean 4 verification project for Giovanni Joseph Chiappone's *Conditional All-Orders UV Finiteness: Non-Abelian BRST Closure, Analyticity, and Crossing in Omniverse Quantum Field Theory*.
 
-**Status: substantial checked mathematics, with full-paper verification still incomplete.** The carrier reality and character-majorant propositions and the optimized selected-line convergence theorem are fully formalized. Convergence, kernel measures, scalar comparison, divergence obstructions and response certificates have additional checked components; their remaining gaps are recorded explicitly. A green build certifies the current Lean statements, not the entire paper or an interacting physical theory.
+**Status: full-paper verification remains incomplete.** The checked results now include the original global and selected-basis convergence theorems, conditional forest and finite-order results, exact O--QED kernel certificate, depth/crossover theorems, carrier propositions, finite-mode field redefinition, positive-residue normalization, and named counterexamples. The claim inventory distinguishes those complete results from remaining components. A green build certifies the current Lean statements, not the entire paper or an interacting physical theory.
 
 ## Checked mathematics
 
 - The literal carrier polynomial quotient, its two-character equivalence, positive-functional/Hilbert-adjoint obstructions, and scalar/matrix character estimates.
-- The actual O--QED probability/heat measures and square-root subordination, all positive inverse moments, no atom or support gap, exact zero-tempering Gamma moments and the full exponential-moment threshold.
-- Exact four-dimensional massless Gaussian and Laplace-mixture moment identities, necessary-and-sufficient endpoint moment tests, and massive upper bounds.
-- The full optimized selected-line theorem; real-degree routed numerator and general Schwinger-envelope graph bounds; Gaussian/exponential and mixed weighted-sector convergence.
-- Positive-depth massive scalar bubble integrability, common-subtraction positivity, and all-order line-kernel depth derivative bounds.
-- Genuine nonintegrability of the displayed Ward and combined contact traces, and a negative Hankel matrix for the literal heat Fourier covariance.
-- Neumann inverse existence, ordered resolvent and Schur error constants, analytic bounded-operator inverses, and rate/contour error certificates.
-- Exhaustion-independent convergence of finite common-routing sums under an integrable envelope.
+- The actual O--QED probability/heat measures and square-root subordination, all inverse moments with exact Bessel/Gamma formulas and polynomial cases, and the full exponential-moment threshold.
+- Exact four-dimensional line moments, full-rank routing construction, global joint-parameter convergence, independent line multipliers, and quantitative selected-coordinate graph tails.
+- Signed residual Gram/sphere coercivity, simultaneous weighted sectors, graphwise finite-order convergence, and summed-label amplitudes under summable derived majorants.
+- Literal scalar bubble depth derivatives, complex-depth and external-momentum holomorphy, exact depth/crossover limits, positive proper-time Laplace representation, and signed Taylor enclosures.
+- Actual common zero-depth subtraction with its uniform logarithmic limit/slope, and the universal unsubtracted Euler finite part with explicit error constants.
+- The Gaussian loop’s unique normalized cut-plane continuation, entire remainder, exact upper/lower bounds, and growth obstruction for the remainder plus any finite polynomial.
+- Actual joint external holomorphy, derivative/contour exchange and Cauchy estimate components from common graph majorants.
+- Clifford-matrix derivation of Ward/contact obstructions, exact constant-background exhaustion, the general radial-profile contact obstruction, and smooth positive-time probes violating heat-covariance reflection positivity.
+- Exact finite-mode field-redefinition/Jacobian cancellation and Hilbert-overlap residue positivity with a constructed invertible spectral normalization.
+- Neumann/Schur/analytic inverse certificates and actual simple-pole residue, Taylor coefficient and geometric remainder components.
+- Exhaustion-independent finite common-routing sums and the gapped positive-measure meromorphic counterexample.
 
 See the [precise scope](docs/verification.md), [complete claim inventory](docs/claims.md), and [remaining work](docs/roadmap.md). `claims.json` retains all 48 labeled source environments, their original TeX, locations, and status. A partial entry never certifies an entire proposition.
 

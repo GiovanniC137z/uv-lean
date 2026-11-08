@@ -51,9 +51,9 @@ def theorem_names():
         if re.search(r"\b(sorry|admit|axiom)\b", source):
             raise SystemExit(f"Forbidden proof placeholder or custom axiom in {path.name}")
         namespaces = re.findall(r"^namespace\s+(\S+)", source, re.M)
-        if len(namespaces) != 1 or not namespaces[0].startswith("UV"):
+        if len(namespaces) != 1 or not (namespaces[0] == "UV" or namespaces[0].startswith("UV.")):
             raise SystemExit(f"Expected one explicit UV namespace in {path.name}")
-        for match in re.finditer(r"\b(?:theorem|lemma)\s+([\w']+)", source):
+        for match in re.finditer(r"\b(?:theorem|lemma)\s+([\w'.]+)", source):
             prefix = source[:match.start()].rsplit("\n", 1)[-1]
             if re.search(r"\bprivate\s+$", prefix):
                 continue  # Its mangled compiled name is included by the namespace audit.
