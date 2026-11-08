@@ -1,0 +1,505 @@
+{
+  "source": "paper/UV.tex",
+  "sha256": "7e9a9aca1a1f2d757ce99614c50e9a05662ca05c969253af29cb3c40d2d9a340",
+  "claims": [
+    {
+      "label": "prop:free-source-normalization",
+      "kind": "proposition",
+      "title_tex": "Free source normalization and its interacting limit",
+      "source_line": 725,
+      "statement_tex": "% Monograph source: prop:source-normalized-realization; rem:source-normalized-why.\nOn a fixed commuting Euclidean field block, let\n\\(\\mathscr K_0\\) be a positive self-adjoint injective free kinetic\noperator and \\(\\Delta=\\mathscr K_0^{-1}\\). Put\n\\[\n F=\\Ph(a^2\\mathscr L_{\\bb}),\\qquad \\Delta_\\Ph=F\\Delta.\n\\]\nAssume that \\(F\\) is positive and injective and strongly commutes\nwith \\(\\mathscr K_0\\): their spectral projections commute.\nWork on the common reducing spectral core consisting of vectors\nwhose joint spectral support is bounded above and separated from\nzero in each spectral coordinate, taking the union over such\nbounds. Every displayed product\nand inverse is then defined there. In particular,\n\\(T:=F^{-1/2}\\) is self-adjoint on its spectral domain.\nIntroduce an auxiliary Wick field \\(\\varphi\\) with covariance\n\\(\\Delta_\\Ph\\). The notation \\(\\varphi^{\\rm phys}=T\\varphi\\)\nmeans the smeared-field identity\n\\(\\varphi^{\\rm phys}(f)=\\varphi(T^\\dagger f)\\) on a common\nadmitted test space; it does not apply an unbounded operator to a\npointwise random field. The covariance forms must extend to any\nlarger test space subsequently used for local observables.\nWe use the Hermitian covariance pairing for a complex commuting\nfield; on a compatible real field block the adjoint below is the\ntranspose with respect to the real source pairing.\nThen its free source--source covariance is\n\\begin{equation}\n \\langle\\varphi^{\\rm phys}\n             (\\varphi^{\\rm phys})^\\dagger\\rangle_0\n =T\\Delta_\\Ph T^\\dagger\n =T\\Delta_\\Ph T=\\Delta.\n \\label{eq:undressed-source-covariance}\n\\end{equation}\nContractions between auxiliary interaction insertions still use\n\\(\\Delta_\\Ph\\). However, a mixed source--vertex contraction is\n\\begin{equation}\n T\\Delta_\\Ph=F^{1/2}\\Delta,\n \\qquad\n (T\\Delta_\\Ph)\\Delta^{-1}=F^{1/2}.\n \\label{eq:mixed-source-half-factor}\n\\end{equation}\nThus free source normalization alone does not prove an undressed\ninteracting external attachment.",
+      "status": "pending",
+      "lean": [],
+      "scope": "Not yet formalized."
+    },
+    {
+      "label": "prop:pure-redefinition-cancellation",
+      "kind": "proposition",
+      "title_tex": "A pure field redefinition cancels the damping",
+      "source_line": 803,
+      "statement_tex": "In the real commuting block of\nProposition~\\ref{prop:free-source-normalization}, suppose that the\nentire interaction is chosen as \\(V[T\\varphi]\\), with sources\ncoupled to \\(T\\varphi\\), and that the quadratic coefficient is\n\\(\\Delta_\\Ph^{-1}\\). At fixed background, take an invertible\nfinite-mode realization preserving the quadratic identities below\nand include its change-of-variables Jacobian. Its normalized source\nfunctional equals that of the undamped theory with quadratic\ncoefficient \\(\\mathscr K_0\\) and interaction \\(V\\).\nIn particular this construction is not, by itself, an ultraviolet\nimprovement of that theory.",
+      "status": "pending",
+      "lean": [],
+      "scope": "Not yet formalized."
+    },
+    {
+      "label": "prop:carrier-reality-adjoint",
+      "kind": "proposition",
+      "title_tex": "Carrier reality and positive adjoints",
+      "source_line": 934,
+      "statement_tex": "On the scalar carrier algebra, the reality operation \\(\\ddagger\\)\ninterchanges the two character representations:\n\\begin{equation}\n \\chi_\\kappa(A^\\ddagger)\n       =\\overline{\\chi_{-\\kappa}(A)}.\n \\label{eq:reality-character-interchange}\n\\end{equation}\nThere is no normalized complex-linear functional \\(\\omega\\) on the\nfull unital algebra satisfying\n\\(\\omega(A^\\ddagger A)\\geq0\\) for every \\(A\\).\nIn particular, \\(\\ddagger\\) cannot be the adjoint of a unital\nrepresentation of this algebra on a nonzero positive Hilbert space.",
+      "status": "partial",
+      "lean": [
+        "UV.Carrier.no_normalized_positive_functional",
+        "UV.Carrier.character_reality"
+      ],
+      "scope": "The involution and no-positive-functional obstruction are proved in the explicit two-character algebra C x C. The quotient-algebra isomorphism and Hilbert-representation corollary remain."
+    },
+    {
+      "label": "prop:source-exchange",
+      "kind": "proposition",
+      "title_tex": "Exchange test for a source covariance",
+      "source_line": 1134,
+      "statement_tex": "Fix the support, ordering branch, carrier, and source pairing. Let\n\\(C^{AB}(x,y)\\) be a two-point coefficient obtained by two\nindependent source derivatives of the same even generating\nfunctional, with the source-first convention of\nSection~\\ref{sec:bv}. Whenever the derivatives exist and graded\ncommute, it obeys\n\\begin{equation}\n C^{AB}(x,y)=(-1)^{\\epsilon_A\\epsilon_B}C^{BA}(y,x).\n \\label{eq:source-covariance-reciprocity}\n\\end{equation}\nFor a translation-invariant coefficient this becomes\n\\(C^{AB}(k)=(-1)^{\\epsilon_A\\epsilon_B}C^{BA}(-k)\\).\nIn particular, a single identical commuting real scalar has\n\\(C(k)=C(-k)\\), in each carrier character and in the reconstructed\ncarrier algebra.",
+      "status": "pending",
+      "lean": [],
+      "scope": "Not yet formalized."
+    },
+    {
+      "label": "prop:character-majorants",
+      "kind": "proposition",
+      "title_tex": "Character estimates for complete graphs",
+      "source_line": 1258,
+      "statement_tex": "For scalar carrier coefficients define\n\\begin{equation}\n \\norm{A}_{\\chi}:=\\max_{\\kappa=\\pm1}|\\chi_\\kappa(A)|.\n \\label{eq:character-norm}\n\\end{equation}\nThis is a submultiplicative norm. Let \\(\\nu\\) be a positive\nintegration measure. If a measurable complete graph integrand is\n\\(g(\\xi)=\\sum_\\kappa\\mathsf P_\\kappa g_\\kappa(\\xi)\\)\nand \\(|g_\\kappa(\\xi)|\\leq M_\\kappa(\\xi)\\), with\n\\(M_\\pm\\in L^1(\\dd\\nu)\\), then\n\\begin{equation}\n\\begin{aligned}\n \\int\\norm{g(\\xi)}_\\chi\\dd\\nu\n &\\leq\\int(M_++M_-)\\dd\\nu<\\infty,\\\\\n \\int g\\,\\dd\\nu\n &=\\sum_\\kappa\\mathsf P_\\kappa\\int g_\\kappa\\,\\dd\\nu.\n\\end{aligned}\n \\label{eq:character-integral-majorant}\n\\end{equation}\nThe same statement holds uniformly in external parameters whenever\nthe two majorants are uniform. For matrix coefficients replace the\nabsolute value by a fixed submultiplicative matrix norm.",
+      "status": "pending",
+      "lean": [],
+      "scope": "Not yet formalized."
+    },
+    {
+      "label": "thm:global-uv",
+      "kind": "theorem",
+      "title_tex": "Global Euclidean convergence",
+      "source_line": 1428,
+      "statement_tex": "Assume \\eqref{eq:routing}--\\eqref{eq:IR-conditions}, finite\n\\(\\Mzero\\), and fixed \\(a>0\\). Either of the following is sufficient\nfor \\(\\sup_{p\\in\\mathcal K}\\mathcal A_G(p)<\\infty\\):\n\\begin{description}[leftmargin=1cm]\n\\item[(G)] There is \\(\\tau_*>0\\) with\n\\(\\supp\\rho\\subset[\\tau_*,\\infty)\\).\n\\item[(M)] \\(\\rho(\\{0\\})=0\\) and\n\\(M_{1+D/2}[\\rho]<\\infty\\).\n\\end{description}\nThe joint absolute majorant in loop momenta, Schwinger parameters,\nand Laplace--Stieltjes parameters is integrable. All Euclidean\nintegration-order exchanges used in the proof are therefore valid.\nNo UV-divergent subtraction is needed to define this graph.\nThis conclusion concerns the stated Euclidean comparison integral;\nit does not establish a physical spectral representation or the\nvalidity of an undressed operational cut.",
+      "status": "pending",
+      "lean": [],
+      "scope": "Not yet formalized."
+    },
+    {
+      "label": "cor:damped-basis",
+      "kind": "corollary",
+      "title_tex": "Damping a full-rank set of loop lines",
+      "source_line": 1630,
+      "statement_tex": "Retain the routing, numerator, and infrared hypotheses of\nTheorem~\\ref{thm:global-uv}, and let \\(S\\subset E_{\\rm u}(G)\\) be a set of \\(L\\) uncut\nvirtual lines for which \\(C_S\\) is invertible. For each \\(i\\in S\\), suppose\n\\(\\Ph_i\\) has a finite positive representing measure \\(\\rho_i\\)\nwith either a positive gap or\n\\[\n \\rho_i(\\{0\\})=0,\\qquad M_{1+D/2}[\\rho_i]<\\infty.\n\\]\nOn every remaining line, it is enough that the multiplier be measurable\nand bounded on the nonnegative real axis; the identity multiplier is allowed.\nThen the graph with these line-dependent multipliers is absolutely\nconvergent, uniformly on \\(\\mathcal K\\).",
+      "status": "pending",
+      "lean": [],
+      "scope": "Not yet formalized."
+    },
+    {
+      "label": "thm:optimized-selected-lines",
+      "kind": "theorem",
+      "title_tex": "Line-specific inverse moments on a full-rank routing",
+      "source_line": 1718,
+      "statement_tex": "Fix the finite routing and compact real external set of\n\\eqref{eq:routing}. Choose $S$ with $|S|=L$ and invertible $C_S$, and\nwrite $\\ell_j=q_j$ for $j\\in S$. On selected line $j$, take the actual\nnonnegative comparison factor\n\\begin{equation}\n C_j^{\\Ph}(\\ell_j)\n  :=\\frac{\\Ph_j(a_j^2|\\ell_j|^2)}{|\\ell_j|^2+m_j^2},\n \\qquad a_j>0,\\quad m_j\\geq0,\n \\label{eq:optimized-selected-factor}\n\\end{equation}\nwith a finite positive representing measure $\\rho_j$.\nAssume the \\emph{complete product} of the numerator and all\nunselected virtual-line factors, expressed in these variables, obeys\n\\begin{equation}\n \\left|N_G(k(\\ell,p),p)\\prod_{i\\notin S} C_i^{\\rm full}(q_i)\\right|\n \\leq\\sum_{\\alpha\\in\\mathcal A}c_\\alpha\n       \\prod_{j\\in S}(1+|\\ell_j|^{d_{j\\alpha}}),\n \\label{eq:anisotropic-complete-envelope}\n\\end{equation}\nuniformly in $p\\in\\mathcal K$, with $\\mathcal A$ finite,\n$c_\\alpha\\geq0$ and $d_{j\\alpha}\\geq0$. Thus an unselected\nmassless denominator must be controlled as part of the \\emph{full}\nenvelope; it is not assumed bounded merely because its multiplier is.\nSet $d_j=\\max_\\alpha d_{j\\alpha}$ and suppose\n\\begin{equation}\n \\rho_j(\\{0\\})=0,\\qquad\n M_{1+d_j/2}[\\rho_j]<\\infty\\quad(j\\in S).\n \\label{eq:optimized-moment-budget}\n\\end{equation}\nThen the specified complete graph is absolutely convergent,\nuniformly over $\\mathcal K$, including mixed soft and UV regions\nin the selected variables. The following one-line integral does\n\\emph{not} include the Fourier factor $(2\\pi)^{-4}$:\n\\begin{equation}\n \\begin{aligned}\n Q_{d,j}(m_j)\n  &:=\\int_{\\RR^4}\\frac{|q|^d\\Ph_j(a_j^2|q|^2)}{q^2+m_j^2}\n         \\dd^4q\\\\\n  &\\leq\\pi^2\\Gamma(1+d/2)a_j^{-2-d}\n          M_{1+d/2}[\\rho_j].\n \\end{aligned}\n \\label{eq:optimized-one-line-moment}\n\\end{equation}\nFor $m_j=0$ this is an equality, possibly infinite. Under the\n\\emph{separate no-atom hypothesis}, finiteness of the displayed\ninverse moment is necessary and sufficient for that particular\nnonnegative weighted one-line integral. It remains a sufficient,\nnot generally necessary, condition for the complete graph.",
+      "status": "partial",
+      "lean": [
+        "UV.selected_product_integrable"
+      ],
+      "scope": "Finite independent-line product domination is checked. The massless four-dimensional radial/Gamma identity, inverse-moment implication, affine routing Jacobian and full anisotropic sum remain."
+    },
+    {
+      "label": "cor:optimized-selected-tail",
+      "kind": "corollary",
+      "title_tex": "An explicit selected-line numerical tail",
+      "source_line": 1812,
+      "statement_tex": "Under Theorem~\\ref{thm:optimized-selected-lines}, if for some\n$\\delta>0$ the moments\n$M_{1+(d_j+\\delta)/2}[\\rho_j]$ are finite, then\n\\begin{equation}\n \\begin{aligned}\n &\\int_{|q|>R}\\frac{|q|^d\\Ph_j(a_j^2|q|^2)}{q^2+m_j^2}\n  \\dd^4q\\\\\n &\\quad\\leq \\frac{\\pi^2\\Gamma(1+(d+\\delta)/2)}\n                       {R^\\delta a_j^{2+d+\\delta}}\n       M_{1+(d+\\delta)/2}[\\rho_j],\n \\quad 0\\leq d\\leq d_j.\n \\end{aligned}\n \\label{eq:optimized-tail-bound}\n\\end{equation}\nReplacing one factor at a time in\n\\eqref{eq:anisotropic-integrated-bound} and taking the union over\n$\\{|\\ell_j|>R\\}$ gives an $O(R^{-\\delta})$ tail for the complete\nspecified graph in the selected variables.",
+      "status": "pending",
+      "lean": [],
+      "scope": "Not yet formalized."
+    },
+    {
+      "label": "prop:two-loop-complex-certificate",
+      "kind": "proposition",
+      "title_tex": "Complex and real external-momentum certificates for the two-loop example",
+      "source_line": 1910,
+      "statement_tex": "In \\eqref{eq:two-loop-selected-example}, interpret the third\nfactor as the analytic denominator\n$[(k_1-k_2+p)^2+1]^{-1}$ for complex $p$, with\n$q^2=\\sum_{\\mu=1}^4q_\\mu^2$. Denote this complex integral by\n$\\mathcal B_{\\rm ex}(p)$. It is holomorphic on the tube\n$\\mathcal T_1=\\{p=x+\\ii y\\in\\CC^4:|y|<1\\}$, and\n\\begin{equation}\n |\\mathcal B_{\\rm ex}(x+\\ii y)|\n \\leq\\frac{1}{768\\pi^4(1-|y|^2)}.\n \\label{eq:two-loop-complex-bound}\n\\end{equation}\nFor every real $p_0$, $0<r<1/2$, and multi-index\n$\\alpha\\in\\mathbb N_0^4$, its external derivatives satisfy\n\\begin{equation}\n |\\partial_p^\\alpha\\mathcal B_{\\rm ex}(p_0)|\n \\leq\\frac{\\alpha!\\,r^{-|\\alpha|}}\n {768\\pi^4(1-4r^2)}.\n \\label{eq:two-loop-complex-derivative}\n\\end{equation}\nFor real external momenta $p,p'\\in\\RR^4$ one also has the\nglobal stability estimate\n\\begin{equation}\n \\begin{aligned}\n \\norm{\\nabla_p\\mathcal A_{\\rm ex}(p)}\n &\\leq\\frac{9}{8\\sqrt3}\\,\\frac1{768\\pi^4},\\\\\n |\\mathcal A_{\\rm ex}(p)-\\mathcal A_{\\rm ex}(p')|\n &\\leq\\frac{9}{6144\\sqrt3\\,\\pi^4}\\norm{p-p'}.\n \\end{aligned}\n \\label{eq:two-loop-real-Lipschitz}\n\\end{equation}\nFor real $p$, $\\mathcal B_{\\rm ex}(p)=\\mathcal A_{\\rm ex}(p)$.\nThe gradient is also globally Lipschitz. For $p,p',h\\in\\RR^4$,\n\\begin{equation}\n \\begin{aligned}\n &\\norm{\\nabla\\mathcal A_{\\rm ex}(p)\n             -\\nabla\\mathcal A_{\\rm ex}(p')}\\leq\n             \\frac{\\norm{p-p'}}{384\\pi^4},\\\\\n &|\\mathcal A_{\\rm ex}(p+h)-\\mathcal A_{\\rm ex}(p)\n        -\\nabla\\mathcal A_{\\rm ex}(p)\\cdot h|\\leq\n             \\frac{\\norm{h}^2}{768\\pi^4}.\n \\end{aligned}\n \\label{eq:two-loop-real-second-order}\n\\end{equation}\nThese are coefficient-level real and complex stability bounds, not\nassertions about Lorentzian cuts or scattering amplitudes. The tube\ncan be checked explicitly here because all external dependence\nresides in the massive third denominator under the selected routing.",
+      "status": "pending",
+      "lean": [],
+      "scope": "Not yet formalized."
+    },
+    {
+      "label": "prop:residual-coercivity",
+      "kind": "proposition",
+      "title_tex": "Residual-coercivity criterion",
+      "source_line": 2021,
+      "statement_tex": "Retain the fixed routing and compact external set in\n\\eqref{eq:routing}, and assume \\(0\\leq C_i(q)\\leq\\mathcal I_i<\\infty\\).\nEither of the following conditions gives uniform absolute convergence\nof the graph.\n\n\\textit{Quadratic case.} Suppose\n\\(0\\leq\\Ph_i(a_i^2q_i^2)\\leq B_i^{\\rm env}e^{-d_i|q_i|^2}\\), with\n\\(d_i>0\\), and the complete numerator satisfies\n\\begin{equation}\n |N_G(k,p)|\\leq C(1+\\norm{k}^D)\n            \\exp\\!\\left(\\sum_i v_i|q_i|^2\\right),\n \\label{eq:vertex-quadratic-budget}\n\\end{equation}\nwhere \\(v_i\\geq0\\) are fixed and \\(D\\geq0\\). Put\n\\begin{equation}\n H_{\\rm res}:=C^T\\diag(d_i-v_i)C.\n \\label{eq:residual-Gram-matrix}\n\\end{equation}\nIt is sufficient that \\(H_{\\rm res}\\succ0\\); individual\n\\(d_i-v_i\\) need not all be positive. A Laplace gap supplies\n\\(d_i=a_i^2\\tau_{i,*}\\).\n\n\\textit{Linear case.} Suppose instead\n\\(0\\leq\\Ph_i(a_i^2q_i^2)\\leq B_i^{\\rm env}e^{-a_i|q_i|}\\) and replace\n\\(v_i|q_i|^2\\) in \\eqref{eq:vertex-quadratic-budget} by\n\\(v_i|q_i|\\). Put \\(h_i=a_i-v_i\\). The residual coefficients may\nhave either sign, provided\n\\begin{equation}\n \\gamma_h:=\\min_{\\substack{\\omega\\in(\\RR^4)^L\\\\\\norm{\\omega}=1}}\n     \\sum_i h_i\\left|\\sum_{\\ell=1}^L C_{i\\ell}\\omega_\\ell\\right|>0.\n \\label{eq:signed-linear-coercivity}\n\\end{equation}\nIn particular, nonnegative \\(h_i\\) and full loop rank of the rows\nwith \\(h_i>0\\) suffice. Here \\(B_i^{\\rm env}>0\\) are finite\nupper-envelope constants, not necessarily the masses \\(\\Ph_i(0)\\)\nof the representing measures. The growth coefficients have\ninverse-momentum-squared units in the quadratic case and\ninverse-momentum units in the linear case.\nAll constants and the positive coercivity margin are uniform on the\nexternal set. The asserted conclusion is Euclidean and does not\nsupply a Lorentzian continuation.",
+      "status": "partial",
+      "lean": [
+        "UV.residual_linear_convergence",
+        "UV.signed_affine_coercivity",
+        "UV.uniform_integral_norm_bound"
+      ],
+      "scope": "Linear coercivity, signed affine-shift control and polynomial-exponential integrability are checked for natural polynomial degree. The full-rank/singular-value certificate, real degrees, and quadratic case remain."
+    },
+    {
+      "label": "def:sector-envelope",
+      "kind": "definition",
+      "title_tex": "Admissible sector envelope",
+      "source_line": 2131,
+      "statement_tex": "An admissible finite sector decomposition for \\(G\\) covers the\nultraviolet region of loop-momentum space up to a null set, with\nfinite overlap; the remaining bounded region is covered by the\nstated infrared estimate. Each sector parametrization includes its\nJacobian, and the transformed integrand has the stated bound.\nThe decomposition consists of finitely many sectors\n\\(\\mathfrak h\\) with scale variables\n\\(R_j\\geq1\\), \\(j=1,\\ldots,r_{\\mathfrak h}\\), and an absolute\nordinary envelope, including the measure, of the form\n\\begin{equation}\n C_{G,\\mathcal K,\\mathfrak h}\n \\prod_{j=1}^{r_{\\mathfrak h}}\n     R_j^{\\omega_0(\\mathfrak h,j)-1}\\dd R_j\\,\n \\dd\\nu_{\\mathfrak h},\n \\qquad \\int\\dd\\nu_{\\mathfrak h}<\\infty .\n \\label{eq:sector-envelope}\n\\end{equation}\nAngular, lower-scale, and infrared variables are controlled in\n\\(\\dd\\nu_{\\mathfrak h}\\). The degrees \\(\\omega_0\\) include every\ncompleted-action vertex and insertion. These are simultaneous\nbounds on the whole sector, not pointwise bounds with constants\ndepending uncontrollably on other \\(R_j\\).",
+      "status": "definition",
+      "lean": [],
+      "scope": "Not yet formalized."
+    },
+    {
+      "label": "thm:forest",
+      "kind": "theorem",
+      "title_tex": "Conditional forest convergence",
+      "source_line": 2203,
+      "statement_tex": "Assume an admissible finite sector decomposition and the stated\ninfrared control. In each sector, suppose the covered kernel product\nhas a simultaneous bound that either gives\n\\(\\omega_\\Ph(\\mathfrak h,j)<0\\) for every residual scale,\nor gives Gaussian coercive control of that scale with the remaining\nscales still integrable. Then the graph is absolutely UV convergent\non \\(\\mathcal K\\).",
+      "status": "pending",
+      "lean": [],
+      "scope": "Not yet formalized."
+    },
+    {
+      "label": "cor:all-orders",
+      "kind": "corollary",
+      "title_tex": "Finite-order meaning of all orders",
+      "source_line": 2251,
+      "statement_tex": "Fix a declared completed action and its kernel data on the selected\nsupport and evolution branch, a scale \\(a>0\\), and an infrared\nprescription. Suppose every finite loop graph \\(G\\) with\n\\(L(G)\\geq1\\), generated by this fixed set of data, satisfies\nTheorem~\\ref{thm:global-uv}, Corollary~\\ref{cor:damped-basis},\nProposition~\\ref{prop:residual-coercivity}, or\nTheorem~\\ref{thm:forest}, with the corresponding complete-numerator\nand infrared bounds. Then every such loop graph is UV finite.\nTree coefficients contain no loop integration; they are included only\non external domains where their vertices and internal exchange factors\nare defined, with any poles treated by the declared boundary prescription.\nThe loop estimates do not remove tree-level kinematic singularities.\n\nFor a finite collection of these graphs and a common compact external\nset, their bounds can be chosen uniformly over the collection.\nIf residual field or support labels are summed, the summed amplitudes\nadditionally require finite support or an absolutely summable family\nof graph majorants. This gives no uniform bound in perturbative\norder and no convergence theorem for the infinite graph sum.",
+      "status": "pending",
+      "lean": [],
+      "scope": "Not yet formalized."
+    },
+    {
+      "label": "thm:ST",
+      "kind": "theorem",
+      "title_tex": "Conditional exact Slavnov--Taylor identity",
+      "source_line": 2767,
+      "statement_tex": "For the closed off-shell system and master action\n\\eqref{eq:bv-action}, assume an invariant\nanomaly-free measure, and a common domain on which the BRST change\nof variables, source differentiations, and Legendre transform are\ndefined without field-space boundary terms. Then the fixed-plane\neffective action satisfies\n\\begin{equation}\n \\mathcal S(\\Gamma_{\\bb})\n      :=\\frac12(\\Gamma_{\\bb},\\Gamma_{\\bb})=0\n \\label{eq:ST-master}\n\\end{equation}\nas a formal perturbative identity at every admitted loop order.\nIf the same completed graphs and required insertions satisfy\nSection~\\ref{sec:uv}, the identity holds for their finite\ncoefficients without UV-divergent symmetry-restoring subtraction.",
+      "status": "pending",
+      "lean": [],
+      "scope": "Not yet formalized."
+    },
+    {
+      "label": "prop:meromorphic-counterexample",
+      "kind": "proposition",
+      "title_tex": "A gapped counterexample to automatic slit analyticity",
+      "source_line": 3031,
+      "statement_tex": "The normalized measure and kernel\n\\begin{equation}\n \\rho=\\sum_{n=1}^\\infty2^{-n}\\delta_n,\\qquad\n \\Ph(z)=\\frac1{2e^z-1}\n \\label{eq:meromorphic-counterexample}\n\\end{equation}\nsatisfy the gap condition with \\(\\tau_*=1\\), but their complex\ncontinuation has poles away from the negative real axis.",
+      "status": "pending",
+      "lean": [],
+      "scope": "Not yet formalized."
+    },
+    {
+      "label": "thm:holomorphy",
+      "kind": "theorem",
+      "title_tex": "Holomorphy from a common graph majorant",
+      "source_line": 3087,
+      "statement_tex": "Let \\((\\Xi,\\nu)\\) be the positive, sigma-finite measure space of a graph\nrepresentation on a connected open set \\(\\Omega\\subset\\CC^N\\).\nFor each \\(z\\), assume \\(J(\\cdot;z)\\) is measurable, and outside\none \\(\\nu\\)-null set assume \\(J(\\xi;\\cdot)\\) is holomorphic on\n\\(\\Omega\\). Suppose that for every \\(U\\Subset\\Omega\\) there is\n\\(M_U\\in L^1(\\dd\\nu)\\) with\n\\begin{equation}\n |J(\\xi;z)|\\leq M_U(\\xi),\\qquad z\\in U.\n \\label{eq:complex-majorant}\n\\end{equation}\nThe bound holds outside a common null set for all \\(z\\in U\\).\nThen \\(\\mathcal M(z)=\\int J(\\xi;z)\\dd\\nu(\\xi)\\) is jointly\nholomorphic on \\(\\Omega\\). Local contour integrals and\nderivatives may be exchanged with the representation integrals.",
+      "status": "pending",
+      "lean": [],
+      "scope": "Not yet formalized."
+    },
+    {
+      "label": "cor:complex-derivative-budget",
+      "kind": "corollary",
+      "title_tex": "Cauchy budgets for external derivatives",
+      "source_line": 3116,
+      "statement_tex": "Under Theorem~\\ref{thm:holomorphy}, suppose a closed polydisc\n$\\overline{\\mathbb D}(z_0;r_1,\\ldots,r_N)$ is inside the admitted\ncomplex domain and one $M\\in L^1(\\dd\\nu)$ majorizes the complete\nintegrand there. For a multi-index $\\alpha\\in\\mathbb N_0^N$,\n\\begin{equation}\n |\\partial_z^\\alpha\\mathcal M(z_0)|\n  \\leq\\alpha!\\prod_{j=1}^N r_j^{-\\alpha_j}\n                  \\int_\\Xi M(\\xi)\\dd\\nu(\\xi).\n \\label{eq:complex-Cauchy-budget}\n\\end{equation}\nThe estimate is for the stated complex-domain representation; a\nuniform bound on an \\emph{integrated real} Euclidean amplitude is not\na substitute for its pointwise complex majorant. No LSZ, retarded, or\nphysical boundary conclusion is obtained from this inequality alone.",
+      "status": "pending",
+      "lean": [],
+      "scope": "Not yet formalized."
+    },
+    {
+      "label": "lem:massive-neighbourhood",
+      "kind": "lemma",
+      "title_tex": "A sufficient massive complex neighbourhood",
+      "source_line": 3141,
+      "statement_tex": "Fix a compact set \\(\\mathcal K\\) of real Euclidean external data\nand use the routing of \\eqref{eq:routing}, with momentum conservation\nalready imposed. Let every Schwinger factor be\n\\(E_i(\\alpha)=e^{-m_i^2\\alpha}\\), with \\(m_i>0\\).\nSuppose that on an open complex neighbourhood \\(\\mathcal U_0\\)\nof \\(\\mathcal K\\), the full numerator has the finite expansion\n\\[\n N_G(k,z)=\\sum_{|\\gamma|\\leq D}n_\\gamma(z)k^\\gamma,\n \\qquad n_\\gamma\\in\\mathcal O(\\mathcal U_0),\n\\]\nwith this same loop-momentum degree \\(D\\) throughout\n\\(\\mathcal U_0\\). Assume the gap or inverse-moment hypothesis of\nTheorem~\\ref{thm:global-uv} for that \\(D\\), and\n\\eqref{eq:exponential-moment}. Then there is an open complex\nneighbourhood \\(\\mathcal U\\) of \\(\\mathcal K\\), with\n\\(\\overline{\\mathcal U}\\Subset\\mathcal U_0\\), on which the\npre-Gaussian Schwinger--Laplace graph has one common pointwise\n\\(L^1\\) majorant. Its integral is holomorphic on each connected\ncomponent of \\(\\mathcal U\\).",
+      "status": "pending",
+      "lean": [],
+      "scope": "Not yet formalized."
+    },
+    {
+      "label": "prop:OS-counterexample",
+      "kind": "proposition",
+      "title_tex": "Heat damping does not preserve OS positivity",
+      "source_line": 3293,
+      "statement_tex": "For \\(t>0\\) and \\(\\omega>0\\), the following time covariance\nfails reflection positivity:\n\\begin{equation}\n C_t(u)=\\int_{\\RR}\\frac{\\dd p}{2\\pi}\\,\n       \\frac{e^{\\ii pu}e^{-tp^2}}{p^2+\\omega^2}\n \\label{eq:heat-time-covariance}\n\\end{equation}",
+      "status": "pending",
+      "lean": [],
+      "scope": "Not yet formalized."
+    },
+    {
+      "label": "ass:OS-completion",
+      "kind": "assumption",
+      "title_tex": "Physical OS completion",
+      "source_line": 3363,
+      "statement_tex": "The completed Schwinger functions of the admitted Grassmann-even,\ngauge-invariant observable fields obey reflection positivity\n\\eqref{eq:OS}, Euclidean covariance, permutation symmetry, and\n\\(S_0=1\\). We assume the sufficient regularity condition \\(E0'\\)\nof Ref.~\\cite{OS1975}, Section~IV.1, Eq.~(4.1): for one integer\n\\(r_{\\rm OS}\\geq1\\) and constants \\(C_{\\rm OS},\\beta_{\\rm OS}>0\\),\n\\begin{equation}\n \\begin{aligned}\n  |S_n(f)|&\\leq\\sigma_n\\,\\mathfrak p^{\\rm OS}_{n r_{\\rm OS}}(f),\\\\\n  0<\\sigma_n&\\leq C_{\\rm OS}(n!)^{\\beta_{\\rm OS}},\\qquad n\\geq1.\n \\end{aligned}\n \\label{eq:OS-hierarchy-growth}\n\\end{equation}\nHere \\(S_n\\) is the full \\(n\\)-point Schwinger distribution,\nnot a connected cumulant or a coefficient of the coupling expansion.\nThe space \\(\\mathscr S_0(\\RR^{4n})\\) consists of Schwartz functions\nwhose derivatives of every order vanish on coincident-point diagonals;\n\\(\\mathfrak p^{\\rm OS}_j\\) is the seminorm in Ref.~\\cite{OS1975},\nSection~II, Eq.~(2.1). Use self-adjoint observable components, or\ninclude their adjoints and the corresponding conjugation in reflection.\nFor a finite multiplet, impose the conditions jointly on all mixed\ncorrelations, not only on each component separately. Clustering is\nadditionally assumed when vacuum clustering or uniqueness is invoked.",
+      "status": "assumption",
+      "lean": [],
+      "scope": "Physical reconstruction is an explicit assumption in the source; it has not been established or encoded as a project axiom."
+    },
+    {
+      "label": "prop:positive-residue-matrix",
+      "kind": "proposition",
+      "title_tex": "Positive residues and field--source duality",
+      "source_line": 3639,
+      "statement_tex": "Consider a finite multiplet \\(\\varphi_A\\) of admitted physical scalar\nfields at an isolated stable one-particle mass. Use the adjoint-paired\ntwo-point matrix, with endpoints \\(\\varphi_A\\) and\n\\(\\varphi_B^\\dagger\\). After removing the conventional propagator\nand state-normalization factors, suppose its residue comes from the\npositive physical one-particle resolution. Then\n\\begin{equation}\n Z^{\\rm phys}_{AB}\n       =\\sum_\\alpha v_{A\\alpha}\\overline{v_{B\\alpha}},\n \\qquad Z^{\\rm phys}\\succeq0,\n \\label{eq:positive-pole-Gram-matrix}\n\\end{equation}\nwith finite or convergent overlap sums. A constant field-basis map\n\\(\\varphi'=T\\varphi\\), with\n\\((\\varphi')^\\dagger=\\varphi^\\dagger T^\\dagger\\), gives\n\\(Z'=T Z^{\\rm phys}T^\\dagger\\). An invertible such map can\nnormalize the residue to the identity on its range, but cannot make\na singular residue the identity on the whole field space.",
+      "status": "pending",
+      "lean": [],
+      "scope": "Not yet formalized."
+    },
+    {
+      "label": "ass:cut-matching",
+      "kind": "assumption",
+      "title_tex": "Cut--discontinuity compatibility",
+      "source_line": 3902,
+      "statement_tex": "For the completed physical amplitudes, the prescribed on-shell\ncut operation agrees with the analytic discontinuity, including\nthe actual pole residues, completed subamplitudes, kernel branch\nterms, and contour contributions. Unphysical states cancel under\nthe admitted BRST construction, and the remaining state sum has\npositive physical norm.",
+      "status": "assumption",
+      "lean": [],
+      "scope": "Cut-discontinuity compatibility is an explicit assumption in the source; it has not been established or encoded as a project axiom."
+    },
+    {
+      "label": "prop:entire-bubble-remainder",
+      "kind": "proposition",
+      "title_tex": "Entire remainder after finite normalization",
+      "source_line": 4518,
+      "statement_tex": "For \\(m>0\\) and \\(t>0\\), on\n\\(\\CC\\setminus[4m^2,\\infty)\\),\n\\begin{equation}\n b_t(\\sMand)=b_{\\rm std}(\\sMand)+R_t(\\sMand),\n \\label{eq:bubble-entire-decomposition}\n\\end{equation}\nwhere the remainder is entire and has the representation\n\\begin{equation}\n R_t(\\sMand)\n =\\frac1{16\\pi^2}\\int_0^1\\dd x\n   \\int_0^{W_{\\min}(x)}\\frac{\\dd W}{W}\\,\n       e^{-m^2W}\\bigl[1-e^{Wx(1-x)\\sMand}\\bigr].\n \\label{eq:entire-bubble-remainder}\n\\end{equation}\nIt vanishes at zero, is real on the real axis, and satisfies\n\\begin{equation}\n |R_t(\\sMand)|\n   \\leq\\frac{3t|\\sMand|}{64\\pi^2}e^{t|\\sMand|}.\n \\label{eq:entire-remainder-bound}\n\\end{equation}\nThus \\(b_t\\to b_{\\rm std}\\) uniformly on compact subsets of the\ncut plane as \\(t\\downarrow0\\).",
+      "status": "pending",
+      "lean": [],
+      "scope": "Not yet formalized."
+    },
+    {
+      "label": "cor:Gaussian-growth-obstruction",
+      "kind": "corollary",
+      "title_tex": "The Gaussian remainder is not polynomially bounded",
+      "source_line": 4605,
+      "statement_tex": "For real \\(s>0\\), the entire remainder of\nProposition~\\ref{prop:entire-bubble-remainder} satisfies\n\\begin{equation}\n -R_t(s)\\geq\n \\frac{\\log2}{48\\pi^2}e^{-2tm^2}\n       \\left(e^{2ts/9}-1\\right).\n \\label{eq:Gaussian-remainder-growth-lower}\n\\end{equation}\nThus no addition of a finite polynomial makes \\(R_t\\), or the\nnormalized bubble boundary \\(b_t\\), polynomially bounded along\nthe positive real axis at fixed \\(t>0\\).",
+      "status": "pending",
+      "lean": [],
+      "scope": "Not yet formalized."
+    },
+    {
+      "label": "prop:stable-bubble-nonanalytic",
+      "kind": "proposition",
+      "title_tex": "A zero-momentum nonanalyticity of the stable-half bubble",
+      "source_line": 4693,
+      "statement_tex": "The function \\(B_{a,m}\\) is finite for all real \\(P\\) and is\n\\(C^5\\). It is not \\(C^6\\) at \\(P=0\\); in particular, no\nfunction holomorphic in \\(P^2\\) on a neighbourhood of zero can\nrestrict to this bubble there. Its coordinate covariance has the\npositive large-distance asymptotic\n\\begin{equation}\n \\mathcal C_{a,m}(x)\\sim\n        \\frac{3a}{4\\pi^2m^2}|x|^{-5},\\qquad |x|\\to\\infty.\n \\label{eq:stable-covariance-long-tail}\n\\end{equation}",
+      "status": "pending",
+      "lean": [],
+      "scope": "Not yet formalized."
+    },
+    {
+      "label": "prop:QED-general-obstruction",
+      "kind": "proposition",
+      "title_tex": "Nontransversality under an exact one-loop integrability test",
+      "source_line": 5080,
+      "statement_tex": "Let \\(F(u)=\\Ph(a^2u)\\) for a nonzero finite positive completely\nmonotone law, let \\(m\\geq0\\), and assume\n\\begin{equation}\n \\mathcal Q_F:=\\int_0^\\infty F(u)^2\\dd u<\\infty.\n \\label{eq:QED-Ltwo-condition}\n\\end{equation}\nThen \\eqref{eq:bare-QED-loop} is absolutely convergent for every\nreal \\(Q\\), is continuous in \\(Q\\), and obeys\n\\begin{equation}\n\\begin{aligned}\n \\Pi_{\\rm bv}^{\\mu\\nu}(0)&=\\kappa_F\\delta^{\\mu\\nu},\\\\\n Q_\\mu\\Pi_{\\rm bv}^{\\mu\\nu}(Q)\n      &=\\kappa_F Q^\\nu+o(|Q|),\\\\\n \\kappa_F\n &=\\frac{e^2}{8\\pi^2}\\int_0^\\infty\n     \\frac{u(u+2m^2)}{(u+m^2)^2}F(u)^2\\dd u.\n\\end{aligned}\n \\label{eq:general-Ward-obstruction}\n\\end{equation}\nHere \\(\\kappa_F>0\\) when \\(e\\ne0\\).\nFor \\(m=0\\), the rational factor in the integral is one for\n\\(u>0\\). Conversely, absolute convergence of the original\nnontrivial tensor at any fixed real \\(Q\\) implies\n\\eqref{eq:QED-Ltwo-condition}, by the radial-tail argument in\nLemma~\\ref{lem:Ward-common-cutoff}. No differentiability at\n\\(u=0\\) is assumed.",
+      "status": "pending",
+      "lean": [],
+      "scope": "Not yet formalized."
+    },
+    {
+      "label": "prop:Ward-vertex-growth",
+      "kind": "proposition",
+      "title_tex": "An exact norm test for a Ward-compatible auxiliary vertex",
+      "source_line": 5274,
+      "statement_tex": "Let \\(S_\\Ph^{-1}(p)=F(p^2)^{-1}(\\ii\\slashed p+m)\\),\nwith \\(F>0\\), \\(F(0)>0\\), \\(m\\geq0\\), and Hermitian Euclidean\ngamma matrices. Write \\(A_R=F(R^2)^{-1}\\), \\(A_0=F(0)^{-1}\\).\nAny vertex satisfying \\eqref{eq:dressed-WTI} obeys the exact identity\n\\begin{equation}\n \\left\\|n_\\mu\\Gamma_\\Ph^\\mu(Rn,0)\\right\\|^2\n       =A_R^2+\\frac{m^2}{R^2}(A_R-A_0)^2,\n \\label{eq:Ward-vertex-exact-norm}\n\\end{equation}\nfor a unit vector \\(n\\) and \\(R>0\\). In particular,\n\\begin{equation}\n \\left\\|n_\\mu\\Gamma_\\Ph^\\mu(Rn,0)\\right\\|\n \\geq\\frac1R\\left[\n       \\frac{\\sqrt{R^2+m^2}}{F(R^2)}-\\frac{m}{F(0)}\n                      \\right].\n \\label{eq:Ward-vertex-growth-lower}\n\\end{equation}\nThe norm is the matrix operator norm. For a superpolynomially\ndecreasing \\(F(R^2)\\), no globally polynomially bounded vertex\ncan satisfy this identity in the stated auxiliary field coordinates.",
+      "status": "pending",
+      "lean": [],
+      "scope": "Not yet formalized."
+    },
+    {
+      "label": "prop:OQED-moment-certificate",
+      "kind": "proposition",
+      "title_tex": "Explicit O--QED kernel certificate",
+      "source_line": 5640,
+      "statement_tex": "The dimensionless Laplace measure of \\(\\Ph_\\mu\\) is the probability\nmeasure\n\\begin{equation}\n \\rho_\\mu(\\dd\\tau)=\\frac{e^\\mu}{2\\sqrt\\pi}\\,\n \\tau^{-3/2}\\exp\\!\\left(-\\mu^2\\tau-\\frac1{4\\tau}\\right)\\dd\\tau.\n\\label{eq:OQED-dimensionless-measure}\n\\end{equation}\nIt has no atom at zero and no positive support gap, including when\n\\(\\mu>0\\). Every inverse moment is finite. For \\(r>0\\),\n\\begin{equation}\n M_r[\\rho_\\mu]=\n \\begin{cases}\n \\displaystyle\\frac{e^\\mu}{\\sqrt\\pi}(2\\mu)^{r+1/2}\n                      K_{r+1/2}(\\mu),&\\mu>0,\\\\[2pt]\n \\displaystyle\\frac{4^r\\Gamma(r+1/2)}{\\sqrt\\pi},&\\mu=0.\n \\end{cases}\n\\label{eq:OQED-inverse-moments}\n\\end{equation}\nHere \\(K_\\nu\\) is the modified Bessel function, not the number of GT\ndirections. In particular,\n\\begin{equation}\n\\begin{aligned}\n M_1&=2(1+\\mu),\\\\\n M_2&=4(\\mu^2+3\\mu+3),\\\\\n M_3&=8(\\mu^3+6\\mu^2+15\\mu+15).\n\\end{aligned}\n\\label{eq:OQED-first-moments}\n\\end{equation}\nFor \\(\\mu>0\\) its positive exponential moments exist precisely for\n\\(0<b\\leq\\mu^2\\), with\n\\begin{equation}\n \\int e^{b\\tau}\\rho_\\mu(\\dd\\tau)\n       =\\exp\\!\\left(\\mu-\\sqrt{\\mu^2-b}\\right).\n\\label{eq:OQED-exponential-moment}\n\\end{equation}\nThere is no positive exponential moment when \\(\\mu=0\\).",
+      "status": "partial",
+      "lean": [
+        "UV.kernel_zero",
+        "UV.kernel_lower",
+        "UV.kernel_upper",
+        "UV.kernel_le_one"
+      ],
+      "scope": "Normalization at zero and the elementary exponential envelope are checked. The probability density, subordination, all inverse moments, Bessel formulas and exponential-moment endpoint remain."
+    },
+    {
+      "label": "prop:OQED-depth-stability",
+      "kind": "proposition",
+      "title_tex": "Depth derivatives and one-line asymptotics",
+      "source_line": 5741,
+      "statement_tex": "For $F_{a,M}$ of \\eqref{eq:OQED-normalized-kernel} and every\ninteger $n\\geq0$,\n\\begin{equation}\n \\partial_a^nF_{a,M}(u)=(-h_M(u))^nF_{a,M}(u),\\qquad\n h_M(u)=\\sqrt{u+M^2}-M.\n \\label{eq:OQED-depth-derivatives}\n\\end{equation}\nFor $a\\in[a_-,a_+]$, $0<a_-\\leq a_+$, and $0\\leq M\\leq M_+$,\n\\begin{equation}\n |\\partial_a^nF_{a,M}(q^2)|\n \\leq e^{a_+M_+}|q|^n e^{-a_-|q|}.\n \\label{eq:OQED-depth-uniform-envelope}\n\\end{equation}\nIn particular, such derivatives preserve an established complete\ngraph bound when the additional polynomial numerator degree and\ninfrared factors are controlled. Also, for $u>0$,\n$\\partial_MF_{a,M}(u)>0$.\n\nDefine a Fourier-normalized one-line comparison for $d\\geq0$:\n\\begin{equation}\n \\mathscr Q_d(a,M,m)\n :=\\int_{\\RR^4}\\frac{\\dd^4q}{(2\\pi)^4}\n   \\frac{|q|^dF_{a,M}(q^2)}{q^2+m^2},\n \\quad m\\geq0.\n \\label{eq:OQED-one-line-depth}\n\\end{equation}\nFor every fixed $m,M\\geq0$, it is finite at $a>0$, and\n\\begin{equation}\n \\lim_{a\\downarrow0}a^{d+2}\\mathscr Q_d(a,M,m)\n =\\frac{\\Gamma(d+2)}{8\\pi^2}.\n \\label{eq:OQED-zero-depth-one-line}\n\\end{equation}\nThe convergence is uniform for $(m,M)$ in bounded nonnegative sets.\nFor fixed $m>0$, the two different strong-depth limits are\n\\begin{equation}\n \\begin{aligned}\n \\lim_{a\\to\\infty}a^{d+4}\\mathscr Q_d(a,0,m)\n   &=\\frac{\\Gamma(d+4)}{8\\pi^2m^2},\\\\\n \\lim_{a\\to\\infty}a^{(d+4)/2}\\mathscr Q_d(a,M,m)\n   &=\\frac{(2M)^{(d+4)/2}\\Gamma((d+4)/2)}\n           {16\\pi^2m^2},\\quad M>0.\n \\end{aligned}\n \\label{eq:OQED-strong-depth-one-line}\n\\end{equation}\nThese asymptotics hold in their stated regimes, not uniformly over\narbitrary joint limits of $a$ and $M$.",
+      "status": "pending",
+      "lean": [],
+      "scope": "Not yet formalized."
+    },
+    {
+      "label": "cor:OQED-exponential-line-tail",
+      "kind": "corollary",
+      "title_tex": "An explicit O--QED exponential momentum tail",
+      "source_line": 5823,
+      "statement_tex": "For $a>0$, $M,m\\geq0$, $d\\geq0$ and $R>0$, the\nFourier-normalized line integral of\n\\eqref{eq:OQED-one-line-depth} obeys\n\\begin{equation}\n \\begin{aligned}\n &\\int_{|q|>R}\\frac{\\dd^4q}{(2\\pi)^4}\n     \\frac{|q|^dF_{a,M}(q^2)}{q^2+m^2}\\\\\n &\\qquad\\leq \\frac{e^{aM}}{8\\pi^2a^{d+2}}\n                     \\Gamma(d+2,aR),\n \\end{aligned}\n \\label{eq:OQED-exponential-line-tail}\n\\end{equation}\nwhere $\\Gamma(s,x)=\\int_x^\\infty\n t^{s-1}e^{-t}\\dd t$ is the upper incomplete gamma\nfunction. For each fixed positive depth the right side is\nexponentially small as $R\\to\\infty$. Selected-line graph tails\ninherit finite products and union bounds only when the\n\\emph{complete} anisotropic numerator and unselected-line\nestimate in Theorem~\\ref{thm:optimized-selected-lines}\nhas been verified. These are Euclidean coefficient bounds,\nnot contour-arc or physical-cut estimates.",
+      "status": "pending",
+      "lean": [],
+      "scope": "Not yet formalized."
+    },
+    {
+      "label": "prop:OQED-bubble-depth-monotone",
+      "kind": "proposition",
+      "title_tex": "Depth monotonicity of the literal scalar bubble",
+      "source_line": 5867,
+      "statement_tex": "Fix $m>0$, $M\\geq0$, and real Euclidean $P$. Put\n$H_{M,P}(q):=h_M(q^2)+h_M((q+P)^2)$. For each $a>0$,\n$a\\mapsto B_{a,M,m}(P)$ is completely monotone:\n\\begin{equation}\n \\begin{aligned}\n &(-1)^n\\partial_a^n B_{a,M,m}(P)\\\\\n &\\quad=\\int\\frac{\\dd^4q}{(2\\pi)^4}\n \\frac{H_{M,P}(q)^n e^{-aH_{M,P}(q)}}\n {(q^2+m^2)((q+P)^2+m^2)}>0\n \\end{aligned}\n \\label{eq:OQED-bubble-depth-derivatives}\n\\end{equation}\nfor every integer $n\\geq0$. For $a\\geq a_->0$,\n$0\\leq M\\leq M_+$, and any real $P$,\n\\begin{equation}\n |\\partial_a^nB_{a,M,m}(P)|\\leq\n c_{n,a_-}B_{a_-/2,M_+,m}(0),\n \\label{eq:OQED-bubble-depth-uniform}\n\\end{equation}\nwhere $c_{0,a_-}=1$ and\n$c_{n,a_-}=(2n/(\\mathrm e\\,a_-))^n$ for $n\\geq1$.\nThe bubble is holomorphic in the \\emph{depth} $a$ on\n$\\Re a>0$ at fixed real $P$. For fixed $a>0$ it is\nnondecreasing in the auxiliary mass $M$ (strictly for\n$P$ in the stated real domain). None of these statements\nimplies analyticity in complex external momentum when $M=0$,\nor reflection positivity of a physical two-point function.",
+      "status": "pending",
+      "lean": [],
+      "scope": "Not yet formalized."
+    },
+    {
+      "label": "thm:OQED-strong-depth-crossover",
+      "kind": "theorem",
+      "title_tex": "Controlled crossover for $aM$ fixed",
+      "source_line": 5913,
+      "statement_tex": "Fix $m>0$ and $d\\geq0$, and consider $M=\\mu/a$ with fixed\n$\\mu\\geq0$ as $a\\to\\infty$. Define\n\\begin{equation}\n \\mathcal H_d(\\mu):=\\int_0^\\infty v^{d+3}\n                  e^{-\\sqrt{v^2+\\mu^2}+\\mu}\\dd v.\n \\label{eq:OQED-crossover-H}\n\\end{equation}\nThen, uniformly for $\\mu$ in compact subsets of $[0,\\infty)$,\n\\begin{equation}\n \\begin{aligned}\n \\lim_{a\\to\\infty}a^{d+4}\\mathscr Q_d(a,\\mu/a,m)\n    &=\\frac{\\mathcal H_d(\\mu)}{8\\pi^2m^2},\\\\\n \\lim_{a\\to\\infty}a^4B_{a,\\mu/a,m}(0)\n    &=\\frac{3+6\\mu+4\\mu^2}{64\\pi^2m^4}.\n \\end{aligned}\n \\label{eq:OQED-strong-depth-crossover}\n\\end{equation}\nHere $B_{a,M,m}$ is the literal real Euclidean comparison\n\\eqref{eq:OQED-literal-depth-bubble}. Furthermore $\\mathcal H_0(\\mu)=6+6\\mu+2\\mu^2$,\n$\\mathcal H_d(0)=\\Gamma(d+4)$, and\n\\begin{equation}\n \\mathcal H_d(\\mu)\\sim\\tfrac12(2\\mu)^{(d+4)/2}\n          \\Gamma((d+4)/2)\\qquad(\\mu\\to\\infty).\n \\label{eq:OQED-large-mu-crossover}\n\\end{equation}\nThe last limit concerns the crossover coefficient; it is not a\nuniform joint $a,M$ asymptotic over unbounded $aM$.",
+      "status": "pending",
+      "lean": [],
+      "scope": "Not yet formalized."
+    },
+    {
+      "label": "thm:OQED-fixed-graph",
+      "kind": "theorem",
+      "title_tex": "O--QED application with explicit kernel hypotheses",
+      "source_line": 6007,
+      "statement_tex": "Fix the support, branch, source/endpoint conventions, and positive\nline depths of the O--QED record. Suppose a finite completed loop graph\nhas full-rank flat routing and the infrared hypotheses of\nTheorem~\\ref{thm:global-uv}. On a full-rank set of loop lines use\n\\(F_{a_i,M_i}\\), with \\(a_i>0\\), \\(M_i\\geq0\\), and bound all\nother multipliers as in Corollary~\\ref{cor:damped-basis}.\nIf the full completed numerator has a finite polynomial bound of degree\n\\(D_G\\), the graph is absolutely Euclidean convergent, uniformly on\nthe admitted compact external set. The kernel part of this assertion\nis established by \\eqref{eq:OQED-inverse-moments}, not left as an\nunevaluated assumption.\n\nAlternatively, assume bounded covariance envelopes and a complete\nnumerator bound\n\\begin{equation}\n |N_G(k,p)|\\leq C(1+\\norm{k}^{D_G})\n          \\exp\\!\\left(\\sum_i v_i|q_i|\\right),\\qquad v_i\\geq0.\n\\label{eq:OQED-vertex-budget}\n\\end{equation}\nIn this second alternative, every exponentially bounded line has its\nspecified \\(a_i>0\\); for a merely bounded unselected multiplier set\n\\(a_i=v_i=0\\) in the bound, without changing its model definition.\nIt is sufficient that the signed residuals \\(h_i=a_i-v_i\\) obey\n\\eqref{eq:signed-linear-coercivity}; a positive right side in\n\\eqref{eq:signed-linear-basis-certificate} is one explicit certificate.\nThe simpler nonnegative-residual, full-loop-rank test remains sufficient.\nThese bounds concern the product of all vertices and numerators in the\ngraph, including contact vertices. The constants \\(e^{a_iM_i}\\) belong\nto the envelope, not to a renormalization of the kernel measure.\n\nIf either condition, or the verified forest alternative, holds for\nall graphs and insertions of one fixed completed action, and the\nindependent anomaly-free BRST hypotheses hold for the same action in\nboth characters, its admitted coefficients are graphwise UV finite and\nsatisfy the identities of Section~\\ref{sec:brst} at every finite order.\nThis last implication does not certify an unspecified completion.",
+      "status": "partial",
+      "lean": [
+        "UV.oqed_complete_integrand_convergence"
+      ],
+      "scope": "A sufficient subclass with a polynomial bound times the normalized kernel of the full loop norm is checked. Deriving this complete-integrand bound from routed propagators and actual completed vertices remains."
+    },
+    {
+      "label": "prop:OQED-Ward-bubble-obstruction",
+      "kind": "proposition",
+      "title_tex": "A Ward-compatible two-vertex bubble fails the graphwise test",
+      "source_line": 6188,
+      "statement_tex": "Use the flat vacuum coefficient \\(S_{a,M}=F_{a,M}S_0\\),\n\\(a>0\\), \\(m_e>0\\), \\(M\\geq0\\), and \\(e\\ne0\\).\nAssume the vertex satisfies the dressed Ward identity and is continuous\nat \\((p',p)=(k,k)\\) for every \\(k\\ne0\\). Consider precisely the\ntwo-vertex term of the source's polarization skeleton at \\(P=0\\),\nwithout its contact contribution. Its trace over external Euclidean\nindices is not absolutely integrable. More precisely, if\n\\[\n I_W^{\\mu\\nu}(k):=-e^2\\Tr\\bigl[\n       \\Gamma^\\mu(k,k)S_{a,M}(k)\n       \\Gamma^\\nu(k,k)S_{a,M}(k)\\bigr],\n\\]\nthen, for \\(u=k^2>0\\), \\(\\Omega=\\sqrt{u+M^2}\\),\n\\begin{equation}\n\\begin{aligned}\n \\sum_{\\mu=1}^4I_W^{\\mu\\mu}(k)=e^2\\biggl[\n &\\frac{8(u+2m_e^2)}{(u+m_e^2)^2}\n -\\frac{8a u}{\\Omega(u+m_e^2)}\\\\\n &-\\frac{4a^2u}{u+M^2}\\biggr]\n \\longrightarrow-4e^2a^2 .\n\\end{aligned}\n\\label{eq:OQED-Ward-bubble-trace}\n\\end{equation}\nThus this particular two-vertex graph cannot meet a graphwise\nabsolute-convergence theorem on an external set containing zero.",
+      "status": "pending",
+      "lean": [],
+      "scope": "Not yet formalized."
+    },
+    {
+      "label": "cor:OQED-fixed-transfer-obstruction",
+      "kind": "corollary",
+      "title_tex": "The obstruction persists at nonzero transfer",
+      "source_line": 6250,
+      "statement_tex": "Retain \\(S_{a,M}=F_{a,M}S_0\\), \\(a>0\\), \\(m_e>0\\),\n\\(M\\geq0\\), and \\(e\\ne0\\), but no longer assume diagonal\ncontinuity. Fix real \\(P\\ne0\\), let \\(k'=k+P\\), and require both\nvertices of the two-vertex bubble to satisfy\n\\(P\\cdot\\Gamma=S_{a,M}^{-1}(k')-S_{a,M}^{-1}(k)\\) in its common\nexternal orientation. Define its complete two-vertex coefficient by\n\\[\n \\begin{aligned}\n I_W^{\\mu\\nu}(k,P):=-e^2\\Tr\\bigl[&\\Gamma^\\mu(k',k)S_{a,M}(k)\\\\\n                    &\\Gamma^\\nu(k,k')S_{a,M}(k')\\bigr].\n \\end{aligned}\n\\]\nThis graph is not componentwise absolutely integrable. Specifically,\n\\begin{equation}\n\\begin{aligned}\n P_\\mu P_\\nu I_W^{\\mu\\nu}(k,P)\n =-e^2\\Tr\\bigl[&S_{a,M}^{-1}(k')S_{a,M}(k)\\\\\n               &+S_{a,M}^{-1}(k)S_{a,M}(k')-2\\one\\bigr],\n\\end{aligned}\n\\label{eq:OQED-double-Ward-contraction}\n\\end{equation}\nand along \\(k=rn\\), \\(|n|=1\\), \\(r\\to\\infty\\),\n\\begin{equation}\n P_\\mu P_\\nu I_W^{\\mu\\nu}(rn,P)\n       \\longrightarrow-8e^2\\bigl[\\cosh(a n\\cdot P)-1\\bigr].\n\\label{eq:OQED-fixed-transfer-obstruction}\n\\end{equation}",
+      "status": "pending",
+      "lean": [],
+      "scope": "Not yet formalized."
+    },
+    {
+      "label": "lem:OQED-grouped-convergence",
+      "kind": "lemma",
+      "title_tex": "Finite common-routing sums",
+      "source_line": 6332,
+      "statement_tex": "At a fixed perturbative order, suppose a finite set of action-generated\nterms has been placed on one measure space \\((\\Xi,\\nu)\\), with all\nrouting Jacobians, signs, and multiplicities retained. Let\n\\[\n J_{\\mathcal B}(\\xi,p)=\\sum_{j\\in\\mathcal B}c_jJ_j(\\xi,p)\n\\]\nbe their pointwise sum. Suppose the chosen common finite-domain\nprescription represents that action coefficient, and there is an\nintegrable envelope \\(M_{\\mathcal B}\\) such that\n\\[\n |J_{\\mathcal B}(\\xi,p)|\\leq M_{\\mathcal B}(\\xi),\\qquad p\\in\\mathcal K.\n\\]\nThen its common-domain limit exists absolutely and is independent of\nexhaustion. If the same property holds locally on a complex domain\nand the summed integrand is holomorphic there almost everywhere, the\nsummed coefficient is holomorphic. These conclusions do not assert\nabsolute convergence of the separate terms.",
+      "status": "partial",
+      "lean": [
+        "UV.grouped_integrable",
+        "UV.grouped_exhaustion_limit"
+      ],
+      "scope": "The real-valued finite sum is absolutely integrable and has an exhaustion-independent integral under its supplied common envelope. Holomorphic continuation and action/routing identification remain."
+    },
+    {
+      "label": "prop:OQED-constant-contact",
+      "kind": "proposition",
+      "title_tex": "A contact cancellation that is not absolute convergence",
+      "source_line": 6404,
+      "statement_tex": "In this constant-background realization the combined coefficient is\n\\begin{equation}\n\\begin{aligned}\n J_{\\rm cb}^{\\mu\\nu}(k)\n &=e^2\\Tr[\\mathcal D_{,\\mu\\nu}S\n           -\\mathcal D_{,\\mu}S\\mathcal D_{,\\nu}S]\\\\\n &=e^2\\partial_\\mu\\partial_\\nu\\log\\det\\mathcal D(k).\n\\end{aligned}\n\\label{eq:OQED-contact-Hessian}\n\\end{equation}\nIt has the exact tensor form, with \\(u=k^2\\), \\(\\Omega=\\sqrt{u+M^2}\\),\n\\begin{equation}\n\\begin{split}\n \\frac{J_{\\rm cb}^{\\mu\\nu}}{e^2}\n =4a\\left(\\frac{\\delta^{\\mu\\nu}}{\\Omega}\n               -\\frac{k^\\mu k^\\nu}{\\Omega^3}\\right)\n   +\\frac{4\\delta^{\\mu\\nu}}{u+m_e^2}\n               -\\frac{8k^\\mu k^\\nu}{(u+m_e^2)^2}.\n\\end{split}\n\\label{eq:OQED-contact-explicit}\n\\end{equation}\nThe leading constant of the two-vertex term cancels, but the summed\ntensor is still not componentwise absolutely integrable. In fact,\n\\begin{equation}\n\\begin{split}\n \\sum_\\mu J_{\\rm cb}^{\\mu\\mu}(k)\n =e^2\\left[\n \\frac{4a(3u+4M^2)}{(u+M^2)^{3/2}}\n       +\\frac{8(u+2m_e^2)}{(u+m_e^2)^2}\\right]>0,\n\\end{split}\n\\label{eq:OQED-contact-trace}\n\\end{equation}\nand its radial exhaustion is exactly\n\\begin{equation}\n \\int_{|k|<R}\\frac{\\dd^4k}{(2\\pi)^4}\n            \\sum_\\mu J_{\\rm cb}^{\\mu\\mu}(k)\n  =\\frac{e^2}{2\\pi^2}\\left[\n        \\frac{aR^4}{\\sqrt{R^2+M^2}}+\\frac{R^4}{R^2+m_e^2}\\right].\n\\label{eq:OQED-contact-exhaustion}\n\\end{equation}",
+      "status": "pending",
+      "lean": [],
+      "scope": "Not yet formalized."
+    },
+    {
+      "label": "cor:OQED-general-contact-obstruction",
+      "kind": "corollary",
+      "title_tex": "Changing the radial damper does not repair this raw contact test",
+      "source_line": 6481,
+      "statement_tex": "Retain the constant-background shift, trace-log sign, one-species\nnormalization, and field-independent measure of\nProposition~\\ref{prop:OQED-constant-contact}. Replace \\(F_{a,M}\\) by\nany positive radial multiplier \\(F(u)\\) that is \\(C^2\\) for\n\\(u>u_0>0\\) and satisfies \\(F(u)\\to0\\) as \\(u\\to\\infty\\).\nSet \\(h_F=-\\log F\\), keep \\(m_e>0\\) and \\(e\\ne0\\), and subtract\nthe ordinary symbol's contact-plus-bubble coefficient \\emph{before}\nintegration. Then the raw difference is not componentwise absolutely\nintegrable on the exterior of a ball. No monotonicity or rate of decay\nof \\(F\\) is needed for this assertion.",
+      "status": "pending",
+      "lean": [],
+      "scope": "Not yet formalized."
+    },
+    {
+      "label": "prop:OQED-bubble-tube",
+      "kind": "proposition",
+      "title_tex": "An explicit holomorphic tube for the scalar comparison",
+      "source_line": 6576,
+      "statement_tex": "For \\(a,M,m>0\\), let\n\\(C(q)=F_{a,M}(q^2)/(q^2+m^2)\\), with the principal square-root branch, and set\n\\[\n \\mathcal T_*=\\{P\\in\\CC^4:|\\Im P|<2m_*\\},\\qquad\n m_*:=\\min\\{m,M\\}.\n\\]\nThe literal scalar comparison bubble has the holomorphic continuation\n\\begin{equation}\n B(P)=\\int_{\\RR^4}\\frac{\\dd^4k}{(2\\pi)^4}\n                     C(k-P/2)C(k+P/2),\\qquad P\\in\\mathcal T_*.\n\\label{eq:OQED-bubble-tube}\n\\end{equation}\nFor every \\(0\\leq d<2m_*\\), its integrand obeys the common bound\n\\begin{equation}\n |C(k-P/2)C(k+P/2)|\n \\leq\\frac{e^{2aM}e^{-2a|k|}}{(m^2-d^2/4)^2},\n \\qquad |\\Im P|\\leq d.\n\\label{eq:OQED-bubble-tube-majorant}\n\\end{equation}\nNear zero write \\(B(P)=b(P^2)\\), with \\(P^2=\\sum_\\mu P_\\mu^2\\).\nThen \\(b(w)\\) is holomorphic for \\(|w|<4m_*^2\\). For\n\\(0<r<\\mathcal R<4m_*^2\\), its Taylor coefficients \\(b_n\\) satisfy\n\\begin{equation}\n\\begin{aligned}\n |b_n|&\\leq B_{\\mathcal R}\\mathcal R^{-n},\\\\\n \\sup_{|w|\\leq r}\\left|b(w)-\\sum_{n=0}^N b_n w^n\\right|\n   &\\leq B_{\\mathcal R}\n          \\frac{(r/\\mathcal R)^{N+1}}{1-r/\\mathcal R},\\\\\n B_{\\mathcal R}&:=\\frac{3e^{2aM}}\n           {64\\pi^2a^4(m^2-\\mathcal R/4)^2}.\n\\end{aligned}\n\\label{eq:OQED-bubble-Taylor-bound}\n\\end{equation}",
+      "status": "pending",
+      "lean": [],
+      "scope": "Not yet formalized."
+    },
+    {
+      "label": "prop:OQED-scalar-CM-enclosure",
+      "kind": "proposition",
+      "title_tex": "Signed scalar approximation bounds",
+      "source_line": 6701,
+      "statement_tex": "For the scalar comparison with \\(a,M,m>0\\), the invariant function\n\\(b(w)\\) admits a finite positive Laplace measure \\(\\nu\\) on\n\\((0,\\infty)\\):\n\\begin{equation}\n \\begin{aligned}\n  b(w)&=\\int_0^\\infty e^{-\\lambda w}\\nu(\\dd\\lambda),\\\\\n  \\int_0^\\infty e^{s\\lambda}\\nu(\\dd\\lambda)&<\\infty,\n       \\qquad 0<s<4m_*^2.\n \\end{aligned}\n \\label{eq:OQED-scalar-positive-measure}\n\\end{equation}\nThus \\(b\\) is holomorphic for \\(\\Re w>-4m_*^2\\) and, on the\nreal half-line, \\((-1)^n b^{(n)}(w)>0\\) for every \\(n\\geq0\\).\nIts coefficients \\(b_n=b^{(n)}(0)/n!\\) alternate in sign. Every\nfinite truncation \\(p_N(w)=\\sum_{n=0}^N b_nw^n\\) satisfies\n\\begin{equation}\n 0\\leq(-1)^{N+1}[b(w)-p_N(w)]\n       \\leq |b_{N+1}|w^{N+1},\\qquad w\\geq0.\n \\label{eq:OQED-scalar-signed-enclosure}\n\\end{equation}\nIn particular, odd truncations are lower bounds and even truncations\nare upper bounds on the positive Euclidean invariant axis.",
+      "status": "pending",
+      "lean": [],
+      "scope": "Not yet formalized."
+    },
+    {
+      "label": "thm:OQED-subtracted-zero-depth",
+      "kind": "theorem",
+      "title_tex": "Subtracted literal bubble at vanishing depth",
+      "source_line": 6819,
+      "statement_tex": "Fix $m>0$ and $M\\geq0$. For real Euclidean $P$, $w=P^2\\geq0$,\ndefine $C_{a,M,m}(q):=F_{a,M}(q^2)/(q^2+m^2)$ and\n\\begin{equation}\n D_{a,M,m}(w):=B_{a,M,m}(0)-B_{a,M,m}(P).\n \\label{eq:OQED-subtracted-bubble-def}\n\\end{equation}\nAt every $a>0$ this is an absolutely convergent \\emph{common}\nintegral and satisfies\n\\begin{equation}\n 0\\leq D_{a,M,m}(w)\\leq\\frac{w}{64\\pi^2m^2}.\n \\label{eq:OQED-subtraction-uniform-bound}\n\\end{equation}\nAs $a\\downarrow0$ with $M$ fixed,\n\\begin{equation}\n \\boxed{\\displaystyle\n \\lim_{a\\downarrow0}D_{a,M,m}(w)\n   =\\frac1{16\\pi^2}\\int_0^1\n      \\log\\left(1+\\frac{x(1-x)w}{m^2}\\right)\\dd x.}\n \\label{eq:OQED-subtraction-limit}\n\\end{equation}\nConvergence is uniform when $w$ and $M$ range over compact\nsubsets of $[0,\\infty)$ and $m$ ranges over a compact subset of\n$(0,\\infty)$. In addition,\n\\begin{equation}\n \\lim_{a\\downarrow0}D_{a,M,m}'(0)\n  =\\frac1{96\\pi^2m^2}.\n \\label{eq:OQED-subtraction-slope-limit}\n\\end{equation}\nIn contrast, the \\emph{unsubtracted} comparison has the\nuniversal finite-part asymptotic\n\\begin{equation}\n B_{a,M,m}(0)=\\frac1{8\\pi^2}\n  \\left[\\log\\frac1{2am}-\\gamma_{\\mathrm E}-\\frac12\\right]\n  +o(1),\\quad a\\downarrow0,\n \\label{eq:OQED-unsubtracted-log-depth}\n\\end{equation}\nwhere $\\gamma_{\\mathrm E}$ is Euler's constant. In this\nnormalization the constant inside the logarithm is specified,\nnot absorbed into an arbitrary reference momentum scale.\nThe comparison makes no assertion about a jointly completed\nO--QED kernel-off gauge functional or about uniform Lorentzian\nboundary values.",
+      "status": "pending",
+      "lean": [],
+      "scope": "Not yet formalized."
+    },
+    {
+      "label": "prop:OQED-zero-depth-finite-part",
+      "kind": "proposition",
+      "title_tex": "Universal logarithmic finite part at zero depth",
+      "source_line": 6929,
+      "statement_tex": "For the literal scalar bubble at $P=0$, with $m>0$, $M\\geq0$,\nput $s=2am>0$ and\n$L_{a,m}:=[\\log(1/s)-\\gamma_{\\mathrm E}-1/2]/(8\\pi^2)$.\nThen\n\\begin{equation}\n |B_{a,0,m}(0)-L_{a,m}|\n \\leq \\frac{(2+\\pi/4)s}{8\\pi^2},\n \\label{eq:OQED-unsubtracted-finitepart-error}\n\\end{equation}\nand\n\\begin{equation}\n 0\\leq B_{a,M,m}(0)-B_{a,0,m}(0)\n \\leq(e^{2aM}-1)B_{a,0,m}(0).\n \\label{eq:OQED-kernel-mass-finitepart-error}\n\\end{equation}\nConsequently \\eqref{eq:OQED-unsubtracted-log-depth} holds\nuniformly for $M$ in bounded nonnegative sets and $m$ in\ncompact positive intervals. Its divergent coefficient and\nfinite constant do not depend on $M$ under this limiting\nprescription. It is a coefficient-level statement about the\nunsubtracted \\emph{auxiliary scalar bubble}, not a physical\ncounterterm or an interacting QED amplitude.",
+      "status": "pending",
+      "lean": [],
+      "scope": "Not yet formalized."
+    },
+    {
+      "label": "cor:OQED-aposteriori-Schur",
+      "kind": "corollary",
+      "title_tex": "Certification from an approximate response",
+      "source_line": 7187,
+      "statement_tex": "Suppose only an approximate response \\(Y\\) and a certified bound\n\\(\\|X-Y\\|\\leq\\epsilon_\\Pi\\) are available on the common complex domain.\nAssume \\(R_Y=(D_0^{-1}-Y)^{-1}\\) exists there and\n\\(\\|R_Y\\|\\leq B_Y\\), with \\(q:=B_Y\\epsilon_\\Pi<1\\), uniformly on\nthe domain under consideration. Then the exact inverse exists and\n\\begin{equation}\n\\begin{aligned}\n \\|R_X\\|&\\leq\\frac{B_Y}{1-q},\\\\\n \\|\\delta K_X-\\delta K_Y\\|\n       &\\leq E_K:=\\frac{\\|U\\|\\|V\\|B_Y^2\\epsilon_\\Pi}{1-q},\\\\\n |\\Gamma_X^{(1)}-\\Gamma_Y^{(1)}|&\\leq2\\Lambda_*E_K\n                 \\quad\\text{at the common baseline pole}.\n\\end{aligned}\n\\label{eq:OQED-aposteriori-Schur}\n\\end{equation}\nThe norms of \\(U,V\\) are their uniform bounds on that domain, or\ntheir pointwise bounds when only a pointwise statement is made.\nFor the graph-domain realization, \\(B_Y\\) is the\n\\(\\mathcal H_{\\rm EM}\\to\\mathcal D_{\\rm EM}\\) bound and\n\\(\\epsilon_\\Pi\\) the \\(\\mathcal D_{\\rm EM}\\to\\mathcal H_{\\rm EM}\\)\nbound. Analyticity of \\(X,Y,D_0,U,V\\) in the indicated bounded-operator\nspaces gives holomorphic inverses and Schur corrections; the norm\ninequalities alone do not establish that analytic hypothesis.",
+      "status": "pending",
+      "lean": [],
+      "scope": "Not yet formalized."
+    },
+    {
+      "label": "prop:OQED-finite-pole-enclosure",
+      "kind": "proposition",
+      "title_tex": "A finite-pole enclosure on a retained matrix space",
+      "source_line": 7234,
+      "statement_tex": "On a finite-dimensional retained RT space, define the full pencils\n\\(K_X=K_0+\\delta K_X\\) and \\(K_Y=K_0+\\delta K_Y\\).\nSuppose both are holomorphic on a neighbourhood of the closed disk\n\\(\\overline{\\mathbb D}(z_Y,r)\\), \\(r>0\\), and that\n\\(\\det K_Y\\) has exactly one zero there, the simple zero at \\(z_Y\\),\nwith no zero on the boundary. Assume a certified bound\n\\(\\|K_X(z)-K_Y(z)\\|\\leq E_K(z)\\) on that boundary and\n\\begin{equation}\n \\sup_{|z-z_Y|=r}\\|K_Y(z)^{-1}\\|E_K(z)<1.\n \\label{eq:OQED-finite-pole-contour-test}\n\\end{equation}\nThen \\(\\det K_X\\) has exactly one zero in the disk, also simple,\nand its location \\(z_X\\) satisfies \\(|z_X-z_Y|<r\\).\nFor \\(Z\\in\\{X,Y\\}\\), use these enclosed endpoint roots to define\nthe rate-comparison quantities relative to one fixed \\(z_*\\):\n\\begin{equation}\n\\begin{aligned}\n \\Gamma_Z^{\\rm fin}&:=-2\\Im(z_Z-z_*),\\\\\n |\\Gamma_X^{\\rm fin}-\\Gamma_Y^{\\rm fin}|&<2r.\n\\end{aligned}\n \\label{eq:OQED-finite-pole-rate-enclosure}\n\\end{equation}\nThus \\(\\Gamma_Y^{\\rm fin}>2r\\) certifies positivity of the\ncorresponding \\(X\\) quantity. Its interpretation as the finite rate of\nthe selected baseline mode additionally requires the branch-identification\ncondition below; endpoint proximity alone does not establish it.",
+      "status": "pending",
+      "lean": [],
+      "scope": "Not yet formalized."
+    },
+    {
+      "label": "cor:OQED-pole-Taylor-remainder",
+      "kind": "corollary",
+      "title_tex": "A contour certificate for the finite pole remainder",
+      "source_line": 7332,
+      "statement_tex": "On the same finite retained matrix space, let \\(K_0\\) and \\(\\delta K\\)\nbe holomorphic near \\(\\overline{\\mathbb D}(z_*,R_{\\rm p})\\),\nwith \\(R_{\\rm p}>0\\).\nSuppose \\(\\det K_0\\) has precisely one zero in this disk, the simple\nzero \\(z_*\\), and none on its boundary \\(\\Gamma_*\\). Assume a\ncertified constant \\(0<\\vartheta_{\\rm p}<1\\) satisfies\n\\begin{equation}\n \\sup_{z\\in\\Gamma_*}\\norm{K_0(z)^{-1}\\delta K(z)}\n                    \\leq\\vartheta_{\\rm p}.\n \\label{eq:OQED-complex-pole-margin}\n\\end{equation}\nThe pole family \\(K_{\\lambda_{\\rm p}}=K_0+\\lambda_{\\rm p}\\delta K\\)\nhas one simple interior root \\(z(\\lambda_{\\rm p})\\), holomorphic for\n\\(|\\lambda_{\\rm p}|<\\vartheta_{\\rm p}^{-1}\\), with\n\\(z(0)=z_*\\). Writing \\(z(\\lambda_{\\rm p})-z_*\n=\\sum_{n\\geq1}c_n\\lambda_{\\rm p}^n\\), one has\n\\begin{equation}\n \\begin{aligned}\n  |c_n|&\\leq R_{\\rm p}\\vartheta_{\\rm p}^{\\,n},\\\\\n  \\left|z(1)-z_*-\\sum_{n=1}^{N}c_n\\right|\n     &\\leq\\frac{R_{\\rm p}\\vartheta_{\\rm p}^{\\,N+1}}\n                    {1-\\vartheta_{\\rm p}},\\\\\n  |\\Gamma^{\\rm fin}-\\Gamma^{(1)}|\n     &\\leq\\frac{2R_{\\rm p}\\vartheta_{\\rm p}^{\\,2}}\n                    {1-\\vartheta_{\\rm p}}.\n \\end{aligned}\n \\label{eq:OQED-pole-remainder-certificate}\n\\end{equation}\nHere \\(N\\geq1\\), \\(c_1=\\dot z\\), and the rates use the same\nbaseline and pole bookkeeping parameter as\n\\eqref{eq:OQED-pole-bookkeeping-family}. The radius and margin are\ncertification data, not additional theory parameters.",
+      "status": "pending",
+      "lean": [],
+      "scope": "Not yet formalized."
+    },
+    {
+      "label": "prop:OQED-observable-residue-error",
+      "kind": "proposition",
+      "title_tex": "Observable residue error",
+      "source_line": 7452,
+      "statement_tex": "Suppose the finite matrix pencils \\(K_X,K_Y\\) are holomorphic near\nand inside a positively oriented rectifiable simple contour \\(\\Gamma\\),\nand each has exactly one interior determinant zero, both simple.\nUse the same holomorphic input and output maps in\n\\(\\mathcal O_Z=L_{\\rm out}K_Z^{-1}L_{\\rm in}\\), \\(Z=X,Y\\),\nwith no other interior singularities. In compatible operator norms,\nassume the following certified uniform boundary bounds\n\\[\n \\begin{gathered}\n  \\|K_Y^{-1}\\|\\leq B_\\Gamma,\\qquad\n  \\|K_X-K_Y\\|\\leq\\epsilon_K,\\qquad\n  q_\\Gamma:=B_\\Gamma\\epsilon_K<1,\\\\\n  \\|L_{\\rm out}\\|\\leq L_{{\\rm out},\\Gamma},\\qquad\n  \\|L_{\\rm in}\\|\\leq L_{{\\rm in},\\Gamma}.\n \\end{gathered}\n\\]\nLet \\(\\ell(\\Gamma)\\) be the contour length and\n\\(\\mathcal R_Z^{\\rm obs}\\) the residue of \\(\\mathcal O_Z\\) at\nits enclosed zero, allowing this residue to vanish. Then\n\\begin{equation}\n \\begin{aligned}\n  \\|\\mathcal R_X^{\\rm obs}-\\mathcal R_Y^{\\rm obs}\\|\n      &\\leq E_{\\rm obs},\\\\\n  E_{\\rm obs}&:=\\frac{\\ell(\\Gamma)}{2\\pi}\n       L_{{\\rm out},\\Gamma}L_{{\\rm in},\\Gamma}\n       \\frac{B_\\Gamma^2\\epsilon_K}{1-q_\\Gamma}.\n \\end{aligned}\n \\label{eq:OQED-observable-residue-error}\n\\end{equation}\nA certified lower bound\n\\(\\|\\mathcal R_Y^{\\rm obs}\\|\\geq\\underline r_Y>E_{\\rm obs}\\)\ntherefore proves that the exact readout contains its enclosed pole.",
+      "status": "pending",
+      "lean": [],
+      "scope": "Not yet formalized."
+    },
+    {
+      "label": "lem:Ward-common-cutoff",
+      "kind": "lemma",
+      "title_tex": "Common-domain Ward translation",
+      "source_line": 8059,
+      "statement_tex": "Fix \\(m>0\\), \\(a>0\\), and \\(Q\\in\\RR^4\\), and use\n\\eqref{eq:QED-conventions}. Let\n\\[\n\\begin{gathered}\n F(u)=\\Ph(a^2u)=\\int_{[0,\\infty)}e^{-a^2\\tau u}\\rho(\\dd\\tau),\\\\\n \\rho\\geq0,\\qquad \\rho([0,\\infty))<\\infty.\n\\end{gathered}\n\\]\nAssume that the original tensor integrand\n\\[\n H_Q^{\\mu\\nu}(k)\n =F_kF_{k+Q}\n   \\Tr[\\Gamma_0^\\mu S_0(k)\\Gamma_0^\\nu S_0(k+Q)]\n\\]\nis in \\(L^1(\\RR^4)\\) componentwise. Then\n\\[\n \\mathcal R_Q^\\nu(k)\n =F_k[F_{k+Q}-F_{k-Q}]\\,\n       \\Tr[\\Gamma_0^\\nu S_0(k)]\n\\]\nis also in \\(L^1(\\RR^4)\\), and\n\\eqref{eq:Ward-remainder} follows without assuming that the two\nterms in the contracted difference are separately integrable.",
+      "status": "pending",
+      "lean": [],
+      "scope": "Not yet formalized."
+    }
+  ]
+}

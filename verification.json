@@ -1,0 +1,38 @@
+{
+  "prop:carrier-reality-adjoint": {
+    "status": "partial",
+    "lean": ["UV.Carrier.no_normalized_positive_functional", "UV.Carrier.character_reality"],
+    "scope": "The involution and no-positive-functional obstruction are proved in the explicit two-character algebra C x C. The quotient-algebra isomorphism and Hilbert-representation corollary remain."
+  },
+  "thm:optimized-selected-lines": {
+    "status": "partial",
+    "lean": ["UV.selected_product_integrable"],
+    "scope": "Finite independent-line product domination is checked. The massless four-dimensional radial/Gamma identity, inverse-moment implication, affine routing Jacobian and full anisotropic sum remain."
+  },
+  "prop:residual-coercivity": {
+    "status": "partial",
+    "lean": ["UV.residual_linear_convergence", "UV.signed_affine_coercivity", "UV.uniform_integral_norm_bound"],
+    "scope": "Linear coercivity, signed affine-shift control and polynomial-exponential integrability are checked for natural polynomial degree. The full-rank/singular-value certificate, real degrees, and quadratic case remain."
+  },
+  "prop:OQED-moment-certificate": {
+    "status": "partial",
+    "lean": ["UV.kernel_zero", "UV.kernel_lower", "UV.kernel_upper", "UV.kernel_le_one"],
+    "scope": "Normalization at zero and the elementary exponential envelope are checked. The probability density, subordination, all inverse moments, Bessel formulas and exponential-moment endpoint remain."
+  },
+  "thm:OQED-fixed-graph": {
+    "status": "partial",
+    "lean": ["UV.oqed_complete_integrand_convergence"],
+    "scope": "A sufficient subclass with a polynomial bound times the normalized kernel of the full loop norm is checked. Deriving this complete-integrand bound from routed propagators and actual completed vertices remains."
+  },
+  "lem:OQED-grouped-convergence": {
+    "status": "partial",
+    "lean": ["UV.grouped_integrable", "UV.grouped_exhaustion_limit"],
+    "scope": "The real-valued finite sum is absolutely integrable and has an exhaustion-independent integral under its supplied common envelope. Holomorphic continuation and action/routing identification remain."
+  },
+  "ass:OS-completion": {
+    "scope": "Physical reconstruction is an explicit assumption in the source; it has not been established or encoded as a project axiom."
+  },
+  "ass:cut-matching": {
+    "scope": "Cut-discontinuity compatibility is an explicit assumption in the source; it has not been established or encoded as a project axiom."
+  }
+}
