@@ -411,9 +411,12 @@
         "UV.laplace_qed_integrable_iff",
         "UV.bareWardPolarization_zero",
         "UV.bareWardPolarization_small_momentum",
-        "UV.qedKappa_massless"
+        "UV.qedKappa_massless",
+        "UV.qed_convolution_moment",
+        "UV.qed_square_integrable_iff_convolution_moment",
+        "UV.qed_convolution_moment_real"
       ],
-      "scope": "For every finite nonzero positive Laplace law and nonnegative mass, the exact square-integrability test derives original Fourier-normalized tensor integrability at every real momentum, continuity, the exact positive isotropic kappa integral, its massless specialization and the genuine little-o Ward contraction. The separate converse and iff derive the test from the original charged tensor at any fixed real momentum when the charge is nonzero; no differentiability at zero or extra radial integrability is assumed."
+      "scope": "For every finite nonzero positive Laplace law and nonnegative mass, the exact square-integrability test derives original Fourier-normalized tensor integrability at every real momentum, continuity, the exact positive isotropic kappa integral, its massless specialization and the genuine little-o Ward contraction. The separate converse and iff derive the test from the original charged tensor at any fixed real momentum when the charge is nonzero; no differentiability at zero or extra radial integrability is assumed. The adjacent exact extended-valued convolution inverse-moment test, exclusion of a zero atom and finite real-integral formula are also proved."
     },
     {
       "label": "prop:Ward-vertex-growth",
@@ -703,11 +706,14 @@
       "title_tex": "A finite-pole enclosure on a retained matrix space",
       "source_line": 7234,
       "statement_tex": "On a finite-dimensional retained RT space, define the full pencils\n\\(K_X=K_0+\\delta K_X\\) and \\(K_Y=K_0+\\delta K_Y\\).\nSuppose both are holomorphic on a neighbourhood of the closed disk\n\\(\\overline{\\mathbb D}(z_Y,r)\\), \\(r>0\\), and that\n\\(\\det K_Y\\) has exactly one zero there, the simple zero at \\(z_Y\\),\nwith no zero on the boundary. Assume a certified bound\n\\(\\|K_X(z)-K_Y(z)\\|\\leq E_K(z)\\) on that boundary and\n\\begin{equation}\n \\sup_{|z-z_Y|=r}\\|K_Y(z)^{-1}\\|E_K(z)<1.\n \\label{eq:OQED-finite-pole-contour-test}\n\\end{equation}\nThen \\(\\det K_X\\) has exactly one zero in the disk, also simple,\nand its location \\(z_X\\) satisfies \\(|z_X-z_Y|<r\\).\nFor \\(Z\\in\\{X,Y\\}\\), use these enclosed endpoint roots to define\nthe rate-comparison quantities relative to one fixed \\(z_*\\):\n\\begin{equation}\n\\begin{aligned}\n \\Gamma_Z^{\\rm fin}&:=-2\\Im(z_Z-z_*),\\\\\n |\\Gamma_X^{\\rm fin}-\\Gamma_Y^{\\rm fin}|&<2r.\n\\end{aligned}\n \\label{eq:OQED-finite-pole-rate-enclosure}\n\\end{equation}\nThus \\(\\Gamma_Y^{\\rm fin}>2r\\) certifies positivity of the\ncorresponding \\(X\\) quantity. Its interpretation as the finite rate of\nthe selected baseline mode additionally requires the branch-identification\ncondition below; endpoint proximity alone does not establish it.",
-      "status": "partial",
+      "status": "verified",
       "lean": [
+        "UV.oqed_finite_pole_enclosure",
+        "UV.disk_zeroCount_homotopy",
+        "UV.disk_zeroCount_one_unique_simple",
         "UV.finite_pole_rate_enclosure"
       ],
-      "scope": "Once the enclosed endpoint roots are given, their exact rate enclosure and positivity threshold follow. The determinant contour test to zero count/simple-root construction is not yet proved."
+      "scope": "The actual spectral-norm inverse/error margin constructs boundary inverses for the affine matrix homotopy. A proved disk argument principle and homotopy invariance preserve the actual divisor count, constructing the unique simple enclosed exact root and the strict rate enclosure/positivity threshold. No exact endpoint root or count is supplied. Physical baseline-mode identification remains the separate source requirement."
     },
     {
       "label": "cor:OQED-pole-Taylor-remainder",
@@ -715,15 +721,18 @@
       "title_tex": "A contour certificate for the finite pole remainder",
       "source_line": 7332,
       "statement_tex": "On the same finite retained matrix space, let \\(K_0\\) and \\(\\delta K\\)\nbe holomorphic near \\(\\overline{\\mathbb D}(z_*,R_{\\rm p})\\),\nwith \\(R_{\\rm p}>0\\).\nSuppose \\(\\det K_0\\) has precisely one zero in this disk, the simple\nzero \\(z_*\\), and none on its boundary \\(\\Gamma_*\\). Assume a\ncertified constant \\(0<\\vartheta_{\\rm p}<1\\) satisfies\n\\begin{equation}\n \\sup_{z\\in\\Gamma_*}\\norm{K_0(z)^{-1}\\delta K(z)}\n                    \\leq\\vartheta_{\\rm p}.\n \\label{eq:OQED-complex-pole-margin}\n\\end{equation}\nThe pole family \\(K_{\\lambda_{\\rm p}}=K_0+\\lambda_{\\rm p}\\delta K\\)\nhas one simple interior root \\(z(\\lambda_{\\rm p})\\), holomorphic for\n\\(|\\lambda_{\\rm p}|<\\vartheta_{\\rm p}^{-1}\\), with\n\\(z(0)=z_*\\). Writing \\(z(\\lambda_{\\rm p})-z_*\n=\\sum_{n\\geq1}c_n\\lambda_{\\rm p}^n\\), one has\n\\begin{equation}\n \\begin{aligned}\n  |c_n|&\\leq R_{\\rm p}\\vartheta_{\\rm p}^{\\,n},\\\\\n  \\left|z(1)-z_*-\\sum_{n=1}^{N}c_n\\right|\n     &\\leq\\frac{R_{\\rm p}\\vartheta_{\\rm p}^{\\,N+1}}\n                    {1-\\vartheta_{\\rm p}},\\\\\n  |\\Gamma^{\\rm fin}-\\Gamma^{(1)}|\n     &\\leq\\frac{2R_{\\rm p}\\vartheta_{\\rm p}^{\\,2}}\n                    {1-\\vartheta_{\\rm p}}.\n \\end{aligned}\n \\label{eq:OQED-pole-remainder-certificate}\n\\end{equation}\nHere \\(N\\geq1\\), \\(c_1=\\dot z\\), and the rates use the same\nbaseline and pole bookkeeping parameter as\n\\eqref{eq:OQED-pole-bookkeeping-family}. The radius and margin are\ncertification data, not additional theory parameters.",
-      "status": "partial",
+      "status": "verified",
       "lean": [
-        "UV.pole_cauchy_coefficient_bound",
+        "UV.oqed_pole_taylor_remainder",
+        "UV.matrix_pole_holomorphic_family",
+        "UV.matrix_pencil_diskZeroCount_eq_one",
+        "UV.disk_unique_root_holomorphic_family",
         "UV.pole_taylor_coefficient_bound",
         "UV.pole_taylor_hasSum",
         "UV.pole_taylor_remainder",
         "UV.pole_branch_rate_remainder"
       ],
-      "scope": "For an actual bounded holomorphic pole branch, exact Cauchy/Taylor coefficients, endpoint series, geometric remainder and the source finite-rate remainder are proved. Constructing that branch from the finite-matrix contour margin remains."
+      "scope": "The ordered spectral-norm complex-parameter margin derives actual divisor count one at every admitted parameter. The first logarithmic-derivative contour moment constructs the unique simple root itself; actual joint analyticity and compact circle majorants prove its holomorphy throughout the full parameter disk and its baseline value. Exact derivative-defined Taylor coefficients, the sharp coefficient bound, endpoint sum, geometric remainder and finite-rate remainder follow, with no root branch or branch analyticity premise."
     },
     {
       "label": "prop:OQED-observable-residue-error",
@@ -735,9 +744,14 @@
       "lean": [
         "UV.simple_denominator_residue",
         "UV.simple_denominator_residue_error",
-        "UV.observable_simplePole_residue_error"
+        "UV.observable_simplePole_residue_error",
+        "UV.matrix_inverse_simple_pole",
+        "UV.matrix_observable_simple_pole",
+        "UV.matrix_observable_residue_zero_of_contraction_zero",
+        "UV.observable_parametrizedContour_error",
+        "UV.normalizedContour_nonzero_of_margin"
       ],
-      "scope": "Actual simple-pole residues, their Cauchy-circle identification, a holomorphic simple-zero denominator construction, differing-pole residue errors and nonvanishing visibility are proved. The general rectifiable contour and arbitrary finite-matrix adjugate-to-numerator bridge remain."
+      "scope": "Literal finite-matrix determinant/adjugate formulas construct actual at-most-simple inverse and observable numerators, punctured-limit residues and local Cauchy-circle identities, including vanishing endpoint contraction. Simple-denominator and differing-pole circle residue bounds are proved. Genuine C1 parametrized contour integrals obey the exact length/(2pi) Neumann-response error and strict nonvanishing margin. Identification with enclosed residues for arbitrary positively oriented rectifiable Jordan contours remains unproved."
     },
     {
       "label": "lem:Ward-common-cutoff",

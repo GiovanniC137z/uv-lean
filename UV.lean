@@ -97,3 +97,14 @@ import UV.StableMoments
 import UV.StableNonanalytic
 import UV.StablePoisson
 import UV.StandardBoundaryBound
+import UV.ContourResidue
+import UV.DiskHomotopy
+import UV.DiskRootFamily
+import UV.DiskZeroCount
+import UV.FinitePole
+import UV.MatrixAdjugate
+import UV.MatrixPencilAnalytic
+import UV.MatrixPencilCount
+import UV.ParameterCircle
+import UV.PoleFamily
+import UV.QEDConvolution

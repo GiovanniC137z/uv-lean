@@ -260,31 +260,42 @@
     "scope": "The exact multi-index factorial times product of inverse-radius powers times the integral of the pointwise majorant is proved on actual finite complex polydiscs. orderedMixedDeriv is recursively defined by ordinary scalar coordinate derivatives. The graph holomorphy, intermediate coordinate derivative holomorphy and Cauchy majorants are derived; integrated analyticity or derivative bounds are not assumed."
   },
   "prop:OQED-finite-pole-enclosure": {
-    "status": "partial",
+    "status": "verified",
     "lean": [
+      "UV.oqed_finite_pole_enclosure",
+      "UV.disk_zeroCount_homotopy",
+      "UV.disk_zeroCount_one_unique_simple",
       "UV.finite_pole_rate_enclosure"
     ],
-    "scope": "Once the enclosed endpoint roots are given, their exact rate enclosure and positivity threshold follow. The determinant contour test to zero count/simple-root construction is not yet proved."
+    "scope": "The actual spectral-norm inverse/error margin constructs boundary inverses for the affine matrix homotopy. A proved disk argument principle and homotopy invariance preserve the actual divisor count, constructing the unique simple enclosed exact root and the strict rate enclosure/positivity threshold. No exact endpoint root or count is supplied. Physical baseline-mode identification remains the separate source requirement."
   },
   "cor:OQED-pole-Taylor-remainder": {
-    "status": "partial",
+    "status": "verified",
     "lean": [
-      "UV.pole_cauchy_coefficient_bound",
+      "UV.oqed_pole_taylor_remainder",
+      "UV.matrix_pole_holomorphic_family",
+      "UV.matrix_pencil_diskZeroCount_eq_one",
+      "UV.disk_unique_root_holomorphic_family",
       "UV.pole_taylor_coefficient_bound",
       "UV.pole_taylor_hasSum",
       "UV.pole_taylor_remainder",
       "UV.pole_branch_rate_remainder"
     ],
-    "scope": "For an actual bounded holomorphic pole branch, exact Cauchy/Taylor coefficients, endpoint series, geometric remainder and the source finite-rate remainder are proved. Constructing that branch from the finite-matrix contour margin remains."
+    "scope": "The ordered spectral-norm complex-parameter margin derives actual divisor count one at every admitted parameter. The first logarithmic-derivative contour moment constructs the unique simple root itself; actual joint analyticity and compact circle majorants prove its holomorphy throughout the full parameter disk and its baseline value. Exact derivative-defined Taylor coefficients, the sharp coefficient bound, endpoint sum, geometric remainder and finite-rate remainder follow, with no root branch or branch analyticity premise."
   },
   "prop:OQED-observable-residue-error": {
     "status": "partial",
     "lean": [
       "UV.simple_denominator_residue",
       "UV.simple_denominator_residue_error",
-      "UV.observable_simplePole_residue_error"
+      "UV.observable_simplePole_residue_error",
+      "UV.matrix_inverse_simple_pole",
+      "UV.matrix_observable_simple_pole",
+      "UV.matrix_observable_residue_zero_of_contraction_zero",
+      "UV.observable_parametrizedContour_error",
+      "UV.normalizedContour_nonzero_of_margin"
     ],
-    "scope": "Actual simple-pole residues, their Cauchy-circle identification, a holomorphic simple-zero denominator construction, differing-pole residue errors and nonvanishing visibility are proved. The general rectifiable contour and arbitrary finite-matrix adjugate-to-numerator bridge remain."
+    "scope": "Literal finite-matrix determinant/adjugate formulas construct actual at-most-simple inverse and observable numerators, punctured-limit residues and local Cauchy-circle identities, including vanishing endpoint contraction. Simple-denominator and differing-pole circle residue bounds are proved. Genuine C1 parametrized contour integrals obey the exact length/(2pi) Neumann-response error and strict nonvanishing margin. Identification with enclosed residues for arbitrary positively oriented rectifiable Jordan contours remains unproved."
   },
   "thm:OQED-strong-depth-crossover": {
     "status": "verified",
@@ -497,8 +508,11 @@
       "UV.laplace_qed_integrable_iff",
       "UV.bareWardPolarization_zero",
       "UV.bareWardPolarization_small_momentum",
-      "UV.qedKappa_massless"
+      "UV.qedKappa_massless",
+      "UV.qed_convolution_moment",
+      "UV.qed_square_integrable_iff_convolution_moment",
+      "UV.qed_convolution_moment_real"
     ],
-    "scope": "For every finite nonzero positive Laplace law and nonnegative mass, the exact square-integrability test derives original Fourier-normalized tensor integrability at every real momentum, continuity, the exact positive isotropic kappa integral, its massless specialization and the genuine little-o Ward contraction. The separate converse and iff derive the test from the original charged tensor at any fixed real momentum when the charge is nonzero; no differentiability at zero or extra radial integrability is assumed."
+    "scope": "For every finite nonzero positive Laplace law and nonnegative mass, the exact square-integrability test derives original Fourier-normalized tensor integrability at every real momentum, continuity, the exact positive isotropic kappa integral, its massless specialization and the genuine little-o Ward contraction. The separate converse and iff derive the test from the original charged tensor at any fixed real momentum when the charge is nonzero; no differentiability at zero or extra radial integrability is assumed. The adjacent exact extended-valued convolution inverse-moment test, exclusion of a zero atom and finite real-integral formula are also proved."
   }
 }

@@ -4,7 +4,7 @@
 
 A Lean 4 verification project for Giovanni Joseph Chiappone's *Conditional All-Orders UV Finiteness: Non-Abelian BRST Closure, Analyticity, and Crossing in Omniverse Quantum Field Theory*.
 
-**Status: full-paper verification remains incomplete.** The checked results now include the original global and selected-basis convergence theorems, conditional forest and finite-order results, exact O--QED kernel certificate, depth/crossover theorems, carrier propositions, finite-mode field redefinition, positive-residue normalization, and named counterexamples. The claim inventory distinguishes those complete results from remaining components. A green build certifies the current Lean statements, not the entire paper or an interacting physical theory.
+**Status: 41 of 45 named mathematical results are verified; four remain partial. Full-paper verification remains incomplete.** The checked results include the original convergence theorems, exact kernel certificate, scalar analyticity and nonanalyticity results, Ward/contact obstructions, and finite-matrix pole certificates. The claim inventory distinguishes complete results from remaining components. A green build certifies the current Lean statements, not the entire paper or an interacting physical theory.
 
 ## Checked mathematics
 
@@ -17,9 +17,9 @@ A Lean 4 verification project for Giovanni Joseph Chiappone's *Conditional All-O
 - The Gaussian loop’s unique normalized cut-plane continuation, actual upper-rim boundary, entire remainder, exact upper/lower bounds, and growth obstruction for both the remainder and normalized boundary after any finite polynomial addition.
 - The literal stable-half bubble’s real C5 regularity and failure of C6 at zero, with exact Poisson/Green Fourier identities and coordinate-space tail.
 - Actual joint external holomorphy, derivative/contour exchange and Cauchy estimate components from common graph majorants.
-- Clifford-matrix derivation of zero/nonzero-transfer Ward and contact obstructions, the exact common-cutoff Ward identity, the general bare-QED one-loop integrability criterion including zero mass, and smooth positive-time probes violating heat-covariance reflection positivity.
+- Clifford-matrix derivation of zero/nonzero-transfer Ward and contact obstructions, the exact common-cutoff Ward identity, the general bare-QED one-loop integrability criterion including zero mass and its exact convolution-moment test, and smooth positive-time probes violating heat-covariance reflection positivity.
 - Exact finite-mode field-redefinition/Jacobian cancellation, bounded spectral-cut source normalization by C*-functional calculus, and Hilbert-overlap residue positivity with a constructed invertible spectral normalization.
-- Neumann/Schur/analytic inverse certificates and actual simple-pole residue, Taylor coefficient and geometric remainder components.
+- Actual disk argument principle and zero-count homotopy, full finite-matrix pole enclosures, contour-constructed holomorphic root families and sharp Taylor/rate remainders, with Neumann/Schur inverse and actual matrix observable-residue formulas.
 - Exhaustion-independent finite common-routing sums and the gapped positive-measure meromorphic counterexample.
 
 See the [precise scope](docs/verification.md), [complete claim inventory](docs/claims.md), and [remaining work](docs/roadmap.md). `claims.json` retains all 48 labeled source environments, their original TeX, locations, and status. A partial entry never certifies an entire proposition.
