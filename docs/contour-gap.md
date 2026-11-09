@@ -1,0 +1,13 @@
+# Remaining general-contour obligation
+
+`prop:OQED-observable-residue-error` remains **partial**. The matrix pole algebra and Neumann estimates are proved. The remaining issue is coverage of every positively oriented rectifiable simple contour allowed by the source.
+
+The project now constructs the actual arc-length representative of every continuous rectifiable path. It preserves ordered traversal, endpoints, image and total variation, and has the original geometric length as its Lipschitz constant. This avoids differentiating an arbitrary singular parametrization, whose derivative need not recover its length or contour integral.
+
+The Lipschitz fundamental theorem, actual contour integrability, exact response error estimate, uniform contour-integral limits and continuous homotopy invariance are proved. The homotopy proof uses actual Bernstein polynomial approximations, including their boundary values, Lipschitz bounds and eventual containment in the original open analytic domain. No Cauchy or residue identity is a field of the homotopy data.
+
+A standard simply-connected open analytic domain also suffices: the project constructs its continuous filling internally and derives Cauchy's theorem. The geometric winding is defined by a constructed smoothing and argument lift, with positive-circle normalization proved. The full simple-denominator and literal matrix-observable residue formulas and differing-pole error estimates follow. They include the original geometric-length bound and exact source Neumann constant with the same input/output maps, in compatible Euclidean operator norms. The existing strict residue-margin theorem then gives nonvanishing. Its positive-winding certificate explicitly concerns that representative. No residue formula, primitive or pole numerator is an input. These are genuine contour certificates; geometric data does not stand in for the desired integral identity.
+
+To cover the source's **arbitrary Jordan contour**, one still needs to derive a continuous filling inside its admitted analytic neighbourhood from the simple closed curve and its filled interior. A Jordan/Schoenflies theorem would provide this. A general winding-number Cauchy theorem proved through cycles would be another route. Neither theorem is currently part of this project's proved statements. The pinned mathlib and the inspected upstream revision do not supply it.
+
+Adding a filling or a simply-connected-domain certificate as an extra input does not prove that every source contour admits that certificate. Accordingly, the claim ledger continues to mark the whole proposition partial. This is a missing formal proof, not a counterexample to the manuscript's contour estimate.

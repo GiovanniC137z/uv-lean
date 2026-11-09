@@ -8,7 +8,7 @@
       "title_tex": "Free source normalization and its interacting limit",
       "source_line": 725,
       "statement_tex": "% Monograph source: prop:source-normalized-realization; rem:source-normalized-why.\nOn a fixed commuting Euclidean field block, let\n\\(\\mathscr K_0\\) be a positive self-adjoint injective free kinetic\noperator and \\(\\Delta=\\mathscr K_0^{-1}\\). Put\n\\[\n F=\\Ph(a^2\\mathscr L_{\\bb}),\\qquad \\Delta_\\Ph=F\\Delta.\n\\]\nAssume that \\(F\\) is positive and injective and strongly commutes\nwith \\(\\mathscr K_0\\): their spectral projections commute.\nWork on the common reducing spectral core consisting of vectors\nwhose joint spectral support is bounded above and separated from\nzero in each spectral coordinate, taking the union over such\nbounds. Every displayed product\nand inverse is then defined there. In particular,\n\\(T:=F^{-1/2}\\) is self-adjoint on its spectral domain.\nIntroduce an auxiliary Wick field \\(\\varphi\\) with covariance\n\\(\\Delta_\\Ph\\). The notation \\(\\varphi^{\\rm phys}=T\\varphi\\)\nmeans the smeared-field identity\n\\(\\varphi^{\\rm phys}(f)=\\varphi(T^\\dagger f)\\) on a common\nadmitted test space; it does not apply an unbounded operator to a\npointwise random field. The covariance forms must extend to any\nlarger test space subsequently used for local observables.\nWe use the Hermitian covariance pairing for a complex commuting\nfield; on a compatible real field block the adjoint below is the\ntranspose with respect to the real source pairing.\nThen its free source--source covariance is\n\\begin{equation}\n \\langle\\varphi^{\\rm phys}\n             (\\varphi^{\\rm phys})^\\dagger\\rangle_0\n =T\\Delta_\\Ph T^\\dagger\n =T\\Delta_\\Ph T=\\Delta.\n \\label{eq:undressed-source-covariance}\n\\end{equation}\nContractions between auxiliary interaction insertions still use\n\\(\\Delta_\\Ph\\). However, a mixed source--vertex contraction is\n\\begin{equation}\n T\\Delta_\\Ph=F^{1/2}\\Delta,\n \\qquad\n (T\\Delta_\\Ph)\\Delta^{-1}=F^{1/2}.\n \\label{eq:mixed-source-half-factor}\n\\end{equation}\nThus free source normalization alone does not prove an undressed\ninteracting external attachment.",
-      "status": "partial",
+      "status": "verified",
       "lean": [
         "UV.normalized_spectral_covariance",
         "UV.mixed_source_spectral_covariance_integrand",
@@ -17,9 +17,21 @@
         "UV.free_source_normalization_spectral_cut",
         "UV.free_source_normalization_hilbert_block",
         "UV.free_source_normalization_smeared",
-        "UV.sourceOperator_mixed_amputation_eq_one_iff"
+        "UV.sourceOperator_mixed_amputation_eq_one_iff",
+        "UV.sourceHilbertNormalizer_selfAdjoint",
+        "UV.sourceResolution_strong_commutes_graph",
+        "UV.source_jointCore_kinetic_domain",
+        "UV.source_jointCore_covariance_domain",
+        "UV.source_jointCore_normalizer_domain",
+        "UV.sourcePVM_jointCore_dense",
+        "UV.source_spectral_common_graphCore",
+        "UV.source_spectral_normalized_covariance",
+        "UV.source_spectral_mixed_covariance",
+        "UV.source_spectral_mixed_amputation",
+        "UV.source_spectral_smeared_covariance",
+        "UV.free_source_normalization_actual_spectral_resolutions"
       ],
-      "scope": "Actual smeared Hermitian covariance forms in a common spectral representation have exact undamped covariance, transferred integrability, the mixed half-factor and its amputated square-root factor. Actual C*-functional calculus constructs the self-adjoint inverse-square-root normalizer and all operator/smeared identities on bounded positive spectral blocks, including arbitrary Hilbert-space blocks; positive spectral lower bounds derive invertibility. The arbitrary strongly commuting unbounded-operator joint spectral representation and dense common reducing-core construction remain unformalized."
+      "scope": "On the actual separate spectral resolutions invoked by the source, standard PVM and bounded-Borel calculus laws plus the true coordinate-moment graph characterize the operators; positive-injective support and pairwise spectral-projection commutation are explicit. Strong cut exhaustion derives the dense literal union of joint bounded/gapped cut ranges. Actual reciprocal spectral integrals derive all K, inverse-K and inverse-square-root domains; reducing invariance and genuine HasCore for K, covariance and normalizer are proved. The generally unbounded normalizer is the actual inverse of the CFC square root and is self-adjoint on its full range domain. All normalized/mixed/amputated operator identities and Hermitian smeared covariance follow on the common core, without bounded covariance, a global gap or an assumed joint diagonal representation. This does not construct spectral resolutions from bare self-adjointness or extend covariance to unspecified larger observable test spaces; free normalization alone leaves the interacting mixed half-factor."
     },
     {
       "label": "prop:pure-redefinition-cancellation",
@@ -221,7 +233,7 @@
       "title_tex": "Conditional exact Slavnov--Taylor identity",
       "source_line": 2767,
       "statement_tex": "For the closed off-shell system and master action\n\\eqref{eq:bv-action}, assume an invariant\nanomaly-free measure, and a common domain on which the BRST change\nof variables, source differentiations, and Legendre transform are\ndefined without field-space boundary terms. Then the fixed-plane\neffective action satisfies\n\\begin{equation}\n \\mathcal S(\\Gamma_{\\bb})\n      :=\\frac12(\\Gamma_{\\bb},\\Gamma_{\\bb})=0\n \\label{eq:ST-master}\n\\end{equation}\nas a formal perturbative identity at every admitted loop order.\nIf the same completed graphs and required insertions satisfy\nSection~\\ref{sec:uv}, the identity holds for their finite\ncoefficients without UV-divergent symmetry-restoring subtraction.",
-      "status": "partial",
+      "status": "verified",
       "lean": [
         "UV.bvMasterAction_brst_invariant",
         "UV.bvMasterAction_even",
@@ -237,9 +249,19 @@
         "UV.canonical_antibracket_even",
         "UV.connected_ward_legendre_slavnov_taylor",
         "UV.finite_log_legendre_slavnov_taylor",
-        "UV.graded_legendre_ST_coefficient"
+        "UV.graded_legendre_ST_coefficient",
+        "UV.continuum_bv_exponent_opposite_derivatives",
+        "UV.admitted_continuum_connected_ward",
+        "UV.admitted_continuum_connected_even",
+        "UV.weak_effective_action_right_field_variation",
+        "UV.weak_effective_action_left_antifield_variation",
+        "UV.conditional_continuum_slavnov_taylor",
+        "UV.weakFormalRegularBracket_eq",
+        "UV.conditional_formal_continuum_ST",
+        "UV.CompletedContinuumSTModel.loop_convolution",
+        "UV.completed_graph_conditional_slavnov_taylor"
       ],
-      "scope": "A precise parity-involution algebra, odd nilpotent BRST derivative, signed master action, canonical antifield derivatives and invariant-expectation partition/finite-log Ward identities are proved. An actual finite-coordinate inverse-gradient Legendre chart with dense polynomial completion derives the graded chain rule, both signed Legendre derivatives, the even-antibracket factor and the effective-action ST equation from connected Ward data. Neither derivative identities nor the ST conclusion are chart premises. The continuum spacetime functional-calculus realization, full general logarithm/formal loop-series construction and their common-domain link remain unformalized."
+      "scope": "On the source-assumed invariant anomaly-free common functional domain, the actual signed continuum BV action, completed exponential, linear expectation and locally admitted full logarithm derive connected Ward closure. A weak/Pettis spacetime integral and dense smeared generators derive the actual Legendre gradients and effective-action ST equation. Continuous formal coefficient maps identify the constructed variational-profile bracket with its genuine Cauchy convolution, proving the full formal master series and every admitted loop equation. The same reconstructed graph action and insertion maps give finite coefficients and paired-character ST. No measure/completion existence, expected-exponential expansion convergence, Ward identity or master equation is assumed as a result field. Separate background and extended-ST identities retain their own source premises."
     },
     {
       "label": "prop:meromorphic-counterexample",
@@ -530,7 +552,7 @@
       "title_tex": "O--QED application with explicit kernel hypotheses",
       "source_line": 6007,
       "statement_tex": "Fix the support, branch, source/endpoint conventions, and positive\nline depths of the O--QED record. Suppose a finite completed loop graph\nhas full-rank flat routing and the infrared hypotheses of\nTheorem~\\ref{thm:global-uv}. On a full-rank set of loop lines use\n\\(F_{a_i,M_i}\\), with \\(a_i>0\\), \\(M_i\\geq0\\), and bound all\nother multipliers as in Corollary~\\ref{cor:damped-basis}.\nIf the full completed numerator has a finite polynomial bound of degree\n\\(D_G\\), the graph is absolutely Euclidean convergent, uniformly on\nthe admitted compact external set. The kernel part of this assertion\nis established by \\eqref{eq:OQED-inverse-moments}, not left as an\nunevaluated assumption.\n\nAlternatively, assume bounded covariance envelopes and a complete\nnumerator bound\n\\begin{equation}\n |N_G(k,p)|\\leq C(1+\\norm{k}^{D_G})\n          \\exp\\!\\left(\\sum_i v_i|q_i|\\right),\\qquad v_i\\geq0.\n\\label{eq:OQED-vertex-budget}\n\\end{equation}\nIn this second alternative, every exponentially bounded line has its\nspecified \\(a_i>0\\); for a merely bounded unselected multiplier set\n\\(a_i=v_i=0\\) in the bound, without changing its model definition.\nIt is sufficient that the signed residuals \\(h_i=a_i-v_i\\) obey\n\\eqref{eq:signed-linear-coercivity}; a positive right side in\n\\eqref{eq:signed-linear-basis-certificate} is one explicit certificate.\nThe simpler nonnegative-residual, full-loop-rank test remains sufficient.\nThese bounds concern the product of all vertices and numerators in the\ngraph, including contact vertices. The constants \\(e^{a_iM_i}\\) belong\nto the envelope, not to a renormalization of the kernel measure.\n\nIf either condition, or the verified forest alternative, holds for\nall graphs and insertions of one fixed completed action, and the\nindependent anomaly-free BRST hypotheses hold for the same action in\nboth characters, its admitted coefficients are graphwise UV finite and\nsatisfy the identities of Section~\\ref{sec:brst} at every finite order.\nThis last implication does not certify an unspecified completion.",
-      "status": "partial",
+      "status": "verified",
       "lean": [
         "UV.oqed_complete_integrand_convergence",
         "UV.global_schwinger_graph",
@@ -538,9 +560,13 @@
         "UV.oqed_kernel_graph_admissible",
         "UV.oqed_fixed_graph_polynomial",
         "UV.oqed_fixed_graph_residual",
-        "UV.oqed_fixed_graph_forest"
+        "UV.oqed_fixed_graph_forest",
+        "UV.completed_action_all_finite_orders",
+        "UV.completedGraphRealization_actual_insertions",
+        "UV.completedGraphRealization_insertion_norm_le",
+        "UV.completed_graph_conditional_slavnov_taylor"
       ],
-      "scope": "The actual dimensionful heat measure supplies every kernel endpoint budget; polynomial selected-basis, signed residual and actual sector-envelope alternatives give uniform bounds for the literal OQED kernel products. Finite-coordinate completed graded Legendre/ST algebra is now proved, while the same-action continuum BRST/Slavnov-Taylor clause still depends on an unformalized functional-domain link; no unspecified completed vertices are presumed bounded."
+      "scope": "The actual dimensionful heat measure supplies every kernel endpoint budget; polynomial selected-basis, signed residual and actual sector-envelope alternatives give uniform bounds for the literal OQED kernel products. Under the independent source-assumed anomaly-free common functional-domain hypotheses, the constructed continuum BV/partition/full-logarithm/Legendre pipeline proves ST for the same formal effective action whose coefficients and required insertions are identified with these very graph integrals, simultaneously in both characters. Every finite graph/order is UV finite and obeys its actual nonlinear loop convolution. No unspecified completed vertices, anomaly-free measure existence or convergence of the infinite perturbation series is certified; other background/extended identities retain their separately stated premises."
     },
     {
       "label": "prop:OQED-Ward-bubble-obstruction",
@@ -749,9 +775,27 @@
         "UV.matrix_observable_simple_pole",
         "UV.matrix_observable_residue_zero_of_contraction_zero",
         "UV.observable_parametrizedContour_error",
-        "UV.normalizedContour_nonzero_of_margin"
+        "UV.normalizedContour_nonzero_of_margin",
+        "UV.continuous_rectifiable_arcLength_factorization",
+        "UV.rectifiableArcPath_lipschitz",
+        "UV.rectifiableArcPath_ordered_reconstruction",
+        "UV.rectifiableArcPath_variation",
+        "UV.observable_lipschitzContour_error",
+        "UV.lipschitzContourIntegral_uniform_limit",
+        "UV.lipschitzContour_holomorphic_homotopy",
+        "UV.simplyConnectedContour_cauchy",
+        "UV.lipschitzContour_cauchyKernel_winding",
+        "UV.lipschitzContourWinding_positiveCircle",
+        "UV.analytic_simple_denominator_regular_part",
+        "UV.simplyConnectedContour_simple_denominator_residue_error",
+        "UV.rectifiableArcPath_simple_denominator_residue_error",
+        "UV.simplyConnectedContour_matrix_observable_residue",
+        "UV.matrix_observable_neumann_error",
+        "UV.simplyConnectedContour_matrix_observable_residue_error",
+        "UV.rectifiableArcPath_matrix_observable_residue_error",
+        "UV.pole_residue_nonzero_of_error"
       ],
-      "scope": "Literal finite-matrix determinant/adjugate formulas construct actual at-most-simple inverse and observable numerators, punctured-limit residues and local Cauchy-circle identities, including vanishing endpoint contraction. Simple-denominator and differing-pole circle residue bounds are proved. Genuine C1 parametrized contour integrals obey the exact length/(2pi) Neumann-response error and strict nonvanishing margin. Identification with enclosed residues for arbitrary positively oriented rectifiable Jordan contours remains unproved."
+      "scope": "Literal finite-matrix determinant/adjugate formulas construct actual inverse/observable pole numerators and residues, including readout cancellation. Continuous rectifiable paths now have constructed arc-length representatives preserving ordered traversal, image and exact total variation; genuine Lipschitz FTC, integrability, Neumann contour errors and uniform contour limits are proved. Genuine Bernstein smoothing defines geometric winding without contour integrals; its kernel identity and positive-circle orientation are derived. Continuous homotopy invariance and an internally constructed filling in a specified simply-connected open analytic domain give actual differing-pole denominator and literal matrix-observable residue errors, with the original geometric-length factor. The constructed determinant/adjugate numerator and ordered matrix Neumann identity give exactly length/(2pi) times Lout*Lin*B^2*epsilon/(1-B*epsilon), in compatible Euclidean operator norms and with the same endpoint maps; the strict residue margin yields nonvanishing. The source proposition remains partial: the existence of the required filling/domain for every arbitrary Jordan contour is not proved. No contour/residue identity, primitive or holomorphic pole numerator is assumed as certificate data."
     },
     {
       "label": "lem:Ward-common-cutoff",

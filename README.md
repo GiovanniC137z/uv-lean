@@ -4,7 +4,7 @@
 
 A Lean 4 verification project for Giovanni Joseph Chiappone's *Conditional All-Orders UV Finiteness: Non-Abelian BRST Closure, Analyticity, and Crossing in Omniverse Quantum Field Theory*.
 
-**Status: 41 of 45 named mathematical results are verified; four remain partial. Full-paper verification remains incomplete.** The checked results include the original convergence theorems, exact kernel certificate, scalar analyticity and nonanalyticity results, Ward/contact obstructions, and finite-matrix pole certificates. The claim inventory distinguishes complete results from remaining components. A green build certifies the current Lean statements, not the entire paper or an interacting physical theory.
+**Status: 44 of 45 named mathematical results are verified; one remains partial. Full-paper verification remains incomplete.** The checked results include the original convergence theorems, exact kernel certificate, scalar analyticity and nonanalyticity results, Ward/contact obstructions, and finite-matrix pole certificates. The claim inventory distinguishes complete results from remaining components. A green build certifies the current Lean statements, not the entire paper or an interacting physical theory.
 
 ## Checked mathematics
 
@@ -18,7 +18,9 @@ A Lean 4 verification project for Giovanni Joseph Chiappone's *Conditional All-O
 - The literal stable-half bubble’s real C5 regularity and failure of C6 at zero, with exact Poisson/Green Fourier identities and coordinate-space tail.
 - Actual joint external holomorphy, derivative/contour exchange and Cauchy estimate components from common graph majorants.
 - Clifford-matrix derivation of zero/nonzero-transfer Ward and contact obstructions, the exact common-cutoff Ward identity, the general bare-QED one-loop integrability criterion including zero mass and its exact convolution-moment test, and smooth positive-time probes violating heat-covariance reflection positivity.
-- Exact finite-mode field-redefinition/Jacobian cancellation, bounded spectral-cut source normalization by C*-functional calculus, and Hilbert-overlap residue positivity with a constructed invertible spectral normalization.
+- Exact finite-mode field-redefinition/Jacobian cancellation, genuinely unbounded free-source normalization on the constructed common reducing graph core of the supplied spectral resolutions, and Hilbert-overlap residue positivity with a constructed invertible spectral normalization.
+- Conditional continuum BV/partition/full-logarithm/Legendre ST, the actual nonlinear formal loop hierarchy, and UV-finite coefficients of the same completed graph action in both characters.
+- Constructed arc-length representatives and certified rectifiable-contour Cauchy/residue estimates, including the original geometric-length factor. Universal arbitrary-Jordan coverage remains open.
 - Actual disk argument principle and zero-count homotopy, full finite-matrix pole enclosures, contour-constructed holomorphic root families and sharp Taylor/rate remainders, with Neumann/Schur inverse and actual matrix observable-residue formulas.
 - Exhaustion-independent finite common-routing sums and the gapped positive-measure meromorphic counterexample.
 
