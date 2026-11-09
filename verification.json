@@ -288,7 +288,7 @@
     "scope": "The ordered spectral-norm complex-parameter margin derives actual divisor count one at every admitted parameter. The first logarithmic-derivative contour moment constructs the unique simple root itself; actual joint analyticity and compact circle majorants prove its holomorphy throughout the full parameter disk and its baseline value. Exact derivative-defined Taylor coefficients, the sharp coefficient bound, endpoint sum, geometric remainder and finite-rate remainder follow, with no root branch or branch analyticity premise."
   },
   "prop:OQED-observable-residue-error": {
-    "status": "partial",
+    "status": "verified",
     "lean": [
       "UV.simple_denominator_residue",
       "UV.simple_denominator_residue_error",
@@ -317,7 +317,19 @@
       "UV.rectifiableArcPath_matrix_observable_residue_error",
       "UV.pole_residue_nonzero_of_error"
     ],
-    "scope": "Literal finite-matrix determinant/adjugate formulas construct actual inverse/observable pole numerators and residues, including readout cancellation. Continuous rectifiable paths now have constructed arc-length representatives preserving ordered traversal, image and exact total variation; genuine Lipschitz FTC, integrability, Neumann contour errors and uniform contour limits are proved. Genuine Bernstein smoothing defines geometric winding without contour integrals; its kernel identity and positive-circle orientation are derived. Continuous homotopy invariance and an internally constructed filling in a specified simply-connected open analytic domain give actual differing-pole denominator and literal matrix-observable residue errors, with the original geometric-length factor. The constructed determinant/adjugate numerator and ordered matrix Neumann identity give exactly length/(2pi) times Lout*Lin*B^2*epsilon/(1-B*epsilon), in compatible Euclidean operator norms and with the same endpoint maps; the strict residue margin yields nonvanishing. The source proposition remains partial: the existence of the required filling/domain for every arbitrary Jordan contour is not proved. No contour/residue identity, primitive or holomorphic pole numerator is assumed as certificate data."
+    "scope": "The independently pinned Jordan companion proves the universal source statement for an actual continuous, simple, rectifiable closed path. The proved Jordan-Schoenflies square extension constructs a filling inside the actual contour and bounded interior; no filling or simply-connected-domain certificate is assumed. Analyticity only near that filled region and the unique simple interior determinant zeros construct actual observable residues. Genuine arc-length and geometric-winding constructions, scalar Cauchy integration and Hahn-Banach dual separation handle arbitrary normed input and Banach output channels. Finite-basis coordinates supply only determinant/adjugate algebra; all inverse/readout bounds stay in their original compatible operator norms. Neumann derives exact boundary invertibility and the exact original-length Lout*Lin*B^2*epsilon/(2pi*(1-B*epsilon)) error, allowing distinct poles and vanishing readout residues; the strict lower margin proves visibility. All local and imported Schoenflies declarations pass the independent transitive axiom audit. The root and companion proofs are compiled separately under their exact toolchain/dependency pins.",
+    "lean_projects": {
+      "jordan": [
+        "UV.isJordanCurve_of_simple_closedPath",
+        "UV.jordanFilledRegion_path_nullhomotopy",
+        "UV.jordanContour_cauchy",
+        "UV.jordanContour_simple_denominator_residue",
+        "UV.observable_rectifiable_jordan_residue_error",
+        "UV.compatibleOperator_observable_quotient",
+        "UV.jordanContour_compatibleOperator_residue_error",
+        "UV.observable_rectifiable_jordan_residue_error_compatible"
+      ]
+    }
   },
   "thm:OQED-strong-depth-crossover": {
     "status": "verified",

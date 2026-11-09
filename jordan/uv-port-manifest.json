@@ -1,0 +1,239 @@
+{
+  "source_repository": "https://github.com/GiovanniC137z/uv-lean",
+  "source_commit": "4e692e08274c93b567660a870673f774ccbc7e0c",
+  "original_toolchain": "leanprover/lean4:v4.24.0",
+  "target_toolchain": "leanprover/lean4:v4.32.2",
+  "roots": [
+    "UV.CertifiedObservableContourError",
+    "UV.JordanHolomorphicHomotopy",
+    "UV.JordanCauchyHomotopy",
+    "UV.SimplyConnectedContourFilling"
+  ],
+  "modules": [
+    {
+      "module": "UV.Response",
+      "path": "UV/Response.lean",
+      "original_sha256": "63cc9ee62d5b4b855c98ae3fbd89a2febf948cfd0cdd1c6130a36cab58dd5e1d",
+      "ported_sha256": "3d471817234865bf739e293d82fef300906347b9dcf7643d0cdfee702d4056b9",
+      "modified_for_compatibility": true
+    },
+    {
+      "module": "UV.PoleCertificates",
+      "path": "UV/PoleCertificates.lean",
+      "original_sha256": "a183cdf797dfbda105bfed73f2773882219c576aeec4a7866f926fb72b2383b6",
+      "ported_sha256": "9d1dbf131d30b02000c77f3953cac570d778eb415b1666377f9736c496f8a685",
+      "modified_for_compatibility": true
+    },
+    {
+      "module": "UV.MatrixAdjugate",
+      "path": "UV/MatrixAdjugate.lean",
+      "original_sha256": "58e65acc5e490c6dea69712d37dae973a59b58472a1372ef6b11ec8eaae7603d",
+      "ported_sha256": "0fb4a68e9f79d96735852e716c0cd7a2aa1373c2b98398e2fa2a41b497ca6325",
+      "modified_for_compatibility": true
+    },
+    {
+      "module": "UV.MatrixPole",
+      "path": "UV/MatrixPole.lean",
+      "original_sha256": "fbf391823ba4cb52fe0db1b2e258d67ac4c885c08555653ea60830391425d0ce",
+      "ported_sha256": "fbf391823ba4cb52fe0db1b2e258d67ac4c885c08555653ea60830391425d0ce",
+      "modified_for_compatibility": false
+    },
+    {
+      "module": "UV.SimplyConnectedContourFilling",
+      "path": "UV/SimplyConnectedContourFilling.lean",
+      "original_sha256": "e91ae1508af39838edd3f6bf52b8fe35473cd91ce2d97a02680cdb81cdf75d59",
+      "ported_sha256": "e91ae1508af39838edd3f6bf52b8fe35473cd91ce2d97a02680cdb81cdf75d59",
+      "modified_for_compatibility": false
+    },
+    {
+      "module": "UV.ContourResidue",
+      "path": "UV/ContourResidue.lean",
+      "original_sha256": "50f7a55a4b88249c42e49c76ad077c21839ba0e74f78755c6dae9565297bf8f5",
+      "ported_sha256": "50f7a55a4b88249c42e49c76ad077c21839ba0e74f78755c6dae9565297bf8f5",
+      "modified_for_compatibility": false
+    },
+    {
+      "module": "UV.JordanCauchyHomotopy",
+      "path": "UV/JordanCauchyHomotopy.lean",
+      "original_sha256": "5a7b7677f50f709ce70c665575a095bad95a35de8274cd15729bda926450e671",
+      "ported_sha256": "a565c0a8df36be4f88b192a9209067fb87492955fae61be75ba670796d178e59",
+      "modified_for_compatibility": true
+    },
+    {
+      "module": "UV.JordanHolomorphicHomotopy",
+      "path": "UV/JordanHolomorphicHomotopy.lean",
+      "original_sha256": "60429a09785a54c3bf0c136a3d26293e447560003097c8e2843115b2dd5c3c8c",
+      "ported_sha256": "1832aefadeb2d375995ac9e69bb9881d0a374e1de07ec8e55b01feb0b14a74c4",
+      "modified_for_compatibility": true
+    },
+    {
+      "module": "UV.BernsteinContourHomotopy",
+      "path": "UV/BernsteinContourHomotopy.lean",
+      "original_sha256": "d7ca495f7c49dbb8cf3de25021f0490d5d3b5980c96966dfb16bb8610423e532",
+      "ported_sha256": "678544922ab76b2f80e55a816d40f38b311c027d4f41e11fbb30b16d17218b8e",
+      "modified_for_compatibility": true
+    },
+    {
+      "module": "UV.BernsteinContourTensor",
+      "path": "UV/BernsteinContourTensor.lean",
+      "original_sha256": "58438c72c29fc6198f1148c6d124b6cad2c8b68ccae7cde22b3a667cc588b36a",
+      "ported_sha256": "c8cf66a939021818a81037342798f957f4bf652bd18346b9988af3b4eb7abc89",
+      "modified_for_compatibility": true
+    },
+    {
+      "module": "UV.BernsteinContourBoundary",
+      "path": "UV/BernsteinContourBoundary.lean",
+      "original_sha256": "c3148dbd0c5f0a32dac7692be73db21bfee406756ad2a78584814865fbfccf11",
+      "ported_sha256": "c3148dbd0c5f0a32dac7692be73db21bfee406756ad2a78584814865fbfccf11",
+      "modified_for_compatibility": false
+    },
+    {
+      "module": "UV.LipschitzFTC",
+      "path": "UV/LipschitzFTC.lean",
+      "original_sha256": "634d9ed850d53a901e2de23d8d67630a560ed2b362d00f28faf7fbe111325488",
+      "ported_sha256": "3a883a04ad3497786338fcc619fcec42476afb6ed56179ef70c71a028e6a70e8",
+      "modified_for_compatibility": true
+    },
+    {
+      "module": "UV.RectifiableContourIntegral",
+      "path": "UV/RectifiableContourIntegral.lean",
+      "original_sha256": "f5842b6d5c1295f7b55c37ea189e49ef557afc9f3c6b107f21afd9dd8bbf8c87",
+      "ported_sha256": "b71123d3aa237bba1c4c496de245d30b3bd443d024b16025c67dcd532071200b",
+      "modified_for_compatibility": true
+    },
+    {
+      "module": "UV.RectifiableContourPrimitive",
+      "path": "UV/RectifiableContourPrimitive.lean",
+      "original_sha256": "2f621c8e955dcc46a6c09a1f568322f1526831eb9dcce8b11c21c1cc1f070003",
+      "ported_sha256": "3d22a987cf673e1e43b46eecd290002c2add881c443e238323fb240df6ffd37d",
+      "modified_for_compatibility": true
+    },
+    {
+      "module": "UV.RectifiableContourConvergence",
+      "path": "UV/RectifiableContourConvergence.lean",
+      "original_sha256": "d3b5544601bb129c68daadf821f36313b0506608346b240bec4178c512cfd18f",
+      "ported_sha256": "d8aefafc4820dbea038e22bdc478caa3eae07c66630be9c09e5ca0a974eca5e5",
+      "modified_for_compatibility": true
+    },
+    {
+      "module": "UV.RectifiableCauchyHomotopy",
+      "path": "UV/RectifiableCauchyHomotopy.lean",
+      "original_sha256": "10a317dac5d4727fabf9a642c23f8e2d23a87cac71c95fb18586f3335732a18a",
+      "ported_sha256": "d588162a3efbea46492ca6b0247370bc62f4e7362f074fda5b5f4ce7090720a6",
+      "modified_for_compatibility": true
+    },
+    {
+      "module": "UV.SimplyConnectedContourCauchy",
+      "path": "UV/SimplyConnectedContourCauchy.lean",
+      "original_sha256": "c322bf034de6a5326281241944c8fce233149129be4a3f9db714d3a6e4d1f665",
+      "ported_sha256": "c322bf034de6a5326281241944c8fce233149129be4a3f9db714d3a6e4d1f665",
+      "modified_for_compatibility": false
+    },
+    {
+      "module": "UV.JordanResiduePrimitive",
+      "path": "UV/JordanResiduePrimitive.lean",
+      "original_sha256": "b5b72d4bb47f386400e4bd79647ac6e2ea1f8e39304c805d1284be781f42ce7b",
+      "ported_sha256": "4c2e2709ea4873ea055f1a0ce69c5ed6889034109ec708fb375ecae1ed22b3ed",
+      "modified_for_compatibility": true
+    },
+    {
+      "module": "UV.JordanResidueWinding",
+      "path": "UV/JordanResidueWinding.lean",
+      "original_sha256": "a319801602af3ff8ec3969b499aa452f73f4f8c9726a7793a34d6ca0dde1680e",
+      "ported_sha256": "a319801602af3ff8ec3969b499aa452f73f4f8c9726a7793a34d6ca0dde1680e",
+      "modified_for_compatibility": false
+    },
+    {
+      "module": "UV.JordanResidueFormula",
+      "path": "UV/JordanResidueFormula.lean",
+      "original_sha256": "95fa8119a566c31fc975ef6f987e742b5026a5d8c29b18ca0455ebaed0100a9b",
+      "ported_sha256": "95fa8119a566c31fc975ef6f987e742b5026a5d8c29b18ca0455ebaed0100a9b",
+      "modified_for_compatibility": false
+    },
+    {
+      "module": "UV.JordanResidueLiftConstruction",
+      "path": "UV/JordanResidueLiftConstruction.lean",
+      "original_sha256": "f95e323bbd25ba0e6dfb363f22eed71a0f15f03baca8630852b5ecffb379ba35",
+      "ported_sha256": "f95e323bbd25ba0e6dfb363f22eed71a0f15f03baca8630852b5ecffb379ba35",
+      "modified_for_compatibility": false
+    },
+    {
+      "module": "UV.JordanResidueCertificate",
+      "path": "UV/JordanResidueCertificate.lean",
+      "original_sha256": "7283d8ff97a7b322a6fbd1b72a8fddd08908f4cce9098b7410f2a4cc7df20ee3",
+      "ported_sha256": "7283d8ff97a7b322a6fbd1b72a8fddd08908f4cce9098b7410f2a4cc7df20ee3",
+      "modified_for_compatibility": false
+    },
+    {
+      "module": "UV.RectifiableContourWinding",
+      "path": "UV/RectifiableContourWinding.lean",
+      "original_sha256": "05c3dedd8f767a1030ab4deedc7565e5888f6db4db35da6f122311828eab8c7f",
+      "ported_sha256": "38838ee376698047f0b436a26090e7183e2b099efe4229367ca171bd665c50dd",
+      "modified_for_compatibility": true
+    },
+    {
+      "module": "UV.JordanResidueAnalytic",
+      "path": "UV/JordanResidueAnalytic.lean",
+      "original_sha256": "6f00a8e4c2fcbec5f37dc6463815538abddc0246d4b064b4c51bb1b3b4814e76",
+      "ported_sha256": "6f00a8e4c2fcbec5f37dc6463815538abddc0246d4b064b4c51bb1b3b4814e76",
+      "modified_for_compatibility": false
+    },
+    {
+      "module": "UV.RectifiableContourParameter",
+      "path": "UV/RectifiableContourParameter.lean",
+      "original_sha256": "3a596545ddf7f019a3ebfd81deaf24725ff64ca9a77a8ccbe596294e40e41615",
+      "ported_sha256": "3a596545ddf7f019a3ebfd81deaf24725ff64ca9a77a8ccbe596294e40e41615",
+      "modified_for_compatibility": false
+    },
+    {
+      "module": "UV.RectifiableArcLength",
+      "path": "UV/RectifiableArcLength.lean",
+      "original_sha256": "3990944d91fc93dd432c686b5e7538efc1448e544d4542b44b1a4a556d750d7a",
+      "ported_sha256": "c3aa7b5fd3d0a362f23250d551a72c6ad599231138036ba22c6ce05dbb829d4d",
+      "modified_for_compatibility": true
+    },
+    {
+      "module": "UV.RectifiableArcPath",
+      "path": "UV/RectifiableArcPath.lean",
+      "original_sha256": "d134a38df657f953489bb3b9a147b1bc8669788aec40c4e8b88ca1205c142fb2",
+      "ported_sha256": "fc12731e46b0669f132b54e39b508e6af07a19aa05fb926e4a566062f8490ff7",
+      "modified_for_compatibility": true
+    },
+    {
+      "module": "UV.CertifiedRectifiableResidue",
+      "path": "UV/CertifiedRectifiableResidue.lean",
+      "original_sha256": "bf576fc871ca5456bf3181ce8c2ba8f3202ddc075dc69b50cee9c1eab4206eb8",
+      "ported_sha256": "122fb50714d983545acae490e0fa791cb320aaa4fcc7e63f3f6306b7e131c70c",
+      "modified_for_compatibility": true
+    },
+    {
+      "module": "UV.CertifiedMatrixContourResidue",
+      "path": "UV/CertifiedMatrixContourResidue.lean",
+      "original_sha256": "e933a2ea799a373fcc595970e5f03fd2a30c31949665f4ccd77cdfd500fe314d",
+      "ported_sha256": "e933a2ea799a373fcc595970e5f03fd2a30c31949665f4ccd77cdfd500fe314d",
+      "modified_for_compatibility": false
+    },
+    {
+      "module": "UV.MatrixObservableNeumannError",
+      "path": "UV/MatrixObservableNeumannError.lean",
+      "original_sha256": "1128d7e0b9c1aa8c395e376e55dfb0f705b6fa32c2cc58c514e96981aa3926f0",
+      "ported_sha256": "1128d7e0b9c1aa8c395e376e55dfb0f705b6fa32c2cc58c514e96981aa3926f0",
+      "modified_for_compatibility": false
+    },
+    {
+      "module": "UV.CertifiedObservableContourError",
+      "path": "UV/CertifiedObservableContourError.lean",
+      "original_sha256": "2cefc766ce9e18dfce3f182af48ae6450516b1d43daeddf4001886a4c019fb0f",
+      "ported_sha256": "d1aec285a0ea85641ea88be2bc35ba07097466e604570f29ecc2a0a4e5d6be6f",
+      "modified_for_compatibility": true
+    }
+  ],
+  "verification": {
+    "lean_toolchain": "leanprover/lean4:v4.32.2",
+    "mathlib_commit": "905b95818eb32af7874a58b427f50c1711a5e96c",
+    "build_command": "lake build UV.CertifiedObservableContourError",
+    "build_passed": true,
+    "exported_declarations_preserved": 255,
+    "prohibited_code_scan_passed": true
+  }
+}

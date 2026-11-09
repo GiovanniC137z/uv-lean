@@ -4,7 +4,7 @@
 
 A Lean 4 verification project for Giovanni Joseph Chiappone's *Conditional All-Orders UV Finiteness: Non-Abelian BRST Closure, Analyticity, and Crossing in Omniverse Quantum Field Theory*.
 
-**Status: 44 of 45 named mathematical results are verified; one remains partial. Full-paper verification remains incomplete.** The checked results include the original convergence theorems, exact kernel certificate, scalar analyticity and nonanalyticity results, Ward/contact obstructions, and finite-matrix pole certificates. The claim inventory distinguishes complete results from remaining components. A green build certifies the current Lean statements, not the entire paper or an interacting physical theory.
+**Status: all 45 named mathematical results are verified under their documented hypotheses.** The unchanged source inventory contains 48 environments: 45 results, two explicit physical assumptions and one definition. The checked results include convergence, exact kernel/scalar certificates, continuum ST, unbounded source normalization, finite-matrix poles and universal rectifiable Jordan-contour residue errors. This verifies the stated conditional mathematics; it does not construct the source's assumed interacting physical completion.
 
 ## Checked mathematics
 
@@ -20,28 +20,34 @@ A Lean 4 verification project for Giovanni Joseph Chiappone's *Conditional All-O
 - Clifford-matrix derivation of zero/nonzero-transfer Ward and contact obstructions, the exact common-cutoff Ward identity, the general bare-QED one-loop integrability criterion including zero mass and its exact convolution-moment test, and smooth positive-time probes violating heat-covariance reflection positivity.
 - Exact finite-mode field-redefinition/Jacobian cancellation, genuinely unbounded free-source normalization on the constructed common reducing graph core of the supplied spectral resolutions, and Hilbert-overlap residue positivity with a constructed invertible spectral normalization.
 - Conditional continuum BV/partition/full-logarithm/Legendre ST, the actual nonlinear formal loop hierarchy, and UV-finite coefficients of the same completed graph action in both characters.
-- Constructed arc-length representatives and certified rectifiable-contour Cauchy/residue estimates, including the original geometric-length factor. Universal arbitrary-Jordan coverage remains open.
+- Constructed arc-length representatives and certified rectifiable-contour Cauchy/residue estimates, including the original geometric-length factor. The independent Jordan companion proves universal arbitrary-Jordan coverage, with general Banach readouts and the original compatible operator norms.
 - Actual disk argument principle and zero-count homotopy, full finite-matrix pole enclosures, contour-constructed holomorphic root families and sharp Taylor/rate remainders, with Neumann/Schur inverse and actual matrix observable-residue formulas.
 - Exhaustion-independent finite common-routing sums and the gapped positive-measure meromorphic counterexample.
 
-See the [precise scope](docs/verification.md), [complete claim inventory](docs/claims.md), and [remaining work](docs/roadmap.md). `claims.json` retains all 48 labeled source environments, their original TeX, locations, and status. A partial entry never certifies an entire proposition.
+See the [precise scope](docs/verification.md), [complete claim inventory](docs/claims.md), and [assumptions and scope limits](docs/roadmap.md). `claims.json` retains all 48 labeled source environments, their original TeX, locations, and status. The inventory records each result's exact hypotheses, proof project and checked scope.
 
 ## Build and audit
 
-Install [elan](https://github.com/leanprover/elan), Python 3, and Git. Lean and all dependencies are pinned in `lean-toolchain` and `lake-manifest.json`.
+Install [elan](https://github.com/leanprover/elan), Python 3.11 or newer, and Git. The root project pins Lean 4.24.0; the independent [Jordan companion](jordan/README.md) pins Lean 4.32.2 and its exact mathlib/Schoenflies revisions. Each project rebuilds its own complete proof chain; compiled proofs are never imported across Lean versions.
 
 ```sh
 git clone https://github.com/GiovanniC137z/uv-lean.git
 cd uv-lean
 lake exe cache get
 lake build
-python3 scripts/claims.py
 python3 scripts/audit.py
+cd jordan
+MATHLIB_NO_CACHE_ON_UPDATE=1 lake update
+python3 scripts/fetch_cache.py
+lake build
+python3 scripts/audit.py
+cd ..
+python3 scripts/claims.py
 ```
 
-If the default mathlib cache host is unavailable, mathlib also supports its public mirror with `USE_FRO_CACHE=1 lake exe cache get`. Compilation from source is also possible.
+The root toolchain supports its public cache mirror with `USE_FRO_CACHE=1 lake exe cache get`. The companion uses its pinned newer cache client. Cache downloads are optional; compilation from source is also possible.
 
-CI repeats the build, checks the document hash and claim inventory, and audits the transitive axioms of **every local theorem/lemma and every compiled declaration under `UV`**. Only Lean's standard `propext`, `Classical.choice`, and `Quot.sound` are permitted. Proof placeholders and project-specific axioms fail the checks. Unfinished results are recorded in the inventory, not declared as trusted axioms.
+CI independently builds and audits both projects, checks the document hash and project-aware claim inventory, and audits the transitive axioms of **every local theorem/lemma and every compiled declaration under `UV`**, together with every imported Schoenflies declaration in the companion. Only Lean's standard `propext`, `Classical.choice`, and `Quot.sound` are permitted. Proof placeholders and project-specific axioms fail the checks. The physical assumptions are stated as hypotheses, never as new trusted project axioms.
 
 ## Source and interpretation
 
