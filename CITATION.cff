@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: >-
+  If you use this Lean verification project, please cite the accompanying
+  manuscript using the preferred citation below.
+type: software
+title: UV Lean verification
+authors:
+  - given-names: Giovanni Joseph
+    family-names: Chiappone
+    orcid: https://orcid.org/0009-0005-1689-463X
+repository-code: https://github.com/GiovanniC137z/uv-lean
+url: https://github.com/GiovanniC137z/uv-lean
+license: Apache-2.0
+preferred-citation:
+  type: article
+  title: >-
+    Conditional All-Orders UV Finiteness: Non-Abelian BRST Closure,
+    Analyticity, and Crossing in Omniverse Quantum Field Theory
+  authors:
+    - given-names: Giovanni Joseph
+      family-names: Chiappone
+      orcid: https://orcid.org/0009-0005-1689-463X
+  doi: 10.5281/zenodo.24069798
+  url: https://doi.org/10.5281/zenodo.24069798
