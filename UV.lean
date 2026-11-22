@@ -251,6 +251,7 @@ import UV.FurtherCurvatureIntegration
 import UV.FurtherCurvatureLine
 import UV.FurtherCurvatureShell
 import UV.FurtherOpticalBand
+import UV.FurtherOpticalLorentz
 import UV.FurtherOpticalOverlap
 import UV.FurtherOpticalProjector
 import UV.FurtherPoleVariation

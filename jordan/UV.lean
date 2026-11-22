@@ -36,6 +36,7 @@ import UV.RectifiableContourWinding
 import UV.Response
 import UV.SimplyConnectedContourCauchy
 import UV.SimplyConnectedContourFilling
+import UV.FurtherBoundaryDensity
 import UV.FurtherBoundaryFourier
 import UV.FurtherOpeningCLT
 import UV.FurtherOpeningCriticalLimit

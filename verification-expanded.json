@@ -1006,7 +1006,7 @@
       "UV.ContinuationBoundary.lintegral_tsum_continuous_finite_family",
       "UV.ContinuationBoundary.paired_coefficient_weighted_moment_arbitrary_bases"
     ],
-    "scope": "Constructs the actual complex overlap measures from the normalized strongly additive displacement PVM and derives a uniform finite-partition total variation bound. Identifies the positive paired Hilbert–Schmidt square with the matrix entry squares in arbitrary Hilbert bases, bounds it for a Hilbert–Schmidt incoming map and contractive phase, and proves exact weighted Tonelli when scalar phase entries are continuous on the separable momentum plane. For each finite complex measure, the Jordan companion proves its positive Fourier phase represents its inverse Fourier distribution. Finite energy with the exact physical Bessel multiplier is equivalent to an L² representative of the measure distribution with L² Bessel potential, and equals the exact squared L² Bessel norm. The identification of the distributional representative with the actual measure density, weak spectral integral identification, and the explicit normalized momentum measure change of variables remain open.",
+    "scope": "Constructs actual complex overlap measures from the normalized strongly additive displacement PVM and derives a uniform finite-partition total variation bound. Identifies the positive paired Hilbert–Schmidt square with the matrix entry squares in arbitrary Hilbert bases, bounds it for a Hilbert–Schmidt incoming map and contractive phase, and proves exact weighted Tonelli when scalar phase entries are continuous on the separable momentum plane. For each finite complex measure, the Jordan companion proves its positive Fourier phase represents its inverse Fourier distribution. Finite energy with the physical Bessel multiplier is equivalent to an L² representative of the measure distribution with L² Bessel potential. It produces a genuine integrable density on all measurable sets and identifies the exact squared L² Bessel norm. The converse from an ordinary measure density alone, weak spectral integral identification, and the explicit normalized momentum measure change of variables remain open.",
     "lean_projects": {
       "jordan": [
         "UV.ContinuationBoundary.complex_overlap_phase_test",
@@ -1014,7 +1014,9 @@
         "UV.ContinuationBoundary.overlap_energy_eq_weighted_square",
         "UV.ContinuationBoundary.overlap_energy_bessel_iff",
         "UV.ContinuationBoundary.overlap_bessel_norm_exact",
-        "UV.ContinuationBoundary.overlap_finite_iff_bessel_potential"
+        "UV.ContinuationBoundary.overlap_finite_iff_bessel_potential",
+        "UV.ContinuationBoundary.overlap_density_of_distribution_eq",
+        "UV.ContinuationBoundary.overlap_density_and_norm_of_finite_energy"
       ]
     }
   },
@@ -1037,9 +1039,16 @@
       "UV.FurtherOptical.optical_boost_obstruction",
       "UV.FurtherOptical.optical_canonicalDensity_overlap_identity",
       "UV.FurtherOptical.optical_canonicalDensity_tendsto_departure_mass",
-      "UV.FurtherOptical.pair_positive_timelike_band_integral"
+      "UV.FurtherOptical.pair_positive_timelike_band_integral",
+      "UV.FurtherOptical.restQuarter12_preserves_metric",
+      "UV.FurtherOptical.restQuarter13_preserves_metric",
+      "UV.FurtherOptical.conserved_rest_tensor",
+      "UV.FurtherOptical.lorentz_tensor_from_rest",
+      "UV.FurtherOptical.lorentz_tensor_time_weight",
+      "UV.FurtherOptical.axialBoost_preserves_metric",
+      "UV.FurtherOptical.axialBoost_restMomentum"
     ],
-    "scope": "Checks the actual normalized (2π)⁻³ three-dimensional trace density, its uniform finite-slot L² bound, the positive timelike shell-band lower bound, and the same-plane no-go against an admitted Lorentz spectrum of that form. For the specified optical Hamiltonian, verifies unit Clifford coefficients, Hermitian idempotents of exact trace two, Gaussian square-integrability of the departure from the constant projector, strictly positive normalized pair integral on a ball in a compact positive timelike band, and the normalized large-shift density limit via the Gaussian envelope. The derivation of the Lorentz tensor from covariance and conservation remains open, as does the large-shift overlap argument for an arbitrary square-integrable departure beyond the optical model."
+    "scope": "Checks the actual normalized (2π)⁻³ three-dimensional trace density, its uniform finite-slot L² bound, the positive timelike shell-band lower bound, and the same-plane no-go against an admitted Lorentz spectrum of that form. For the specified optical Hamiltonian, verifies unit Clifford coefficients, Hermitian idempotents of exact trace two, Gaussian square-integrability of the departure from the constant projector, strictly positive normalized pair integral on a ball in a compact positive timelike band, and the normalized large-shift density limit via the Gaussian envelope. From matrix conservation, positivity, and the explicit metric-preserving spatial rotations, verifies the exact rest tensor and its boost to the transverse Lorentz tensor on the same locked diamond. Verifies the physical future-shell time entry, the equal-time spectral weight with the mass-shell Jacobian factor, and an explicit Lorentz boost along the unbounded transfer axis. The distributional spectral disintegration and the large-shift overlap argument for an arbitrary square-integrable departure beyond the optical model remain open."
   },
   "cor:final-collar-joint-uv": {
     "status": "partial",
