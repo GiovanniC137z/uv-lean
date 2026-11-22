@@ -288,7 +288,7 @@
   },
   "eq:massless-branch": {
     "status": "verified",
-    "scope": "In the original quotient, subtracts the massless inverse and the inverse-square-root term at the same positive height. The remainder has norm at most a² whenever |a| times the square root of the shifted coefficient norm is at most one. This is the quantitative O(1) bound in the displayed expansion. For positive depth the remainder after the unit pole is unbounded along the actual positive-height ray at the tip. The single-line jump through the cone tip is checked on compact continuous real four-momentum tests at nonnegative depth. It has the locally integrable timelike sine term and the unweighted delta on both axial sheets, with coefficient −2πi, and reconstructs in the directed quotient. In the adjacent square calculation, the actual flat four-momentum polar change of variables gives the normalized density (1−u)/(π√(1−u²)) and area factor 2π². The simple and squared pole averages are evaluated exactly at every positive height for either orientation. Subtracting the Lipschitz test value at the angular shell bounds the normalized simple-pole pairing uniformly in height and gives the linear radial majorant. The imaginary part of the uncontracted square on every continuous compact radial test equal to one near the tip has coefficient ηπ² multiplying log(href/h), with a uniform bounded remainder. A smooth compact test witnesses signed divergence. For the quadratic numerator, checks the intrinsic unit-four-vector scaling, the exact axial and summed-spatial angular weights, and the temporal and equal-coordinate spatial diagonal averages with coefficient bounds 2 and 2/3. The two radial powers yield integrable majorants and exact positive-height limits for the unweighted temporal and spatial diagonal pairings on the actual four-momentum measure. Measure-preserving spatial coordinate swaps and sign flips give one-third of the trace for each diagonal component and zero for every mixed component on these radial tests. Arbitrary nonradial tensor tests and the stable-half tensor remainder remain open.",
+    "scope": "In the original quotient, subtracts the massless inverse and the inverse-square-root term at the same positive height. The remainder has norm at most a² whenever |a| times the square root of the shifted coefficient norm is at most one. This is the quantitative O(1) bound in the displayed expansion. For positive depth the remainder after the unit pole is unbounded along the actual positive-height ray at the tip. The single-line jump through the cone tip is checked on compact continuous real four-momentum tests at nonnegative depth. It has the locally integrable timelike sine term and the unweighted delta on both axial sheets, with coefficient −2πi, and reconstructs in the directed quotient. In the adjacent square calculation, the actual flat four-momentum polar change of variables gives the normalized density (1−u)/(π√(1−u²)) and area factor 2π². The simple and squared pole averages are evaluated exactly at every positive height for either orientation. Subtracting the Lipschitz test value at the angular shell bounds the normalized simple-pole pairing uniformly in height and gives the linear radial majorant. The imaginary part of the uncontracted square on every continuous compact radial test equal to one near the tip has coefficient ηπ² multiplying log(href/h), with a uniform bounded remainder. A smooth compact test witnesses signed divergence. For the quadratic numerator, checks the intrinsic unit-four-vector scaling, the exact axial and summed-spatial angular weights, and the temporal and equal-coordinate spatial diagonal averages with coefficient bounds 2 and 2/3. The two radial powers yield integrable majorants and exact positive-height limits for the unweighted temporal and spatial diagonal pairings on the actual four-momentum measure. Measure-preserving spatial coordinate swaps and sign flips give one-third of the trace for each diagonal component and zero for every mixed component on these radial tests. The exact nonradial four-momentum polar disintegration retains the spatial Euclidean unit sphere and both axial sheets. The normal coordinate is realized on actual intrinsic unit four-vectors. At positive height the unweighted angular simple and squared poles use the exact normalized density. Subtracting the first one or two normal Taylor terms gives exact boundary pairings and uniform bounds. For compact continuous Cartesian tests with the stated uniform linear normal bounds, the simple pole has a finite limit through the tip. For compact continuous tests containing the quadratic numerator with uniformly bounded value, slope and quadratic normal remainder of their radius-normalized amplitude, the same squared-pole pairing has an exact finite boundary limit. For arbitrary compact Cartesian C² tests, Lean derives those uniform jets on the regular interior strip and bounds the endpoints from continuity on compact parameter sets. The resulting simple-pole limit applies on every such test. The quadratic limit applies with the literal product of any two real continuous linear momentum slots, including all axial and spatial longitudinal numerator components. The exact stable-half squared coefficient splits at the same positive height into the double pole, the inverse-cube principal root term, the simple pole with coefficient −a²/2, and an inverse-root-bounded residual. On a regular angular window, integration by parts against the inverse root gives an r² radial majorant for the fractional term. In Cartesian four-momentum, the derivative of the inverse root in an intrinsic unit direction is its inverse cube times the corresponding covariant momentum component. Integration by parts using that actual numerator gives the fractional limit through the tip on arbitrary compact C¹ tests. The residual has an absolutely integrable boundary limit on compact continuous tests. The full longitudinal coefficient has a boundary limit on compact C¹ tests with the stated uniform normal angular Taylor bounds, and the finite-height product is identified exactly in the original directed quotient. The uniform normal bounds follow for every compact Cartesian C² test of the actual quadratic numerator. The checked C² theorem gives both the coefficient limit and its directed reconstruction.",
     "lean": [
       "UV.SectorPlane.stable_half_massless_remainder",
       "UV.SectorPlane.Plane.stable_half_massless_directed_remainder",
@@ -343,7 +343,38 @@
       "UV.SectorPlane.Plane.cone_mixed_components",
       "UV.SectorPlane.Plane.cone_spatial_components_limit",
       "UV.SectorPlane.cone_angular_test_norm_le",
-      "UV.SectorPlane.cone_angular_simple_radial_norm_le"
+      "UV.SectorPlane.cone_angular_simple_radial_norm_le",
+      "UV.SectorPlane.cone_angular_single_pairing_tendsto",
+      "UV.SectorPlane.cone_angular_square_pairing_tendsto",
+      "UV.SectorPlane.cone_angular_square_pairing_norm_le",
+      "UV.SectorPlane.cone_spatial_direction_norm",
+      "UV.SectorPlane.coneAngularDirection_coordinate",
+      "UV.SectorPlane.cone_full_nonradial_normal_integral",
+      "UV.SectorPlane.Plane.cone_nonradial_polar_pairing",
+      "UV.SectorPlane.Plane.cone_nonradial_quadratic_pairing",
+      "UV.SectorPlane.Plane.cone_nonradial_single_limit",
+      "UV.SectorPlane.Plane.cone_nonradial_quadratic_limit",
+      "UV.SectorPlane.exp_quadratic_remainder_norm_le_of_re_nonpos",
+      "UV.SectorPlane.Plane.stable_square_coefficient_split",
+      "UV.SectorPlane.Plane.stable_square_coefficient_directed",
+      "UV.SectorPlane.Plane.stable_shell_root_tendsto",
+      "UV.SectorPlane.Plane.stable_shell_inverse_root_angular_derivative",
+      "UV.SectorPlane.Plane.stable_angular_fractional_pair_limit",
+      "UV.SectorPlane.Plane.stable_angular_fractional_radial_bound",
+      "UV.SectorPlane.Plane.stable_square_residual_full_momentum",
+      "UV.SectorPlane.coneCovector_axial",
+      "UV.SectorPlane.coneCovector_spatial",
+      "UV.SectorPlane.Plane.stable_inverse_root_directional_derivative",
+      "UV.SectorPlane.Plane.stable_tensor_fractional_pair_limit",
+      "UV.SectorPlane.Plane.massless_longitudinal_integrand_directed",
+      "UV.SectorPlane.Plane.massless_stable_longitudinal_limit",
+      "UV.SectorPlane.cone_uniform_normal_jet",
+      "UV.SectorPlane.cone_smooth_quadratic_normal_jet",
+      "UV.SectorPlane.cone_smooth_single_normal_jet",
+      "UV.SectorPlane.cone_radial_cutoff_of_compact",
+      "UV.SectorPlane.Plane.cone_nonradial_smooth_single_limit",
+      "UV.SectorPlane.Plane.cone_nonradial_smooth_longitudinal_limit",
+      "UV.SectorPlane.Plane.massless_stable_longitudinal_C2_limit"
     ]
   },
   "eq:physical-unitarity-identity": {
@@ -378,6 +409,82 @@
       "UV.RevisionSpectrum.continueLayerFormMeasure_locallyFinite",
       "UV.RevisionSpectrum.continue_positive_bulk_spectrum",
       "UV.RevisionSpectrum.continue_layer_pair_measure_nonnegative"
+    ]
+  },
+  "eq:update-spectral-product-budget": {
+    "status": "verified",
+    "scope": "For setwise-positive locally finite two-channel spectral measures on the fixed sector plane, derives the actual complex cross variation from the bounded restrictions as their least dominating measures. The variation-weighted Stieltjes transform is finite at every positive reference point and both precise product and sum bounds hold for independent positive diagonals.",
+    "lean": [
+      "UV.RevisionSpectrum.SetwiseSpectralCompletion.crossVariation_local_spec",
+      "UV.RevisionSpectrum.SetwiseSpectralCompletion.variation_budget"
+    ]
+  },
+  "eq:uvpeC-vacuum": {
+    "status": "verified",
+    "scope": "Evaluates the expectation of the actual transported squared bracket in the kinetic Gaussian law at each fixed positive depth. On the normalized period-2π torus, the signed Haar sine/cosine modes give a constant local sum and independent field colors give the exact half-color norm and the square of the full two-endpoint curvature line sum. The exact spherical formula holds at every real cutoff. With one common determinant, this coefficient equals the spherical and continuum two-line graph and converges after integration against the finite nonnegative-depth law.",
+    "lean": [
+      "UV.AdvanceCurvatureLines.signedMode_sq_pair",
+      "UV.AdvanceCurvatureLines.transferWeight_sq_half",
+      "UV.AdvanceCurvatureLines.localized_spherical_line_sum",
+      "UV.AdvanceCurvatureLines.spherical_line_sum_limit",
+      "UV.AdvanceCurvatureWick.baseCoord_pair_integral",
+      "UV.AdvanceCurvatureWick.independentField_four_integral",
+      "UV.AdvanceCurvatureWick.cutoff_bracket_leg_expansion",
+      "UV.AdvanceCurvatureWick.cutoffBracketPotential_quartic_expansion",
+      "UV.AdvanceCurvatureWick.cutoffBracketPotential_diagonal_wick",
+      "UV.AdvanceCurvatureEnvelope.bracketPotential_power_envelope",
+      "UV.AdvanceCurvatureEnvelope.bracketPotential_power_integral_limit",
+      "UV.AdvanceCurvatureVacuum.colorBracketSquare_pos",
+      "UV.AdvanceCurvatureVacuum.cutoff_vacuum_coefficient",
+      "UV.AdvanceCurvatureVacuum.continuum_vacuum_coefficient",
+      "UV.AdvanceCurvatureVacuum.depthBracketPotential_depthRescale",
+      "UV.AdvanceCurvatureVacuum.continuum_vacuum_depthGaussian",
+      "UV.AdvanceCurvatureVacuum.spherical_vacuum_graph",
+      "UV.AdvanceCurvatureVacuum.continuum_vacuum_graph",
+      "UV.AdvanceCurvatureVacuum.integrated_vacuum_coefficient_limit"
+    ]
+  },
+  "eq:uvpeC-sector-action": {
+    "status": "verified",
+    "scope": "Computes dA+A∧A in the ordered orthonormal two-form coordinate basis of the sector plane and two internal directions. For the three diagonal blocks, the horizontal-internal components supply exactly the four kinetic gradient norms, and the θ¹∧θ² component is the commutator of U and W in the third block. Integrating gives the kinetic plus squared-bracket formula with the manuscript’s 1/2 and normalized Haar measure. The signed-mode gradients along the four Euclidean unit coordinates are the actual derivatives on the cover, and their integrated finite-square sum is precisely the source kinetic form.",
+    "lean": [
+      "UV.AdvanceCurvatureAction.curvature_horizontal_horizontal",
+      "UV.AdvanceCurvatureAction.curvature_horizontal_internal",
+      "UV.AdvanceCurvatureAction.curvature_internal",
+      "UV.AdvanceCurvatureAction.block_curvature_decomposition",
+      "UV.AdvanceCurvatureAction.three_block_curvature_decomposition",
+      "UV.AdvanceCurvatureAction.integrated_sector_action",
+      "UV.AdvanceCurvatureKinetic.fderiv_modeOnCover_unit",
+      "UV.AdvanceCurvatureKinetic.torusFourierGradient_on_cover",
+      "UV.AdvanceCurvatureKinetic.gradient_kinetic_diagonal",
+      "UV.AdvanceCurvatureKinetic.copied_gradient_kinetic_diagonal",
+      "UV.AdvanceCurvatureKinetic.spherical_sector_kinetic_action"
+    ]
+  },
+  "eq:uvpeC-determinant": {
+    "status": "verified",
+    "scope": "The actual spherical signed Fourier gradients give the full diagonal copied kinetic form. Its finite Gaussian integral divided by the boundary-only kinetic integral is exactly the manuscript determinant, with the two real fields in n orthonormal colors and one common depth. In the physical Gaussian preparation each real signed mode has exactly the displayed diagonal covariance. The inverse determinant converges at positive depth to the unrestricted product and tends to zero at the depth-zero atom.",
+    "lean": [
+      "UV.AdvanceCurvatureKinetic.fderiv_modeOnCover_unit",
+      "UV.AdvanceCurvatureKinetic.torusFourierGradient_on_cover",
+      "UV.AdvanceCurvatureKinetic.gradient_kinetic_diagonal",
+      "UV.AdvanceCurvatureKinetic.copied_gradient_kinetic_diagonal",
+      "UV.AdvanceCurvatureKinetic.spherical_sector_kinetic_action",
+      "UV.NextCurvatureGaussian.spherical_kinetic_partition_ratio",
+      "UV.NextCurvatureLaw.commonGaussian_map_depthRescale",
+      "UV.NextCurvatureLaw.mode_second_moment",
+      "UV.FurtherCurvatureDeterminant.full_determinant_hasProd",
+      "UV.FurtherCurvatureDeterminant.positive_depth_determinant_limit",
+      "UV.FurtherCurvatureDeterminant.zero_depth_determinant_limit"
+    ]
+  },
+  "eq:update-completed-bubble": {
+    "status": "verified",
+    "scope": "The actual positive diagonal Stieltjes transforms in a finite-weight, locally finite setwise-positive two-channel completion give a divergent integral in the four intrinsic Euclidean momentum coordinates for every fixed shift. The admitted nonzero cross entry forces each diagonal measure to be nonzero and supplies a positive lower tail in each factor.",
+    "lean": [
+      "UV.RevisionSpectrum.positive_diagonal_bubble_nonintegrable",
+      "UV.RevisionSpectrum.setwise_completed_bubble_nonintegrable",
+      "UV.RevisionSpectrum.setwise_completed_bubble_from_transform"
     ]
   }
 }

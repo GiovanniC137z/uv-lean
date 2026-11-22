@@ -815,14 +815,31 @@
     "scope": "Proves the positive spectral-measure rigidity at strictly positive monotone samples tending to infinity. Agreement with the free Stieltjes covariance to little-o of x to the negative third power forces the measure to equal the free unit Dirac atom. The proof derives unit mass and the first moment by monotone convergence and then forces zero centered second moment. The action-specific determinant, Gaussian integration by parts, and finite-charge rapid-frequency decay remain unformalized."
   },
   "prop:update-spectral-budget": {
-    "status": "partial",
+    "status": "verified",
     "lean": [
       "UV.RevisionSpectrum.cross_density_supported_at_pole",
       "UV.RevisionSpectrum.pure_pole_cross",
       "UV.RevisionSpectrum.positive_stieltjes_budget",
-      "UV.RevisionSpectrum.stieltjes_integrable"
+      "UV.RevisionSpectrum.stieltjes_integrable",
+      "UV.RevisionSpectrum.setwise_density_det_nonnegative",
+      "UV.RevisionSpectrum.finite_setwise_cross_absolutelyContinuous",
+      "UV.RevisionSpectrum.finite_setwise_spectral_density",
+      "UV.RevisionSpectrum.SetwiseSpectralCompletion.cross_agrees_on_window",
+      "UV.RevisionSpectrum.SetwiseSpectralCompletion.crossDensity_integral_local",
+      "UV.RevisionSpectrum.SetwiseSpectralCompletion.density_positive",
+      "UV.RevisionSpectrum.SetwiseSpectralCompletion.stieltjes_budget",
+      "UV.RevisionSpectrum.finite_norm_density_least",
+      "UV.RevisionSpectrum.SetwiseSpectralCompletion.crossVariation_local_spec",
+      "UV.RevisionSpectrum.SetwiseSpectralCompletion.variationStieltjes_eq",
+      "UV.RevisionSpectrum.SetwiseSpectralCompletion.variation_budget",
+      "UV.RevisionSpectrum.SetwiseSpectralCompletion.cross_restrict_at_pure_pole",
+      "UV.RevisionSpectrum.SetwiseSpectralCompletion.pure_pole_cross_stieltjes",
+      "UV.RevisionSpectrum.SetwiseSpectralCompletion.crossStieltjes_integrable",
+      "UV.RevisionSpectrum.SetwiseSpectralCompletion.crossSample_as_integral",
+      "UV.RevisionSpectrum.SetwiseSpectralCompletion.crossSample_tendsto",
+      "UV.RevisionSpectrum.SetwiseSpectralCompletion.crossVariation_support"
     ],
-    "scope": "Checks off-pole vanishing, the resulting pure-pole transform, both precise weighted diagonal inequalities, and weighted integrability at every positive reference point for Radon–Nikodym data with pointwise positive two-channel matrices. Derivation of the common positive density from arbitrary locally finite setwise-positive matrix measures remains outside this formalization."
+    "scope": "For arbitrary locally finite setwise-positive two-channel spectral measures on the fixed sector plane, constructs the common Radon–Nikodym densities from the actual positive diagonals and compatible bounded complex cross restrictions. The setwise determinant inequality gives absolute continuity and almost-everywhere positivity of the derived densities. The norm-density measure is the least positive variation measure on every bounded restriction and is concentrated on nonnegative spectral mass squared. The local Jordan transforms converge to the ordinary weighted cross transform. Its weighted transform is integrable at every positive x under finite diagonal weights at one positive reference, and obeys both exact diagonal budgets with independent diagonals. If the first diagonal is a positive multiple of a unit Dirac spectral atom, every bounded cross entry is supported on that atom and its ordinary Stieltjes transform has the exact pure-pole form."
   },
   "prop:update-cross-classification": {
     "status": "partial",
@@ -842,13 +859,24 @@
     "scope": "Checks the upper square-root branch, explicit boundary jump, extracted threshold, subthreshold and embedded pole coefficients, removable resonant density value, inverse-square-root threshold limit, failure of local integrability at generic embedded poles, and the large-mass inverse-power bound. Stieltjes representation, inversion and uniqueness for general signed measures, and the sharp logarithmic total-variation asymptotic remain open in Lean."
   },
   "cor:update-completed-bubble": {
-    "status": "partial",
+    "status": "verified",
     "lean": [
       "UV.RevisionSpectrum.stieltjes_antitone",
       "UV.RevisionSpectrum.stieltjes_scaled_lower",
-      "UV.RevisionSpectrum.completed_bubble_nonintegrable"
+      "UV.RevisionSpectrum.completed_bubble_nonintegrable",
+      "UV.RevisionSpectrum.diagonal_stieltjes_pos",
+      "UV.RevisionSpectrum.diagonal_stieltjes_weighted_integrable",
+      "UV.RevisionSpectrum.diagonal_stieltjes_scaled_lower",
+      "UV.RevisionSpectrum.SetwiseSpectralCompletion.cross_zero_of_first_zero",
+      "UV.RevisionSpectrum.SetwiseSpectralCompletion.cross_zero_of_second_zero",
+      "UV.RevisionSpectrum.SetwiseSpectralCompletion.diagonals_nonzero",
+      "UV.RevisionSpectrum.positive_diagonal_bubble_nonintegrable",
+      "UV.RevisionSpectrum.setwise_completed_bubble_nonintegrable",
+      "UV.RevisionSpectrum.SetwiseSpectralCompletion.crossSample_as_integral",
+      "UV.RevisionSpectrum.SetwiseSpectralCompletion.crossSample_tendsto",
+      "UV.RevisionSpectrum.setwise_completed_bubble_from_transform"
     ],
-    "scope": "Checks divergence of the displayed four-dimensional shifted diagonal bubble for every fixed external momentum in the positive common-density representation with nonzero cross transform. The proof obtains a positive inverse-square Stieltjes lower bound directly from the weighted cross mass and therefore does not require the logarithmic asymptotic. Derivation of the common density for the full setwise-positive measure formulation remains open."
+    "scope": "For arbitrary locally finite setwise-positive two-channel spectral completions on the fixed sector plane, the diagonals are actual positive measures and the complex cross measure is specified by its compatible bounded restrictions. The ordinary cross Stieltjes integral equals the limit of the exact finite complex-measure integrals, with absolute weighted integrability from the diagonal reference masses. An admitted shifted square-root cross transform at one positive reference point is nonzero and forces both actual diagonals to be nonzero by the setwise determinant inequality. With the stated finite weighted masses, the positive diagonal transforms each have a positive inverse-squared-momentum lower tail. The resulting four-dimensional shifted diagonal contraction is ultraviolet divergent for every fixed external momentum."
   },
   "prop:update-positive-bulk-spectrum": {
     "status": "verified",
@@ -937,9 +965,45 @@
       "UV.NextCurvatureFull.integrated_full_absolute_tail",
       "UV.NextCurvatureGaussian.spherical_kinetic_partition_ratio",
       "UV.NextCurvatureLaw.mode_second_moment",
-      "UV.NextCurvatureLaw.transferred_mode_second_moment"
+      "UV.NextCurvatureLaw.transferred_mode_second_moment",
+      "UV.AdvanceCurvatureLines.signedMode_sq_pair",
+      "UV.AdvanceCurvatureLines.transferWeight_sq_half",
+      "UV.AdvanceCurvatureLines.localized_spherical_line_sum",
+      "UV.AdvanceCurvatureLines.spherical_line_sum_limit",
+      "UV.AdvanceCurvatureWick.baseCoord_pair_integral",
+      "UV.AdvanceCurvatureWick.independentField_four_integral",
+      "UV.AdvanceCurvatureWick.cutoff_bracket_leg_expansion",
+      "UV.AdvanceCurvatureWick.cutoffBracketPotential_quartic_expansion",
+      "UV.AdvanceCurvatureWick.cutoffBracketPotential_diagonal_wick",
+      "UV.AdvanceCurvatureEnvelope.bracketPotential_power_envelope",
+      "UV.AdvanceCurvatureEnvelope.bracketPotential_power_integral_limit",
+      "UV.AdvanceCurvatureVacuum.colorBracketSquare_pos",
+      "UV.AdvanceCurvatureVacuum.cutoff_vacuum_coefficient",
+      "UV.AdvanceCurvatureVacuum.continuum_vacuum_coefficient",
+      "UV.AdvanceCurvatureVacuum.depthBracketPotential_depthRescale",
+      "UV.AdvanceCurvatureVacuum.continuum_vacuum_depthGaussian",
+      "UV.AdvanceCurvatureVacuum.spherical_vacuum_graph",
+      "UV.AdvanceCurvatureVacuum.continuum_vacuum_graph",
+      "UV.AdvanceCurvatureVacuum.integrated_vacuum_coefficient_limit",
+      "UV.AdvanceCurvatureAction.curvature_horizontal_horizontal",
+      "UV.AdvanceCurvatureAction.curvature_horizontal_internal",
+      "UV.AdvanceCurvatureAction.curvature_internal",
+      "UV.AdvanceCurvatureAction.block_curvature_decomposition",
+      "UV.AdvanceCurvatureAction.three_block_curvature_decomposition",
+      "UV.AdvanceCurvatureAction.integrated_sector_action",
+      "UV.AdvanceCurvatureKinetic.fderiv_modeOnCover_unit",
+      "UV.AdvanceCurvatureKinetic.torusFourierGradient_on_cover",
+      "UV.AdvanceCurvatureKinetic.gradient_kinetic_diagonal",
+      "UV.AdvanceCurvatureKinetic.copied_gradient_kinetic_diagonal",
+      "UV.AdvanceCurvatureKinetic.spherical_sector_kinetic_action",
+      "UV.AdvanceCurvatureVertex.norm_quarticHaarVertex_le",
+      "UV.AdvanceCurvatureVertex.norm_curvatureVertexFactor_le",
+      "UV.AdvanceCurvatureVertex.curvatureVertexFactor_uniformly_bounded",
+      "UV.AdvanceCurvatureVertex.normalizedIntegral_legShape_mul",
+      "UV.AdvanceCurvatureVertex.cutoffBracketPotential_haar_expansion",
+      "UV.AdvanceCurvatureVertex.quarticHaarVertex_zero_of_no_signed_routing"
     ],
-    "scope": "Checks the actual Euclidean-frequency four-torus line estimate, inverse determinant product and cutoff limit, and quartic determinant suppression at zero depth. The finite diagonal kinetic integral gives the specified relative Gaussian determinant with two fields and n colors. The exact mode covariance and the double-transfer covariance follow on the constructed product Gaussian measure. For each finite product of the literal curvature lines with uniformly bounded measurable residual coefficients, Lean checks absolute all-mode summability at positive depth, vanishing of the common zero-depth atom, and spherical-cutoff convergence to the unrestricted graph. The signed coefficient and the literal unrestricted absolute tail are integrable against the same finite nonnegative depth law. Their spherical approximations converge, and the absolute momentum tail is O(M⁻ˢ) for every fixed s ≥ 0, both unrestricted and uniformly in the spherical cutoff. The coordinate derivation of the bracket action and identification of every Wick graph with this finite-contraction interface remain open."
+    "scope": "Checks the actual Euclidean-frequency four-torus line estimate, inverse determinant product and cutoff limit, and quartic determinant suppression at zero depth. The finite diagonal kinetic integral gives the specified relative Gaussian determinant with two fields and n colors. The exact mode covariance and the double-transfer covariance follow on the constructed product Gaussian measure. For each finite product of the literal curvature lines with uniformly bounded measurable residual coefficients, Lean checks absolute all-mode summability at positive depth, vanishing of the common zero-depth atom, and spherical-cutoff convergence to the unrestricted graph. The signed coefficient and the literal unrestricted absolute tail are integrable against the same finite nonnegative depth law. Their spherical approximations converge, and the absolute momentum tail is O(M⁻ˢ) for every fixed s ≥ 0, both unrestricted and uniformly in the spherical cutoff. Derives the integrated block curvature square from the oriented orthonormal Euclidean and internal two-form components, giving the four copied kinetic terms and sole third-block bracket potential. Differentiation along the four sector unit vectors sends each normalized signed Fourier mode to its opposite, and integrating the squared gradients gives the exact diagonal kinetic action used to compute the relative determinant. The exact finite action expansion yields the first quartic Wick vacuum graph with two same-field tadpoles. Its fixed-depth coefficient on the physical Gaussian law is the half-color norm times the square of the signed mode line sum, with both transfer endpoints. The single-determinant spherical and continuum versions agree with the actual two-line graph sum, including zero weight at the continuum depth-zero atom and integrability over the common source. At each fixed positive depth, every power of the literal bracket potential is integrable and its spherical expectations converge. The exact quartic vertex is a bounded depth-independent Haar factor. It vanishes in the absence of a zero-sum signed Fourier routing. The identification of every higher-order Wick graph and elementary insertion with the finite-contraction interface remains open."
   },
   "cor:uvpeC-coupling": {
     "status": "verified",
@@ -1238,9 +1302,31 @@
   "prop:normal-spin-average-uv": {
     "status": "partial",
     "lean": [
-      "UV.FurtherBoundaryCollar.averaged_spin_vacuum_not_integrableOn"
+      "UV.FurtherBoundaryCollar.averaged_spin_vacuum_not_integrableOn",
+      "UV.AdvanceCollarResonanceBump.resonance_incoming_normalized",
+      "UV.AdvanceCollarResonanceBump.resonance_incoming_derivative",
+      "UV.AdvanceCollarResonanceBump.resonance_incoming_energy",
+      "UV.AdvanceCollarResonanceBump.resonance_incoming_uniform_energy",
+      "UV.AdvanceCollarResonanceBump.resonance_reference_smooth",
+      "UV.AdvanceCollarResonanceBump.resonance_bump_smooth",
+      "UV.AdvanceCollarResonanceBump.resonance_bump_nonnegative",
+      "UV.AdvanceCollarResonanceBump.resonance_bump_zero_off_support",
+      "UV.AdvanceCollarResonanceBump.resonance_bump_norm",
+      "UV.AdvanceCollarResonanceBump.resonance_bump_incoming_dominance",
+      "UV.AdvanceCollarResonanceBump.resonance_bump_energy_bound",
+      "UV.AdvanceCollarResonanceBump.resonant_potential_compares_quartic",
+      "UV.AdvanceCollarResonanceScale.resonance_radius_pos",
+      "UV.AdvanceCollarResonanceScale.resonance_energy_scaling",
+      "UV.AdvanceCollarResonanceScale.resonance_bump_lower_scale",
+      "UV.AdvanceCollarResonanceHeat.resonance_spectral_jensen",
+      "UV.AdvanceCollarResonanceHeat.resonance_weighted_norm_ge_pairing",
+      "UV.AdvanceCollarResonanceHeat.resonance_prepared_vacuum_lower",
+      "UV.AdvanceCollarHolonomy.charged_holonomy_gap_measure",
+      "UV.AdvanceCollarHolonomy.charged_holonomy_gap_interval_mass",
+      "UV.AdvanceCollarHolonomy.charged_holonomy_vacuum_not_integrable",
+      "UV.AdvanceCollarHolonomy.charged_holonomy_vacuum_lintegral_eq_top"
     ],
-    "scope": "The stated stretched-exponential vacuum lower bound forces divergence against every positive density bounded below by a power at zero. The exact vacuum lower bound for the operator preparation, finite vacuum at fixed positive gap, and Haar pushforward calculation remain open here."
+    "scope": "Checks the exact normalized incoming vector sqrt(495) r^4 (1−r) and its quartic radial form energy 220/7 + 165ν² + 33ν. Constructs the actual smooth nonnegative unit bump, rescaled with h^(-1/2) and supported strictly between h and 2h. The incoming vector dominates the bump with coefficient proportional to h^4 sqrt(h), giving h^9 after squaring. Checks the three energy costs h^(-2), ν² h^(-8), and ν h^(-5), and the fixed-gap pointwise potential comparison with the quartic spinless barrier up to a finite shift. At fixed duration, spectral Jensen and localized Cauchy–Schwarz yield the exact exp(c_t ν^(-2/3) (1+|log ν|)^4) lower bound for the extended weighted vacuum under explicit positive propagation and its normalized bump spectral law. The bound uses h = K ν^(1/3) (1+|log ν|)^(-1/2) and includes the overlap penalty. Power-law-density averaging forces divergence given this lower bound. For every nonzero integer charge the affine normal-holonomy readout of normalized circle Haar measure pushes to Lebesgue measure on (0,1], yielding infinite extended averaged vacuum for a measurable vacuum with the stated growth. Construction of the singular Friedrichs heat operator with these properties and finiteness of its weighted vacuum at each positive gap remain open."
   },
   "prop:carrier-bridge-uv": {
     "status": "verified",
@@ -1425,9 +1511,18 @@
       "UV.integrated_marked_normal_network_common_law",
       "UV.integrated_marked_normal_network_common_law_finite_iff",
       "UV.integrated_marked_normal_network_inverse_moment_iff",
-      "UV.integrated_alternating_polygon_inverse_moment_iff"
+      "UV.integrated_alternating_polygon_inverse_moment_iff",
+      "UV.networkHeatFive_integral_nonnegative_mass",
+      "UV.networkEdgeCost_extended_nonnegative_mass",
+      "UV.networkDurationCost_extended_nonnegative_mass",
+      "UV.integrated_marked_normal_network_nonnegative_mass",
+      "UV.integrated_marked_normal_network_common_law_nonnegative_mass",
+      "UV.networkEdgeGreen_bounds_nonnegative_mass",
+      "UV.networkGreen_product_bounds_nonnegative_mass",
+      "UV.networkDurationCost_inverse_moment_iff_nonnegative_mass",
+      "UV.integrated_alternating_polygon_inverse_moment_iff_nonnegative_mass"
     ],
-    "scope": "The full named proposition is proved for independent visit probes Bk=k and b=0 and nonnegative edge masses, on one fixed Euclidean sector plane in the stated reference units. An oriented edge list covers a connected rooted finite graph, with one shared four-vector at each nonroot visit and actual transverse position differences. Connectivity derives injectivity of the grounded incidence D, positivity of H=Dᵀdiag(s_e⁻¹)D, the shared energy H tensor I₄, and the actual vertex-integral L1 bound. Literal Lebesgue Gaussian Fourier integration through a derived orthogonal eigenbasis proves F_s(q)/F_s(0)=exp(-qᵀ(H⁻¹ tensor I₄)q), its exact prefactor (4π)^(2n)/det(H)^2, and momentum L1. The normalized independent-probe momentum integral exactly cancels both determinant factors, leaving the zero-displacement edge kernels. Positive finite-product Tonelli then derives the exact uncut duration cost as the extended Green product, with each positive mark factor (1+m_e z_e)exp(-m_e z_e)/(8π²z_e³) and an infinite factor for any zero mark. The same actual integral under one common law of all vertex positions is equal to the expectation of this product, hence yields the exact finiteness test. The explicit alternating closed polygon has zero total displacement, positive graph-dependent upper and lower constants, and the full Fourier-integrated inverse-third-moment-per-edge criterion. The separate bound for general routed momenta and polynomial source contacts remains open."
+    "scope": "The full named proposition is proved for independent visit probes Bk=k and b=0 and nonnegative edge masses, on one fixed Euclidean sector plane in the stated reference units. An oriented edge list covers a connected rooted finite graph, with one shared four-vector at each nonroot visit and actual transverse position differences. Connectivity derives injectivity of the grounded incidence D, positivity of H=Dᵀdiag(s_e⁻¹)D, the shared energy H tensor I₄, and the actual vertex-integral L1 bound. Literal Lebesgue Gaussian Fourier integration through a derived orthogonal eigenbasis proves F_s(q)/F_s(0)=exp(-qᵀ(H⁻¹ tensor I₄)q), its exact prefactor (4π)^(2n)/det(H)^2, and momentum L1. The normalized independent-probe momentum integral exactly cancels both determinant factors, leaving the zero-displacement edge kernels. Positive finite-product Tonelli then derives the exact uncut duration cost as the extended Green product, with each positive mark factor (1+m_e z_e)exp(-m_e z_e)/(8π²z_e³) and an infinite factor for any zero mark. The same actual integral under one common law of all vertex positions is equal to the expectation of this product, hence yields the exact finiteness test. The explicit alternating closed polygon has zero total displacement, positive graph-dependent upper and lower constants, and the full Fourier-integrated inverse-third-moment-per-edge criterion. The zero-mass endpoint is checked by dominated convergence against the actual positive-mark massless edge kernel. The independent-probe identity, common-law formula, and actual alternating polygon inverse-moment equivalence all allow nonnegative edge masses."
   },
   "prop:spex-polarization-uv": {
     "status": "verified",
