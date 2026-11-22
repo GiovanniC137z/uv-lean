@@ -183,7 +183,43 @@
       "UV.SectorPlane.Plane.transported_pole_isUnit",
       "UV.SectorPlane.Plane.transported_pole_inverse_variation",
       "UV.SectorPlane.quotient_pole_unit_sq",
-      "UV.SectorPlane.Plane.transported_pole_quotient"
+      "UV.SectorPlane.Plane.transported_pole_quotient",
+      "UV.SectorPlane.Plane.transported_pole_inverse_formula"
+    ]
+  },
+  "eq:update-vectorial-boundary-response": {
+    "status": "verified",
+    "scope": "On the regular invariant shell coordinate with fixed test density, differentiates the actual transported canonical covariance integral at each positive height. The transported imaginary unit has norm one and square −1. The limit gives PV on the original test for the unit variation, and the finite part and delta derivative on the test multiplied by the normal velocity. The chart path has a locally uniform bound on its parameter derivative, and the multiplied compact test has Lipschitz first derivative. The theorem tests the normal-coordinate identity. Transverse coarea integration remains open.",
+    "lean": [
+      "UV.SectorPlane.Plane.transported_canonical_split",
+      "UV.SectorPlane.Plane.tested_canonical_covariance_hasDerivAt",
+      "UV.SectorPlane.shell_finite_part_eq_symmetric_derivative",
+      "UV.SectorPlane.Plane.tested_canonical_boundary_response"
+    ]
+  },
+  "eq:numerator-disc": {
+    "status": "partial",
+    "scope": "In the regular invariant normal coordinate, tests the two actual extracted character sides with compact complex numerators. Their difference gives the principal-value numerator difference and the imaginary shell sum with coefficient −iπ. A uniformly vanishing compact C¹ error in the tested numerator does not change either boundary limit. The transverse chart integration and identification of a full graph discontinuity are not supplied by this proof.",
+    "lean": [
+      "UV.SectorPlane.Plane.pole_coefficient_split",
+      "UV.SectorPlane.Plane.tested_pole_coefficient_jump",
+      "UV.SectorPlane.Plane.tested_pole_multiplier_error_limit",
+      "UV.SectorPlane.Plane.tested_pole_varying_numerator_limit"
+    ]
+  },
+  "eq:weighted-pole-disc": {
+    "status": "verified",
+    "scope": "For the common numerator on a regular normal chart, the exact tested coefficient jump is −2πi times that numerator times the test at the shell. The two sides are extracted after forming the fixed-plane quotient pole. The theorem tests the normal-coordinate identity. Transverse coarea integration remains open.",
+    "lean": [
+      "UV.SectorPlane.Plane.common_numerator_pole_jump"
+    ]
+  },
+  "eq:directed-numerator-discontinuity": {
+    "status": "partial",
+    "scope": "The first-character jump of the regular normal chart tests is transported as a whole into the literal carrier quotient. No replacement by a physical completeness operator is used.",
+    "lean": [
+      "UV.SectorPlane.directed_shell_readout_continuous",
+      "UV.SectorPlane.Plane.directed_tested_pole_jump"
     ]
   }
 }

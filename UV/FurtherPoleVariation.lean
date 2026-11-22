@@ -19,9 +19,8 @@ def Plane.transportedPole (diamond : Plane E) (ε : Evolution) (height : Height)
     (D : ℝ) (j : UnitVector R) : R :=
   algebraMap ℝ R D + (diamond.eta ε * (height : ℝ)) • (j : R)
 
-theorem Plane.transported_pole_isUnit (diamond : Plane E) (ε : Evolution)
-    (height : Height) (D : ℝ) (j : UnitVector R) (hj : (j : R) ^ 2 = -1) :
-    IsUnit (diamond.transportedPole ε height D j) := by
+private def Plane.transportedPoleUnits (diamond : Plane E) (ε : Evolution)
+    (height : Height) (D : ℝ) (j : UnitVector R) (hj : (j : R) ^ 2 = -1) : Rˣ := by
   let h : ℝ := height
   let η := diamond.eta ε
   let a := algebraMap ℝ R D
@@ -48,7 +47,21 @@ theorem Plane.transported_pole_isUnit (diamond : Plane E) (ε : Evolution)
   have hvu : v * (a + b) = 1 := by
     dsimp only [v]
     rw [smul_mul_assoc, hq, Algebra.smul_def, ← map_mul, inv_mul_cancel₀ hn, map_one]
-  exact ⟨⟨a + b, v, huv, hvu⟩, rfl⟩
+  exact ⟨a + b, v, huv, hvu⟩
+
+theorem Plane.transported_pole_isUnit (diamond : Plane E) (ε : Evolution)
+    (height : Height) (D : ℝ) (j : UnitVector R) (hj : (j : R) ^ 2 = -1) :
+    IsUnit (diamond.transportedPole ε height D j) :=
+  ⟨diamond.transportedPoleUnits ε height D j hj, rfl⟩
+
+theorem Plane.transported_pole_inverse_formula (diamond : Plane E) (ε : Evolution)
+    (height : Height) (D : ℝ) (j : UnitVector R) (hj : (j : R) ^ 2 = -1) :
+    Ring.inverse (diamond.transportedPole ε height D j) =
+      (D ^ 2 + (height : ℝ) ^ 2)⁻¹ •
+        (algebraMap ℝ R D - (diamond.eta ε * (height : ℝ)) • (j : R)) := by
+  rw [show diamond.transportedPole ε height D j =
+    (diamond.transportedPoleUnits ε height D j hj : R) from rfl, Ring.inverse_unit]
+  rfl
 
 variable [CompleteSpace R]
 

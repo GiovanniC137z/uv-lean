@@ -41,3 +41,8 @@ import UV.FurtherBoundaryFourier
 import UV.FurtherOpeningCLT
 import UV.FurtherOpeningCriticalLimit
 import UV.FurtherOpeningMoment
+import UV.NextOverlapConverse
+import UV.NextOverlapCriterion
+import UV.NextOverlapNormalization
+import UV.NextOverlapPVM
+import UV.NextOverlapSpectral

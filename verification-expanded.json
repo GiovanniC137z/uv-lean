@@ -723,9 +723,26 @@
       "UV.openingOscillatorPairDensity_tail_iff",
       "UV.openingCoherentVector_norm",
       "UV.openingNumberState_overlap",
-      "UV.openingNumberState_on_cut_poisson"
+      "UV.openingNumberState_on_cut_poisson",
+      "UV.openingVacuumPowerSeq_support",
+      "UV.openingVacuumPower_norm_sq_bound",
+      "UV.openingVacuumTaylor_hasSum",
+      "UV.openingVacuumTaylor_coefficient",
+      "UV.openingVacuumTaylor_on_cut",
+      "UV.openingPositionVacuum_on_cut_poisson",
+      "UV.openingJacobiCutoff_selfAdjoint",
+      "UV.openingCutoffExp_on_cut_unitary",
+      "UV.openingCutoffExp_tendsto_on_cut",
+      "UV.openingNumberCore_dense",
+      "UV.openingJacobiOnCore_symmetric",
+      "UV.openingPositionOnCore_apply",
+      "UV.openingPositionOnCore_symmetric",
+      "UV.openingVacuumPower_mem_core",
+      "UV.openingJacobiOnCore_vacuumPower",
+      "UV.openingPositionVacuumPower_succ",
+      "UV.openingPositionVacuumExponential_hasSum"
     ],
-    "scope": "Checked the threshold-weighted pair sum on the selected Lorentzian plane for the prescribed Poisson overlaps, the positive subcritical limit and divergence, the optimized supercritical bound, the exact critical M^(1/4)-rescaled positive Gaussian half-moment coefficient with the physical e²/(12π²) normalization, and both directions of the unsubtracted dispersion-tail threshold. The positive complex ℓ² number state is unit normalized and its overlap squares give the prescribed Poisson law. Identification of that explicit vector with the exponential of the self-adjoint oscillator position operator remains open.",
+    "scope": "Checked the threshold-weighted pair sum on the selected Lorentzian plane, its positive subcritical limit and divergence, optimized supercritical bound, exact positive Gaussian half-moment coefficient at the critical M^(1/4) scale with the physical e²/(12π²) normalization, and both directions of the unsubtracted dispersion-tail threshold. Constructs the dense finite-number core and the literal frequency-scaled symmetric oscillator position on it. On the positive ℓ² number space, its vacuum iterates give a norm-convergent Taylor exponential with exact coherent coefficients and the on-cut Poisson law. This same vector is the norm limit of unitary exponentials of bounded self-adjoint Jacobi number cutoffs. The independent self-adjoint unbounded position realization and identification with its spectral-calculus exponential remain open.",
     "lean_projects": {
       "jordan": [
         "UV.openingCriticalMeasure_charFun",
@@ -884,17 +901,33 @@
       "UV.FurtherCurvatureGraph.finite_absolute_sum_bound",
       "UV.FurtherCurvatureGraph.spherical_tail_uniform",
       "UV.FurtherCurvatureGraph.integrated_spherical_tail_uniform",
-      "UV.FurtherCurvatureGraph.zero_depth_absolute_graph_limit"
+      "UV.FurtherCurvatureGraph.zero_depth_absolute_graph_limit",
+      "UV.NextCurvatureFull.full_graph_term_norm_summable",
+      "UV.NextCurvatureFull.spherical_graph_uniform",
+      "UV.NextCurvatureFull.spherical_graph_limit",
+      "UV.NextCurvatureFull.integrated_full_graph_limit",
+      "UV.NextCurvatureFull.spherical_absolute_tail_limit",
+      "UV.NextCurvatureFull.integrated_full_absolute_tail",
+      "UV.NextCurvatureGaussian.spherical_kinetic_partition_ratio",
+      "UV.NextCurvatureLaw.mode_second_moment",
+      "UV.NextCurvatureLaw.transferred_mode_second_moment"
     ],
-    "scope": "Checked the literal Euclidean-frequency four-torus spherical line estimate for the double-transfer covariance at all nonnegative cutoff depths and all real weight exponents s ≥ 0, as well as full-lattice line summability at positive depth. The exact diagonal multiplier sequence is summable, its scalar inverse determinant product is positive at positive depth, the spherical products converge, and the uniform quartic determinant estimate suppresses every polynomial insertion at the zero-depth atom. For finite contraction products with uniformly bounded measurable residual coefficients, checked the uniform spherical O(M⁻ˢ) absolute momentum tail after integration against any finite nonnegative-depth law with one shared determinant, and checked that the complete restricted graph sum vanishes at depth zero. The action-to-Wick and Gaussian law construction and complete unrestricted graph convergence remain open."
+    "scope": "Checks the actual Euclidean-frequency four-torus line estimate, inverse determinant product and cutoff limit, and quartic determinant suppression at zero depth. The finite diagonal kinetic integral gives the specified relative Gaussian determinant with two fields and n colors. The exact mode covariance and the double-transfer covariance follow on the constructed product Gaussian measure. For each finite product of the literal curvature lines with uniformly bounded measurable residual coefficients, Lean checks absolute all-mode summability at positive depth, vanishing of the common zero-depth atom, and spherical-cutoff convergence to the unrestricted graph. The signed coefficient and the literal unrestricted absolute tail are integrable against the same finite nonnegative depth law. Their spherical approximations converge, and the absolute momentum tail is O(M⁻ˢ) for every fixed s ≥ 0, both unrestricted and uniformly in the spherical cutoff. The coordinate derivation of the bracket action and identification of every Wick graph with this finite-contraction interface remain open."
   },
   "cor:uvpeC-coupling": {
     "status": "partial",
     "lean": [
       "UV.RevisionCurvaturePartition.relative_partition_positive",
-      "UV.RevisionCurvaturePartition.relative_normalized_moments_tendsto"
+      "UV.RevisionCurvaturePartition.relative_normalized_moments_tendsto",
+      "UV.NextCurvatureLaw.commonGaussian_map_depthRescale",
+      "UV.NextCurvatureLaw.depthRescale_jointly_measurable",
+      "UV.NextCurvatureLaw.depthGaussian_cylinder_marginal",
+      "UV.NextCurvatureLaw.mode_covariance_le_boundary",
+      "UV.NextCurvatureLaw.mode_powers_integrable",
+      "UV.NextCurvatureFourierSummability.derivativeWeight_summable",
+      "UV.NextCurvatureFourierSummability.ae_weighted_transfer_summable"
     ],
-    "scope": "Proves positivity and the upper mass bound of the relative Gibbs partition under the common field law, as well as convergence of normalized moments given a common cutoff coupling and integrated envelope. Construction of the literal torus Gaussian laws and proof of the source's convergence and moment-envelope hypotheses remain open."
+    "scope": "Constructs the actual independent Gaussian product over the nonzero signed frequency, field and color slots. Verifies the common standard product preparation, measurable depth rescaling, exact finite cylinder marginals, mode powers and pointwise covariance envelope. At every fixed positive depth, proves simultaneous almost-sure absolute summability of the transferred Fourier coefficients with every nonnegative integer derivative weight. Proves positivity and the upper mass bound of the relative Gibbs partition, as well as convergence of normalized moments under the convergence and common envelope assumptions. Construction of the smooth Fourier fields from these coefficients, convergence of the literal bracket potential, and the integrated common polynomial envelope remain open."
   },
   "prop:update-commuting-transfer": {
     "status": "verified",
@@ -967,7 +1000,7 @@
     "scope": "For the stated positive spectral representation with an integrable subtracted remainder and arbitrary finite polynomial contact and dispersion subtraction degrees, proves exact contact cancellation, legitimate finite differencing of the integral, the explicit signed product kernel and its compact-band inverse tail, and nonintegrability on the four-dimensional Euclidean exterior of the same-plane photon-current contraction. Checks the unsubtracted uniform positive response bound and the photon lower bound from a nonzero massless atom. The theorem takes the identified complete transverse response, its measurability and its spectral representation as hypotheses, as in the source argument. When the ordinary integrals on finite radial intervals exist, also proves the logarithmic growth bound after general allowed subtractions and the linear squared-radius shell bound in the unsubtracted case."
   },
   "prop:ct-uv-temporal-residue": {
-    "status": "partial",
+    "status": "verified",
     "lean": [
       "UV.temporalDiagonalResolvent_inverse",
       "UV.temporal_contact_double_pole",
@@ -977,9 +1010,17 @@
       "UV.temporalRayDirection_norm",
       "UV.temporal_lintegral_spatial_polar",
       "UV.temporal_radial_budget_of_at_most_cubic",
-      "UV.temporal_contact_four_momentum_divergence"
+      "UV.temporal_contact_four_momentum_divergence",
+      "UV.temporalBasis_coefficient",
+      "UV.temporal_contact_rescaled_ray_bound",
+      "UV.temporalBand_scale",
+      "UV.temporal_contact_ray_band_lower",
+      "UV.temporal_contact_scaling_obstruction",
+      "UV.temporalSumMatrix_coefficient",
+      "UV.temporal_contact_finite_sum_ray_band_lower",
+      "UV.temporal_contact_finite_sum_scaling_obstruction"
     ],
-    "scope": "Checks the actual limiting contact-minus-bubble trace and its negative squared Hilbert–Schmidt equal-energy double-pole coefficient in fixed orthonormal energy coordinates on the locked sector plane. Proves positivity of the complete limiting absolute integral on the positive frequency band for either carrier character, three-dimensional polar Tonelli divergence from an eventual positive rescaled ray band lower bound on a set of positive solid angle, and the radial divergence criterion for at-most-cubic energy-scale growth. Deriving the eventual rescaled ray lower bound from the momentum-dependent source hypotheses and handling a common-scale finite sum remain open."
+    "scope": "Checks the exact limiting contact-minus-bubble double pole in orthonormal energy coordinates and strict positivity of the integrated absolute coefficient for either carrier character on the fixed sector plane. The actual noncommuting Hermitian pencils at both momentum slots and the bounded rescaled contact use one unitary spectral chart per ray. The compactness argument and exact frequency change of variables yield an eventual positive lower bound on the original scaled band integral. Polar Tonelli gives failure of absolute four-momentum integrability for a measurable complete coefficient on a ray set of positive solid angle with divergent radial budget, including the stated at-most-cubic scaling. For finitely many ordinary fermion log determinants of potentially distinct slot sizes, their exact sum is the complete trace on the common-scale orthogonal direct sum, and one surviving equal-energy block forces the same band and divergence conclusions."
   },
   "prop:final-uv-charge-rigidity": {
     "status": "verified",
@@ -995,7 +1036,7 @@
     "scope": "Checks the named result on actual L²(R³; ℂ^d) Hilbert slots at one fixed sector and carrier offset. Compactly supported slot tests derive both pointwise shifted multiplication and the physical adjoint from the bounded mode operators and their continuous representatives. The Gram transport, local matrix similarity, and connectedness fix all sorted eigenvalues with multiplicity. The full sum of squared slot entries is constant in k for each p and strictly positive for p near zero in a nonzero charge sector."
   },
   "prop:phys-uv-boundary-overlap": {
-    "status": "partial",
+    "status": "verified",
     "lean": [
       "UV.ContinuationBoundary.overlapMeasure_apply",
       "UV.ContinuationBoundary.overlap_variation_bound",
@@ -1006,7 +1047,7 @@
       "UV.ContinuationBoundary.lintegral_tsum_continuous_finite_family",
       "UV.ContinuationBoundary.paired_coefficient_weighted_moment_arbitrary_bases"
     ],
-    "scope": "Constructs actual complex overlap measures from the normalized strongly additive displacement PVM and derives a uniform finite-partition total variation bound. Identifies the positive paired Hilbert–Schmidt square with the matrix entry squares in arbitrary Hilbert bases, bounds it for a Hilbert–Schmidt incoming map and contractive phase, and proves exact weighted Tonelli when scalar phase entries are continuous on the separable momentum plane. For each finite complex measure, the Jordan companion proves its positive Fourier phase represents its inverse Fourier distribution. Finite energy with the physical Bessel multiplier is equivalent to an L² representative of the measure distribution with L² Bessel potential. It produces a genuine integrable density on all measurable sets and identifies the exact squared L² Bessel norm. The converse from an ordinary measure density alone, weak spectral integral identification, and the explicit normalized momentum measure change of variables remain open.",
+    "scope": "Constructs the complex overlap measures of the supplied normalized strongly countably additive displacement PVM and proves their finite-partition variation bound. The companion constructs the actual bounded weak spectral phase from finite projection sums and Riesz representation. Its entries are the positive Fourier phases of those overlap measures on the fixed independent Euclidean sector-plane coordinates. It checks the exact normalized physical measure dᴰk/(2π)ᴰ, the Hilbert–Schmidt entry expansion and weighted Tonelli for arbitrary Hilbert bases, and the two-way criterion with genuine Hᴺ densities. The total moment equals the sum of the actual squared Bessel-potential norms. The displacement PVM and Hilbert–Schmidt incoming map are the hypothesis of the result.",
     "lean_projects": {
       "jordan": [
         "UV.ContinuationBoundary.complex_overlap_phase_test",
@@ -1016,7 +1057,22 @@
         "UV.ContinuationBoundary.overlap_bessel_norm_exact",
         "UV.ContinuationBoundary.overlap_finite_iff_bessel_potential",
         "UV.ContinuationBoundary.overlap_density_of_distribution_eq",
-        "UV.ContinuationBoundary.overlap_density_and_norm_of_finite_energy"
+        "UV.ContinuationBoundary.overlap_density_and_norm_of_finite_energy",
+        "UV.ContinuationBoundary.map_unitary_frequency_to_physical_momentum",
+        "UV.ContinuationBoundary.lintegral_physical_momentum",
+        "UV.ContinuationBoundary.overlap_energy_eq_physical_momentum",
+        "UV.ContinuationBoundary.overlap_distribution_of_density",
+        "UV.ContinuationBoundary.overlap_finite_iff_density",
+        "UV.ContinuationBoundary.overlap_energy_eq_density_bessel_norm",
+        "UV.ContinuationBoundary.overlap_integral_simple",
+        "UV.ContinuationBoundary.simple_displacement_integral_readout",
+        "UV.ContinuationBoundary.weak_displacement_integral_readout",
+        "UV.ContinuationBoundary.weak_displacement_integral_norm",
+        "UV.ContinuationBoundary.physical_displacement_phase_readout",
+        "UV.ContinuationBoundary.physical_displacement_phase_norm",
+        "UV.ContinuationBoundary.paired_boundary_moment_eq_entry_energy",
+        "UV.ContinuationBoundary.paired_boundary_moment_eq_bessel_sum",
+        "UV.ContinuationBoundary.paired_boundary_moment_finite_iff_sobolev_density"
       ]
     }
   },
@@ -1046,9 +1102,14 @@
       "UV.FurtherOptical.lorentz_tensor_from_rest",
       "UV.FurtherOptical.lorentz_tensor_time_weight",
       "UV.FurtherOptical.axialBoost_preserves_metric",
-      "UV.FurtherOptical.axialBoost_restMomentum"
+      "UV.FurtherOptical.axialBoost_restMomentum",
+      "UV.ContinuationBoostSpectrum.matrixOverlap_abs_bound",
+      "UV.ContinuationBoostSpectrum.matrixOverlap_integral_bound",
+      "UV.ContinuationBoostSpectrum.matrixOverlap_tendsto_zero",
+      "UV.ContinuationBoostSpectrum.canonicalDensity_overlap_identity",
+      "UV.ContinuationBoostSpectrum.canonicalDensity_tendsto_departure_mass"
     ],
-    "scope": "Checks the actual normalized (2π)⁻³ three-dimensional trace density, its uniform finite-slot L² bound, the positive timelike shell-band lower bound, and the same-plane no-go against an admitted Lorentz spectrum of that form. For the specified optical Hamiltonian, verifies unit Clifford coefficients, Hermitian idempotents of exact trace two, Gaussian square-integrability of the departure from the constant projector, strictly positive normalized pair integral on a ball in a compact positive timelike band, and the normalized large-shift density limit via the Gaussian envelope. From matrix conservation, positivity, and the explicit metric-preserving spatial rotations, verifies the exact rest tensor and its boost to the transverse Lorentz tensor on the same locked diamond. Verifies the physical future-shell time entry, the equal-time spectral weight with the mass-shell Jacobian factor, and an explicit Lorentz boost along the unbounded transfer axis. The distributional spectral disintegration and the large-shift overlap argument for an arbitrary square-integrable departure beyond the optical model remain open."
+    "scope": "Checks the actual normalized (2π)⁻³ three-dimensional trace density, its uniform finite-slot L² bound, the positive timelike shell-band lower bound, and the same-plane no-go against an admitted Lorentz spectrum of that form. For the specified optical Hamiltonian, verifies unit Clifford coefficients, Hermitian idempotents of exact trace two, Gaussian square-integrability of the departure from the constant projector, strictly positive normalized pair integral on a ball in a compact positive timelike band, and the normalized large-shift density limit via the Gaussian envelope. From matrix conservation, positivity, and the explicit metric-preserving spatial rotations, verifies the exact rest tensor and its boost to the transverse Lorentz tensor on the same locked diamond. Verifies the physical future-shell time entry, the equal-time spectral weight with the mass-shell Jacobian factor, and an explicit Lorentz boost along the unbounded transfer axis. For any square-integrable finite-slot projector departure, checks the exact Hilbert–Schmidt overlap identity and its vanishing under unbounded spatial shifts by separating two translated spatial tails. The normalized density tends to the full projector-departure mass on the fixed diamond. The distributional spectral disintegration remains open."
   },
   "cor:final-collar-joint-uv": {
     "status": "partial",
@@ -1079,5 +1140,44 @@
       "UV.FurtherBoundaryCollar.averaged_spin_vacuum_not_integrableOn"
     ],
     "scope": "The stated stretched-exponential vacuum lower bound forces divergence against every positive density bounded below by a power at zero. The exact vacuum lower bound for the operator preparation, finite vacuum at fixed positive gap, and Haar pushforward calculation remain open here."
+  },
+  "prop:carrier-bridge-uv": {
+    "status": "verified",
+    "lean": [
+      "UV.NextNativeBridge.normal_green_fourier",
+      "UV.NextNativeBridge.normal_green_inverse_fourier",
+      "UV.NextNativeBridge.normalCovariance_rescale",
+      "UV.NextNativeBridge.normalCovariance_bound",
+      "UV.NextNativeBridge.normalCovariance_diagonal_tendsto",
+      "UV.NextNativeBridge.mixed_normal_cycle_integrable",
+      "UV.NextNativeBridge.mixed_normal_coefficient_integrable",
+      "UV.NextNativeBridge.same_profile_pair_tail_bounds",
+      "UV.NextNativeBridge.same_profile_pair_logarithmic",
+      "UV.NextNativeBridge.same_profile_pair_not_integrable"
+    ],
+    "scope": "Checks the literal normal resolvent and the inverse Green kernel with measure dη/(2π), integrated against arbitrary real continuous compactly supported unit L² profiles on one fixed sector plane. Their exact overlap obeys the separation bound and its diagonal has normalized high-frequency limit one. In the source's connected Wick-cycle representation, every mixed cycle and every finite sum is absolutely integrable at arbitrary fixed momentum shifts. The same-profile pair has two-sided logarithmic growth in the actual four-dimensional radial measure. The coefficient is defined after the Gaussian Wick expansion, with disconnected terms absent."
+  },
+  "prop:repair-boost-tail-uv": {
+    "status": "partial",
+    "lean": [
+      "UV.NextOpticalRadial.norm_smul_radialUnit",
+      "UV.NextOpticalRadial.spinCoefficients_norm_sq",
+      "UV.NextOpticalRadial.transverse_difference_lower",
+      "UV.NextOpticalRadial.shifted_ray_transverse",
+      "UV.NextOpticalRadial.radial_pair_trace_transverse",
+      "UV.NextOpticalRadial.radial_temporal_resolvent_lower",
+      "UV.NextOpticalRadial.radial_pair_integrand_cone_lower",
+      "UV.NextOpticalRadial.exteriorCone_positive",
+      "UV.NextOpticalRadial.compactBand_longitudinal_and_transverse",
+      "UV.NextOpticalRadial.radialSpinor_ray",
+      "UV.NextOpticalRadial.radialPairWeight_eq_trace",
+      "UV.NextOpticalRadial.radialEuclideanDensity_requires_mixing_tail",
+      "UV.NextOpticalRadial.mixingHarmonicBand_tendsto_zero",
+      "UV.NextOpticalRadial.mixingBand_contradiction",
+      "UV.NextOpticalRadial.radialEuclideanDensity_not_integrable_of_band",
+      "UV.NextOpticalRadial.transverseTube_measure_le",
+      "UV.NextOpticalRadial.radialPairWeight_upper"
+    ],
+    "scope": "Checks unit radial spinor normalization, exact canonical trace, the transverse angular factor and the fixed-frequency temporal resolvent lower bound. The exterior cone has positive solid angle, and integration of the actual nonnegative pair coefficient forces an integrable harmonic mixing tail. The compact massive pair band has bounded transverse radius and two strictly positive, linearly large longitudinal momenta. An integrable harmonic tail gives vanishing mass of traveling annuli, so the actual Euclidean coefficient is nonintegrable when the radial band upper and covariant linear lower bounds hold for the same band. Checks the pointwise radial pair upper bound and an exact quadratic solid-angle bound for the normalized transverse tube. The integrated restricted-band upper estimate and measure-level covariance linkage remain open here."
   }
 }
