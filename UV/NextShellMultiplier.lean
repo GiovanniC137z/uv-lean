@@ -160,17 +160,7 @@ theorem Plane.tested_pole_varying_numerator_limit (diamond : Plane E) (ε : Evol
   apply h.congr'
   filter_upwards [self_mem_nhdsWithin] with h hh
   have hpos : 0 < h := hh
-  have hc : Continuous (diamond.poleCoefficient ε ⟨h, hpos⟩) := by
-    rw [show diamond.poleCoefficient ε ⟨h, hpos⟩ =
-      (fun D => (polePV h D : ℂ) -
-        Complex.I * ((diamond.eta ε * polePoisson h D : ℝ) : ℂ)) from
-      funext (diamond.pole_coefficient_split ε ⟨h, hpos⟩)]
-    have hp : Continuous (polePV h) :=
-      continuous_id.div ((continuous_id.pow 2).add continuous_const) (fun D => by positivity)
-    have hq : Continuous (polePoisson h) :=
-      continuous_const.div ((continuous_id.pow 2).add continuous_const) (fun D => by positivity)
-    exact (Complex.continuous_ofReal.comp hp).sub
-      (continuous_const.mul (Complex.continuous_ofReal.comp (continuous_const.mul hq)))
+  have hc := diamond.pole_coefficient_continuous ε ⟨h, hpos⟩
   have he : Continuous (e h) :=
     continuous_iff_continuousAt.mpr fun D => (hder h hpos D).continuousAt
   have hes : HasCompactSupport (e h) := HasCompactSupport.of_support_subset_isCompact

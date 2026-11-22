@@ -288,10 +288,23 @@
         "UV.NextCurvatureLaw.mode_covariance_le_boundary",
         "UV.NextCurvatureLaw.mode_powers_integrable",
         "UV.NextCurvatureFourierSummability.derivativeWeight_summable",
-        "UV.NextCurvatureFourierSummability.ae_weighted_transfer_summable"
+        "UV.NextCurvatureFourierSummability.ae_weighted_transfer_summable",
+        "UV.ExtendCurvaturePotential.torusCharacter_point_norm",
+        "UV.ExtendCurvaturePotential.realTorusMode_norm_bound",
+        "UV.ExtendCurvaturePotential.transferred_field_uniform_limit",
+        "UV.ExtendCurvaturePotential.ae_bracketPotential_limit",
+        "UV.ExtendCurvaturePotential.cutoffBracketPotential_measurable",
+        "UV.ExtendCurvatureGibbs.ae_weight_limit",
+        "UV.ExtendCurvatureGibbs.weights_converge_L1",
+        "UV.ExtendCurvatureGibbs.partition_pos_le",
+        "UV.ExtendCurvatureGibbs.gibbsMeasure_probability",
+        "UV.ExtendCurvatureMoments.cutoffReadout_eventually_eq",
+        "UV.ExtendCurvatureMoments.normalized_observable_limit",
+        "UV.ExtendCurvatureMoments.bounded_finite_observable_limit",
+        "UV.ExtendCurvatureMoments.normalized_monomial_limit"
       ],
       "lean_projects": {},
-      "scope": "Constructs the actual independent Gaussian product over the nonzero signed frequency, field and color slots. Verifies the common standard product preparation, measurable depth rescaling, exact finite cylinder marginals, mode powers and pointwise covariance envelope. At every fixed positive depth, proves simultaneous almost-sure absolute summability of the transferred Fourier coefficients with every nonnegative integer derivative weight. Proves positivity and the upper mass bound of the relative Gibbs partition, as well as convergence of normalized moments under the convergence and common envelope assumptions. Construction of the smooth Fourier fields from these coefficients, convergence of the literal bracket potential, and the integrated common polynomial envelope remain open.",
+      "scope": "Constructs the common scaled product Gaussian preparation for two adjoint fields, their transferred real Fourier series on the period 2π four-torus, and the squared orthonormal-coordinate bracket potential with normalized Haar measure. The spherical transfers converge in the supremum norm and the bracket potential converges almost surely at each positive depth. The joint determinant-weight density converges in L¹ through the shared depth law, including a possible atom at zero. The continuum partition is positive and finite and the normalized Gibbs measure is a probability measure. Every bounded measurable observable of finitely many elementary modes has convergent normalized expectations. Every polynomial monomial on such a set has an exact covariance-based common integrable envelope and convergent normalized moments. The fixed-depth weighted transfer coefficient bound is checked at every derivative order; differentiability of the infinite field and the identification of the raw coefficient law as distribution-valued fields remain open.",
       "statement_change": "new"
     },
     {
@@ -787,10 +800,22 @@
       "title_tex": "Absolute carrier-frequency bounds for time-local graphs",
       "source_line": 10839,
       "statement_tex": "Let a connected finite graph have time-local vertices with\nfrequency-independent bounds. Remove the overall conservation\ndelta and fix external frequencies satisfying conservation. Suppose\neach internal edge has an envelope\n$D_e\\langle u_e\\rangle^{-a_e}$ at its routed carrier frequency,\nwith $D_e$ independent of frequencies, $a_e\\ge1$, and\n$\\langle u\\rangle=(1+u^2)^{1/2}$ in fixed units. If every\nself-loop (an edge with both ends at one vertex) has $a_e>1$, the\nabsolute integral over all independent internal frequencies is at\nmost $C_G\\prod_e D_e$ times the vertex bounds, uniformly in the\nexternal frequencies.",
-      "status": "pending",
-      "lean": [],
+      "status": "verified",
+      "lean": [
+        "UV.SectorPlane.frequencyEnvelope_integrable",
+        "UV.SectorPlane.frequencyTreeMajorant_geometric_product",
+        "UV.SectorPlane.frequency_affine_map_volume",
+        "UV.SectorPlane.frequency_affine_map_volume_unimodular",
+        "UV.SectorPlane.frequency_tree_graph_integrable",
+        "UV.SectorPlane.frequencyIncidence_span",
+        "UV.SectorPlane.frequency_incidence_nonloop_in_basis",
+        "UV.SectorPlane.frequency_incidence_basis_nonempty",
+        "UV.SectorPlane.frequencyIncidenceChartMap_bijective",
+        "UV.SectorPlane.frequencyGraphRouting_affine",
+        "UV.SectorPlane.time_local_graph_absolute_carrier_frequency"
+      ],
       "lean_projects": {},
-      "scope": "Not yet formalized.",
+      "scope": "On the fixed sector plane with its unit carrier, starts from the actual finite connected oriented multigraph with parallel edges and self-loops distinguished. Removing the overall conservation row gives a spanning reduced incidence system. Its finite family of incidence bases supplies bijective chord coordinates and includes each nonloop in some basis. Checks the exact affine chart transitions, determinant volume factors, geometric tree product, weighted Hölder, and one-dimensional integrability at every exponent strictly above one. The complete measurable time-local coefficient is absolutely integrable with a bound uniform in external frequency shifts under the stated line and vertex bounds. The constant retains the exact absolute determinant factors, so the bound does not require a separate unimodularity proof for incidence transitions. Spatial and action-specific envelope estimates remain separate.",
       "statement_change": "new"
     },
     {
@@ -1564,7 +1589,14 @@
         "UV.openingVacuumPower_mem_core",
         "UV.openingJacobiOnCore_vacuumPower",
         "UV.openingPositionVacuumPower_succ",
-        "UV.openingPositionVacuumExponential_hasSum"
+        "UV.openingPositionVacuumExponential_hasSum",
+        "UV.openingPositionOnCore_adjoint_coordinate",
+        "UV.openingPositionOnCore_closable",
+        "UV.openingPositionClosure_eq_adjoint",
+        "UV.openingPositionClosure_selfAdjoint",
+        "UV.openingBorel_exponential",
+        "UV.openingPositionSpectralExponential_vacuum",
+        "UV.openingPositionSpectralExponential_on_cut_poisson"
       ],
       "lean_projects": {
         "jordan": [
@@ -1579,7 +1611,7 @@
           "UV.openingCriticalLorentzianDensity_equivalent"
         ]
       },
-      "scope": "Checked the threshold-weighted pair sum on the selected Lorentzian plane, its positive subcritical limit and divergence, optimized supercritical bound, exact positive Gaussian half-moment coefficient at the critical M^(1/4) scale with the physical e²/(12π²) normalization, and both directions of the unsubtracted dispersion-tail threshold. Constructs the dense finite-number core and the literal frequency-scaled symmetric oscillator position on it. On the positive ℓ² number space, its vacuum iterates give a norm-convergent Taylor exponential with exact coherent coefficients and the on-cut Poisson law. This same vector is the norm limit of unitary exponentials of bounded self-adjoint Jacobi number cutoffs. The independent self-adjoint unbounded position realization and identification with its spectral-calculus exponential remain open.",
+      "scope": "Checked the threshold-weighted pair sum on the selected Lorentzian plane, its positive subcritical limit and divergence, optimized supercritical bound, exact positive Gaussian half-moment coefficient at the critical M^(1/4) scale with the physical e²/(12π²) normalization, and both directions of the unsubtracted dispersion-tail threshold. Constructs the dense finite-number core and the literal frequency-scaled oscillator position. The closure is self-adjoint and equals the adjoint of the core, proved by controlling the two adjacent errors of number truncation. Its vacuum iterates give a norm-convergent Taylor exponential and the same vector is the norm limit of the unitary exponentials of bounded self-adjoint number cutoffs. For every supplied spectral resolution of this closure, the bounded Borel exponential agrees with the unit coherent vector on the vacuum and gives the prescribed on-cut Poisson law. The existence of a normalized projection-valued spectral resolution with the required Borel calculus for this unbounded closure remains open in Lean.",
       "statement_change": "new"
     },
     {
@@ -2152,10 +2184,15 @@
         "UV.ContinuationBoostSpectrum.matrixOverlap_integral_bound",
         "UV.ContinuationBoostSpectrum.matrixOverlap_tendsto_zero",
         "UV.ContinuationBoostSpectrum.canonicalDensity_overlap_identity",
-        "UV.ContinuationBoostSpectrum.canonicalDensity_tendsto_departure_mass"
+        "UV.ContinuationBoostSpectrum.canonicalDensity_tendsto_departure_mass",
+        "UV.NextOpticalRadial.compactTimelikeWeight_integrable",
+        "UV.NextOpticalRadial.compactTimelikeDensity_linear_lower",
+        "UV.NextOpticalRadial.timelikeTimeSpectrum_real_band",
+        "UV.NextOpticalRadial.finite_slot_density_cannot_dominate_timelike_band",
+        "UV.NextOpticalRadial.opticalProjector_cannot_dominate_tested_timelike_band"
       ],
       "lean_projects": {},
-      "scope": "Checks the actual normalized (2π)⁻³ three-dimensional trace density, its uniform finite-slot L² bound, the positive timelike shell-band lower bound, and the same-plane no-go against an admitted Lorentz spectrum of that form. For the specified optical Hamiltonian, verifies unit Clifford coefficients, Hermitian idempotents of exact trace two, Gaussian square-integrability of the departure from the constant projector, strictly positive normalized pair integral on a ball in a compact positive timelike band, and the normalized large-shift density limit via the Gaussian envelope. From matrix conservation, positivity, and the explicit metric-preserving spatial rotations, verifies the exact rest tensor and its boost to the transverse Lorentz tensor on the same locked diamond. Verifies the physical future-shell time entry, the equal-time spectral weight with the mass-shell Jacobian factor, and an explicit Lorentz boost along the unbounded transfer axis. For any square-integrable finite-slot projector departure, checks the exact Hilbert–Schmidt overlap identity and its vanishing under unbounded spatial shifts by separating two translated spatial tails. The normalized density tends to the full projector-departure mass on the fixed diamond. The distributional spectral disintegration remains open.",
+      "scope": "Checks the actual normalized (2π)⁻³ three-dimensional trace density, its uniform finite-slot L² bound, the positive timelike shell-band lower bound, and the same-plane no-go against an admitted Lorentz spectrum of that form. For the specified optical Hamiltonian, verifies unit Clifford coefficients, Hermitian idempotents of exact trace two, Gaussian square-integrability of the departure from the constant projector, strictly positive normalized pair integral on a ball in a compact positive timelike band, and the normalized large-shift density limit via the Gaussian envelope. From matrix conservation, positivity, and the explicit metric-preserving spatial rotations, verifies the exact rest tensor and its boost to the transverse Lorentz tensor on the same locked diamond. Verifies the physical future-shell time entry, the equal-time spectral weight with the mass-shell Jacobian factor, and an explicit Lorentz boost along the unbounded transfer axis. For any square-integrable finite-slot projector departure, checks the exact Hilbert–Schmidt overlap identity and its vanishing under unbounded spatial shifts by separating two translated spatial tails. The normalized density tends to the full projector-departure mass on the fixed diamond. Constructs the positive scalar time-component mass measure of a supplied transverse timelike spectral law and proves its actual compact-band mass and linear lower. For any square-integrable finite-slot sea in the actual sector-plane type, the full canonical weight cannot dominate even this positive sub-band. For the optical action the same conclusion holds under the source’s common positive external exp(−2a|P|) test. The general distributional spectral disintegration from vacuum covariance remains open.",
       "statement_change": "new"
     },
     {
@@ -2182,10 +2219,22 @@
         "UV.NextOpticalRadial.mixingBand_contradiction",
         "UV.NextOpticalRadial.radialEuclideanDensity_not_integrable_of_band",
         "UV.NextOpticalRadial.transverseTube_measure_le",
-        "UV.NextOpticalRadial.radialPairWeight_upper"
+        "UV.NextOpticalRadial.radialPairWeight_upper",
+        "UV.NextOpticalRadial.compactPairBand_measurable",
+        "UV.NextOpticalRadial.compactPairBand_exchange",
+        "UV.NextOpticalRadial.compactPairBand_radial_support",
+        "UV.NextOpticalRadial.compactPairBand_lintegral_radial_le",
+        "UV.NextOpticalRadial.compactPairBand_integral_exchange",
+        "UV.NextOpticalRadial.canonicalPairBandDensity_upper",
+        "UV.NextOpticalRadial.compactPairBand_bounded_all_transfers",
+        "UV.NextOpticalRadial.canonicalPairWeight_integrableOn",
+        "UV.NextOpticalRadial.canonicalPairSpectrum_real_band",
+        "UV.NextOpticalRadial.timelikeTimeSpectrum_real_band",
+        "UV.NextOpticalRadial.radialEuclideanDensity_not_integrable_of_compact_lorentz_band",
+        "UV.NextOpticalRadial.radialEuclideanDensity_not_integrable_of_timelike_measure_match"
       ],
       "lean_projects": {},
-      "scope": "Checks unit radial spinor normalization, exact canonical trace, the transverse angular factor and the fixed-frequency temporal resolvent lower bound. The exterior cone has positive solid angle, and integration of the actual nonnegative pair coefficient forces an integrable harmonic mixing tail. The compact massive pair band has bounded transverse radius and two strictly positive, linearly large longitudinal momenta. An integrable harmonic tail gives vanishing mass of traveling annuli, so the actual Euclidean coefficient is nonintegrable when the radial band upper and covariant linear lower bounds hold for the same band. Checks the pointwise radial pair upper bound and an exact quadratic solid-angle bound for the normalized transverse tube. The integrated restricted-band upper estimate and measure-level covariance linkage remain open here.",
+      "scope": "Checks the unit radial spinor, exact canonical trace, transverse angular and temporal resolvent lower bounds, and the harmonic mixing tail required by absolute integrability at one nonzero fixed transfer. On the actual compact invariant-mass band, the exact pair shells confine both constituents to positive longitudinal fractions and a bounded transverse radius. Tonelli and the quadratic tube measure cancel the radial Jacobian, proving the integrated radial interval upper with the exact (2π)⁻³ normalization and both constituents linked by measure-preserving exchange. Constructs the actual canonical pair mass pushforward and checks both compact-band measure evaluations. Equality of the measured pair spectrum and a represented transverse positive timelike model on the same plane forces nonintegrability, allowing a bounded spatial optical amplitude nonzero at the tested transfer. Deriving the represented timelike model from abstract Lorentz covariance of arbitrary vacuum spectral distributions remains open.",
       "statement_change": "new"
     },
     {
@@ -2348,10 +2397,23 @@
       "title_tex": "Flat holonomy and its first nonconstant perturbation",
       "source_line": 25853,
       "statement_tex": "Per unit carrier four-volume the complete complex-scalar determinant\nrelative to its zero-source value is UV finite for every constant\nreal $\\vartheta$. It has finite derivatives of all orders in\n$\\vartheta$. At any nonzero Euclidean external momentum $q$ the\nbare two-insertion response for $\\vartheta(x)$ instead diverges.",
-      "status": "pending",
-      "lean": [],
+      "status": "verified",
+      "lean": [
+        "UV.ExtendNativeHolonomy.normal_heatTrace_poisson",
+        "UV.ExtendNativeHolonomy.winding_proper_integral",
+        "UV.ExtendNativeHolonomy.heatDet_integral_eq_flat",
+        "UV.ExtendNativeHolonomy.flat_integral_norm_summable",
+        "UV.ExtendNativeHolonomy.flat_winding_sum_integrable",
+        "UV.ExtendNativeHolonomy.flatLogDet_iteratedDeriv",
+        "UV.ExtendNativeHolonomy.windingDerivative_hasDerivAt",
+        "UV.ExtendNativeHolonomy.linear_and_contact_normal_vertices",
+        "UV.ExtendNativeHolonomy.responseMode_eq_bare_two_time",
+        "UV.ExtendNativeHolonomy.responseMode_proper_eq_log",
+        "UV.ExtendNativeHolonomy.response_modeProper_tendsto_nat",
+        "UV.ExtendNativeHolonomy.response_comparison_not_summable"
+      ],
       "lean_projects": {},
-      "scope": "Not yet formalized.",
+      "scope": "Checks the scalar normal-circle comparison action on a fixed sector plane. The shifted Poisson identity, zero-winding cancellation, and exact proper-time winding integrals identify the relative flat determinant per unit carrier four-volume with its full paired-winding sum. Every finite source derivative is justified by absolute joint winding and carrier-momentum bounds and exact exchange of the sum and integral. For a nonconstant source, the mode mass gives the exact linear and quadratic contact vertices. After cancellation of the common local contact, the actual bare two-line Gaussian comparison at each mode equals its positive proper-time and logarithmic formulas. Each summand tends to the stated positive |q|²/(24π²L²) on the positive mode tail when q is nonzero, so the integer comparison diverges against the finite zero-momentum Hessian.",
       "statement_change": "new"
     },
     {
@@ -8540,12 +8602,22 @@
     {
       "label": "eq:fw-positive-state-measure",
       "source_line": 11423,
-      "status": "partial",
-      "scope": "Proves the regular positive-shell Jacobian and the axial delta approximation on bounded continuous tests integrable on the positive ray. Constructs the induced measure on the signed shell with the exact spatial factor (2π)⁻³(2κ)⁻¹. The spin and support-normalized state inner product is not modeled here.",
+      "status": "verified",
+      "scope": "Checks the regular positive-shell Jacobian and reproduces the signed physical shell measure by the shell delta limit on compact continuous tests in all four intrinsic momentum coordinates. The measure has the exact spatial normalization (2π)⁻³(2κ)⁻¹, including the massless regular sheet. On the source’s discrete counting support ledger, the sector/offset projector and spin delta multiply the spatial delta by (2π)³·2κ and cancel the spatial density exactly at each κ > 0. This is the stated delta normalization on the admitted channel. At fixed transverse momentum a norm-one spatial boost axis gives the exact axial Jacobian and preserves the one-dimensional shell weight.",
       "lean": [
         "UV.SectorPlane.Plane.physical_shell_normalization",
         "UV.SectorPlane.positive_ray_shell_measure_limit",
-        "UV.SectorPlane.Plane.positive_shell_measure_integral"
+        "UV.SectorPlane.Plane.positive_shell_measure_integral",
+        "UV.SectorPlane.positive_ray_poisson_test_norm_le",
+        "UV.SectorPlane.integrableOn_inv_norm_closedBall_spatial",
+        "UV.SectorPlane.selected_shell_test_eq_axial_transverse",
+        "UV.SectorPlane.selected_shell_test_limit",
+        "UV.SectorPlane.Plane.positive_shell_measure_test",
+        "UV.SectorPlane.Plane.physical_shell_test_limit",
+        "UV.SectorPlane.Plane.shell_state_normalization_test",
+        "UV.SectorPlane.Plane.shell_state_normalization_resolves",
+        "UV.SectorPlane.axialBoost_lintegral_shellWeight",
+        "UV.SectorPlane.axialBoost_physicalShellPoint"
       ]
     },
     {
@@ -8717,55 +8789,113 @@
       "label": "eq:update-vectorial-boundary-response",
       "source_line": 16626,
       "status": "verified",
-      "scope": "On the regular invariant shell coordinate with fixed test density, differentiates the actual transported canonical covariance integral at each positive height. The transported imaginary unit has norm one and square −1. The limit gives PV on the original test for the unit variation, and the finite part and delta derivative on the test multiplied by the normal velocity. The chart path has a locally uniform bound on its parameter derivative, and the multiplied compact test has Lipschitz first derivative. The theorem tests the normal-coordinate identity. Transverse coarea integration remains open.",
+      "scope": "Differentiates the actual canonical covariance against the fixed density of a compact regular shell product chart at positive height. The transported algebra unit has norm one and squares to −1. In the boundary limit the unit variation uses the original test, and the finite part and delta derivative use the test multiplied by the possibly transverse-dependent normal velocity. Uses a locally uniform path derivative bound and Lipschitz first derivative for the multiplied compact test.",
       "lean": [
         "UV.SectorPlane.Plane.transported_canonical_split",
         "UV.SectorPlane.Plane.tested_canonical_covariance_hasDerivAt",
         "UV.SectorPlane.shell_finite_part_eq_symmetric_derivative",
-        "UV.SectorPlane.Plane.tested_canonical_boundary_response"
+        "UV.SectorPlane.Plane.tested_canonical_boundary_response",
+        "UV.SectorPlane.Plane.tested_canonical_covariance_measure_hasDerivAt",
+        "UV.SectorPlane.Plane.transverse_canonical_boundary_response"
       ]
     },
     {
       "label": "eq:physical-cut-map",
       "source_line": 16697,
       "status": "partial",
-      "scope": "Checks routing of the full Lorentzian shell covector, the branch selector, the normalized running unit on its regular ray, and the positive scalar completeness measure under the arrow pushforward. The replacement of the damped virtual line and its full spin and adjoint sum, endpoint dualization, and cut-discontinuity matching for complete graphs remain open.",
+      "scope": "Checks the full Lorentzian covector routing, branch selector, normalized running unit on the regular ray, and invariance of the four-dimensional volume and shell mollifier at each positive height. The exact finite-height scalar pairing transports the entire test by the arrow. Its limit for compact continuous tests is the positive scalar completeness measure pushed forward by that arrow, including the massless regular sheet. The replacement of a full damped virtual line, spin and adjoint sum, endpoint dualization, and cut-discontinuity matching for complete graphs remain open.",
       "lean": [
         "UV.SectorPlane.Plane.routed_shell_invariants",
         "UV.SectorPlane.Plane.routed_shell_running_unit",
         "UV.SectorPlane.cut_arrow_jacobian_abs",
-        "UV.SectorPlane.Plane.routed_positive_shell_measure_integral"
+        "UV.SectorPlane.Plane.routed_positive_shell_measure_integral",
+        "UV.SectorPlane.cut_arrow_preserves_volume",
+        "UV.SectorPlane.Plane.cut_arrow_selector",
+        "UV.SectorPlane.cut_arrow_shell_mollifier",
+        "UV.SectorPlane.Plane.selected_shell_test_cut_arrow",
+        "UV.SectorPlane.Plane.routed_shell_test_limit"
       ]
     },
     {
       "label": "eq:numerator-disc",
       "source_line": 16761,
-      "status": "partial",
-      "scope": "In the regular invariant normal coordinate, tests the two actual extracted character sides with compact complex numerators. Their difference gives the principal-value numerator difference and the imaginary shell sum with coefficient −iπ. A uniformly vanishing compact C¹ error in the tested numerator does not change either boundary limit. The transverse chart integration and identification of a full graph discontinuity are not supplied by this proof.",
+      "status": "verified",
+      "scope": "Tests the two actual extracted character sides on the fixed sector plane with the coarea density included in each compact complex numerator. Integrates over the full regular product chart and proves the principal-value difference and the shell integral of the numerator sum with factor −iπ. Uniformly vanishing compact C¹ multiplier errors preserve both limits.",
       "lean": [
         "UV.SectorPlane.Plane.pole_coefficient_split",
         "UV.SectorPlane.Plane.tested_pole_coefficient_jump",
         "UV.SectorPlane.Plane.tested_pole_multiplier_error_limit",
-        "UV.SectorPlane.Plane.tested_pole_varying_numerator_limit"
+        "UV.SectorPlane.Plane.tested_pole_varying_numerator_limit",
+        "UV.SectorPlane.chart_integral_mul",
+        "UV.SectorPlane.transverse_test_hasDerivAt",
+        "UV.SectorPlane.Plane.transverse_pole_test_limit",
+        "UV.SectorPlane.Plane.transverse_pole_jump"
       ]
     },
     {
       "label": "eq:weighted-pole-disc",
       "source_line": 16780,
       "status": "verified",
-      "scope": "For the common numerator on a regular normal chart, the exact tested coefficient jump is −2πi times that numerator times the test at the shell. The two sides are extracted after forming the fixed-plane quotient pole. The theorem tests the normal-coordinate identity. Transverse coarea integration remains open.",
+      "scope": "For a common boundary numerator the full regular-chart jump is −2πi times the transverse integral of the tested numerator on the shell. Both finite-height sides are extracted from the fixed-plane quotient.",
       "lean": [
-        "UV.SectorPlane.Plane.common_numerator_pole_jump"
+        "UV.SectorPlane.Plane.common_numerator_pole_jump",
+        "UV.SectorPlane.Plane.transverse_common_numerator_pole_jump"
       ]
     },
     {
       "label": "eq:directed-numerator-discontinuity",
       "source_line": 16789,
-      "status": "partial",
-      "scope": "The first-character jump of the regular normal chart tests is transported as a whole into the literal carrier quotient. No replacement by a physical completeness operator is used.",
+      "status": "verified",
+      "scope": "Transports the entire tested regular-chart limit of the coefficient jump into the literal carrier quotient after transverse integration.",
       "lean": [
         "UV.SectorPlane.directed_shell_readout_continuous",
-        "UV.SectorPlane.Plane.directed_tested_pole_jump"
+        "UV.SectorPlane.Plane.directed_tested_pole_jump",
+        "UV.SectorPlane.Plane.transverse_directed_pole_jump"
+      ]
+    },
+    {
+      "label": "eq:stable-full-directed-kernel",
+      "source_line": 16813,
+      "status": "verified",
+      "scope": "Forms the negative shifted Lorentzian invariant in the actual directed quotient. Evaluates the transported principal square root and exponential through the two conjugate character coordinates at positive height.",
+      "lean": [
+        "UV.SectorPlane.Plane.stable_half_argument_is_directed",
+        "UV.SectorPlane.Plane.stable_half_numerator_characters"
+      ]
+    },
+    {
+      "label": "eq:stable-directed-boundary",
+      "source_line": 16829,
+      "status": "verified",
+      "scope": "For positive Lorentzian shell square, proves the exact regular timelike phase in the extracted coefficient and its cosine and signed sine reconstruction in the carrier quotient. The sign follows from the principal root at positive height on the fixed diamond.",
+      "lean": [
+        "UV.SectorPlane.principalSqrt_upper_eq",
+        "UV.SectorPlane.principalSqrt_lower_eq",
+        "UV.SectorPlane.Plane.stable_half_timed_coefficient_limit",
+        "UV.SectorPlane.Plane.stable_half_timed_directed_limit"
+      ]
+    },
+    {
+      "label": "eq:stable-disc",
+      "source_line": 16845,
+      "status": "partial",
+      "scope": "On a compact regular timelike chart, checks the literal stable-half pole jump for the stated C¹ multiplier data, giving PV with numerator 2i sin(a√w) and the shell term −2πi cos(am). The actual timelike kernel and its invariant first derivative converge uniformly on every compact positive shell interval. A separate global proof through the branch edge and its exceptional shell domains remains open.",
+      "lean": [
+        "UV.SectorPlane.Plane.stable_half_analytic_form",
+        "UV.SectorPlane.Plane.stable_half_timed_uniform_C1",
+        "UV.SectorPlane.stable_half_boundary_phase_difference",
+        "UV.SectorPlane.stable_half_boundary_phase_sum",
+        "UV.SectorPlane.Plane.transverse_stable_half_jump"
+      ]
+    },
+    {
+      "label": "eq:massless-branch",
+      "source_line": 16860,
+      "status": "verified",
+      "scope": "In the original quotient, subtracts the massless inverse and the inverse-square-root term at the same positive height. The remainder has norm at most a² whenever |a| times the square root of the shifted coefficient norm is at most one. This is the quantitative O(1) bound in the displayed expansion.",
+      "lean": [
+        "UV.SectorPlane.stable_half_massless_remainder",
+        "UV.SectorPlane.Plane.stable_half_massless_directed_remainder"
       ]
     }
   ]

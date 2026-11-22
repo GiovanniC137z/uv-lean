@@ -111,6 +111,21 @@ theorem Plane.pole_coefficient_split (diamond : Plane E) (ε : Evolution)
       Complex.I * ((diamond.eta ε * polePoisson (h : ℝ) D : ℝ) : ℂ) := by
   simp [Plane.poleCoefficient, diamond.inverse_pole_split ε h, directed]
 
+theorem Plane.pole_coefficient_continuous (diamond : Plane E) (ε : Evolution) (h : Height) :
+    Continuous (diamond.poleCoefficient ε h) := by
+  rw [show diamond.poleCoefficient ε h =
+    (fun D => (polePV (h : ℝ) D : ℂ) -
+      Complex.I * ((diamond.eta ε * polePoisson (h : ℝ) D : ℝ) : ℂ)) from
+    funext (diamond.pole_coefficient_split ε h)]
+  have hp : Continuous (polePV (h : ℝ)) :=
+    continuous_id.div ((continuous_id.pow 2).add continuous_const)
+      (fun D => (add_pos_of_nonneg_of_pos (sq_nonneg D) (sq_pos_of_pos h.property)).ne')
+  have hq : Continuous (polePoisson (h : ℝ)) :=
+    continuous_const.div ((continuous_id.pow 2).add continuous_const)
+      (fun D => (add_pos_of_nonneg_of_pos (sq_nonneg D) (sq_pos_of_pos h.property)).ne')
+  exact (Complex.continuous_ofReal.comp hp).sub
+    (continuous_const.mul (Complex.continuous_ofReal.comp (continuous_const.mul hq)))
+
 /-- The limits of the tested coefficient family keep the declared eta
 side. Lean's total real height parameter is used only on its positive ray. -/
 theorem Plane.tested_pole_coefficient_limit (diamond : Plane E) (ε : Evolution)

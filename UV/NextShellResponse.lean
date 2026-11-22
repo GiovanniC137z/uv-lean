@@ -67,44 +67,103 @@ theorem same_side_imag_norm_le {h : ℝ} (hh : 0 < h) (D : ℝ) :
 /-- One scale-independent differentiation lemma for either shell
 regularizer. The derivative bound is needed only at the current height. -/
 private theorem hasDerivAt_tested_shell_component
-    {f : ℝ → ℝ} (hf : Continuous f) (hs : HasCompactSupport f)
-    {D D' : ℝ → ℝ → ℝ} (ht : ∀ t, Continuous (D t)) (h0 : ∀ x, D 0 x = x)
+    {X : Type*} [TopologicalSpace X] [MeasurableSpace X] [BorelSpace X]
+    [SecondCountableTopology X] {μ : Measure X} [IsFiniteMeasureOnCompacts μ]
+    {f : X → ℝ} (hf : Continuous f) (hs : HasCompactSupport f)
+    {D D' : ℝ → X → ℝ} (ht : ∀ t, Continuous (D t))
     {b : ℝ} (hb : 0 < b)
     (hD : ∀ t ∈ Metric.ball (0 : ℝ) b, ∀ x, HasDerivAt (fun u => D u x) (D' t x) t)
     (hD' : Continuous (D' 0)) {B : ℝ}
     (hB : ∀ t ∈ Metric.ball (0 : ℝ) b, ∀ x, ‖D' t x‖ ≤ B)
     {q q' : ℝ → ℝ} (hq : ∀ x, HasDerivAt q (q' x) x) (hq' : Continuous q')
     {C : ℝ} (hC : ∀ x, ‖q' x‖ ≤ C) :
-    HasDerivAt (fun t : ℝ => ∫ x, q (D t x) * f x)
-      (∫ x, q' x * (D' 0 x * f x)) 0 := by
+    HasDerivAt (fun t : ℝ => ∫ x, q (D t x) * f x ∂μ)
+      (∫ x, q' (D 0 x) * (D' 0 x * f x) ∂μ) 0 := by
   have hqc : Continuous q := continuous_iff_continuousAt.mpr fun x => (hq x).continuousAt
   have hF (t : ℝ) : Continuous (fun x => q (D t x) * f x) :=
     (hqc.comp (ht t)).mul hf
-  have hF₀ : Integrable (fun x => q (D 0 x) * f x) :=
+  have hF₀ : Integrable (fun x => q (D 0 x) * f x) μ :=
     (hF 0).integrable_of_hasCompactSupport (hs.mul_left (f := fun x => q (D 0 x)))
-  have hFn : ∀ᶠ t : ℝ in 𝓝 0, AEStronglyMeasurable (fun x => q (D t x) * f x) volume :=
+  have hFn : ∀ᶠ t : ℝ in 𝓝 0, AEStronglyMeasurable (fun x => q (D t x) * f x) μ :=
     Eventually.of_forall fun t => (hF t).aestronglyMeasurable
   have hm : Continuous (fun x => q' (D 0 x) * (D' 0 x * f x)) :=
     (hq'.comp (ht 0)).mul (hD'.mul hf)
   have hC₀ : 0 ≤ C := (norm_nonneg (q' 0)).trans (hC 0)
-  have hbound : ∀ᵐ x ∂(volume : Measure ℝ),
+  have hbound : ∀ᵐ x ∂μ,
       ∀ t ∈ Metric.ball (0 : ℝ) b, ‖q' (D t x) * (D' t x * f x)‖ ≤ C * B * ‖f x‖ := by
     refine Eventually.of_forall fun x t hs => ?_
     rw [norm_mul, norm_mul, mul_assoc]
     exact (mul_le_mul_of_nonneg_right (hC _) (by positivity)).trans
       (mul_le_mul_of_nonneg_left
         (mul_le_mul_of_nonneg_right (hB t hs x) (norm_nonneg _)) hC₀)
-  have hdiff : ∀ᵐ x ∂(volume : Measure ℝ),
+  have hdiff : ∀ᵐ x ∂μ,
       ∀ t ∈ Metric.ball (0 : ℝ) b,
         HasDerivAt (fun u => q (D u x) * f x) (q' (D t x) * (D' t x * f x)) t := by
     refine Eventually.of_forall fun x t htb => ?_
     simpa only [Function.comp_def, mul_assoc] using ((hq (D t x)).comp t (hD t htb x)).mul_const (f x)
-  have h := (hasDerivAt_integral_of_dominated_loc_of_deriv_le
+  exact (hasDerivAt_integral_of_dominated_loc_of_deriv_le
     (x₀ := (0 : ℝ)) hb hFn hF₀ hm.aestronglyMeasurable hbound
     ((hf.integrable_of_hasCompactSupport hs).norm.const_mul (C * B)) hdiff).2
-  simpa only [h0] using h
 
 variable [CompleteSpace R]
+
+/-- Derivative of the actual tested canonical covariance at positive
+height on a fixed chart measure. The test is held fixed. -/
+theorem Plane.tested_canonical_covariance_measure_hasDerivAt (diamond : Plane E) (ε : Evolution)
+    (height : Height) {X : Type*} [TopologicalSpace X] [MeasurableSpace X]
+    [BorelSpace X] [SecondCountableTopology X] (μ : Measure X) [IsFiniteMeasureOnCompacts μ]
+    {j : ℝ → UnitVector R} {dj : R}
+    (hj : HasDerivAt (fun t => (j t : R)) dj 0) (hjSq : ∀ t, (j t : R) ^ 2 = -1)
+    {f : X → ℝ} (hf : Continuous f) (hs : HasCompactSupport f)
+    {D D' : ℝ → X → ℝ} (ht : ∀ t, Continuous (D t))
+    {b : ℝ} (hb : 0 < b)
+    (hD : ∀ t ∈ Metric.ball (0 : ℝ) b, ∀ x, HasDerivAt (fun u => D u x) (D' t x) t)
+    (hD' : Continuous (D' 0)) {B : ℝ}
+    (hB : ∀ t ∈ Metric.ball (0 : ℝ) b, ∀ x, ‖D' t x‖ ≤ B) :
+    let h : ℝ := height
+    let ψ (x : X) := D' 0 x * f x
+    HasDerivAt
+      (fun t : ℝ => ∫ x, f x • diamond.transportedCanonicalCovariance ε height (D t x) (j t) ∂μ)
+      (((∫ x, sameSideImag h (D 0 x) * ψ x ∂μ) • (1 : R) -
+          (diamond.eta ε * ∫ x, sameSideReal h (D 0 x) * ψ x ∂μ) • (j 0 : R)) +
+        (diamond.eta ε * ∫ x, polePV h (D 0 x) * f x ∂μ) • dj) 0 := by
+  let h : ℝ := height
+  let ψ (x : X) := D' 0 x * f x
+  let η := diamond.eta ε
+  have hpos : 0 < h := height.property
+  have hqc : Continuous (sameSideImag h) :=
+    Continuous.div (by fun_prop) (by fun_prop) (fun x => by positivity)
+  have hpc : Continuous (sameSideReal h) :=
+    Continuous.div (by fun_prop) (by fun_prop) (fun x => by positivity)
+  have hq := hasDerivAt_tested_shell_component (μ := μ) hf hs ht hb hD hD' hB
+    (polePoisson_hasDerivAt hpos) hqc (same_side_imag_norm_le hpos)
+  have hp := hasDerivAt_tested_shell_component (μ := μ) hf hs ht hb hD hD' hB
+    (polePV_hasDerivAt hpos) hpc.neg (fun x => by simpa using same_side_real_norm_le hpos x)
+  simp only [neg_mul, integral_neg] at hp
+  have hsum := (hq.smul_const (1 : R)).add ((hp.const_mul η).smul hj)
+  have heq (t : ℝ) :
+      (∫ x, f x • diamond.transportedCanonicalCovariance ε height (D t x) (j t) ∂μ) =
+      (∫ x, polePoisson h (D t x) * f x ∂μ) • (1 : R) +
+        (η * ∫ x, polePV h (D t x) * f x ∂μ) • (j t : R) := by
+    have hsplit : (fun x => f x • diamond.transportedCanonicalCovariance ε height (D t x) (j t)) =
+        (fun x => (polePoisson h (D t x) * f x) • (1 : R) +
+          (η * (polePV h (D t x) * f x)) • (j t : R)) := by
+      funext x
+      rw [diamond.transported_canonical_split ε height _ _ (hjSq t), smul_add, smul_smul, smul_smul]
+      congr 1 <;> congr 1 <;> ring
+    have hi {q : ℝ → ℝ} (hq₀ : Continuous q) :
+        Integrable (fun x => q (D t x) * f x) μ :=
+      ((hq₀.comp (ht t)).mul hf).integrable_of_hasCompactSupport
+        (hs.mul_left (f := fun x => q (D t x)))
+    have hqi := hi (continuous_iff_continuousAt.mpr fun x => (polePoisson_hasDerivAt hpos x).continuousAt)
+    have hpi := hi (continuous_iff_continuousAt.mpr fun x => (polePV_hasDerivAt hpos x).continuousAt)
+    rw [hsplit, integral_add (hqi.smul_const _) ((hpi.const_mul η).smul_const _),
+      integral_smul_const, integral_smul_const, integral_const_mul]
+  rw [show (fun t : ℝ => ∫ x, f x • diamond.transportedCanonicalCovariance ε height (D t x) (j t) ∂μ) =
+    _ from funext heq]
+  convert hsum using 1
+  simp only [mul_neg, neg_smul, sub_eq_add_neg]
+  abel
 
 /-- Derivative of the actual tested canonical covariance at positive
 height. D is the regular chart at the base point. The test is held fixed. -/
@@ -124,43 +183,8 @@ theorem Plane.tested_canonical_covariance_hasDerivAt (diamond : Plane E) (ε : E
       (((∫ x, sameSideImag h x * ψ x) • (1 : R) -
           (diamond.eta ε * ∫ x, sameSideReal h x * ψ x) • (j 0 : R)) +
         (diamond.eta ε * ∫ x, polePV h x * f x) • dj) 0 := by
-  let h : ℝ := height
-  let ψ (x : ℝ) := D' 0 x * f x
-  let η := diamond.eta ε
-  have hpos : 0 < h := height.property
-  have hqc : Continuous (sameSideImag h) :=
-    Continuous.div (by fun_prop) (by fun_prop) (fun x => by positivity)
-  have hpc : Continuous (sameSideReal h) :=
-    Continuous.div (by fun_prop) (by fun_prop) (fun x => by positivity)
-  have hq := hasDerivAt_tested_shell_component hf hs ht h0 hb hD hD' hB
-    (polePoisson_hasDerivAt hpos) hqc (same_side_imag_norm_le hpos)
-  have hp := hasDerivAt_tested_shell_component hf hs ht h0 hb hD hD' hB
-    (polePV_hasDerivAt hpos) hpc.neg (fun x => by simpa using same_side_real_norm_le hpos x)
-  simp only [neg_mul, integral_neg] at hp
-  have hsum := (hq.smul_const (1 : R)).add ((hp.const_mul η).smul hj)
-  have heq (t : ℝ) :
-      (∫ x, f x • diamond.transportedCanonicalCovariance ε height (D t x) (j t)) =
-      (∫ x, polePoisson h (D t x) * f x) • (1 : R) +
-        (η * ∫ x, polePV h (D t x) * f x) • (j t : R) := by
-    have hsplit : (fun x => f x • diamond.transportedCanonicalCovariance ε height (D t x) (j t)) =
-        (fun x => (polePoisson h (D t x) * f x) • (1 : R) +
-          (η * (polePV h (D t x) * f x)) • (j t : R)) := by
-      funext x
-      rw [diamond.transported_canonical_split ε height _ _ (hjSq t), smul_add, smul_smul, smul_smul]
-      congr 1 <;> congr 1 <;> ring
-    have hi {q : ℝ → ℝ} (hq₀ : Continuous q) :
-        Integrable (fun x => q (D t x) * f x) :=
-      ((hq₀.comp (ht t)).mul hf).integrable_of_hasCompactSupport
-        (hs.mul_left (f := fun x => q (D t x)))
-    have hqi := hi (continuous_iff_continuousAt.mpr fun x => (polePoisson_hasDerivAt hpos x).continuousAt)
-    have hpi := hi (continuous_iff_continuousAt.mpr fun x => (polePV_hasDerivAt hpos x).continuousAt)
-    rw [hsplit, integral_add (hqi.smul_const _) ((hpi.const_mul η).smul_const _),
-      integral_smul_const, integral_smul_const, integral_const_mul]
-  rw [show (fun t : ℝ => ∫ x, f x • diamond.transportedCanonicalCovariance ε height (D t x) (j t)) =
-    _ from funext heq]
-  convert hsum using 1
-  simp only [h0, mul_neg, neg_smul, sub_eq_add_neg]
-  abel
+  simpa only [h0] using diamond.tested_canonical_covariance_measure_hasDerivAt ε height
+    volume hj hjSq hf hs ht hb hD hD' hB
 
 omit [CompleteSpace R] in
 /-- The three terms of the boundary response. The normal velocity
