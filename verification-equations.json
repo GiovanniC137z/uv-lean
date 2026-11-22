@@ -82,7 +82,7 @@
   },
   "eq:directed-propagator": {
     "status": "partial",
-    "scope": "The finite positive-height expression is realized in the literal directed quotient with the normalized running unit and the original fixed-plane η in the stable numerator and pole. For the stable-half kernel exp(−√z), a≥0 and m>0, the full-line η=+1 minus η=−1 jump is checked on compact Lipschitz real tests of all four momenta. A bounded Lipschitz clip agrees with the actual running sign near both massive sheets, and the exact measurable correction has a uniform gap to the massive pole. The directed jump is 2jₑ times the signed real-boundary-weighted principal value plus 2πjₑ sin(am) times the difference of the two axial shell weights with Jacobian 1/(2ω). With the literal running numerator and the stable-half kernel at nonnegative depth, the common positive-height limit is checked at zero mass on compact Cartesian C² tests, including the cone tip, for the simple scalar and ghost lines and the resolved covariant-gauge template with arbitrary real ζ and two intrinsic unit directions. The axial sign at zero only supplies a scalar totalization on a Lebesgue-null hyperplane. The fixed pole unit and η in the denominator are unchanged. Separate one-sided full positive-mass limits and the general kernel remain open.",
+    "scope": "The literal finite-height scalar line uses the normalized running unit off the null axial hyperplane, the fixed pole unit, and a common positive height. At positive mass each stable-half side now converges on compact Lipschitz complex tests. The same-height shell subtraction leaves an absolutely integrable remainder. Its residue has phase exp(iηam) and weights the difference of the two shells with the exact Jacobian 1/(2ω). At zero mass the stable-half line converges on compact Cartesian C² tests through the cone tip. The separate scalar sides extend to all nonnegative masses for every real-C¹ profile, and more generally for profiles satisfying the documented compact shell estimates. The limiting coefficient acts continuously on every fixed compact C² test space. Other singular kernel branches and products in a graph require their own existence proofs.",
     "lean": [
       "UV.SectorPlane.Plane.scalar_line_plus",
       "UV.SectorPlane.Plane.scalar_line_minus",
@@ -115,7 +115,20 @@
       "UV.SectorPlane.Plane.massless_running_stable_gauge_integrand",
       "UV.SectorPlane.Plane.massless_running_stable_gauge_pair_integral",
       "UV.SectorPlane.Plane.massless_running_stable_ghost_limit",
-      "UV.SectorPlane.Plane.massless_running_stable_gauge_limit"
+      "UV.SectorPlane.Plane.massless_running_stable_gauge_limit",
+      "UV.SectorPlane.Plane.massive_signed_pole_complex_limit",
+      "UV.SectorPlane.Plane.shell_kernel_remainder_limit",
+      "UV.SectorPlane.Plane.massive_running_kernel_limit",
+      "UV.SectorPlane.Plane.massless_running_kernel_limit",
+      "UV.SectorPlane.Plane.scalar_kernel_bounds_of_contDiff",
+      "UV.SectorPlane.Plane.scalar_line_pairing_eq",
+      "UV.SectorPlane.Plane.massive_stable_scalar_line_side",
+      "UV.SectorPlane.Plane.massive_stable_running_side",
+      "UV.SectorPlane.Plane.shell_bounded_scalar_distribution",
+      "UV.SectorPlane.Plane.smooth_scalar_distribution",
+      "UV.SectorPlane.Plane.stable_scalar_distribution",
+      "UV.SectorPlane.CompactMomentumTest.ofFunction_value",
+      "UV.SectorPlane.compact_momentum_boundary_order_two"
     ]
   },
   "eq:fixed-carrier-line": {
@@ -127,13 +140,18 @@
     ]
   },
   "eq:carrier-pv-delta": {
-    "status": "partial",
-    "scope": "The finite-height decomposition gives the sector-signed Poisson kernel and evolution-signed directed principal-value kernel. On bounded, Lipschitz integrable scalar tests in D, the actual integrals converge to π times evaluation at zero and the symmetric principal value, respectively. Pullback of these distributions to the full shell and products of boundary values require further analysis.",
+    "status": "verified",
+    "scope": "For the undamped fixed-carrier comparison on a locked plane, Lean integrates the actual vectorial inverse and proves the displayed sector-signed π shell delta plus evolution-signed directed PV on compact C² real four-momentum tests for every m≥0. Both axial sheets enter the shell measure. At positive mass the prescribed PV agrees with the normal coarea PV on compact Lipschitz tests. At zero mass the conjugate-Poisson prescription has a finite, side-independent limit through the tip, with an explicit subtracted angular integral. Coverage is the common-height single-line prescription.",
     "lean": [
       "UV.SectorPlane.Plane.fixed_pole_components",
       "UV.SectorPlane.pole_poisson_test_limit",
       "UV.SectorPlane.pole_pv_test_limit",
-      "UV.SectorPlane.Plane.fixed_pole_test_limits"
+      "UV.SectorPlane.Plane.fixed_pole_test_limits",
+      "UV.SectorPlane.Plane.fixed_carrier_shell_limit",
+      "UV.SectorPlane.Plane.massless_shell_pv_angular",
+      "UV.SectorPlane.massive_regularized_shell_pv",
+      "UV.SectorPlane.pole_poisson_full_shell_limit",
+      "UV.SectorPlane.pole_pv_full_massive_shell_limit"
     ]
   },
   "eq:line-character-values": {
@@ -619,16 +637,23 @@
   },
   "eq:scalar-line-coefficient": {
     "status": "partial",
-    "scope": "At positive height the extracted coefficient and reconstruction agree with the original scalar line for the stable-half kernel. At zero mass the limit is taken on the common running finite-height product, with the test domain and absolute residual explicitly controlled. At positive mass the full running jump is checked on compact Lipschitz real tests. Independent multiplication of a generic boundary coefficient by the discontinuous sign remains open.",
+    "scope": "At finite height, integration of the literal carrier-valued test times the original scalar line equals the directed embedding of the signed coefficient pairing. Convergence of the extracted resolvent on the sign-multiplied test is equivalent to convergence of that directed line with the prescribed η. Compact C² tests vanishing in a strip about the axial hyperplane admit this multiplier, and the smooth-kernel extracted boundary exists there. Common-height integration also gives stable-half and shell-bounded scalar lines on tests crossing the axis. Independent multiplication of a singular boundary by the discontinuous sign on an unrestricted test domain remains open.",
     "lean": [
       "UV.SectorPlane.Plane.massless_running_stable_scalar_line",
       "UV.SectorPlane.Plane.massless_running_stable_single_limit",
-      "UV.SectorPlane.Plane.massive_stable_running_directed_jump"
+      "UV.SectorPlane.Plane.massive_stable_running_directed_jump",
+      "UV.SectorPlane.Plane.scalar_line_pairing_eq",
+      "UV.SectorPlane.Plane.scalar_line_on_multiplier_domain",
+      "UV.SectorPlane.running_test_contDiff_away_from_axis",
+      "UV.SectorPlane.running_test_compact",
+      "UV.SectorPlane.Plane.smooth_extracted_limit_away_from_axis",
+      "UV.SectorPlane.Plane.massive_stable_scalar_line_side",
+      "UV.SectorPlane.Plane.stable_scalar_distribution"
     ]
   },
   "eq:physical-directed-gauge-ghost-lines": {
-    "status": "partial",
-    "scope": "With the literal running numerator and the stable-half kernel at nonnegative depth, the common positive-height limit is checked at zero mass on compact Cartesian C² tests, including the cone tip, for the simple scalar and ghost lines and the resolved covariant-gauge template with arbitrary real ζ and two intrinsic unit directions. The axial sign at zero only supplies a scalar totalization on a Lebesgue-null hyperplane. The fixed pole unit and η in the denominator are unchanged. For the running signed longitudinal test, Cartesian integration by parts at positive height adds the axial trace of the inverse root, with coefficient 2a times the axial component of the derivative direction. The trace tends to the ordinary three-dimensional integral with inverse spatial norm. Combining that term with the two angular boundary terms and the locally integrable residual gives the complete tested longitudinal limit. A continuity theorem in the test-space topology, the generic kernel and source Hessian identification, and products of these boundary values remain open.",
+    "status": "verified",
+    "scope": "The two displayed resolved templates at positive height are proved in the actual carrier quotient for an arbitrary profile on the specified scalar branch. The calculation retains the normalized running sign, the fixed denominator side, the Maxwell minus sign, both covariant momentum slots and every real gauge parameter. The ghost is the oriented scalar at zero mass. With a real-C² kernel the full Maxwell common-height boundary defines a continuous functional on each compact C² test space, including tests through the cone tip. The ghost needs only a real-C¹ kernel. A separate proof covers the nonsmooth stable-half kernel at nonnegative depth for both templates. Identification with a completed source Hessian and products of boundary values in loop graphs are separate claims.",
     "lean": [
       "UV.SectorPlane.real_axial_nonzero_ae",
       "UV.SectorPlane.Plane.massless_running_stable_single_pair_split",
@@ -648,7 +673,68 @@
       "UV.SectorPlane.Plane.massless_running_stable_gauge_integrand",
       "UV.SectorPlane.Plane.massless_running_stable_gauge_pair_integral",
       "UV.SectorPlane.Plane.massless_running_stable_ghost_limit",
-      "UV.SectorPlane.Plane.massless_running_stable_gauge_limit"
+      "UV.SectorPlane.Plane.massless_running_stable_gauge_limit",
+      "UV.SectorPlane.Plane.maxwell_kernel_vectorial",
+      "UV.SectorPlane.Plane.ghost_template_vectorial",
+      "UV.SectorPlane.Plane.smooth_maxwell_distribution",
+      "UV.SectorPlane.Plane.smooth_scalar_distribution",
+      "UV.SectorPlane.Plane.stable_ghost_distribution",
+      "UV.SectorPlane.Plane.stable_maxwell_distribution",
+      "UV.SectorPlane.compact_momentum_slices_tendsto",
+      "UV.SectorPlane.compact_momentum_moving_test_limit",
+      "UV.SectorPlane.compact_momentum_multiplier_limit",
+      "UV.SectorPlane.compact_momentum_boundary_order_two"
+    ]
+  },
+  "eq:gauge-directed-kinetic-data": {
+    "status": "verified",
+    "scope": "At a common positive height the actual carrier denominator has the directed pole-root term. Applying the specified scalar profile after extraction and embedding gives its literal directed kinetic numerator for arbitrary φ, with argument −a²Z on that same side.",
+    "lean": [
+      "UV.SectorPlane.Plane.gauge_directed_kinetic_data",
+      "UV.SectorPlane.Plane.pole_denominator_literal"
+    ]
+  },
+  "eq:gauge-covariances": {
+    "status": "verified",
+    "scope": "For the flat Euclidean benchmark in the intrinsic four coordinates, the normalized momentum defines the longitudinal projector. Its matrix entry on two unit test directions is the product of the two momentum components divided by squared Euclidean norm. The stipulated gauge covariance and kinetic operator are inverse in both orders on each nonzero mode for real φ with nonzero value and ζ>0. The ghost factor is the reciprocal of its kinetic coefficient.",
+    "lean": [
+      "UV.SectorPlane.longitudinal_projection_component",
+      "UV.SectorPlane.longitudinal_projection_idempotent",
+      "UV.SectorPlane.gauge_projector_sum_inverse",
+      "UV.SectorPlane.euclidean_gauge_and_ghost_inverse"
+    ]
+  },
+  "eq:monomial-doublet-uv": {
+    "status": "verified",
+    "scope": "For the specified 2×2 Hessian on each transverse polarization, Lean derives both Schur responses and determinant ratios from the matrix entries. The normalized joint internal trace cancels the quadratic term pointwise. At |z|<1 its relative log determinant is half the log of 1−z⁴(X/(X+μ²))². Dividing by z⁴ gives an exact quartic coefficient tending to −1/2 as X→∞. On the locked plane the resulting four-momentum coefficient fails absolute integrability. The two internal blocks are independent of the sector label.",
+    "lean": [
+      "UV.SectorPlane.doublet_schur_response",
+      "UV.SectorPlane.doublet_sewn_blocks",
+      "UV.SectorPlane.doublet_second_order_cancels",
+      "UV.SectorPlane.doublet_relative_determinants",
+      "UV.SectorPlane.doublet_trace_log",
+      "UV.SectorPlane.doublet_fourth_coefficient",
+      "UV.SectorPlane.doublet_fourth_uv_limit",
+      "UV.SectorPlane.Plane.doublet_fourth_not_integrable"
+    ]
+  },
+  "eq:uvpeC-gauge-heat": {
+    "status": "verified",
+    "scope": "For the supplied Landau spectrum and spin spectrum of the two charged roots, the geometric series and the statistical trace of the two shifted and three unshifted polarizations and the ghost give the displayed finite-time heat difference. The continuously normalized zero-field value is included.",
+    "lean": [
+      "UV.RootMagnetic.landau_level_sum",
+      "UV.RootMagnetic.root_spin_ghost_trace",
+      "UV.RootMagnetic.root_landau_heat_difference",
+      "UV.RootMagnetic.root_heat_quadratic_coefficient"
+    ]
+  },
+  "eq:uvpeC-root-response": {
+    "status": "verified",
+    "scope": "For the stated root-pair spectral data, extracting the B² coefficient after integration on 0<ε<t<T gives exactly −7/[2(4π)²] times the proper-time integral. Lean proves nonintegrability at zero for every real v and bounds log(T/ε) minus the cost between 0 and (T−ε)v². The parent result separately tracks the background-operator derivation.",
+    "lean": [
+      "UV.RootMagnetic.root_level_action_response",
+      "UV.RootMagnetic.root_proper_time_not_integrable",
+      "UV.RootMagnetic.root_proper_time_log_bounds"
     ]
   }
 }

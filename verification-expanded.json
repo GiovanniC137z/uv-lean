@@ -1610,5 +1610,29 @@
       "UV.ResumeCarrierPolarization.selected_plane_radial_normalization"
     ],
     "scope": "For the fixed-depth two-oscillator Gaussian source on one selected sector plane, derives the exact positive stiffness square, normal-frequency characteristic polynomial, and photon covariance as the photon entry of the inverse of the original Euclidean precision. Constructs its positive probability measure on strictly positive squared energies, including the decoupled zero-coupling case, and proves that its Stieltjes transform equals that covariance. Checks strict positive interacting residues, unit limiting speed of the low energy, convergence of the high squared energy to the material gap, and full limiting low photon weight. Derives the actual relative determinant and its logarithmic series in the electric coupling. Every finite coefficient is absolutely integrable over the independent carrier frequency and three spatial momenta. Separately controls all individual contact/mixing rings, their finite sums and arbitrary finite disconnected products, and proves that the exact zero-point-energy shift of the normal modes is integrable at every real coupling. The proof retains the normalized geometric carrier on the selected plane. The verified source statement concerns the explicit Gaussian normal-mode model at fixed positive depth and material frequency."
+  },
+  "prop:monomial-marked-sewing-uv": {
+    "status": "partial",
+    "lean": [
+      "UV.MarkedPhoton.monomial_integrable",
+      "UV.MarkedPhoton.marked_monomial_trace",
+      "UV.MarkedPhoton.marked_polynomial_trace",
+      "UV.MarkedPhoton.marked_sewing_absolute",
+      "UV.MarkedPhoton.positive_band_excludes_marked_sewing"
+    ],
+    "scope": "In coordinates with diagonal Gaussian covariance, Lean differentiates a single finite homogeneous photon polynomial twice and obtains Tr(D E Hess V_r)=r E V_r. The proof uses the actual Gaussian integrals and includes zero variances, repeated slots, odd degrees and signed coefficients. For a family of parent Wick amplitudes and supplied measure-preserving reorderings of each marking, the absolute traced sewing is bounded by the degree-weighted sum of parent absolute integrals. The positive spectral band excludes such a realization under the stated radial identification. Full transport of arbitrary interacting test projections into these Gaussian coordinates and construction of the marked reindexings from general symmetric continuum kernels are outstanding."
+  },
+  "prop:uvpeC-root": {
+    "status": "partial",
+    "lean": [
+      "UV.RootMagnetic.landau_level_sum",
+      "UV.RootMagnetic.root_spin_ghost_trace",
+      "UV.RootMagnetic.root_landau_heat_difference",
+      "UV.RootMagnetic.root_heat_quadratic_coefficient",
+      "UV.RootMagnetic.root_level_action_response",
+      "UV.RootMagnetic.root_proper_time_not_integrable",
+      "UV.RootMagnetic.root_proper_time_log_bounds"
+    ],
+    "scope": "Starting from the specified scalar Landau levels, their area degeneracy, the two spin shifts, three zero shifts, and root/ghost statistics, Lean sums the heat trace and derives the stated negative quadratic coefficient of the finite-interval proper-time integral. The coefficient persists for every fixed real v. Lean bounds log(T/ε) minus the integrated proper-time cost between zero and (T−ε)v². Derivation of the gauge-fixed Hessian, its spectrum, and its degeneracies from the five-component SU(2) background action remains open."
   }
 }
