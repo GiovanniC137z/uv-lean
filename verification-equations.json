@@ -146,5 +146,44 @@
     "lean": [
       "UV.SectorPlane.branch_action_scalar_recovered"
     ]
+  },
+  "eq:fw-positive-state-measure": {
+    "status": "partial",
+    "scope": "Proves the regular positive-shell Jacobian and the axial delta approximation on bounded continuous tests integrable on the positive ray. Constructs the induced measure on the signed shell with the exact spatial factor (2π)⁻³(2κ)⁻¹. The spin and support-normalized state inner product is not modeled here.",
+    "lean": [
+      "UV.SectorPlane.Plane.physical_shell_normalization",
+      "UV.SectorPlane.positive_ray_shell_measure_limit",
+      "UV.SectorPlane.Plane.positive_shell_measure_integral"
+    ]
+  },
+  "eq:physical-cut-map": {
+    "status": "partial",
+    "scope": "Checks routing of the full Lorentzian shell covector, the branch selector, the normalized running unit on its regular ray, and the positive scalar completeness measure under the arrow pushforward. The replacement of the damped virtual line and its full spin and adjoint sum, endpoint dualization, and cut-discontinuity matching for complete graphs remain open.",
+    "lean": [
+      "UV.SectorPlane.Plane.routed_shell_invariants",
+      "UV.SectorPlane.Plane.routed_shell_running_unit",
+      "UV.SectorPlane.cut_arrow_jacobian_abs",
+      "UV.SectorPlane.Plane.routed_positive_shell_measure_integral"
+    ]
+  },
+  "eq:update-vectorial-canonical-split": {
+    "status": "verified",
+    "scope": "Checks the exact quotient-valued finite-height canonical split and its two boundary components on bounded integrable Lipschitz tests in the regular invariant shell coordinate. The canonical scalar coefficient carries the plane and evolution sign prescribed in the source.",
+    "lean": [
+      "UV.SectorPlane.Plane.inverse_pole_split",
+      "UV.SectorPlane.Plane.inverse_pole_test_limits",
+      "UV.SectorPlane.Plane.canonical_pole_split",
+      "UV.SectorPlane.Plane.canonical_pole_test_limits"
+    ]
+  },
+  "eq:update-vectorial-inverse-variation": {
+    "status": "verified",
+    "scope": "In a complete normed real algebra with a differentiable transported norm-one j satisfying j² = −1 at the variation point, derives two-sided invertibility at positive height. Differentiation gives the exact noncommutative inverse sandwich for the shell and unit variations. The transported denominator specializes to the literal carrier quotient.",
+    "lean": [
+      "UV.SectorPlane.Plane.transported_pole_isUnit",
+      "UV.SectorPlane.Plane.transported_pole_inverse_variation",
+      "UV.SectorPlane.quotient_pole_unit_sq",
+      "UV.SectorPlane.Plane.transported_pole_quotient"
+    ]
   }
 }
