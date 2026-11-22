@@ -136,9 +136,12 @@
       "UV.source_hessian_fourier_exchange",
       "UV.identical_commuting_source_fourier_even",
       "UV.exterior_source_hessian_anticommutes",
-      "UV.polynomial_source_hessian_commutes"
+      "UV.polynomial_source_hessian_commutes",
+      "UV.SectorPlane.Plane.scalar_line_running_odd",
+      "UV.SectorPlane.Plane.running_line_fails_identical_scalar_exchange",
+      "UV.SectorPlane.Plane.fixed_scalar_line_even"
     ],
-    "scope": "The two derivatives act on the same functional. The source-assumed graded commutation is an operator law, from which Hessian reciprocity, translation reversal, actual Euclidean Fourier reversal, identical commuting scalar evenness and linear character transfer follow. Concrete exterior contractions and ordinary polynomial derivatives provide the odd and even commutation models. The named statement is unchanged in the revised manuscript."
+    "scope": "The two derivatives act on the same functional. The source-assumed graded commutation is an operator law, from which Hessian reciprocity, translation reversal, actual Euclidean Fourier reversal, identical commuting scalar evenness and linear character transfer follow. Concrete exterior contractions and ordinary polynomial derivatives provide the odd and even commutation models. The named statement is unchanged in the revised manuscript. The finite-height running-unit obstruction is now proved for the actual quotient-valued line on a fixed diamond. The fixed-carrier benchmark is even."
   },
   "prop:character-majorants": {
     "status": "verified",
@@ -228,15 +231,22 @@
     "scope": "An actual finite Jacobian-weighted measure cover and simultaneous mixed power/Gaussian envelopes imply absolute convergence and a uniform external-parameter bound. The sector hypotheses are the source assumptions; constructing a cover for an arbitrary completed action is not asserted. The revised envelope admits any strictly positive stretched-exponential power on each controlled scale. The uniform finite Jacobian-weighted sector theorem is checked in this generality. The sector mappings and simultaneous envelope remain inputs."
   },
   "cor:all-orders": {
-    "status": "partial",
+    "status": "verified",
     "lean": [
-      "UV.all_finite_orders",
-      "UV.finite_graph_collection_uniform",
-      "UV.SourceGraph.bounded",
-      "UV.summable_graph_collection",
-      "UV.summable_graph_collection_of_majorants"
+      "UV.ContinuationGraph.anisotropicGraph_bounded",
+      "UV.ContinuationGraph.jointHeatGraph_bounded",
+      "UV.ContinuationGraph.revisedForestGraph_exact_bound",
+      "UV.ContinuationGraph.ExpandedSourceGraph.bounded",
+      "UV.ContinuationGraph.fixed_sector_all_finite_orders",
+      "UV.ContinuationGraph.GraphDeclaration.poleUnit_norm",
+      "UV.ContinuationGraph.tree_coefficient_without_loop_integral",
+      "UV.ContinuationGraph.expanded_finite_graph_collection_uniform",
+      "UV.ContinuationGraph.expanded_summable_graph_collection",
+      "UV.ContinuationGraph.conditional_forest_joint_bound",
+      "UV.ContinuationGraph.joint_graph_of_best_selected_routing",
+      "UV.ContinuationGraph.joint_inverseMoment_holder"
     ],
-    "scope": "The archived finite-collection and summable-label result checks the original graph constructors. The revised assembly also needs the anisotropic selected-line variant, joint heat and general stretched-power forest input cases, and identification with the same generated graph family."
+    "scope": "Absolute integrability of each Euclidean loop coefficient follows from its complete source criterion: the original global, damped-basis or residual case, the independent anisotropic selected-line case, the correlated joint heat case, or the revised finite sector cover with arbitrary positive coercive powers. The normalized Fourier and routing Jacobian factors are retained for the selected-line cases. A single declared action, support, positive depth, infrared prescription, locked sector plane with unit carrier as pole direction, and independent evolution branch index the generated graph family. Theorems cover the externally defined zero-loop coefficient, a uniform bound on any finite graph collection, and absolute summability under separately summable graph majorants. Conditional forest estimates pass through the common sample law when their numerical budgets have an integrable average. The graph-generation presentation and its criterion premises remain hypotheses. For the adjacent joint-use argument, the measurable minimum over finite valid routing choices is an allowed integrable majorant, and Hölder controls joint inverse lapse products from the stated stronger moments of the actual coordinate marginals."
   },
   "thm:ST": {
     "status": "partial",
@@ -265,9 +275,13 @@
       "UV.weakFormalRegularBracket_eq",
       "UV.conditional_formal_continuum_ST",
       "UV.CompletedContinuumSTModel.loop_convolution",
-      "UV.completed_graph_conditional_slavnov_taylor"
+      "UV.completed_graph_conditional_slavnov_taylor",
+      "UV.ContinuationCompleted.completedGraph_weighted_integrable",
+      "UV.ContinuationCompleted.completedGraphRealization_actual_insertions",
+      "UV.ContinuationCompleted.completedGraphRealization_insertion_norm_le",
+      "UV.ContinuationCompleted.expanded_graph_conditional_slavnov_taylor"
     ],
-    "scope": "The exact formal ST identity on the common domain and matching archived coefficient and insertion graph bounds are checked. The additional comparison-limit case requires the same contraction/graph coefficient limit and the extended graph hypotheses need to be connected to the same completed-action reconstruction."
+    "scope": "Derived exact formal continuum ST on the admitted common action, measure and domain, in both characters. The nonlinear loop convolution and insertion readouts now use the actual weighted integrals of the same expanded graph family, including independent selected-line, joint heat and revised forest alternatives. Graph integrability and insertion budgets are derived from the accepted criteria. The comparison-limit contraction passage remains open."
   },
   "prop:meromorphic-counterexample": {
     "status": "verified",
@@ -362,7 +376,7 @@
     "scope": "The actual Gaussian remainder has the exact source exponential lower bound. Genuine logarithmic-singularity dominated convergence constructs the standard and normalized-bubble upper-rim boundaries, whose logarithmic/polynomial budget is derived by quadratic factorization and translated-log potentials. No finite complex polynomial addition makes either the remainder or the actual normalized-bubble boundary polynomially bounded. The named statement is unchanged in the revised manuscript."
   },
   "prop:stable-bubble-nonanalytic": {
-    "status": "partial",
+    "status": "verified",
     "lean": [
       "UV.stable_bubble_nonanalytic",
       "UV.scalarBubble_stable_coordinate_square",
@@ -370,9 +384,18 @@
       "UV.stableCosineTransform_not_contDiffAt",
       "UV.revised_stable_coordinate_covariance_tail",
       "UV.revised_stable_square_tail_residual_sixth_moment",
-      "UV.revised_stable_residual_cosine_error"
+      "UV.revised_stable_residual_cosine_error",
+      "UV.stable_weighted_polar_integral",
+      "UV.stable_unit_sphere_coordinate_sixth",
+      "UV.stable_annular_sixth_log",
+      "UV.stableAxisBubble_iteratedDeriv",
+      "UV.stableAxisBubble_taylor_four_integral",
+      "UV.stable_square_tail_cosine_log",
+      "UV.stable_covariance_cosine_leading_log",
+      "UV.stableAxisBubble_leading_log_bound",
+      "UV.stableAxisBubble_exact_leading_log"
     ],
-    "scope": "The actual covariance and C5/not-C6 bubble are checked. The revised Green–Poisson covariance has the exact coefficient and uniform inverse-sixth-power tail error. Subtracting the exact square tail beyond the inverse mass leaves an absolutely integrable sixth moment. Its cosine integral after the fourth-order Taylor terms has an explicit sixth-order remainder. The exact logarithmic contribution and its remainder from the removed tail itself remain open."
+    "scope": "The literal momentum bubble is integrable at every real external momentum and is C5 but not C6 at zero, ruling out a local holomorphic function of squared momentum. The positive Green–Poisson covariance has the stated exact coefficient and uniform inverse-sixth-power tail error. After subtraction of the exact square tail beyond the inverse mass, the finite sixth moment gives a quantitative cosine remainder. The Haar polar integral computes the area-weighted sixth coordinate moment on the unit three-sphere from a Gaussian product integral, yielding the exact annular logarithm. Separate inner-annulus and far-tail estimates give a uniform order-six error. Differentiation under the literal cosine integral identifies the actual order-two and order-four Taylor coefficients of the same unit-axis bubble and gives its exact negative a²/(8192 π²m⁴) logarithmic coefficient together with the O(h⁶) remainder."
   },
   "prop:QED-general-obstruction": {
     "status": "verified",
@@ -467,7 +490,7 @@
     "scope": "Actual four-dimensional line and zero-transfer bubble limits at fixed aM=mu, both uniform on bounded nonnegative mu sets with explicit a^(-2) errors, the exact H0 and Gamma coefficients, and the large-mu normalized Gaussian ratio are proved by genuine changes of variables and dominated convergence. The named statement is unchanged in the revised manuscript."
   },
   "thm:OQED-fixed-graph": {
-    "status": "partial",
+    "status": "verified",
     "lean": [
       "UV.oqed_complete_integrand_convergence",
       "UV.global_schwinger_graph",
@@ -479,9 +502,14 @@
       "UV.completed_action_all_finite_orders",
       "UV.completedGraphRealization_actual_insertions",
       "UV.completedGraphRealization_insertion_norm_le",
-      "UV.completed_graph_conditional_slavnov_taylor"
+      "UV.completed_graph_conditional_slavnov_taylor",
+      "UV.ContinuationCompleted.oqed_revised_forest_graph",
+      "UV.ContinuationCompleted.completed_action_all_finite_orders",
+      "UV.ContinuationCompleted.completedGraphCarrierCoefficient_norm_le",
+      "UV.ContinuationCompleted.completedGraphRealization_actual_insertions",
+      "UV.ContinuationCompleted.expanded_graph_conditional_slavnov_taylor"
     ],
-    "scope": "The archived two literal kernel/vertex alternatives and completed-action ST link are checked. The expanded forest alternative needs routing of the revised arbitrary-power envelope through the same completed-action coefficient and insertion interface."
+    "scope": "The literal dimensional O-QED kernel supplies every selected inverse moment for the polynomial full-rank case. The bounded-covariance signed residual test controls the actual complete graph with the kernel envelope constants retained. The revised arbitrary-power sector criterion applies to the same literal O-QED integrand in its Euclidean chart, linked through the expanded graph family to actual finite reconstructed coefficients and required insertions, and conditional ST in both characters. The separate smallest-singular-value shortcut referenced from the residual section is not encoded by this theorem. No completed action, invariant measure, or comparison-limit convergence is constructed."
   },
   "prop:OQED-Ward-bubble-obstruction": {
     "status": "verified",
@@ -680,9 +708,17 @@
       "UV.openingPoisson_hasSum_variance",
       "UV.openingPairDensity_supercritical",
       "UV.openingPairDensity_critical_upper",
-      "UV.openingOscillatorPairDensity_tail_of_critical_or_above"
+      "UV.openingOscillatorPairDensity_tail_of_critical_or_above",
+      "UV.openingPoisson_hasSum_offset_square",
+      "UV.openingPairDensity_tendsto_weight",
+      "UV.openingOscillatorPairDensity_subcritical_limit",
+      "UV.openingOscillatorPairDensity_subcritical_divergence",
+      "UV.openingOscillatorPairDensity_tail_iff",
+      "UV.openingCoherentVector_norm",
+      "UV.openingNumberState_overlap",
+      "UV.openingNumberState_on_cut_poisson"
     ],
-    "scope": "Checked the exact threshold-weighted pair density with the Poisson channel overlaps, the exponential moment and variance of the Poisson law, the manuscript's optimized supercritical exponential bound, a critical M^(-1/4) upper bound, and integrability with respect to dS/S for both critical and supercritical parameters. The oscillator operator derivation of the overlaps, subcritical positive limit and divergence, and the positive critical asymptotic constant from the normal limit are open."
+    "scope": "Checked the exact threshold-weighted pair sum in the physical invariant S under the Poisson overlap law, the optimized supercritical bound, the critical M^(-1/4) upper bound, the positive subcritical limit from the exact variance, and both directions of the unsubtracted dispersion-tail threshold for nonzero charge. The oscillator operator derivation of the overlaps and the positive critical asymptotic constant from the normal limit remain open. An explicit unit vector in the positive complex ℓ² number space has the prescribed Poisson overlap squares. Its identification with the exponential of the self-adjoint oscillator position operator remains open."
   },
   "prop:update-joint-OS": {
     "status": "partial",
@@ -886,14 +922,63 @@
     "scope": "Checks the actual free Dirac rest-pencil regularizer, vanishing on-shell middle product for the two-sided factorization, pairwise square-zero amputated marks, the Hermitian obstruction to nonzero charge, and the unchanged determinant zero order with a nonvanishing analytic probe ratio. The later discussion of probe-dependent outer maps lies outside this result."
   },
   "prop:carrier-sewn-uv": {
-    "status": "partial",
+    "status": "verified",
     "lean": [
+      "UV.ContinuationSewing.reciprocalDiff_polynomial",
+      "UV.ContinuationSewing.difference_subtracted_integral",
+      "UV.ContinuationSewing.difference_contactSubtractedResponse",
+      "UV.ContinuationSewing.differenceKernel_mass_lower",
+      "UV.ContinuationSewing.contactSubtracted_Maxwell_sewing_diverges",
       "UV.RevisionSpectrum.positive_band_unsubtracted_lower",
       "UV.RevisionSpectrum.positive_band_unsubtracted_sewing_diverges",
       "UV.RevisionSpectrum.atom_photon_lower",
-      "UV.RevisionSpectrum.reciprocalDiff_transverse",
-      "UV.RevisionSpectrum.finite_difference_sewing_diverges"
+      "UV.ContinuationSewing.contactSubtracted_log_lower",
+      "UV.ContinuationSewing.unsubtracted_shell_linear_lower"
     ],
-    "scope": "Proves the positive band lower bound and radial divergence for the actual unsubtracted Stieltjes response, the massless-atom photon lower bound, the factorial/product formula for the alternating finite difference of the single spectral kernel, and the radial sewing obstruction from a finite-difference inverse-tail bound. Polynomial elimination and exchange with the general subtracted spectral integral remain unformalized."
+    "scope": "For the stated positive spectral representation with an integrable subtracted remainder and arbitrary finite polynomial contact and dispersion subtraction degrees, proves exact contact cancellation, legitimate finite differencing of the integral, the explicit signed product kernel and its compact-band inverse tail, and nonintegrability on the four-dimensional Euclidean exterior of the same-plane photon-current contraction. Checks the unsubtracted uniform positive response bound and the photon lower bound from a nonzero massless atom. The theorem takes the identified complete transverse response, its measurability and its spectral representation as hypotheses, as in the source argument. When the ordinary integrals on finite radial intervals exist, also proves the logarithmic growth bound after general allowed subtractions and the linear squared-radius shell bound in the unsubtracted case."
+  },
+  "prop:ct-uv-temporal-residue": {
+    "status": "partial",
+    "lean": [
+      "UV.temporalDiagonalResolvent_inverse",
+      "UV.temporal_contact_double_pole",
+      "UV.temporal_contact_not_eventually_zero"
+    ],
+    "scope": "Checks the actual limiting contact-minus-bubble trace and its nonzero double-pole coefficient in fixed orthonormal energy coordinates on the locked sector plane. Multiplicities and both carrier-frequency characters are retained. The proof identifies the coefficient as minus the complete squared Hilbert–Schmidt norm of the equal-energy block. The rescaled ray liminf, four-momentum Tonelli argument, and common-scale finite-sum statement remain unformalized."
+  },
+  "prop:final-uv-charge-rigidity": {
+    "status": "verified",
+    "lean": [
+      "UV.chargeGram_transport",
+      "UV.commuting_local_charge_eigenvalues",
+      "UV.chargeInclusiveSquare_eq_trace",
+      "UV.commuting_local_charge_inclusive_square",
+      "UV.chargeModeRep_matrix_commute",
+      "UV.chargeModeRep_matrix_adjoint",
+      "UV.local_charge_rigidity_L2"
+    ],
+    "scope": "Checks the named result on actual L²(R³; ℂ^d) Hilbert slots at one fixed sector and carrier offset. Compactly supported slot tests derive both pointwise shifted multiplication and the physical adjoint from the bounded mode operators and their continuous representatives. The Gram transport, local matrix similarity, and connectedness fix all sorted eigenvalues with multiplicity. The full sum of squared slot entries is constant in k for each p and strictly positive for p near zero in a nonzero charge sector."
+  },
+  "prop:phys-uv-boundary-overlap": {
+    "status": "partial",
+    "lean": [
+      "UV.ContinuationBoundary.overlapMeasure_apply",
+      "UV.ContinuationBoundary.overlap_variation_bound",
+      "UV.ContinuationBoundary.paired_coefficient_entry_expansion",
+      "UV.ContinuationBoundary.paired_coefficient_finite",
+      "UV.ContinuationBoundary.paired_coefficient_weighted_moment"
+    ],
+    "scope": "Constructs the actual complex overlap measures from the normalized strongly additive displacement PVM and derives a uniform finite-partition total variation bound. Identifies the positive paired Hilbert–Schmidt square with the matrix entry squares in actual Hilbert bases, bounds it for a Hilbert–Schmidt incoming map and contractive phase, and proves the exact weighted Tonelli decomposition for countable bases and measurable entries. The measure-to-density Fourier/Sobolev equivalence and Bessel norm identity, the extension of the Tonelli step to arbitrary bases, and the weak spectral integral identification are not yet verified."
+  },
+  "prop:repair-projector-uv": {
+    "status": "partial",
+    "lean": [
+      "UV.ContinuationBoostSpectrum.equal_rank_projection_overlap",
+      "UV.ContinuationBoostSpectrum.canonicalDensity_bounded",
+      "UV.ContinuationBoostSpectrum.timelikeDensity_band_lower",
+      "UV.ContinuationBoostSpectrum.timelikeDensity_linear_lower",
+      "UV.ContinuationBoostSpectrum.bounded_sea_boost_obstruction"
+    ],
+    "scope": "Proves the equal-rank matrix projection overlap identity, the uniform bound for the actual three-dimensional identity-shift canonical density with its (2π)⁻³ measure factor, and the incompatible linear lower bound from the separated positive timelike Lorentz spectral shell on the same fixed plane. Hence the generalized conditional obstruction holds for a square-integrable finite-slot sea. The specific optically transferred action's projector square integrability and nonzero pair weight, the limit of overlaps at infinite shift, and derivation of the Lorentz tensor form from covariance and conservation are not formalized here."
   }
 }

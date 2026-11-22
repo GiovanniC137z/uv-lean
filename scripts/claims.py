@@ -101,6 +101,28 @@ def review_blocks(source, claims):
     return blocks
 
 
+def equation_checks(source, names):
+    """Track checked mathematical statements anchored at exact source equations."""
+    notes = json.loads((ROOT / "verification-equations.json").read_text())
+    positions = {}
+    for match in re.finditer(r"\\label\{(eq:[^}]+)\}", source):
+        label = match.group(1)
+        if label in positions:
+            raise SystemExit(f"Duplicate equation label: {label}")
+        positions[label] = source.count("\n", 0, match.start()) + 1
+    checks = []
+    for label, note in notes.items():
+        if label not in positions or set(note) != {"status", "scope", "lean"}:
+            raise SystemExit(f"Invalid expanded equation mapping: {label}")
+        if note["status"] not in {"verified", "partial"} or not note["scope"].strip():
+            raise SystemExit(f"Invalid equation coverage status or scope: {label}")
+        refs = theorem_references(note["lean"], label)
+        if not refs or refs - names:
+            raise SystemExit(f"Missing or unknown Lean equation evidence: {label}")
+        checks.append({"label": label, "source_line": positions[label], **note})
+    return sorted(checks, key=lambda c: c["source_line"])
+
+
 def extract(source_name="paper/UV.tex", source_sha=SOURCE_SHA,
             notes_name="verification.json", baseline=None):
     source = ROOT / source_name
@@ -178,6 +200,7 @@ def extract(source_name="paper/UV.tex", source_sha=SOURCE_SHA,
               "project_pins": dict(sorted(project_pins.items())), "claims": claims}
     if baseline is not None:
         result["review_blocks"] = review_blocks(text, claims)
+        result["equation_checks"] = equation_checks(text, names)
     return result
 
 
@@ -198,7 +221,8 @@ def markdown(data):
         lines[4:4] = [
             "This inventory covers labeled theorem-like environments in the expanded upload. "
             "Matching labels or statement text alone do not establish correspondence with the archived proof. "
-            "See [expanded scope](expanded-scope.md) for unnumbered material and remaining work.", "",
+            "See [checked equations](equations-expanded.md) for equation-level proofs and "
+            "[expanded scope](expanded-scope.md) for the remaining work.", "",
         ]
     for c in data["claims"]:
         title = c["title_tex"].replace("|", "\\|")
@@ -219,6 +243,21 @@ def markdown(data):
     return "\n".join(lines) + "\n"
 
 
+def equations_markdown(data):
+    lines = [
+        "# Expanded manuscript equation checks", "",
+        "Equation-level proofs are recorded separately from the named-result total. "
+        "The scope of each entry follows its cited Lean statements.", "",
+        "| Source equation | Status | Checked scope |",
+        "| --- | --- | --- |",
+    ]
+    for c in data["equation_checks"]:
+        location = f"[{c['label']}](../{data['source']}#L{c['source_line']})"
+        scope = c["scope"].replace("|", "\\|")
+        lines.append(f"| {location} | {c['status']} | {scope} |")
+    return "\n".join(lines) + "\n"
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--write", action="store_true")
@@ -231,6 +270,7 @@ def main():
         ROOT / "docs" / "claims.md": markdown(data),
         ROOT / "claims-expanded.json": json.dumps(expanded, indent=2, ensure_ascii=False) + "\n",
         ROOT / "docs" / "claims-expanded.md": markdown(expanded),
+        ROOT / "docs" / "equations-expanded.md": equations_markdown(expanded),
     }
     for path, expected in files.items():
         if args.write:

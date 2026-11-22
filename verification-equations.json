@@ -1,0 +1,150 @@
+{
+  "eq:locking": {
+    "status": "verified",
+    "scope": "The actual affine embedding on one fixed diamond uses its unit GT carrier and offset. Pullback recovers the centred coordinate and gives zero transverse component. A point on the locked ray is recovered by the same affine inverse.",
+    "lean": [
+      "UV.SectorPlane.Plane.centered_embed",
+      "UV.SectorPlane.Plane.transverse_embed",
+      "UV.SectorPlane.Plane.embed_centered_of_locked"
+    ]
+  },
+  "eq:pullback-metric": {
+    "status": "verified",
+    "scope": "The pullback of the ambient quadratic form is the intrinsic time square minus the spatial norm square. The positive measure in the centred GT slot becomes cGT times Lebesgue measure in calibrated clock coordinates in either sector. The spatial slot stays fixed.",
+    "lean": [
+      "UV.SectorPlane.Plane.pullback_quadratic_form",
+      "UV.SectorPlane.Plane.clock_measure_pullback"
+    ]
+  },
+  "eq:polish-representation-map": {
+    "status": "verified",
+    "scope": "The signed clock coordinate and signed conjugate coefficient preserve the phase and shell quadratic form on the same locked copy. The geometric drift has norm cGT and the oriented calibrated clock equals cGT times the clock reading.",
+    "lean": [
+      "UV.SectorPlane.Plane.transport_phase_and_shell",
+      "UV.SectorPlane.Plane.drift_norm",
+      "UV.SectorPlane.Plane.orientedGT_calibrated"
+    ]
+  },
+  "eq:fw-physical-endpoints": {
+    "status": "verified",
+    "scope": "On a nontrivial symmetric carrier interval, the physical out endpoint occupies the bra exactly when the product of sector and evolution signs is +1. It occupies the ket exactly when that product is −1.",
+    "lean": [
+      "UV.SectorPlane.Plane.bra_is_physical_out_iff",
+      "UV.SectorPlane.Plane.ket_is_physical_out_iff"
+    ]
+  },
+  "eq:fw-cut-routing": {
+    "status": "verified",
+    "scope": "The cut arrow transforms the complete real covector. Its signed axial coefficient is the original positive physical magnitude, with unit absolute determinant in four dimensions and positive state weight.",
+    "lean": [
+      "UV.SectorPlane.Plane.cut_routing",
+      "UV.SectorPlane.cut_arrow_jacobian_abs",
+      "UV.SectorPlane.Plane.cut_positive_weight_independent"
+    ]
+  },
+  "eq:independent-momentum-binder": {
+    "status": "verified",
+    "scope": "The transverse projection vanishes exactly for aligned GT covectors, and the affine Fourier pairing with an arbitrary ambient covector sees the projected coefficient and the declared offset. No alignment is deduced from coordinate locking.",
+    "lean": [
+      "UV.SectorPlane.Plane.alignment_iff",
+      "UV.SectorPlane.Plane.affine_fourier_pairing"
+    ]
+  },
+  "eq:signs": {
+    "status": "verified",
+    "scope": "Sector and evolution are independent two-valued data. Their product squares to one. A positive boundary height multiplies the fixed GT unit direction without incorporating either sign. Paired N/A copies with the same supplied carrier keep that unit while reversing the sign outside it.",
+    "lean": [
+      "UV.SectorPlane.Plane.eta_sq",
+      "UV.SectorPlane.Plane.epsilonVector_norm",
+      "UV.SectorPlane.Plane.epsilonVector_direction",
+      "UV.SectorPlane.paired_sector_pole"
+    ]
+  },
+  "eq:directed-inverse": {
+    "status": "verified",
+    "scope": "The exact denominator, its finite-height inverse, and their product are checked in the literal scalar carrier quotient. D stays real and the magnitude is positive.",
+    "lean": [
+      "UV.SectorPlane.directed_as_real_plus_root",
+      "UV.SectorPlane.Plane.pole_denominator_literal",
+      "UV.SectorPlane.Plane.pole_inverse_complex",
+      "UV.SectorPlane.Plane.pole_inverse_law"
+    ]
+  },
+  "eq:running-carrier": {
+    "status": "verified",
+    "scope": "At nonzero aligned carrier frequency, the normalized vector is the signed fixed pole unit. The two rays prevent a continuous extension through zero. The boost tests use a unit spatial axis and establish causal sign preservation and an explicit spacelike reversal.",
+    "lean": [
+      "UV.SectorPlane.Plane.running_unit_from_aligned",
+      "UV.SectorPlane.Plane.no_continuous_running_unit",
+      "UV.SectorPlane.boost_readout_causal_positive",
+      "UV.SectorPlane.boost_readout_spacelike_can_reverse"
+    ]
+  },
+  "eq:directed-propagator": {
+    "status": "partial",
+    "scope": "The coefficient at finite positive height is realized in the directed quotient, with a separate normalized running unit. Its general boundary distribution with the running multiplier and kernel still requires a test domain and convergence proof.",
+    "lean": [
+      "UV.SectorPlane.Plane.scalar_line_plus",
+      "UV.SectorPlane.Plane.scalar_line_minus",
+      "UV.SectorPlane.Plane.running_unit_from_aligned"
+    ]
+  },
+  "eq:fixed-carrier-line": {
+    "status": "verified",
+    "scope": "On the specified sector ray the running line equals the separately defined fixed virtual-carrier line. The fixed line has the evolution sign in its numerator and keeps the sector–evolution sign in its pole.",
+    "lean": [
+      "UV.SectorPlane.Plane.scalar_line_on_sector_ray",
+      "UV.SectorPlane.Plane.fixed_scalar_line_even"
+    ]
+  },
+  "eq:carrier-pv-delta": {
+    "status": "partial",
+    "scope": "The finite-height decomposition gives the sector-signed Poisson kernel and evolution-signed directed principal-value kernel. On bounded, Lipschitz integrable scalar tests in D, the actual integrals converge to π times evaluation at zero and the symmetric principal value, respectively. Pullback of these distributions to the full shell and products of boundary values require further analysis.",
+    "lean": [
+      "UV.SectorPlane.Plane.fixed_pole_components",
+      "UV.SectorPlane.pole_poisson_test_limit",
+      "UV.SectorPlane.pole_pv_test_limit",
+      "UV.SectorPlane.Plane.fixed_pole_test_limits"
+    ]
+  },
+  "eq:line-character-values": {
+    "status": "verified",
+    "scope": "Both characters of the finite-height line are checked. The negative character has the opposite denominator side, including the argument of the kernel under its reflection hypothesis. The running sign remains in both numerators.",
+    "lean": [
+      "UV.SectorPlane.Plane.scalar_line_plus",
+      "UV.SectorPlane.Plane.scalar_line_minus"
+    ]
+  },
+  "eq:running-line-reversal": {
+    "status": "verified",
+    "scope": "Reversing the whole real momentum keeps the denominator shift and flips the running unit. A nonzero such line at finite height fails the identical commuting-scalar exchange test.",
+    "lean": [
+      "UV.SectorPlane.axialSign_neg",
+      "UV.SectorPlane.shellSquare_reverse",
+      "UV.SectorPlane.Plane.scalar_line_running_odd",
+      "UV.SectorPlane.Plane.running_line_fails_identical_scalar_exchange"
+    ]
+  },
+  "eq:uvpeB-joint-holder": {
+    "status": "verified",
+    "scope": "Hölder’s inequality bounds the actual joint product of inverse powers by marginals of that same law at the increased exponents. The proof permits dependent lapses.",
+    "lean": [
+      "UV.ContinuationGraph.joint_inverseMoment_holder"
+    ]
+  },
+  "eq:action-branch-unit": {
+    "status": "verified",
+    "scope": "The branch action direction is a unit vector, with the evolution sign multiplying the fixed carrier. Its coefficient squares to one in the literal quotient. Its BRST variation vanishes under the stipulated constancy of the carrier.",
+    "lean": [
+      "UV.SectorPlane.branch_action_square",
+      "UV.SectorPlane.branch_action_BV_constant"
+    ]
+  },
+  "eq:directed-action": {
+    "status": "verified",
+    "scope": "Multiplying by the same branch action coefficient recovers the scalar action or density coefficient because that coefficient squares to one.",
+    "lean": [
+      "UV.SectorPlane.branch_action_scalar_recovered"
+    ]
+  }
+}

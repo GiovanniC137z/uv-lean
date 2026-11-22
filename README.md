@@ -6,7 +6,7 @@ A Lean 4 verification project for Giovanni Joseph Chiappone's *Conditional All-O
 
 **Archived edition:** all 45 named mathematical results are verified under their documented hypotheses. The unchanged source inventory contains 48 environments: 45 results, two explicit physical assumptions and one definition. The checked results include convergence, exact kernel/scalar certificates, continuum ST, unbounded source normalization, finite-matrix poles and universal rectifiable Jordan-contour residue errors. This verifies the stated conditional mathematics; it does not construct the source's assumed interacting physical completion.
 
-**Expanded PE-CGG-HOUQFT edition:** formalization is in progress. The [expanded claim inventory](docs/claims-expanded.md) maps verified, partial, and pending results to the [new source](paper/expanded/UV.tex). The [expanded scope and review index](docs/expanded-scope.md) describe the remaining mathematical work, including claims outside numbered environments.
+**Expanded PE-CGG-HOUQFT edition:** formalization is in progress. The [expanded claim inventory](docs/claims-expanded.md) maps verified, partial, and pending results to the [new source](paper/expanded/UV.tex). The [equation checks](docs/equations-expanded.md) record proof evidence for the locked sector plane, unit vectors, finite-height vectorial pole prescription, and selected boundary limits. The [expanded scope and review index](docs/expanded-scope.md) describe the remaining mathematical work.
 
 ## Checked mathematics
 
