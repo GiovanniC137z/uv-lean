@@ -353,10 +353,23 @@
         "UV.networkEdgeGreen_bounds_nonnegative_mass",
         "UV.networkGreen_product_bounds_nonnegative_mass",
         "UV.networkDurationCost_inverse_moment_iff_nonnegative_mass",
-        "UV.integrated_alternating_polygon_inverse_moment_iff_nonnegative_mass"
+        "UV.integrated_alternating_polygon_inverse_moment_iff_nonnegative_mass",
+        "UV.networkMarkedFourier_eq_real_displacement_integral",
+        "UV.networkMarkedFourier_hasDerivAt",
+        "UV.NetworkMarkPolynomial.evaluate_hasDerivAt",
+        "UV.networkMarkPolynomial_degree",
+        "UV.networkMarkedFourier_eq_polynomial",
+        "UV.networkCovariance_pair_duration_bound",
+        "UV.networkMarkedFourier_norm_bound",
+        "UV.networkMarkedPolynomialCost_le_routed",
+        "UV.networkMarkedPolynomialCost_bound",
+        "UV.networkMarkedPolynomialCost_common_law_finite",
+        "UV.networkMarkedPolynomialCost_signed_law_finite",
+        "UV.networkComplexControlMeasure_le_add",
+        "UV.networkMarkedPolynomialCost_complex_dominating_law_finite"
       ],
       "lean_projects": {},
-      "scope": "The full named proposition is proved for independent visit probes Bk=k and b=0 and nonnegative edge masses, on one fixed Euclidean sector plane in the stated reference units. An oriented edge list covers a connected rooted finite graph, with one shared four-vector at each nonroot visit and actual transverse position differences. Connectivity derives injectivity of the grounded incidence D, positivity of H=Dᵀdiag(s_e⁻¹)D, the shared energy H tensor I₄, and the actual vertex-integral L1 bound. Literal Lebesgue Gaussian Fourier integration through a derived orthogonal eigenbasis proves F_s(q)/F_s(0)=exp(-qᵀ(H⁻¹ tensor I₄)q), its exact prefactor (4π)^(2n)/det(H)^2, and momentum L1. The normalized independent-probe momentum integral exactly cancels both determinant factors, leaving the zero-displacement edge kernels. Positive finite-product Tonelli then derives the exact uncut duration cost as the extended Green product, with each positive mark factor (1+m_e z_e)exp(-m_e z_e)/(8π²z_e³) and an infinite factor for any zero mark. The same actual integral under one common law of all vertex positions is equal to the expectation of this product, hence yields the exact finiteness test. The explicit alternating closed polygon has zero total displacement, positive graph-dependent upper and lower constants, and the full Fourier-integrated inverse-third-moment-per-edge criterion. The zero-mass endpoint is checked by dominated convergence against the actual positive-mark massless edge kernel. The independent-probe identity, common-law formula, and actual alternating polygon inverse-moment equivalence all allow nonnegative edge masses.",
+      "scope": "The full named proposition is proved for independent visit probes Bk=k and b=0 and nonnegative edge masses, on one fixed Euclidean sector plane in the stated reference units. An oriented edge list covers a connected rooted finite graph, with one shared four-vector at each nonroot visit and actual transverse position differences. Connectivity derives injectivity of the grounded incidence D, positivity of H=Dᵀdiag(s_e⁻¹)D, the shared energy H tensor I₄, and the actual vertex-integral L1 bound. Literal Lebesgue Gaussian Fourier integration through a derived orthogonal eigenbasis proves F_s(q)/F_s(0)=exp(-qᵀ(H⁻¹ tensor I₄)q), its exact prefactor (4π)^(2n)/det(H)^2, and momentum L1. The normalized independent-probe momentum integral exactly cancels both determinant factors, leaving the zero-displacement edge kernels. Positive finite-product Tonelli then derives the exact uncut duration cost as the extended Green product, with each positive mark factor (1+m_e z_e)exp(-m_e z_e)/(8π²z_e³) and an infinite factor for any zero mark. The same actual integral under one common law of all vertex positions is equal to the expectation of this product, hence yields the exact finiteness test. The explicit alternating closed polygon has zero total displacement, positive graph-dependent upper and lower constants, and the full Fourier-integrated inverse-third-moment-per-edge criterion. The zero-mass endpoint is checked by dominated convergence against the actual positive-mark massless edge kernel. The independent-probe identity, common-law formula, and actual alternating polygon inverse-moment equivalence all allow nonnegative edge masses. The adjacent unnumbered extension also checks the following. For the actual coherent Fourier integral on the intrinsic Euclidean sector plane, differentiation in any real visit-space direction inserts its literal displacement readout times i. An arbitrary finite product of these readouts gives the exact covariance polynomial multiplying the coherent Gaussian. The raw real product differs only by the unit factor i to the power of the number of readouts. The actual inverse precision gives a covariance-pair bound proportional to the largest proper time. The resulting marked amplitude is bounded by the unmarked amplitude times fixed polynomial powers of the largest proper time and the routed momentum. With full column rank routing, bounded shift, strictly positive edge masses, and positive transverse marks z_e at least c_e r, integrating its absolute value over all positive durations and momenta with the original (2π)^(-4L) measure costs a fixed inverse-depth moment. The common positive law pays another J powers for coefficients bounded by a fixed multiple of r^(-J). The same cost is finite on the actual signed Jordan total variation. A positive measure dominating the norm of each measurable complex mass also controls the real and imaginary components, so its inverse moment suffices on their summed variations. The checked contact class consists of finite products of fixed displacement readouts with polynomial momentum and duration weights and the stated inverse-depth coefficient bound.",
       "statement_change": "new"
     },
     {
@@ -427,10 +440,35 @@
         "UV.AdvanceCurvatureVertex.curvatureVertexFactor_uniformly_bounded",
         "UV.AdvanceCurvatureVertex.normalizedIntegral_legShape_mul",
         "UV.AdvanceCurvatureVertex.cutoffBracketPotential_haar_expansion",
-        "UV.AdvanceCurvatureVertex.quarticHaarVertex_zero_of_no_signed_routing"
+        "UV.AdvanceCurvatureVertex.quarticHaarVertex_zero_of_no_signed_routing",
+        "UV.VerifyCurvatureProductMoments.scalarPairMoment_eq_integral",
+        "UV.VerifyCurvatureProductMoments.coordinate_list_moment",
+        "UV.VerifyCurvaturePairings.diagonal_wick_factorization",
+        "UV.VerifyCurvaturePairings.coordinate_list_wick",
+        "UV.VerifyCurvaturePairings.osWickMoment_scaled",
+        "UV.VerifyCurvaturePairings.weighted_coordinate_list_wick",
+        "UV.VerifyCurvatureExpansion.occurrence_covariance_eq",
+        "UV.VerifyCurvatureExpansion.noninternal_line_norm_le",
+        "UV.VerifyCurvatureExpansion.cutoff_potential_vertex_sum",
+        "UV.VerifyCurvatureExpansion.cutoff_power_probe_expansion",
+        "UV.VerifyCurvatureExpansion.cutoff_power_probe_wick",
+        "UV.VerifyCurvatureExpansion.full_power_probe_integral_limit",
+        "UV.VerifyCurvatureRouting.routedSlot_end",
+        "UV.VerifyCurvatureRouting.external_not_internal",
+        "UV.VerifyCurvatureRouting.routedWickTerm_factor",
+        "UV.VerifyCurvatureRouting.routedSlot_recovers_matched_configuration",
+        "UV.VerifyCurvatureGraphBounds.routedCoefficient_measurable",
+        "UV.VerifyCurvatureGraphBounds.routedCoefficient_uniformly_bounded",
+        "UV.VerifyCurvatureGraphBounds.routedSphericalGraph_eq",
+        "UV.VerifyCurvatureGraphBounds.integrated_routedGraph_limit",
+        "UV.VerifyCurvatureGraphBounds.integrated_routedGraph_absolute_tail",
+        "UV.VerifyCurvatureGraphBounds.integrated_routedSphericalGraph_tail_uniform",
+        "UV.VerifyCurvatureReindex.configuredGraphTerm_zero_of_mismatch",
+        "UV.VerifyCurvatureReindex.configuredGraphTerm_eq_routed_of_match",
+        "UV.VerifyCurvatureReindex.configured_sphericalGraph_eq_routed"
       ],
       "lean_projects": {},
-      "scope": "Checks the actual Euclidean-frequency four-torus line estimate, inverse determinant product and cutoff limit, and quartic determinant suppression at zero depth. The finite diagonal kinetic integral gives the specified relative Gaussian determinant with two fields and n colors. The exact mode covariance and the double-transfer covariance follow on the constructed product Gaussian measure. For each finite product of the literal curvature lines with uniformly bounded measurable residual coefficients, Lean checks absolute all-mode summability at positive depth, vanishing of the common zero-depth atom, and spherical-cutoff convergence to the unrestricted graph. The signed coefficient and the literal unrestricted absolute tail are integrable against the same finite nonnegative depth law. Their spherical approximations converge, and the absolute momentum tail is O(M⁻ˢ) for every fixed s ≥ 0, both unrestricted and uniformly in the spherical cutoff. Derives the integrated block curvature square from the oriented orthonormal Euclidean and internal two-form components, giving the four copied kinetic terms and sole third-block bracket potential. Differentiation along the four sector unit vectors sends each normalized signed Fourier mode to its opposite, and integrating the squared gradients gives the exact diagonal kinetic action used to compute the relative determinant. The exact finite action expansion yields the first quartic Wick vacuum graph with two same-field tadpoles. Its fixed-depth coefficient on the physical Gaussian law is the half-color norm times the square of the signed mode line sum, with both transfer endpoints. The single-determinant spherical and continuum versions agree with the actual two-line graph sum, including zero weight at the continuum depth-zero atom and integrability over the common source. At each fixed positive depth, every power of the literal bracket potential is integrable and its spherical expectations converge. The exact quartic vertex is a bounded depth-independent Haar factor. It vanishes in the absence of a zero-sum signed Fourier routing. The identification of every higher-order Wick graph and elementary insertion with the finite-contraction interface remains open.",
+      "scope": "Checks the actual Euclidean-frequency four-torus line estimate, inverse determinant product and cutoff limit, and quartic determinant suppression at zero depth. The finite diagonal kinetic integral gives the specified relative Gaussian determinant with two fields and n colors. The exact mode covariance and the double-transfer covariance follow on the constructed product Gaussian measure. For each finite product of the literal curvature lines with uniformly bounded measurable residual coefficients, Lean checks absolute all-mode summability at positive depth, vanishing of the common zero-depth atom, and spherical-cutoff convergence to the unrestricted graph. The signed coefficient and the literal unrestricted absolute tail are integrable against the same finite nonnegative depth law. Their spherical approximations converge, and the absolute momentum tail is O(M⁻ˢ) for every fixed s ≥ 0, both unrestricted and uniformly in the spherical cutoff. Derives the integrated block curvature square from the oriented orthonormal Euclidean and internal two-form components, giving the four copied kinetic terms and sole third-block bracket potential. Differentiation along the four sector unit vectors sends each normalized signed Fourier mode to its opposite, and integrating the squared gradients gives the exact diagonal kinetic action used to compute the relative determinant. The exact finite action expansion yields the first quartic Wick vacuum graph with two same-field tadpoles. Its fixed-depth coefficient on the physical Gaussian law is the half-color norm times the square of the signed mode line sum, with both transfer endpoints. The single-determinant spherical and continuum versions agree with the actual two-line graph sum, including zero weight at the continuum depth-zero atom and integrability over the common source. At each fixed positive depth, every power of the literal bracket potential is integrable and its spherical expectations converge. The exact quartic vertex is a bounded depth-independent Haar factor. It vanishes in the absence of a zero-sum signed Fourier routing. Derives the exact Wick formula for arbitrary finite products of the elementary signed coordinates under the common Gaussian law, including every multiplicity and odd products. The literal spherical interaction at every fixed power with any finite elementary Fourier monomial equals its weighted pairing expansion. The interaction-interaction, interaction-probe, and probe-probe contractions carry exactly two, one, and zero harmonic transfers respectively. The continuum expectation of each fixed elementary insertion and interaction power is integrable at positive depth and is the limit of its spherical expectations. For any partitioned pairing incidence, the surviving vertex slots are reconstructed from one mode and color per internal edge together with the fixed probe variables. The routed graph with explicit color sums has the one-determinant finite-contraction form, a uniformly bounded measurable residual coefficient, unrestricted convergence, and the integrated absolute tail at every fixed power uniformly in the spherical cutoff. For each fixed incidence, the exact determinant-weighted sum over the literal spherical vertex configurations equals the routed edge-assignment sum at every cutoff containing the fixed probes. The pure correspondence from the recursive partner list to arbitrary partitioned incidences and exact treatment of cutoffs omitting fixed probes remain open.",
       "statement_change": "new"
     },
     {
@@ -1692,10 +1730,21 @@
         "UV.RevisionSpectrum.crossUpper_pole_limit",
         "UV.RevisionSpectrum.crossPoleCoeff_below",
         "UV.RevisionSpectrum.crossPoleCoeff_above",
-        "UV.RevisionSpectrum.crossDensity_large_bound"
+        "UV.RevisionSpectrum.crossDensity_large_bound",
+        "UV.RevisionSpectrum.verifyCrossContinuum_embedded",
+        "UV.RevisionSpectrum.verify_cross_stieltjes",
+        "UV.RevisionSpectrum.verify_complex_stieltjes_analyticOnNhd",
+        "UV.RevisionSpectrum.verify_stieltjes_extracts_real_atom",
+        "UV.RevisionSpectrum.verify_cross_signed_continuation",
+        "UV.RevisionSpectrum.verify_cross_signed_necessity_and_atom",
+        "UV.RevisionSpectrum.verify_cross_jordan_mutuallySingular",
+        "UV.RevisionSpectrum.verify_cross_jordan_support",
+        "UV.RevisionSpectrum.verify_cross_jordan_representation",
+        "UV.RevisionSpectrum.verify_weighted_positive_spectrum_locallyFinite",
+        "UV.RevisionSpectrum.verify_cross_signed_spectral_exists_iff"
       ],
       "lean_projects": {},
-      "scope": "Checks the upper square-root branch, explicit boundary jump, extracted threshold, subthreshold and embedded pole coefficients, removable resonant density value, inverse-square-root threshold limit, failure of local integrability at generic embedded poles, and the large-mass inverse-power bound. Stieltjes representation, inversion and uniqueness for general signed measures, and the sharp logarithmic total-variation asymptotic remain open in Lean.",
+      "scope": "Proves the exact ordinary signed spectral existence criterion and constructs the atom-plus-continuum representation in every admitted case through mutually singular Jordan measures. The integral is absolutely convergent and has finite weighted total variation at every positive reference point. Analytic continuation of any ordinary signed representation to the upper half-plane and extraction of its real atom exclude generic embedded poles and force the stated residue. Also checks the branch jump, the threshold and removable embedded density values, generic local nonintegrability, and the inverse-power tail bound. Full uniqueness of the continuum and the sharp logarithmic total-variation asymptotic remain open.",
       "statement_change": "new"
     },
     {
@@ -8853,6 +8902,51 @@
   ],
   "equation_checks": [
     {
+      "label": "eq:g5I-codim",
+      "source_line": 2855,
+      "status": "verified",
+      "scope": "In every positive integer normal dimension b, the product of the two Gaussian half-link factors is the stated midpoint density. The literal proper-time integral gives the upper incomplete Gamma expression by the substitution u = |y|²/t. For a finite positive midpoint law, the integrated cost is finite exactly when the coincident atom vanishes and the local inverse 2b moment is finite. The surrounding smooth Taylor-density specialization is a separate claim.",
+      "lean": [
+        "UV.VerifyVisitGamma.upper_gamma_eq_ofReal",
+        "UV.VerifyVisitGamma.upper_gamma_antitone",
+        "UV.VerifyVisitGamma.upper_gamma_ne_top",
+        "UV.VerifyVisitGamma.upper_gamma_pos",
+        "UV.VerifyVisitGamma.normal_time_gamma_exact",
+        "UV.VerifyVisitGamma.normal_time_zero_cost",
+        "UV.VerifyVisitCodimension.two_normal_half_links",
+        "UV.VerifyVisitCodimension.normal_gaussian_midpoint_eq",
+        "UV.VerifyVisitCodimension.gaussian_midpoint_integrated_gamma",
+        "UV.VerifyVisitCodimension.gaussian_midpoint_finiteness_iff"
+      ]
+    },
+    {
+      "label": "eq:g5I-cyclic-mark",
+      "source_line": 2890,
+      "status": "verified",
+      "scope": "The ordinary cyclic Gaussian midpoint insertion integrates both positions against Lebesgue measure and gives exactly (4πt)^(-1/2) for a normalized nonnegative integrable position weight. Its massless dt/t cost diverges. For any finite positive joint law, the pushforward by y − r gives the exact relative-diagonal criterion with zero diagonal mass and a finite local inverse-square moment.",
+      "lean": [
+        "UV.VerifyVisitCyclic.cyclic_joint_return_eq",
+        "UV.VerifyVisitCyclic.cyclic_joint_relative_diagonal_criterion",
+        "UV.VerifyVisitCyclic.cyclic_gaussian_insertion_exact",
+        "UV.VerifyVisitCyclic.cyclic_normal_trace_time_diverges"
+      ]
+    },
+    {
+      "label": "eq:g5I-two-loop",
+      "source_line": 2923,
+      "status": "verified",
+      "scope": "For the same normalized common relative-coordinate law, the actual cutoff primitive has the stated noncoincident and coincident values and a finite second moment for every positive cutoff. Formal bivariate coefficient extraction of the exponentiated determinant and the connected logarithm gives exactly c² Var(Iδ)/2. The single-visit fourth magnetic jet has no double-tag contribution, and any third-tag remainder contributes zero. The surrounding zero-cutoff criterion and oscillator asymptotic are distinct claims.",
+      "lean": [
+        "UV.VerifyVisitConnectedJet.exponentiated_visit_jet_coefficients",
+        "UV.VerifyVisitConnectedJet.connected_double_visit_variance",
+        "UV.VerifyVisitConnectedJet.cubic_visit_tag_irrelevant",
+        "UV.VerifyVisitConnectedJet.visit_cutoff_measurable",
+        "UV.VerifyVisitConnectedJet.visit_cutoff_exact",
+        "UV.VerifyVisitConnectedJet.visit_cutoff_bounds",
+        "UV.VerifyVisitConnectedJet.connected_marked_visit_variance"
+      ]
+    },
+    {
       "label": "eq:uvpeC-sector-action",
       "source_line": 3910,
       "status": "verified",
@@ -8888,6 +8982,17 @@
         "UV.FurtherCurvatureDeterminant.full_determinant_hasProd",
         "UV.FurtherCurvatureDeterminant.positive_depth_determinant_limit",
         "UV.FurtherCurvatureDeterminant.zero_depth_determinant_limit"
+      ]
+    },
+    {
+      "label": "eq:uvpeC-line-estimate",
+      "source_line": 3969,
+      "status": "verified",
+      "scope": "Checks the displayed absolute weighted line sum with the actual spherical cutoff, the Euclidean four-torus frequency, the exact transferred contraction, and R = min(Λ, ℓ⁻¹) at positive depth or Λ at zero. For every s ≥ 0 one positive constant controls all nonnegative depths and spherical cutoffs. The unrestricted line sum at positive depth has the corresponding radius and is summable.",
+      "lean": [
+        "UV.FurtherCurvatureShell.modeShell_card",
+        "UV.FurtherCurvatureLine.spherical_weighted_line_bound",
+        "UV.FurtherCurvatureLine.full_weighted_line_bound"
       ]
     },
     {
@@ -9060,11 +9165,51 @@
       "label": "eq:directed-propagator",
       "source_line": 12564,
       "status": "partial",
-      "scope": "The coefficient at finite positive height is realized in the directed quotient, with a separate normalized running unit. Its general boundary distribution with the running multiplier and kernel still requires a test domain and convergence proof.",
+      "scope": "The finite positive-height expression is realized in the literal directed quotient with the normalized running unit and the original fixed-plane η in the stable numerator and pole. For the stable-half kernel exp(−√z), a≥0 and m>0, the full-line η=+1 minus η=−1 jump is checked on compact Lipschitz real tests of all four momenta. A bounded Lipschitz clip agrees with the actual running sign near both massive sheets, and the exact measurable correction has a uniform gap to the massive pole. The directed jump is 2jₑ times the signed real-boundary-weighted principal value plus 2πjₑ sin(am) times the difference of the two axial shell weights with Jacobian 1/(2ω). With the literal running numerator and the stable-half kernel at nonnegative depth, the common positive-height limit is checked at zero mass on compact Cartesian C² tests, including the cone tip, for the simple scalar and ghost lines and the resolved covariant-gauge template with arbitrary real ζ and two intrinsic unit directions. The axial sign at zero only supplies a scalar totalization on a Lebesgue-null hyperplane. The fixed pole unit and η in the denominator are unchanged. Separate one-sided full positive-mass limits and the general kernel remain open.",
       "lean": [
         "UV.SectorPlane.Plane.scalar_line_plus",
         "UV.SectorPlane.Plane.scalar_line_minus",
-        "UV.SectorPlane.Plane.running_unit_from_aligned"
+        "UV.SectorPlane.Plane.running_unit_from_aligned",
+        "UV.SectorPlane.massive_running_clip_eq_axial_sign",
+        "UV.SectorPlane.massive_running_correction_gap",
+        "UV.SectorPlane.massive_running_test_fullShellTest",
+        "UV.SectorPlane.Plane.massive_stable_pairing_sum_limit",
+        "UV.SectorPlane.Plane.massive_stable_running_integrand_directed",
+        "UV.SectorPlane.Plane.massive_stable_running_integrand_scalarLine",
+        "UV.SectorPlane.Plane.massive_stable_running_jump",
+        "UV.SectorPlane.Plane.massive_stable_running_directed_jump",
+        "UV.SectorPlane.principalSqrt_nonnegative_scale_sq",
+        "UV.SectorPlane.Plane.stable_half_numerator_scalar_argument",
+        "UV.SectorPlane.real_axial_nonzero_ae",
+        "UV.SectorPlane.Plane.massless_running_stable_single_pair_split",
+        "UV.SectorPlane.Plane.massless_running_stable_single_limit",
+        "UV.SectorPlane.Plane.massless_running_stable_scalar_line",
+        "UV.SectorPlane.Plane.massless_running_stable_scalar_line_ae",
+        "UV.SectorPlane.Plane.massless_running_stable_ghost_pair_integral",
+        "UV.SectorPlane.integral_axialSign_directional_derivative",
+        "UV.SectorPlane.Plane.stable_inverse_root_axial_trace_limit",
+        "UV.SectorPlane.Plane.running_tensor_fractional_pair_parts",
+        "UV.SectorPlane.Plane.running_tensor_fractional_pair_limit",
+        "UV.SectorPlane.Plane.running_single_residual_full_momentum",
+        "UV.SectorPlane.Plane.running_square_residual_full_momentum",
+        "UV.SectorPlane.Plane.massless_running_longitudinal_integrand_directed",
+        "UV.SectorPlane.Plane.massless_running_stable_longitudinal_pair_split",
+        "UV.SectorPlane.Plane.massless_running_stable_longitudinal_limit",
+        "UV.SectorPlane.Plane.massless_running_stable_gauge_integrand",
+        "UV.SectorPlane.Plane.massless_running_stable_gauge_pair_integral",
+        "UV.SectorPlane.Plane.massless_running_stable_ghost_limit",
+        "UV.SectorPlane.Plane.massless_running_stable_gauge_limit"
+      ]
+    },
+    {
+      "label": "eq:scalar-line-coefficient",
+      "source_line": 12580,
+      "status": "partial",
+      "scope": "At positive height the extracted coefficient and reconstruction agree with the original scalar line for the stable-half kernel. At zero mass the limit is taken on the common running finite-height product, with the test domain and absolute residual explicitly controlled. At positive mass the full running jump is checked on compact Lipschitz real tests. Independent multiplication of a generic boundary coefficient by the discontinuous sign remains open.",
+      "lean": [
+        "UV.SectorPlane.Plane.massless_running_stable_scalar_line",
+        "UV.SectorPlane.Plane.massless_running_stable_single_limit",
+        "UV.SectorPlane.Plane.massive_stable_running_directed_jump"
       ]
     },
     {
@@ -9129,6 +9274,21 @@
         "UV.RevisionSpectrum.SetwiseSpectralCompletion.crossVariation_local_spec",
         "UV.RevisionSpectrum.SetwiseSpectralCompletion.variation_budget"
       ]
+    },
+    {
+      "label": "eq:update-cross-measure",
+      "source_line": 15869,
+      "status": "verified",
+      "lean": [
+        "UV.RevisionSpectrum.verifyCrossContinuum_embedded",
+        "UV.RevisionSpectrum.verify_cross_signed_necessity_and_atom",
+        "UV.RevisionSpectrum.verify_cross_jordan_mutuallySingular",
+        "UV.RevisionSpectrum.verify_cross_jordan_support",
+        "UV.RevisionSpectrum.verify_cross_jordan_representation",
+        "UV.RevisionSpectrum.verify_weighted_positive_spectrum_locallyFinite",
+        "UV.RevisionSpectrum.verify_cross_signed_spectral_exists_iff"
+      ],
+      "scope": "Constructs the ordinary real signed cross measure by mutually singular positive and negative spectral measures on nonnegative mass squared. Their explicit Dirac weights and Lebesgue densities give the stated atom-plus-continuum equation, with the correct removable embedded value. Their weighted total variation is finite at every positive reference point and the signed Stieltjes transform equals the exact shifted square-root covariance. The existence criterion is necessary and sufficient; the atom is forced for any ordinary weighted signed representation."
     },
     {
       "label": "eq:update-completed-bubble",
@@ -9274,7 +9434,7 @@
       "label": "eq:stable-disc",
       "source_line": 16845,
       "status": "verified",
-      "scope": "For every m>0 and a≥0, the literal stable-half coefficient jump is tested on compact Lipschitz functions of all four intrinsic momentum coordinates on one fixed sector plane, across both sides of the branch edge. The normal coarea chart pairs both axial roots with their exact 1/(2ω) Jacobians, and the complementary region uses the ordinary inverse. The canonical chart requires only positive mass, and the bare and weighted principal values are chart-radius independent. This realizes the 2i θ(w) sin(a√w) PV term and the unselected two-sheet −2πi cos(am) δ term at the same positive height and η=±1. The finite-height product and jump are reconstructed in the literal directed quotient with its fixed pole unit. The compact timelike C¹ result is also checked. Physical cut matching is a separate hypothesis.",
+      "scope": "For every m>0 and a≥0, the literal stable-half coefficient jump is tested on compact Lipschitz functions of all four intrinsic momentum coordinates on one fixed sector plane, across both sides of the branch edge. The normal coarea chart pairs both axial roots with their exact 1/(2ω) Jacobians, and the complementary region uses the ordinary inverse. The canonical chart requires only positive mass, and the bare and weighted principal values are chart-radius independent. This realizes the 2i θ(w) sin(a√w) PV term and the unselected two-sheet −2πi cos(am) δ term at the same positive height and η=±1. The finite-height product and jump are reconstructed in the literal directed quotient with its fixed pole unit. The compact timelike C¹ result is also checked. Physical cut matching is a separate hypothesis. The following full-line distinction is also checked for m>0. Retaining the normalized running numerator and comparing η=+1 with η=−1 uses the sum of the two denominator/kernel coefficients. Its jump has the real-boundary-weighted PV times the axial sign and the sine residue with opposite axial-sheet weights.",
       "lean": [
         "UV.SectorPlane.Plane.stable_half_analytic_form",
         "UV.SectorPlane.Plane.stable_half_timed_uniform_C1",
@@ -9292,14 +9452,24 @@
         "UV.SectorPlane.massive_shell_pv_cutoff_independent",
         "UV.SectorPlane.stable_massive_sine_pv_cutoff_independent",
         "UV.SectorPlane.Plane.massive_stable_jump_canonical",
-        "UV.SectorPlane.Plane.massive_stable_directed_jump_canonical"
+        "UV.SectorPlane.Plane.massive_stable_directed_jump_canonical",
+        "UV.SectorPlane.massive_running_clip_eq_axial_sign",
+        "UV.SectorPlane.massive_running_correction_gap",
+        "UV.SectorPlane.massive_running_test_fullShellTest",
+        "UV.SectorPlane.Plane.massive_stable_pairing_sum_limit",
+        "UV.SectorPlane.Plane.massive_stable_running_integrand_directed",
+        "UV.SectorPlane.Plane.massive_stable_running_integrand_scalarLine",
+        "UV.SectorPlane.Plane.massive_stable_running_jump",
+        "UV.SectorPlane.Plane.massive_stable_running_directed_jump",
+        "UV.SectorPlane.principalSqrt_nonnegative_scale_sq",
+        "UV.SectorPlane.Plane.stable_half_numerator_scalar_argument"
       ]
     },
     {
       "label": "eq:massless-branch",
       "source_line": 16860,
       "status": "verified",
-      "scope": "In the original quotient, subtracts the massless inverse and the inverse-square-root term at the same positive height. The remainder has norm at most a² whenever |a| times the square root of the shifted coefficient norm is at most one. This is the quantitative O(1) bound in the displayed expansion. For positive depth the remainder after the unit pole is unbounded along the actual positive-height ray at the tip. The single-line jump through the cone tip is checked on compact continuous real four-momentum tests at nonnegative depth. It has the locally integrable timelike sine term and the unweighted delta on both axial sheets, with coefficient −2πi, and reconstructs in the directed quotient. In the adjacent square calculation, the actual flat four-momentum polar change of variables gives the normalized density (1−u)/(π√(1−u²)) and area factor 2π². The simple and squared pole averages are evaluated exactly at every positive height for either orientation. Subtracting the Lipschitz test value at the angular shell bounds the normalized simple-pole pairing uniformly in height and gives the linear radial majorant. The imaginary part of the uncontracted square on every continuous compact radial test equal to one near the tip has coefficient ηπ² multiplying log(href/h), with a uniform bounded remainder. A smooth compact test witnesses signed divergence. For the quadratic numerator, checks the intrinsic unit-four-vector scaling, the exact axial and summed-spatial angular weights, and the temporal and equal-coordinate spatial diagonal averages with coefficient bounds 2 and 2/3. The two radial powers yield integrable majorants and exact positive-height limits for the unweighted temporal and spatial diagonal pairings on the actual four-momentum measure. Measure-preserving spatial coordinate swaps and sign flips give one-third of the trace for each diagonal component and zero for every mixed component on these radial tests. The exact nonradial four-momentum polar disintegration retains the spatial Euclidean unit sphere and both axial sheets. The normal coordinate is realized on actual intrinsic unit four-vectors. At positive height the unweighted angular simple and squared poles use the exact normalized density. Subtracting the first one or two normal Taylor terms gives exact boundary pairings and uniform bounds. For compact continuous Cartesian tests with the stated uniform linear normal bounds, the simple pole has a finite limit through the tip. For compact continuous tests containing the quadratic numerator with uniformly bounded value, slope and quadratic normal remainder of their radius-normalized amplitude, the same squared-pole pairing has an exact finite boundary limit. For arbitrary compact Cartesian C² tests, Lean derives those uniform jets on the regular interior strip and bounds the endpoints from continuity on compact parameter sets. The resulting simple-pole limit applies on every such test. The quadratic limit applies with the literal product of any two real continuous linear momentum slots, including all axial and spatial longitudinal numerator components. The exact stable-half squared coefficient splits at the same positive height into the double pole, the inverse-cube principal root term, the simple pole with coefficient −a²/2, and an inverse-root-bounded residual. On a regular angular window, integration by parts against the inverse root gives an r² radial majorant for the fractional term. In Cartesian four-momentum, the derivative of the inverse root in an intrinsic unit direction is its inverse cube times the corresponding covariant momentum component. Integration by parts using that actual numerator gives the fractional limit through the tip on arbitrary compact C¹ tests. The residual has an absolutely integrable boundary limit on compact continuous tests. The full longitudinal coefficient has a boundary limit on compact C¹ tests with the stated uniform normal angular Taylor bounds, and the finite-height product is identified exactly in the original directed quotient. The uniform normal bounds follow for every compact Cartesian C² test of the actual quadratic numerator. The checked C² theorem gives both the coefficient limit and its directed reconstruction.",
+      "scope": "In the original quotient, subtracts the massless inverse and the inverse-square-root term at the same positive height. The remainder has norm at most a² whenever |a| times the square root of the shifted coefficient norm is at most one. This is the quantitative O(1) bound in the displayed expansion. For positive depth the remainder after the unit pole is unbounded along the actual positive-height ray at the tip. The single-line jump through the cone tip is checked on compact continuous real four-momentum tests at nonnegative depth. It has the locally integrable timelike sine term and the unweighted delta on both axial sheets, with coefficient −2πi, and reconstructs in the directed quotient. In the adjacent square calculation, the actual flat four-momentum polar change of variables gives the normalized density (1−u)/(π√(1−u²)) and area factor 2π². The simple and squared pole averages are evaluated exactly at every positive height for either orientation. Subtracting the Lipschitz test value at the angular shell bounds the normalized simple-pole pairing uniformly in height and gives the linear radial majorant. The imaginary part of the uncontracted square on every continuous compact radial test equal to one near the tip has coefficient ηπ² multiplying log(href/h), with a uniform bounded remainder. A smooth compact test witnesses signed divergence. For the quadratic numerator, checks the intrinsic unit-four-vector scaling, the exact axial and summed-spatial angular weights, and the temporal and equal-coordinate spatial diagonal averages with coefficient bounds 2 and 2/3. The two radial powers yield integrable majorants and exact positive-height limits for the unweighted temporal and spatial diagonal pairings on the actual four-momentum measure. Measure-preserving spatial coordinate swaps and sign flips give one-third of the trace for each diagonal component and zero for every mixed component on these radial tests. The exact nonradial four-momentum polar disintegration retains the spatial Euclidean unit sphere and both axial sheets. The normal coordinate is realized on actual intrinsic unit four-vectors. At positive height the unweighted angular simple and squared poles use the exact normalized density. Subtracting the first one or two normal Taylor terms gives exact boundary pairings and uniform bounds. For compact continuous Cartesian tests with the stated uniform linear normal bounds, the simple pole has a finite limit through the tip. For compact continuous tests containing the quadratic numerator with uniformly bounded value, slope and quadratic normal remainder of their radius-normalized amplitude, the same squared-pole pairing has an exact finite boundary limit. For arbitrary compact Cartesian C² tests, Lean derives those uniform jets on the regular interior strip and bounds the endpoints from continuity on compact parameter sets. The resulting simple-pole limit applies on every such test. The quadratic limit applies with the literal product of any two real continuous linear momentum slots, including all axial and spatial longitudinal numerator components. The exact stable-half squared coefficient splits at the same positive height into the double pole, the inverse-cube principal root term, the simple pole with coefficient −a²/2, and an inverse-root-bounded residual. On a regular angular window, integration by parts against the inverse root gives an r² radial majorant for the fractional term. In Cartesian four-momentum, the derivative of the inverse root in an intrinsic unit direction is its inverse cube times the corresponding covariant momentum component. Integration by parts using that actual numerator gives the fractional limit through the tip on arbitrary compact C¹ tests. The residual has an absolutely integrable boundary limit on compact continuous tests. The full longitudinal coefficient has a boundary limit on compact C¹ tests with the stated uniform normal angular Taylor bounds, and the finite-height product is identified exactly in the original directed quotient. The uniform normal bounds follow for every compact Cartesian C² test of the actual quadratic numerator. The checked C² theorem gives both the coefficient limit and its directed reconstruction. The original axial running sign is retained on the unweighted simple pole and quadratic square. At each positive height, axial reflection leaves the literal inverse fixed and folds the odd part of the Cartesian test into a continuous compact test. In the exact normalized angular formula, this fold is the half-difference of the two unit axial sheets, with the spatial sphere and area factor 2π² unchanged. Every compact Cartesian C² test supplies the uniform signed angular value, slope and remainder estimates. The signed simple and actual quadratic squared pairings therefore converge through the cone tip, with explicit limits given by the same angular functionals evaluated on the signed profiles. For the running signed longitudinal test, Cartesian integration by parts at positive height adds the axial trace of the inverse root, with coefficient 2a times the axial component of the derivative direction. The trace tends to the ordinary three-dimensional integral with inverse spatial norm. Combining that term with the two angular boundary terms and the locally integrable residual gives the complete tested longitudinal limit.",
       "lean": [
         "UV.SectorPlane.stable_half_massless_remainder",
         "UV.SectorPlane.Plane.stable_half_massless_directed_remainder",
@@ -9385,7 +9555,37 @@
         "UV.SectorPlane.cone_radial_cutoff_of_compact",
         "UV.SectorPlane.Plane.cone_nonradial_smooth_single_limit",
         "UV.SectorPlane.Plane.cone_nonradial_smooth_longitudinal_limit",
-        "UV.SectorPlane.Plane.massless_stable_longitudinal_C2_limit"
+        "UV.SectorPlane.Plane.massless_stable_longitudinal_C2_limit",
+        "UV.SectorPlane.cone_axial_reflection_measurePreserving",
+        "UV.SectorPlane.cone_running_even_test_eq",
+        "UV.SectorPlane.cone_running_integral_even",
+        "UV.SectorPlane.cone_running_angular_amplitude_eq",
+        "UV.SectorPlane.cone_running_smooth_single_normal_jet",
+        "UV.SectorPlane.cone_running_smooth_quadratic_normal_jet",
+        "UV.SectorPlane.Plane.cone_running_fold_pole",
+        "UV.SectorPlane.Plane.cone_running_nonradial_polar_pairing",
+        "UV.SectorPlane.Plane.cone_running_nonradial_quadratic_pairing",
+        "UV.SectorPlane.Plane.cone_running_smooth_single_limit",
+        "UV.SectorPlane.Plane.cone_running_smooth_longitudinal_limit",
+        "UV.SectorPlane.real_axial_nonzero_ae",
+        "UV.SectorPlane.Plane.massless_running_stable_single_pair_split",
+        "UV.SectorPlane.Plane.massless_running_stable_single_limit",
+        "UV.SectorPlane.Plane.massless_running_stable_scalar_line",
+        "UV.SectorPlane.Plane.massless_running_stable_scalar_line_ae",
+        "UV.SectorPlane.Plane.massless_running_stable_ghost_pair_integral",
+        "UV.SectorPlane.integral_axialSign_directional_derivative",
+        "UV.SectorPlane.Plane.stable_inverse_root_axial_trace_limit",
+        "UV.SectorPlane.Plane.running_tensor_fractional_pair_parts",
+        "UV.SectorPlane.Plane.running_tensor_fractional_pair_limit",
+        "UV.SectorPlane.Plane.running_single_residual_full_momentum",
+        "UV.SectorPlane.Plane.running_square_residual_full_momentum",
+        "UV.SectorPlane.Plane.massless_running_longitudinal_integrand_directed",
+        "UV.SectorPlane.Plane.massless_running_stable_longitudinal_pair_split",
+        "UV.SectorPlane.Plane.massless_running_stable_longitudinal_limit",
+        "UV.SectorPlane.Plane.massless_running_stable_gauge_integrand",
+        "UV.SectorPlane.Plane.massless_running_stable_gauge_pair_integral",
+        "UV.SectorPlane.Plane.massless_running_stable_ghost_limit",
+        "UV.SectorPlane.Plane.massless_running_stable_gauge_limit"
       ]
     },
     {
@@ -9412,6 +9612,33 @@
         "UV.SectorPlane.Plane.physical_optical_positive_shell",
         "UV.SectorPlane.Plane.physical_optical_matched_coefficient",
         "UV.SectorPlane.optical_imaginary_entire_shift"
+      ]
+    },
+    {
+      "label": "eq:physical-directed-gauge-ghost-lines",
+      "source_line": 45366,
+      "status": "partial",
+      "scope": "With the literal running numerator and the stable-half kernel at nonnegative depth, the common positive-height limit is checked at zero mass on compact Cartesian C² tests, including the cone tip, for the simple scalar and ghost lines and the resolved covariant-gauge template with arbitrary real ζ and two intrinsic unit directions. The axial sign at zero only supplies a scalar totalization on a Lebesgue-null hyperplane. The fixed pole unit and η in the denominator are unchanged. For the running signed longitudinal test, Cartesian integration by parts at positive height adds the axial trace of the inverse root, with coefficient 2a times the axial component of the derivative direction. The trace tends to the ordinary three-dimensional integral with inverse spatial norm. Combining that term with the two angular boundary terms and the locally integrable residual gives the complete tested longitudinal limit. A continuity theorem in the test-space topology, the generic kernel and source Hessian identification, and products of these boundary values remain open.",
+      "lean": [
+        "UV.SectorPlane.real_axial_nonzero_ae",
+        "UV.SectorPlane.Plane.massless_running_stable_single_pair_split",
+        "UV.SectorPlane.Plane.massless_running_stable_single_limit",
+        "UV.SectorPlane.Plane.massless_running_stable_scalar_line",
+        "UV.SectorPlane.Plane.massless_running_stable_scalar_line_ae",
+        "UV.SectorPlane.Plane.massless_running_stable_ghost_pair_integral",
+        "UV.SectorPlane.integral_axialSign_directional_derivative",
+        "UV.SectorPlane.Plane.stable_inverse_root_axial_trace_limit",
+        "UV.SectorPlane.Plane.running_tensor_fractional_pair_parts",
+        "UV.SectorPlane.Plane.running_tensor_fractional_pair_limit",
+        "UV.SectorPlane.Plane.running_single_residual_full_momentum",
+        "UV.SectorPlane.Plane.running_square_residual_full_momentum",
+        "UV.SectorPlane.Plane.massless_running_longitudinal_integrand_directed",
+        "UV.SectorPlane.Plane.massless_running_stable_longitudinal_pair_split",
+        "UV.SectorPlane.Plane.massless_running_stable_longitudinal_limit",
+        "UV.SectorPlane.Plane.massless_running_stable_gauge_integrand",
+        "UV.SectorPlane.Plane.massless_running_stable_gauge_pair_integral",
+        "UV.SectorPlane.Plane.massless_running_stable_ghost_limit",
+        "UV.SectorPlane.Plane.massless_running_stable_gauge_limit"
       ]
     }
   ]

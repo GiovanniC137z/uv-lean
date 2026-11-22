@@ -105,11 +105,11 @@ been included. -/
 def coneLinearTest (v : ConeUnitDirection) (g : ℝ × Spatial → ℂ) (q : ℝ × Spatial) : ℂ :=
   g q * (coneCovector (WithLp.ofLp v.val) q : ℂ)
 
-private theorem cone_linear_test_contDiff (v : ConeUnitDirection) {g : ℝ × Spatial → ℂ}
+theorem cone_linear_test_contDiff (v : ConeUnitDirection) {g : ℝ × Spatial → ℂ}
     (hg : ContDiff ℝ 1 g) : ContDiff ℝ 1 (coneLinearTest v g) :=
   hg.mul (Complex.ofRealCLM.contDiff.comp (coneCovector (WithLp.ofLp v.val)).contDiff)
 
-private theorem cone_linear_test_compact (v : ConeUnitDirection) {g : ℝ × Spatial → ℂ}
+theorem cone_linear_test_compact (v : ConeUnitDirection) {g : ℝ × Spatial → ℂ}
     (hs : HasCompactSupport g) : HasCompactSupport (coneLinearTest v g) :=
   hs.mul_right
 

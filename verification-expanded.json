@@ -854,9 +854,20 @@
       "UV.RevisionSpectrum.crossUpper_pole_limit",
       "UV.RevisionSpectrum.crossPoleCoeff_below",
       "UV.RevisionSpectrum.crossPoleCoeff_above",
-      "UV.RevisionSpectrum.crossDensity_large_bound"
+      "UV.RevisionSpectrum.crossDensity_large_bound",
+      "UV.RevisionSpectrum.verifyCrossContinuum_embedded",
+      "UV.RevisionSpectrum.verify_cross_stieltjes",
+      "UV.RevisionSpectrum.verify_complex_stieltjes_analyticOnNhd",
+      "UV.RevisionSpectrum.verify_stieltjes_extracts_real_atom",
+      "UV.RevisionSpectrum.verify_cross_signed_continuation",
+      "UV.RevisionSpectrum.verify_cross_signed_necessity_and_atom",
+      "UV.RevisionSpectrum.verify_cross_jordan_mutuallySingular",
+      "UV.RevisionSpectrum.verify_cross_jordan_support",
+      "UV.RevisionSpectrum.verify_cross_jordan_representation",
+      "UV.RevisionSpectrum.verify_weighted_positive_spectrum_locallyFinite",
+      "UV.RevisionSpectrum.verify_cross_signed_spectral_exists_iff"
     ],
-    "scope": "Checks the upper square-root branch, explicit boundary jump, extracted threshold, subthreshold and embedded pole coefficients, removable resonant density value, inverse-square-root threshold limit, failure of local integrability at generic embedded poles, and the large-mass inverse-power bound. Stieltjes representation, inversion and uniqueness for general signed measures, and the sharp logarithmic total-variation asymptotic remain open in Lean."
+    "scope": "Proves the exact ordinary signed spectral existence criterion and constructs the atom-plus-continuum representation in every admitted case through mutually singular Jordan measures. The integral is absolutely convergent and has finite weighted total variation at every positive reference point. Analytic continuation of any ordinary signed representation to the upper half-plane and extraction of its real atom exclude generic embedded poles and force the stated residue. Also checks the branch jump, the threshold and removable embedded density values, generic local nonintegrability, and the inverse-power tail bound. Full uniqueness of the continuum and the sharp logarithmic total-variation asymptotic remain open."
   },
   "cor:update-completed-bubble": {
     "status": "verified",
@@ -1001,9 +1012,34 @@
       "UV.AdvanceCurvatureVertex.curvatureVertexFactor_uniformly_bounded",
       "UV.AdvanceCurvatureVertex.normalizedIntegral_legShape_mul",
       "UV.AdvanceCurvatureVertex.cutoffBracketPotential_haar_expansion",
-      "UV.AdvanceCurvatureVertex.quarticHaarVertex_zero_of_no_signed_routing"
+      "UV.AdvanceCurvatureVertex.quarticHaarVertex_zero_of_no_signed_routing",
+      "UV.VerifyCurvatureProductMoments.scalarPairMoment_eq_integral",
+      "UV.VerifyCurvatureProductMoments.coordinate_list_moment",
+      "UV.VerifyCurvaturePairings.diagonal_wick_factorization",
+      "UV.VerifyCurvaturePairings.coordinate_list_wick",
+      "UV.VerifyCurvaturePairings.osWickMoment_scaled",
+      "UV.VerifyCurvaturePairings.weighted_coordinate_list_wick",
+      "UV.VerifyCurvatureExpansion.occurrence_covariance_eq",
+      "UV.VerifyCurvatureExpansion.noninternal_line_norm_le",
+      "UV.VerifyCurvatureExpansion.cutoff_potential_vertex_sum",
+      "UV.VerifyCurvatureExpansion.cutoff_power_probe_expansion",
+      "UV.VerifyCurvatureExpansion.cutoff_power_probe_wick",
+      "UV.VerifyCurvatureExpansion.full_power_probe_integral_limit",
+      "UV.VerifyCurvatureRouting.routedSlot_end",
+      "UV.VerifyCurvatureRouting.external_not_internal",
+      "UV.VerifyCurvatureRouting.routedWickTerm_factor",
+      "UV.VerifyCurvatureRouting.routedSlot_recovers_matched_configuration",
+      "UV.VerifyCurvatureGraphBounds.routedCoefficient_measurable",
+      "UV.VerifyCurvatureGraphBounds.routedCoefficient_uniformly_bounded",
+      "UV.VerifyCurvatureGraphBounds.routedSphericalGraph_eq",
+      "UV.VerifyCurvatureGraphBounds.integrated_routedGraph_limit",
+      "UV.VerifyCurvatureGraphBounds.integrated_routedGraph_absolute_tail",
+      "UV.VerifyCurvatureGraphBounds.integrated_routedSphericalGraph_tail_uniform",
+      "UV.VerifyCurvatureReindex.configuredGraphTerm_zero_of_mismatch",
+      "UV.VerifyCurvatureReindex.configuredGraphTerm_eq_routed_of_match",
+      "UV.VerifyCurvatureReindex.configured_sphericalGraph_eq_routed"
     ],
-    "scope": "Checks the actual Euclidean-frequency four-torus line estimate, inverse determinant product and cutoff limit, and quartic determinant suppression at zero depth. The finite diagonal kinetic integral gives the specified relative Gaussian determinant with two fields and n colors. The exact mode covariance and the double-transfer covariance follow on the constructed product Gaussian measure. For each finite product of the literal curvature lines with uniformly bounded measurable residual coefficients, Lean checks absolute all-mode summability at positive depth, vanishing of the common zero-depth atom, and spherical-cutoff convergence to the unrestricted graph. The signed coefficient and the literal unrestricted absolute tail are integrable against the same finite nonnegative depth law. Their spherical approximations converge, and the absolute momentum tail is O(M⁻ˢ) for every fixed s ≥ 0, both unrestricted and uniformly in the spherical cutoff. Derives the integrated block curvature square from the oriented orthonormal Euclidean and internal two-form components, giving the four copied kinetic terms and sole third-block bracket potential. Differentiation along the four sector unit vectors sends each normalized signed Fourier mode to its opposite, and integrating the squared gradients gives the exact diagonal kinetic action used to compute the relative determinant. The exact finite action expansion yields the first quartic Wick vacuum graph with two same-field tadpoles. Its fixed-depth coefficient on the physical Gaussian law is the half-color norm times the square of the signed mode line sum, with both transfer endpoints. The single-determinant spherical and continuum versions agree with the actual two-line graph sum, including zero weight at the continuum depth-zero atom and integrability over the common source. At each fixed positive depth, every power of the literal bracket potential is integrable and its spherical expectations converge. The exact quartic vertex is a bounded depth-independent Haar factor. It vanishes in the absence of a zero-sum signed Fourier routing. The identification of every higher-order Wick graph and elementary insertion with the finite-contraction interface remains open."
+    "scope": "Checks the actual Euclidean-frequency four-torus line estimate, inverse determinant product and cutoff limit, and quartic determinant suppression at zero depth. The finite diagonal kinetic integral gives the specified relative Gaussian determinant with two fields and n colors. The exact mode covariance and the double-transfer covariance follow on the constructed product Gaussian measure. For each finite product of the literal curvature lines with uniformly bounded measurable residual coefficients, Lean checks absolute all-mode summability at positive depth, vanishing of the common zero-depth atom, and spherical-cutoff convergence to the unrestricted graph. The signed coefficient and the literal unrestricted absolute tail are integrable against the same finite nonnegative depth law. Their spherical approximations converge, and the absolute momentum tail is O(M⁻ˢ) for every fixed s ≥ 0, both unrestricted and uniformly in the spherical cutoff. Derives the integrated block curvature square from the oriented orthonormal Euclidean and internal two-form components, giving the four copied kinetic terms and sole third-block bracket potential. Differentiation along the four sector unit vectors sends each normalized signed Fourier mode to its opposite, and integrating the squared gradients gives the exact diagonal kinetic action used to compute the relative determinant. The exact finite action expansion yields the first quartic Wick vacuum graph with two same-field tadpoles. Its fixed-depth coefficient on the physical Gaussian law is the half-color norm times the square of the signed mode line sum, with both transfer endpoints. The single-determinant spherical and continuum versions agree with the actual two-line graph sum, including zero weight at the continuum depth-zero atom and integrability over the common source. At each fixed positive depth, every power of the literal bracket potential is integrable and its spherical expectations converge. The exact quartic vertex is a bounded depth-independent Haar factor. It vanishes in the absence of a zero-sum signed Fourier routing. Derives the exact Wick formula for arbitrary finite products of the elementary signed coordinates under the common Gaussian law, including every multiplicity and odd products. The literal spherical interaction at every fixed power with any finite elementary Fourier monomial equals its weighted pairing expansion. The interaction-interaction, interaction-probe, and probe-probe contractions carry exactly two, one, and zero harmonic transfers respectively. The continuum expectation of each fixed elementary insertion and interaction power is integrable at positive depth and is the limit of its spherical expectations. For any partitioned pairing incidence, the surviving vertex slots are reconstructed from one mode and color per internal edge together with the fixed probe variables. The routed graph with explicit color sums has the one-determinant finite-contraction form, a uniformly bounded measurable residual coefficient, unrestricted convergence, and the integrated absolute tail at every fixed power uniformly in the spherical cutoff. For each fixed incidence, the exact determinant-weighted sum over the literal spherical vertex configurations equals the routed edge-assignment sum at every cutoff containing the fixed probes. The pure correspondence from the recursive partner list to arbitrary partitioned incidences and exact treatment of cutoffs omitting fixed probes remain open."
   },
   "cor:uvpeC-coupling": {
     "status": "verified",
@@ -1520,9 +1556,22 @@
       "UV.networkEdgeGreen_bounds_nonnegative_mass",
       "UV.networkGreen_product_bounds_nonnegative_mass",
       "UV.networkDurationCost_inverse_moment_iff_nonnegative_mass",
-      "UV.integrated_alternating_polygon_inverse_moment_iff_nonnegative_mass"
+      "UV.integrated_alternating_polygon_inverse_moment_iff_nonnegative_mass",
+      "UV.networkMarkedFourier_eq_real_displacement_integral",
+      "UV.networkMarkedFourier_hasDerivAt",
+      "UV.NetworkMarkPolynomial.evaluate_hasDerivAt",
+      "UV.networkMarkPolynomial_degree",
+      "UV.networkMarkedFourier_eq_polynomial",
+      "UV.networkCovariance_pair_duration_bound",
+      "UV.networkMarkedFourier_norm_bound",
+      "UV.networkMarkedPolynomialCost_le_routed",
+      "UV.networkMarkedPolynomialCost_bound",
+      "UV.networkMarkedPolynomialCost_common_law_finite",
+      "UV.networkMarkedPolynomialCost_signed_law_finite",
+      "UV.networkComplexControlMeasure_le_add",
+      "UV.networkMarkedPolynomialCost_complex_dominating_law_finite"
     ],
-    "scope": "The full named proposition is proved for independent visit probes Bk=k and b=0 and nonnegative edge masses, on one fixed Euclidean sector plane in the stated reference units. An oriented edge list covers a connected rooted finite graph, with one shared four-vector at each nonroot visit and actual transverse position differences. Connectivity derives injectivity of the grounded incidence D, positivity of H=Dᵀdiag(s_e⁻¹)D, the shared energy H tensor I₄, and the actual vertex-integral L1 bound. Literal Lebesgue Gaussian Fourier integration through a derived orthogonal eigenbasis proves F_s(q)/F_s(0)=exp(-qᵀ(H⁻¹ tensor I₄)q), its exact prefactor (4π)^(2n)/det(H)^2, and momentum L1. The normalized independent-probe momentum integral exactly cancels both determinant factors, leaving the zero-displacement edge kernels. Positive finite-product Tonelli then derives the exact uncut duration cost as the extended Green product, with each positive mark factor (1+m_e z_e)exp(-m_e z_e)/(8π²z_e³) and an infinite factor for any zero mark. The same actual integral under one common law of all vertex positions is equal to the expectation of this product, hence yields the exact finiteness test. The explicit alternating closed polygon has zero total displacement, positive graph-dependent upper and lower constants, and the full Fourier-integrated inverse-third-moment-per-edge criterion. The zero-mass endpoint is checked by dominated convergence against the actual positive-mark massless edge kernel. The independent-probe identity, common-law formula, and actual alternating polygon inverse-moment equivalence all allow nonnegative edge masses."
+    "scope": "The full named proposition is proved for independent visit probes Bk=k and b=0 and nonnegative edge masses, on one fixed Euclidean sector plane in the stated reference units. An oriented edge list covers a connected rooted finite graph, with one shared four-vector at each nonroot visit and actual transverse position differences. Connectivity derives injectivity of the grounded incidence D, positivity of H=Dᵀdiag(s_e⁻¹)D, the shared energy H tensor I₄, and the actual vertex-integral L1 bound. Literal Lebesgue Gaussian Fourier integration through a derived orthogonal eigenbasis proves F_s(q)/F_s(0)=exp(-qᵀ(H⁻¹ tensor I₄)q), its exact prefactor (4π)^(2n)/det(H)^2, and momentum L1. The normalized independent-probe momentum integral exactly cancels both determinant factors, leaving the zero-displacement edge kernels. Positive finite-product Tonelli then derives the exact uncut duration cost as the extended Green product, with each positive mark factor (1+m_e z_e)exp(-m_e z_e)/(8π²z_e³) and an infinite factor for any zero mark. The same actual integral under one common law of all vertex positions is equal to the expectation of this product, hence yields the exact finiteness test. The explicit alternating closed polygon has zero total displacement, positive graph-dependent upper and lower constants, and the full Fourier-integrated inverse-third-moment-per-edge criterion. The zero-mass endpoint is checked by dominated convergence against the actual positive-mark massless edge kernel. The independent-probe identity, common-law formula, and actual alternating polygon inverse-moment equivalence all allow nonnegative edge masses. The adjacent unnumbered extension also checks the following. For the actual coherent Fourier integral on the intrinsic Euclidean sector plane, differentiation in any real visit-space direction inserts its literal displacement readout times i. An arbitrary finite product of these readouts gives the exact covariance polynomial multiplying the coherent Gaussian. The raw real product differs only by the unit factor i to the power of the number of readouts. The actual inverse precision gives a covariance-pair bound proportional to the largest proper time. The resulting marked amplitude is bounded by the unmarked amplitude times fixed polynomial powers of the largest proper time and the routed momentum. With full column rank routing, bounded shift, strictly positive edge masses, and positive transverse marks z_e at least c_e r, integrating its absolute value over all positive durations and momenta with the original (2π)^(-4L) measure costs a fixed inverse-depth moment. The common positive law pays another J powers for coefficients bounded by a fixed multiple of r^(-J). The same cost is finite on the actual signed Jordan total variation. A positive measure dominating the norm of each measurable complex mass also controls the real and imaginary components, so its inverse moment suffices on their summed variations. The checked contact class consists of finite products of fixed displacement readouts with polynomial momentum and duration weights and the stated inverse-depth coefficient bound."
   },
   "prop:spex-polarization-uv": {
     "status": "verified",

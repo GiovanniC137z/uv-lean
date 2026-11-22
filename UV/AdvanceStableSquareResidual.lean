@@ -50,12 +50,12 @@ theorem Plane.stable_square_residual_tendsto (diamond : Plane E) (ε : Evolution
   exact (hG.continuousAt.tendsto.comp hX).div (hZ.pow 2)
     (pow_ne_zero _ (Complex.ofReal_ne_zero.mpr hw))
 
-private theorem stable_square_boundary_residual_measurable (η a : ℝ) :
+theorem stable_square_boundary_residual_measurable (η a : ℝ) :
     Measurable (stableSquareBoundaryResidual η a) := by
   unfold stableSquareBoundaryResidual stableSquareResidualFromRoot stableShellBoundaryRoot
   fun_prop
 
-private theorem Plane.stable_square_residual_measurable (diamond : Plane E) (ε : Evolution)
+theorem Plane.stable_square_residual_measurable (diamond : Plane E) (ε : Evolution)
     (h : Height) (a : ℝ) :
     Measurable (fun w : ℝ => stableSquareResidual a (diamond.shiftedShellCoefficient ε h w)) := by
   unfold stableSquareResidual stableSquareResidualFromRoot Plane.shiftedShellCoefficient
@@ -63,13 +63,14 @@ private theorem Plane.stable_square_residual_measurable (diamond : Plane E) (ε 
 
 /-- Local integrability and dominated convergence for an actual normal
 coefficient with an inverse-root bound on the four-momentum cone. -/
-theorem cone_test_limit_of_inverse_root_bound {K : Height → ℝ → ℂ} {L : ℝ → ℂ} {C : ℝ}
+theorem cone_bounded_test_limit_of_inverse_root_bound {K : Height → ℝ → ℂ} {L : ℝ → ℂ} {C : ℝ}
     (hK : ∀ h, Measurable (K h)) (hL : Measurable L)
     (hBoundK : ∀ h w, w ≠ 0 → ‖K h w‖ ≤ C * inverseRootAbs w)
     (hBoundL : ∀ w, w ≠ 0 → ‖L w‖ ≤ C * inverseRootAbs w)
     (hLim : ∀ w, w ≠ 0 → Tendsto (fun h : Height => K h w)
       ((𝓝[>] (0 : ℝ)).comap (fun h : Height => (h : ℝ))) (𝓝 (L w)))
-    {g : ℝ × Spatial → ℂ} (hg : Continuous g) (hs : HasCompactSupport g) :
+    {g : ℝ × Spatial → ℂ} (hg : Measurable g) (hs : HasCompactSupport g)
+    {M : ℝ} (hM : ∀ q, ‖g q‖ ≤ M) :
     Integrable (fun q : ℝ × Spatial => g q * L (shellSquare q.1 q.2)) ∧
     Tendsto (fun h : Height => ∫ q : ℝ × Spatial, g q * K h (shellSquare q.1 q.2))
       ((𝓝[>] (0 : ℝ)).comap (fun h : Height => (h : ℝ)))
@@ -85,7 +86,6 @@ theorem cone_test_limit_of_inverse_root_bound {K : Height → ℝ → ℂ} {L : 
     rw [Prod.norm_def, max_le_iff] at hN
     exact hq ⟨abs_le.mp (by simpa only [Real.norm_eq_abs] using hN.1),
       by simpa only [Metric.mem_closedBall, dist_zero_right] using hN.2⟩
-  obtain ⟨M, hM⟩ := hg.bounded_above_of_compact_support hs
   have hM₀ : 0 ≤ M := (norm_nonneg _).trans (hM 0)
   let F (h : Height) (q : ℝ × Spatial) :=
     g q * K h (shellSquare q.1 q.2)
@@ -95,7 +95,7 @@ theorem cone_test_limit_of_inverse_root_bound {K : Height → ℝ → ℂ} {L : 
       (M * C) * inverseRootAbs (shellSquare q.1 q.2)) μ :=
     (integrableOn_inverse_root_shell_box hR).const_mul _
   have hGc : Measurable G :=
-    hg.measurable.mul (hL.comp shellSquare_continuous.measurable)
+    hg.mul (hL.comp shellSquare_continuous.measurable)
   have hw : ∀ᵐ q ∂μ, shellSquare q.1 q.2 ≠ 0 :=
     (ae_mono Measure.restrict_le_self) massless_shell_nonzero_ae
   have hGi : Integrable G μ := by
@@ -118,7 +118,7 @@ theorem cone_test_limit_of_inverse_root_bound {K : Height → ℝ → ℂ} {L : 
         setIntegral_eq_integral_of_forall_compl_eq_zero hSg] at hT
       exact hT.congr (fun h => setIntegral_eq_integral_of_forall_compl_eq_zero (hSf h))
     · exact Eventually.of_forall fun h =>
-        (hg.measurable.mul ((hK h).comp shellSquare_continuous.measurable)).aestronglyMeasurable
+        (hg.mul ((hK h).comp shellSquare_continuous.measurable)).aestronglyMeasurable
     · refine Eventually.of_forall fun h => ?_
       filter_upwards [hw] with q hn
       dsimp only [F]
@@ -127,6 +127,21 @@ theorem cone_test_limit_of_inverse_root_bound {K : Height → ℝ → ℂ} {L : 
         (norm_nonneg _) hM₀
     · filter_upwards [hw] with q hn
       exact (hLim _ hn).const_mul (g q)
+
+theorem cone_test_limit_of_inverse_root_bound {K : Height → ℝ → ℂ} {L : ℝ → ℂ} {C : ℝ}
+    (hK : ∀ h, Measurable (K h)) (hL : Measurable L)
+    (hBoundK : ∀ h w, w ≠ 0 → ‖K h w‖ ≤ C * inverseRootAbs w)
+    (hBoundL : ∀ w, w ≠ 0 → ‖L w‖ ≤ C * inverseRootAbs w)
+    (hLim : ∀ w, w ≠ 0 → Tendsto (fun h : Height => K h w)
+      ((𝓝[>] (0 : ℝ)).comap (fun h : Height => (h : ℝ))) (𝓝 (L w)))
+    {g : ℝ × Spatial → ℂ} (hg : Continuous g) (hs : HasCompactSupport g) :
+    Integrable (fun q : ℝ × Spatial => g q * L (shellSquare q.1 q.2)) ∧
+    Tendsto (fun h : Height => ∫ q : ℝ × Spatial, g q * K h (shellSquare q.1 q.2))
+      ((𝓝[>] (0 : ℝ)).comap (fun h : Height => (h : ℝ)))
+      (𝓝 (∫ q : ℝ × Spatial, g q * L (shellSquare q.1 q.2))) := by
+  obtain ⟨M, hM⟩ := hg.bounded_above_of_compact_support hs
+  exact cone_bounded_test_limit_of_inverse_root_bound hK hL hBoundK hBoundL hLim
+    hg.measurable hs hM
 
 theorem Plane.stable_square_residual_full_momentum (diamond : Plane E) (ε : Evolution)
     {a : ℝ} (ha : 0 ≤ a) {g : ℝ × Spatial → ℂ} (hg : Continuous g) (hs : HasCompactSupport g) :

@@ -82,11 +82,40 @@
   },
   "eq:directed-propagator": {
     "status": "partial",
-    "scope": "The coefficient at finite positive height is realized in the directed quotient, with a separate normalized running unit. Its general boundary distribution with the running multiplier and kernel still requires a test domain and convergence proof.",
+    "scope": "The finite positive-height expression is realized in the literal directed quotient with the normalized running unit and the original fixed-plane η in the stable numerator and pole. For the stable-half kernel exp(−√z), a≥0 and m>0, the full-line η=+1 minus η=−1 jump is checked on compact Lipschitz real tests of all four momenta. A bounded Lipschitz clip agrees with the actual running sign near both massive sheets, and the exact measurable correction has a uniform gap to the massive pole. The directed jump is 2jₑ times the signed real-boundary-weighted principal value plus 2πjₑ sin(am) times the difference of the two axial shell weights with Jacobian 1/(2ω). With the literal running numerator and the stable-half kernel at nonnegative depth, the common positive-height limit is checked at zero mass on compact Cartesian C² tests, including the cone tip, for the simple scalar and ghost lines and the resolved covariant-gauge template with arbitrary real ζ and two intrinsic unit directions. The axial sign at zero only supplies a scalar totalization on a Lebesgue-null hyperplane. The fixed pole unit and η in the denominator are unchanged. Separate one-sided full positive-mass limits and the general kernel remain open.",
     "lean": [
       "UV.SectorPlane.Plane.scalar_line_plus",
       "UV.SectorPlane.Plane.scalar_line_minus",
-      "UV.SectorPlane.Plane.running_unit_from_aligned"
+      "UV.SectorPlane.Plane.running_unit_from_aligned",
+      "UV.SectorPlane.massive_running_clip_eq_axial_sign",
+      "UV.SectorPlane.massive_running_correction_gap",
+      "UV.SectorPlane.massive_running_test_fullShellTest",
+      "UV.SectorPlane.Plane.massive_stable_pairing_sum_limit",
+      "UV.SectorPlane.Plane.massive_stable_running_integrand_directed",
+      "UV.SectorPlane.Plane.massive_stable_running_integrand_scalarLine",
+      "UV.SectorPlane.Plane.massive_stable_running_jump",
+      "UV.SectorPlane.Plane.massive_stable_running_directed_jump",
+      "UV.SectorPlane.principalSqrt_nonnegative_scale_sq",
+      "UV.SectorPlane.Plane.stable_half_numerator_scalar_argument",
+      "UV.SectorPlane.real_axial_nonzero_ae",
+      "UV.SectorPlane.Plane.massless_running_stable_single_pair_split",
+      "UV.SectorPlane.Plane.massless_running_stable_single_limit",
+      "UV.SectorPlane.Plane.massless_running_stable_scalar_line",
+      "UV.SectorPlane.Plane.massless_running_stable_scalar_line_ae",
+      "UV.SectorPlane.Plane.massless_running_stable_ghost_pair_integral",
+      "UV.SectorPlane.integral_axialSign_directional_derivative",
+      "UV.SectorPlane.Plane.stable_inverse_root_axial_trace_limit",
+      "UV.SectorPlane.Plane.running_tensor_fractional_pair_parts",
+      "UV.SectorPlane.Plane.running_tensor_fractional_pair_limit",
+      "UV.SectorPlane.Plane.running_single_residual_full_momentum",
+      "UV.SectorPlane.Plane.running_square_residual_full_momentum",
+      "UV.SectorPlane.Plane.massless_running_longitudinal_integrand_directed",
+      "UV.SectorPlane.Plane.massless_running_stable_longitudinal_pair_split",
+      "UV.SectorPlane.Plane.massless_running_stable_longitudinal_limit",
+      "UV.SectorPlane.Plane.massless_running_stable_gauge_integrand",
+      "UV.SectorPlane.Plane.massless_running_stable_gauge_pair_integral",
+      "UV.SectorPlane.Plane.massless_running_stable_ghost_limit",
+      "UV.SectorPlane.Plane.massless_running_stable_gauge_limit"
     ]
   },
   "eq:fixed-carrier-line": {
@@ -265,7 +294,7 @@
   },
   "eq:stable-disc": {
     "status": "verified",
-    "scope": "For every m>0 and a≥0, the literal stable-half coefficient jump is tested on compact Lipschitz functions of all four intrinsic momentum coordinates on one fixed sector plane, across both sides of the branch edge. The normal coarea chart pairs both axial roots with their exact 1/(2ω) Jacobians, and the complementary region uses the ordinary inverse. The canonical chart requires only positive mass, and the bare and weighted principal values are chart-radius independent. This realizes the 2i θ(w) sin(a√w) PV term and the unselected two-sheet −2πi cos(am) δ term at the same positive height and η=±1. The finite-height product and jump are reconstructed in the literal directed quotient with its fixed pole unit. The compact timelike C¹ result is also checked. Physical cut matching is a separate hypothesis.",
+    "scope": "For every m>0 and a≥0, the literal stable-half coefficient jump is tested on compact Lipschitz functions of all four intrinsic momentum coordinates on one fixed sector plane, across both sides of the branch edge. The normal coarea chart pairs both axial roots with their exact 1/(2ω) Jacobians, and the complementary region uses the ordinary inverse. The canonical chart requires only positive mass, and the bare and weighted principal values are chart-radius independent. This realizes the 2i θ(w) sin(a√w) PV term and the unselected two-sheet −2πi cos(am) δ term at the same positive height and η=±1. The finite-height product and jump are reconstructed in the literal directed quotient with its fixed pole unit. The compact timelike C¹ result is also checked. Physical cut matching is a separate hypothesis. The following full-line distinction is also checked for m>0. Retaining the normalized running numerator and comparing η=+1 with η=−1 uses the sum of the two denominator/kernel coefficients. Its jump has the real-boundary-weighted PV times the axial sign and the sine residue with opposite axial-sheet weights.",
     "lean": [
       "UV.SectorPlane.Plane.stable_half_analytic_form",
       "UV.SectorPlane.Plane.stable_half_timed_uniform_C1",
@@ -283,12 +312,22 @@
       "UV.SectorPlane.massive_shell_pv_cutoff_independent",
       "UV.SectorPlane.stable_massive_sine_pv_cutoff_independent",
       "UV.SectorPlane.Plane.massive_stable_jump_canonical",
-      "UV.SectorPlane.Plane.massive_stable_directed_jump_canonical"
+      "UV.SectorPlane.Plane.massive_stable_directed_jump_canonical",
+      "UV.SectorPlane.massive_running_clip_eq_axial_sign",
+      "UV.SectorPlane.massive_running_correction_gap",
+      "UV.SectorPlane.massive_running_test_fullShellTest",
+      "UV.SectorPlane.Plane.massive_stable_pairing_sum_limit",
+      "UV.SectorPlane.Plane.massive_stable_running_integrand_directed",
+      "UV.SectorPlane.Plane.massive_stable_running_integrand_scalarLine",
+      "UV.SectorPlane.Plane.massive_stable_running_jump",
+      "UV.SectorPlane.Plane.massive_stable_running_directed_jump",
+      "UV.SectorPlane.principalSqrt_nonnegative_scale_sq",
+      "UV.SectorPlane.Plane.stable_half_numerator_scalar_argument"
     ]
   },
   "eq:massless-branch": {
     "status": "verified",
-    "scope": "In the original quotient, subtracts the massless inverse and the inverse-square-root term at the same positive height. The remainder has norm at most a² whenever |a| times the square root of the shifted coefficient norm is at most one. This is the quantitative O(1) bound in the displayed expansion. For positive depth the remainder after the unit pole is unbounded along the actual positive-height ray at the tip. The single-line jump through the cone tip is checked on compact continuous real four-momentum tests at nonnegative depth. It has the locally integrable timelike sine term and the unweighted delta on both axial sheets, with coefficient −2πi, and reconstructs in the directed quotient. In the adjacent square calculation, the actual flat four-momentum polar change of variables gives the normalized density (1−u)/(π√(1−u²)) and area factor 2π². The simple and squared pole averages are evaluated exactly at every positive height for either orientation. Subtracting the Lipschitz test value at the angular shell bounds the normalized simple-pole pairing uniformly in height and gives the linear radial majorant. The imaginary part of the uncontracted square on every continuous compact radial test equal to one near the tip has coefficient ηπ² multiplying log(href/h), with a uniform bounded remainder. A smooth compact test witnesses signed divergence. For the quadratic numerator, checks the intrinsic unit-four-vector scaling, the exact axial and summed-spatial angular weights, and the temporal and equal-coordinate spatial diagonal averages with coefficient bounds 2 and 2/3. The two radial powers yield integrable majorants and exact positive-height limits for the unweighted temporal and spatial diagonal pairings on the actual four-momentum measure. Measure-preserving spatial coordinate swaps and sign flips give one-third of the trace for each diagonal component and zero for every mixed component on these radial tests. The exact nonradial four-momentum polar disintegration retains the spatial Euclidean unit sphere and both axial sheets. The normal coordinate is realized on actual intrinsic unit four-vectors. At positive height the unweighted angular simple and squared poles use the exact normalized density. Subtracting the first one or two normal Taylor terms gives exact boundary pairings and uniform bounds. For compact continuous Cartesian tests with the stated uniform linear normal bounds, the simple pole has a finite limit through the tip. For compact continuous tests containing the quadratic numerator with uniformly bounded value, slope and quadratic normal remainder of their radius-normalized amplitude, the same squared-pole pairing has an exact finite boundary limit. For arbitrary compact Cartesian C² tests, Lean derives those uniform jets on the regular interior strip and bounds the endpoints from continuity on compact parameter sets. The resulting simple-pole limit applies on every such test. The quadratic limit applies with the literal product of any two real continuous linear momentum slots, including all axial and spatial longitudinal numerator components. The exact stable-half squared coefficient splits at the same positive height into the double pole, the inverse-cube principal root term, the simple pole with coefficient −a²/2, and an inverse-root-bounded residual. On a regular angular window, integration by parts against the inverse root gives an r² radial majorant for the fractional term. In Cartesian four-momentum, the derivative of the inverse root in an intrinsic unit direction is its inverse cube times the corresponding covariant momentum component. Integration by parts using that actual numerator gives the fractional limit through the tip on arbitrary compact C¹ tests. The residual has an absolutely integrable boundary limit on compact continuous tests. The full longitudinal coefficient has a boundary limit on compact C¹ tests with the stated uniform normal angular Taylor bounds, and the finite-height product is identified exactly in the original directed quotient. The uniform normal bounds follow for every compact Cartesian C² test of the actual quadratic numerator. The checked C² theorem gives both the coefficient limit and its directed reconstruction.",
+    "scope": "In the original quotient, subtracts the massless inverse and the inverse-square-root term at the same positive height. The remainder has norm at most a² whenever |a| times the square root of the shifted coefficient norm is at most one. This is the quantitative O(1) bound in the displayed expansion. For positive depth the remainder after the unit pole is unbounded along the actual positive-height ray at the tip. The single-line jump through the cone tip is checked on compact continuous real four-momentum tests at nonnegative depth. It has the locally integrable timelike sine term and the unweighted delta on both axial sheets, with coefficient −2πi, and reconstructs in the directed quotient. In the adjacent square calculation, the actual flat four-momentum polar change of variables gives the normalized density (1−u)/(π√(1−u²)) and area factor 2π². The simple and squared pole averages are evaluated exactly at every positive height for either orientation. Subtracting the Lipschitz test value at the angular shell bounds the normalized simple-pole pairing uniformly in height and gives the linear radial majorant. The imaginary part of the uncontracted square on every continuous compact radial test equal to one near the tip has coefficient ηπ² multiplying log(href/h), with a uniform bounded remainder. A smooth compact test witnesses signed divergence. For the quadratic numerator, checks the intrinsic unit-four-vector scaling, the exact axial and summed-spatial angular weights, and the temporal and equal-coordinate spatial diagonal averages with coefficient bounds 2 and 2/3. The two radial powers yield integrable majorants and exact positive-height limits for the unweighted temporal and spatial diagonal pairings on the actual four-momentum measure. Measure-preserving spatial coordinate swaps and sign flips give one-third of the trace for each diagonal component and zero for every mixed component on these radial tests. The exact nonradial four-momentum polar disintegration retains the spatial Euclidean unit sphere and both axial sheets. The normal coordinate is realized on actual intrinsic unit four-vectors. At positive height the unweighted angular simple and squared poles use the exact normalized density. Subtracting the first one or two normal Taylor terms gives exact boundary pairings and uniform bounds. For compact continuous Cartesian tests with the stated uniform linear normal bounds, the simple pole has a finite limit through the tip. For compact continuous tests containing the quadratic numerator with uniformly bounded value, slope and quadratic normal remainder of their radius-normalized amplitude, the same squared-pole pairing has an exact finite boundary limit. For arbitrary compact Cartesian C² tests, Lean derives those uniform jets on the regular interior strip and bounds the endpoints from continuity on compact parameter sets. The resulting simple-pole limit applies on every such test. The quadratic limit applies with the literal product of any two real continuous linear momentum slots, including all axial and spatial longitudinal numerator components. The exact stable-half squared coefficient splits at the same positive height into the double pole, the inverse-cube principal root term, the simple pole with coefficient −a²/2, and an inverse-root-bounded residual. On a regular angular window, integration by parts against the inverse root gives an r² radial majorant for the fractional term. In Cartesian four-momentum, the derivative of the inverse root in an intrinsic unit direction is its inverse cube times the corresponding covariant momentum component. Integration by parts using that actual numerator gives the fractional limit through the tip on arbitrary compact C¹ tests. The residual has an absolutely integrable boundary limit on compact continuous tests. The full longitudinal coefficient has a boundary limit on compact C¹ tests with the stated uniform normal angular Taylor bounds, and the finite-height product is identified exactly in the original directed quotient. The uniform normal bounds follow for every compact Cartesian C² test of the actual quadratic numerator. The checked C² theorem gives both the coefficient limit and its directed reconstruction. The original axial running sign is retained on the unweighted simple pole and quadratic square. At each positive height, axial reflection leaves the literal inverse fixed and folds the odd part of the Cartesian test into a continuous compact test. In the exact normalized angular formula, this fold is the half-difference of the two unit axial sheets, with the spatial sphere and area factor 2π² unchanged. Every compact Cartesian C² test supplies the uniform signed angular value, slope and remainder estimates. The signed simple and actual quadratic squared pairings therefore converge through the cone tip, with explicit limits given by the same angular functionals evaluated on the signed profiles. For the running signed longitudinal test, Cartesian integration by parts at positive height adds the axial trace of the inverse root, with coefficient 2a times the axial component of the derivative direction. The trace tends to the ordinary three-dimensional integral with inverse spatial norm. Combining that term with the two angular boundary terms and the locally integrable residual gives the complete tested longitudinal limit.",
     "lean": [
       "UV.SectorPlane.stable_half_massless_remainder",
       "UV.SectorPlane.Plane.stable_half_massless_directed_remainder",
@@ -374,7 +413,37 @@
       "UV.SectorPlane.cone_radial_cutoff_of_compact",
       "UV.SectorPlane.Plane.cone_nonradial_smooth_single_limit",
       "UV.SectorPlane.Plane.cone_nonradial_smooth_longitudinal_limit",
-      "UV.SectorPlane.Plane.massless_stable_longitudinal_C2_limit"
+      "UV.SectorPlane.Plane.massless_stable_longitudinal_C2_limit",
+      "UV.SectorPlane.cone_axial_reflection_measurePreserving",
+      "UV.SectorPlane.cone_running_even_test_eq",
+      "UV.SectorPlane.cone_running_integral_even",
+      "UV.SectorPlane.cone_running_angular_amplitude_eq",
+      "UV.SectorPlane.cone_running_smooth_single_normal_jet",
+      "UV.SectorPlane.cone_running_smooth_quadratic_normal_jet",
+      "UV.SectorPlane.Plane.cone_running_fold_pole",
+      "UV.SectorPlane.Plane.cone_running_nonradial_polar_pairing",
+      "UV.SectorPlane.Plane.cone_running_nonradial_quadratic_pairing",
+      "UV.SectorPlane.Plane.cone_running_smooth_single_limit",
+      "UV.SectorPlane.Plane.cone_running_smooth_longitudinal_limit",
+      "UV.SectorPlane.real_axial_nonzero_ae",
+      "UV.SectorPlane.Plane.massless_running_stable_single_pair_split",
+      "UV.SectorPlane.Plane.massless_running_stable_single_limit",
+      "UV.SectorPlane.Plane.massless_running_stable_scalar_line",
+      "UV.SectorPlane.Plane.massless_running_stable_scalar_line_ae",
+      "UV.SectorPlane.Plane.massless_running_stable_ghost_pair_integral",
+      "UV.SectorPlane.integral_axialSign_directional_derivative",
+      "UV.SectorPlane.Plane.stable_inverse_root_axial_trace_limit",
+      "UV.SectorPlane.Plane.running_tensor_fractional_pair_parts",
+      "UV.SectorPlane.Plane.running_tensor_fractional_pair_limit",
+      "UV.SectorPlane.Plane.running_single_residual_full_momentum",
+      "UV.SectorPlane.Plane.running_square_residual_full_momentum",
+      "UV.SectorPlane.Plane.massless_running_longitudinal_integrand_directed",
+      "UV.SectorPlane.Plane.massless_running_stable_longitudinal_pair_split",
+      "UV.SectorPlane.Plane.massless_running_stable_longitudinal_limit",
+      "UV.SectorPlane.Plane.massless_running_stable_gauge_integrand",
+      "UV.SectorPlane.Plane.massless_running_stable_gauge_pair_integral",
+      "UV.SectorPlane.Plane.massless_running_stable_ghost_limit",
+      "UV.SectorPlane.Plane.massless_running_stable_gauge_limit"
     ]
   },
   "eq:physical-unitarity-identity": {
@@ -485,6 +554,101 @@
       "UV.RevisionSpectrum.positive_diagonal_bubble_nonintegrable",
       "UV.RevisionSpectrum.setwise_completed_bubble_nonintegrable",
       "UV.RevisionSpectrum.setwise_completed_bubble_from_transform"
+    ]
+  },
+  "eq:g5I-codim": {
+    "status": "verified",
+    "scope": "In every positive integer normal dimension b, the product of the two Gaussian half-link factors is the stated midpoint density. The literal proper-time integral gives the upper incomplete Gamma expression by the substitution u = |y|²/t. For a finite positive midpoint law, the integrated cost is finite exactly when the coincident atom vanishes and the local inverse 2b moment is finite. The surrounding smooth Taylor-density specialization is a separate claim.",
+    "lean": [
+      "UV.VerifyVisitGamma.upper_gamma_eq_ofReal",
+      "UV.VerifyVisitGamma.upper_gamma_antitone",
+      "UV.VerifyVisitGamma.upper_gamma_ne_top",
+      "UV.VerifyVisitGamma.upper_gamma_pos",
+      "UV.VerifyVisitGamma.normal_time_gamma_exact",
+      "UV.VerifyVisitGamma.normal_time_zero_cost",
+      "UV.VerifyVisitCodimension.two_normal_half_links",
+      "UV.VerifyVisitCodimension.normal_gaussian_midpoint_eq",
+      "UV.VerifyVisitCodimension.gaussian_midpoint_integrated_gamma",
+      "UV.VerifyVisitCodimension.gaussian_midpoint_finiteness_iff"
+    ]
+  },
+  "eq:g5I-cyclic-mark": {
+    "status": "verified",
+    "scope": "The ordinary cyclic Gaussian midpoint insertion integrates both positions against Lebesgue measure and gives exactly (4πt)^(-1/2) for a normalized nonnegative integrable position weight. Its massless dt/t cost diverges. For any finite positive joint law, the pushforward by y − r gives the exact relative-diagonal criterion with zero diagonal mass and a finite local inverse-square moment.",
+    "lean": [
+      "UV.VerifyVisitCyclic.cyclic_joint_return_eq",
+      "UV.VerifyVisitCyclic.cyclic_joint_relative_diagonal_criterion",
+      "UV.VerifyVisitCyclic.cyclic_gaussian_insertion_exact",
+      "UV.VerifyVisitCyclic.cyclic_normal_trace_time_diverges"
+    ]
+  },
+  "eq:g5I-two-loop": {
+    "status": "verified",
+    "scope": "For the same normalized common relative-coordinate law, the actual cutoff primitive has the stated noncoincident and coincident values and a finite second moment for every positive cutoff. Formal bivariate coefficient extraction of the exponentiated determinant and the connected logarithm gives exactly c² Var(Iδ)/2. The single-visit fourth magnetic jet has no double-tag contribution, and any third-tag remainder contributes zero. The surrounding zero-cutoff criterion and oscillator asymptotic are distinct claims.",
+    "lean": [
+      "UV.VerifyVisitConnectedJet.exponentiated_visit_jet_coefficients",
+      "UV.VerifyVisitConnectedJet.connected_double_visit_variance",
+      "UV.VerifyVisitConnectedJet.cubic_visit_tag_irrelevant",
+      "UV.VerifyVisitConnectedJet.visit_cutoff_measurable",
+      "UV.VerifyVisitConnectedJet.visit_cutoff_exact",
+      "UV.VerifyVisitConnectedJet.visit_cutoff_bounds",
+      "UV.VerifyVisitConnectedJet.connected_marked_visit_variance"
+    ]
+  },
+  "eq:uvpeC-line-estimate": {
+    "status": "verified",
+    "scope": "Checks the displayed absolute weighted line sum with the actual spherical cutoff, the Euclidean four-torus frequency, the exact transferred contraction, and R = min(Λ, ℓ⁻¹) at positive depth or Λ at zero. For every s ≥ 0 one positive constant controls all nonnegative depths and spherical cutoffs. The unrestricted line sum at positive depth has the corresponding radius and is summable.",
+    "lean": [
+      "UV.FurtherCurvatureShell.modeShell_card",
+      "UV.FurtherCurvatureLine.spherical_weighted_line_bound",
+      "UV.FurtherCurvatureLine.full_weighted_line_bound"
+    ]
+  },
+  "eq:update-cross-measure": {
+    "status": "verified",
+    "lean": [
+      "UV.RevisionSpectrum.verifyCrossContinuum_embedded",
+      "UV.RevisionSpectrum.verify_cross_signed_necessity_and_atom",
+      "UV.RevisionSpectrum.verify_cross_jordan_mutuallySingular",
+      "UV.RevisionSpectrum.verify_cross_jordan_support",
+      "UV.RevisionSpectrum.verify_cross_jordan_representation",
+      "UV.RevisionSpectrum.verify_weighted_positive_spectrum_locallyFinite",
+      "UV.RevisionSpectrum.verify_cross_signed_spectral_exists_iff"
+    ],
+    "scope": "Constructs the ordinary real signed cross measure by mutually singular positive and negative spectral measures on nonnegative mass squared. Their explicit Dirac weights and Lebesgue densities give the stated atom-plus-continuum equation, with the correct removable embedded value. Their weighted total variation is finite at every positive reference point and the signed Stieltjes transform equals the exact shifted square-root covariance. The existence criterion is necessary and sufficient; the atom is forced for any ordinary weighted signed representation."
+  },
+  "eq:scalar-line-coefficient": {
+    "status": "partial",
+    "scope": "At positive height the extracted coefficient and reconstruction agree with the original scalar line for the stable-half kernel. At zero mass the limit is taken on the common running finite-height product, with the test domain and absolute residual explicitly controlled. At positive mass the full running jump is checked on compact Lipschitz real tests. Independent multiplication of a generic boundary coefficient by the discontinuous sign remains open.",
+    "lean": [
+      "UV.SectorPlane.Plane.massless_running_stable_scalar_line",
+      "UV.SectorPlane.Plane.massless_running_stable_single_limit",
+      "UV.SectorPlane.Plane.massive_stable_running_directed_jump"
+    ]
+  },
+  "eq:physical-directed-gauge-ghost-lines": {
+    "status": "partial",
+    "scope": "With the literal running numerator and the stable-half kernel at nonnegative depth, the common positive-height limit is checked at zero mass on compact Cartesian C² tests, including the cone tip, for the simple scalar and ghost lines and the resolved covariant-gauge template with arbitrary real ζ and two intrinsic unit directions. The axial sign at zero only supplies a scalar totalization on a Lebesgue-null hyperplane. The fixed pole unit and η in the denominator are unchanged. For the running signed longitudinal test, Cartesian integration by parts at positive height adds the axial trace of the inverse root, with coefficient 2a times the axial component of the derivative direction. The trace tends to the ordinary three-dimensional integral with inverse spatial norm. Combining that term with the two angular boundary terms and the locally integrable residual gives the complete tested longitudinal limit. A continuity theorem in the test-space topology, the generic kernel and source Hessian identification, and products of these boundary values remain open.",
+    "lean": [
+      "UV.SectorPlane.real_axial_nonzero_ae",
+      "UV.SectorPlane.Plane.massless_running_stable_single_pair_split",
+      "UV.SectorPlane.Plane.massless_running_stable_single_limit",
+      "UV.SectorPlane.Plane.massless_running_stable_scalar_line",
+      "UV.SectorPlane.Plane.massless_running_stable_scalar_line_ae",
+      "UV.SectorPlane.Plane.massless_running_stable_ghost_pair_integral",
+      "UV.SectorPlane.integral_axialSign_directional_derivative",
+      "UV.SectorPlane.Plane.stable_inverse_root_axial_trace_limit",
+      "UV.SectorPlane.Plane.running_tensor_fractional_pair_parts",
+      "UV.SectorPlane.Plane.running_tensor_fractional_pair_limit",
+      "UV.SectorPlane.Plane.running_single_residual_full_momentum",
+      "UV.SectorPlane.Plane.running_square_residual_full_momentum",
+      "UV.SectorPlane.Plane.massless_running_longitudinal_integrand_directed",
+      "UV.SectorPlane.Plane.massless_running_stable_longitudinal_pair_split",
+      "UV.SectorPlane.Plane.massless_running_stable_longitudinal_limit",
+      "UV.SectorPlane.Plane.massless_running_stable_gauge_integrand",
+      "UV.SectorPlane.Plane.massless_running_stable_gauge_pair_integral",
+      "UV.SectorPlane.Plane.massless_running_stable_ghost_limit",
+      "UV.SectorPlane.Plane.massless_running_stable_gauge_limit"
     ]
   }
 }
