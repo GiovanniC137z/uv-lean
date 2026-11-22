@@ -1,0 +1,899 @@
+{
+  "prop:uvpeP-Dirac-Hardy": {
+    "status": "verified",
+    "lean": [
+      "UV.RevisionBoundary.densityReturn_eq_marked",
+      "UV.RevisionBoundary.nodal_state_return_bound",
+      "UV.RevisionBoundary.mass_weighted_nodal_state_return_bound"
+    ],
+    "scope": "For the specified positive marked return, integrates both half-time heat factors exactly, applies Tonelli, and proves the stated two-over-pi bound by the global Hardy inequality. Represents one-dimensional H¹ states by their continuous integral representatives with square-integrable normal derivative. Also bounds the actual mass-weighted return by the same constant."
+  },
+  "prop:g5I-mixed": {
+    "status": "verified",
+    "lean": [
+      "UV.RevisionBoundary.densityReturn_eq_marked",
+      "UV.RevisionBoundary.mixed_densityReturn_eq",
+      "UV.RevisionBoundary.mixed_preparation_return_criterion"
+    ],
+    "scope": "In the scalar continuous integral-representative formulation of H¹, proves the exact if-and-only-if node criterion for any countable positive preparation of finite weighted normal derivative energy and its two-over-pi cost bound. Uses the actual positive midpoint density of the specified marked return."
+  },
+  "prop:g5I-isospectral": {
+    "status": "verified",
+    "lean": [
+      "UV.RevisionBoundary.isospectral_normal_preparations",
+      "UV.RevisionBoundary.densityReturn_eq_marked"
+    ],
+    "scope": "Constructs normalized even real Schwartz states using disjoint smooth momentum bands and the unitary Fourier transform, with equal expectations for every bounded Fourier multiplier, square-integrable normal derivatives, and respectively finite and infinite marked heat returns. Refined cutoff asymptotics in the proof and adjacent discussion are outside this statement-level proof."
+  },
+  "prop:visit-cycle-uv": {
+    "status": "partial",
+    "lean": [
+      "UV.RevisionBoundary.finite_charged_elimination",
+      "UV.RevisionBoundary.two_pivot_elimination_order",
+      "UV.RevisionBoundary.retained_inverse_does_not_fix_determinant",
+      "UV.RevisionBoundary.reciprocal_determinant_coefficients",
+      "UV.RevisionBoundary.reciprocal_determinant_quadratic_hilbert_schmidt"
+    ],
+    "scope": "Exact finite-section Schur determinant and open-block identities, equality for the two possible pivot orders, the open-kernel-matching eliminated-sector factor, and the finite reciprocal-pair determinant expansion. The Schatten cycle estimate, trace-norm limit, and ordinary Fredholm determinant construction and elimination-order independence on Hilbert direct sums remain open."
+  },
+  "thm:update-joint-heat": {
+    "status": "verified",
+    "lean": [
+      "UV.RevisionJointHeat.conditionalHeatGraph_bound",
+      "UV.RevisionJointHeat.joint_heat_selected_lines"
+    ],
+    "scope": "Arbitrary finite joint law on the heat samples with positive selected lapse coordinates almost everywhere. The same affine selected-routing Jacobian and Fourier normalization multiply the joint Gaussian moment budget for the complete anisotropic remainder. Joint Bochner integrability gives actual Fubini in both orders. The envelope coefficients may themselves depend on the joint sample if the weighted budget is integrable."
+  },
+  "prop:update-joint-inverse-lapse": {
+    "status": "verified",
+    "lean": [
+      "UV.RevisionJointHeat.sharedDepthHeatLaw_lintegral",
+      "UV.RevisionJointHeat.sharedDepth_inverseMoment",
+      "UV.RevisionJointHeat.sharedDepth_joint_inverseMoment",
+      "UV.RevisionJointHeat.sharedDepthHeatLaw_ae_pos",
+      "UV.RevisionJointHeat.sharedDepth_jointBudget_integrable"
+    ],
+    "scope": "The actual shared-depth mixture of conditionally independent heat variables obeys the exact extended joint inverse-lapse Gamma product formula, even for divergent depth integrals. Almost-sure positive depth and the truncated inverse depth moment at order 2L plus the largest summed degree imply finiteness of the full Gaussian graph budget."
+  },
+  "prop:update-selector-moments": {
+    "status": "verified",
+    "lean": [
+      "UV.RevisionJointHeat.selectorLaw_probability",
+      "UV.RevisionJointHeat.selectorZ_bessel",
+      "UV.RevisionJointHeat.selectorLaw_moment_Z",
+      "UV.RevisionJointHeat.selectorLaw_moment_bessel",
+      "UV.RevisionJointHeat.selectorTransform_bessel",
+      "UV.RevisionJointHeat.selectorDensity_zero_integrable_iff",
+      "UV.RevisionJointHeat.selectorZ_zero_gamma",
+      "UV.RevisionJointHeat.selectorLaw_zero_inverseMoment_iff"
+    ],
+    "scope": "Exact Schläfli Bessel-K normalization of the actual collective-depth probability density, integrability of arbitrary real depth powers, the exact Bessel-K moment and Laplace ratios, and the exact B=0 Gamma normalizability and inverse-moment threshold."
+  },
+  "prop:update-selector-tail": {
+    "status": "verified",
+    "lean": [
+      "UV.RevisionJointHeat.fixedDepthLaw_eq_dirac",
+      "UV.RevisionJointHeat.besselK_scaled_tendsto",
+      "UV.RevisionJointHeat.selectorTransform_asymptotic",
+      "UV.RevisionJointHeat.selectorInternal_asymptotic"
+    ],
+    "scope": "Both exact large-argument equivalents, with the stated powers and coefficients, and atomic rigidity for a probability law supported on nonnegative depth. The Bessel-K asymptotic is derived from the Schläfli integral by an explicit Gaussian change of variables and dominated convergence."
+  },
+  "prop:free-source-normalization": {
+    "status": "verified",
+    "lean": [
+      "UV.normalized_spectral_covariance",
+      "UV.mixed_source_spectral_covariance_integrand",
+      "UV.mixed_source_amputation",
+      "UV.fieldDamping_endpoint_cancellation",
+      "UV.free_source_normalization_spectral_cut",
+      "UV.free_source_normalization_hilbert_block",
+      "UV.free_source_normalization_smeared",
+      "UV.sourceOperator_mixed_amputation_eq_one_iff",
+      "UV.sourceHilbertNormalizer_selfAdjoint",
+      "UV.sourceResolution_strong_commutes_graph",
+      "UV.source_jointCore_kinetic_domain",
+      "UV.source_jointCore_covariance_domain",
+      "UV.source_jointCore_normalizer_domain",
+      "UV.sourcePVM_jointCore_dense",
+      "UV.source_spectral_common_graphCore",
+      "UV.source_spectral_normalized_covariance",
+      "UV.source_spectral_mixed_covariance",
+      "UV.source_spectral_mixed_amputation",
+      "UV.source_spectral_smeared_covariance",
+      "UV.free_source_normalization_actual_spectral_resolutions"
+    ],
+    "scope": "On the actual separate spectral resolutions invoked by the source, standard PVM and bounded-Borel calculus laws plus the true coordinate-moment graph characterize the operators; positive-injective support and pairwise spectral-projection commutation are explicit. Strong cut exhaustion derives the dense literal union of joint bounded/gapped cut ranges. Actual reciprocal spectral integrals derive all K, inverse-K and inverse-square-root domains; reducing invariance and genuine HasCore for K, covariance and normalizer are proved. The generally unbounded normalizer is the actual inverse of the CFC square root and is self-adjoint on its full range domain. All normalized/mixed/amputated operator identities and Hermitian smeared covariance follow on the common core, without bounded covariance, a global gap or an assumed joint diagonal representation. This does not construct spectral resolutions from bare self-adjointness or extend covariance to unspecified larger observable test spaces; free normalization alone leaves the interacting mixed half-factor. The revision changes fixed-plane notation for the same fields, heat measures or integration measures, with the checked mathematical expression unchanged."
+  },
+  "prop:pure-redefinition-cancellation": {
+    "status": "verified",
+    "lean": [
+      "UV.pure_field_redefinition_cancellation",
+      "UV.jacobianFieldPartition_eq",
+      "UV.transportedFieldPartition_ratio",
+      "UV.fieldTransportedKinetic_quadratic",
+      "UV.fieldDamping_endpoint_cancellation"
+    ],
+    "scope": "The actual finite-dimensional real Haar change of variables transports the kinetic form, arbitrary interaction and physical source together. Its determinant Jacobian, transported integrability, nonzero normalization and equality of normalized source functionals are derived on the explicit partition-integrability domain. The revision changes fixed-plane notation for the same fields, heat measures or integration measures, with the checked mathematical expression unchanged."
+  },
+  "prop:carrier-reality-adjoint": {
+    "status": "verified",
+    "lean": [
+      "UV.Carrier.quotientCharacterEquiv_root",
+      "UV.Carrier.quotientCharacterEquiv_reality",
+      "UV.Carrier.no_positive_functional_on_quotient",
+      "UV.Carrier.no_reality_preserving_hilbert_representation",
+      "UV.Carrier.no_reality_preserving_innerProduct_representation"
+    ],
+    "scope": "Literal polynomial quotient identified with its two characters; declared reality, character interchange, normalized positive-functional obstruction and nonzero Hilbert adjoint-representation obstruction are proved. The named statement is unchanged in the revised manuscript."
+  },
+  "prop:source-exchange": {
+    "status": "verified",
+    "lean": [
+      "UV.source_hessian_exchange",
+      "UV.mapped_source_hessian_exchange",
+      "UV.translation_invariant_source_hessian_reversal",
+      "UV.source_hessian_fourier_exchange",
+      "UV.identical_commuting_source_fourier_even",
+      "UV.exterior_source_hessian_anticommutes",
+      "UV.polynomial_source_hessian_commutes"
+    ],
+    "scope": "The two derivatives act on the same functional. The source-assumed graded commutation is an operator law, from which Hessian reciprocity, translation reversal, actual Euclidean Fourier reversal, identical commuting scalar evenness and linear character transfer follow. Concrete exterior contractions and ordinary polynomial derivatives provide the odd and even commutation models. The named statement is unchanged in the revised manuscript."
+  },
+  "prop:character-majorants": {
+    "status": "verified",
+    "lean": [
+      "UV.Carrier.quotient_character_norm_submultiplicative",
+      "UV.Carrier.quotient_character_majorant_integrable",
+      "UV.Carrier.quotient_character_integral_norm_bound",
+      "UV.Carrier.quotient_projector_integral_reconstruction",
+      "UV.Carrier.character_pair_uniform_estimate",
+      "UV.Carrier.character_pair_norm_submultiplicative"
+    ],
+    "scope": "Character norm, integrable domination, norm bound and projector integral reconstruction hold in the literal quotient. Uniform parameter and matrix-coefficient cases are covered by complete normed-ring character pairs. The revision changes fixed-plane notation for the same fields, heat measures or integration measures, with the checked mathematical expression unchanged."
+  },
+  "thm:global-uv": {
+    "status": "verified",
+    "lean": [
+      "UV.global_uv",
+      "UV.exists_invertible_row_minor",
+      "UV.jointAbsolute_norm_integral_eq_graph"
+    ],
+    "scope": "Bare rectangular full-column-rank routing selects an invertible row block. Both kernel alternatives, the original real-degree numerator, bounded external shifts, actual all-line Schwinger factors and the common joint absolute representation give one finite uniform Fourier-normalized bound. No graph or joint integrability is assumed. The revision changes fixed-plane notation for the same fields, heat measures or integration measures, with the checked mathematical expression unchanged."
+  },
+  "cor:damped-basis": {
+    "status": "verified",
+    "lean": [
+      "UV.damped_basis_rectangular",
+      "UV.damped_basis_graph"
+    ],
+    "scope": "Actual independent selected-line measures obey either the gap or endpoint-moment alternative; every remaining measurable multiplier may be merely bounded, including the identity. The original routing, complete numerator and infrared data yield uniform absolute graph convergence. Distinct fixed scales are already parameters of the selected-line realization."
+  },
+  "thm:optimized-selected-lines": {
+    "status": "verified",
+    "lean": [
+      "UV.optimized_selected_lines",
+      "UV.exists_four_dimensional_routing",
+      "UV.actual_massless_selected_line_lintegral",
+      "UV.actual_massless_selected_line_integrable_iff",
+      "UV.actual_selected_line_integral_le",
+      "UV.full_selected_line_integrable_iff"
+    ],
+    "scope": "Actual full Laplace factors, finite measures, nonnegative support/no atom, highest line-specific moments, all real anisotropic degrees, finite complete-integrand envelope, uniform external parameters, massive upper bound and exact massless equality/iff are proved. Bare invertible selected matrix constructs the affine routing; its C tensor I4 determinant and Fourier-normalized bound are derived. The revised iff at every fixed nonnegative mass is checked for the actual full Laplace multiplier. A compact Gaussian comparison recovers massless integrability from the massive line, and a nonzero zero-depth atom would force a nonintegrable pure radial power. The moment criterion follows from the original exact massless formula."
+  },
+  "cor:optimized-selected-tail": {
+    "status": "verified",
+    "lean": [
+      "UV.actual_selected_line_tail_le",
+      "UV.selected_product_union_tail",
+      "UV.optimized_selected_graph_tail"
+    ],
+    "scope": "The full Laplace one-line tail has the exact Gamma/inverse-moment constant for every real degree. A finite anisotropic complete graph envelope has an explicit uniform R^(-delta) selected-coordinate union tail, replacing one line moment at a time. The previously verified routing theorem supplies its fixed Jacobian/Fourier factors. The revision changes fixed-plane notation for the same fields, heat measures or integration measures, with the checked mathematical expression unchanged."
+  },
+  "prop:two-loop-complex-certificate": {
+    "status": "verified",
+    "lean": [
+      "UV.two_loop_complex_certificate",
+      "UV.twoLoopRealAmplitude_hasGradientAt",
+      "UV.twoLoopRealAmplitude_gradient_lipschitz",
+      "UV.twoLoopRealAmplitude_taylor_error"
+    ],
+    "scope": "For the literal two-loop rational comparison, exact selected power-line integrals give the 1/(768 pi^4) Fourier constant. The actual complex tube integral is holomorphic with the source imaginary-part loss and full mixed Cauchy budget; it agrees with the real amplitude. Actual gradient differentiation gives the exact sharp Lipschitz, gradient-Lipschitz and quadratic-remainder constants. The named statement is unchanged in the revised manuscript."
+  },
+  "prop:residual-coercivity": {
+    "status": "verified",
+    "lean": [
+      "UV.residual_coercivity_graph",
+      "UV.residualGram_four_coordinate_identity",
+      "UV.matrix_residual_affine_coercivity",
+      "UV.signed_linear_affine_from_sphere",
+      "UV.nonnegative_positive_row_rank_control"
+    ],
+    "scope": "The actual signed residual Gram matrix gives a positive homogeneous margin and uniform affine quadratic control; signed unit-sphere linear control gives the corresponding affine bound. Actual complete numerator, every kernel and bounded covariance yield a common integrable graph majorant and uniform bound. Nonnegative residuals with full rank of the positive rows are proved sufficient. The optional explicit smallest-singular-value certificate is not separately encoded. The named statement is unchanged in the revised manuscript."
+  },
+  "def:sector-envelope": {
+    "status": "definition",
+    "lean": [],
+    "scope": "The revision adds a plane subscript to the finite angular/IR measure. The original definition is represented by the weighted-sector cover and scale-envelope inputs used by UV.revised_uniform_forest_convergence."
+  },
+  "thm:forest": {
+    "status": "verified",
+    "lean": [
+      "UV.uniform_forest_convergence",
+      "UV.conditional_forest_convergence_weighted",
+      "UV.stretched_sector_integrable",
+      "UV.revised_sector_envelope_integrable",
+      "UV.revised_uniform_forest_convergence"
+    ],
+    "scope": "An actual finite Jacobian-weighted measure cover and simultaneous mixed power/Gaussian envelopes imply absolute convergence and a uniform external-parameter bound. The sector hypotheses are the source assumptions; constructing a cover for an arbitrary completed action is not asserted. The revised envelope admits any strictly positive stretched-exponential power on each controlled scale. The uniform finite Jacobian-weighted sector theorem is checked in this generality. The sector mappings and simultaneous envelope remain inputs."
+  },
+  "cor:all-orders": {
+    "status": "partial",
+    "lean": [
+      "UV.all_finite_orders",
+      "UV.finite_graph_collection_uniform",
+      "UV.SourceGraph.bounded",
+      "UV.summable_graph_collection",
+      "UV.summable_graph_collection_of_majorants"
+    ],
+    "scope": "The archived finite-collection and summable-label result checks the original graph constructors. The revised assembly also needs the anisotropic selected-line variant, joint heat and general stretched-power forest input cases, and identification with the same generated graph family."
+  },
+  "thm:ST": {
+    "status": "partial",
+    "lean": [
+      "UV.bvMasterAction_brst_invariant",
+      "UV.bvMasterAction_even",
+      "UV.bvMasterAction_antifield_derivative",
+      "UV.brst_partition_coefficient_ward",
+      "UV.finite_log_polynomial_ward",
+      "UV.exterior_contract_left_leibniz",
+      "UV.exterior_source_hessian_anticommutes",
+      "UV.graded_chain_rule_on_completion",
+      "UV.graded_legendre_left_field_derivative",
+      "UV.graded_legendre_left_antifield_derivative",
+      "UV.graded_legendre_right_field_derivative",
+      "UV.canonical_antibracket_even",
+      "UV.connected_ward_legendre_slavnov_taylor",
+      "UV.finite_log_legendre_slavnov_taylor",
+      "UV.graded_legendre_ST_coefficient",
+      "UV.continuum_bv_exponent_opposite_derivatives",
+      "UV.admitted_continuum_connected_ward",
+      "UV.admitted_continuum_connected_even",
+      "UV.weak_effective_action_right_field_variation",
+      "UV.weak_effective_action_left_antifield_variation",
+      "UV.conditional_continuum_slavnov_taylor",
+      "UV.weakFormalRegularBracket_eq",
+      "UV.conditional_formal_continuum_ST",
+      "UV.CompletedContinuumSTModel.loop_convolution",
+      "UV.completed_graph_conditional_slavnov_taylor"
+    ],
+    "scope": "The exact formal ST identity on the common domain and matching archived coefficient and insertion graph bounds are checked. The additional comparison-limit case requires the same contraction/graph coefficient limit and the extended graph hypotheses need to be connected to the same completed-action reconstruction."
+  },
+  "prop:meromorphic-counterexample": {
+    "status": "verified",
+    "lean": [
+      "UV.gappedGeometric_counterexample",
+      "UV.gappedGeometricComplexLaplace_exact",
+      "UV.gappedGeometricLaplace_gap_bound"
+    ],
+    "scope": "An actual normalized positive gapped sum of Dirac measures has its exact real and complex Laplace transform, Euclidean gap bound, meromorphic continuation, and explicit nonreal poles inside the slit plane. A gap does not imply slit-plane holomorphy. The same positive atomic heat measure and pole example are used. Its renamed heat atom is the Dirac measure in the formalization."
+  },
+  "thm:holomorphy": {
+    "status": "verified",
+    "lean": [
+      "UV.holomorphy_from_compact_graph_majorants",
+      "UV.holomorphy_and_all_order_graph_derivatives",
+      "UV.graph_orderedMixedDeriv_commutes",
+      "UV.compact_contour_exchange_from_graph_majorants"
+    ],
+    "scope": "Exactly the source point-sample measurability, common-null-set holomorphy and compact common L1 majorants derive joint complex Frechet holomorphy, every actual finite mixed coordinate derivative exchange at each admitted point, and local compact-parameter contour exchange. Joint measurability, higher derivative measurability and Cauchy majorants are derived, not supplied as hypotheses. The revision changes fixed-plane notation for the same fields, heat measures or integration measures, with the checked mathematical expression unchanged."
+  },
+  "cor:complex-derivative-budget": {
+    "status": "verified",
+    "lean": [
+      "UV.graph_mixed_cauchy_budget",
+      "UV.ordered_mixed_cauchy_budget_of_differentiable"
+    ],
+    "scope": "The exact multi-index factorial times product of inverse-radius powers times the integral of the pointwise majorant is proved on actual finite complex polydiscs. orderedMixedDeriv is recursively defined by ordinary scalar coordinate derivatives. The graph holomorphy, intermediate coordinate derivative holomorphy and Cauchy majorants are derived; integrated analyticity or derivative bounds are not assumed. The revision changes fixed-plane notation for the same fields, heat measures or integration measures, with the checked mathematical expression unchanged."
+  },
+  "lem:massive-neighbourhood": {
+    "status": "verified",
+    "lean": [
+      "UV.massive_neighbourhood",
+      "UV.massive_neighbourhood_affine",
+      "UV.massiveCentreMajorant_integrable"
+    ],
+    "scope": "Positive masses, full-rank routing, the source gap/endpoint moment and one exponential moment, and finite-degree holomorphic numerator coefficients construct an open neighbourhood of the real compact set with compact closure in the original domain. One actual pre-Gaussian majorant is integrable under the original joint parameter measure; joint complex holomorphy is derived. Affine routing regularity is explicitly constructed. The named statement is unchanged in the revised manuscript."
+  },
+  "prop:OS-counterexample": {
+    "status": "verified",
+    "lean": [
+      "UV.heatTimeFourierCovariance_smooth_OS_violation",
+      "UV.heatTimeFourierHankelMatrix_not_posSemidef"
+    ],
+    "scope": "The literal complex heat Fourier covariance has a negative positive-time Hankel matrix and actual smooth compactly supported positive-time probes with an integrable strictly negative reflection quadratic form. Approximate-Dirac transfer is proved. The named one-dimensional counterexample is complete; the later spatial-wavepacket extension is separate. The same Fourier covariance and smooth reflected test are now labeled by the Euclidean GT coordinate. The new joint and boundary OS assertions are separate results."
+  },
+  "ass:OS-completion": {
+    "status": "assumption",
+    "lean": [],
+    "scope": "Physical reconstruction is an explicit assumption in the source; it has not been established or encoded as a project axiom."
+  },
+  "prop:positive-residue-matrix": {
+    "status": "verified",
+    "lean": [
+      "UV.physicalResidueGram_posSemidef",
+      "UV.physicalResidueGram_overlap_sum",
+      "UV.physicalResidueGram_field_map",
+      "UV.positive_residue_matrix_normalization",
+      "UV.residue_rank_congruence",
+      "UV.singular_residue_cannot_normalize_identity",
+      "UV.physical_field_source_duality"
+    ],
+    "scope": "Actual positive Hilbert one-particle overlaps give a positive semidefinite residue Gram matrix, including convergent Parseval sums. Field congruence, a constructed invertible spectral normalization equal to the range projection, rank preservation, the singular-residue obstruction and inverse-adjoint Hermitian source duality are proved. A positive physical one-particle channel remains the source premise. The named statement is unchanged in the revised manuscript."
+  },
+  "ass:cut-matching": {
+    "status": "assumption",
+    "lean": [],
+    "scope": "Cut-discontinuity compatibility is an explicit assumption in the source; it has not been established or encoded as a project axiom."
+  },
+  "prop:entire-bubble-remainder": {
+    "status": "verified",
+    "lean": [
+      "UV.gaussian_remainder_proper_representation",
+      "UV.gaussian_remainder_entire",
+      "UV.gaussian_remainder_zero",
+      "UV.gaussian_remainder_norm_bound",
+      "UV.gaussian_remainder_real",
+      "UV.gaussian_entire_bubble_remainder",
+      "UV.gaussian_normalized_continuation_unique",
+      "UV.gaussian_normalized_bubble_compact_limit",
+      "UV.standardBubble_holomorphic"
+    ],
+    "scope": "Actual four-dimensional Gaussian loops are identified with the proper-time representation, including finite shell normalization. The standard log integral plus the literal entire omitted-time remainder is constructed as their unique cut-plane analytic continuation. The exact source representation, vanishing at zero, reality, sharp norm bound and compact-uniform normalization limit are proved; no loop-matching or decomposition conclusion is assumed. The named statement is unchanged in the revised manuscript."
+  },
+  "cor:Gaussian-growth-obstruction": {
+    "status": "verified",
+    "lean": [
+      "UV.gaussian_growth_obstruction",
+      "UV.gaussian_remainder_growth_lower",
+      "UV.gaussian_remainder_add_polynomial_not_bounded",
+      "UV.gaussian_upper_boundary_add_polynomial_not_bounded"
+    ],
+    "scope": "The actual Gaussian remainder has the exact source exponential lower bound. Genuine logarithmic-singularity dominated convergence constructs the standard and normalized-bubble upper-rim boundaries, whose logarithmic/polynomial budget is derived by quadratic factorization and translated-log potentials. No finite complex polynomial addition makes either the remainder or the actual normalized-bubble boundary polynomially bounded. The named statement is unchanged in the revised manuscript."
+  },
+  "prop:stable-bubble-nonanalytic": {
+    "status": "partial",
+    "lean": [
+      "UV.stable_bubble_nonanalytic",
+      "UV.scalarBubble_stable_coordinate_square",
+      "UV.stablePoissonKernel_inverseFourier",
+      "UV.stableCosineTransform_not_contDiffAt",
+      "UV.revised_stable_coordinate_covariance_tail",
+      "UV.revised_stable_square_tail_residual_sixth_moment",
+      "UV.revised_stable_residual_cosine_error"
+    ],
+    "scope": "The actual covariance and C5/not-C6 bubble are checked. The revised Green–Poisson covariance has the exact coefficient and uniform inverse-sixth-power tail error. Subtracting the exact square tail beyond the inverse mass leaves an absolutely integrable sixth moment. Its cosine integral after the fourth-order Taylor terms has an explicit sixth-order remainder. The exact logarithmic contribution and its remainder from the removed tail itself remain open."
+  },
+  "prop:QED-general-obstruction": {
+    "status": "verified",
+    "lean": [
+      "UV.qed_general_obstruction",
+      "UV.laplace_qed_square_integrable_of_original",
+      "UV.laplace_qed_integrable_iff",
+      "UV.bareWardPolarization_zero",
+      "UV.bareWardPolarization_small_momentum",
+      "UV.qedKappa_massless",
+      "UV.qed_convolution_moment",
+      "UV.qed_square_integrable_iff_convolution_moment",
+      "UV.qed_convolution_moment_real"
+    ],
+    "scope": "For every finite nonzero positive Laplace law and nonnegative mass, the exact square-integrability test derives original Fourier-normalized tensor integrability at every real momentum, continuity, the exact positive isotropic kappa integral, its massless specialization and the genuine little-o Ward contraction. The separate converse and iff derive the test from the original charged tensor at any fixed real momentum when the charge is nonzero; no differentiability at zero or extra radial integrability is assumed. The adjacent exact extended-valued convolution inverse-moment test, exclusion of a zero atom and finite real-integral formula are also proved. The named statement is unchanged in the revised manuscript."
+  },
+  "prop:Ward-vertex-growth": {
+    "status": "verified",
+    "lean": [
+      "UV.clifford_unit_contraction",
+      "UV.radial_ward_forces_symbol",
+      "UV.ward_vertex_exact_norm",
+      "UV.ward_vertex_growth_lower",
+      "UV.superpolynomial_profile_forbids_polynomial_vertex",
+      "UV.full_ward_radial_identity",
+      "UV.full_ward_vertex_norm_certificates"
+    ],
+    "scope": "For operator-norm C*-algebras, actual Hermitian Clifford anticommutators and a real unit direction derive the required involution. The full indexed Ward identity for the actual inverse symbol derives its radial contraction, exact norm square and source reverse-triangle lower bound. A positive superpolynomially suppressed profile excludes every global polynomial bound on that contraction. No radial formula or desired norm bound is assumed. The named statement is unchanged in the revised manuscript."
+  },
+  "prop:OQED-moment-certificate": {
+    "status": "verified",
+    "lean": [
+      "UV.kernel_zero",
+      "UV.kernel_lower",
+      "UV.kernel_upper",
+      "UV.oqedMeasure_no_atom",
+      "UV.oqedMeasure_no_positive_gap",
+      "UV.oqedInverseMoment_finite",
+      "UV.oqedInverseMoment_zero",
+      "UV.oqedMeasure_zero_probability",
+      "UV.oqedInverseMoment_bound",
+      "UV.oqedExponentialMoment_endpoint",
+      "UV.oqedExponentialMoment_finite",
+      "UV.oqedMeasure_probability",
+      "UV.oqedLaplace",
+      "UV.oqedExponentialMoment_exact",
+      "UV.oqedExponentialMoment_finite_iff",
+      "UV.oqedInverseMoment_bessel",
+      "UV.modifiedBesselK_schlafli",
+      "UV.oqedInverseMoment_one",
+      "UV.oqedInverseMoment_two",
+      "UV.oqedInverseMoment_three"
+    ],
+    "scope": "Actual probability density and square-root subordination, no atom or positive gap, all positive inverse moments, exact zero-tempering Gamma and positive-tempering standard Bessel-K formulas, all three displayed polynomial specializations, and the exact exponential-moment threshold including divergence are proved. Bessel K is independently defined by its standard integral representation. The revision changes fixed-plane notation for the same fields, heat measures or integration measures, with the checked mathematical expression unchanged."
+  },
+  "prop:OQED-depth-stability": {
+    "status": "verified",
+    "lean": [
+      "UV.kernel_iteratedDeriv_depth",
+      "UV.kernel_depth_derivative_bound",
+      "UV.kernel_deriv_auxMass_pos",
+      "UV.oqed_oneLine_depth_asymptotics",
+      "UV.kernel_right_deriv_auxMass_zero"
+    ],
+    "scope": "Actual kernel derivatives and compact-parameter envelopes, strict auxiliary-mass derivative, finite Fourier-normalized four-dimensional line integrals, exact Gamma zero-depth limit uniformly over bounded masses, and both distinct strong-depth regimes with their precise constants are proved. The actual auxiliary-mass derivative proof includes zero mass. The revised endpoint statement is checked explicitly as a right derivative on [0,∞)."
+  },
+  "cor:OQED-exponential-line-tail": {
+    "status": "verified",
+    "lean": [
+      "UV.oqed_exponential_line_tail",
+      "UV.oneLineTail_radial",
+      "UV.radial_exponential_tail_gamma",
+      "UV.upperIncompleteGamma_exponential_bound"
+    ],
+    "scope": "The actual Fourier-normalized four-dimensional line tail is bounded by the exact source upper-incomplete-Gamma expression, including the massless endpoint. The Gamma integral is defined literally and has an explicit exponential half-rate bound. Independent selected-coordinate finite product/union bounds apply only with the complete graph envelope already proved. The revision changes fixed-plane notation for the same fields, heat measures or integration measures, with the checked mathematical expression unchanged."
+  },
+  "prop:OQED-bubble-depth-monotone": {
+    "status": "verified",
+    "lean": [
+      "UV.oqed_bubble_depth_monotone",
+      "UV.scalarBubble_derivative_sharp_uniform_bound",
+      "UV.scalarBubble_strictMonoOn_mass",
+      "UV.complexScalarBubble_analyticOnNhd_rightHalfPlane"
+    ],
+    "scope": "The literal four-dimensional bubble has actual all-order differentiated integrals, strict complete monotonicity, the sharp source constant and uniform mass/depth budget, strict auxiliary-mass monotonicity, and a holomorphic complex-depth half-plane extension agreeing on the real axis. The revision changes fixed-plane notation for the same fields, heat measures or integration measures, with the checked mathematical expression unchanged."
+  },
+  "thm:OQED-strong-depth-crossover": {
+    "status": "verified",
+    "lean": [
+      "UV.oqed_strong_depth_crossover"
+    ],
+    "scope": "Actual four-dimensional line and zero-transfer bubble limits at fixed aM=mu, both uniform on bounded nonnegative mu sets with explicit a^(-2) errors, the exact H0 and Gamma coefficients, and the large-mu normalized Gaussian ratio are proved by genuine changes of variables and dominated convergence. The named statement is unchanged in the revised manuscript."
+  },
+  "thm:OQED-fixed-graph": {
+    "status": "partial",
+    "lean": [
+      "UV.oqed_complete_integrand_convergence",
+      "UV.global_schwinger_graph",
+      "UV.oqedLaplace",
+      "UV.oqed_kernel_graph_admissible",
+      "UV.oqed_fixed_graph_polynomial",
+      "UV.oqed_fixed_graph_residual",
+      "UV.oqed_fixed_graph_forest",
+      "UV.completed_action_all_finite_orders",
+      "UV.completedGraphRealization_actual_insertions",
+      "UV.completedGraphRealization_insertion_norm_le",
+      "UV.completed_graph_conditional_slavnov_taylor"
+    ],
+    "scope": "The archived two literal kernel/vertex alternatives and completed-action ST link are checked. The expanded forest alternative needs routing of the revised arbitrary-power envelope through the same completed-action coefficient and insertion interface."
+  },
+  "prop:OQED-Ward-bubble-obstruction": {
+    "status": "verified",
+    "lean": [
+      "UV.continuous_dressed_ward_diagonal",
+      "UV.softWard_line_cancellation",
+      "UV.dressedWardBubbleTrace_eq",
+      "UV.dressedWardBubbleTrace_tendsto",
+      "UV.dressedWardBubbleTrace_complex_not_integrable",
+      "UV.dressedWardBubble_exists_nonintegrable_component"
+    ],
+    "scope": "For explicit standard Hermitian 4x4 Euclidean Clifford matrices, every dressed-Ward-compatible vertex continuous on the nonzero diagonal has its soft value derived by difference quotients. Actual two-sided propagator inverses, endpoint cancellation and matrix trace yield the exact displayed formula, nonzero UV limit and a genuinely nonintegrable tensor component. No diagonal formula or scalar trace is assumed. The named statement is unchanged in the revised manuscript."
+  },
+  "cor:OQED-fixed-transfer-obstruction": {
+    "status": "verified",
+    "lean": [
+      "UV.doubleWardBubble_unit_ray_limit",
+      "UV.fixedTransferScalar_joint_limit",
+      "UV.fixedTransferBubble_exists_nonintegrable_component"
+    ],
+    "scope": "Full forward/reverse Ward identities and actual dressed inverses derive the exact finite Clifford contraction and the source nonzero-transfer ray limit, without diagonal continuity. The joint scaled limit yields a uniform negative open direction region; expanding momentum balls with growing volume prove actual tensor-component nonintegrability. No ray-to-integral inference is assumed. The named statement is unchanged in the revised manuscript."
+  },
+  "lem:OQED-grouped-convergence": {
+    "status": "verified",
+    "lean": [
+      "UV.complex_grouped_exhaustion_limit",
+      "UV.common_integral_uniform_tail",
+      "UV.finite_common_routing_holomorphy",
+      "UV.action_coefficient_common_domain_limit"
+    ],
+    "scope": "The actual finite complex common-routing sum, retaining coefficients/signs inside the integrand, has an absolute exhaustion-independent limit and common uniform tail under its own envelope. Source-supplied identification of the finite-domain action prescription transfers that limit. Local summed holomorphy follows from the complete common-majorant theorem. Individual terms are never required integrable. The revision changes fixed-plane notation for the same fields, heat measures or integration measures, with the checked mathematical expression unchanged."
+  },
+  "prop:OQED-constant-contact": {
+    "status": "verified",
+    "lean": [
+      "UV.actionGeneratedContactTensor_logdet_Hessian",
+      "UV.actionGeneratedContactTensor_explicit",
+      "UV.rawContactTrace_eq",
+      "UV.rawContactTrace_pos",
+      "UV.rawContactTrace_ball_exhaustion",
+      "UV.actionGeneratedContactTensor_exists_nonintegrable_component"
+    ],
+    "scope": "In the source positive-mass/positive-tempering constant-background realization, actual first/second background derivatives generate the bubble/contact tensor. The finite Dirac determinant and actual logdet Hessian, exact tensor/trace, strict positivity, exact Fourier-normalized finite-ball exhaustion and component nonintegrability are derived. The displayed scalar trace is not supplied as a premise. The revision changes fixed-plane notation for the same fields, heat measures or integration measures, with the checked mathematical expression unchanged."
+  },
+  "cor:OQED-general-contact-obstruction": {
+    "status": "verified",
+    "lean": [
+      "UV.radialLogdetDifference_eq",
+      "UV.radialLogdetContactDifference_eq_iterated_background",
+      "UV.radialLogdetContactDifference_flux",
+      "UV.radialLogdetContactDifference_exists_nonintegrable_component"
+    ],
+    "scope": "For any positive C2 radial multiplier tending to zero, the actual finite Dirac determinant and reference-subtracted constant-background trace-log variations yield the negative-log radial Hessian. Its exact annular flux proves failure of componentwise exterior absolute integrability without monotonicity or a decay-rate hypothesis. The later separate spectral-norm identity is outside the named corollary. Trial-minus-local denotes the same preintegration difference of radial trial and ordinary symbols."
+  },
+  "prop:OQED-bubble-tube": {
+    "status": "verified",
+    "lean": [
+      "UV.oqed_bubble_tube",
+      "UV.scalarTubeEnvelope_fourier_integral",
+      "UV.scalarTubeBubble_invariant",
+      "UV.scalarInvariantBubble_taylor_remainder_sup"
+    ],
+    "scope": "The actual principal-branch symmetric four-dimensional integral is jointly holomorphic on the full source tube and agrees with the real bubble. Its exact common strip majorant and Fourier integral constant are proved. Real rotations and actual complex identity theorems derive local B(P)=b(P^2), full invariant disk analyticity and the exact source Cauchy/Taylor supremum bounds. The revision changes fixed-plane notation for the same fields, heat measures or integration measures, with the checked mathematical expression unchanged."
+  },
+  "prop:OQED-scalar-CM-enclosure": {
+    "status": "verified",
+    "lean": [
+      "UV.oqed_scalar_CM_enclosure",
+      "UV.scalarBubble_positive_laplace",
+      "UV.oqedScalarLaplaceMeasure_exponential_integrable",
+      "UV.scalarLaplaceExtension_eqOn_invariant_disk",
+      "UV.scalarLaplace_signed_taylor"
+    ],
+    "scope": "A literal positive proper-time pushforward measure is constructed and identified with the actual four-dimensional bubble by absolute Fubini and Gaussian integration. Its finite mass, positive support, nonzero mass and full exponential-moment budget yield the source holomorphic half-plane continuation, strict complete monotonicity, actual Taylor coefficients as alternating moments, and finite signed truncation bounds for every nonnegative invariant. Explicit w ≥ 0 representation is the existing Euclidean domain of the formal scalar bubble measure."
+  },
+  "thm:OQED-subtracted-zero-depth": {
+    "status": "verified",
+    "lean": [
+      "UV.scalarSubtractedBubble_common_integral",
+      "UV.scalarSubtractedBubble_centered_square",
+      "UV.scalarSubtractedBubble_uniform_bound",
+      "UV.scalarSubtractedBubble_zero_depth",
+      "UV.scalarSubtractedBubble_uniform_zero_depth",
+      "UV.scalarSubtractedBubble_slope_zero_depth",
+      "UV.oqed_zero_depth_finite_part"
+    ],
+    "scope": "The actual common momentum subtraction and centered difference-square are integrable at positive depth. The exact uniform bound, Feynman-logarithm zero-depth limit, compact-parameter uniformity, and actual right-invariant slope at w=0 are derived, including M=0. The independent finite-part module proves the stated universal unsubtracted asymptotic with its exact constant. The named statement is unchanged in the revised manuscript."
+  },
+  "prop:OQED-zero-depth-finite-part": {
+    "status": "verified",
+    "lean": [
+      "UV.oqed_zero_depth_finite_part",
+      "UV.scalarBubble_finite_part_uniform_bound",
+      "UV.exponentialIntegral_error_bound"
+    ],
+    "scope": "The literal zero-transfer scalar integral has the exact source Euler/logarithmic finite part with error (2+pi/4)(2am)/(8pi^2), the exact auxiliary-mass sandwich, and compact-uniform asymptotic over bounded nonnegative M and positive mass intervals. Euler gamma is derived from the actual Gamma derivative, not introduced as a fitted constant. The named statement is unchanged in the revised manuscript."
+  },
+  "cor:OQED-aposteriori-Schur": {
+    "status": "verified",
+    "lean": [
+      "UV.graph_domain_inverse_certification",
+      "UV.graph_domain_inverse_bounds",
+      "UV.graph_domain_aposteriori_schur_rate",
+      "UV.graph_domain_analytic_inverse",
+      "UV.graph_domain_response_family",
+      "UV.response_rate_positive_of_error"
+    ],
+    "scope": "The Neumann construction gives an actual exact equivalence from the physical space into the distinct graph domain, both inverse identities, and the exact resolvent/Schur/common-baseline first-order rate constants. Holomorphic two-space inverses and Schur families follow from analytic X,Y,D0 on the declared inverse domain. Zero-dimensional domains are included. Finite shifted-pole location is a separate source result. The named statement is unchanged in the revised manuscript."
+  },
+  "prop:OQED-finite-pole-enclosure": {
+    "status": "verified",
+    "lean": [
+      "UV.oqed_finite_pole_enclosure",
+      "UV.disk_zeroCount_homotopy",
+      "UV.disk_zeroCount_one_unique_simple",
+      "UV.finite_pole_rate_enclosure",
+      "UV.revised_oqed_finite_pole_enclosure",
+      "UV.finite_pole_positive_of_closed_margin"
+    ],
+    "scope": "The actual spectral-norm inverse/error margin constructs boundary inverses for the affine matrix homotopy. A proved disk argument principle and homotopy invariance preserve the actual divisor count, constructing the unique simple enclosed exact root and the strict rate enclosure/positivity threshold. No exact endpoint root or count is supplied. Physical baseline-mode identification remains the separate source requirement. The revised weak comparison margin (rate at least twice the radius) certifies a strictly positive exact rate, because the proved rate error is strictly smaller than twice the radius."
+  },
+  "cor:OQED-pole-Taylor-remainder": {
+    "status": "verified",
+    "lean": [
+      "UV.oqed_pole_taylor_remainder",
+      "UV.matrix_pole_holomorphic_family",
+      "UV.matrix_pencil_diskZeroCount_eq_one",
+      "UV.disk_unique_root_holomorphic_family",
+      "UV.pole_taylor_coefficient_bound",
+      "UV.pole_taylor_hasSum",
+      "UV.pole_taylor_remainder",
+      "UV.pole_branch_rate_remainder"
+    ],
+    "scope": "The ordered spectral-norm complex-parameter margin derives actual divisor count one at every admitted parameter. The first logarithmic-derivative contour moment constructs the unique simple root itself; actual joint analyticity and compact circle majorants prove its holomorphy throughout the full parameter disk and its baseline value. Exact derivative-defined Taylor coefficients, the sharp coefficient bound, endpoint sum, geometric remainder and finite-rate remainder follow, with no root branch or branch analyticity premise. The named statement is unchanged in the revised manuscript."
+  },
+  "prop:OQED-observable-residue-error": {
+    "status": "verified",
+    "lean": [
+      "UV.simple_denominator_residue",
+      "UV.simple_denominator_residue_error",
+      "UV.observable_simplePole_residue_error",
+      "UV.matrix_inverse_simple_pole",
+      "UV.matrix_observable_simple_pole",
+      "UV.matrix_observable_residue_zero_of_contraction_zero",
+      "UV.observable_parametrizedContour_error",
+      "UV.normalizedContour_nonzero_of_margin",
+      "UV.continuous_rectifiable_arcLength_factorization",
+      "UV.rectifiableArcPath_lipschitz",
+      "UV.rectifiableArcPath_ordered_reconstruction",
+      "UV.rectifiableArcPath_variation",
+      "UV.observable_lipschitzContour_error",
+      "UV.lipschitzContourIntegral_uniform_limit",
+      "UV.lipschitzContour_holomorphic_homotopy",
+      "UV.simplyConnectedContour_cauchy",
+      "UV.lipschitzContour_cauchyKernel_winding",
+      "UV.lipschitzContourWinding_positiveCircle",
+      "UV.analytic_simple_denominator_regular_part",
+      "UV.simplyConnectedContour_simple_denominator_residue_error",
+      "UV.rectifiableArcPath_simple_denominator_residue_error",
+      "UV.simplyConnectedContour_matrix_observable_residue",
+      "UV.matrix_observable_neumann_error",
+      "UV.simplyConnectedContour_matrix_observable_residue_error",
+      "UV.rectifiableArcPath_matrix_observable_residue_error",
+      "UV.pole_residue_nonzero_of_error"
+    ],
+    "scope": "The independently pinned Jordan companion proves the universal source statement for an actual continuous, simple, rectifiable closed path. The proved Jordan-Schoenflies square extension constructs a filling inside the actual contour and bounded interior; no filling or simply-connected-domain certificate is assumed. Analyticity only near that filled region and the unique simple interior determinant zeros construct actual observable residues. Genuine arc-length and geometric-winding constructions, scalar Cauchy integration and Hahn-Banach dual separation handle arbitrary normed input and Banach output channels. Finite-basis coordinates supply only determinant/adjugate algebra; all inverse/readout bounds stay in their original compatible operator norms. Neumann derives exact boundary invertibility and the exact original-length Lout*Lin*B^2*epsilon/(2pi*(1-B*epsilon)) error, allowing distinct poles and vanishing readout residues; the strict lower margin proves visibility. All local and imported Schoenflies declarations pass the independent transitive axiom audit. The root and companion proofs are compiled separately under their exact toolchain/dependency pins. The named statement is unchanged in the revised manuscript.",
+    "lean_projects": {
+      "jordan": [
+        "UV.isJordanCurve_of_simple_closedPath",
+        "UV.jordanFilledRegion_path_nullhomotopy",
+        "UV.jordanContour_cauchy",
+        "UV.jordanContour_simple_denominator_residue",
+        "UV.observable_rectifiable_jordan_residue_error",
+        "UV.compatibleOperator_observable_quotient",
+        "UV.jordanContour_compatibleOperator_residue_error",
+        "UV.observable_rectifiable_jordan_residue_error_compatible"
+      ]
+    }
+  },
+  "lem:Ward-common-cutoff": {
+    "status": "verified",
+    "lean": [
+      "UV.ward_common_cutoff",
+      "UV.ward_common_cutoff_polarization",
+      "UV.laplace_bare_ward_remainder_integrable",
+      "UV.revised_ward_common_cutoff",
+      "UV.revised_ward_common_cutoff_polarization"
+    ],
+    "scope": "For the literal scaled finite positive Laplace profile and explicit Clifford tensor at every nonnegative mass, the original tensor components force absolute integrability of the actual contracted remainder and the weighted unsplit cutoff. The massless Dirac inverse identity holds off the two volume-null singular momenta. A local four-dimensional inverse-radius bound and common compact tent cutoffs justify the Haar translation and dominated limit. The exact polarization contraction retains the charge and Fourier factors."
+  },
+  "prop:physical-inclusive-opening-uv": {
+    "status": "partial",
+    "lean": [
+      "UV.openingOscillatorPairDensity_channel_sum",
+      "UV.openingPoisson_hasSum_exp_moment",
+      "UV.openingPoisson_hasSum_variance",
+      "UV.openingPairDensity_supercritical",
+      "UV.openingPairDensity_critical_upper",
+      "UV.openingOscillatorPairDensity_tail_of_critical_or_above"
+    ],
+    "scope": "Checked the exact threshold-weighted pair density with the Poisson channel overlaps, the exponential moment and variance of the Poisson law, the manuscript's optimized supercritical exponential bound, a critical M^(-1/4) upper bound, and integrability with respect to dS/S for both critical and supercritical parameters. The oscillator operator derivation of the overlaps, subcritical positive limit and divergence, and the positive critical asymptotic constant from the normal limit are open."
+  },
+  "prop:update-joint-OS": {
+    "status": "partial",
+    "lean": [
+      "UV.stablePoissonKernel_characteristic",
+      "UV.osPoissonTransfer_pos",
+      "UV.osPoissonTransfer_continuous",
+      "UV.os_local_reflected_integral_zero",
+      "UV.os_poisson_mixed_reflected_pos",
+      "UV.os_joint_negative_reduced_covariance"
+    ],
+    "scope": "Checked the literal four-dimensional Poisson kernel multiplier, strict positivity and continuity of its convolution with nonnegative compactly supported probes, the null pairing from disjoint reflected supports after the inverse reduction, and an explicit negative joint quadratic norm. The massive differential operator's domain, its full resolvent cancellation and the integration-by-parts link from the manuscript's source covariance to the reduced witness remain open."
+  },
+  "prop:update-boundary-quartic-OS": {
+    "status": "partial",
+    "lean": [
+      "UV.osGibbsMeasure_probability",
+      "UV.osGibbsMeasure_expectation",
+      "UV.osGibbsExpectation_hasRightDeriv_of_null",
+      "UV.osWick_unsubtracted_quartic_contractions",
+      "UV.osWickRawQuartic_pair_mean",
+      "UV.osSpatial_raw_quartic_insertion",
+      "UV.osSpatialPotential_negative_reflection"
+    ],
+    "scope": "Checked the normalized Gibbs law for a bounded-below potential, its right derivative at a null expectation, and the 12/24 coefficient in the exact local and spacetime-integrated quartic insertion under the Wick moment rule and absolute product integrability. A positive integrated insertion gives negativity for every sufficiently small positive coupling. The continuum Gaussian construction, derivation of its required joint moments and identification of its reflected probe pairings with the precise massive covariance are open."
+  },
+  "prop:polish-wick-OS": {
+    "status": "partial",
+    "lean": [
+      "UV.osWick_quartic_density_lower",
+      "UV.osWickQuartic_centered_mean",
+      "UV.osWick_centeredQuadratic_free_norm",
+      "UV.osWickQuartic_centeredQuadratic_mean",
+      "UV.osSpatial_wick_quartic_insertion",
+      "UV.osSpatialPotential_center",
+      "UV.osSpatialPotential_lower",
+      "UV.osGibbsPartition_ge_one_of_centered",
+      "UV.osGibbsPartition_le",
+      "UV.osGibbsMeasure_probability",
+      "UV.osGibbsMeasure_integrable",
+      "UV.osSpatialPotential_negative_reflection"
+    ],
+    "scope": "Checked the pointwise Wick lower bound, centering and partition estimates, preservation of integrable polynomial moments under the normalized tilt, the centered boundary free null norm and exact four-cross-contraction insertion under the Wick rule and Fubini hypotheses. The continuum Gaussian law, its joint integrability estimates and the precise positive Green/resolvent witness identifications are open."
+  },
+  "prop:spex-photon-uv": {
+    "status": "partial",
+    "lean": [
+      "UV.RevisionSpectrum.sampled_photon_spectral_rigidity"
+    ],
+    "scope": "Proves the positive spectral-measure rigidity at strictly positive monotone samples tending to infinity. Agreement with the free Stieltjes covariance to little-o of x to the negative third power forces the measure to equal the free unit Dirac atom. The proof derives unit mass and the first moment by monotone convergence and then forces zero centered second moment. The action-specific determinant, Gaussian integration by parts, and finite-charge rapid-frequency decay remain unformalized."
+  },
+  "prop:update-spectral-budget": {
+    "status": "partial",
+    "lean": [
+      "UV.RevisionSpectrum.cross_density_supported_at_pole",
+      "UV.RevisionSpectrum.pure_pole_cross",
+      "UV.RevisionSpectrum.positive_stieltjes_budget",
+      "UV.RevisionSpectrum.stieltjes_integrable"
+    ],
+    "scope": "Checks off-pole vanishing, the resulting pure-pole transform, both precise weighted diagonal inequalities, and weighted integrability at every positive reference point for Radon–Nikodym data with pointwise positive two-channel matrices. Derivation of the common positive density from arbitrary locally finite setwise-positive matrix measures remains outside this formalization."
+  },
+  "prop:update-cross-classification": {
+    "status": "partial",
+    "lean": [
+      "UV.RevisionSpectrum.spectralRootUpper_sq",
+      "UV.RevisionSpectrum.spectralRootUpper_at_cut",
+      "UV.RevisionSpectrum.crossUpper_jump",
+      "UV.RevisionSpectrum.crossUpper_tendsto",
+      "UV.RevisionSpectrum.crossDensity_embedded_limit",
+      "UV.RevisionSpectrum.crossDensity_threshold_limit",
+      "UV.RevisionSpectrum.crossDensity_embedded_nonintegrable",
+      "UV.RevisionSpectrum.crossUpper_pole_limit",
+      "UV.RevisionSpectrum.crossPoleCoeff_below",
+      "UV.RevisionSpectrum.crossPoleCoeff_above",
+      "UV.RevisionSpectrum.crossDensity_large_bound"
+    ],
+    "scope": "Checks the upper square-root branch, explicit boundary jump, extracted threshold, subthreshold and embedded pole coefficients, removable resonant density value, inverse-square-root threshold limit, failure of local integrability at generic embedded poles, and the large-mass inverse-power bound. Stieltjes representation, inversion and uniqueness for general signed measures, and the sharp logarithmic total-variation asymptotic remain open in Lean."
+  },
+  "cor:update-completed-bubble": {
+    "status": "partial",
+    "lean": [
+      "UV.RevisionSpectrum.stieltjes_antitone",
+      "UV.RevisionSpectrum.stieltjes_scaled_lower",
+      "UV.RevisionSpectrum.completed_bubble_nonintegrable"
+    ],
+    "scope": "Checks divergence of the displayed four-dimensional shifted diagonal bubble for every fixed external momentum in the positive common-density representation with nonzero cross transform. The proof obtains a positive inverse-square Stieltjes lower bound directly from the weighted cross mass and therefore does not require the logarithmic asymptotic. Derivation of the common density for the full setwise-positive measure formulation remains open."
+  },
+  "prop:update-positive-bulk-spectrum": {
+    "status": "partial",
+    "lean": [
+      "UV.RevisionSpectrum.bulkPole_unique",
+      "UV.RevisionSpectrum.bulkInverse_hasDerivAt_pole",
+      "UV.RevisionSpectrum.bulkResidue_positive",
+      "UV.RevisionSpectrum.bulkCutLayer_im",
+      "UV.RevisionSpectrum.bulkContinuum_positive",
+      "UV.RevisionSpectrum.bulkAtom_positive",
+      "UV.RevisionSpectrum.bulkBoundary_mass"
+    ],
+    "scope": "Checks the exact unique gap root and inverse slope, positive residue, complete layer branch jump including its Dirichlet term, positivity of atom and continuum outer products, and exact boundary mass normalization by real integration. The spectral representation of all Green blocks and the trace-domain realization of the positive operator remain open in Lean."
+  },
+  "prop:monomial-prefix-uv": {
+    "status": "verified",
+    "lean": [
+      "UV.RevisionPrefixTrace.finite_cyclic_prefix_records",
+      "UV.RevisionPrefixTrace.no_normalized_trace_two_loops"
+    ],
+    "scope": "Uses actual mutually orthogonal range projections in a unital star ring, with the subprojection relation expressed by absorption. A faithful positive cyclic trace gives a strictly positive weight vector and its row inequality for the actual edge multiplicities. Diagonal similarity reduces the complex adjacency matrix to row sums at most one, bounding its spectral radius. Two orthogonal loop records exclude a normalized positive trace on the single-vertex corner even without faithfulness."
+  },
+  "prop:final-uv-gauss-frequency": {
+    "status": "verified",
+    "lean": [
+      "UV.RevisionGaussExchange.charge_resolvent_im",
+      "UV.RevisionGaussExchange.charge_resolvent_mass",
+      "UV.RevisionGaussExchange.charge_resolvent_mass_monotone",
+      "UV.RevisionGaussExchange.instantaneous_exchange_nonintegrable"
+    ],
+    "scope": "For the actual scalar matrix element supplied by the positive charged measure, the imaginary part identity and monotone scaled limit recover the finite spectral mass. The lower inverse-frequency bound proves failure of absolute integrability on each relevant transfer fibre. Product-measure integrability would force integrable fibres almost everywhere, contradicting the non-null transfer set. Uses the complete instantaneous exchange specified in the source, without a uniform threshold or a bound at large spatial momentum."
+  },
+  "prop:carrier-blocked-uv": {
+    "status": "partial",
+    "lean": [
+      "UV.RevisionPairThreshold.blocked_energy_sum",
+      "UV.RevisionPairThreshold.blocked_pair_threshold",
+      "UV.RevisionPairThreshold.add_free_photons_preserves_forward_cone"
+    ],
+    "scope": "Proves the summed relativistic energy threshold for actual finite blocked momentum configurations and the forward cone inequality after adding free photons. The occupation-sector decomposition, energy comparison with the neutral ground state, and current spectral support of the interacting normal Hamiltonian remain open."
+  },
+  "thm:uvpeC-curvature": {
+    "status": "partial",
+    "lean": [
+      "UV.RevisionCurvatureDeterminant.relative_determinant_bounds",
+      "UV.RevisionCurvatureDeterminant.relative_determinant_mode_bound",
+      "UV.RevisionCurvatureDeterminant.relative_determinant_quartic_bound",
+      "UV.RevisionCurvatureDeterminant.relative_determinant_zero_depth",
+      "UV.RevisionCurvatureDeterminant.lattice_ball_card_lower",
+      "UV.RevisionCurvatureDeterminant.quartic_determinant_polynomial_uniform",
+      "UV.RevisionCurvatureDeterminant.quartic_determinant_polynomial_limit"
+    ],
+    "scope": "Proves the finite-mode determinant bounds under a single shared depth, including the quartic exponential estimate, an explicit four-dimensional lattice lower count, and the exact finite-mode zero-depth factor. The quartic suppression uniformly bounds every polynomial graph cost and makes it vanish as the effective radius grows. The action derivation, continuum determinant, and lattice-line and graph momentum-tail estimates remain open."
+  },
+  "cor:uvpeC-coupling": {
+    "status": "partial",
+    "lean": [
+      "UV.RevisionCurvaturePartition.relative_partition_positive",
+      "UV.RevisionCurvaturePartition.relative_normalized_moments_tendsto"
+    ],
+    "scope": "Proves positivity and the upper mass bound of the relative Gibbs partition under the common field law, as well as convergence of normalized moments given a common cutoff coupling and integrated envelope. Construction of the literal torus Gaussian laws and proof of the source's convergence and moment-envelope hypotheses remain open."
+  },
+  "prop:update-commuting-transfer": {
+    "status": "verified",
+    "lean": [
+      "UV.transferred_covariance_remainder",
+      "UV.transferred_covariance_eq_iff_of_injective",
+      "UV.sourceBorel_injective_of_pos",
+      "UV.sourceBorel_commute_upper_cut",
+      "UV.sourcePVM_commute_of_commute_lower_cuts",
+      "UV.sourceBorel_commute_of_commute_projections",
+      "UV.square_root_transfer_commute_iff_projections",
+      "UV.square_root_transfer_covariance_iff_projections",
+      "UV.flat_transferred_covariance",
+      "UV.sourceResolution_support_nonnegative",
+      "UV.normal_transfer_covariance_iff_projections"
+    ],
+    "scope": "Checks the exact bounded-operator remainder and covariance equivalence, deriving injectivity of the actual positive-depth square-root transfer and recovering all Borel spectral projections by strong limits of bounded rational functions and countable projection additivity. Uses the supplied normal operator spectral resolution with its standard bounded Borel calculus laws and derives nonnegative spectral support from the resolved operator’s nonnegative quadratic form, without assuming a bounded inverse. Also checks the flat commuting covariance formula."
+  },
+  "prop:update-depth-source-law": {
+    "status": "verified",
+    "lean": [
+      "UV.eq_ae_of_matched_second_moments",
+      "UV.eq_ae_on_countable_test_core",
+      "UV.sourceGaussian_even_moments",
+      "UV.source_gaussian_observable_moments",
+      "UV.gaussian_depth_moments",
+      "UV.gaussian_shared_depth_fourth_cumulant",
+      "UV.sourceGaussianPairLaw_mixed_moment",
+      "UV.gaussian_shared_depth_square_covariance",
+      "UV.gaussian_shared_depth_square_covariance_limit"
+    ],
+    "scope": "Checks fixed-depth determinism from all three second moments, simultaneous equality on a countable test core, exact moments of the actual centered Gaussian density and its variance rescaling, the shared-depth fourth cumulant, and the squared-readout covariance identity and cluster limit. Uses the common measurable product-space realization of the manuscript source and its conditional Gaussian scalar projections; square-integrability of the conditional variance supplies the joint moment bounds."
+  },
+  "prop:update-GT-ordering-transfer": {
+    "status": "verified",
+    "lean": [
+      "UV.gt_ordered_distribution_transfer_sub_transfer_ordered",
+      "UV.gt_ordered_transfer_sub_transfer_ordered",
+      "UV.gt_ordered_transfer_eq_of_support"
+    ],
+    "scope": "Checks the exact commutator correction on the admitted common linear pairing domain and for the actual integral with both scalar transfer factors, plus the vanishing correction for transfer supported where the two step weights agree. The existence of the underlying Lorentzian smeared operators is an input."
+  },
+  "prop:phys-uv-pole-pencil": {
+    "status": "verified",
+    "lean": [
+      "UV.dirac_rest_regularizer_mul",
+      "UV.two_sided_pole_residue_zero",
+      "UV.on_shell_core_marks_mul_zero",
+      "UV.hermitian_on_shell_core_mark_eq_zero",
+      "UV.hermitian_on_shell_core_mark_ne_charge",
+      "UV.two_sided_pole_det_eq",
+      "UV.two_sided_pole_order_eq"
+    ],
+    "scope": "Checks the actual free Dirac rest-pencil regularizer, vanishing on-shell middle product for the two-sided factorization, pairwise square-zero amputated marks, the Hermitian obstruction to nonzero charge, and the unchanged determinant zero order with a nonvanishing analytic probe ratio. The later discussion of probe-dependent outer maps lies outside this result."
+  },
+  "prop:carrier-sewn-uv": {
+    "status": "partial",
+    "lean": [
+      "UV.RevisionSpectrum.positive_band_unsubtracted_lower",
+      "UV.RevisionSpectrum.positive_band_unsubtracted_sewing_diverges",
+      "UV.RevisionSpectrum.atom_photon_lower",
+      "UV.RevisionSpectrum.reciprocalDiff_transverse",
+      "UV.RevisionSpectrum.finite_difference_sewing_diverges"
+    ],
+    "scope": "Proves the positive band lower bound and radial divergence for the actual unsubtracted Stieltjes response, the massless-atom photon lower bound, the factorial/product formula for the alternating finite difference of the single spectral kernel, and the radial sewing obstruction from a finite-difference inverse-tail bound. Polynomial elimination and exchange with the general subtracted spectral integral remain unformalized."
+  }
+}

@@ -4,7 +4,9 @@
 
 A Lean 4 verification project for Giovanni Joseph Chiappone's *Conditional All-Orders UV Finiteness: Non-Abelian BRST Closure, Analyticity, and Crossing in Omniverse Quantum Field Theory*.
 
-**Status: all 45 named mathematical results are verified under their documented hypotheses.** The unchanged source inventory contains 48 environments: 45 results, two explicit physical assumptions and one definition. The checked results include convergence, exact kernel/scalar certificates, continuum ST, unbounded source normalization, finite-matrix poles and universal rectifiable Jordan-contour residue errors. This verifies the stated conditional mathematics; it does not construct the source's assumed interacting physical completion.
+**Archived edition:** all 45 named mathematical results are verified under their documented hypotheses. The unchanged source inventory contains 48 environments: 45 results, two explicit physical assumptions and one definition. The checked results include convergence, exact kernel/scalar certificates, continuum ST, unbounded source normalization, finite-matrix poles and universal rectifiable Jordan-contour residue errors. This verifies the stated conditional mathematics; it does not construct the source's assumed interacting physical completion.
+
+**Expanded PE-CGG-HOUQFT edition:** formalization is in progress. The [expanded claim inventory](docs/claims-expanded.md) maps verified, partial, and pending results to the [new source](paper/expanded/UV.tex). The [expanded scope and review index](docs/expanded-scope.md) describe the remaining mathematical work, including claims outside numbered environments.
 
 ## Checked mathematics
 
@@ -51,7 +53,7 @@ CI independently builds and audits both projects, checks the document hash and p
 
 ## Source and interpretation
 
-The unchanged uploaded document is [paper/UV.tex](paper/UV.tex), SHA-256:
+The unchanged archived upload is [paper/UV.tex](paper/UV.tex), SHA-256:
 
 ```text
 7e9a9aca1a1f2d757ce99614c50e9a05662ca05c969253af29cb3c40d2d9a340

@@ -1,0 +1,23 @@
+# Expanded manuscript verification
+
+The expanded upload is [paper/expanded/UV.tex](../paper/expanded/UV.tex). Its title is *Geo-Phase Suppression and Ultraviolet Finiteness in PE-CGG-HOUQFT: The Curvature Action, Raw O-QED, and the Induced Electromagnetic Sector*. The upload identifies this version as DOI `10.5281/zenodo.24407735`. The [archived manuscript](../paper/UV.tex), its [45-result inventory](claims.md), and its preferred citation refer to the earlier edition.
+
+The [expanded inventory](claims-expanded.md) covers 203 labeled environments, including 199 mathematical results, three assumptions, and one definition. Of the mathematical results, 154 have new labels. The 48 retained environments include revisions to both statements and referenced definitions. Each checked result in this edition has a separate scope note. Source provenance is checked against both upload hashes.
+
+The [machine-readable expanded inventory](../claims-expanded.json) also indexes the front matter and each of the 701 section, subsection, and paragraph headings by line range. The index locates mathematical material outside theorem environments, including independent derivations, comparisons, characterizations, and counterexamples. It is a review index. Coverage of a numbered result does not extend to nearby unnumbered results.
+
+Use `verified` when the Lean statement and its premises cover the complete named result. Use `partial` when a specific clause, supporting estimate, or restricted case has a checked proof. A `pending` entry has no cited proof of the revised claim. The unified quantum source postulate, physical Osterwalder–Schrader completion, and cut–discontinuity matching remain source assumptions. They are not added as trusted Lean axioms.
+
+The main work remaining is organized around the mathematical dependencies in the expanded source:
+
+| Source region | Remaining formalization |
+| --- | --- |
+| [Path-enriched source and induced actions](../paper/expanded/UV.tex#L811) | Operator-valued history and boundary laws, action pushforwards, and identification of the resulting complete charged and photon vertices. |
+| [History phases and curvature determinant](../paper/expanded/UV.tex#L3150) | Joint marked incidence and minor estimates, simultaneous-degeneration criteria, lattice tails, and graph identification from the literal curvature and Wilson actions. |
+| [Positive charged comparisons and coupled depths](../paper/expanded/UV.tex#L5143) | Normal Friedrichs generators, Green and heat estimates, operator ideal bounds, full Fredholm determinants, arbitrary hopping and source derivatives. |
+| [Gauge identities and reconstruction](../paper/expanded/UV.tex#L14257) | Tie the expanded graph constructors to the same completed action. Check the enlarged source and spectral classifications, physical comparison limits and reconstruction under their stated premises. |
+| [Physical sector and two-band constructions](../paper/expanded/UV.tex#L17058) | Complete Maxwell sewing, charge and pair thresholds, interacting transfer and continuum limits, with the actual contact terms and common measures. |
+| [Unnumbered native-source analysis](../paper/expanded/UV.tex#L28138) | Extract and formalize individual estimates and counterexamples, including pole and cut tests, normalized vacuum constructions, and explicit benchmarks. |
+| [Kernel examples and raw O-QED](../paper/expanded/UV.tex#L44443) | Recheck retained results whose definitions or conclusions changed, including the refined asymptotic terms and the elastic benchmark. |
+
+To review either edition, run `python3 scripts/claims.py` from the root. To check the theorems and their axiom dependencies use the [build and audit commands](../README.md#build-and-audit). The inventory validator checks provenance, status, and theorem references. Mathematical correspondence is reviewed in the mapping notes rather than inferred from the presence of a Lean declaration.

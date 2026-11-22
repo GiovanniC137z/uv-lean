@@ -10,6 +10,7 @@ import tomllib
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE_SHA = "7e9a9aca1a1f2d757ce99614c50e9a05662ca05c969253af29cb3c40d2d9a340"
+EXPANDED_SHA = "58c593e0f95d55f881f34a4149e72f2b2a27f113d66f5fe1b57e644f475d785a"
 PROJECT_DIRS = {"jordan": ROOT / "jordan"}
 PROJECT_PINS = {
     "jordan": {
@@ -64,13 +65,50 @@ def theorem_references(refs, location):
     return set(refs)
 
 
-def extract():
-    source = ROOT / "paper" / "UV.tex"
+def review_blocks(source, claims):
+    """Locate all prose blocks, including derivations outside numbered results."""
+    pattern = re.compile(r"^\\(section|subsection|subsubsection|paragraph|subparagraph)\*?\{", re.M)
+    braces = re.compile(r"\\[{}]|[{}]")
+    matches = list(pattern.finditer(source))
+    headings = [(1, "frontmatter", "Front matter and abstract")]
+    for match in matches:
+        depth = 1
+        end = match.end()
+        for token in braces.finditer(source, end):
+            if token.group() == "{":
+                depth += 1
+            elif token.group() == "}":
+                depth -= 1
+                if depth == 0:
+                    end = token.start()
+                    break
+        if depth != 0:
+            raise SystemExit("Unclosed expanded manuscript heading")
+        headings.append((source.count("\n", 0, match.start()) + 1, match.group(1),
+                         " ".join(source[match.end():end].split())))
+    end_lines = [start - 1 for start, _, _ in headings[1:]] + [len(source.splitlines())]
+    blocks = []
+    for (start, kind, title), end in zip(headings, end_lines, strict=True):
+        blocks.append({
+            "kind": kind,
+            "title_tex": title,
+            "start_line": start,
+            "end_line": end,
+            "claim_labels": [
+                c["label"] for c in claims if start <= c["source_line"] <= end
+            ],
+        })
+    return blocks
+
+
+def extract(source_name="paper/UV.tex", source_sha=SOURCE_SHA,
+            notes_name="verification.json", baseline=None):
+    source = ROOT / source_name
     raw = source.read_bytes()
-    if hashlib.sha256(raw).hexdigest() != SOURCE_SHA:
-        raise SystemExit("Source differs from the uploaded document; update provenance explicitly")
+    if hashlib.sha256(raw).hexdigest() != source_sha:
+        raise SystemExit(f"{source_name} differs from the uploaded document; update provenance explicitly")
     text = raw.decode()
-    notes = json.loads((ROOT / "verification.json").read_text())
+    notes = json.loads((ROOT / notes_name).read_text())
     pattern = re.compile(
         r"\\begin\{(theorem|proposition|lemma|corollary|assumption|definition)\}"
         r"(?:\[([^\]]*)\])?\s*\\label\{([^}]+)\}"
@@ -89,12 +127,29 @@ def extract():
             "lean_projects": {},
             "scope": "Not yet formalized.",
         }
-        record.update(notes.get(label, {}))
+        entry = notes.get(label, {})
+        if set(entry) - {"status", "scope", "lean", "lean_projects"}:
+            raise SystemExit(f"Unexpected verification fields in {notes_name}: {label}")
+        record.update(entry)
+        if baseline is not None:
+            if kind == "assumption" and not entry:
+                record["scope"] = "Explicit source assumption. Conclusions using it remain conditional."
+            if kind == "definition" and not entry:
+                record["scope"] = "Source definition. Its uses are audited with the corresponding results."
+            previous = baseline.get(label)
+            record["statement_change"] = (
+                "new" if previous is None else
+                "unchanged" if previous["kind"] == kind and
+                previous["statement_tex"].split() == record["statement_tex"].split() else
+                "revised"
+            )
         claims.append(record)
     starts = re.findall(r"\\begin\{(?:theorem|proposition|lemma|corollary|assumption|definition)\}", text)
     if len(starts) != len(claims):
         raise SystemExit("An environment was not inventoried")
     labels = {c["label"] for c in claims}
+    if len(labels) != len(claims):
+        raise SystemExit(f"Duplicate claim labels in {source_name}")
     if set(notes) - labels:
         raise SystemExit(f"Unknown source labels: {set(notes) - labels}")
     from audit import theorem_names
@@ -115,32 +170,46 @@ def extract():
                 raise SystemExit(f"Empty proof-project evidence in {c['label']}: {project}")
             if theorem_references(refs, f"{c['label']} / {project}") - project_names[project]:
                 raise SystemExit(f"Unknown Lean theorem in {c['label']} / {project}")
-        if c["status"] == "verified" and not (c["lean"] or projects):
-            raise SystemExit(f"Unsupported verified claim: {c['label']}")
-    return {"source": "paper/UV.tex", "sha256": SOURCE_SHA,
-            "project_pins": dict(sorted(project_pins.items())), "claims": claims}
+        if c["status"] in {"verified", "partial"} and not (c["lean"] or projects):
+            raise SystemExit(f"Unsupported proof status for {c['label']}")
+        if c["kind"] in {"assumption", "definition"} and c["status"] != c["kind"]:
+            raise SystemExit(f"Source premise or definition assigned proof status: {c['label']}")
+    result = {"source": source_name, "sha256": source_sha,
+              "project_pins": dict(sorted(project_pins.items())), "claims": claims}
+    if baseline is not None:
+        result["review_blocks"] = review_blocks(text, claims)
+    return result
 
 
 def markdown(data):
+    expanded = data["source"] != "paper/UV.tex"
     counts = {}
     for c in data["claims"]:
         counts[c["status"]] = counts.get(c["status"], 0) + 1
     lines = [
-        "# Source claim inventory", "",
+        "# Expanded manuscript claim inventory" if expanded else "# Source claim inventory", "",
         "Generated by `python3 scripts/claims.py --write` from the unchanged upload.", "",
         "A **partial** entry means only the stated component is checked. It does not certify the complete source result.", "",
         f"{len(data['claims'])} environments: " + ", ".join(f"{v} {k}" for k, v in sorted(counts.items())) + ".", "",
         "| Source label | Result | Status | Checked scope and remaining work |",
         "| --- | --- | --- | --- |",
     ]
+    if expanded:
+        lines[4:4] = [
+            "This inventory covers labeled theorem-like environments in the expanded upload. "
+            "Matching labels or statement text alone do not establish correspondence with the archived proof. "
+            "See [expanded scope](expanded-scope.md) for unnumbered material and remaining work.", "",
+        ]
     for c in data["claims"]:
         title = c["title_tex"].replace("|", "\\|")
         scope = c["scope"].replace("|", "\\|")
         if c["lean_projects"]:
             links = ", ".join(f"[{name}](../{name}/)" for name in sorted(c["lean_projects"]))
             scope += f" Independent proof project: {links}."
+        if expanded:
+            scope = f"{c['statement_change'].capitalize()} statement. {scope}"
         lines.append(
-            f"| [{c['label']}](../paper/UV.tex#L{c['source_line']}) | {title} | {c['status']} | {scope} |"
+            f"| [{c['label']}](../{data['source']}#L{c['source_line']}) | {title} | {c['status']} | {scope} |"
         )
     if data["project_pins"]:
         lines += ["", "Companion proof projects are built and audited separately; compiled proofs are not transported across Lean versions."]
@@ -155,9 +224,13 @@ def main():
     parser.add_argument("--write", action="store_true")
     args = parser.parse_args()
     data = extract()
+    expanded = extract("paper/expanded/UV.tex", EXPANDED_SHA, "verification-expanded.json",
+                       baseline={c["label"]: c for c in data["claims"]})
     files = {
         ROOT / "claims.json": json.dumps(data, indent=2, ensure_ascii=False) + "\n",
         ROOT / "docs" / "claims.md": markdown(data),
+        ROOT / "claims-expanded.json": json.dumps(expanded, indent=2, ensure_ascii=False) + "\n",
+        ROOT / "docs" / "claims-expanded.md": markdown(expanded),
     }
     for path, expected in files.items():
         if args.write:
@@ -165,6 +238,7 @@ def main():
         elif not path.exists() or path.read_text() != expected:
             raise SystemExit(f"Stale {path.name}; run python3 scripts/claims.py --write")
     print(f"PASS: {len(data['claims'])} source environments; upload SHA-256 matches")
+    print(f"PASS: {len(expanded['claims'])} expanded source environments; upload SHA-256 matches")
 
 
 if __name__ == "__main__":
