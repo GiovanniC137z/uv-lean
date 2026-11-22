@@ -264,19 +264,31 @@
     ]
   },
   "eq:stable-disc": {
-    "status": "partial",
-    "scope": "On a compact regular timelike chart, checks the literal stable-half pole jump for the stated C¹ multiplier data, giving PV with numerator 2i sin(a√w) and the shell term −2πi cos(am). The actual timelike kernel and its invariant first derivative converge uniformly on every compact positive shell interval. The massless single-line specialization through the cone tip is checked in the massless entry. The global massive statement through the branch edge remains open.",
+    "status": "verified",
+    "scope": "For every m>0 and a≥0, the literal stable-half coefficient jump is tested on compact Lipschitz functions of all four intrinsic momentum coordinates on one fixed sector plane, across both sides of the branch edge. The normal coarea chart pairs both axial roots with their exact 1/(2ω) Jacobians, and the complementary region uses the ordinary inverse. The canonical chart requires only positive mass, and the bare and weighted principal values are chart-radius independent. This realizes the 2i θ(w) sin(a√w) PV term and the unselected two-sheet −2πi cos(am) δ term at the same positive height and η=±1. The finite-height product and jump are reconstructed in the literal directed quotient with its fixed pole unit. The compact timelike C¹ result is also checked. Physical cut matching is a separate hypothesis.",
     "lean": [
       "UV.SectorPlane.Plane.stable_half_analytic_form",
       "UV.SectorPlane.Plane.stable_half_timed_uniform_C1",
       "UV.SectorPlane.stable_half_boundary_phase_difference",
       "UV.SectorPlane.stable_half_boundary_phase_sum",
-      "UV.SectorPlane.Plane.transverse_stable_half_jump"
+      "UV.SectorPlane.Plane.transverse_stable_half_jump",
+      "UV.SectorPlane.massive_local_coarea",
+      "UV.SectorPlane.pole_pv_full_massive_shell_limit",
+      "UV.SectorPlane.Plane.massive_stable_remainder_norm_bound",
+      "UV.SectorPlane.Plane.massive_stable_remainder_test_limit",
+      "UV.SectorPlane.Plane.bare_massive_pairing_limit",
+      "UV.SectorPlane.Plane.massive_stable_jump",
+      "UV.SectorPlane.Plane.massive_stable_directed_jump",
+      "UV.SectorPlane.Plane.massive_stable_integrand_directed",
+      "UV.SectorPlane.massive_shell_pv_cutoff_independent",
+      "UV.SectorPlane.stable_massive_sine_pv_cutoff_independent",
+      "UV.SectorPlane.Plane.massive_stable_jump_canonical",
+      "UV.SectorPlane.Plane.massive_stable_directed_jump_canonical"
     ]
   },
   "eq:massless-branch": {
     "status": "verified",
-    "scope": "In the original quotient, subtracts the massless inverse and the inverse-square-root term at the same positive height. The remainder has norm at most a² whenever |a| times the square root of the shifted coefficient norm is at most one. This is the quantitative O(1) bound in the displayed expansion. For positive depth the remainder after the unit pole is unbounded along the actual positive-height ray at the tip. The single-line jump through the cone tip is checked on compact continuous real four-momentum tests at nonnegative depth. It has the locally integrable timelike sine term and the unweighted delta on both axial sheets, with coefficient −2πi, and reconstructs in the directed quotient.",
+    "scope": "In the original quotient, subtracts the massless inverse and the inverse-square-root term at the same positive height. The remainder has norm at most a² whenever |a| times the square root of the shifted coefficient norm is at most one. This is the quantitative O(1) bound in the displayed expansion. For positive depth the remainder after the unit pole is unbounded along the actual positive-height ray at the tip. The single-line jump through the cone tip is checked on compact continuous real four-momentum tests at nonnegative depth. It has the locally integrable timelike sine term and the unweighted delta on both axial sheets, with coefficient −2πi, and reconstructs in the directed quotient. In the adjacent square calculation, the actual flat four-momentum polar change of variables gives the normalized density (1−u)/(π√(1−u²)) and area factor 2π². The simple and squared pole averages are evaluated exactly at every positive height for either orientation. Subtracting the Lipschitz test value at the angular shell bounds the normalized simple-pole pairing uniformly in height and gives the linear radial majorant. The imaginary part of the uncontracted square on every continuous compact radial test equal to one near the tip has coefficient ηπ² multiplying log(href/h), with a uniform bounded remainder. A smooth compact test witnesses signed divergence. For the quadratic numerator, checks the intrinsic unit-four-vector scaling, the exact axial and summed-spatial angular weights, and the temporal and equal-coordinate spatial diagonal averages with coefficient bounds 2 and 2/3. The two radial powers yield integrable majorants and exact positive-height limits for the unweighted temporal and spatial diagonal pairings on the actual four-momentum measure. Measure-preserving spatial coordinate swaps and sign flips give one-third of the trace for each diagonal component and zero for every mixed component on these radial tests. Arbitrary nonradial tensor tests and the stable-half tensor remainder remain open.",
     "lean": [
       "UV.SectorPlane.stable_half_massless_remainder",
       "UV.SectorPlane.Plane.stable_half_massless_directed_remainder",
@@ -285,7 +297,53 @@
       "UV.SectorPlane.integrableOn_massless_stable_sine_box",
       "UV.SectorPlane.pole_poisson_full_shell_limit",
       "UV.SectorPlane.Plane.massless_stable_jump",
-      "UV.SectorPlane.Plane.massless_stable_directed_jump"
+      "UV.SectorPlane.Plane.massless_stable_directed_jump",
+      "UV.SectorPlane.intrinsicShell_coordinates",
+      "UV.SectorPlane.intrinsic_polar_shell",
+      "UV.SectorPlane.intrinsic_polar_numerator",
+      "UV.SectorPlane.unit_four_coordinate_bound",
+      "UV.SectorPlane.quadratic_angular_numerator_bound",
+      "UV.SectorPlane.temporal_angular_weight",
+      "UV.SectorPlane.spatial_angular_weight",
+      "UV.SectorPlane.longitudinal_polar_scaling",
+      "UV.SectorPlane.coneTemporalSecond_identity",
+      "UV.SectorPlane.coneSpatialSecond_identity",
+      "UV.SectorPlane.cone_tensor_euclidean_trace",
+      "UV.SectorPlane.cone_tensor_lorentz_trace",
+      "UV.SectorPlane.coneAngularFirst_eq_closed",
+      "UV.SectorPlane.coneAngularSecond_eq_closed",
+      "UV.SectorPlane.coneTemporalSecond_eq_closed",
+      "UV.SectorPlane.coneSpatialSecond_eq_closed",
+      "UV.SectorPlane.coneTemporalSecond_norm_le",
+      "UV.SectorPlane.coneSpatialSecond_norm_le",
+      "UV.SectorPlane.coneTemporalSecond_radial_bound",
+      "UV.SectorPlane.coneSpatialSecond_radial_bound",
+      "UV.SectorPlane.coneTemporalSecond_radial_test_integrable",
+      "UV.SectorPlane.coneSpatialSecond_radial_test_integrable",
+      "UV.SectorPlane.Plane.quadratic_cone_channels",
+      "UV.SectorPlane.cone_polar_integral",
+      "UV.SectorPlane.cone_polar_angular_integral",
+      "UV.SectorPlane.cone_angular_density_integral",
+      "UV.SectorPlane.cone_angular_resolvent_cos",
+      "UV.SectorPlane.cone_angular_square_density",
+      "UV.SectorPlane.Plane.cone_square_directed_integrand",
+      "UV.SectorPlane.Plane.cone_square_pairing_im",
+      "UV.SectorPlane.Plane.cone_square_pairing_log_budget",
+      "UV.SectorPlane.Plane.cone_square_pairing_signed_im_tendsto",
+      "UV.SectorPlane.Plane.cone_square_smooth_probe",
+      "UV.SectorPlane.Plane.cone_quadratic_radial_integral",
+      "UV.SectorPlane.Plane.cone_temporal_radial_integral",
+      "UV.SectorPlane.Plane.cone_one_third_spatial_radial_integral",
+      "UV.SectorPlane.cone_angular_density_mass_one",
+      "UV.SectorPlane.cone_compact_spatial_tensor",
+      "UV.SectorPlane.cone_compact_time_spatial",
+      "UV.SectorPlane.Plane.cone_temporal_radial_limit",
+      "UV.SectorPlane.Plane.cone_one_third_spatial_radial_limit",
+      "UV.SectorPlane.Plane.cone_spatial_components",
+      "UV.SectorPlane.Plane.cone_mixed_components",
+      "UV.SectorPlane.Plane.cone_spatial_components_limit",
+      "UV.SectorPlane.cone_angular_test_norm_le",
+      "UV.SectorPlane.cone_angular_simple_radial_norm_le"
     ]
   },
   "eq:physical-unitarity-identity": {
@@ -308,6 +366,18 @@
       "UV.SectorPlane.Plane.physical_optical_positive_shell",
       "UV.SectorPlane.Plane.physical_optical_matched_coefficient",
       "UV.SectorPlane.optical_imaginary_entire_shift"
+    ]
+  },
+  "eq:update-positive-spectrum": {
+    "status": "verified",
+    "scope": "For finitely many nonnegative sampled depths and a positive boundary mass below the bulk threshold, the common boundary spectral probability measure gives actual positive locally finite measures for the finite layer-source quadratic forms. Each measure has the source atom and continuum exactly. The pairwise Stieltjes integrals exist absolutely and reproduce the complete boundary and layer Green blocks for every nonnegative Euclidean squared momentum, including the Dirichlet term.",
+    "lean": [
+      "UV.RevisionSpectrum.continueLayerMultiplier_at_atom",
+      "UV.RevisionSpectrum.continueLayerMultiplier_on_continuum",
+      "UV.RevisionSpectrum.continueLayerFormMeasure_eq_source",
+      "UV.RevisionSpectrum.continueLayerFormMeasure_locallyFinite",
+      "UV.RevisionSpectrum.continue_positive_bulk_spectrum",
+      "UV.RevisionSpectrum.continue_layer_pair_measure_nonnegative"
     ]
   }
 }
