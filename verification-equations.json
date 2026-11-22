@@ -265,7 +265,7 @@
   },
   "eq:stable-disc": {
     "status": "partial",
-    "scope": "On a compact regular timelike chart, checks the literal stable-half pole jump for the stated C¹ multiplier data, giving PV with numerator 2i sin(a√w) and the shell term −2πi cos(am). The actual timelike kernel and its invariant first derivative converge uniformly on every compact positive shell interval. A separate global proof through the branch edge and its exceptional shell domains remains open.",
+    "scope": "On a compact regular timelike chart, checks the literal stable-half pole jump for the stated C¹ multiplier data, giving PV with numerator 2i sin(a√w) and the shell term −2πi cos(am). The actual timelike kernel and its invariant first derivative converge uniformly on every compact positive shell interval. The massless single-line specialization through the cone tip is checked in the massless entry. The global massive statement through the branch edge remains open.",
     "lean": [
       "UV.SectorPlane.Plane.stable_half_analytic_form",
       "UV.SectorPlane.Plane.stable_half_timed_uniform_C1",
@@ -276,10 +276,38 @@
   },
   "eq:massless-branch": {
     "status": "verified",
-    "scope": "In the original quotient, subtracts the massless inverse and the inverse-square-root term at the same positive height. The remainder has norm at most a² whenever |a| times the square root of the shifted coefficient norm is at most one. This is the quantitative O(1) bound in the displayed expansion.",
+    "scope": "In the original quotient, subtracts the massless inverse and the inverse-square-root term at the same positive height. The remainder has norm at most a² whenever |a| times the square root of the shifted coefficient norm is at most one. This is the quantitative O(1) bound in the displayed expansion. For positive depth the remainder after the unit pole is unbounded along the actual positive-height ray at the tip. The single-line jump through the cone tip is checked on compact continuous real four-momentum tests at nonnegative depth. It has the locally integrable timelike sine term and the unweighted delta on both axial sheets, with coefficient −2πi, and reconstructs in the directed quotient.",
     "lean": [
       "UV.SectorPlane.stable_half_massless_remainder",
-      "UV.SectorPlane.Plane.stable_half_massless_directed_remainder"
+      "UV.SectorPlane.Plane.stable_half_massless_directed_remainder",
+      "UV.SectorPlane.Plane.stable_half_regular_at_tip_unbounded",
+      "UV.SectorPlane.integrableOn_inverse_root_shell_box",
+      "UV.SectorPlane.integrableOn_massless_stable_sine_box",
+      "UV.SectorPlane.pole_poisson_full_shell_limit",
+      "UV.SectorPlane.Plane.massless_stable_jump",
+      "UV.SectorPlane.Plane.massless_stable_directed_jump"
+    ]
+  },
+  "eq:physical-unitarity-identity": {
+    "status": "verified",
+    "scope": "For a fixed sector plane and actual bounded operators on its positive-norm Hilbert space, expands S = 1 + iT using the Hilbert adjoint and derives −i(T − T†) = T†T from S†S = 1. Unitarity is the source hypothesis.",
+    "lean": [
+      "UV.SectorPlane.Plane.physical_unitarity_identity"
+    ]
+  },
+  "eq:optical": {
+    "status": "partial",
+    "scope": "Derives the forward optical identity for arbitrary normalizable wave packets with the actual physical adjoint. Resolves the positive intermediate-state norm in an arbitrary complete orthonormal basis or an actual isometric L² resolution over the disjoint union of the supplied channel measures. Proves absolute integrability in each channel, summability of their squared amplitudes, and the literal positive one-particle shell factor (2π)⁻³(2κ)⁻¹. Independently derives the numerical coefficient equality under the source’s Hermitian-analytic and normalized matched-jump hypotheses, and checks the imaginary entire shift obstruction to recovering an imaginary part from a jump alone. Factoring the common sharp-momentum distribution from wave-packet matrix elements and establishing physical cut matching remain open.",
+    "lean": [
+      "UV.SectorPlane.Plane.physical_optical_packet",
+      "UV.SectorPlane.Plane.physical_optical_basis",
+      "UV.SectorPlane.Plane.lintegral_physical_intermediate_measure",
+      "UV.SectorPlane.physical_packet_norm_sq_eq_lintegral",
+      "UV.SectorPlane.Plane.physical_optical_direct_resolution",
+      "UV.SectorPlane.Plane.physical_optical_phase_space_sum",
+      "UV.SectorPlane.Plane.physical_optical_positive_shell",
+      "UV.SectorPlane.Plane.physical_optical_matched_coefficient",
+      "UV.SectorPlane.optical_imaginary_entire_shift"
     ]
   }
 }

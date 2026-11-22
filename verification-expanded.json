@@ -859,9 +859,14 @@
       "UV.RevisionSpectrum.bulkCutLayer_im",
       "UV.RevisionSpectrum.bulkContinuum_positive",
       "UV.RevisionSpectrum.bulkAtom_positive",
-      "UV.RevisionSpectrum.bulkBoundary_mass"
+      "UV.RevisionSpectrum.bulkBoundary_mass",
+      "UV.RevisionSpectrum.resume_bulk_boundary_stieltjes",
+      "UV.RevisionSpectrum.resumeBulkBoundaryMeasure_probability",
+      "UV.RevisionSpectrum.resumeBulkBoundaryMeasure_nonnegative_support",
+      "UV.RevisionSpectrum.resumeBulkBoundaryMeasure_stieltjes",
+      "UV.RevisionSpectrum.resume_positive_bulk_boundary_spectrum"
     ],
-    "scope": "Checks the exact unique gap root and inverse slope, positive residue, complete layer branch jump including its Dirichlet term, positivity of atom and continuum outer products, and exact boundary mass normalization by real integration. The spectral representation of all Green blocks and the trace-domain realization of the positive operator remain open in Lean."
+    "scope": "Checks the exact unique gap root and inverse slope, positive residue, complete layer branch jump including its Dirichlet term, positivity of atom and continuum outer products, and exact boundary mass normalization. For beta > 0 and 0 < m_b squared < M squared, constructs the displayed boundary atom-plus-continuum probability measure on nonnegative spectral mass and proves its actual Stieltjes transform equals the literal boundary Green block at every positive Euclidean argument. The proof evaluates the weighted normal-momentum rational integral, including coincident partial-fraction parameters by dominated convergence, and derives the required weighted integrability. The Stieltjes representations of nonboundary layer blocks and the trace-domain realization of the positive operator remain open in Lean."
   },
   "prop:monomial-prefix-uv": {
     "status": "verified",
@@ -945,9 +950,29 @@
       "UV.ExtendCurvatureMoments.cutoffReadout_eventually_eq",
       "UV.ExtendCurvatureMoments.normalized_observable_limit",
       "UV.ExtendCurvatureMoments.bounded_finite_observable_limit",
-      "UV.ExtendCurvatureMoments.normalized_monomial_limit"
+      "UV.ExtendCurvatureMoments.normalized_monomial_limit",
+      "UV.ResumeCurvatureSmooth.phaseLinear_norm",
+      "UV.ResumeCurvatureSmooth.character_cover_eq_exp",
+      "UV.ResumeCurvatureSmooth.realTorusMode_cover_eq",
+      "UV.ResumeCurvatureSmooth.mode_derivative_norm_bound",
+      "UV.ResumeCurvatureSmooth.ae_fullTransferred_smooth",
+      "UV.ResumeCurvatureSmooth.ae_fullTransferred_derivatives_eq_tsum",
+      "UV.ResumeCurvatureRawBounds.rawRegularization_summable",
+      "UV.ResumeCurvatureRawBounds.ae_regularized_coordinates_summable",
+      "UV.ResumeCurvatureDistributions.ae_rawPotential_uniform_limit",
+      "UV.ResumeCurvatureDistributions.unitCoordinate_norm",
+      "UV.ResumeCurvatureDistributions.ae_rawDistribution_weak_limit",
+      "UV.ResumeCurvatureDistributions.fullRawDistribution_readout_aemeasurable",
+      "UV.ResumeCurvatureRawIdentity.mode_secondCoordinate_pair",
+      "UV.ResumeCurvatureRawIdentity.mode_elliptic_pair",
+      "UV.ResumeCurvatureRawIdentity.cutoffRawDistribution_eq_mode_pair_sum",
+      "UV.ResumeCurvatureRawIdentity.ae_fullRawDistribution_eq_mode_pair_tsum",
+      "UV.ResumeCurvatureRawLaw.rawSample_ae_eq",
+      "UV.ResumeCurvatureRawLaw.rawSample_measurable",
+      "UV.ResumeCurvatureRawLaw.rawCylinderLaw_probability",
+      "UV.ResumeCurvatureRawLaw.rawJointCylinderLaw_probability"
     ],
-    "scope": "Constructs the common scaled product Gaussian preparation for two adjoint fields, their transferred real Fourier series on the period 2π four-torus, and the squared orthonormal-coordinate bracket potential with normalized Haar measure. The spherical transfers converge in the supremum norm and the bracket potential converges almost surely at each positive depth. The joint determinant-weight density converges in L¹ through the shared depth law, including a possible atom at zero. The continuum partition is positive and finite and the normalized Gibbs measure is a probability measure. Every bounded measurable observable of finitely many elementary modes has convergent normalized expectations. Every polynomial monomial on such a set has an exact covariance-based common integrable envelope and convergent normalized moments. The fixed-depth weighted transfer coefficient bound is checked at every derivative order; differentiability of the infinite field and the identification of the raw coefficient law as distribution-valued fields remain open."
+    "scope": "Constructs the common scaled product Gaussian preparation for two adjoint fields, their transferred real Fourier series on the period 2π four-torus, and the squared orthonormal-coordinate bracket potential with normalized Haar measure. The spherical transfers converge in the supremum norm and the bracket potential converges almost surely at each positive depth. The joint determinant-weight density converges in L¹ through the shared depth law, including a possible atom at zero. The continuum partition is positive and finite and the normalized Gibbs measure is a probability measure. Every bounded measurable observable of finitely many elementary modes has convergent normalized expectations. Every polynomial monomial on such a set has an exact covariance-based common integrable envelope and convergent normalized moments. The actual transferred fields are smooth on the period-2π Euclidean cover at every positive depth, with exact termwise iterated derivatives and bounds in the literal Euclidean frequency. On one probability-one set for all depths the inverse-cubed elliptic regularization gives an absolutely summable periodic raw potential. Its order-six elliptic distribution derivative defines a continuous functional on Schwartz tests with weak spherical-cutoff convergence and a.e. measurable scalar readouts. Identifies both the spherical and unrestricted distributional tests with the original raw Gaussian coefficient sums by exact cancellation of the elliptic regularization on every signed real mode. Pushes the common Gaussian coordinates to an actual joint probability measure on the cylindrical measurable space of the two raw distribution-valued fields. The Gaussian law of all scalar linear combinations of Schwartz readouts and the identification of the normalized expectation ratios with the corresponding finite-mode pushforward integrals remain open."
   },
   "prop:update-commuting-transfer": {
     "status": "verified",
@@ -1139,16 +1164,12 @@
   "cor:final-collar-joint-uv": {
     "status": "partial",
     "lean": [
-      "UV.FurtherBoundaryCollar.joint_collar_pointwise_bound",
-      "UV.FurtherBoundaryCollar.stretched_exponential_absorbs_power",
-      "UV.FurtherBoundaryCollar.stretched_exponential_integrableOn",
-      "UV.FurtherBoundaryCollar.joint_collar_trace_integrableOn",
-      "UV.FurtherBoundaryEnvelope.logEnvelope_eq_source",
-      "UV.FurtherBoundaryEnvelope.logarithmic_envelope_lower_order",
-      "UV.FurtherBoundaryEnvelope.determinant_envelope_absorbed",
-      "UV.FurtherBoundaryEnvelope.logarithmic_envelope_joint_collar_trace"
+      "UV.ResumeCollarHeat.free_normal_endpoint_tail",
+      "UV.ResumeCollarHeat.confined_path_potential_cost",
+      "UV.ResumeCollarHeat.short_tip_diagonal_from_reflection",
+      "UV.ResumeCollarHeat.joint_collar_trace_from_reflection"
     ],
-    "scope": "The retained shared radial heat bridge and the charged diagonal bound give the t^(-1/2) exp(-c t^(-3/5)) pointwise majorant. The exact source logarithmic growth envelope is absorbed by every positive r^(-3) heat barrier. The scalar radial readout is then integrable against dt/(2 pi t) on every bounded positive interval, and the positive time majorant absorbs any fixed inverse power. The proof assumes the stated positive free and charged scalar diagonal estimates and the upper determinant bound. Constructing the Friedrichs heat kernel, deriving the Brownian estimates, identifying the Hilbert–Schmidt trace, and proving incoming-density normalization and sewn graph transfer remain open here."
+    "scope": "In the same quartic radial units, Lean proves the normalized free Gaussian endpoint upper tail, the survival-path cost j^2 r^5/(2r)^8, and the exact exp(-min(j^2/256,1/4)/r^3) tip-diagonal suppression from the reflected endpoint estimate and the Feynman–Kac first-interval split. The resulting scalar joint trace is integrable against dt/(2 pi t) under the manuscript determinant envelope. The continuum Brownian reflection identity, Feynman–Kac representation and singular-potential approximation, Hilbert–Schmidt trace identification, incoming-density normalization, and physical sewn graph transfer remain open here."
   },
   "prop:normal-spin-gap-uv": {
     "status": "partial",
@@ -1251,5 +1272,74 @@
       "UV.SectorPlane.time_local_graph_absolute_carrier_frequency"
     ],
     "scope": "On the fixed sector plane with its unit carrier, starts from the actual finite connected oriented multigraph with parallel edges and self-loops distinguished. Removing the overall conservation row gives a spanning reduced incidence system. Its finite family of incidence bases supplies bijective chord coordinates and includes each nonloop in some basis. Checks the exact affine chart transitions, determinant volume factors, geometric tree product, weighted Hölder, and one-dimensional integrability at every exponent strictly above one. The complete measurable time-local coefficient is absolutely integrable with a bound uniform in external frequency shifts under the stated line and vertex bounds. The constant retains the exact absolute determinant factors, so the bound does not require a separate unimodularity proof for incidence transitions. Spatial and action-specific envelope estimates remain separate."
+  },
+  "prop:final-collar-uv": {
+    "status": "partial",
+    "lean": [
+      "UV.ResumeCollarSpectral.collar_exponent_upper",
+      "UV.ResumeCollarSpectral.collar_spectral_trace_upper",
+      "UV.ResumeCollarSpectral.collar_spectral_trace_at_fixed_time",
+      "UV.ResumeCollarLower.source_bump_lower_scale",
+      "UV.ResumeCollarLower.collar_lower_from_bump_test"
+    ],
+    "scope": "The precise t^(-1/3)(1+|log t|)^4 logarithmic upper order is proved for the weighted spectral trace from the manuscript's quadratic eigenvalue lower estimate and the exact per-mode determinant upper estimate. The spectral sum is finite and positive at every positive duration when one mode has positive weight, including the duration beta/2 used in Gibbs preparation. The matching scalar lower order follows from the source bump scale K t^(1/6)(1+|log t|)^(-1/2) and its uniform determinant lower estimate across the bump support, and transfers to the logarithm of the operator-norm scalar under the explicit supported-bump Jensen inequality. Construction of the singular Friedrichs operator and derivation of its mode, supported-bump, and weighted eigenfunction estimates, the Hilbert–Schmidt identification, and transfer to arbitrary positive trace-class inputs and finite-order bare graphs remain open here."
+  },
+  "prop:uv-network-phase": {
+    "status": "partial",
+    "lean": [
+      "UV.networkHeatFive_standard",
+      "UV.networkHeatFive_integrable",
+      "UV.networkHeatFive_integral",
+      "UV.networkEdgeCost_positive",
+      "UV.networkHeatFive_zero_not_integrable",
+      "UV.networkEdgeCost_zero",
+      "UV.networkDurationCost_positive",
+      "UV.networkDurationCost_common_law",
+      "UV.networkEdgeGreen_bounds",
+      "UV.networkGreen_product_bounds",
+      "UV.networkDurationCost_inverse_moment_iff",
+      "UV.alternatingNetwork_mark",
+      "UV.alternatingNetwork_total_displacement",
+      "UV.alternatingNetwork_inverse_moment_iff"
+    ],
+    "scope": "On one fixed Euclidean sector plane in the manuscript's reference units, proves the exact five-dimensional massive edge proper-time integral (1+m z) exp(-m z)/(8 pi^2 z^3), with the literal (4 pi s)^(-5/2) normalization, integrability for z>0, and divergence at z=0. Integrates arbitrary finite products of these edge kernels against their actual product duration measure and derives the exact common-position-law expectation for almost surely strictly positive edge marks. On 0<r<=1 the finite-edge cost is bounded above and below by explicit positive graph-dependent constants times r^(-3 card E), and its common-law finiteness is equivalent to the stated inverse moment. Constructs the actual alternating closed polygon on 2(N+1) edges, verifies every mark is r and total displacement is zero, and derives the inverse 6(N+1)-moment criterion for its proper-time cost. The remaining steps in identifying this cost with the absolute integral of the routed shared-vertex Fourier coefficient F_s are grounded incidence injectivity, the coupled Gaussian determinant and characteristic function, and cancellation against the normalized independent-probe momentum integral. The later routed source-contact bounds remain open."
+  },
+  "prop:spex-polarization-uv": {
+    "status": "verified",
+    "lean": [
+      "UV.ResumeCarrierPolarization.stiffness_form",
+      "UV.ResumeCarrierPolarization.stiffness_form_pos",
+      "UV.ResumeCarrierPolarization.stiffness_characteristic",
+      "UV.ResumeCarrierPolarization.normal_frequency_sum",
+      "UV.ResumeCarrierPolarization.normal_frequency_product",
+      "UV.ResumeCarrierPolarization.normal_frequencies_straddle",
+      "UV.ResumeCarrierPolarization.precision_determinant",
+      "UV.ResumeCarrierPolarization.precision_inverse_photon",
+      "UV.ResumeCarrierPolarization.response_partial_fractions",
+      "UV.ResumeCarrierPolarization.spectral_weights_positive",
+      "UV.ResumeCarrierPolarization.spectral_weights_sum",
+      "UV.ResumeCarrierPolarization.photonSpectrum_probability",
+      "UV.ResumeCarrierPolarization.photonSpectrum_positive_support",
+      "UV.ResumeCarrierPolarization.photonSpectrum_response",
+      "UV.ResumeCarrierPolarization.lowFrequency_ratio_tendsto",
+      "UV.ResumeCarrierPolarization.lowEnergy_speed_tendsto",
+      "UV.ResumeCarrierPolarization.highFrequency_tendsto",
+      "UV.ResumeCarrierPolarization.lowWeight_tendsto",
+      "UV.ResumeCarrierPolarization.normal_energy_sum",
+      "UV.ResumeCarrierPolarization.selected_model_photon_law",
+      "UV.ResumeCarrierPolarization.ringInsertion_integrable",
+      "UV.ResumeCarrierPolarization.vacuumRing_integrable",
+      "UV.ResumeCarrierPolarization.contactMixingRing_integrable",
+      "UV.ResumeCarrierPolarization.finite_vacuum_coefficient_integrable",
+      "UV.ResumeCarrierPolarization.finite_independent_vacuum_rings_integrable",
+      "UV.ResumeCarrierPolarization.precision_relative_determinant",
+      "UV.ResumeCarrierPolarization.bareVacuumCoefficient_hasSum",
+      "UV.ResumeCarrierPolarization.bareVacuumCoefficient_integrable",
+      "UV.ResumeCarrierPolarization.vacuumShift_normal_energies",
+      "UV.ResumeCarrierPolarization.vacuumShift_bounds",
+      "UV.ResumeCarrierPolarization.vacuumShift_integrable",
+      "UV.ResumeCarrierPolarization.selected_plane_radial_normalization"
+    ],
+    "scope": "For the fixed-depth two-oscillator Gaussian source on one selected sector plane, derives the exact positive stiffness square, normal-frequency characteristic polynomial, and photon covariance as the photon entry of the inverse of the original Euclidean precision. Constructs its positive probability measure on strictly positive squared energies, including the decoupled zero-coupling case, and proves that its Stieltjes transform equals that covariance. Checks strict positive interacting residues, unit limiting speed of the low energy, convergence of the high squared energy to the material gap, and full limiting low photon weight. Derives the actual relative determinant and its logarithmic series in the electric coupling. Every finite coefficient is absolutely integrable over the independent carrier frequency and three spatial momenta. Separately controls all individual contact/mixing rings, their finite sums and arbitrary finite disconnected products, and proves that the exact zero-point-energy shift of the normal modes is integrable at every real coupling. The proof retains the normalized geometric carrier on the selected plane. The verified source statement concerns the explicit Gaussian normal-mode model at fixed positive depth and material frequency."
   }
 }
