@@ -1150,14 +1150,22 @@
     "scope": "On a nonzero spatial mode p=k n with n a unit vector, the half-line harmonic energy of a complex amplitude is k|z|². The independent curvature components for both quadratures give the exact transverse oscillator with squared frequency k²+Lk³. Its inverse multiplies the full transverse projector, its frequency integral equals π divided by that frequency and is at most π/k. The limit of squared speed at zero is one."
   },
   "eq:covhop-source-uv": {
-    "status": "partial",
-    "scope": "At zero photon background and zero spatial momentum, the full two-mark displacement integral with I−γ·s/(2L), the stated hopping weight and all sixteen matrix entries reduces to the two time-spin blocks. Lean evaluates the actual inverse times γ_parallel away from the poles. Dependence on a general background connection, Wilson path variations and the interacting determinant remain open for this equation.",
+    "status": "verified",
+    "scope": "The two independent normalized A4 marks, any isometric four-coordinate readout and L>0 yield a four-volume displacement density of mass one supported in |d|≤2L. Its characteristic function is the square of the single-ball transform at LTp. Lean identifies the full straight Wilson hop, including I−γ·d/(2L), with the displayed density integral and proves absolute integrability on continuous spinor probes for a continuous real connection. The source family D_B=L⁻¹(I−λH_B) includes λ=1/4. Its gauge conjugation, all finite link variations, the constant-connection momentum shift, the contracted momentum Ward identity, and sector-chart transport are checked. The neighboring determinant and full graph statements have their own scope.",
     "lean": [
-      "UV.wilson_readout_orthogonal",
-      "UV.wilson_spatial_spin_zero",
-      "UV.wilson_shell_hop_matrix",
-      "UV.wilson_shell_time_ordered_endpoint",
-      "UV.wilson_shell_charged_spectrum"
+      "UV.wilson_displacement_density_eq",
+      "UV.wilson_displacement_density_mass",
+      "UV.wilson_displacement_band",
+      "UV.wilson_displacement_characteristic",
+      "UV.wilson_density_hop_for_fields",
+      "UV.wilson_density_hop_integrable",
+      "UV.wilson_charged_source_gauge_covariant",
+      "UV.wilson_mixed_link_all_orders",
+      "UV.wilson_zero_background_matches_shell",
+      "UV.wilson_constant_connection_shift",
+      "UV.wilson_source_ward_contracted",
+      "UV.SectorPlane.Plane.wilson_link_chart",
+      "UV.SectorPlane.Plane.wilson_wave_unit_chart"
     ]
   }
 }

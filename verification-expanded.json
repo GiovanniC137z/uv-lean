@@ -2050,5 +2050,26 @@
       "UV.SectorPlane.Plane.charged_rest_vectorial_weights"
     ],
     "scope": "For the zero-background Wilson hop at zero spatial momentum, the independent normalized A4 ball marks and every isometric four-coordinate readout give the symmetric absolutely continuous time marginal and its positive interior mass. Reflection removes the three spatial Clifford terms from the integrated matrix. At λ=1/4 the actual time-ordered inverse has precisely two positive rest energies with opposite coefficients in the convention Z/(M−z). The upper matrix weight is negative on a unit spinor. Each spin block has infinitely many distinct nonreal poles where its norm diverges. The proof derives the entire-function obstruction from exponential type and two-sided Fourier limits. Regular contacts preserve the real coefficients. Both characters of the sector's vectorial boundary yield the same intrinsic weights."
+  },
+  "prop:covhop-photon-uv": {
+    "status": "partial",
+    "lean": [
+      "UV.wilson_mixed_link_all_orders",
+      "UV.wilson_source_ward_contracted",
+      "UV.wilson_polygon_transverse",
+      "UV.wilson_polygon_zero",
+      "UV.wilson_polygon_perimeter_bound",
+      "UV.wilson_polygon_soft_bound",
+      "UV.wilson_two_mark_polygon_bound",
+      "UV.wilson_marked_hop_summable",
+      "UV.wilson_polygon_soft_directional",
+      "UV.wilson_two_current_soft_photon",
+      "UV.wilson_transverse_projection",
+      "UV.wilson_sewn_photon_coordinates",
+      "UV.wilson_sewn_photon_bound",
+      "UV.wilson_sewn_photon_of_power_envelope",
+      "UV.wilson_independent_sewn_photons"
+    ],
+    "scope": "For each fixed closed polygon the complete geometric Fourier current is transverse, vanishes at zero, is bounded by min(P,|Q|P²) for perimeter P≤2LN on N shell hops, and has the stated linear limit along every unit direction. The full link supplies all finite marked variations. Two closed currents cancel the soft transverse Maxwell denominator. Their sewing and finite products on independent transfers are absolutely integrable under an integrable squared shell envelope, including C(1+|Q|)^(−K) for K>4. The pure polynomially weighted hopping-length majorant is summable for 0≤2λ<1. The actual marked-hop decay, its use for every charged circulation and general photon routing, and the direction-independent summed one-particle-irreducible photon coefficient remain open."
   }
 }
