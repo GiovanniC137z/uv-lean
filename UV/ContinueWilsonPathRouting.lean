@@ -58,6 +58,31 @@ variable {V C D ι : Type*} [Fintype V] [DecidableEq V] [Fintype C] [Fintype D] 
 
 abbrev WilsonPathFractions (a : V → ℕ) := (j : Sigma (fun v => Fin (a v))) → I
 
+abbrev WilsonPhotonPaths (a : V → ℕ) (C : Type*) := WilsonPathFractions a × (C → OSFourSpace)
+
+def wilsonHardPathWeight (a : V → ℕ) (L ρ : ℝ) (T : OSFourSpace →ₗᵢ[ℝ] WilsonBallSpace ι)
+    (chord : C → WilsonPhotonPolarizations) (tree : D → WilsonPhotonPolarizations)
+    (route : (C → OSFourSpace) → D → OSFourSpace) (z : WilsonPhotonPaths a C) : ℂ :=
+  (wilsonHardPhotonProduct ρ (wilsonShellPhotonForm L T) chord tree route z.2 : ℂ)
+
+omit [DecidableEq V] in
+theorem wilson_hard_path_weight (a : V → ℕ) {L ρ : ℝ} (hL : 0 < L) (hρ : 0 < ρ)
+    (T : OSFourSpace →ₗᵢ[ℝ] WilsonBallSpace ι) (chord : C → WilsonPhotonPolarizations)
+    (tree : D → WilsonPhotonPolarizations) (route : (C → OSFourSpace) → D → OSFourSpace) (hr : ∀ e, Measurable (route · e)) :
+    let w := wilsonHardPathWeight a L ρ T chord tree route
+    Measurable w ∧ Integrable w ((volume : Measure (WilsonPathFractions a)).prod (Measure.pi (fun _ : C => volume))) :=
+  ⟨Complex.continuous_ofReal.measurable.comp ((wilson_hard_product_measurable ρ
+     (wilson_shell_form_continuous L T) chord tree hr).comp (measurable_snd (α := WilsonPathFractions a))),
+   ((wilson_hard_product_integrable hL hρ T chord tree hr).ofReal (𝕜 := ℂ)).comp_snd
+     (ν := Measure.pi (fun _ : C => (volume : Measure OSFourSpace))) (volume : Measure (WilsonPathFractions a))⟩
+
+omit [Fintype V] [DecidableEq V] [Fintype C] in
+theorem wilson_path_shifts_measurable {a : V → ℕ} (k : (v : V) → (C → OSFourSpace) → Fin (a v) → OSFourSpace)
+    (hk : ∀ v i, Measurable (k v · i)) (n : V → ℕ) (f : WilsonMarkAllocation a n) (v : V) (j : Fin (n v+1)) :
+    Measurable (fun z : WilsonPhotonPaths a C => wilsonVisitShift (f v) (fun i => z.1 ⟨v,i⟩) (k v z.2) j) :=
+  wilson_visit_shift_measurable _ (fun i => (measurable_pi_apply (⟨v,i⟩ : Sigma (fun x => Fin (a x)))).comp measurable_fst)
+    (fun i => (hk v i).comp measurable_snd) _
+
 /-- A complete fixed-order closed-circulation hard integral. The external
 momenta and every path fraction shift the charged words according to the
 straight links. Tree transfers are measurable functions of the same chord
@@ -76,20 +101,8 @@ theorem wilson_hard_closed_graph_sum {L lam ρ : ℝ} (hL : 0 < L) (hρ : 0 < ρ
       Summable (fun n : V → ℕ => (∏ v, lam^(n v+1)) * ∑ f : WilsonMarkAllocation a n,
         ∫ t, ‖wilsonGraphWord w L T u f (q n f) t‖ ∂μ.prod (Measure.pi (fun _ : V => volume))) := by
   dsimp only
-  have hw : Integrable (fun z : WilsonPathFractions a × (C → OSFourSpace) =>
-      (wilsonHardPhotonProduct ρ (wilsonShellPhotonForm L T) chord tree route z.2 : ℂ))
-      ((volume : Measure (WilsonPathFractions a)).prod (Measure.pi (fun _ : C => volume))) :=
-    ((wilson_hard_product_integrable hL hρ T chord tree hr).ofReal (𝕜 := ℂ)).comp_snd
-      (ν := Measure.pi (fun _ : C => (volume : Measure OSFourSpace))) (volume : Measure (WilsonPathFractions a))
-  have hmw : Measurable (fun z : WilsonPathFractions a × (C → OSFourSpace) =>
-      (wilsonHardPhotonProduct ρ (wilsonShellPhotonForm L T) chord tree route z.2 : ℂ)) :=
-    Complex.continuous_ofReal.measurable.comp ((wilson_hard_product_measurable ρ
-    (wilson_shell_form_continuous L T) chord tree hr).comp (measurable_snd (α := WilsonPathFractions a)))
-  have hq (n : V → ℕ) (f : WilsonMarkAllocation a n) (v : V) (j : Fin (n v+1)) :
-      Measurable (fun z : WilsonPathFractions a × (C → OSFourSpace) =>
-        wilsonVisitShift (f v) (fun i => z.1 ⟨v,i⟩) (k v z.2) j) :=
-    wilson_visit_shift_measurable _ (fun i => (measurable_pi_apply (⟨v,i⟩ : Sigma (fun x => Fin (a x)))).comp measurable_fst)
-      (fun i => (hk v i).comp measurable_snd) _
+  obtain ⟨hmw,hw⟩ := wilson_hard_path_weight a hL hρ T chord tree route hr
+  have hq := wilson_path_shifts_measurable k hk
   let μ := (volume : Measure (WilsonPathFractions a)).prod (Measure.pi (fun _ : C => (volume : Measure OSFourSpace)))
   haveI : SFinite μ := Measure.prod.instSFinite (μ := (volume : Measure (WilsonPathFractions a)))
     (ν := Measure.pi (fun _ : C => (volume : Measure OSFourSpace)))

@@ -754,3 +754,14 @@ import UV.ContinueWilsonReturnCurrent
 import UV.ContinueWilsonSpinExpansion
 import UV.ContinueWilsonSummedTwoPoint
 import UV.ContinueWilsonTraceClosure
+import UV.ContinueWilsonAmplitudeRotation
+import UV.ContinueWilsonCurrentRotation
+import UV.ContinueWilsonHardMixed
+import UV.ContinueWilsonMixedGraph
+import UV.ContinueWilsonOpenChain
+import UV.ContinueWilsonPolygonVariations
+import UV.ContinueWilsonShellRotation
+import UV.ContinueWilsonSpinRotation
+import UV.ContinueWilsonTransverseCoefficient
+import UV.ContinueWilsonTransverseLimit
+import UV.ContinueWilsonWickTwoPoint

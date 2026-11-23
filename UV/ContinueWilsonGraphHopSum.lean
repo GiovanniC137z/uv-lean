@@ -59,6 +59,33 @@ theorem wilson_summable_independent_lengths {g : V → ℕ → ℝ} (hg : ∀ v 
   rw [he,integrable_count_iff] at h
   simpa only [Real.norm_of_nonneg (Finset.prod_nonneg fun v _ => hg v _)] using h
 
+theorem wilson_allocation_majorant_summable [DecidableEq V] {lam : ℝ} (hlam : 0 ≤ lam) (hl : 2*lam < 1)
+    {a : V → ℕ} {D : V → ℝ} (hD : ∀ v, 0 ≤ D v) (W : ℝ)
+    (term : (n : V → ℕ) → WilsonMarkAllocation a n → ℝ) (hn : ∀ n f, 0 ≤ term n f)
+    (hbnd : ∀ n f, term n f ≤ W * ∏ v, D v*2^(n v)) :
+    Summable (fun n : V → ℕ => (∏ v, lam^(n v+1)) * ∑ f : WilsonMarkAllocation a n, term n f) := by
+  classical
+  let g := fun v (k : ℕ) => (lam * D v) * ((2*lam)^k * (1+(k:ℝ))^(a v))
+  have hg (v k) : 0 ≤ g v k := by have hd := hD v; dsimp [g]; positivity
+  have hs (v) : Summable (g v) := (wilson_marked_hop_summable (a v) hlam hl).mul_left (lam*D v)
+  apply Summable.of_nonneg_of_le (fun n => mul_nonneg (Finset.prod_nonneg fun _ _ => pow_nonneg hlam _)
+    (Finset.sum_nonneg fun f _ => hn n f)) _ ((wilson_summable_independent_lengths hg hs).mul_left W)
+  intro n
+  have hb := Finset.sum_le_sum (s := (Finset.univ : Finset (WilsonMarkAllocation a n))) (fun f _ => hbnd n f)
+  apply (mul_le_mul_of_nonneg_left hb (Finset.prod_nonneg fun _ _ => pow_nonneg hlam _)).trans_eq
+  simp only [Finset.sum_const,Finset.card_univ,nsmul_eq_mul,WilsonMarkAllocation,Fintype.card_pi,
+    Finset.prod_const,Fintype.card_fin,Nat.cast_prod,Nat.cast_pow,Nat.cast_add,Nat.cast_one]
+  calc
+    _ = W * ((∏ v, lam^(n v+1)) * (∏ v, ((n v:ℝ)+1)^(a v)) * ∏ v, D v*2^(n v)) := by ring
+    _ = _ := by
+      rw [←Finset.prod_mul_distrib,←Finset.prod_mul_distrib]
+      congr 1
+      apply Finset.prod_congr rfl
+      intro v _
+      dsimp [g]
+      rw [pow_succ,mul_pow]
+      ring
+
 /-- The sum over every positive length at each charged component and every
 placement of its labelled marks, after integrating all charged and outer
 variables together. No factorization of their momentum shifts is assumed. -/
@@ -68,33 +95,9 @@ theorem wilson_graph_all_lengths_summable [DecidableEq V] {L lam : ℝ} (hL : 0 
     (hq : ∀ n f v j, Measurable (q n f v · j)) (μ : Measure Z) [SFinite μ] {w : Z → ℂ}
     (hmw : Measurable w) (hw : Integrable w μ) :
     Summable (fun n : V → ℕ => (∏ v, lam^(n v+1)) * ∑ f : WilsonMarkAllocation a n,
-      ∫ t, ‖wilsonGraphWord w L T u f (q n f) t‖ ∂μ.prod (Measure.pi (fun _ : V => volume))) := by
-  classical
-  let D := fun v => wilsonTraceBudget L T (u v)
-  let g := fun v (k : ℕ) => (lam * D v) * ((2*lam)^k * (1+(k:ℝ))^(a v))
-  have hg (v k) : 0 ≤ g v k := by
-    have hd := wilson_trace_budget_nonneg L T (u v)
-    dsimp [g,D]; positivity
-  have hs (v) : Summable (g v) := (wilson_marked_hop_summable (a v) hlam hl).mul_left (lam*D v)
-  apply Summable.of_nonneg_of_le (fun n => mul_nonneg (Finset.prod_nonneg fun _ _ => pow_nonneg hlam _)
-    (Finset.sum_nonneg fun _ _ => integral_nonneg fun _ => norm_nonneg _)) _
-    ((wilson_summable_independent_lengths hg hs).mul_left (∫ z, ‖w z‖ ∂μ))
-  intro n
-  have hb := Finset.sum_le_sum (s := (Finset.univ : Finset (WilsonMarkAllocation a n)))
-    (fun f _ => (wilson_graph_words_bound hL T u f (hq n f) μ hmw hw).2)
-  apply (mul_le_mul_of_nonneg_left hb (Finset.prod_nonneg fun _ _ => pow_nonneg hlam _)).trans_eq
-  simp only [Finset.sum_const,Finset.card_univ,nsmul_eq_mul,WilsonMarkAllocation,Fintype.card_pi,
-    Finset.prod_const,Fintype.card_fin,Nat.cast_prod,Nat.cast_pow,Nat.cast_add,Nat.cast_one]
-  calc
-    _ = (∫ z, ‖w z‖ ∂μ) * ((∏ v, lam^(n v+1)) * (∏ v, ((n v:ℝ)+1)^(a v)) *
-            ∏ v, D v*2^(n v)) := by dsimp only [D]; ring
-    _ = _ := by
-      rw [←Finset.prod_mul_distrib,←Finset.prod_mul_distrib]
-      congr 1
-      apply Finset.prod_congr rfl
-      intro v _
-      dsimp [g]
-      rw [pow_succ,mul_pow]
-      ring
+      ∫ t, ‖wilsonGraphWord w L T u f (q n f) t‖ ∂μ.prod (Measure.pi (fun _ : V => volume))) :=
+  wilson_allocation_majorant_summable hlam hl (fun v => wilson_trace_budget_nonneg L T (u v)) _ _
+    (fun _ _ => integral_nonneg fun _ => norm_nonneg _)
+    (fun n f => (wilson_graph_words_bound hL T u f (hq n f) μ hmw hw).2)
 
 end UV
