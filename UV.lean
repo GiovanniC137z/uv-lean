@@ -786,3 +786,12 @@ import UV.ContinueNormalRankReadout
 import UV.ContinueNormalMaxwellModes
 import UV.ContinueNormalRoutedPhotons
 import UV.ContinueNormalRankGraph
+import UV.ContinueNormalCircleModes
+import UV.ContinueNormalHolonomyCoefficient
+import UV.ContinueNormalCircleWord
+import UV.ContinueNormalCircleCells
+import UV.ContinueNormalCoverConvolution
+import UV.ContinueNormalConstrainedTransform
+import UV.ContinueNormalZeroIdentification
+import UV.ContinueNormalCircleOpen
+import UV.ContinueNormalPeriodicIntegral
