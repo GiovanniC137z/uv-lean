@@ -2129,5 +2129,34 @@
       "UV.wilson_source_variations_eq_placements"
     ],
     "scope": "For the two-mark A4 Wilson source at L>0, Lean constructs the normalized compactly supported displacement density, proves angular-frequency Fourier inversion of each marked spin hop, and closes the ordered spin trace at its actual return displacement. In the hard estimate the joint absolute integral includes arbitrary finite mixtures of closed charged circulations, open chains tested at both ends by L² spinors, unmarked zero-hop identities, all independent photon momenta and all straight-link fractions. Every placement and every positive hop length is summable for 0≤2λ<1. The hard bound uses ordinary Maxwell chord factors and a fixed infrared exclusion on dependent tree factors. The incidence basis enforces momentum conservation with the two opposite external transfers at every vertex. Mixed derivatives of the actual product of Wilson phases for unit-polarized Fourier modes on each polygon agree with the summed placements, including the power of i at every order. These placements recover its geometric currents. Both incidences of every internal photon control the soft denominator. For the connected two-point graphs whose photon-edge deletions preserve connectivity, the full four-momentum limit of the transverse amplitude divided by ‖Q‖² exists after all chord and polygon integrals and determinant-weighted hop sums. Its absolutely convergent coefficient is independent of the reference orthogonal unit pair and of any momentum-dependent transverse unit polarization. The proof transports the actual A4 shell, Clifford spin trace and currents in each oriented sector chart. The ordinary Maxwell tree contributes one. The finite-order sum can be indexed by every marked owner assignment and every positional Wick pairing passing the connected, single-photon-deletion test, including self-sewings and parallel edges. The identification of the complete normalized coefficients of the manuscript’s infinite-plane source expansion with these graph weights, including its symmetry factors and connected/1PI extraction, remains open. The result does not sum the electromagnetic series or perform Lorentzian spectral reconstruction."
+  },
+  "prop:nativefull-compressed-all-uv": {
+    "status": "partial",
+    "lean": [
+      "UV.normal_cover_energy_bounds",
+      "UV.normal_cover_gamma_norm",
+      "UV.normal_cover_oriented_jump",
+      "UV.normal_cover_angular_fourier",
+      "UV.SectorPlane.Plane.normal_cover_fourier_chart",
+      "UV.normal_dirac_cover_bound",
+      "UV.normal_hard_open_graph"
+    ],
+    "scope": "For the massive normal-circle comparison, the angular Fourier transform of the explicit oriented cover kernel recovers (m−iγ·p−iγ⁵ξ)/(m²+‖p‖²+ξ²), and the difference of its two one-sided normal limits is exactly γ⁵. The proof uses the four Euclidean gamma matrices and their ordered chirality product, verifies its unit operator norm, and proves a momentum-uniform exponential bound for the propagator. The continuum rank-four hard estimate covers the open-line contribution with its normal integrals, integer windings and tested endpoints. The nonzero-winding and six-insertion closed-loop estimates, the rank-three readout and finite-torus estimates for the complete graph family remain open."
+  },
+  "cor:nativefull-open-uv": {
+    "status": "partial",
+    "lean": [
+      "UV.normal_open_vertex_norm",
+      "UV.normal_open_increments_sum",
+      "UV.normal_open_increment_envelope",
+      "UV.normal_open_laplace_mass",
+      "UV.normal_winding_majorant",
+      "UV.normal_open_dirac_integral",
+      "UV.normal_open_all_windings",
+      "UV.normal_packet_word_bound",
+      "UV.normal_open_graph_integral",
+      "UV.normal_hard_open_graph"
+    ],
+    "scope": "For m>0 and circle length L>0, an open chain of r+1 actual Dirac cover propagators and r unit-polarized vertices has absolute normal-displacement integral at most 2^(r+1)(4/m)^r exp(−m|z′−z+wL|/2). The proof includes r=0, coincident endpoints, the sign jump and every integer winding. In the full-rank isometric A4 continuum readout, arbitrary finite families of these chains, with L² carrier spinor packets, are jointly absolutely integrable with hard Maxwell photons and all independent normal windings are summable. The estimate is uniform in the carrier transfers and uses the fixed infrared convention on dependent photons. The complete periodic four-torus and rank-three comparisons, and joint graphs with the protected closed loops of the preceding proposition, remain open."
   }
 }

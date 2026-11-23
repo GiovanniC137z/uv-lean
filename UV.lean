@@ -765,3 +765,7 @@ import UV.ContinueWilsonSpinRotation
 import UV.ContinueWilsonTransverseCoefficient
 import UV.ContinueWilsonTransverseLimit
 import UV.ContinueWilsonWickTwoPoint
+import UV.ContinueNormalCoverPath
+import UV.ContinueNormalOpenDirac
+import UV.ContinueNormalCoverFourier
+import UV.ContinueNormalPacketGraph

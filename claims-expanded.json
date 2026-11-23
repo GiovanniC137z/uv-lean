@@ -3089,10 +3089,18 @@
       "title_tex": "All finite orders for protected charged loops",
       "source_line": 26621,
       "statement_tex": "For \\eqref{eq:nativefull-compressed-operator-uv}, consider a\nconnected graph at positive electromagnetic order, with closed\ncharged loops and optional transverse external photon packets.\nResolve each charged loop in normal winding. The sum of the\nabsolute integrals converges in all ultraviolet regions at every\nfinite order if each closed charged loop either has nonzero winding\nor has at least six photon insertions. The latter loops can have\nzero winding. This includes internal photon contractions and simultaneous\nshort normal segments. Hold the infrared treatment fixed. One\nexplicit version uses a four-dimensional Euclidean torus with\nfixed harmonic photon sector and the massless Maxwell covariance\non all nonzero Fourier modes. The torus can have any finite size;\nno ultraviolet mode is omitted. In the continuum the same hard\nestimate applies with soft photon singularities controlled\nseparately.",
-      "status": "pending",
-      "lean": [],
+      "status": "partial",
+      "lean": [
+        "UV.normal_cover_energy_bounds",
+        "UV.normal_cover_gamma_norm",
+        "UV.normal_cover_oriented_jump",
+        "UV.normal_cover_angular_fourier",
+        "UV.SectorPlane.Plane.normal_cover_fourier_chart",
+        "UV.normal_dirac_cover_bound",
+        "UV.normal_hard_open_graph"
+      ],
       "lean_projects": {},
-      "scope": "Not yet formalized.",
+      "scope": "For the massive normal-circle comparison, the angular Fourier transform of the explicit oriented cover kernel recovers (m−iγ·p−iγ⁵ξ)/(m²+‖p‖²+ξ²), and the difference of its two one-sided normal limits is exactly γ⁵. The proof uses the four Euclidean gamma matrices and their ordered chirality product, verifies its unit operator norm, and proves a momentum-uniform exponential bound for the propagator. The continuum rank-four hard estimate covers the open-line contribution with its normal integrals, integer windings and tested endpoints. The nonzero-winding and six-insertion closed-loop estimates, the rank-three readout and finite-torus estimates for the complete graph family remain open.",
       "statement_change": "new"
     },
     {
@@ -3101,10 +3109,21 @@
       "title_tex": "Open charged paths",
       "source_line": 26734,
       "statement_tex": "The same estimates allow any finite number of open charged\nlines with smooth tested fermion endpoints. No winding condition\nis required on an open line. In particular all graphs with no\nclosed fermion loop obey the ultraviolet bound at every finite\norder in this comparison, with the same infrared prescription.",
-      "status": "pending",
-      "lean": [],
+      "status": "partial",
+      "lean": [
+        "UV.normal_open_vertex_norm",
+        "UV.normal_open_increments_sum",
+        "UV.normal_open_increment_envelope",
+        "UV.normal_open_laplace_mass",
+        "UV.normal_winding_majorant",
+        "UV.normal_open_dirac_integral",
+        "UV.normal_open_all_windings",
+        "UV.normal_packet_word_bound",
+        "UV.normal_open_graph_integral",
+        "UV.normal_hard_open_graph"
+      ],
       "lean_projects": {},
-      "scope": "Not yet formalized.",
+      "scope": "For m>0 and circle length L>0, an open chain of r+1 actual Dirac cover propagators and r unit-polarized vertices has absolute normal-displacement integral at most 2^(r+1)(4/m)^r exp(−m|z′−z+wL|/2). The proof includes r=0, coincident endpoints, the sign jump and every integer winding. In the full-rank isometric A4 continuum readout, arbitrary finite families of these chains, with L² carrier spinor packets, are jointly absolutely integrable with hard Maxwell photons and all independent normal windings are summable. The estimate is uniform in the carrier transfers and uses the fixed infrared convention on dependent photons. The complete periodic four-torus and rank-three comparisons, and joint graphs with the protected closed loops of the preceding proposition, remain open.",
       "statement_change": "new"
     },
     {

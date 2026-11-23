@@ -50,7 +50,7 @@ theorem wilson_packet_pair_measurable {Z : Type*} [MeasurableSpace Z] (φ ψ : W
     (continuous_fst.clm_apply continuous_snd).measurable.comp (hm.prodMk (ψ.measurable.comp hp))
   exact (continuous_fst.inner (𝕜 := ℂ) continuous_snd).measurable.comp ((φ.measurable.comp (hp.add hΔ)).prodMk happ)
 
-private theorem wilson_packet_budget (φ ψ : WilsonPacket) (Δ : OSFourSpace) :
+theorem wilson_packet_budget (φ ψ : WilsonPacket) (Δ : OSFourSpace) :
     let F := fun p => (‖φ.value (p+Δ)‖^2 + ‖ψ.value p‖^2)/2
     Integrable F ∧ (∫ p, F p) = (φ.cost+ψ.cost)/2 := by
   let mp := measurePreserving_add_right (volume : Measure OSFourSpace) Δ

@@ -36,7 +36,7 @@ theorem wilson_graph_words_bound {L : ℝ} (hL : 0 < L) (T : OSFourSpace →ₗ�
     Integrable (wilsonGraphWord w L T u f q) (μ.prod ν) ∧
       (∫ t, ‖wilsonGraphWord w L T u f q t‖ ∂μ.prod ν) ≤
         (∫ z, ‖w z‖ ∂μ) * ∏ v, wilsonTraceBudget L T (u v) * 2^(n v) := by
-  apply wilson_joint_traces_bound μ hmw hw
+  apply wilson_joint_traces_bound (F := fun v z => wilsonAllocatedTrace L T (u v) (f v) (q v z)) μ hmw hw
   · intro v
     exact wilson_allocated_trace_measurable _ _ _ _ (fun j => (hq v j).comp measurable_fst) measurable_snd
   · intro v z
@@ -44,10 +44,11 @@ theorem wilson_graph_words_bound {L : ℝ} (hL : 0 < L) (T : OSFourSpace →ₗ�
       (wilsonAssignedTail (u v) (f v) (q v z))).1
   · exact fun v z => wilson_allocated_trace_bound hL T (u v) (f v) (q v z)
 
-theorem wilson_summable_independent_lengths {g : V → ℕ → ℝ} (hg : ∀ v k, 0 ≤ g v k)
-    (hs : ∀ v, Summable (g v)) : Summable (fun n : V → ℕ => ∏ v, g v (n v)) := by
+theorem wilson_summable_product {K : Type*} [Countable K] [MeasurableSpace K] [MeasurableSingletonClass K]
+    {g : V → K → ℝ} (hg : ∀ v k, 0 ≤ g v k)
+    (hs : ∀ v, Summable (g v)) : Summable (fun n : V → K => ∏ v, g v (n v)) := by
   classical
-  have he : Measure.pi (fun _ : V => (Measure.count : Measure ℕ)) = Measure.count := by
+  have he : Measure.pi (fun _ : V => (Measure.count : Measure K)) = Measure.count := by
     apply Measure.ext_of_singleton
     intro n
     rw [←Set.univ_pi_singleton n,Measure.pi_pi,Set.univ_pi_singleton]
@@ -58,6 +59,10 @@ theorem wilson_summable_independent_lengths {g : V → ℕ → ℝ} (hg : ∀ v 
   have h := Integrable.fintype_prod hi
   rw [he,integrable_count_iff] at h
   simpa only [Real.norm_of_nonneg (Finset.prod_nonneg fun v _ => hg v _)] using h
+
+theorem wilson_summable_independent_lengths {g : V → ℕ → ℝ} (hg : ∀ v k, 0 ≤ g v k)
+    (hs : ∀ v, Summable (g v)) : Summable (fun n : V → ℕ => ∏ v, g v (n v)) :=
+  wilson_summable_product hg hs
 
 theorem wilson_allocation_majorant_summable [DecidableEq V] {lam : ℝ} (hlam : 0 ≤ lam) (hl : 2*lam < 1)
     {a : V → ℕ} {D : V → ℝ} (hD : ∀ v, 0 ≤ D v) (W : ℝ)
