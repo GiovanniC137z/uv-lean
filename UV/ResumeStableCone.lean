@@ -71,7 +71,7 @@ theorem integrableOn_massless_stable_sine_box {R a : ℝ} (hR : 0 < R) (ha : 0 �
     (masslessStableSine_measurable a).aestronglyMeasurable
     (Eventually.of_forall (masslessStableSine_norm_le ha))
 
-private theorem exists_cone_test_box {f : ℝ × Spatial → ℝ} (hf : HasCompactSupport f) :
+theorem exists_cone_test_box {f : ℝ × Spatial → ℝ} (hf : HasCompactSupport f) :
     ∃ R > 0, ∀ q, q ∉ Icc (-R) R ×ˢ Metric.closedBall (0 : Spatial) R → f q = 0 := by
   obtain ⟨r, hr⟩ := (Metric.isBounded_iff_subset_closedBall (0 : ℝ × Spatial)).mp hf.isBounded
   let R := max 1 r

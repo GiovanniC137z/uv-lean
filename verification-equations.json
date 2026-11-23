@@ -82,7 +82,7 @@
   },
   "eq:directed-propagator": {
     "status": "partial",
-    "scope": "The literal finite-height scalar line uses the normalized running unit off the null axial hyperplane, the fixed pole unit, and a common positive height. At positive mass each stable-half side now converges on compact Lipschitz complex tests. The same-height shell subtraction leaves an absolutely integrable remainder. Its residue has phase exp(iηam) and weights the difference of the two shells with the exact Jacobian 1/(2ω). At zero mass the stable-half line converges on compact Cartesian C² tests through the cone tip. The separate scalar sides extend to all nonnegative masses for every real-C¹ profile, and more generally for profiles satisfying the documented compact shell estimates. The limiting coefficient acts continuously on every fixed compact C² test space. Other singular kernel branches and products in a graph require their own existence proofs.",
+    "scope": "The literal finite-height scalar line uses the normalized running unit off the null axial hyperplane, the fixed pole unit, and a common positive height. At positive mass each stable-half side now converges on compact Lipschitz complex tests. The same-height shell subtraction leaves an absolutely integrable remainder. Its residue has phase exp(iηam) and weights the difference of the two shells with the exact Jacobian 1/(2ω). At zero mass the stable-half line converges on compact Cartesian C² tests through the cone tip. The separate scalar sides extend to all nonnegative masses for every real-C¹ profile, and more generally for profiles satisfying the documented compact shell estimates. The limiting coefficient acts continuously on every fixed compact C² test space. For two scalar lines carrying the same four-momentum, the positive-height calculation uses both actual running units. For distinct nonnegative masses, the product has a continuous boundary functional on each compact Cartesian C² test space for real-C² profiles, and separately for the stable-half profiles at nonnegative depths, even if one mass is zero. For coincident masses and opposite prescribed sides, a smooth compact test witnesses the failure of the unscaled stable-half product at every pair of nonnegative depths. These product tests leave general graph routings, other singular branches and the completed-source Hessian identification open.",
     "lean": [
       "UV.SectorPlane.Plane.scalar_line_plus",
       "UV.SectorPlane.Plane.scalar_line_minus",
@@ -128,7 +128,15 @@
       "UV.SectorPlane.Plane.smooth_scalar_distribution",
       "UV.SectorPlane.Plane.stable_scalar_distribution",
       "UV.SectorPlane.CompactMomentumTest.ofFunction_value",
-      "UV.SectorPlane.compact_momentum_boundary_order_two"
+      "UV.SectorPlane.compact_momentum_boundary_order_two",
+      "UV.SectorPlane.Plane.two_scalar_lines_readout",
+      "UV.SectorPlane.Plane.weighted_pole_product_limit",
+      "UV.SectorPlane.Plane.distinct_scalar_product_distribution",
+      "UV.SectorPlane.Plane.stable_weighted_simple_pole",
+      "UV.SectorPlane.Plane.distinct_stable_product_limit",
+      "UV.SectorPlane.Plane.distinct_stable_scalar_distribution",
+      "UV.SectorPlane.Plane.stable_half_pinch_residue",
+      "UV.SectorPlane.Plane.stable_pinch_smooth_witness"
     ]
   },
   "eq:fixed-carrier-line": {
@@ -637,7 +645,7 @@
   },
   "eq:scalar-line-coefficient": {
     "status": "partial",
-    "scope": "At finite height, integration of the literal carrier-valued test times the original scalar line equals the directed embedding of the signed coefficient pairing. Convergence of the extracted resolvent on the sign-multiplied test is equivalent to convergence of that directed line with the prescribed η. Compact C² tests vanishing in a strip about the axial hyperplane admit this multiplier, and the smooth-kernel extracted boundary exists there. Common-height integration also gives stable-half and shell-bounded scalar lines on tests crossing the axis. Independent multiplication of a singular boundary by the discontinuous sign on an unrestricted test domain remains open.",
+    "scope": "At finite height, integration of the literal carrier-valued test times the original scalar line equals the directed embedding of the signed coefficient pairing. Convergence of the extracted resolvent on the sign-multiplied test is equivalent to convergence of that directed line with the prescribed η. Compact C² tests vanishing in a strip about the axial hyperplane admit this multiplier, and the smooth-kernel extracted boundary exists there. Common-height integration also gives stable-half and shell-bounded scalar lines on tests crossing the axis. Independent multiplication of a singular boundary by the discontinuous sign on an unrestricted test domain remains open. For a co-routed pair, the two normalized running signs multiply to one off the null axial hyperplane, giving the actual directed coefficient −η₁η₂ in the finite-height product. On opposite sides at the same mass the scaled pairing tends to π times the two-sheet shell functional times the on-shell numerator. The stable-half on-shell phase is exp(iη₁(a₁−a₂)m).",
     "lean": [
       "UV.SectorPlane.Plane.massless_running_stable_scalar_line",
       "UV.SectorPlane.Plane.massless_running_stable_single_limit",
@@ -648,7 +656,12 @@
       "UV.SectorPlane.running_test_compact",
       "UV.SectorPlane.Plane.smooth_extracted_limit_away_from_axis",
       "UV.SectorPlane.Plane.massive_stable_scalar_line_side",
-      "UV.SectorPlane.Plane.stable_scalar_distribution"
+      "UV.SectorPlane.Plane.stable_scalar_distribution",
+      "UV.SectorPlane.Plane.two_line_pairing_readout",
+      "UV.SectorPlane.Plane.opposite_pole_poisson",
+      "UV.SectorPlane.Plane.opposite_product_residue",
+      "UV.SectorPlane.Plane.continuous_profile_pinch",
+      "UV.SectorPlane.Plane.stable_half_pinch_no_boundary"
     ]
   },
   "eq:physical-directed-gauge-ghost-lines": {

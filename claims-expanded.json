@@ -378,7 +378,7 @@
       "title_tex": "Graphwise convergence from the curvature determinant",
       "source_line": 3924,
       "statement_tex": "For \\eqref{eq:uvpeC-sector-action}, every interacting Wick graph\nat each fixed order in $g$ is absolutely UV finite on the stated\ntorus, including vacuum graphs and insertions of elementary fields\nat finitely many fixed Fourier modes. The integrated absolute\nmomentum tail beyond $M$ is $O_s(M^{-s})$ for each fixed $s>0$.\nThe same estimate holds uniformly for the spherical Fourier\nrestrictions \\(0<|k|\\le\\Lambda\\) used in the proof.\nThe law $\\mu$ may have an atom at zero, whose complete relative\nGaussian weight vanishes in the unrestricted source.",
-      "status": "partial",
+      "status": "verified",
       "lean": [
         "UV.FurtherCurvatureShell.modeShell_card",
         "UV.FurtherCurvatureShell.mem_sphericalModes",
@@ -465,10 +465,20 @@
         "UV.VerifyCurvatureGraphBounds.integrated_routedSphericalGraph_tail_uniform",
         "UV.VerifyCurvatureReindex.configuredGraphTerm_zero_of_mismatch",
         "UV.VerifyCurvatureReindex.configuredGraphTerm_eq_routed_of_match",
-        "UV.VerifyCurvatureReindex.configured_sphericalGraph_eq_routed"
+        "UV.VerifyCurvatureReindex.configured_sphericalGraph_eq_routed",
+        "UV.CurvatureWick.wick_sum_over_matchings",
+        "UV.CurvatureWick.matching_endpoints_perm",
+        "UV.CurvatureWick.source_positions_assigned",
+        "UV.CurvatureWick.positional_wick_expansion",
+        "UV.CurvatureWick.pair_endpoint_bijective",
+        "UV.CurvatureWick.matching_weight_is_configured_term",
+        "UV.CurvatureWick.projected_probe_product",
+        "UV.CurvatureWick.cutoff_action_equals_graph_sum",
+        "UV.CurvatureWick.projected_graph_limit",
+        "UV.CurvatureWick.wick_graph_absolute_tails"
       ],
       "lean_projects": {},
-      "scope": "Checks the actual Euclidean-frequency four-torus line estimate, inverse determinant product and cutoff limit, and quartic determinant suppression at zero depth. The finite diagonal kinetic integral gives the specified relative Gaussian determinant with two fields and n colors. The exact mode covariance and the double-transfer covariance follow on the constructed product Gaussian measure. For each finite product of the literal curvature lines with uniformly bounded measurable residual coefficients, Lean checks absolute all-mode summability at positive depth, vanishing of the common zero-depth atom, and spherical-cutoff convergence to the unrestricted graph. The signed coefficient and the literal unrestricted absolute tail are integrable against the same finite nonnegative depth law. Their spherical approximations converge, and the absolute momentum tail is O(M⁻ˢ) for every fixed s ≥ 0, both unrestricted and uniformly in the spherical cutoff. Derives the integrated block curvature square from the oriented orthonormal Euclidean and internal two-form components, giving the four copied kinetic terms and sole third-block bracket potential. Differentiation along the four sector unit vectors sends each normalized signed Fourier mode to its opposite, and integrating the squared gradients gives the exact diagonal kinetic action used to compute the relative determinant. The exact finite action expansion yields the first quartic Wick vacuum graph with two same-field tadpoles. Its fixed-depth coefficient on the physical Gaussian law is the half-color norm times the square of the signed mode line sum, with both transfer endpoints. The single-determinant spherical and continuum versions agree with the actual two-line graph sum, including zero weight at the continuum depth-zero atom and integrability over the common source. At each fixed positive depth, every power of the literal bracket potential is integrable and its spherical expectations converge. The exact quartic vertex is a bounded depth-independent Haar factor. It vanishes in the absence of a zero-sum signed Fourier routing. Derives the exact Wick formula for arbitrary finite products of the elementary signed coordinates under the common Gaussian law, including every multiplicity and odd products. The literal spherical interaction at every fixed power with any finite elementary Fourier monomial equals its weighted pairing expansion. The interaction-interaction, interaction-probe, and probe-probe contractions carry exactly two, one, and zero harmonic transfers respectively. The continuum expectation of each fixed elementary insertion and interaction power is integrable at positive depth and is the limit of its spherical expectations. For any partitioned pairing incidence, the surviving vertex slots are reconstructed from one mode and color per internal edge together with the fixed probe variables. The routed graph with explicit color sums has the one-determinant finite-contraction form, a uniformly bounded measurable residual coefficient, unrestricted convergence, and the integrated absolute tail at every fixed power uniformly in the spherical cutoff. For each fixed incidence, the exact determinant-weighted sum over the literal spherical vertex configurations equals the routed edge-assignment sum at every cutoff containing the fixed probes. The pure correspondence from the recursive partner list to arbitrary partitioned incidences and exact treatment of cutoffs omitting fixed probes remain open.",
+      "scope": "Checks the actual Euclidean-frequency four-torus line estimate, inverse determinant product and cutoff limit, and quartic determinant suppression at zero depth. The finite diagonal kinetic integral gives the specified relative Gaussian determinant with two fields and n colors. The exact mode covariance and the double-transfer covariance follow on the constructed product Gaussian measure. For each finite product of the literal curvature lines with uniformly bounded measurable residual coefficients, Lean checks absolute all-mode summability at positive depth, vanishing of the common zero-depth atom, and spherical-cutoff convergence to the unrestricted graph. The signed coefficient and the literal unrestricted absolute tail are integrable against the same finite nonnegative depth law. Their spherical approximations converge, and the absolute momentum tail is O(M⁻ˢ) for every fixed s ≥ 0, both unrestricted and uniformly in the spherical cutoff. Derives the integrated block curvature square from the oriented orthonormal Euclidean and internal two-form components, giving the four copied kinetic terms and sole third-block bracket potential. Differentiation along the four sector unit vectors sends each normalized signed Fourier mode to its opposite, and integrating the squared gradients gives the exact diagonal kinetic action used to compute the relative determinant. The exact finite action expansion yields the first quartic Wick vacuum graph with two same-field tadpoles. Its fixed-depth coefficient on the physical Gaussian law is the half-color norm times the square of the signed mode line sum, with both transfer endpoints. The single-determinant spherical and continuum versions agree with the actual two-line graph sum, including zero weight at the continuum depth-zero atom and integrability over the common source. At each fixed positive depth, every power of the literal bracket potential is integrable and its spherical expectations converge. The exact quartic vertex is a bounded depth-independent Haar factor. It vanishes in the absence of a zero-sum signed Fourier routing. Derives the exact Wick formula for arbitrary finite products of the elementary signed coordinates under the common Gaussian law, including every multiplicity and odd products. The literal spherical interaction at every fixed power with any finite elementary Fourier monomial equals its weighted pairing expansion. The interaction-interaction, interaction-probe, and probe-probe contractions carry exactly two, one, and zero harmonic transfers respectively. The continuum expectation of each fixed elementary insertion and interaction power is integrable at positive depth and is the limit of its spherical expectations. For any partitioned pairing incidence, the surviving vertex slots are reconstructed from one mode and color per internal edge together with the fixed probe variables. The routed graph with explicit color sums has the one-determinant finite-contraction form, a uniformly bounded measurable residual coefficient, unrestricted convergence, and the integrated absolute tail at every fixed power uniformly in the spherical cutoff. For each fixed incidence, the exact determinant-weighted sum over the literal spherical vertex configurations equals the routed edge-assignment sum at every cutoff containing the fixed probes. The recursive Wick expansion of the literal quartic action now constructs every summand as a routed incidence, preserving its multiplicity even for repeated probe labels. At any spherical cutoff the determinant-weighted Gaussian moment equals the sum over these graphs. A sphere omitting a fixed external mode gives zero. For each actual summand, integration against the finite common depth measure on [0,∞) gives the full-mode limit and an absolute O(M^(−s)) tail for every fixed s>0, uniformly in the spherical cutoff, including vacuum graphs. The full relative weight at an atom at zero vanishes for positive color dimension. Normalization uses the stated positive measure of strictly positive depths.",
       "statement_change": "new"
     },
     {
@@ -2909,10 +2919,13 @@
       "title_tex": "Translation-invariant conditional kernels",
       "source_line": 42313,
       "statement_tex": "Suppose that translations are ergodic on the marginal law of $A$:\nevery translation-invariant event of that field has probability zero\nor one. Assume $T_\\xi$ is a measurable continuous distributional\nkernel, with integrable test coefficients, and is translation\ncovariant as a random kernel,\n$T_{\\tau_x\\xi}=U_xT_\\xi U_x^{-1}$, where $U_x$ translates a test\nfield. If almost every realization is itself translation invariant,\nthen $T_\\xi$ is independent of $A$. In particular every finite\nprojection gives the direct contraction of $K$ with the photon\ntwo-point covariance. This holds for signed kernel entries.",
-      "status": "pending",
-      "lean": [],
+      "status": "verified",
+      "lean": [
+        "UV.PhotonSewing.invariant_kernel_independent",
+        "UV.PhotonSewing.invariant_kernel_sewing"
+      ],
       "lean_projects": {},
-      "scope": "Not yet formalized.",
+      "scope": "For a jointly stationary law, the conditioned photon submeasure of each event of the kernel is translation invariant. Its Radon–Nikodym derivative is almost everywhere constant by ergodicity of the photon marginal. This proves independence of the entire measurable kernel under realization-wise translation invariance and covariance. On every finite test projection the signed integrable kernel entries contract to one half of the trace of the mean kernel times the centered photon covariance, with the stated finite second moments and the same two-port weight. The subsequent free-Maxwell mixing example and the source identification of that weight are separate applications.",
       "statement_change": "new"
     },
     {
@@ -9202,7 +9215,7 @@
       "label": "eq:directed-propagator",
       "source_line": 12564,
       "status": "partial",
-      "scope": "The literal finite-height scalar line uses the normalized running unit off the null axial hyperplane, the fixed pole unit, and a common positive height. At positive mass each stable-half side now converges on compact Lipschitz complex tests. The same-height shell subtraction leaves an absolutely integrable remainder. Its residue has phase exp(iηam) and weights the difference of the two shells with the exact Jacobian 1/(2ω). At zero mass the stable-half line converges on compact Cartesian C² tests through the cone tip. The separate scalar sides extend to all nonnegative masses for every real-C¹ profile, and more generally for profiles satisfying the documented compact shell estimates. The limiting coefficient acts continuously on every fixed compact C² test space. Other singular kernel branches and products in a graph require their own existence proofs.",
+      "scope": "The literal finite-height scalar line uses the normalized running unit off the null axial hyperplane, the fixed pole unit, and a common positive height. At positive mass each stable-half side now converges on compact Lipschitz complex tests. The same-height shell subtraction leaves an absolutely integrable remainder. Its residue has phase exp(iηam) and weights the difference of the two shells with the exact Jacobian 1/(2ω). At zero mass the stable-half line converges on compact Cartesian C² tests through the cone tip. The separate scalar sides extend to all nonnegative masses for every real-C¹ profile, and more generally for profiles satisfying the documented compact shell estimates. The limiting coefficient acts continuously on every fixed compact C² test space. For two scalar lines carrying the same four-momentum, the positive-height calculation uses both actual running units. For distinct nonnegative masses, the product has a continuous boundary functional on each compact Cartesian C² test space for real-C² profiles, and separately for the stable-half profiles at nonnegative depths, even if one mass is zero. For coincident masses and opposite prescribed sides, a smooth compact test witnesses the failure of the unscaled stable-half product at every pair of nonnegative depths. These product tests leave general graph routings, other singular branches and the completed-source Hessian identification open.",
       "lean": [
         "UV.SectorPlane.Plane.scalar_line_plus",
         "UV.SectorPlane.Plane.scalar_line_minus",
@@ -9248,14 +9261,22 @@
         "UV.SectorPlane.Plane.smooth_scalar_distribution",
         "UV.SectorPlane.Plane.stable_scalar_distribution",
         "UV.SectorPlane.CompactMomentumTest.ofFunction_value",
-        "UV.SectorPlane.compact_momentum_boundary_order_two"
+        "UV.SectorPlane.compact_momentum_boundary_order_two",
+        "UV.SectorPlane.Plane.two_scalar_lines_readout",
+        "UV.SectorPlane.Plane.weighted_pole_product_limit",
+        "UV.SectorPlane.Plane.distinct_scalar_product_distribution",
+        "UV.SectorPlane.Plane.stable_weighted_simple_pole",
+        "UV.SectorPlane.Plane.distinct_stable_product_limit",
+        "UV.SectorPlane.Plane.distinct_stable_scalar_distribution",
+        "UV.SectorPlane.Plane.stable_half_pinch_residue",
+        "UV.SectorPlane.Plane.stable_pinch_smooth_witness"
       ]
     },
     {
       "label": "eq:scalar-line-coefficient",
       "source_line": 12580,
       "status": "partial",
-      "scope": "At finite height, integration of the literal carrier-valued test times the original scalar line equals the directed embedding of the signed coefficient pairing. Convergence of the extracted resolvent on the sign-multiplied test is equivalent to convergence of that directed line with the prescribed η. Compact C² tests vanishing in a strip about the axial hyperplane admit this multiplier, and the smooth-kernel extracted boundary exists there. Common-height integration also gives stable-half and shell-bounded scalar lines on tests crossing the axis. Independent multiplication of a singular boundary by the discontinuous sign on an unrestricted test domain remains open.",
+      "scope": "At finite height, integration of the literal carrier-valued test times the original scalar line equals the directed embedding of the signed coefficient pairing. Convergence of the extracted resolvent on the sign-multiplied test is equivalent to convergence of that directed line with the prescribed η. Compact C² tests vanishing in a strip about the axial hyperplane admit this multiplier, and the smooth-kernel extracted boundary exists there. Common-height integration also gives stable-half and shell-bounded scalar lines on tests crossing the axis. Independent multiplication of a singular boundary by the discontinuous sign on an unrestricted test domain remains open. For a co-routed pair, the two normalized running signs multiply to one off the null axial hyperplane, giving the actual directed coefficient −η₁η₂ in the finite-height product. On opposite sides at the same mass the scaled pairing tends to π times the two-sheet shell functional times the on-shell numerator. The stable-half on-shell phase is exp(iη₁(a₁−a₂)m).",
       "lean": [
         "UV.SectorPlane.Plane.massless_running_stable_scalar_line",
         "UV.SectorPlane.Plane.massless_running_stable_single_limit",
@@ -9266,7 +9287,12 @@
         "UV.SectorPlane.running_test_compact",
         "UV.SectorPlane.Plane.smooth_extracted_limit_away_from_axis",
         "UV.SectorPlane.Plane.massive_stable_scalar_line_side",
-        "UV.SectorPlane.Plane.stable_scalar_distribution"
+        "UV.SectorPlane.Plane.stable_scalar_distribution",
+        "UV.SectorPlane.Plane.two_line_pairing_readout",
+        "UV.SectorPlane.Plane.opposite_pole_poisson",
+        "UV.SectorPlane.Plane.opposite_product_residue",
+        "UV.SectorPlane.Plane.continuous_profile_pinch",
+        "UV.SectorPlane.Plane.stable_half_pinch_no_boundary"
       ]
     },
     {
