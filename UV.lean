@@ -797,3 +797,8 @@ import UV.ContinueNormalCircleOpen
 import UV.ContinueNormalPeriodicIntegral
 import UV.ContinueNormalCircleCoordinates
 import UV.ContinueNormalOpenCoordinates
+import UV.ContinueNormalAllLegsSpin
+import UV.ContinueNormalLegProfile
+import UV.ContinueNormalLegMoments
+import UV.ContinueNormalLegHessian
+import UV.ContinueNormalLegTransfer

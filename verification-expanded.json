@@ -2216,5 +2216,27 @@
       "UV.normal_open_position_integral"
     ],
     "scope": "For m>0 and circle length L>0, an open chain of r+1 actual Dirac cover propagators and r unit-polarized vertices has absolute normal-displacement integral at most 2^(r+1)(4/m)^r exp(−m|z′−z+wL|/2). The proof includes r=0, coincident endpoints, the sign jump and every integer winding. For every readout of rank ≥3, arbitrary finite families of such lines with tested spinor endpoints can be sewn to protected closed charged loops and transverse photons. The joint absolute norm is integrable and the independent winding assignments are absolutely summable in the continuum and on all nonzero photon modes of any full reciprocal four-lattice. Continuum endpoints can be L²; the torus result proves a uniform square-sum estimate for translated samples of Schwartz endpoints. Starting at the actual marked positions with both normal endpoints fixed, the directed differences preserve Haar measure and give no center factor. The ordered periodic open word integrates to the sum of these same cover integrals with the endpoint holonomy phase exp(−iθ((z′−z)/L+w)). Its proof includes integration of the integer lifts and coincident endpoints. Derivation of the routed ordered factors and graph weights from the full interacting source expansion remains open."
+  },
+  "prop:nativefull-alllegs-uv": {
+    "status": "partial",
+    "lean": [
+      "UV.normal_zero_transfer_spin",
+      "UV.normal_zero_transfer_hessian",
+      "UV.normal_zero_transfer_radial",
+      "UV.normal_shell_characteristic_real",
+      "UV.normal_shell_positive_pi",
+      "UV.normal_nearest_holonomy",
+      "UV.normal_leg_nearest_positive",
+      "UV.normal_shifted_frequency_summable",
+      "UV.normal_leg_fourth_power",
+      "UV.normal_leg_hessian_mode_integral",
+      "UV.normal_leg_hessian_zero",
+      "UV.normal_leg_nearby_vertices",
+      "UV.normal_leg_nearby_uniform",
+      "UV.normal_leg_integral_unit",
+      "UV.normal_leg_photon_obstruction",
+      "UV.SectorPlane.Plane.normal_leg_transverse_limit"
+    ],
+    "scope": "Proves the one-loop transverse obstruction for the specified affine three-compression vertex, all m,L>0, any holonomy and any isometric five-momentum readout of the actual A4 shell. The charged and transverse form factors appear separately at each vertex. The unit-polarized Clifford trace, four-carrier radial average, strictly positive shell support on a nearest shifted mode, absolute integral over all carrier momenta and mode sum, and the dominated limit at zero transfer are proved. In the stated Euclidean sign convention the normalized loop tends to a strictly negative constant. Adding the Maxwell eigenvalue leaves the same limit on the transverse plane in either oriented sector chart. The unrestricted joint UV proof for every interacting graph of the three-compression determinant remains open."
   }
 }
