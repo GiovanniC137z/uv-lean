@@ -710,7 +710,7 @@
         "UV.RootMagnetic.rootFiberMode_eigen"
       ],
       "lean_projects": {},
-      "scope": "Starting from the specified scalar Landau levels, their area degeneracy, the two spin shifts, three zero shifts, and root/ghost statistics, Lean sums the heat trace and derives the stated negative quadratic coefficient of the finite-interval proper-time integral. The coefficient persists for every fixed real v. Lean bounds log(T/ε) minus the integrated proper-time cost between zero and (T−ε)v². Derivation of the gauge-fixed Hessian, its spectrum, and its degeneracies from the five-component SU(2) background action remains open. The five-component Yang–Mills plus background gauge-fixing Hessian, Cartan-root polarization frame and heat trace, and area degeneracy of normalized shifted Landau fibers are derived. The Hermite-Gaussian modes solve the actual oscillator differential equation. Completeness and identification with the full Landau operator heat kernel remain distinct spectral obligations.",
+      "scope": "Starting from the specified scalar Landau levels, their area degeneracy, the two spin shifts, three zero shifts, and root/ghost statistics, Lean sums the heat trace and derives the stated negative quadratic coefficient of the finite-interval proper-time integral. The coefficient persists for every fixed real v. Lean bounds log(T/ε) minus the integrated proper-time cost between zero and (T−ε)v². The five-component Yang–Mills plus background gauge-fixing Hessian, Cartan-root polarization frame and heat trace, and area degeneracy of normalized shifted Landau fibers are derived. The Hermite-Gaussian modes solve the actual oscillator differential equation. Completeness and identification with the full Landau operator heat kernel remain distinct spectral obligations.",
       "statement_change": "new"
     },
     {
@@ -1043,7 +1043,7 @@
         "UV.HeatMaxwell.heat_native_determinant_hessian"
       ],
       "lean_projects": {},
-      "scope": "For the native continuum heat-link transverse two-mark response at every positive mass and width, the original bubble and direct contact give the signed Dirac trace. Integration of the transverse derivative gives exact cancellation at zero transfer. Both differentiated four-momentum integrals have Gaussian dominators. The two-sided divided-response limit, including width rescaling and external readouts tending to one, is the strictly positive radial coefficient.  The mixed derivative of the finite-slot negative log determinant produces the native bubble-minus-contact trace and spin multiplicity four at each momentum.",
+      "scope": "For the native continuum heat-link transverse two-mark response at every positive mass and width, the original bubble and direct contact give the signed Dirac trace. Integration of the transverse derivative gives exact cancellation at zero transfer. Both differentiated four-momentum integrals have Gaussian dominators. The two-sided divided-response limit, including width rescaling and external readouts tending to one, is the strictly positive radial coefficient. The mixed derivative of the finite-slot negative log determinant produces the native bubble-minus-contact trace and spin multiplicity four at each momentum.",
       "statement_change": "new"
     },
     {
