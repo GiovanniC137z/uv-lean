@@ -3114,10 +3114,18 @@
         "UV.normal_rank_three_maxwell_slice",
         "UV.normal_photon_envelope_integrable",
         "UV.normal_lattice_photon_envelope_integrable",
-        "UV.normal_lattice_mode_gap"
+        "UV.normal_lattice_mode_gap",
+        "UV.normal_three_ball_integral",
+        "UV.normal_shell_characteristic_decay",
+        "UV.normal_rank_three_chart",
+        "UV.normal_continuum_maxwell_integrable",
+        "UV.normal_lattice_maxwell_integrable",
+        "UV.normal_rank_continuum_graph",
+        "UV.normal_rank_torus_graph",
+        "UV.normal_graph_all_windings"
       ],
       "lean_projects": {},
-      "scope": "For positive mass and normal-circle circumference, the oriented Dirac cover kernel has jump γ⁵ and Fourier multiplier with exact operator norm (m²+‖p‖²+ξ²)⁻¹ᐟ². On nonzero winding, the increment constraint supplies decay in one independent four-momentum, allowing simultaneous short segments and a summable exponential bound in |w|. At zero winding the frequency trace with at least six unit-polarized insertions is absolutely integrable in four carrier directions and one continuous normal frequency, uniformly in the transferred momenta. For the four-dimensional isometric A4 readout in the continuum, finite products of these protected loops and tested open chains are jointly absolutely integrable with routed hard transverse Maxwell photons, summed absolutely over every admitted winding assignment. The protected charged-loop estimates also hold on every full reciprocal four-lattice, uniformly in all carrier shifts, with continuous normal frequency at zero winding. In a three-observed/one-unobserved linear chart the Maxwell slice equals π/‖q‖ for q≠0, and a separable hard envelope is integrable in both continuum and lattice measures. The general shell-readout estimate for actual photon factors and the deduction of the winding coefficients from the periodic determinant remain open.",
+      "scope": "For positive mass and normal-circle circumference, the oriented Dirac cover kernel has jump γ⁵ and Fourier multiplier with exact operator norm (m²+‖p‖²+ξ²)⁻¹ᐟ². On nonzero winding, the increment constraint supplies decay in one independent four-momentum, allowing simultaneous short segments and a summable exponential bound in |w|. At zero winding the frequency trace with at least six unit-polarized insertions is absolutely integrable in four carrier directions and one continuous normal frequency, uniformly in the transferred momenta. The actual normalized A4 ball characteristic decays at least as C/(1+‖p‖)² in dimension ≥3. This yields integrability of the massless photon with two independent shell incidences for every real readout of rank ≥3. Charged components, routed chord/tree photons, integrable external tests and the absolute winding sum are controlled jointly, in the hard continuum and on any full reciprocal four-lattice with its harmonic photon mode fixed. The finite winding partition allows zero winding exactly on the admitted components. Still outstanding is the operator-level identification of these routed winding integrands with the coefficients of the periodic charged determinant. The argument uses a sufficient Fourier decay power and does not establish the sharp dimension-dependent Bessel asymptotic.",
       "statement_change": "new"
     },
     {
@@ -3143,10 +3151,15 @@
         "UV.normal_hard_protected_graph",
         "UV.normal_schwartz_lattice_shifts",
         "UV.NormalChargedSector.lattice_endpoint_bound",
-        "UV.normal_lattice_protected_graph_integral"
+        "UV.normal_lattice_protected_graph_integral",
+        "UV.normal_continuum_tested_photons",
+        "UV.normal_torus_tested_photons",
+        "UV.normal_rank_continuum_graph",
+        "UV.normal_rank_torus_graph",
+        "UV.normal_graph_all_windings"
       ],
       "lean_projects": {},
-      "scope": "For m>0 and circle length L>0, an open chain of r+1 actual Dirac cover propagators and r unit-polarized vertices has absolute normal-displacement integral at most 2^(r+1)(4/m)^r exp(−m|z′−z+wL|/2). The proof includes r=0, coincident endpoints, the sign jump and every integer winding. In the full-rank isometric A4 continuum readout, arbitrary finite families of these chains, with L² carrier spinor packets, are jointly absolutely integrable with hard Maxwell photons and all independent normal windings are summable. The estimate is uniform in the carrier transfers and uses the fixed infrared convention on dependent photons. The same joint absolute bound now holds when the tested lines are sewn to nonzero-winding loops and zero-winding loops with at least six unit-polarized insertions. On any full reciprocal four-lattice, Schwartz endpoint spinors have uniformly bounded translated square sums. The mixed charged-graph integral and absolute winding sum hold with any integrable outer photon weight. Establishing the required bound for the actual general A4 readout on the torus remains open.",
+      "scope": "For m>0 and circle length L>0, an open chain of r+1 actual Dirac cover propagators and r unit-polarized vertices has absolute normal-displacement integral at most 2^(r+1)(4/m)^r exp(−m|z′−z+wL|/2). The proof includes r=0, coincident endpoints, the sign jump and every integer winding. For every readout of rank ≥3, arbitrary finite families of such lines with tested spinor endpoints can be sewn to protected closed charged loops and transverse photons. The joint absolute norm is integrable and the independent winding assignments are absolutely summable in the continuum and on all nonzero photon modes of any full reciprocal four-lattice. Continuum endpoints can be L²; the torus result proves a uniform square-sum estimate for translated samples of Schwartz endpoints. The remaining step is the identification of these open-chain winding integrals with the periodic interacting operator expansion.",
       "statement_change": "new"
     },
     {

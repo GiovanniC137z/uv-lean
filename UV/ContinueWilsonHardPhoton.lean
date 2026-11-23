@@ -33,7 +33,7 @@ def wilsonPhotonDensity (χ : OSFourSpace → ℂ) (p : OSFourSpace) : ℝ := �
 theorem wilson_photon_density_nonneg (χ : OSFourSpace → ℂ) (p : OSFourSpace) : 0 ≤ wilsonPhotonDensity χ p :=
   div_nonneg (sq_nonneg _) (sq_nonneg _)
 
-private theorem wilson_local_maxwell_integrable :
+theorem wilson_local_maxwell_integrable :
     IntegrableOn (fun p : OSFourSpace => (‖p‖^2)⁻¹) (closedBall 0 1) := by
   rw [←integrable_indicator_iff isClosed_closedBall.measurableSet]
   let f := (Iic (1:ℝ)).indicator (fun r : ℝ => (r^2)⁻¹)
