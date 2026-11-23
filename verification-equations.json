@@ -1072,5 +1072,81 @@
       "UV.SeamAngular.seam_character_dirichlet_energy",
       "UV.SeamAngular.seam_selection_identity"
     ]
+  },
+  "eq:update-three-source-blocks": {
+    "status": "partial",
+    "lean": [
+      "UV.osTransferSymbol_add",
+      "UV.osJointDensity_blocks",
+      "UV.osJointDensity_integrable",
+      "UV.osJointCovariance_positive"
+    ],
+    "scope": "For the flat, massive, commuting scalar block on Schwartz tests, the Euclidean covariance density is the square of the sum of the two transferred sources divided by the massive symbol. Expanding it gives the exact zero-, one- and two-transfer matrix entries and its integral is finite and nonnegative. The general Gaussian generating-functional equality for arbitrary operator blocks is outside this equation check."
+  },
+  "eq:update-joint-OS-witness": {
+    "status": "verified",
+    "lean": [
+      "UV.osMassiveResolvent_reflected_local",
+      "UV.osBumpLocal_support",
+      "UV.osReflectedBlock_null",
+      "UV.osReflectedBlock_mixed",
+      "UV.osReflectedBlock_mixed_pos",
+      "UV.SectorPlane.Plane.osReflectedBlock_chart"
+    ],
+    "scope": "For the explicit positive-GT compact bump, f is its actual massive differential derivative. The reflected diagonal of C₀ vanishes exactly. The complex mixed block equals the displayed real convolution integral and that integral is strictly positive. The two statements use the same f, mass, and positive depth and are transported together by the sector chart."
+  },
+  "eq:update-quartic-OS-slope": {
+    "status": "partial",
+    "lean": [
+      "UV.osCoincidence_radial",
+      "UV.osCoincidence_bound",
+      "UV.osPointSource_four_pairings",
+      "UV.osRawQuarticSlope_neg",
+      "UV.osRawQuartic_realization"
+    ],
+    "scope": "The actual fixed-depth kernels give the coefficient v_r/2 and a strictly negative switched integral. It equals the right derivative of the normalized expectation when the jointly measurable field realizes the stated massive Gaussian Wick law. Constructing that realization remains open."
+  },
+  "eq:polish-wick-measure-bound": {
+    "status": "partial",
+    "lean": [
+      "UV.osWick_quartic_density_lower",
+      "UV.osSpatialPotential_lower",
+      "UV.osWickQuartic_square_mean",
+      "UV.osWickQuartic_realization"
+    ],
+    "scope": "The pointwise quartic square yields the stated lower energy bound. In a jointly measurable Wick realization the potential is integrable and centered; its normalized Gibbs law exists and its partition function lies between one and the displayed exponential for every nonnegative coupling. The continuum realization is an input."
+  },
+  "eq:polish-wick-negative-slope": {
+    "status": "partial",
+    "lean": [
+      "UV.osGreenPoissonTransfer_fourier",
+      "UV.osPointSource_four_pairings",
+      "UV.osWickQuarticSlope_neg",
+      "UV.osWickQuartic_realization"
+    ],
+    "scope": "The four factors are the exact point contractions for the compact choice h=u. The two transferred local probes and two transferred Green probes are strictly positive. The claimed derivative follows with all product integrability proved for a jointly measurable fixed-depth Wick realization. Its continuum construction remains open."
+  },
+  "eq:constitutive-volume-uv": {
+    "status": "verified",
+    "lean": [
+      "UV.constitutiveBallVolume_value",
+      "UV.positive_swept_volume_linear",
+      "UV.constitutive_volume_law",
+      "UV.constitutive_volume_exponents"
+    ],
+    "scope": "Nonnegative additive increments of the actual three-dimensional Euclidean tangent-ball volume force linear dependence on proper length. Calibration at L>0 fixes its slope and gives a(s)^3=L²s, with a/L=(s/L)^(1/3) and a²/L²=(s/L)^(2/3) at positive depth."
+  },
+  "eq:constitutive-boundary-symbol-uv": {
+    "status": "verified",
+    "lean": [
+      "UV.normalMagneticSquare_gram",
+      "UV.normalMagneticSquare_transverse",
+      "UV.constitutiveExtension_energy",
+      "UV.constitutiveMagnetic_complex_action",
+      "UV.constitutiveCovariance_inverse",
+      "UV.constitutive_frequency_integral",
+      "UV.constitutiveFrequency_ir"
+    ],
+    "scope": "On a nonzero spatial mode p=k n with n a unit vector, the half-line harmonic energy of a complex amplitude is k|z|². The independent curvature components for both quadratures give the exact transverse oscillator with squared frequency k²+Lk³. Its inverse multiplies the full transverse projector, its frequency integral equals π divided by that frequency and is at most π/k. The limit of squared speed at zero is one."
   }
 }

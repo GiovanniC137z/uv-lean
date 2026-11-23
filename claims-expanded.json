@@ -1798,17 +1798,31 @@
       "title_tex": "A free joint-source GT-reflection obstruction",
       "source_line": 15634,
       "statement_tex": "Let $C_0=(-\\Delta_E+m^2)^{-1}$ on $\\RR^4$, $m>0$, and\n$P_r=e^{-r\\sqrt{-\\Delta_E}}$, $r>0$. The positive covariance\nmatrix \\eqref{eq:update-three-source-blocks} is not OS-positive on\nthe joint algebra in which both fields have independent positive-GT\nsmearings with the same reflection.",
-      "status": "partial",
+      "status": "verified",
       "lean": [
         "UV.stablePoissonKernel_characteristic",
         "UV.osPoissonTransfer_pos",
         "UV.osPoissonTransfer_continuous",
         "UV.os_local_reflected_integral_zero",
         "UV.os_poisson_mixed_reflected_pos",
-        "UV.os_joint_negative_reduced_covariance"
+        "UV.os_joint_negative_reduced_covariance",
+        "UV.osMassiveLocal_fourier",
+        "UV.osMassiveLocal_real",
+        "UV.osMassiveResolvent_local",
+        "UV.osMassiveResolvent_reflected_local",
+        "UV.osMassiveLocal_tsupport",
+        "UV.osPoissonTransfer_fourier",
+        "UV.osReflectedBlock_null",
+        "UV.osReflectedBlock_mixed",
+        "UV.osReflectedBlock_mixed_pos",
+        "UV.os_joint_massive_obstruction",
+        "UV.osJointDensity_integrable",
+        "UV.osJointCovariance_positive",
+        "UV.SectorPlane.Plane.os_joint_negative",
+        "UV.os_joint_positive_depth_mixture"
       ],
       "lean_projects": {},
-      "scope": "Checked the literal four-dimensional Poisson kernel multiplier, strict positivity and continuity of its convolution with nonnegative compactly supported probes, the null pairing from disjoint reflected supports after the inverse reduction, and an explicit negative joint quadratic norm. The massive differential operator's domain, its full resolvent cancellation and the integration-by-parts link from the manuscript's source covariance to the reduced witness remain open.",
+      "scope": "On the actual flat four-dimensional massive scalar covariance at m,r>0, a compact smooth bump and its local massive derivative are supported strictly in positive oriented GT. The unit-axis Laplacian gives the exact Fourier multiplier and its reflected Schwartz-core resolvent cancellation. The four Hermitian covariance entries give a null diagonal, a strictly positive mixed Poisson pairing and a negative real joint quadratic test. The ordinary Euclidean source matrix has a nonnegative integrable square density. Isometric transportation gives the same obstruction on either fixed sector-plane, and one pair of probes still works for every nonzero finite positive-depth law.",
       "statement_change": "new"
     },
     {
@@ -1825,10 +1839,18 @@
         "UV.osWick_unsubtracted_quartic_contractions",
         "UV.osWickRawQuartic_pair_mean",
         "UV.osSpatial_raw_quartic_insertion",
-        "UV.osSpatialPotential_negative_reflection"
+        "UV.osSpatialPotential_negative_reflection",
+        "UV.osQuarticCovariance_raw_null",
+        "UV.osWick_eighth_point",
+        "UV.osWick_raw_product_integrable",
+        "UV.osCoincidence_pos",
+        "UV.osCoincidence_bound",
+        "UV.osPointSource_four_pairings",
+        "UV.osRawQuarticSlope_neg",
+        "UV.osRawQuartic_realization"
       ],
       "lean_projects": {},
-      "scope": "Checked the normalized Gibbs law for a bounded-below potential, its right derivative at a null expectation, and the 12/24 coefficient in the exact local and spacetime-integrated quartic insertion under the Wick moment rule and absolute product integrability. A positive integrated insertion gives negativity for every sufficiently small positive coupling. The continuum Gaussian construction, derivation of its required joint moments and identification of its reflected probe pairings with the precise massive covariance are open.",
+      "scope": "For a jointly measurable free point field realizing the specified fixed-depth covariance and Gaussian Wick moments, the actual normalized quartic expectation has the displayed strictly negative right derivative and is negative for all sufficiently small positive couplings. The proof derives the spacetime product integrability from the eighth point moment, resolves the two massive local probes into the actual Poisson transfers, and proves 0 < v_r ≤ 1/(32π²r²). Construction of a jointly measurable continuum Gaussian field from this covariance and derivation of its Wick law remain open.",
       "statement_change": "new"
     },
     {
@@ -1850,10 +1872,17 @@
         "UV.osGibbsPartition_le",
         "UV.osGibbsMeasure_probability",
         "UV.osGibbsMeasure_integrable",
-        "UV.osSpatialPotential_negative_reflection"
+        "UV.osSpatialPotential_negative_reflection",
+        "UV.osQuarticCovariance_cross_null",
+        "UV.osWickQuadratic_L2",
+        "UV.osWickQuartic_square_mean",
+        "UV.osSpatialProduct_second_moments",
+        "UV.osPointSource_four_pairings",
+        "UV.osWickQuarticSlope_neg",
+        "UV.osWickQuartic_realization"
       ],
       "lean_projects": {},
-      "scope": "Checked the pointwise Wick lower bound, centering and partition estimates, preservation of integrable polynomial moments under the normalized tilt, the centered boundary free null norm and exact four-cross-contraction insertion under the Wick rule and Fubini hypotheses. The continuum Gaussian law, its joint integrability estimates and the precise positive Green/resolvent witness identifications are open.",
+      "scope": "For a jointly measurable Gaussian Wick realization of the concrete boundary and point slots, at each m,r>0 the Wick-ordered measure normalizes for every nonnegative coupling, obeys both partition bounds, and has the stated strictly negative right derivative on a centered quadratic witness. The proof derives its spacetime Fubini estimates, the exact point Wick variance I_r^4/24, and all four physical Poisson and massive Green pairings. The Gaussian continuum realization, its Wick law and extension to every boundary smearing in the covariance-form domain remain open.",
       "statement_change": "new"
     },
     {
@@ -2545,10 +2574,25 @@
       "title_tex": "Two optical curvature sources with explicit boundary weights",
       "source_line": 21401,
       "statement_tex": "Use the volume and displacement laws above, the constrained\nnormal measure, the quartic radial transfer and the onsite-relative\ncharged boundary state of\nCorollary~\\ref{cor:seam-optical-shifts-uv}.\nUse the four-arrow curvature pairing of the charged construction\nwith $U$ the measured spatial Wilson link and\n$V=-iv\\sum_i\\alpha_i\\partial_i K_a$, together with the\nonsite mass and time jet. Use either the ordinary boundary Maxwell weight or that same\nweight with the positive magnetic normal energy giving\n\\eqref{eq:constitutive-boundary-symbol-uv}.\nOn the finite slab and spatial torus its complete bare charged\nand electromagnetic graph coefficients satisfy the joint\nall-electric-orders bound of that corollary, at arbitrary finite\nhopping strength.",
-      "status": "pending",
-      "lean": [],
+      "status": "partial",
+      "lean": [
+        "UV.constitutive_volume_law",
+        "UV.constitutive_volume_exponents",
+        "UV.constitutiveExtension_sew",
+        "UV.constitutiveExtension_energy",
+        "UV.constitutiveMagnetic_complex_action",
+        "UV.constitutiveCovariance_inverse",
+        "UV.constitutive_frequency_integral",
+        "UV.constitutiveFrequency_ir",
+        "UV.opticalDirichletGreen_jump",
+        "UV.opticalDirichletGreen_ode",
+        "UV.opticalRect_transverse",
+        "UV.opticalRect_shell_family",
+        "UV.opticalRect_shell_variance",
+        "UV.opticalRect_white_time_variance"
+      ],
       "lean_projects": {},
-      "scope": "Not yet formalized.",
+      "scope": "For the free electromagnetic part, the positive additive tangent-ball volume and the branch calibration give the cubic sampling law. The complex harmonic extension sews and has exactly the Dirichlet energy k|z|². All three independent magnetic curvatures produce the stated transverse boundary symbol, frequency majorant and infrared speed limit. The adjacent independent-normal comparison has a separately proved Dirichlet Green function and divergent variance for the complete closed rectangular Wilson current. The full charged four-arrow determinant, normal trajectory law and joint graph bounds at finite hopping remain open for this source.",
       "statement_change": "new"
     },
     {
@@ -9613,6 +9657,18 @@
       ]
     },
     {
+      "label": "eq:update-three-source-blocks",
+      "source_line": 12223,
+      "status": "partial",
+      "lean": [
+        "UV.osTransferSymbol_add",
+        "UV.osJointDensity_blocks",
+        "UV.osJointDensity_integrable",
+        "UV.osJointCovariance_positive"
+      ],
+      "scope": "For the flat, massive, commuting scalar block on Schwartz tests, the Euclidean covariance density is the square of the sum of the two transferred sources divided by the massive symbol. Expanding it gives the exact zero-, one- and two-transfer matrix entries and its integral is finite and nonnegative. The general Gaussian generating-functional equality for arbitrary operator blocks is outside this equation check."
+    },
+    {
       "label": "eq:signs",
       "source_line": 12485,
       "status": "verified",
@@ -9849,6 +9905,57 @@
       "lean": [
         "UV.ContinuationGraph.joint_inverseMoment_holder"
       ]
+    },
+    {
+      "label": "eq:update-joint-OS-witness",
+      "source_line": 15651,
+      "status": "verified",
+      "lean": [
+        "UV.osMassiveResolvent_reflected_local",
+        "UV.osBumpLocal_support",
+        "UV.osReflectedBlock_null",
+        "UV.osReflectedBlock_mixed",
+        "UV.osReflectedBlock_mixed_pos",
+        "UV.SectorPlane.Plane.osReflectedBlock_chart"
+      ],
+      "scope": "For the explicit positive-GT compact bump, f is its actual massive differential derivative. The reflected diagonal of C₀ vanishes exactly. The complex mixed block equals the displayed real convolution integral and that integral is strictly positive. The two statements use the same f, mass, and positive depth and are transported together by the sector chart."
+    },
+    {
+      "label": "eq:update-quartic-OS-slope",
+      "source_line": 15693,
+      "status": "partial",
+      "lean": [
+        "UV.osCoincidence_radial",
+        "UV.osCoincidence_bound",
+        "UV.osPointSource_four_pairings",
+        "UV.osRawQuarticSlope_neg",
+        "UV.osRawQuartic_realization"
+      ],
+      "scope": "The actual fixed-depth kernels give the coefficient v_r/2 and a strictly negative switched integral. It equals the right derivative of the normalized expectation when the jointly measurable field realizes the stated massive Gaussian Wick law. Constructing that realization remains open."
+    },
+    {
+      "label": "eq:polish-wick-measure-bound",
+      "source_line": 15741,
+      "status": "partial",
+      "lean": [
+        "UV.osWick_quartic_density_lower",
+        "UV.osSpatialPotential_lower",
+        "UV.osWickQuartic_square_mean",
+        "UV.osWickQuartic_realization"
+      ],
+      "scope": "The pointwise quartic square yields the stated lower energy bound. In a jointly measurable Wick realization the potential is integrable and centered; its normalized Gibbs law exists and its partition function lies between one and the displayed exponential for every nonnegative coupling. The continuum realization is an input."
+    },
+    {
+      "label": "eq:polish-wick-negative-slope",
+      "source_line": 15771,
+      "status": "partial",
+      "lean": [
+        "UV.osGreenPoissonTransfer_fourier",
+        "UV.osPointSource_four_pairings",
+        "UV.osWickQuarticSlope_neg",
+        "UV.osWickQuartic_realization"
+      ],
+      "scope": "The four factors are the exact point contractions for the compact choice h=u. The two transferred local probes and two transferred Green probes are strictly positive. The claimed derivative follows with all product integrability proved for a jointly measurable fixed-depth Wick realization. Its continuum construction remains open."
     },
     {
       "label": "eq:update-spectral-product-budget",
@@ -10285,6 +10392,33 @@
         "UV.SeamAngular.seam_character_dirichlet_energy",
         "UV.SeamAngular.seam_selection_identity"
       ]
+    },
+    {
+      "label": "eq:constitutive-volume-uv",
+      "source_line": 21320,
+      "status": "verified",
+      "lean": [
+        "UV.constitutiveBallVolume_value",
+        "UV.positive_swept_volume_linear",
+        "UV.constitutive_volume_law",
+        "UV.constitutive_volume_exponents"
+      ],
+      "scope": "Nonnegative additive increments of the actual three-dimensional Euclidean tangent-ball volume force linear dependence on proper length. Calibration at L>0 fixes its slope and gives a(s)^3=L²s, with a/L=(s/L)^(1/3) and a²/L²=(s/L)^(2/3) at positive depth."
+    },
+    {
+      "label": "eq:constitutive-boundary-symbol-uv",
+      "source_line": 21394,
+      "status": "verified",
+      "lean": [
+        "UV.normalMagneticSquare_gram",
+        "UV.normalMagneticSquare_transverse",
+        "UV.constitutiveExtension_energy",
+        "UV.constitutiveMagnetic_complex_action",
+        "UV.constitutiveCovariance_inverse",
+        "UV.constitutive_frequency_integral",
+        "UV.constitutiveFrequency_ir"
+      ],
+      "scope": "On a nonzero spatial mode p=k n with n a unit vector, the half-line harmonic energy of a complex amplitude is k|z|². The independent curvature components for both quadratures give the exact transverse oscillator with squared frequency k²+Lk³. Its inverse multiplies the full transverse projector, its frequency integral equals π divided by that frequency and is at most π/k. The limit of squared speed at zero is one."
     },
     {
       "label": "eq:monomial-doublet-uv",
