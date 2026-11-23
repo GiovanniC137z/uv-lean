@@ -6,7 +6,7 @@ This inventory covers labeled theorem-like environments in the expanded upload. 
 
 A **partial** entry means only the stated component is checked. It does not certify the complete source result.
 
-203 environments: 3 assumption, 1 definition, 24 partial, 96 pending, 79 verified.
+203 environments: 3 assumption, 1 definition, 24 partial, 95 pending, 80 verified.
 
 | Source label | Result | Status | Checked scope and remaining work |
 | --- | --- | --- | --- |
@@ -167,7 +167,7 @@ A **partial** entry means only the stated component is checked. It does not cert
 | [cor:nativefull-open-uv](../paper/expanded/UV.tex#L26734) | Open charged paths | pending | New statement. Not yet formalized. |
 | [prop:nativefull-alllegs-uv](../paper/expanded/UV.tex#L26826) | Unrestricted charged circulations and a finite photon obstruction | pending | New statement. Not yet formalized. |
 | [prop:covhop-photon-uv](../paper/expanded/UV.tex#L27000) | Ultraviolet convergence and the perturbative photon pole | pending | New statement. Not yet formalized. |
-| [prop:upgrade-charged-poles-uv](../paper/expanded/UV.tex#L27111) | A positive and a negative charged residue | pending | New statement. Not yet formalized. |
+| [prop:upgrade-charged-poles-uv](../paper/expanded/UV.tex#L27111) | A positive and a negative charged residue | verified | New statement. For the zero-background Wilson hop at zero spatial momentum, the independent normalized A4 ball marks and every isometric four-coordinate readout give the symmetric absolutely continuous time marginal and its positive interior mass. Reflection removes the three spatial Clifford terms from the integrated matrix. At λ=1/4 the actual time-ordered inverse has precisely two positive rest energies with opposite coefficients in the convention Z/(M−z). The upper matrix weight is negative on a unit spinor. Each spin block has infinitely many distinct nonreal poles where its norm diverges. The proof derives the entire-function obstruction from exponential type and two-sided Fourier limits. Regular contacts preserve the real coefficients. Both characters of the sector's vectorial boundary yield the same intrinsic weights. |
 | [prop:ward-normal-graphs-uv](../paper/expanded/UV.tex#L27379) | Convergence of complete normal heat vertices | pending | New statement. Not yet formalized. |
 | [prop:parity-optical-log-uv](../paper/expanded/UV.tex#L28138) | Optical lower bound on the bare charge logarithm | pending | New statement. Not yet formalized. |
 | [prop:nativefull-sewn-flags-uv](../paper/expanded/UV.tex#L42003) | A geometric moment test on each nested set of hard lines | pending | New statement. Not yet formalized. |

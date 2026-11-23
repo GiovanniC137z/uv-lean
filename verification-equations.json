@@ -1148,5 +1148,16 @@
       "UV.constitutiveFrequency_ir"
     ],
     "scope": "On a nonzero spatial mode p=k n with n a unit vector, the half-line harmonic energy of a complex amplitude is k|z|². The independent curvature components for both quadratures give the exact transverse oscillator with squared frequency k²+Lk³. Its inverse multiplies the full transverse projector, its frequency integral equals π divided by that frequency and is at most π/k. The limit of squared speed at zero is one."
+  },
+  "eq:covhop-source-uv": {
+    "status": "partial",
+    "scope": "At zero photon background and zero spatial momentum, the full two-mark displacement integral with I−γ·s/(2L), the stated hopping weight and all sixteen matrix entries reduces to the two time-spin blocks. Lean evaluates the actual inverse times γ_parallel away from the poles. Dependence on a general background connection, Wilson path variations and the interacting determinant remain open for this equation.",
+    "lean": [
+      "UV.wilson_readout_orthogonal",
+      "UV.wilson_spatial_spin_zero",
+      "UV.wilson_shell_hop_matrix",
+      "UV.wilson_shell_time_ordered_endpoint",
+      "UV.wilson_shell_charged_spectrum"
+    ]
   }
 }

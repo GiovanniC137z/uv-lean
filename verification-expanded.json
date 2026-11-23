@@ -2025,5 +2025,30 @@
       "UV.opticalRect_white_time_variance"
     ],
     "scope": "For the free electromagnetic part, the positive additive tangent-ball volume and the branch calibration give the cubic sampling law. The complex harmonic extension sews and has exactly the Dirichlet energy k|z|². All three independent magnetic curvatures produce the stated transverse boundary symbol, frequency majorant and infrared speed limit. The adjacent independent-normal comparison has a separately proved Dirichlet Green function and divergent variance for the complete closed rectangular Wilson current. The full charged four-arrow determinant, normal trajectory law and joint graph bounds at finite hopping remain open for this source."
+  },
+  "prop:upgrade-charged-poles-uv": {
+    "status": "verified",
+    "lean": [
+      "UV.wilson_ball_isometry",
+      "UV.wilson_marginal_band",
+      "UV.wilson_marginal_interval_pos",
+      "UV.wilson_marginal_absolutely_continuous",
+      "UV.wilson_spatial_spin_zero",
+      "UV.wilson_shell_hop_matrix",
+      "UV.wilson_shell_time_ordered_endpoint",
+      "UV.WilsonRestLaw.two_rest_masses",
+      "UV.WilsonRestLaw.real_root_derivative_nonzero",
+      "UV.WilsonRestLaw.rest_weight_limit",
+      "UV.WilsonRestLaw.rest_weight_regular_contact",
+      "UV.WilsonRestLaw.rest_denominator_growth",
+      "UV.WilsonRestLaw.rest_denominator_imaginary_limits",
+      "UV.zero_free_exponential_type",
+      "UV.exponential_type_infinite_zeros_of_frequency_limit",
+      "UV.WilsonRestLaw.infinitely_many_nonreal_poles",
+      "UV.wilson_shell_charged_spectrum",
+      "UV.wilson_shell_negative_matrix_atom",
+      "UV.SectorPlane.Plane.charged_rest_vectorial_weights"
+    ],
+    "scope": "For the zero-background Wilson hop at zero spatial momentum, the independent normalized A4 ball marks and every isometric four-coordinate readout give the symmetric absolutely continuous time marginal and its positive interior mass. Reflection removes the three spatial Clifford terms from the integrated matrix. At λ=1/4 the actual time-ordered inverse has precisely two positive rest energies with opposite coefficients in the convention Z/(M−z). The upper matrix weight is negative on a unit spinor. Each spin block has infinitely many distinct nonreal poles where its norm diverges. The proof derives the entire-function obstruction from exponential type and two-sided Fourier limits. Regular contacts preserve the real coefficients. Both characters of the sector's vectorial boundary yield the same intrinsic weights."
   }
 }

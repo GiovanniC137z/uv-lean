@@ -3137,10 +3137,30 @@
       "title_tex": "A positive and a negative charged residue",
       "source_line": 27111,
       "statement_tex": "At positive rest energy the time-ordered endpoint\n$D_0^{-1}\\gamma_\\parallel$ has two distinct simple poles\n$M_+<M_-$ with weights of opposite signs. Each time-spin block\nalso has infinitely many nonreal poles.",
-      "status": "pending",
-      "lean": [],
+      "status": "verified",
+      "lean": [
+        "UV.wilson_ball_isometry",
+        "UV.wilson_marginal_band",
+        "UV.wilson_marginal_interval_pos",
+        "UV.wilson_marginal_absolutely_continuous",
+        "UV.wilson_spatial_spin_zero",
+        "UV.wilson_shell_hop_matrix",
+        "UV.wilson_shell_time_ordered_endpoint",
+        "UV.WilsonRestLaw.two_rest_masses",
+        "UV.WilsonRestLaw.real_root_derivative_nonzero",
+        "UV.WilsonRestLaw.rest_weight_limit",
+        "UV.WilsonRestLaw.rest_weight_regular_contact",
+        "UV.WilsonRestLaw.rest_denominator_growth",
+        "UV.WilsonRestLaw.rest_denominator_imaginary_limits",
+        "UV.zero_free_exponential_type",
+        "UV.exponential_type_infinite_zeros_of_frequency_limit",
+        "UV.WilsonRestLaw.infinitely_many_nonreal_poles",
+        "UV.wilson_shell_charged_spectrum",
+        "UV.wilson_shell_negative_matrix_atom",
+        "UV.SectorPlane.Plane.charged_rest_vectorial_weights"
+      ],
       "lean_projects": {},
-      "scope": "Not yet formalized.",
+      "scope": "For the zero-background Wilson hop at zero spatial momentum, the independent normalized A4 ball marks and every isometric four-coordinate readout give the symmetric absolutely continuous time marginal and its positive interior mass. Reflection removes the three spatial Clifford terms from the integrated matrix. At λ=1/4 the actual time-ordered inverse has precisely two positive rest energies with opposite coefficients in the convention Z/(M−z). The upper matrix weight is negative on a unit spinor. Each spin block has infinitely many distinct nonreal poles where its norm diverges. The proof derives the entire-function obstruction from exponential type and two-sided Fourier limits. Regular contacts preserve the real coefficients. Both characters of the sector's vectorial boundary yield the same intrinsic weights.",
       "statement_change": "new"
     },
     {
@@ -10419,6 +10439,19 @@
         "UV.constitutiveFrequency_ir"
       ],
       "scope": "On a nonzero spatial mode p=k n with n a unit vector, the half-line harmonic energy of a complex amplitude is k|z|². The independent curvature components for both quadratures give the exact transverse oscillator with squared frequency k²+Lk³. Its inverse multiplies the full transverse projector, its frequency integral equals π divided by that frequency and is at most π/k. The limit of squared speed at zero is one."
+    },
+    {
+      "label": "eq:covhop-source-uv",
+      "source_line": 26981,
+      "status": "partial",
+      "scope": "At zero photon background and zero spatial momentum, the full two-mark displacement integral with I−γ·s/(2L), the stated hopping weight and all sixteen matrix entries reduces to the two time-spin blocks. Lean evaluates the actual inverse times γ_parallel away from the poles. Dependence on a general background connection, Wilson path variations and the interacting determinant remain open for this equation.",
+      "lean": [
+        "UV.wilson_readout_orthogonal",
+        "UV.wilson_spatial_spin_zero",
+        "UV.wilson_shell_hop_matrix",
+        "UV.wilson_shell_time_ordered_endpoint",
+        "UV.wilson_shell_charged_spectrum"
+      ]
     },
     {
       "label": "eq:monomial-doublet-uv",

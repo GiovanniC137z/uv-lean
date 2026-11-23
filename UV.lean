@@ -703,3 +703,17 @@ import UV.ContinueOSWickRealization
 import UV.ContinueOpticalDirichlet
 import UV.ContinueOpticalNormalVariance
 import UV.ContinueOpticalRectangle
+import UV.ContinueEntireFrequencyZeros
+import UV.ContinueEntireRootDivision
+import UV.ContinueExponentialType
+import UV.ContinueWilsonChargedPole
+import UV.ContinueWilsonChargedRim
+import UV.ContinueWilsonNonrealPoles
+import UV.ContinueWilsonRestRoots
+import UV.ContinueWilsonRestTransform
+import UV.ContinueWilsonShellEndpoint
+import UV.ContinueWilsonShellLaw
+import UV.ContinueWilsonShellSpin
+import UV.ContinueWilsonSpectralWeight
+import UV.ContinueWilsonSpinMatrix
+import UV.ContinueWilsonTimeSpin
