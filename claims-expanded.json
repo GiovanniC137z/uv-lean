@@ -1,6 +1,6 @@
 {
   "source": "paper/expanded/UV.tex",
-  "sha256": "58c593e0f95d55f881f34a4149e72f2b2a27f113d66f5fe1b57e644f475d785a",
+  "sha256": "7fbb35caa918db933d18415bcaf706a97574122dcdb4402223f5abad6eeda011",
   "project_pins": {
     "jordan": {
       "toolchain": "leanprover/lean4:v4.32.2",
@@ -341,10 +341,23 @@
       "title_tex": "Retained loop scores and simultaneous width limits",
       "source_line": 3504,
       "statement_tex": "All loop directions retain Gaussian suppression precisely when\n$\\operatorname{rank}M=c+L$. At that rank, writing $m=c+L$, one has\n\\begin{equation}\n K_0(t)=(2\\pi)^{-2m}B_M(t)^{-2}.\n \\label{eq:physical-uv-retained-delta}\n\\end{equation}\nIf the rank is smaller, $K_0(t)=\\infty$. For full row rank suppose\nthe remaining positive weight on $(0,1]^n$ is bounded above and\nbelow by constant multiples of\n$\\prod_e t_e^{\\beta_e-1}\\,\\mathrm dt_e$. This weight includes the\nremaining vacuum and boundary densities of the coefficient under\ntest. For $S\\subseteq\\{1,\\ldots,n\\}$ put\n\\[\n \\begin{aligned}\n d_S&=m-\\operatorname{rank}M_{S^c},\\\\\n a_S&=\\operatorname{rank}M_{S^c}-\\operatorname{rank}C_{S^c},\n \\end{aligned}\n\\]\nwith the subscripts retaining columns. The integrated $K_h$ is\nfinite if and only if every nonempty $S$ satisfies\n\\begin{equation}\n \\sum_{e\\in S}\\beta_e>2d_S+h\\,\\mathbf 1_{\\{a_S<L\\}} .\n \\label{eq:physical-uv-retained-faces}\n\\end{equation}\nAn upper bound by the stated weight suffices for convergence under\nthese inequalities.",
-      "status": "pending",
-      "lean": [],
+      "status": "verified",
+      "lean": [
+        "UV.retainedSchur_posDef_iff_rank",
+        "UV.retainedSchur_isLeast_residual",
+        "UV.retainedScore_shear_onSeam",
+        "UV.retainedK0_integral_sewn",
+        "UV.retainedK0_eq",
+        "UV.retainedK0_eq_top",
+        "UV.retainedSchur_trace_inv_cofactor",
+        "UV.retainedK_integral_sewn",
+        "UV.retainedK_comparison",
+        "UV.retainedCofactorWidthDensity_finite_iff_faces",
+        "UV.retainedK_widthIntegral_finite_iff_faces",
+        "UV.retainedK_widthIntegral_finite_of_upper"
+      ],
       "lean_projects": {},
-      "scope": "Not yet formalized.",
+      "scope": "On the manuscript's fixed Gaussian model with independent seam rows, independent four-component displacements, zero external shift, and at least one loop, derives the literal seam Fourier coefficient and the full-row-rank iff for residual Gaussian suppression. The normalized unweighted mass has the stated determinant constant or is infinite at deficient rank. The actual norm-weighted momentum mass has uniform two-sided cofactor comparisons for every real h≥0. Cauchy–Binet, the greedy rank counts, and integration of the ordered width ratios give the necessary and sufficient strict inequalities on all nonempty width sets under two-sided density comparisons, including divergence at equality. The upper-only estimate implies convergence.",
       "statement_change": "new"
     },
     {
@@ -1061,10 +1074,17 @@
       "title_tex": "A common-depth obstruction after one-loop matching",
       "source_line": 9974,
       "statement_tex": "Suppose $0<r<1$, $\\sigma^2=\\kappa r^\\alpha$ with $\\kappa,\\alpha>0$,\nand $\\nu_0$ has all inverse moments and charges every interval\n$(0,\\delta)$, $0<\\delta<1$. Let $k_r^0$ be the continuum soft\nquadratic coefficient at this depth, namely the $H_m(\\sigma)$ above\ndivided by $e^2$, with the additional factor $z_m^2$ if used.\nWith $w=(1,-3,3,-1)$ the exact fourth-order coefficients satisfy\n\\begin{equation}\n \\lim_{R\\to\\infty}\\frac1{R^2}\n \\sum_{j=1}^4 w_j [e^4]\\Pi_{22}(j e_1/R)\n  =\\frac{25}{48}\\operatorname{Var}_0(k_r^0)>0 .\n \\label{eq:spec-uv-soft-variance}\n\\end{equation}\nIn particular tuning the mass to $\\langle k_r^0\\rangle_0=0$ still\nleaves an unbounded sequence of proper fourth-order soft responses.",
-      "status": "pending",
-      "lean": [],
+      "status": "partial",
+      "lean": [
+        "UV.RelativeSoft.markedFourthTraceLog_ordered_partitions",
+        "UV.RelativeSoft.markedFourthTraceLog_eq_finiteLog",
+        "UV.RelativeSoft.softFourth_from_common_vacuum",
+        "UV.RelativeSoft.softRay_third_difference_of_contDiff",
+        "UV.RelativeSoft.commonDepthContinuumCoeff_tip",
+        "UV.RelativeSoft.SoftVarianceData.commonDepthSoftVariance_explicit_limit"
+      ],
       "lean_projects": {},
-      "scope": "Not yet formalized.",
+      "scope": "Checks the exact ordered four-mark trace-log expansion, ordinary normalization and inversion from the common-vacuum Wick coefficients, and the third finite difference on actual transverse sector-plane unit directions. If the stated differentiated marked-kernel bounds and charged Riemann convergence supply the remainder hypotheses, the rescaled fourth-order sequence tends to 25/48 times the variance. For the explicit Gaussian width squared κr^α with normalized depth law charging every tip interval and inverse moments, the actual continuum soft coefficient has strictly positive variance (including a nonzero optional z_m² factor) and gives the unbounded sequence under the same remainder hypotheses. Establishing the finite-volume source identification and the required kernel and Riemann estimates is open.",
       "statement_change": "new"
     },
     {
@@ -3229,10 +3249,15 @@
         "UV.ContinueRigidThreshold.rigidThreshold_pos",
         "UV.ContinueRigidThreshold.rigidThreshold_at_rest",
         "UV.ContinueRigidThreshold.rigidArctanhRatio_rest_limit",
-        "UV.ContinueRigidThreshold.rigidThreshold_rest_limit"
+        "UV.ContinueRigidThreshold.rigidThreshold_rest_limit",
+        "UV.ContinueRigidLaw.angularWeight_nonneg",
+        "UV.ContinueRigidLaw.laplaceTransform_angularLaw",
+        "UV.ContinueRigidLaw.emittedEnergyLaw_absolutelyContinuous",
+        "UV.ContinueRigidLaw.emittedEnergyLaw_noAtom",
+        "UV.ContinueRigidLaw.angularLaw_density_edge"
       ],
       "lean_projects": {},
-      "scope": "Using the normalized axial measure dz/2 on [−1,1], proves the symmetrized Coulomb-minus-transverse integrand and its exact average (1−u²) arctanh(u)/u for 0≤u<1. With the full factor 4π the occupation integral gives the stated α. The scalar threshold expression is strictly positive for every real e under E_c>0 and a>0. Both its exact value at u=0 and its continuous resting limit are checked. Identifying these scalar reductions with the full sphere pushforward and the Fock Hamiltonian, deriving the constant C, and identifying the neutral and charged spectral laws remain open.",
+      "scope": "Derives the scalar threshold and resting limit and the exact occupation factor using the normalized axial measure. On the true spatial unit sphere constructs the manuscript's nonnegative angular weight, proves the prescribed emitted-energy Laplace formula for its positive weighted mass, and constructs the normalized absolutely continuous gamma–compound-Poisson law and its near-threshold equivalent with the exact angular coefficient C. The Fock Hamiltonian and vacuum identification, neutral photon spectral atom, and reduction of the actual solid-angle integral to the closed axial expressions are open.",
       "statement_change": "new"
     },
     {
@@ -9160,6 +9185,30 @@
       ]
     },
     {
+      "label": "eq:physical-uv-retained-delta",
+      "source_line": 3510,
+      "status": "verified",
+      "scope": "Integrates the actual unnormalized seam and the absolute sewn score coefficient in four Cartesian slots, obtaining the exact B_M-dependent normalization at full row rank. A rank loss gives an infinite mass.",
+      "lean": [
+        "UV.retainedSewnFourier_eq",
+        "UV.retainedK0_integral_sewn",
+        "UV.retainedK0_eq",
+        "UV.retainedK0_eq_top"
+      ]
+    },
+    {
+      "label": "eq:physical-uv-retained-faces",
+      "source_line": 3528,
+      "status": "verified",
+      "scope": "For the actual weighted Gaussian score mass under the stated rank and width-density hypotheses, checks the simultaneous width inequalities for every nonempty set, including divergence at equality and upper-only sufficiency.",
+      "lean": [
+        "UV.retainedK_comparison",
+        "UV.retainedCofactorWidthDensity_finite_iff_faces",
+        "UV.retainedK_widthIntegral_finite_iff_faces",
+        "UV.retainedK_widthIntegral_finite_of_upper"
+      ]
+    },
+    {
       "label": "eq:uvpeC-sector-action",
       "source_line": 3910,
       "status": "verified",
@@ -9256,6 +9305,37 @@
         "UV.RootMagnetic.root_spin_ghost_trace",
         "UV.RootMagnetic.root_landau_heat_difference",
         "UV.RootMagnetic.root_heat_quadratic_coefficient"
+      ]
+    },
+    {
+      "label": "eq:spec-uv-four-chord",
+      "source_line": 9927,
+      "status": "partial",
+      "scope": "The square-free coefficient of the finite noncommutative trace log is the exact signed sum over ordered partitions, with factorial weights and a single fourth-order contact. The measured chord kernel derivatives and the continuum limit are independent inputs.",
+      "lean": [
+        "UV.RelativeSoft.orderedMarkedPartitions_iff",
+        "UV.RelativeSoft.markedFourth_single_block",
+        "UV.RelativeSoft.markedFourthTraceLog_ordered_partitions",
+        "UV.RelativeSoft.markedFourthTraceLog_eq_finiteLog"
+      ]
+    },
+    {
+      "label": "eq:spec-uv-four-photon",
+      "source_line": 9955,
+      "status": "partial",
+      "scope": "From the conditional second and fourth Wick coefficients, actual common-vacuum normalization and scalar inversion give the stated fourth-order coefficient and covariance decomposition. The conditional Wick coefficients of the physical source remain inputs.",
+      "lean": [
+        "UV.RelativeSoft.softFourth_from_common_vacuum"
+      ]
+    },
+    {
+      "label": "eq:spec-uv-soft-variance",
+      "source_line": 9986,
+      "status": "partial",
+      "scope": "Under explicit finite-volume error and convergence hypotheses for the kernel terms, proves the exact 25/48 limit and strict positivity for the actual normalized soft shape and the specified depth laws. Deriving those hypotheses from the charged determinant remains open.",
+      "lean": [
+        "UV.RelativeSoft.commonDepthContinuumCoeff_tip",
+        "UV.RelativeSoft.SoftVarianceData.commonDepthSoftVariance_explicit_limit"
       ]
     },
     {
@@ -10011,7 +10091,7 @@
       "label": "eq:uv-rigid-edge-constants",
       "source_line": 44303,
       "status": "partial",
-      "scope": "Using the normalized axial measure dz/2 on [−1,1], proves the symmetrized Coulomb-minus-transverse integrand and its exact average (1−u²) arctanh(u)/u for 0≤u<1. With the full factor 4π the occupation integral gives the stated α. The scalar threshold expression is strictly positive for every real e under E_c>0 and a>0. Both its exact value at u=0 and its continuous resting limit are checked. Identifying these scalar reductions with the full sphere pushforward and the Fock Hamiltonian, deriving the constant C, and identifying the neutral and charged spectral laws remain open.",
+      "scope": "Checks the normalized axial formulas for the scalar threshold and occupation exponent. Uses actual spatial unit directions to construct w and prove the exact angular edge coefficient of the scalar emitted-energy law. Identification with the full Fock Hamiltonian and derivation of the closed-form solid-angle integrals remain open.",
       "lean": [
         "UV.ContinueRigidThreshold.normalizedAxialMeasure_probability",
         "UV.ContinueRigidThreshold.axial_energy_symmetrization",
@@ -10022,7 +10102,20 @@
         "UV.ContinueRigidThreshold.rigidThreshold_pos",
         "UV.ContinueRigidThreshold.rigidThreshold_at_rest",
         "UV.ContinueRigidThreshold.rigidArctanhRatio_rest_limit",
-        "UV.ContinueRigidThreshold.rigidThreshold_rest_limit"
+        "UV.ContinueRigidThreshold.rigidThreshold_rest_limit",
+        "UV.ContinueRigidLaw.angularWeight_nonneg",
+        "UV.ContinueRigidLaw.doppler_edgeCoefficient",
+        "UV.ContinueRigidLaw.angularLaw_density_edge"
+      ]
+    },
+    {
+      "label": "eq:uv-rigid-exact-laplace",
+      "source_line": 44341,
+      "status": "partial",
+      "scope": "For the literal weighted spatial unit-sphere law with positive angular mass, proves the full Laplace factor of the emitted energy via an explicit normalized gamma–compound-Poisson measure. Derivation of this factor from the charged vacuum and the Hamiltonian is open.",
+      "lean": [
+        "UV.ContinueRigidLaw.laplaceTransform_angularLaw",
+        "UV.ContinueRigidLaw.probability_emittedEnergyLaw"
       ]
     },
     {

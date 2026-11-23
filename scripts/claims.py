@@ -10,7 +10,7 @@ import tomllib
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE_SHA = "7e9a9aca1a1f2d757ce99614c50e9a05662ca05c969253af29cb3c40d2d9a340"
-EXPANDED_SHA = "58c593e0f95d55f881f34a4149e72f2b2a27f113d66f5fe1b57e644f475d785a"
+EXPANDED_SHA = "7fbb35caa918db933d18415bcaf706a97574122dcdb4402223f5abad6eeda011"
 PROJECT_DIRS = {"jordan": ROOT / "jordan"}
 PROJECT_PINS = {
     "jordan": {

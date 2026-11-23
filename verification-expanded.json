@@ -1770,7 +1770,7 @@
   },
   "prop:uv-rigid-spectral-atom": {
     "status": "partial",
-    "scope": "Using the normalized axial measure dz/2 on [−1,1], proves the symmetrized Coulomb-minus-transverse integrand and its exact average (1−u²) arctanh(u)/u for 0≤u<1. With the full factor 4π the occupation integral gives the stated α. The scalar threshold expression is strictly positive for every real e under E_c>0 and a>0. Both its exact value at u=0 and its continuous resting limit are checked. Identifying these scalar reductions with the full sphere pushforward and the Fock Hamiltonian, deriving the constant C, and identifying the neutral and charged spectral laws remain open.",
+    "scope": "Derives the scalar threshold and resting limit and the exact occupation factor using the normalized axial measure. On the true spatial unit sphere constructs the manuscript's nonnegative angular weight, proves the prescribed emitted-energy Laplace formula for its positive weighted mass, and constructs the normalized absolutely continuous gamma–compound-Poisson law and its near-threshold equivalent with the exact angular coefficient C. The Fock Hamiltonian and vacuum identification, neutral photon spectral atom, and reduction of the actual solid-angle integral to the closed axial expressions are open.",
     "lean": [
       "UV.ContinueRigidThreshold.normalizedAxialMeasure_probability",
       "UV.ContinueRigidThreshold.axial_energy_symmetrization",
@@ -1781,7 +1781,42 @@
       "UV.ContinueRigidThreshold.rigidThreshold_pos",
       "UV.ContinueRigidThreshold.rigidThreshold_at_rest",
       "UV.ContinueRigidThreshold.rigidArctanhRatio_rest_limit",
-      "UV.ContinueRigidThreshold.rigidThreshold_rest_limit"
+      "UV.ContinueRigidThreshold.rigidThreshold_rest_limit",
+      "UV.ContinueRigidLaw.angularWeight_nonneg",
+      "UV.ContinueRigidLaw.laplaceTransform_angularLaw",
+      "UV.ContinueRigidLaw.emittedEnergyLaw_absolutelyContinuous",
+      "UV.ContinueRigidLaw.emittedEnergyLaw_noAtom",
+      "UV.ContinueRigidLaw.angularLaw_density_edge"
+    ]
+  },
+  "prop:physical-uv-retained-minors": {
+    "status": "verified",
+    "scope": "On the manuscript's fixed Gaussian model with independent seam rows, independent four-component displacements, zero external shift, and at least one loop, derives the literal seam Fourier coefficient and the full-row-rank iff for residual Gaussian suppression. The normalized unweighted mass has the stated determinant constant or is infinite at deficient rank. The actual norm-weighted momentum mass has uniform two-sided cofactor comparisons for every real h≥0. Cauchy–Binet, the greedy rank counts, and integration of the ordered width ratios give the necessary and sufficient strict inequalities on all nonempty width sets under two-sided density comparisons, including divergence at equality. The upper-only estimate implies convergence.",
+    "lean": [
+      "UV.retainedSchur_posDef_iff_rank",
+      "UV.retainedSchur_isLeast_residual",
+      "UV.retainedScore_shear_onSeam",
+      "UV.retainedK0_integral_sewn",
+      "UV.retainedK0_eq",
+      "UV.retainedK0_eq_top",
+      "UV.retainedSchur_trace_inv_cofactor",
+      "UV.retainedK_integral_sewn",
+      "UV.retainedK_comparison",
+      "UV.retainedCofactorWidthDensity_finite_iff_faces",
+      "UV.retainedK_widthIntegral_finite_iff_faces",
+      "UV.retainedK_widthIntegral_finite_of_upper"
+    ]
+  },
+  "prop:spec-uv-soft-variance": {
+    "status": "partial",
+    "scope": "Checks the exact ordered four-mark trace-log expansion, ordinary normalization and inversion from the common-vacuum Wick coefficients, and the third finite difference on actual transverse sector-plane unit directions. If the stated differentiated marked-kernel bounds and charged Riemann convergence supply the remainder hypotheses, the rescaled fourth-order sequence tends to 25/48 times the variance. For the explicit Gaussian width squared κr^α with normalized depth law charging every tip interval and inverse moments, the actual continuum soft coefficient has strictly positive variance (including a nonzero optional z_m² factor) and gives the unbounded sequence under the same remainder hypotheses. Establishing the finite-volume source identification and the required kernel and Riemann estimates is open.",
+    "lean": [
+      "UV.RelativeSoft.markedFourthTraceLog_ordered_partitions",
+      "UV.RelativeSoft.markedFourthTraceLog_eq_finiteLog",
+      "UV.RelativeSoft.softFourth_from_common_vacuum",
+      "UV.RelativeSoft.softRay_third_difference_of_contDiff",
+      "UV.RelativeSoft.commonDepthContinuumCoeff_tip",
+      "UV.RelativeSoft.SoftVarianceData.commonDepthSoftVariance_explicit_limit"
     ]
   }
 }
