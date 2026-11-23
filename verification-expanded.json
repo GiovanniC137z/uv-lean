@@ -2613,11 +2613,15 @@
       "UV.PairCurvature.physical_pair_current",
       "UV.PairCurvature.rawTransfer_integrable",
       "UV.PairCurvature.invariantMassSq_threshold",
+      "UV.PairCurvature.pair_boosted_spatial_phase_space",
+      "UV.PairCurvature.pair_invariant_mass_disintegration",
+      "UV.PairCurvature.contracted_pair_spin",
+      "UV.PairCurvature.pair_spin_spectral_disintegration",
       "UV.PairCurvature.spectral_tail_and_threshold",
       "UV.PairCurvature.ordered_pair_frequency",
       "UV.PairCurvature.complete_pair_two_source"
     ],
-    "scope": "The two physical massive energy projectors yield the Ward contraction and the signed curvature current. The original relative-momentum integral is absolutely integrable for each time ordering, with fixed spatial transfer. The center-of-mass density has the stated threshold and finite unsubtracted tail. Verifying the boost change of variables identifying the moving-frame integral with that density would complete the covariant identification."
+    "scope": "For the original massive energy projectors, Lean proves the Ward contraction and signed curvature current. An exact axial substitution along the unit vector of an orthonormal spatial frame gives the moving-frame two-particle Lebesgue measure. Its invariant-mass pushforward against every nonnegative measurable test has the stated threshold and Fourier-normalized scalar density, derived from the Lorentzian contraction of the actual spin projectors. The unsubtracted tail is finite for positive pair length, the original relative-momentum transfer is absolutely integrable for each ordering at fixed spatial transfer, and the spectral two-source comparison is quadratic at zero. The remaining identifications are the Lorentz action on the uncontracted spinor matrix element and the full tensor transfer from the differentiated action, including the exclusion of all other source terms."
   },
   "prop:carrier-reflect-uv": {
     "status": "partial",
@@ -2652,9 +2656,13 @@
       "UV.SewnFlags.ratioHeat_at_zero_displacement",
       "UV.SewnFlags.ratioHeat_negative",
       "UV.SewnFlags.ratioCost_log",
-      "UV.SewnFlags.one_le_displacementCost"
+      "UV.SewnFlags.one_le_displacementCost",
+      "UV.directionalWeightedSector_eq_prefix_product",
+      "UV.SewnFlags.ordered_joint_flag_moments",
+      "UV.SewnFlags.routing_face_four_coordinate_bound",
+      "UV.SewnFlags.ordered_routed_inverse_weight"
     ],
-    "scope": "On one Schwinger ratio, Lean checks the exact power test at zero displacement, the marginal logarithmic upper bound, and the exact Gamma envelope for strictly negative exponent. The endpoint cost preserves infinity at zero displacement. The joint ordered ratios, projected-displacement estimate for the routed Gaussian and full positive or complex phase pairing remain open."
+    "scope": "Lean proves the exact ordered ratio substitution for arbitrary measurable nonnegative ratio factors and the joint moment bound for the literal Schwinger simplex, including fully correlated displacements. The exact Gamma envelope at negative degree and logarithmic bound at zero degree retain the infinite cost when the projection is lost. It proves the inverse routed-precision estimate in the four original coordinates and allocates the Gaussian exponent among all prefixes. Connecting the dominant determinant minor and the complete positive or complex phase pairing to these ordered estimates remains open."
   },
   "prop:monomial-charged-winding-uv": {
     "status": "partial",

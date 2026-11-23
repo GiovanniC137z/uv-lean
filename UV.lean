@@ -1037,3 +1037,11 @@ import UV.ContinueRoughCurvatureCycles
 import UV.ContinueRoughCurvatureDuration
 import UV.ContinueRoughCurvatureGreen
 import UV.ContinueSewnFlagEndpoint
+import UV.ContinuePairBoostLongitudinal
+import UV.ContinuePairBoostMass
+import UV.ContinuePairBoostPhaseSpace
+import UV.ContinuePairBoostSpin
+import UV.ContinueSewnFlagLogKernel
+import UV.ContinueSewnFlagMoments
+import UV.ContinueSewnFlagOrdered
+import UV.ContinueSewnFlagProjection

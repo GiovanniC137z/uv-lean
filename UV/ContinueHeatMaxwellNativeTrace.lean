@@ -10,7 +10,7 @@ namespace UV.HeatMaxwell
 open UV.RelativeSoft UV.SectorPlane
 open scoped RealInnerProductSpace
 
-private theorem heat_slash_pair (p q : DiracMomentum) :
+theorem heat_slash_pair (p q : DiracMomentum) :
     (diracSlash p * diracSlash q).trace = ((4*⟪p,q⟫:ℝ):ℂ) := by
   have h := congrArg Matrix.trace (wilson_slash_anticommutator p q)
   rw [Matrix.trace_add,Matrix.trace_mul_comm (diracSlash q),Matrix.trace_smul,Matrix.trace_one] at h
@@ -18,7 +18,7 @@ private theorem heat_slash_pair (p q : DiracMomentum) :
   norm_num at h
   linear_combination (1/2:ℂ)*h
 
-private theorem heat_slash_quad (p q v : DiracMomentum) :
+theorem heat_slash_quad (p q v : DiracMomentum) :
     ((diracSlash p*diracSlash v)*(diracSlash q*diracSlash v)).trace =
     ((4*(2*⟪p,v⟫*⟪q,v⟫-⟪p,q⟫*‖v‖^2):ℝ):ℂ) := by
   let P := diracSlash p

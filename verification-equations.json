@@ -1218,5 +1218,14 @@
       "UV.ExtendNativeHolonomy.normal_heatTrace_poisson",
       "UV.ExtendNativeHolonomy.normal_heatTrace_real"
     ]
+  },
+  "eq:nativefull-log-energy-uv": {
+    "status": "partial",
+    "scope": "The scalar kernel on the original positive proper-time axis equals K₀(μ|d|)/(8π²) at positive mass and nonzero displacement. The positive extended integral is infinite at coincident displacement. The joint Fourier-pairing identity remains to be checked.",
+    "lean": [
+      "UV.SewnFlags.logKernel_proper_time",
+      "UV.SewnFlags.logKernel_bessel",
+      "UV.SewnFlags.logKernel_zero"
+    ]
   }
 }
