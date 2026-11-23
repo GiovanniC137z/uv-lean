@@ -31,17 +31,16 @@ private theorem square_probe_profile_zero (r : ℝ) (hr : 2 < r) :
   have hrs := (sq_lt_sq₀ (by norm_num : 0 ≤ (2 : ℝ)) (by positivity : 0 ≤ r)).mpr hr
   linarith
 
-/-- The literal scalar square has a divergent imaginary pairing even
-on a smooth compact four-momentum test that is one near the cone tip. -/
-theorem Plane.cone_square_smooth_probe {E : Type*} [NormedAddCommGroup E] (diamond : Plane E)
+/-- A radial smooth test with its compact profile retained, so other
+terms in the same graph can be tested on the identical function. -/
+theorem Plane.cone_square_smooth_radial_probe {E : Type*} [NormedAddCommGroup E] (diamond : Plane E)
     (ε : Evolution) :
-    ∃ ψ : ℝ × Spatial → ℝ, ContDiff ℝ ∞ ψ ∧ HasCompactSupport ψ ∧
-      (∀ q, coneEuclideanRadius q ≤ 1 → ψ q = 1) ∧
-      Tendsto (fun h : Height => diamond.eta ε *
-        (∫ q : ℝ × Spatial, ψ q •
-          (diamond.poleCoefficient ε h (shellSquare q.1 q.2)) ^ 2).im)
+    ∃ φ : ℝ → ℝ, Continuous φ ∧ (∀ r ∈ Icc 0 1, φ r = 1) ∧ (∀ r > 2, φ r = 0) ∧
+      ContDiff ℝ ∞ (fun q => φ (coneEuclideanRadius q)) ∧ HasCompactSupport (fun q => φ (coneEuclideanRadius q)) ∧
+      (∀ q, coneEuclideanRadius q ≤ 1 → φ (coneEuclideanRadius q) = 1) ∧
+      Tendsto (fun h : Height => diamond.eta ε * (diamond.coneSquarePairing ε h φ).im)
         ((𝓝[>] (0 : ℝ)).comap (fun h : Height => (h : ℝ))) atTop := by
-  refine ⟨fun q => squareProbeProfile (coneEuclideanRadius q), ?_, ?_, ?_, ?_⟩
+  refine ⟨squareProbeProfile,square_probe_profile_continuous,square_probe_profile_one,square_probe_profile_zero,?_,?_,?_,?_⟩
   · have hSq (q : ℝ × Spatial) : (coneEuclideanRadius q) ^ 2 = q.1 ^ 2 + ‖q.2‖ ^ 2 :=
       sq_sqrt (by positivity)
     simp_rw [squareProbeProfile, hSq]
@@ -59,5 +58,18 @@ theorem Plane.cone_square_smooth_probe {E : Type*} [NormedAddCommGroup E] (diamo
     exact square_probe_profile_one _ ⟨sqrt_nonneg _, hq⟩
   · exact diamond.cone_square_pairing_signed_im_tendsto ε zero_lt_one (by norm_num)
       square_probe_profile_continuous square_probe_profile_one square_probe_profile_zero
+
+/-- The literal scalar square has a divergent imaginary pairing even
+on a smooth compact four-momentum test that is one near the cone tip. -/
+theorem Plane.cone_square_smooth_probe {E : Type*} [NormedAddCommGroup E] (diamond : Plane E)
+    (ε : Evolution) :
+    ∃ ψ : ℝ × Spatial → ℝ, ContDiff ℝ ∞ ψ ∧ HasCompactSupport ψ ∧
+      (∀ q, coneEuclideanRadius q ≤ 1 → ψ q = 1) ∧
+      Tendsto (fun h : Height => diamond.eta ε *
+        (∫ q : ℝ × Spatial, ψ q •
+          (diamond.poleCoefficient ε h (shellSquare q.1 q.2)) ^ 2).im)
+        ((𝓝[>] (0 : ℝ)).comap (fun h : Height => (h : ℝ))) atTop := by
+  obtain ⟨φ,_,_,_,hf,hs,hone,H⟩ := diamond.cone_square_smooth_radial_probe ε
+  exact ⟨_,hf,hs,hone,H⟩
 
 end UV.SectorPlane

@@ -96,7 +96,7 @@ theorem Plane.distinct_stable_product_limit (diamond : Plane E) (ε₁ ε₂ : E
       (massiveD_continuous m))).integrable_of_hasCompactSupport hs.mul_right.mul_right)
     (diamond.stable_weighted_simple_pole ε₁ ε₂ ε₁ ha hb h₁ hf hs) (diamond.stable_weighted_simple_pole ε₁ ε₂ ε₂ ha hb h₂ hf hs)
 
-private theorem stable_pair_numerator (diamond : Plane E) (ε₁ ε₂ : Evolution) {a b : ℝ} (ha : 0 ≤ a) (hb : 0 ≤ b) (h : Height) :
+theorem stable_pair_numerator (diamond : Plane E) (ε₁ ε₂ : Evolution) {a b : ℝ} (ha : 0 ≤ a) (hb : 0 ≤ b) (h : Height) :
     let φ := fun z => Complex.exp (-principalSqrt z)
     diamond.twoLineNumerator ε₁ ε₂ φ φ a b h =
       fun q => -(diamond.eta ε₁:ℂ) * (diamond.eta ε₂:ℂ) * diamond.stablePairWeight ε₁ ε₂ a b h (shellSquare q.1 q.2) := by
@@ -106,12 +106,14 @@ private theorem stable_pair_numerator (diamond : Plane E) (ε₁ ε₂ : Evoluti
   rw [diamond.stable_scalar_kernel_readout ε₁ ha h,diamond.stable_scalar_kernel_readout ε₂ hb h]
   rfl
 
-/-- The literal two-line stable-half product, with both running unit
-vectors and their prescribed pole sides, defines a continuous functional on
-each compact Cartesian C² test space whenever the mass shells are distinct. -/
-theorem Plane.distinct_stable_scalar_distribution (diamond : Plane E) (ε₁ ε₂ : Evolution)
-    (K : TopologicalSpace.Compacts MassiveMomentum) {a b m₁ m₂ : ℝ} (ha : 0 ≤ a) (hb : 0 ≤ b)
-    (h₁ : 0 ≤ m₁) (h₂ : 0 ≤ m₂) (hne : m₁^2 ≠ m₂^2) :
+/-- Recover both original running-unit numerators from the common-height
+stable-weighted pairing on the fixed support. -/
+theorem Plane.stable_scalar_distribution_of_weighted (diamond : Plane E) (ε₁ ε₂ : Evolution)
+    (K : TopologicalSpace.Compacts MassiveMomentum) {a b : ℝ} (ha : 0 ≤ a) (hb : 0 ≤ b) (m₁ m₂ : ℝ)
+    (hv : ∀ f : CompactMomentumTest K, ∃ z, Tendsto (fun h : Height => ∫ q,
+      (f.value q * diamond.stablePairWeight ε₁ ε₂ a b h (shellSquare q.1 q.2)) *
+        (diamond.poleCoefficient ε₁ h (massiveD m₁ q) * diamond.poleCoefficient ε₂ h (massiveD m₂ q)))
+      poleBoundaryHeights (𝓝 z)) :
     let φ := fun z => Complex.exp (-principalSqrt z)
     ∃ T : CompactMomentumTest K →L[ℂ] ℂ, ∀ f : CompactMomentumTest K,
       Tendsto (fun h => diamond.twoLinePairing ε₁ ε₂ h φ φ a b m₁ m₂ f.value)
@@ -129,7 +131,7 @@ theorem Plane.distinct_stable_scalar_distribution (diamond : Plane E) (ε₁ ε�
     (((diamond.pole_coefficient_continuous ε₁ h).comp (massiveD_continuous m₁)).mul
       ((diamond.pole_coefficient_continuous ε₂ h).comp (massiveD_continuous m₂)))
   have hlim (f : CompactMomentumTest K) : ∃ z, Tendsto (fun h => ∫ q, f.value q * W h q) poleBoundaryHeights (𝓝 z) := by
-    have H := diamond.distinct_stable_product_limit ε₁ ε₂ ha hb h₁ h₂ hne f.contDiff f.compact_support
+    obtain ⟨_,H⟩ := hv f
     refine ⟨_, (H.const_mul d).congr fun h => ?_⟩
     rw [← integral_const_mul]
     apply integral_congr_ae
@@ -139,5 +141,18 @@ theorem Plane.distinct_stable_scalar_distribution (diamond : Plane E) (ε₁ ε�
   have h := diamond.two_line_pairing_readout ε₁ ε₂ h φ φ a b m₁ m₂ f.contDiff.continuous f.compact_support
     ((hn h).symm ▸ hN h)
   simpa only [hn] using h.symm
+
+/-- The literal two-line stable-half product, with both running unit
+vectors and their prescribed pole sides, defines a continuous functional on
+each compact Cartesian C² test space whenever the mass shells are distinct. -/
+theorem Plane.distinct_stable_scalar_distribution (diamond : Plane E) (ε₁ ε₂ : Evolution)
+    (K : TopologicalSpace.Compacts MassiveMomentum) {a b m₁ m₂ : ℝ} (ha : 0 ≤ a) (hb : 0 ≤ b)
+    (h₁ : 0 ≤ m₁) (h₂ : 0 ≤ m₂) (hne : m₁^2 ≠ m₂^2) :
+    let φ := fun z => Complex.exp (-principalSqrt z)
+    ∃ T : CompactMomentumTest K →L[ℂ] ℂ, ∀ f : CompactMomentumTest K,
+      Tendsto (fun h => diamond.twoLinePairing ε₁ ε₂ h φ φ a b m₁ m₂ f.value)
+        poleBoundaryHeights (𝓝 (directed (T f))) := by
+  exact diamond.stable_scalar_distribution_of_weighted ε₁ ε₂ K ha hb m₁ m₂
+    (fun f => ⟨_, diamond.distinct_stable_product_limit ε₁ ε₂ ha hb h₁ h₂ hne f.contDiff f.compact_support⟩)
 
 end UV.SectorPlane

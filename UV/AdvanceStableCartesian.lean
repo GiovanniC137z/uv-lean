@@ -44,7 +44,7 @@ theorem coneCovector_spatial (e : UnitVector Spatial) (q : ℝ × Spatial) :
     coneCovector (WithLp.ofLp (coneSpatialUnit e).val) q = -⟪e.val, q.2⟫ := by
   simp [coneCovector_apply, coneSpatialUnit]
 
-private theorem shell_square_hasFDerivAt (q : ℝ × Spatial) :
+theorem shell_square_hasFDerivAt (q : ℝ × Spatial) :
     HasFDerivAt (fun q : ℝ × Spatial => shellSquare q.1 q.2) (2 • coneCovector q) q := by
   have ht := ((ContinuousLinearMap.fst ℝ ℝ Spatial).hasFDerivAt (x := q)).pow 2
   have hp := (hasStrictFDerivAt_norm_sq q.2).hasFDerivAt.comp q

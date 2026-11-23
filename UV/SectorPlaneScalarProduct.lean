@@ -73,12 +73,14 @@ private theorem continuous_height_slice {U : ℝ → MassiveMomentum → ℂ}
     (hu : Continuous (Function.uncurry U)) (t : ℝ) : Continuous (U t) :=
   hu.comp ((continuous_const (y := t)).prodMk continuous_id)
 
-/-- A continuous functional on each compact C² test space, for the actual
-product with two distinct shells. Both orientations and the zero-mass
-endpoint are permitted. No separate product of limiting distributions enters. -/
-theorem Plane.distinct_scalar_product_distribution (diamond : Plane E) (ε₁ ε₂ : Evolution)
-    (K : TopologicalSpace.Compacts MassiveMomentum) {m₁ m₂ : ℝ} (hm₁ : 0 ≤ m₁) (hm₂ : 0 ≤ m₂)
-    (hne : m₁^2 ≠ m₂^2) (a₁ a₂ : ℝ) {φ₁ φ₂ : ℂ → ℂ} (hφ₁ : ContDiff ℝ 2 φ₁) (hφ₂ : ContDiff ℝ 2 φ₂) :
+/-- Transfer a common-height bare product boundary through a jointly C²
+numerator of the two directed lines on a fixed compact test space. -/
+theorem Plane.smooth_two_line_distribution_of_bare (diamond : Plane E) (ε₁ ε₂ : Evolution)
+    (K : TopologicalSpace.Compacts MassiveMomentum) (m₁ m₂ a₁ a₂ : ℝ)
+    {φ₁ φ₂ : ℂ → ℂ} (hφ₁ : ContDiff ℝ 2 φ₁) (hφ₂ : ContDiff ℝ 2 φ₂)
+    (hlim : ∀ f : CompactMomentumTest K, ∃ z, Tendsto (fun h : Height => ∫ q, f.value q *
+      (diamond.poleCoefficient ε₁ h (massiveD m₁ q) * diamond.poleCoefficient ε₂ h (massiveD m₂ q)))
+      poleBoundaryHeights (𝓝 z)) :
     ∃ T : CompactMomentumTest K →L[ℂ] ℂ, ∀ f : CompactMomentumTest K,
       Tendsto (fun h => diamond.twoLinePairing ε₁ ε₂ h φ₁ φ₂ a₁ a₂ m₁ m₂ f.value)
         poleBoundaryHeights (𝓝 (directed (T f))) := by
@@ -89,9 +91,6 @@ theorem Plane.distinct_scalar_product_distribution (diamond : Plane E) (ε₁ ε
       ((diamond.pole_coefficient_continuous ε₂ h).comp (massiveD_continuous m₂))
   let U := diamond.twoLineNumerator ε₁ ε₂ φ₁ φ₂ a₁ a₂
   have hu : ContDiff ℝ 2 (Function.uncurry U) := diamond.two_line_numerator_contDiff ε₁ ε₂ a₁ a₂ hφ₁ hφ₂
-  have hlim (f : CompactMomentumTest K) : ∃ z, Tendsto (fun h => ∫ q, f.value q * W h q)
-      poleBoundaryHeights (𝓝 z) :=
-    ⟨_, diamond.distinct_shell_product_limit ε₁ ε₂ hm₁ hm₂ hne f.contDiff f.compact_support⟩
   obtain ⟨T,hT⟩ := compact_momentum_multiplier_distribution K W
     (fun h => (hw h).continuousOn.integrableOn_compact K.isCompact) hlim U hu
   refine ⟨T, fun f => ?_⟩
@@ -102,5 +101,17 @@ theorem Plane.distinct_scalar_product_distribution (diamond : Plane E) (ε₁ ε
   intro h
   have hU := continuous_height_slice (U := U) hu.continuous (h:ℝ)
   exact (diamond.two_line_pairing_readout ε₁ ε₂ h φ₁ φ₂ a₁ a₂ m₁ m₂ f.contDiff.continuous f.compact_support hU).symm
+
+/-- A continuous functional on each compact C² test space, for the actual
+product with two distinct shells. Both orientations and the zero-mass
+endpoint are permitted. No separate product of limiting distributions enters. -/
+theorem Plane.distinct_scalar_product_distribution (diamond : Plane E) (ε₁ ε₂ : Evolution)
+    (K : TopologicalSpace.Compacts MassiveMomentum) {m₁ m₂ : ℝ} (hm₁ : 0 ≤ m₁) (hm₂ : 0 ≤ m₂)
+    (hne : m₁^2 ≠ m₂^2) (a₁ a₂ : ℝ) {φ₁ φ₂ : ℂ → ℂ} (hφ₁ : ContDiff ℝ 2 φ₁) (hφ₂ : ContDiff ℝ 2 φ₂) :
+    ∃ T : CompactMomentumTest K →L[ℂ] ℂ, ∀ f : CompactMomentumTest K,
+      Tendsto (fun h => diamond.twoLinePairing ε₁ ε₂ h φ₁ φ₂ a₁ a₂ m₁ m₂ f.value)
+        poleBoundaryHeights (𝓝 (directed (T f))) := by
+  exact diamond.smooth_two_line_distribution_of_bare ε₁ ε₂ K m₁ m₂ a₁ a₂ hφ₁ hφ₂
+    (fun f => ⟨_, diamond.distinct_shell_product_limit ε₁ ε₂ hm₁ hm₂ hne f.contDiff f.compact_support⟩)
 
 end UV.SectorPlane

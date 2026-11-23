@@ -46,18 +46,14 @@ theorem Plane.massless_longitudinal_integrand_directed (diamond : Plane E) (ε :
   dsimp only
   rw [directed_mul, diamond.stable_square_coefficient_directed]
 
-theorem Plane.massless_stable_longitudinal_pair_split (diamond : Plane E) (ε : Evolution)
-    (h : Height) (a : ℝ) (u v : ConeUnitDirection) {g : ℝ × Spatial → ℂ}
-    (hg : Continuous g) (hs : HasCompactSupport g) :
-    diamond.masslessStableLongitudinalPair ε h a u v g =
-      (∫ q : ℝ × Spatial, coneTensorTest u v g q *
-        (diamond.poleCoefficient ε h (shellSquare q.1 q.2)) ^ 2) +
-      diamond.stableTensorFractionalPair ε h a u v g -
-      ((a : ℂ) ^ 2 / 2) * (∫ q : ℝ × Spatial, coneTensorTest u v g q *
-        diamond.poleCoefficient ε h (shellSquare q.1 q.2)) +
-      ∫ q : ℝ × Spatial, coneTensorTest u v g q *
-        stableSquareResidual a (diamond.shiftedShellCoefficient ε h (shellSquare q.1 q.2)) := by
-  let f := coneTensorTest u v g
+theorem Plane.stable_square_test_split (diamond : Plane E) (ε : Evolution) (h : Height) (a : ℝ)
+    {f : ℝ × Spatial → ℂ} (hf : Continuous f) (hfs : HasCompactSupport f) :
+    (∫ q : ℝ × Spatial, f q * (diamond.stableHalfCoefficient ε a (shellSquare q.1 q.2) h *
+      (diamond.poleCoefficient ε h (shellSquare q.1 q.2))^2)) =
+      (∫ q, f q * (diamond.poleCoefficient ε h (shellSquare q.1 q.2))^2) +
+      (∫ q, f q * (-(a:ℂ) / (diamond.stableShellRoot ε h (shellSquare q.1 q.2))^3)) -
+      ((a:ℂ)^2/2) * (∫ q, f q * diamond.poleCoefficient ε h (shellSquare q.1 q.2)) +
+      ∫ q, f q * stableSquareResidual a (diamond.shiftedShellCoefficient ε h (shellSquare q.1 q.2)) := by
   let w (q : ℝ × Spatial) := shellSquare q.1 q.2
   let Z (q : ℝ × Spatial) := diamond.shiftedShellCoefficient ε h (w q)
   let P (q : ℝ × Spatial) := diamond.poleCoefficient ε h (w q)
@@ -83,8 +79,6 @@ theorem Plane.massless_stable_longitudinal_pair_split (diamond : Plane E) (ε : 
     exact (((Complex.continuous_exp.comp hX).sub continuous_const).sub hX |>.sub
       ((hX.pow 2).div_const 2)).div (hZc.pow 2)
       (fun q => pow_ne_zero _ (diamond.massless_shifted_coefficient_nonzero ε h (w q)))
-  have hf : Continuous f := cone_tensor_test_continuous u v hg
-  have hfs : HasCompactSupport f := cone_tensor_test_compact u v hs
   have hi {K : ℝ × Spatial → ℂ} (hK : Continuous K) :
       Integrable (fun q => f q * K q) volume := (hf.mul hK).integrable_of_hasCompactSupport hfs.mul_right
   have h₂ := hi (hPc.pow 2)
@@ -94,12 +88,11 @@ theorem Plane.massless_stable_longitudinal_pair_split (diamond : Plane E) (ε : 
   have hSum : Integrable (fun q => f q * (P q) ^ 2 + f q * B q) volume := h₂.add hB'
   have hSub : Integrable (fun q => f q * (P q) ^ 2 + f q * B q - C * (f q * P q)) volume :=
     hSum.sub h₁
-  change diamond.masslessStableLongitudinalPair ε h a u v g =
+  change _ =
     (∫ q, f q * (P q) ^ 2) + (∫ q, f q * B q) -
       C * (∫ q, f q * P q) + ∫ q, f q * D q
   rw [← integral_const_mul, ← integral_add h₂ hB', ← integral_sub hSum h₁,
     ← integral_add hSub hD']
-  unfold Plane.masslessStableLongitudinalPair
   apply integral_congr_ae
   refine Eventually.of_forall fun q => ?_
   change f q * (diamond.stableHalfCoefficient ε a (w q) h * (P q) ^ 2) =
@@ -107,6 +100,19 @@ theorem Plane.massless_stable_longitudinal_pair_split (diamond : Plane E) (ε : 
   rw [diamond.stable_square_coefficient_split ε h a (w q)]
   dsimp only [P, B, C, D, Z, S]
   ring
+
+theorem Plane.massless_stable_longitudinal_pair_split (diamond : Plane E) (ε : Evolution)
+    (h : Height) (a : ℝ) (u v : ConeUnitDirection) {g : ℝ × Spatial → ℂ}
+    (hg : Continuous g) (hs : HasCompactSupport g) :
+    diamond.masslessStableLongitudinalPair ε h a u v g =
+      (∫ q : ℝ × Spatial, coneTensorTest u v g q *
+        (diamond.poleCoefficient ε h (shellSquare q.1 q.2)) ^ 2) +
+      diamond.stableTensorFractionalPair ε h a u v g -
+      ((a : ℂ) ^ 2 / 2) * (∫ q : ℝ × Spatial, coneTensorTest u v g q *
+        diamond.poleCoefficient ε h (shellSquare q.1 q.2)) +
+      ∫ q : ℝ × Spatial, coneTensorTest u v g q *
+        stableSquareResidual a (diamond.shiftedShellCoefficient ε h (shellSquare q.1 q.2)) := by
+  exact diamond.stable_square_test_split ε h a (cone_tensor_test_continuous u v hg) (cone_tensor_test_compact u v hs)
 
 /-- Boundary value of the complete longitudinal coefficient on compact
 nonradial tests with the stated uniform normal Taylor bounds. -/

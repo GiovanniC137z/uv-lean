@@ -53,21 +53,21 @@ theorem Plane.bare_real_shell_boundary (diamond : Plane E) (ε : Evolution) {m :
   exact Eventually.of_forall fun q => by
     simp only [P, D, diamond.pole_coefficient_split, Complex.ofReal_mul]; ring
 
-theorem Plane.bare_complex_shell_boundary (diamond : Plane E) (ε : Evolution) {m : ℝ} (hm : 0 ≤ m)
-    {f : MassiveMomentum → ℂ} (hf : ContDiff ℝ 2 f) (hs : HasCompactSupport f) :
+theorem Plane.bare_complex_shell_boundary_of_parts (diamond : Plane E) (ε : Evolution) (m : ℝ)
+    {f : MassiveMomentum → ℂ} (hf : Continuous f) (hs : HasCompactSupport f)
+    (hr : Tendsto (fun h : Height => ∫ q, ((f q).re : ℂ) * diamond.poleCoefficient ε h (massiveD m q))
+      poleBoundaryHeights (𝓝 (bareShellBoundary (diamond.eta ε) m (fun q => (f q).re))))
+    (hi : Tendsto (fun h : Height => ∫ q, ((f q).im : ℂ) * diamond.poleCoefficient ε h (massiveD m q))
+      poleBoundaryHeights (𝓝 (bareShellBoundary (diamond.eta ε) m (fun q => (f q).im)))) :
     Tendsto (fun h : Height => ∫ q, f q * diamond.poleCoefficient ε h (massiveD m q))
       poleBoundaryHeights (𝓝 (bareComplexShellBoundary (diamond.eta ε) m f)) := by
-  have hr := diamond.bare_real_shell_boundary ε hm (Complex.reCLM.contDiff.comp hf)
-    (hs.comp_left (g := Complex.re) Complex.zero_re)
-  have hi := diamond.bare_real_shell_boundary ε hm (Complex.imCLM.contDiff.comp hf)
-    (hs.comp_left (g := Complex.im) Complex.zero_im)
   apply (hr.add (hi.const_mul Complex.I)).congr
   intro h
   let P q := diamond.poleCoefficient ε h (massiveD m q)
   have hP : Continuous P := (diamond.pole_coefficient_continuous ε h).comp (massiveD_continuous m)
   have hint (p : ℂ → ℝ) (hp : Continuous p) (hz : p 0 = 0) :
       Integrable (fun q => (p (f q) : ℂ) * P q) :=
-    ((Complex.continuous_ofReal.comp (hp.comp hf.continuous)).mul hP).integrable_of_hasCompactSupport
+    ((Complex.continuous_ofReal.comp (hp.comp hf)).mul hP).integrable_of_hasCompactSupport
       ((hs.comp_left hz).comp_left (g := Complex.ofReal) Complex.ofReal_zero).mul_right
   change (∫ q, ((f q).re : ℂ) * P q) + Complex.I * (∫ q, ((f q).im : ℂ) * P q) = _
   rw [← integral_const_mul, ← integral_add (hint _ Complex.continuous_re Complex.zero_re)
@@ -77,6 +77,32 @@ theorem Plane.bare_complex_shell_boundary (diamond : Plane E) (ε : Evolution) {
     calc
       _ = ((f q).re + (f q).im * Complex.I) * P q := by ring
       _ = _ := by rw [Complex.re_add_im]
+
+theorem Plane.bare_complex_shell_boundary (diamond : Plane E) (ε : Evolution) {m : ℝ} (hm : 0 ≤ m)
+    {f : MassiveMomentum → ℂ} (hf : ContDiff ℝ 2 f) (hs : HasCompactSupport f) :
+    Tendsto (fun h : Height => ∫ q, f q * diamond.poleCoefficient ε h (massiveD m q))
+      poleBoundaryHeights (𝓝 (bareComplexShellBoundary (diamond.eta ε) m f)) := by
+  exact diamond.bare_complex_shell_boundary_of_parts ε m hf.continuous hs
+    (diamond.bare_real_shell_boundary ε hm (Complex.reCLM.contDiff.comp hf) (hs.comp_left Complex.zero_re))
+    (diamond.bare_real_shell_boundary ε hm (Complex.imCLM.contDiff.comp hf) (hs.comp_left Complex.zero_im))
+
+theorem Plane.bare_massive_complex_c1 (diamond : Plane E) (ε : Evolution) {m : ℝ} (hm : 0 < m)
+    {f : MassiveMomentum → ℂ} (hf : ContDiff ℝ 1 f) (hs : HasCompactSupport f) :
+    Tendsto (fun h : Height => ∫ q, f q * diamond.poleCoefficient ε h (massiveD m q))
+      poleBoundaryHeights (𝓝 (bareComplexShellBoundary (diamond.eta ε) m f)) := by
+  have H {g : MassiveMomentum → ℝ} (hg : ContDiff ℝ 1 g) (hgs : HasCompactSupport g) :
+      Tendsto (fun h : Height => ∫ q, (g q : ℂ) * diamond.poleCoefficient ε h (massiveD m q))
+        poleBoundaryHeights (𝓝 (bareShellBoundary (diamond.eta ε) m g)) := by
+    obtain ⟨_,hL⟩ := ContDiff.lipschitzWith_of_hasCompactSupport hgs hg le_rfl
+    have hb : 0 < m^2/4 := by positivity
+    have hbm : 2*(m^2/4) ≤ m^2 := by nlinarith [sq_nonneg m]
+    have hh := (diamond.bare_massive_pairing_limit ε hb hbm hL hgs).comp
+      (tendsto_comap (f := fun h : Height => (h:ℝ)))
+    rw [bareShellBoundary,massive_regularized_shell_pv hb hbm hL hgs,Complex.ofReal_mul,← mul_assoc]
+    exact hh.congr (fun h => by simp only [Function.comp_apply,Plane.bareMassivePairing,dif_pos h.property]; simp [mul_comm])
+  exact diamond.bare_complex_shell_boundary_of_parts ε m hf.continuous hs
+    (H (Complex.reCLM.contDiff.comp hf) (hs.comp_left Complex.zero_re))
+    (H (Complex.imCLM.contDiff.comp hf) (hs.comp_left Complex.zero_im))
 
 /-- Difference of the two denominators. The two positive heights are the
 same number, even when the evolution orders select opposite sides. -/
