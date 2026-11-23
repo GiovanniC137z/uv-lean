@@ -537,7 +537,7 @@
   },
   "eq:optical": {
     "status": "partial",
-    "scope": "Derives the forward optical identity for arbitrary normalizable wave packets with the actual physical adjoint. Resolves the positive intermediate-state norm in an arbitrary complete orthonormal basis or an actual isometric L² resolution over the disjoint union of the supplied channel measures. Proves absolute integrability in each channel, summability of their squared amplitudes, and the literal positive one-particle shell factor (2π)⁻³(2κ)⁻¹. Independently derives the numerical coefficient equality under the source’s Hermitian-analytic and normalized matched-jump hypotheses, and checks the imaginary entire shift obstruction to recovering an imaginary part from a jump alone. Factoring the common sharp-momentum distribution from wave-packet matrix elements and establishing physical cut matching remain open.",
+    "scope": "Derives the forward optical identity for arbitrary normalizable wave packets with the actual physical adjoint. Resolves the positive intermediate-state norm in an arbitrary complete orthonormal basis or an actual isometric L² resolution over the disjoint union of the supplied channel measures. Proves absolute integrability in each channel, summability of their squared amplitudes, and the literal positive one-particle shell factor (2π)⁻³(2κ)⁻¹. Independently derives the numerical coefficient equality under the source’s Hermitian-analytic and normalized matched-jump hypotheses, and checks the imaginary entire shift obstruction to recovering an imaginary part from a jump alone. For a measurable conserved-momentum row of the physical transition on L² packets, localization on finite-measure momentum sets gives the coefficient identity almost everywhere, with absolute channel integrals. For continuous rows and a full-support measure the identity holds at each momentum. Establishing these momentum rows and physical cut matching for the interacting action remains open.",
     "lean": [
       "UV.SectorPlane.Plane.physical_optical_packet",
       "UV.SectorPlane.Plane.physical_optical_basis",
@@ -547,7 +547,10 @@
       "UV.SectorPlane.Plane.physical_optical_phase_space_sum",
       "UV.SectorPlane.Plane.physical_optical_positive_shell",
       "UV.SectorPlane.Plane.physical_optical_matched_coefficient",
-      "UV.SectorPlane.optical_imaginary_entire_shift"
+      "UV.SectorPlane.optical_imaginary_entire_shift",
+      "UV.SectorPlane.Plane.physical_optical_fibre",
+      "UV.SectorPlane.Plane.physical_optical_fibre_channels",
+      "UV.SectorPlane.Plane.physical_optical_continuous_fibre"
     ]
   },
   "eq:update-positive-spectrum": {

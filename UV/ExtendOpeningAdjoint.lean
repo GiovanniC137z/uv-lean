@@ -55,7 +55,7 @@ private theorem opening.jacobi_number (n k : ℕ) :
 def openingPositionNumberState (ω : ℝ) (n : ℕ) : (openingPositionOnCore ω).domain :=
   ⟨openingNumberState n, ⟨n, fun k hk => by simp [show n ≠ k by omega]⟩⟩
 
-private theorem opening.position_number (ω : ℝ) (n : ℕ) :
+theorem openingPositionOnCore_number (ω : ℝ) (n : ℕ) :
     openingPositionOnCore ω (openingPositionNumberState ω n) =
       openingPositionScale ω •
         ((Real.sqrt ((n + 1 : ℕ) : ℝ) : ℂ) • openingNumberState (n + 1) +
@@ -77,7 +77,7 @@ theorem openingPositionOnCore_adjoint_coordinate (ω : ℝ)
       openingJacobi (v : OpeningFock) n := by
   have h := (LinearPMap.adjoint_isFormalAdjoint (openingPositionOnCore_dense ω)).symm
     (openingPositionNumberState ω n) v
-  rw [opening.position_number] at h
+  rw [openingPositionOnCore_number] at h
   change inner ℂ _ (v : OpeningFock) =
     inner ℂ (openingNumberState n) ((openingPositionOnCore ω).adjoint v) at h
   have hs : starRingEnd ℂ (openingPositionScale ω) = openingPositionScale ω :=

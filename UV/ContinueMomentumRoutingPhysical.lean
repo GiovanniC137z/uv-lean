@@ -54,20 +54,20 @@ theorem MomentumExteriorAttachments.dressed_test_integrable [AddCommGroup A] [Me
 
 inductive MomentumProtectedComponent (L : ℝ)
   | loop (n : ℕ) (θ : ℝ) (u : Fin (n+1) → UnitVector OSFourSpace)
-  | line (r : ℕ) (u : Fin r → UnitVector OSFourSpace) (φ ψ : WilsonPacket) (z z' : Set.Icc 0 L)
+  | line (θ : ℝ) (r : ℕ) (u : Fin r → UnitVector OSFourSpace) (φ ψ : WilsonPacket) (z z' : Set.Icc 0 L)
 
 /-- At forbidden zero windings the winding representation already has
 amplitude zero. At all admitted zero windings the continuous normal
 frequency supplies the zero-winding term. -/
 def MomentumProtectedComponent.sector (zeroWinding : Bool) : MomentumProtectedComponent L → NormalChargedSector L
-  | .loop n θ u => if h : 5 < n+1 ∧ zeroWinding = true then .zero (n+1) h.1 u else .winding n θ u
-  | .line r u φ ψ z z' => .line r u φ ψ z z'
+  | .loop n θ u => if h : 5 < n+1 ∧ zeroWinding = true then .zero (n+1) h.1 u else .winding n (-θ) u
+  | .line _ r u φ ψ z z' => .line r u φ ψ z z'
 
 theorem momentum_protected_short_zero {n : ℕ} (hn : n+1 ≤ 5) (θ : ℝ) (u : Fin (n+1) → UnitVector OSFourSpace)
     (Δ : OSFourSpace) (s : Fin (n+1) → OSFourSpace) :
     let P := MomentumProtectedComponent.loop (L := L) n θ u
-    P.sector true = NormalChargedSector.winding n θ u ∧
-      ∀ t, (NormalChargedSector.winding n θ u : NormalChargedSector L).amplitude m 0 Δ s t = 0 := by
+    P.sector true = NormalChargedSector.winding n (-θ) u ∧
+      ∀ t, (NormalChargedSector.winding n (-θ) u : NormalChargedSector L).amplitude m 0 Δ s t = 0 := by
   exact ⟨by simp [MomentumProtectedComponent.sector,show ¬5<n+1 by omega],fun _ => by simp [NormalChargedSector.amplitude]⟩
 
 theorem momentum_protected_long_zero {n : ℕ} (hn : 5 < n+1) (θ : ℝ) (u : Fin (n+1) → UnitVector OSFourSpace) :
@@ -75,7 +75,7 @@ theorem momentum_protected_long_zero {n : ℕ} (hn : 5 < n+1) (θ : ℝ) (u : Fi
   simp [MomentumProtectedComponent.sector,hn]
 
 theorem momentum_protected_nonzero (n : ℕ) (θ : ℝ) (u : Fin (n+1) → UnitVector OSFourSpace) :
-    (MomentumProtectedComponent.loop (L := L) n θ u).sector false = .winding n θ u := by
+    (MomentumProtectedComponent.loop (L := L) n θ u).sector false  = .winding n (-θ) u := by
   simp [MomentumProtectedComponent.sector]
 
 theorem MomentumExteriorAttachments.dressed_continuum {ρ : ℝ} (hm : 0 < m) (hL : 0 < L) (hρ : 0 < ρ)

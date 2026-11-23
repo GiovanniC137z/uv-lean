@@ -41,7 +41,7 @@ theorem sea_dirac_spin_trace {m : ℝ} (hm : 0 < m) (p k : ChargeSpatialMomentum
     coefficients_norm_sq hm le_rfl,coefficients_norm_sq hm le_rfl,sea_dirac_inner hm]
   ring
 
-private theorem sea_dirac_gram {m r : ℝ} (n : UnitVector Spatial) (p : Spatial) :
+theorem sea_dirac_gram {m r : ℝ} (n : UnitVector Spatial) (p : Spatial) :
     let k := r • (n:Spatial)
     let B := energy m (k+p) * energy m k
     let A := m^2+⟪k+p,k⟫
