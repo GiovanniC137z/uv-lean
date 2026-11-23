@@ -1016,3 +1016,9 @@ import UV.ContinueCayleyForwardPairing
 import UV.ContinueCayleyMatrix
 import UV.ContinueCayleyMatrixEnergy
 import UV.ContinueCayleySlot
+import UV.ContinueRealPoleAtom
+import UV.ContinueRealPoleChart
+import UV.ContinueRealPoleDirection
+import UV.ContinueRealPoleResidue
+import UV.ContinueRealPoleRim
+import UV.ContinueRealPoleSpectral

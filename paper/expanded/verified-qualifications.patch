@@ -1,0 +1,26 @@
+--- a/paper/expanded/UV.tex
++++ b/paper/expanded/UV.tex
+@@ -10346,7 +10346,8 @@
+ \end{proof}
+
+ For a simple pole at $z=-E_0$ away from $-\operatorname{spec}B$,
+-let $v$ be a normalized null vector of $D(-E_0)$. Its slot residue
++suppose $\ker D(-E_0)$ is one-dimensional and let $v$ be a unit
++vector spanning it. Its slot residue
+ along $v$ is
+ $Z=[1+\|(B-E_0)^{-1}Tv\|^2]^{-1}$. Thus
+ $Z\langle v,\Gamma(-E_0,-E_0)v\rangle=q$. The boundary term
+@@ -24165,9 +24166,10 @@
+ \]
+ At other fixed spatial momenta the covariance numerator adds bounded
+ spatial momentum products and the denominator acquires $|\mathbf q|^2$.
+-All these integrals are finite for $N\ge2$. A single normal interval
+-has $\rho_1(s)\asymp s^{-1}$, so its contact cost $C_1$ diverges
+-although the scalar dispersion integral exists.
++All these integrals are finite for $N\ge2$. When $e\ne0$, a single
++normal interval has $\rho_1(s)\asymp s^{-1}$, so its contact cost
++$C_1$ diverges although the scalar dispersion integral exists.
++When $e=0$, the density and its contact cost vanish.
+
+ For the higher orders write $E_k=\sqrt{m^2+|k|^2}$ and
+ $P_\epsilon(k)$ for the two free Dirac energy projections,

@@ -23,43 +23,31 @@ private theorem poleLift_inner (T : S →L[ℂ] H) (R : H →L[ℂ] H) (hR : IsS
     closing_sandwich_apply, mul_apply, inner_add_right, adjoint_inner_right]
   rw [← hR.adjoint_eq, adjoint_inner_left, hR.adjoint_eq]
 
-/-- If the pole kernel has any dimension, the reciprocal diagonal
-derivative is a lower bound for the actual real diagonal residue, which
-is at most one. Equality with the lower bound
-holds exactly when the unit vector is a residue eigenvector with that
-weight. The proof computes the squared distance between the two lifts. -/
-theorem closing_schur_residue_lower_bound {A : S →L[ℂ] S} {B : H →L[ℂ] H}
-    (hA : IsSelfAdjoint A) (hB : IsSelfAdjoint B) (T : S →L[ℂ] H)
-    (E₀ : ℝ) (Z : S →L[ℂ] S) (v : S) (hv : ‖v‖ = 1)
-    (hk : closingPolePencil A B T ((-E₀ : ℝ) : ℂ) v = 0)
-    (hb : IsUnit (closingShift B (-E₀ : ℝ)))
-    (hu : ∀ᶠ z in 𝓝[≠] ((-E₀ : ℝ) : ℂ), IsUnit (closingPolePencil A B T z))
-    (hZ : Tendsto (fun z : ℂ => (z - ((-E₀ : ℝ) : ℂ)) • Ring.inverse (closingPolePencil A B T z))
-      (𝓝[≠] ((-E₀ : ℝ) : ℂ)) (𝓝 Z)) :
-    let R := closingResolvent B ((-E₀ : ℝ) : ℂ)
+/-- A supported inverse of the compressed positive derivative bounds the
+diagonal residue in every unit direction fixed by the self-adjoint projection.
+Equality in the lower estimate characterizes eigenvectors of that inverse. -/
+theorem closing_compressed_residue_direction (T : S →L[ℂ] H) (R : H →L[ℂ] H)
+    (hR : IsSelfAdjoint R) (P Z : S →L[ℂ] S) (hP : IsSelfAdjoint P)
+    (hs : P * Z = Z) (hi : (P * closingTemporalMark T 1 R R * P) * Z = P)
+    (v : S) (hv : ‖v‖ = 1) (hp : P v = v) :
     let r := closingSlotResidue T R v
     (⟪v, Z v⟫_ℂ).im = 0 ∧ r ≤ (⟪v, Z v⟫_ℂ).re ∧ (⟪v, Z v⟫_ℂ).re ≤ 1 ∧
       ((⟪v, Z v⟫_ℂ).re = r ↔ Z v = (r : ℂ) • v) := by
-  let R := closingResolvent B ((-E₀ : ℝ) : ℂ)
-  let P := inversePoleKernelProjection (closingPolePencil A B T ((-E₀ : ℝ) : ℂ))
   let J := closingTemporalMark T 1 R R
   let a := 1 + ‖R (T v)‖ ^ 2
   let r := a⁻¹
   let g := poleLift T R
   have ha : 0 < a := by dsimp [a]; positivity
-  have hR := closing_real_resolvent_selfAdjoint B hB (-E₀)
-  obtain ⟨hs, _, _, hi⟩ := closing_schur_measured_charge hA hB T 1 E₀ Z hb hu hZ
-  have hp : P v = v := inverse_pole_projection_fixes hk
   have hPz : P (Z v) = Z v := DFunLike.congr_fun hs v
   have hPJ : P (J (Z v)) = v := by
     have h := DFunLike.congr_fun hi v
-    change P (J (P (Z v))) = ((1 : ℝ) : ℂ) • (P v) at h
-    simpa only [hPz, hp, Complex.ofReal_one, one_smul] using h
+    change P (J (P (Z v))) = P v at h
+    simpa only [hPz, hp] using h
   have hprod (x : S) (hx : P x = x) : ⟪g x, g (Z v)⟫_ℂ = ⟪x, v⟫_ℂ := by
     calc
       ⟪g x, g (Z v)⟫_ℂ = ⟪x, J (Z v)⟫_ℂ := poleLift_inner T R hR _ _
       _ = ⟪P x, J (Z v)⟫_ℂ := congrArg (fun w : S => ⟪w, J (Z v)⟫_ℂ) hx.symm
-      _ = ⟪x, P (J (Z v))⟫_ℂ := (inverse_pole_projection_selfAdjoint _).isSymmetric _ _
+      _ = ⟪x, P (J (Z v))⟫_ℂ := hP.isSymmetric _ _
       _ = ⟪x, v⟫_ℂ := congrArg (fun w : S => ⟪x, w⟫_ℂ) hPJ
   have hcross : ⟪g (Z v), g v⟫_ℂ = 1 := by
     rw [← inner_conj_symm, hprod v hp, inner_self_eq_norm_sq_to_K, hv]
@@ -100,5 +88,27 @@ theorem closing_schur_residue_lower_bound {A : S →L[ℂ] S} {B : H →L[ℂ] H
   · intro he
     rw [he, inner_smul_right, inner_self_eq_norm_sq_to_K, hv]
     simp
+
+/-- If the pole kernel has any dimension, the reciprocal diagonal
+derivative is a lower bound for the actual real diagonal residue, which
+is at most one. Equality with the lower bound
+holds exactly when the unit vector is a residue eigenvector with that
+weight. The proof computes the squared distance between the two lifts. -/
+theorem closing_schur_residue_lower_bound {A : S →L[ℂ] S} {B : H →L[ℂ] H}
+    (hA : IsSelfAdjoint A) (hB : IsSelfAdjoint B) (T : S →L[ℂ] H)
+    (E₀ : ℝ) (Z : S →L[ℂ] S) (v : S) (hv : ‖v‖ = 1)
+    (hk : closingPolePencil A B T ((-E₀ : ℝ) : ℂ) v = 0)
+    (hb : IsUnit (closingShift B (-E₀ : ℝ)))
+    (hu : ∀ᶠ z in 𝓝[≠] ((-E₀ : ℝ) : ℂ), IsUnit (closingPolePencil A B T z))
+    (hZ : Tendsto (fun z : ℂ => (z - ((-E₀ : ℝ) : ℂ)) • Ring.inverse (closingPolePencil A B T z))
+      (𝓝[≠] ((-E₀ : ℝ) : ℂ)) (𝓝 Z)) :
+    let R := closingResolvent B ((-E₀ : ℝ) : ℂ)
+    let r := closingSlotResidue T R v
+    (⟪v, Z v⟫_ℂ).im = 0 ∧ r ≤ (⟪v, Z v⟫_ℂ).re ∧ (⟪v, Z v⟫_ℂ).re ≤ 1 ∧
+      ((⟪v, Z v⟫_ℂ).re = r ↔ Z v = (r : ℂ) • v) := by
+  obtain ⟨hs, _, _, hi⟩ := closing_schur_measured_charge hA hB T 1 E₀ Z hb hu hZ
+  exact closing_compressed_residue_direction T _ (closing_real_resolvent_selfAdjoint B hB (-E₀))
+    _ Z (inverse_pole_projection_selfAdjoint _) hs (by simpa only [Complex.ofReal_one, one_smul] using hi)
+    v hv (inverse_pole_projection_fixes hk)
 
 end UV.SectorPlane

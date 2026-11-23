@@ -10046,7 +10046,7 @@
       "label": "eq:closing-uv-temporal-mark",
       "source_line": 10321,
       "status": "verified",
-      "scope": "Direct two-frequency elimination from the common scalar insertion on both diagonal blocks gives the displayed vertex for the actual unbounded self-adjoint generator. Its divided-difference Ward identity is exact. The scalar pole formula in the subsequent prose requires a nondegeneracy or directional condition.",
+      "scope": "Direct two-frequency elimination of the common charge insertion in both diagonal blocks gives the stated vertex for an unbounded self-adjoint boundary. Its divided-difference Ward identity is exact. At a real pole away from the boundary spectrum, both prescribed characters recover the residue in every entry of the same spectral measure; at any real energy the vertical limit extracts its atom. At a first-order pole the matrix charge identity holds on the full kernel. For a unit vector the scalar inverse-slope formula holds when the kernel is one-dimensional. In a degenerate kernel it is a sharp lower bound, with equality exactly in the corresponding residue eigendirection.",
       "lean": [
         "UV.SectorPlane.closing_temporal_mixed_elimination",
         "UV.SectorPlane.closing_temporal_ward",
@@ -10061,7 +10061,15 @@
         "UV.BoundaryResidue.actual_charge_discrepancy",
         "UV.BoundaryResidue.arbitrary_null_vector_charge",
         "UV.SectorPlane.ClosingUnboundedBlocks.physical_temporal_ward",
-        "UV.SectorPlane.closing_unbounded_temporal_insertion"
+        "UV.SectorPlane.closing_unbounded_temporal_insertion",
+        "UV.SectorPlane.closing_real_pole_chart_nonreal",
+        "UV.SectorPlane.closing_unbounded_pole_measured_charge",
+        "UV.SectorPlane.closing_unbounded_pole_rank_one_residue",
+        "UV.SectorPlane.closing_unbounded_pole_residue_lower_bound",
+        "UV.SectorPlane.Plane.closing_physical_pole_residue",
+        "UV.SectorPlane.Plane.closing_measured_pole_atom",
+        "UV.SectorPlane.Plane.closing_unit_slot_pole_atom",
+        "UV.SectorPlane.closing_boundary_matrix_measure_with_atoms"
       ]
     },
     {
