@@ -979,5 +979,15 @@
       "UV.ContinueRigidLaw.laplaceTransform_angularLaw",
       "UV.ContinueRigidLaw.probability_emittedEnergyLaw"
     ]
+  },
+  "eq:uv-relative-spectral-law": {
+    "status": "partial",
+    "scope": "Checks the consequences of the proposed positive spectral representation on the unit axial eigenspinor, with the exact iω+E denominator and both signs of E. The given high-frequency free asymptotic forces the scalar measure to be an atom, and the exact two-frequency inequality detects a deviation. A separate conditional Hilbert-space theorem rules it out for the averaged resolvent when the nontrivial perturbation hypothesis and the asymptotic hold. The representation is the premise under test.",
+    "lean": [
+      "UV.ContinueRelativeSpectralMoment.measure_eq_dirac_of_resolvent_error",
+      "UV.RelativeSoft.carrierSpectralDefect_eq_integral",
+      "UV.RelativeSoft.carrierSpectral_two_frequency_bound",
+      "UV.RelativeSpectrum.no_positive_rest_fibre_of_weighted_resolvent"
+    ]
   }
 }

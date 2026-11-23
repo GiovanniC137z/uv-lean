@@ -1818,5 +1818,20 @@
       "UV.RelativeSoft.commonDepthContinuumCoeff_tip",
       "UV.RelativeSoft.SoftVarianceData.commonDepthSoftVariance_explicit_limit"
     ]
+  },
+  "prop:uv-relative-spectrum": {
+    "status": "partial",
+    "scope": "For one normalized axial eigenspinor, rapid high-frequency agreement with the signed free pole forces a positive scalar spectral measure on both signs of energy to be the free atom. On the same incoming spinor, the exact shifted-skew resolvent variance excludes a free diagonal value given a perturbation that is nonzero on a positive-measure event. A strictly positive density preserves this event. Lean checks the explicit nonzero transverse cosine coefficient with the unit polarization and actual free spinor inverse, together with the finite two-frequency inequality and the conditional exclusion theorem. The uniform high-frequency estimates for the physical kernel, and identification of the realized derivative and its positive-probability support with the interacting charged source, remain open.",
+    "lean": [
+      "UV.ContinueRelativeSpectralMoment.measure_eq_dirac_of_resolvent_error",
+      "UV.RelativeSpectrum.skew_shift_resolvent_energy",
+      "UV.RelativeSpectrum.relative_resolvent_diagonal_variance",
+      "UV.RelativeSpectrum.reweighted_relative_resolvent_diagonal_obstruction",
+      "UV.RelativeSpectrum.no_positive_rest_fibre_of_weighted_resolvent",
+      "UV.SectorPlane.spectral_cosine_mark_free_mulVec_ne_zero",
+      "UV.SectorPlane.spectral_cosine_spin_local_change",
+      "UV.RelativeSoft.carrierSpectral_two_frequency_bound",
+      "UV.RelativeSoft.carrierSpectral_eventually_violates"
+    ]
   }
 }

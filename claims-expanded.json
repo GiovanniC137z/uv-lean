@@ -1093,10 +1093,20 @@
       "title_tex": "Positive spectral weights would force a free open covariance",
       "source_line": 10154,
       "statement_tex": "At every nonzero real transverse coupling, the rest-fibre matrices\n$\\overline R(\\omega,\\mathbf0)\\gamma_\\parallel$ of this relative chord\ncannot have the unsubtracted representation\n\\begin{equation}\n \\overline R(\\omega,\\mathbf0)\\gamma_\\parallel\n    =\\int_{\\mathbb R}\\frac{M(\\mathrm dE)}{i\\omega+E},\n \\qquad M\\geq0,\n \\label{eq:uv-relative-spectral-law}\n\\end{equation}\non all nonzero carrier frequencies. Here $M$ is a positive\nmatrix measure, including both signs of $E$. This test also applies\nto a fixed nonzero rescaling of the coupling inside the phase.",
-      "status": "pending",
-      "lean": [],
+      "status": "partial",
+      "lean": [
+        "UV.ContinueRelativeSpectralMoment.measure_eq_dirac_of_resolvent_error",
+        "UV.RelativeSpectrum.skew_shift_resolvent_energy",
+        "UV.RelativeSpectrum.relative_resolvent_diagonal_variance",
+        "UV.RelativeSpectrum.reweighted_relative_resolvent_diagonal_obstruction",
+        "UV.RelativeSpectrum.no_positive_rest_fibre_of_weighted_resolvent",
+        "UV.SectorPlane.spectral_cosine_mark_free_mulVec_ne_zero",
+        "UV.SectorPlane.spectral_cosine_spin_local_change",
+        "UV.RelativeSoft.carrierSpectral_two_frequency_bound",
+        "UV.RelativeSoft.carrierSpectral_eventually_violates"
+      ],
       "lean_projects": {},
-      "scope": "Not yet formalized.",
+      "scope": "For one normalized axial eigenspinor, rapid high-frequency agreement with the signed free pole forces a positive scalar spectral measure on both signs of energy to be the free atom. On the same incoming spinor, the exact shifted-skew resolvent variance excludes a free diagonal value given a perturbation that is nonzero on a positive-measure event. A strictly positive density preserves this event. Lean checks the explicit nonzero transverse cosine coefficient with the unit polarization and actual free spinor inverse, together with the finite two-frequency inequality and the conditional exclusion theorem. The uniform high-frequency estimates for the physical kernel, and identification of the realized derivative and its positive-probability support with the interacting charged source, remain open.",
       "statement_change": "new"
     },
     {
@@ -9336,6 +9346,18 @@
       "lean": [
         "UV.RelativeSoft.commonDepthContinuumCoeff_tip",
         "UV.RelativeSoft.SoftVarianceData.commonDepthSoftVariance_explicit_limit"
+      ]
+    },
+    {
+      "label": "eq:uv-relative-spectral-law",
+      "source_line": 10163,
+      "status": "partial",
+      "scope": "Checks the consequences of the proposed positive spectral representation on the unit axial eigenspinor, with the exact iω+E denominator and both signs of E. The given high-frequency free asymptotic forces the scalar measure to be an atom, and the exact two-frequency inequality detects a deviation. A separate conditional Hilbert-space theorem rules it out for the averaged resolvent when the nontrivial perturbation hypothesis and the asymptotic hold. The representation is the premise under test.",
+      "lean": [
+        "UV.ContinueRelativeSpectralMoment.measure_eq_dirac_of_resolvent_error",
+        "UV.RelativeSoft.carrierSpectralDefect_eq_integral",
+        "UV.RelativeSoft.carrierSpectral_two_frequency_bound",
+        "UV.RelativeSpectrum.no_positive_rest_fibre_of_weighted_resolvent"
       ]
     },
     {

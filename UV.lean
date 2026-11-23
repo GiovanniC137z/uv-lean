@@ -607,3 +607,8 @@ import UV.ContinueRigidLawExact
 import UV.ContinueRigidLawPoisson
 import UV.ContinueRigidLawResidual
 import UV.ContinueRigidLawWeight
+import UV.ContinueRelativeSpectralMark
+import UV.ContinueRelativeSpectralMoment
+import UV.ContinueRelativeSpectralObstruction
+import UV.ContinueRelativeSpectralResolvent
+import UV.ContinueRelativeSpectralTest
