@@ -2083,8 +2083,24 @@
       "UV.wilson_spin_hop_opnorm",
       "UV.wilson_charged_trace_absolute_bound",
       "UV.wilson_assigned_mark_count",
-      "UV.wilson_all_allocations_summable"
+      "UV.wilson_all_allocations_summable",
+      "UV.wilson_connected_routing_exists",
+      "UV.WilsonIncidenceBasis.unique_flow",
+      "UV.WilsonIncidenceBasis.full_balance",
+      "UV.wilson_incidence_nonbridge",
+      "UV.wilson_affine_transfer_null",
+      "UV.SectorPlane.Plane.wilson_route_chart",
+      "UV.wilson_actual_maxwell_integrable",
+      "UV.wilson_visit_phase",
+      "UV.wilson_graph_words_bound",
+      "UV.wilson_hard_closed_graph_sum",
+      "UV.wilson_routed_photons_integrable",
+      "UV.wilson_graph_polygon_two_point",
+      "UV.wilson_continuous_density_law",
+      "UV.wilson_continuous_density_support",
+      "UV.wilson_continuous_density_bounded",
+      "UV.wilson_marked_hop_inversion"
     ],
-    "scope": "For each fixed closed polygon the full current is transverse, vanishes at zero, is bounded by min(P,|Q|P²) for perimeter P≤2LN and has a linear limit along each unit direction. Two incidences cancel the soft Maxwell denominator. The actual projected A4 photon multiplier has integrable squared modulus, proving absolute integrability of a sewing and finite products on independent transfers. Each arbitrarily marked two-shell spin hop has an L¹ transform with shift-independent absolute integral and operator norm bounded by 2(2L)^a for a insertions. The complete ordered spin trace for a charged circulation is absolutely integrable uniformly in its transfers. For any fixed number of labeled photon marks, summation over every allocation and every positive hop length converges for 0≤2λ<1, including λ=1/4. The proof uses Gaussian windows and the bounded physical displacement law. The separate pointwise Bessel derivative estimates, full graph assembly with dependent photon routing, and the rotation-independent limit of the summed one-particle-irreducible two-point coefficient remain open."
+    "scope": "For the two-mark A4 Wilson model at L>0, the displacement law has a unique continuous density, with compact support in ‖d‖≤2L, unit mass and a pointwise bound. Each marked spin hop is integrable in momentum and obeys four-dimensional Fourier inversion in angular frequency. For fixed electromagnetic order, arbitrary finite families of nonempty closed charged circulations admit a joint absolute integral over charged and independent photon momenta and every straight-link fraction. All positive lengths and placements of labelled marks on these circulations are absolutely summable for 0≤2λ<1. This hard estimate uses ordinary Maxwell chord factors and a fixed positive infrared exclusion on dependent tree factors. Incidence routing on a connected contracted graph conserves four-momentum at every vertex, with nonconstant tree transfers when deleting the edge preserves connectivity. On fixed closed polygons the transverse currents cancel every internal soft denominator simultaneously. The resulting squared-external-momentum quotient has a finite limit along each fixed unit direction after chord integration, with the actual A4 shell, unit polarizations and opposite external transfers. Remaining steps include incorporating open charged chains, identifying the complete summed charged determinant with its polygon average, and proving a direction-independent transverse scalar for the full 1PI coefficient."
   }
 }

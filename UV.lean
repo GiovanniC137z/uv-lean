@@ -732,3 +732,14 @@ import UV.ContinueWilsonMarkedHop
 import UV.ContinueWilsonShellDensityBound
 import UV.ContinueWilsonShellFourier
 import UV.ContinueWilsonSpinNorm
+import UV.ContinueWilsonAffineRoute
+import UV.ContinueWilsonContinuousDensity
+import UV.ContinueWilsonGraphHopSum
+import UV.ContinueWilsonGraphTwoPoint
+import UV.ContinueWilsonHardPhoton
+import UV.ContinueWilsonHopInversion
+import UV.ContinueWilsonIncidenceRouting
+import UV.ContinueWilsonJointTraces
+import UV.ContinueWilsonPathRouting
+import UV.ContinueWilsonRoutedPhoton
+import UV.ContinueWilsonRoutedSoftLimit

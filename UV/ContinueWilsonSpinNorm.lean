@@ -67,7 +67,7 @@ def wilsonSpinHopMatrix (L : ℝ) {ι : Type*} [Fintype ι] (T : OSFourSpace →
     (us : WilsonDirections) (p : OSFourSpace) : DiracMatrix :=
   ∫ d, (thinPlaneWave p d * wilsonDirectionWeight us d) • wilsonSpinWeight L d ∂wilsonDisplacementMeasure L T
 
-private theorem wilson_spin_weight_continuous (L : ℝ) : Continuous (wilsonSpinWeight L) := by
+theorem wilson_spin_weight_continuous (L : ℝ) : Continuous (wilsonSpinWeight L) := by
   unfold wilsonSpinWeight diracSlash
   apply continuous_const.sub
   apply continuous_const.smul
