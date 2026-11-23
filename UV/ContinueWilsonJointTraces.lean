@@ -63,16 +63,16 @@ theorem wilson_factors_measurable [∀ v, MeasurableSpace (X v)] {w : Z → ℂ}
 
 /-- The shared outer variables may shift all components. Each component
 can have its own finite-dimensional integration space. -/
-theorem wilson_joint_factors_bound [∀ v, MeasureSpace (X v)] [∀ v, SigmaFinite (volume : Measure (X v))] (μ : Measure Z) [SFinite μ] {w : Z → ℂ} (hmw : Measurable w)
+theorem wilson_joint_factors_measure [∀ v, MeasurableSpace (X v)] (νv : (v : V) → Measure (X v)) [∀ v, SigmaFinite (νv v)] (μ : Measure Z) [SFinite μ] {w : Z → ℂ} (hmw : Measurable w)
     (hw : Integrable w μ) {F : (v : V) → Z → X v → ℂ}
-    (hm : ∀ v, Measurable (fun t : Z × X v => F v t.1 t.2)) (hi : ∀ v z, Integrable (F v z))
-    (M : V → ℝ) (hM : ∀ v z, (∫ p, ‖F v z p‖) ≤ M v) :
-    let ν := Measure.pi (fun v : V => (volume : Measure (X v)))
+    (hm : ∀ v, Measurable (fun t : Z × X v => F v t.1 t.2)) (hi : ∀ v z, Integrable (F v z) (νv v))
+    (M : V → ℝ) (hM : ∀ v z, (∫ p, ‖F v z p‖ ∂νv v) ≤ M v) :
+    let ν := Measure.pi νv
     Integrable (wilsonJointFactors w F) (μ.prod ν) ∧
       (∫ t, ‖wilsonJointFactors w F t‖ ∂μ.prod ν) ≤ (∫ z, ‖w z‖ ∂μ) * ∏ v, M v := by
-  let ν := Measure.pi (fun v : V => (volume : Measure (X v)))
+  let ν := Measure.pi νv
   have hJoint := wilson_factors_measurable hmw hm
-  have heq (z : Z) : (∫ p, ‖wilsonJointFactors w F (z,p)‖ ∂ν) = ‖w z‖ * ∏ v, ∫ q, ‖F v z q‖ := by
+  have heq (z : Z) : (∫ p, ‖wilsonJointFactors w F (z,p)‖ ∂ν) = ‖w z‖ * ∏ v, ∫ q, ‖F v z q‖ ∂νv v := by
     simp only [wilsonJointFactors,norm_mul,norm_prod,integral_const_mul]
     rw [integral_fintype_prod_eq_prod (fun v p => ‖F v z p‖)]
   have hle (z : Z) : (∫ p, ‖wilsonJointFactors w F (z,p)‖ ∂ν) ≤ ‖w z‖ * ∏ v, M v := by
@@ -90,6 +90,15 @@ theorem wilson_joint_factors_bound [∀ v, MeasureSpace (X v)] [∀ v, SigmaFini
   refine ⟨hInt,?_⟩
   rw [integral_prod _ hInt.norm,←integral_mul_const]
   exact integral_mono hInt.integral_norm_prod_left hout hle
+
+theorem wilson_joint_factors_bound [∀ v, MeasureSpace (X v)] [∀ v, SigmaFinite (volume : Measure (X v))] (μ : Measure Z) [SFinite μ] {w : Z → ℂ} (hmw : Measurable w)
+    (hw : Integrable w μ) {F : (v : V) → Z → X v → ℂ}
+    (hm : ∀ v, Measurable (fun t : Z × X v => F v t.1 t.2)) (hi : ∀ v z, Integrable (F v z))
+    (M : V → ℝ) (hM : ∀ v z, (∫ p, ‖F v z p‖) ≤ M v) :
+    let ν := Measure.pi (fun v : V => (volume : Measure (X v)))
+    Integrable (wilsonJointFactors w F) (μ.prod ν) ∧
+      (∫ t, ‖wilsonJointFactors w F t‖ ∂μ.prod ν) ≤ (∫ z, ‖w z‖ ∂μ) * ∏ v, M v :=
+  wilson_joint_factors_measure (fun v => (volume : Measure (X v))) μ hmw hw hm hi M hM
 
 def wilsonJointTraces (w : Z → ℂ) (F : V → Z → OSFourSpace → ℂ) : Z × (V → OSFourSpace) → ℂ :=
   wilsonJointFactors w F

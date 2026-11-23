@@ -75,14 +75,43 @@ theorem NormalChargedSector.amplitude_measurable {Z : Type*} [MeasurableSpace Z]
         (fun j => (measurable_snd.comp measurable_snd).add ((hs j).comp measurable_fst))
         (fun j => (measurable_pi_apply j).comp (measurable_fst.comp measurable_snd)))
 
+def NormalChargedSector.measure (σ : Measure OSFourSpace) (P : NormalChargedSector L) : Measure P.Variables :=
+  match P with
+  | .winding n .. => (volume : Measure (Fin n → ℝ)).prod σ
+  | .zero .. => σ.prod (volume : Measure ℝ)
+  | .line r .. => (volume : Measure (Fin r → ℝ)).prod σ
+
+instance (P : NormalChargedSector L) (σ : Measure OSFourSpace) [SigmaFinite σ] : SigmaFinite (P.measure σ) := by
+  cases P with
+  | winding n => exact inferInstanceAs (SigmaFinite ((volume : Measure (Fin n → ℝ)).prod σ))
+  | zero => exact inferInstanceAs (SigmaFinite (σ.prod (volume : Measure ℝ)))
+  | line r => exact inferInstanceAs (SigmaFinite ((volume : Measure (Fin r → ℝ)).prod σ))
+
+theorem NormalChargedSector.measure_volume (P : NormalChargedSector L) : P.measure volume = volume := by
+  cases P <;> rfl
+
+def NormalChargedSector.endpointBound (σ : Measure OSFourSpace) : NormalChargedSector L → Prop
+  | .winding .. | .zero .. => True
+  | .line _ _ φ ψ _ _ => ∃ B : ℝ, 0 ≤ B ∧ ∀ Δ : OSFourSpace,
+    let Y := fun k : OSFourSpace => (‖φ.value (k+Δ)‖^2+‖ψ.value k‖^2)/2
+    Integrable Y σ ∧ (∫ k, Y k ∂σ) ≤ B
+
 /-- Each component has a summable absolute allowance, uniform in all photon
 transfers, including transfers shared with other charged components. -/
-theorem NormalChargedSector.amplitude_budget {m : ℝ} (hm : 0 < m) (hL : 0 < L) (P : NormalChargedSector L) :
+theorem NormalChargedSector.amplitude_measure_budget {m : ℝ} (hm : 0 < m) (hL : 0 < L) (P : NormalChargedSector L)
+    (σ : Measure OSFourSpace) [SigmaFinite σ]
+    (he : ∀ a : ℝ, 0 < a → ∃ B : ℝ, 0 ≤ B ∧ ∀ y : OSFourSpace,
+      let g := fun k : OSFourSpace => Real.exp (-a*‖k+y‖)
+      Integrable g σ ∧ (∫ k, g k ∂σ) ≤ B)
+    (hp : ∀ r : ℕ, 5 < r → ∃ B : ℝ, 0 ≤ B ∧ ∀ y : OSFourSpace,
+      let g := fun x : NormalLoopFrequency => normalLoopWeight m (x.1+y,x.2)^r
+      Integrable g (σ.prod volume) ∧ (∫ x, g x ∂σ.prod volume) ≤ B)
+    (hPackets : P.endpointBound σ) :
     ∃ g : ℤ → ℝ, (∀ w, 0 ≤ g w) ∧ Summable g ∧ ∀ w Δ s,
-      Integrable (P.amplitude m w Δ s) ∧ (∫ t, ‖P.amplitude m w Δ s t‖) ≤ g w := by
+      Integrable (P.amplitude m w Δ s) (P.measure σ) ∧ (∫ t, ‖P.amplitude m w Δ s t‖ ∂P.measure σ) ≤ g w := by
   cases P with
   | winding n θ u =>
-    obtain ⟨B,hB,hsh⟩ := normal_volume_exponential_shifts (a := L/(2*((n:ℝ)+1))) (by positivity)
+    obtain ⟨B,hB,hsh⟩ := he (L/(2*((n:ℝ)+1))) (by positivity)
     let K := normalWindingBudget n m L B
     have hK : 0 ≤ K := by dsimp [K,normalWindingBudget]; positivity
     refine ⟨fun w => K * normalWindingRate m L w,fun w => mul_nonneg hK (Real.exp_pos _).le,
@@ -91,29 +120,44 @@ theorem NormalChargedSector.amplitude_budget {m : ℝ} (hm : 0 < m) (hL : 0 < L)
     by_cases hw : w = 0
     · simpa only [amplitude,if_pos hw,norm_zero,integral_zero,integrable_zero,true_and] using
         mul_nonneg hK (Real.exp_pos (-(m/4)*|(w:ℝ)*L|)).le
-    · simpa only [amplitude,if_neg hw] using normal_winding_trace_integral hm hL θ w hw u s volume B hsh
+    · simpa only [amplitude,if_neg hw] using normal_winding_trace_integral hm hL θ w hw u s σ B hsh
   | zero r hr u =>
-    let K := (L/(2*Real.pi)*4)*(∫ x : NormalLoopFrequency, normalLoopWeight m x^r)
-    have hK : 0 ≤ K := by
-      exact mul_nonneg (by positivity) (integral_nonneg fun x => pow_nonneg (inv_nonneg.mpr (Real.sqrt_nonneg _)) r)
+    obtain ⟨B,hB,hsh⟩ := hp r hr
+    let K := (L/(2*Real.pi)*4)*B
+    have hK : 0 ≤ K := by dsimp [K]; positivity
     refine ⟨fun w => if w = 0 then K else 0,fun w => by dsimp only; split_ifs <;> first | exact hK | exact le_rfl,
       summable_of_ne_finset_zero (s := {0}) (fun w hw => if_neg (by simpa using hw)),?_⟩
     intro w Δ s
     by_cases hw : w = 0
-    · simpa only [amplitude,if_pos hw] using normal_zero_winding_six hm hL hr u s
+    · simpa only [amplitude,if_pos hw] using normal_zero_trace_integral hm hL hr u s σ B hsh
     · simp only [amplitude,if_neg hw,norm_zero,integrable_zero,integral_zero,le_refl,and_self]
   | line r u φ ψ z z' =>
-    let K := ((2:ℝ)^(r+1)*(4/m)^r)*((φ.cost+ψ.cost)/2)
-    have hK : 0 ≤ K := by dsimp [K]; have := φ.cost_nonneg; have := ψ.cost_nonneg; positivity
+    obtain ⟨B,hB,hcost⟩ := hPackets
+    let K := ((2:ℝ)^(r+1)*(4/m)^r)*B
+    have hK : 0 ≤ K := by dsimp [K]; positivity
     obtain ⟨hg,hw⟩ := normal_winding_majorant hm hL
     refine ⟨fun w => K*(Real.exp (m*L/2)*Real.exp (-(m*L/2)*|(w:ℝ)|)),fun w => by positivity,hg.mul_left K,?_⟩
     intro w Δ s
-    have h := normal_packet_word_bound hm (z'.val-z.val+(w:ℝ)*L) u φ ψ Δ (fun t j => t.2+s j)
-      (fun j => measurable_snd.add_const (s j))
+    have h := normal_packet_word_measure hm (z'.val-z.val+(w:ℝ)*L) u φ ψ Δ (fun t j => t.2+s j)
+      (fun j => measurable_snd.add_const (s j)) σ B (hcost Δ)
     have hd : |z'.val-z.val| ≤ L := abs_le.mpr ⟨by linarith [z.property.2,z'.property.1],
       by linarith [z.property.1,z'.property.2]⟩
     refine ⟨h.1,h.2.trans ?_⟩
     calc _ = K * Real.exp (-(m/2)*|z'.val-z.val+(w:ℝ)*L|) := by dsimp [K]; ring
          _ ≤ _ := mul_le_mul_of_nonneg_left (hw _ hd w) hK
+
+theorem NormalChargedSector.amplitude_budget {m : ℝ} (hm : 0 < m) (hL : 0 < L) (P : NormalChargedSector L) :
+    ∃ g : ℤ → ℝ, (∀ w, 0 ≤ g w) ∧ Summable g ∧ ∀ w Δ s,
+      Integrable (P.amplitude m w Δ s) ∧ (∫ t, ‖P.amplitude m w Δ s t‖) ≤ g w := by
+  have hPackets : P.endpointBound volume := by
+    cases P with
+    | winding | zero => trivial
+    | line r u φ ψ z z' =>
+      exact ⟨(φ.cost+ψ.cost)/2,div_nonneg (add_nonneg φ.cost_nonneg ψ.cost_nonneg) (by norm_num),
+        fun Δ => ⟨(wilson_packet_budget φ ψ Δ).1,(wilson_packet_budget φ ψ Δ).2.le⟩⟩
+  simpa only [P.measure_volume] using P.amplitude_measure_budget hm hL volume
+    (fun _ ha => normal_volume_exponential_shifts ha) (fun r hr =>
+      ⟨_,integral_nonneg (fun x => pow_nonneg (inv_nonneg.mpr (Real.sqrt_nonneg _)) r),
+        fun y => ⟨(normal_weight_power_shift hm hr y).1,(normal_weight_power_shift hm hr y).2.le⟩⟩) hPackets
 
 end UV

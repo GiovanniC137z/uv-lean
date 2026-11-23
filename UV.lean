@@ -775,3 +775,8 @@ import UV.ContinueNormalWindingIntegral
 import UV.ContinueNormalZeroLoop
 import UV.ContinueNormalChargedSector
 import UV.ContinueNormalProtectedGraph
+import UV.ContinueNormalLatticeCells
+import UV.ContinueNormalLatticeLoops
+import UV.ContinueNormalLatticePackets
+import UV.ContinueNormalLatticeGraph
+import UV.ContinueNormalPhotonEnvelope

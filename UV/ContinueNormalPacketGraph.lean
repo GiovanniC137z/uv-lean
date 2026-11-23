@@ -16,30 +16,39 @@ def normalPacketWord {r : ℕ} (m D : ℝ) (u : Fin r → UnitVector OSFourSpace
     (Δ : OSFourSpace) (p : NormalOpenVariables r → Fin (r+1) → OSFourSpace) (t : NormalOpenVariables r) : ℂ :=
   wilsonPacketPair φ ψ t.2 Δ (normalOpenDiracWord normalCoverGamma5 m D u (p t) t.1)
 
-theorem normal_packet_word_bound {r : ℕ} {m : ℝ} (hm : 0 < m) (D : ℝ) (u : Fin r → UnitVector OSFourSpace)
+theorem normal_packet_word_measure {r : ℕ} {m : ℝ} (hm : 0 < m) (D : ℝ) (u : Fin r → UnitVector OSFourSpace)
     (φ ψ : WilsonPacket) (Δ : OSFourSpace) (p : NormalOpenVariables r → Fin (r+1) → OSFourSpace)
-    (hp : ∀ j, Measurable (p · j)) :
+    (hp : ∀ j, Measurable (p · j)) (σ : Measure OSFourSpace) [SFinite σ] (B : ℝ)
+    (hB : let Y := fun k : OSFourSpace => (‖φ.value (k+Δ)‖^2+‖ψ.value k‖^2)/2
+      Integrable Y σ ∧ (∫ k, Y k ∂σ) ≤ B) :
     let F := normalPacketWord m D u φ ψ Δ p
-    Integrable F ∧ (∫ t, ‖F t‖) ≤ (2^(r+1)*Real.exp (-(m/2)*|D|)*(4/m)^r)*((φ.cost+ψ.cost)/2) := by
+    Integrable F (volume.prod σ) ∧ (∫ t, ‖F t‖ ∂volume.prod σ) ≤ (2^(r+1)*Real.exp (-(m/2)*|D|)*(4/m)^r)*B := by
   let M := (2:ℝ)^(r+1)*Real.exp (-(m/2)*|D|)
   let g := fun t : ℝ => Real.exp (-(m/2)*|t|)
   let X := fun x : Fin r → ℝ => M*∏ j, g (x j)
   let Y := fun k : OSFourSpace => (‖φ.value (k+Δ)‖^2+‖ψ.value k‖^2)/2
   have hg := normal_open_laplace_mass hm
   have hX : Integrable X := (Integrable.fintype_prod (fun _ : Fin r => hg.1)).const_mul M
-  have hY := wilson_packet_budget φ ψ Δ
-  have hXY : Integrable (fun t : NormalOpenVariables r => X t.1*Y t.2) := hX.mul_prod hY.1
+  have hXY : Integrable (fun t : NormalOpenVariables r => X t.1*Y t.2) (volume.prod σ) := hX.mul_prod hB.1
   have hF : Measurable (normalPacketWord m D u φ ψ Δ p) := wilson_packet_pair_measurable _ _ measurable_snd measurable_const
     (normal_open_word_args_measurable normalCoverGamma5 m D u hp (fun i => (measurable_pi_apply i).comp measurable_fst))
   have hb (t : NormalOpenVariables r) : ‖normalPacketWord m D u φ ψ Δ p t‖ ≤ X t.1*Y t.2 :=
     (wilson_packet_pair_bound _ _ _ _ _).trans (mul_le_mul_of_nonneg_right
       (normal_open_dirac_majorant normalCoverGamma5 normal_cover_gamma_norm hm D u (p t) t.1) (by positivity))
   have hi := hXY.mono' hF.aestronglyMeasurable (Eventually.of_forall hb)
-  refine ⟨hi,(integral_mono hi.norm hXY hb).trans_eq ?_⟩
-  rw [Measure.volume_eq_prod (Fin r → ℝ) OSFourSpace,integral_prod_mul X Y]
+  refine ⟨hi,(integral_mono hi.norm hXY hb).trans ?_⟩
+  rw [integral_prod_mul X Y]
   dsimp only [X]
-  rw [integral_const_mul,integral_fintype_prod_volume_eq_pow g,hY.2]
+  rw [integral_const_mul,integral_fintype_prod_volume_eq_pow g]
   simp only [Fintype.card_fin,g,hg.2,M]
+  exact mul_le_mul_of_nonneg_left hB.2 (by positivity)
+
+theorem normal_packet_word_bound {r : ℕ} {m : ℝ} (hm : 0 < m) (D : ℝ) (u : Fin r → UnitVector OSFourSpace)
+    (φ ψ : WilsonPacket) (Δ : OSFourSpace) (p : NormalOpenVariables r → Fin (r+1) → OSFourSpace)
+    (hp : ∀ j, Measurable (p · j)) :
+    let F := normalPacketWord m D u φ ψ Δ p
+    Integrable F ∧ (∫ t, ‖F t‖) ≤ (2^(r+1)*Real.exp (-(m/2)*|D|)*(4/m)^r)*((φ.cost+ψ.cost)/2) :=
+  normal_packet_word_measure hm D u φ ψ Δ p hp volume _ ⟨(wilson_packet_budget φ ψ Δ).1,(wilson_packet_budget φ ψ Δ).2.le⟩
 
 variable {V Z : Type*} [Fintype V] [MeasurableSpace Z]
 
