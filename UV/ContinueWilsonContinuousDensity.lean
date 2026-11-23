@@ -1,4 +1,4 @@
-import UV.ContinueWilsonShellDensityBound
+import UV.ContinueWilsonActualShell
 import Mathlib.MeasureTheory.Function.L2Space
 import Mathlib.MeasureTheory.Function.LpSpace.ContinuousCompMeasurePreserving
 
@@ -15,19 +15,13 @@ namespace UV
 
 variable {ι : Type*} [Fintype ι]
 
-def wilsonMarkLaw (L : ℝ) (T : OSFourSpace →ₗᵢ[ℝ] WilsonBallSpace ι) : Measure OSFourSpace :=
-  (wilsonBallMeasure ι).map (wilsonSingleDisplacement L T)
-
-instance (L : ℝ) (T : OSFourSpace →ₗᵢ[ℝ] WilsonBallSpace ι) : IsProbabilityMeasure (wilsonMarkLaw L T) :=
-  Measure.isProbabilityMeasure_map (wilsonSingleDisplacement L T).continuous.measurable.aemeasurable
-
 def wilsonMarkDensity (L : ℝ) (T : OSFourSpace →ₗᵢ[ℝ] WilsonBallSpace ι) (x : OSFourSpace) : ℝ :=
-  ((wilsonMarkLaw L T).rnDeriv volume x).toReal
+  ((wilsonSingleLaw L T).rnDeriv volume x).toReal
 
 theorem wilson_mark_density_memLp {L : ℝ} (hL : 0 < L) (T : OSFourSpace →ₗᵢ[ℝ] WilsonBallSpace ι) :
     MemLp (wilsonMarkDensity L T) 2 volume := by
   obtain ⟨C,hC,hdom⟩ := wilson_single_density_bound hL T
-  let μ := wilsonMarkLaw L T
+  let μ := wilsonSingleLaw L T
   have h₁ : Integrable (wilsonMarkDensity L T) volume :=
     integrableOn_univ.mp (Measure.integrableOn_toReal_rnDeriv (μ := μ) (ν := volume) (measure_ne_top _ _))
   have hb := wilson_rn_density_bounded (μ := μ) hdom
@@ -40,14 +34,8 @@ theorem wilson_mark_density_memLp {L : ℝ} (hL : 0 < L) (T : OSFourSpace →ₗ
   exact mul_le_mul_of_nonneg_left (ENNReal.toReal_mono hC hx) hn
 
 theorem wilson_two_mark_convolution (L : ℝ) (T : OSFourSpace →ₗᵢ[ℝ] WilsonBallSpace ι) :
-    wilsonDisplacementMeasure L T = (wilsonMarkLaw L T) ∗ (wilsonMarkLaw L T) := by
-  let R := wilsonSingleDisplacement L T
-  rw [Measure.conv,wilsonMarkLaw,Measure.map_prod_map _ _ R.continuous.measurable R.continuous.measurable,
-    Measure.map_map (measurable_fst.add measurable_snd) (R.continuous.measurable.prodMap R.continuous.measurable)]
-  unfold wilsonDisplacementMeasure
-  congr 1
-  funext z
-  exact map_add R z.1 z.2
+    wilsonDisplacementMeasure L T = (wilsonSingleLaw L T) ∗ (wilsonSingleLaw L T) :=
+  wilson_pair_sum_law L T
 
 def wilsonContinuousDensity (L : ℝ) (T : OSFourSpace →ₗᵢ[ℝ] WilsonBallSpace ι) (x : OSFourSpace) : ℝ :=
   ∫ y, wilsonMarkDensity L T y * wilsonMarkDensity L T (x-y)
@@ -79,7 +67,7 @@ theorem wilson_continuous_density_continuous {L : ℝ} (hL : 0 < L) (T : OSFourS
 
 theorem wilson_continuous_density_law {L : ℝ} (hL : 0 < L) (T : OSFourSpace →ₗᵢ[ℝ] WilsonBallSpace ι) :
     volume.withDensity (fun x => ENNReal.ofReal (wilsonContinuousDensity L T x)) = wilsonDisplacementMeasure L T := by
-  let μ := wilsonMarkLaw L T
+  let μ := wilsonSingleLaw L T
   let R := μ.rnDeriv volume
   let f := wilsonMarkDensity L T
   obtain ⟨_,_,hdom⟩ := wilson_single_density_bound hL T

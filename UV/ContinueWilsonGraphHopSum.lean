@@ -44,7 +44,7 @@ theorem wilson_graph_words_bound {L : ℝ} (hL : 0 < L) (T : OSFourSpace →ₗ�
       (wilsonAssignedTail (u v) (f v) (q v z))).1
   · exact fun v z => wilson_allocated_trace_bound hL T (u v) (f v) (q v z)
 
-private theorem wilson_summable_independent_lengths {g : V → ℕ → ℝ} (hg : ∀ v k, 0 ≤ g v k)
+theorem wilson_summable_independent_lengths {g : V → ℕ → ℝ} (hg : ∀ v k, 0 ≤ g v k)
     (hs : ∀ v, Summable (g v)) : Summable (fun n : V → ℕ => ∏ v, g v (n v)) := by
   classical
   have he : Measure.pi (fun _ : V => (Measure.count : Measure ℕ)) = Measure.count := by

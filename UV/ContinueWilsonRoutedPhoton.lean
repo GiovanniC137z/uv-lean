@@ -62,7 +62,7 @@ theorem WilsonPolygonEdge.uniform_bound (e : WilsonPolygonEdge) (L : ℝ)
   apply (e.bound _ p).trans
   exact mul_le_of_le_one_left e.cost_nonneg (by simpa using pow_le_pow_left₀ (norm_nonneg _) (wilson_shell_form_le_one L T p) 2)
 
-private theorem WilsonPolygonEdge.formula (e : WilsonPolygonEdge) (χ : OSFourSpace → ℂ) (p : OSFourSpace) :
+theorem WilsonPolygonEdge.formula (e : WilsonPolygonEdge) (χ : OSFourSpace → ℂ) (p : OSFourSpace) :
     e.sewing χ p = ((‖χ p‖^2 : ℝ) : ℂ) * inner ℂ (wilsonPolygonCurrent e.dst.displacement e.dst.hops p)
       (wilsonPolygonCurrent e.src.displacement e.src.hops p) / ((‖p‖^2 : ℝ) : ℂ) := by
   unfold sewing wilsonSewnPhoton
