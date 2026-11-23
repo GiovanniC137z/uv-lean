@@ -2660,9 +2660,12 @@
       "UV.directionalWeightedSector_eq_prefix_product",
       "UV.SewnFlags.ordered_joint_flag_moments",
       "UV.SewnFlags.routing_face_four_coordinate_bound",
-      "UV.SewnFlags.ordered_routed_inverse_weight"
+      "UV.SewnFlags.ordered_routed_inverse_weight",
+      "UV.SewnFlags.reverse_greedy_routed_minor",
+      "UV.SewnFlags.short_routed_determinant_bound",
+      "UV.SewnFlags.short_routed_flag_cost_finite"
     ],
-    "scope": "Lean proves the exact ordered ratio substitution for arbitrary measurable nonnegative ratio factors and the joint moment bound for the literal Schwinger simplex, including fully correlated displacements. The exact Gamma envelope at negative degree and logarithmic bound at zero degree retain the infinite cost when the projection is lost. It proves the inverse routed-precision estimate in the four original coordinates and allocates the Gaussian exponent among all prefixes. Connecting the dominant determinant minor and the complete positive or complex phase pairing to these ordered estimates remains open."
+    "scope": "Lean proves finiteness of the actual determinant-weighted routed Gaussian Schwinger integral on each positive ordered short-time chamber under the joint projected moments, allowing fully correlated displacements. Reverse greedy selection gives one nonzero minor and the exact prefix dimensions, and the inverse Gram bound acts in all four original coordinates. The weighted triangular substitution and the Gamma and logarithmic estimates retain the infinite endpoint cost when the projection is lost. The mixed large- and small-time sector gluing and the general shifted Gaussian Fourier identity for the complete signed or complex boundary law remain open."
   },
   "prop:monomial-charged-winding-uv": {
     "status": "partial",

@@ -1045,3 +1045,7 @@ import UV.ContinueSewnFlagLogKernel
 import UV.ContinueSewnFlagMoments
 import UV.ContinueSewnFlagOrdered
 import UV.ContinueSewnFlagProjection
+import UV.ContinueSewnFlagDeterminant
+import UV.ContinueSewnFlagLogFourier
+import UV.ContinueSewnFlagLogPairing
+import UV.ContinueSewnFlagShortCost

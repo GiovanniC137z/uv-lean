@@ -294,6 +294,30 @@ theorem directionalOrderedRatios_ge_time {n : ℕ} {t : Fin n → ℝ}
         exact mul_le_of_le_one_right ht'.1.1.le hcap₁
       · exact ih ht'.2 j
 
+theorem directionalOrderedTime_eq_ratio_product {n : ℕ} {t : Fin n → ℝ}
+    (ht : t ∈ directionalOrderedSet n) (i : Fin n) :
+    t i = ∏ j, if i ≤ j then directionalOrderedRatios t j else 1 := by
+  induction n with
+  | zero => exact Fin.elim0 i
+  | succ n ih =>
+      let q : Fin n → ℝ := fun j => t j.succ
+      let T := directionalOrderedCap q
+      have ht' : t 0 ∈ Ioo 0 T ∧ q ∈ directionalOrderedSet n := ht
+      have hT := directionalOrderedCap_pos ht'.2
+      have hhead : directionalOrderedRatios t 0 = t 0/T := rfl
+      have htail (j : Fin n) : directionalOrderedRatios t j.succ = directionalOrderedRatios q j := rfl
+      refine Fin.cases ?_ (fun k => ?_) i
+      · rw [Fin.prod_univ_succ]
+        simp only [Fin.zero_le,if_true,hhead,htail]
+        have hprod : (∏ j, directionalOrderedRatios q j) = T := by
+          cases n with
+          | zero => simp [T,directionalOrderedCap]
+          | succ n => simpa only [Fin.zero_le,if_true,T,directionalOrderedCap] using (ih ht'.2 0).symm
+        rw [hprod,div_mul_cancel₀ _ hT.ne']
+      · rw [Fin.prod_univ_succ]
+        simp only [Fin.le_zero_iff,Fin.succ_ne_zero,if_false,one_mul,Fin.succ_le_succ_iff,htail]
+        exact ih ht'.2 k
+
 private theorem directional_ratio_scale (a : ℝ) {T : ℝ} (hT : 0 < T) (g : ℝ → ℝ≥0∞)
     (hg : Measurable g) :
     (∫⁻ s in Ioo 0 T, ENNReal.ofReal (s ^ (a-1)) * g (s/T)) =
