@@ -1770,7 +1770,7 @@
   },
   "prop:uv-rigid-spectral-atom": {
     "status": "partial",
-    "scope": "Derives the scalar threshold and resting limit and the exact occupation factor using the normalized axial measure. On the true spatial unit sphere constructs the manuscript's nonnegative angular weight, proves the prescribed emitted-energy Laplace formula for its positive weighted mass, and constructs the normalized absolutely continuous gamma–compound-Poisson law and its near-threshold equivalent with the exact angular coefficient C. The Fock Hamiltonian and vacuum identification, neutral photon spectral atom, and reduction of the actual solid-angle integral to the closed axial expressions are open.",
+    "scope": "Derives the uniform axial pushforward of actual spatial solid angle and both closed angular factors, including rest. Checks the Coulomb prefactor and the strictly positive scalar threshold expression. For nonzero charge and subluminal nonzero motion proves positivity of the actual angular exponent and the absolutely continuous scalar emitted-energy law with the exact angular edge coefficient. Also verifies the positive atom in the specified neutral transverse Laplace covariance at the prescribed energy. Deriving these scalar and neutral spectral identifications from the full charged Fock Hamiltonian is open.",
     "lean": [
       "UV.ContinueRigidThreshold.normalizedAxialMeasure_probability",
       "UV.ContinueRigidThreshold.axial_energy_symmetrization",
@@ -1786,7 +1786,13 @@
       "UV.ContinueRigidLaw.laplaceTransform_angularLaw",
       "UV.ContinueRigidLaw.emittedEnergyLaw_absolutelyContinuous",
       "UV.ContinueRigidLaw.emittedEnergyLaw_noAtom",
-      "UV.ContinueRigidLaw.angularLaw_density_edge"
+      "UV.ContinueRigidLaw.angularLaw_density_edge",
+      "UV.ContinueRigidLaw.map_axialProjection_solidAngle",
+      "UV.ContinueRigidLaw.angular_soft_exponent_closed",
+      "UV.ContinueRigidLaw.angular_energy_factor_closed",
+      "UV.ContinueRigidLaw.coulombEnergy_eq",
+      "UV.ContinueRigidLaw.movingCharge_density_edge",
+      "UV.ContinueRigidLaw.neutralPhoton_atom"
     ]
   },
   "prop:physical-uv-retained-minors": {
@@ -1832,6 +1838,91 @@
       "UV.SectorPlane.spectral_cosine_spin_local_change",
       "UV.RelativeSoft.carrierSpectral_two_frequency_bound",
       "UV.RelativeSoft.carrierSpectral_eventually_violates"
+    ]
+  },
+  "prop:closure-native-uv": {
+    "status": "partial",
+    "scope": "On the actual transverse unit directions in the Euclidean sector plane, the mode energy uses b_sp k² + b_parallel y. For a family of finite-energy solutions of the stated normal equation and normalized boundary value, proves energy minimization, strict positivity, the flux derivative, the explicit positive Dirichlet kernel with its unit flux jump, and the retained amplitude derivative against that kernel. Proves the exact frequency-independence criterion on every positive-depth readout. Also derives the neighboring optical-strip comparison and mixed inverse-moment bounds. Construction of the finite-energy transfer for arbitrary coefficients in this class remains open.",
+    "lean": [
+      "UV.SectorPlane.transverse_normal_energy_density",
+      "UV.SectorPlane.Plane.transverse_normal_carrier_pole",
+      "UV.TemporalRay.normal_channel_energy_minimizer",
+      "UV.TemporalRay.normal_energy_flux",
+      "UV.TemporalRay.normal_transfer_positive",
+      "UV.TemporalRay.normal_family_flux_hasDerivWithinAt",
+      "UV.TemporalRay.normal_left_flux_hasDerivAt",
+      "UV.TemporalRay.normal_green_flux_jump",
+      "UV.TemporalRay.normal_green_boundary_zero",
+      "UV.TemporalRay.normal_green_tendsto_zero",
+      "UV.TemporalRay.normal_family_readout_green_derivative",
+      "UV.TemporalRay.normal_readout_frequency_independent_iff",
+      "UV.TemporalRay.normal_transfer_optical_strip",
+      "UV.TemporalRay.normal_transfer_optical_strip_mixture_decay"
+    ]
+  },
+  "prop:closure-native-perimeter-uv": {
+    "status": "verified",
+    "scope": "For the prepared finite signed arclength segments after overlap splitting, with pairwise segment intersections contained in at most one point, proves the literal closed-current transversality and actual normalized momentum-window asymptotic for smooth radial annular windows. The exact line trace is the stated transverse slice coefficient and is strictly positive for a nonnegative nonzero window. It follows that the nonzero net current has infinite quadratic response for the nonzero positive spectral law. The off-diagonal terms are shown to be o(R³), which suffices for the stated limit.",
+    "lean": [
+      "UV.thinCurrent_transverse",
+      "UV.thinWindowInverse_lineTrace",
+      "UV.thinCurrentShell_radial_perimeter",
+      "UV.thinCurrentSpectrum_has_floor",
+      "UV.thinCurrent_nonzero_has_piece",
+      "UV.thinCurrent_uv_infinite"
+    ]
+  },
+  "prop:closure-heat-maxwell-sign-uv": {
+    "status": "partial",
+    "scope": "Derives the signed radial integral with coefficient 1/(24π²) from the literal two-mark quadratic jet, including the contact, true normalized transverse directions and the actual S³ angular law. Changes variables on the two radius branches and proves strict positivity of the resulting coefficient for every positive mass and width. Also proves strict decrease in x=(ma)². The interchange of the continuum response limit with the original chord and loop integrals and their identification with the native determinant remain open.",
+    "lean": [
+      "UV.HeatMaxwell.heatBubbleContactJet_quadratic",
+      "UV.HeatMaxwell.heatTransverseSoftCoefficient_eq_radial",
+      "UV.HeatMaxwell.heatTransverseSoftCoefficient_pos",
+      "UV.HeatMaxwell.heatMaxwellCoefficient_strictAntiOn",
+      "UV.HeatMaxwell.heatSoft_width_transfer"
+    ]
+  },
+  "prop:quartic-holonomy-uv": {
+    "status": "partial",
+    "scope": "For the actual shifted angular series, proves Poisson summation, exact equality at integer holonomy, and the positive Gamma-weighted winding constant. From the specified rescaled bridge trace identity, a sub-Gaussian bridge supremum bound, and the measurability premises, derives the path and radial limit and the proper-time divergence. Constructing the Brownian bridge and proving the trace identity for the singular Friedrichs operator remain open.",
+    "lean": [
+      "UV.ContinueNormalHolonomy.normalTheta_poisson",
+      "UV.ContinueNormalHolonomy.relativeNormalTheta_integer",
+      "UV.ContinueNormalHolonomy.quarticHolonomyProfile_integral",
+      "UV.ContinueNormalHolonomy.quarticHolonomyConstant_positive",
+      "UV.ContinueNormalHolonomy.quarticRelativeTrace_of_bridge_law",
+      "UV.ContinueNormalHolonomy.quarticRelativeProperTime_not_integrable"
+    ]
+  },
+  "prop:horizontal-magnetic-word-uv": {
+    "status": "partial",
+    "scope": "Checks the scalar magnetic heat factor from the stated Landau levels and derives the S-independent quadratic coefficient with a uniform fourth-order estimate. This gives the exact normalized coefficient at both retained normal endpoints under a finite positive represented path measure. Proves proper-time divergence for a positive prepared trace limit and the higher-order power-integrability implication. The differential-operator realization, trace-class pairing, and unweighted normal trace asymptotic remain open.",
+    "lean": [
+      "UV.ContinueNormalHolonomy.scalarMagneticDiagonal_landau",
+      "UV.ContinueNormalHolonomy.scalarMagneticLoss_uniform",
+      "UV.ContinueNormalHolonomy.scalarMagnetic_endpoint_bound",
+      "UV.ContinueNormalHolonomy.scalarMagnetic_endpoint_quadratic",
+      "UV.ContinueNormalHolonomy.preparedMagneticProperTime_not_integrable",
+      "UV.ContinueNormalHolonomy.higherMagneticProperTime_integrable"
+    ]
+  },
+  "prop:closing-uv-positive-boundary": {
+    "status": "partial",
+    "scope": "For a supplied spectral resolution and domain slots, constructs countably additive positive normalized compressed matrix measures and the finite first and second energy moments. Proves the bounded block Schur identity, the moment excess T* T, and the reverse Schur construction for finite atomic measures with real signed energies. The common kinetic insertion and two-frequency Ward identity, diagonal derivative, and residue-times-charge relation are checked in the bounded realization. General reverse construction through an unbounded multiplication operator for an arbitrary normalized positive matrix measure remains open.",
+    "lean": [
+      "UV.SectorPlane.closing_spectral_compression_positive",
+      "UV.SectorPlane.closing_matrix_measure_univ",
+      "UV.SectorPlane.closing_diagonal_energy_first_moment",
+      "UV.SectorPlane.closing_finite_trace_energy_second_moment",
+      "UV.SectorPlane.closing_block_compressed_inverse_eq",
+      "UV.SectorPlane.closing_block_first_moment",
+      "UV.SectorPlane.closing_block_second_moment",
+      "UV.SectorPlane.closing_atomic_schur_realization",
+      "UV.SectorPlane.closing_temporal_mixed_elimination",
+      "UV.SectorPlane.closing_temporal_ward",
+      "UV.SectorPlane.closing_inverse_slot_hasDerivAt",
+      "UV.SectorPlane.closing_pole_residue_charge"
     ]
   }
 }

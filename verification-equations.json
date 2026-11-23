@@ -910,7 +910,7 @@
   },
   "eq:uv-rigid-edge-constants": {
     "status": "partial",
-    "scope": "Checks the normalized axial formulas for the scalar threshold and occupation exponent. Uses actual spatial unit directions to construct w and prove the exact angular edge coefficient of the scalar emitted-energy law. Identification with the full Fock Hamiltonian and derivation of the closed-form solid-angle integrals remain open.",
+    "scope": "The actual spatial solid angle projects to the exact normalized axial measure. The closed angular factors, actual Coulomb prefactor, positive angular exponent for nonzero e and v, and the scalar emitted-energy edge coefficient are checked. Identifying the threshold with the bottom of the charged Fock Hamiltonian remains open.",
     "lean": [
       "UV.ContinueRigidThreshold.normalizedAxialMeasure_probability",
       "UV.ContinueRigidThreshold.axial_energy_symmetrization",
@@ -924,7 +924,12 @@
       "UV.ContinueRigidThreshold.rigidThreshold_rest_limit",
       "UV.ContinueRigidLaw.angularWeight_nonneg",
       "UV.ContinueRigidLaw.doppler_edgeCoefficient",
-      "UV.ContinueRigidLaw.angularLaw_density_edge"
+      "UV.ContinueRigidLaw.angularLaw_density_edge",
+      "UV.ContinueRigidLaw.map_axialProjection_solidAngle",
+      "UV.ContinueRigidLaw.angular_energy_factor_closed",
+      "UV.ContinueRigidLaw.angular_soft_exponent_closed",
+      "UV.ContinueRigidLaw.coulombEnergy_eq",
+      "UV.ContinueRigidLaw.movingCharge_density_edge"
     ]
   },
   "eq:physical-uv-retained-delta": {
@@ -988,6 +993,38 @@
       "UV.RelativeSoft.carrierSpectralDefect_eq_integral",
       "UV.RelativeSoft.carrierSpectral_two_frequency_bound",
       "UV.RelativeSpectrum.no_positive_rest_fibre_of_weighted_resolvent"
+    ]
+  },
+  "eq:closure-native-flux-uv": {
+    "status": "verified",
+    "scope": "For the provided normalized finite-energy normal transfers, derives both squared-carrier-frequency derivatives in the display. The constructed positive half-line Green function satisfies the homogeneous branch equations, zero boundary and decaying infinity conditions, and flux jump −1. The related existence of the transfer with the given general coefficients is separate.",
+    "lean": [
+      "UV.TemporalRay.normal_family_flux_hasDerivWithinAt",
+      "UV.TemporalRay.normal_family_readout_green_derivative",
+      "UV.TemporalRay.normal_left_solution_hasDerivAt",
+      "UV.TemporalRay.normal_left_flux_hasDerivAt",
+      "UV.TemporalRay.normal_green_flux_jump",
+      "UV.TemporalRay.normal_green_boundary_zero",
+      "UV.TemporalRay.normal_green_tendsto_zero"
+    ]
+  },
+  "eq:closure-heat-maxwell-sign-uv": {
+    "status": "partial",
+    "scope": "The finite two-mark jet with the stipulated normalization, true angular integration and vanishing radial boundary terms equals the exact signed radial integral in the display, whose value is positive. Matching the continuum determinant response to that jet remains open.",
+    "lean": [
+      "UV.HeatMaxwell.heatBubbleContactJet_quadratic",
+      "UV.HeatMaxwell.heatTransverseSoftCoefficient_eq_radial",
+      "UV.HeatMaxwell.heatTransverseSoftCoefficient_pos"
+    ]
+  },
+  "eq:closing-uv-temporal-mark": {
+    "status": "partial",
+    "scope": "For the bounded kinetic realization, eliminates the two resolvent factors against the common charge insertion, obtaining the exact temporal mark and its Ward and pole-residue relations. The unbounded general realization in the adjacent proposition is open.",
+    "lean": [
+      "UV.SectorPlane.closing_temporal_mixed_elimination",
+      "UV.SectorPlane.closing_temporal_ward",
+      "UV.SectorPlane.closing_inverse_slot_hasDerivAt",
+      "UV.SectorPlane.closing_pole_residue_charge"
     ]
   }
 }
