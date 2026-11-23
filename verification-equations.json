@@ -1015,19 +1015,21 @@
     ]
   },
   "eq:closure-heat-maxwell-sign-uv": {
-    "status": "partial",
-    "scope": "The finite two-mark jet with the stipulated normalization, true angular integration and vanishing radial boundary terms equals the exact signed radial integral in the display, whose value is strictly completely monotone in (ma)², with the exact all-order derivative from the neighboring positive-density formula. Matching the continuum determinant response to that jet remains open.",
+    "status": "verified",
+    "scope": "The signed radial integral equals the actual two-sided soft limit of the native continuum bubble and direct contact at positive mass and width. The proof includes differentiation of both Wilson marks, the four-momentum integral, angular integration and vanishing radial boundary terms. The coefficient is positive and strictly completely monotone in (ma)² with the stated derivative formula.",
     "lean": [
       "UV.HeatMaxwell.heatBubbleContactJet_quadratic",
       "UV.HeatMaxwell.heatTransverseSoftCoefficient_eq_radial",
       "UV.HeatMaxwell.heatTransverseSoftCoefficient_pos",
       "UV.HeatMaxwell.heatMaxwellCoefficient_iteratedDeriv",
-      "UV.HeatMaxwell.heatMaxwellCoefficient_strict_complete_monotone"
+      "UV.HeatMaxwell.heatMaxwellCoefficient_strict_complete_monotone",
+      "UV.HeatMaxwell.heat_width_divided_limit",
+      "UV.HeatMaxwell.heat_native_response_trace"
     ]
   },
   "eq:closing-uv-temporal-mark": {
     "status": "partial",
-    "scope": "For the bounded kinetic realization the common charge insertion gives the exact temporal mark and its Ward relation. For a measured first-order inverse pole with kernel projection P, the compressed temporal mark and residue multiply in either order to qP. A unit vector spanning the kernel gives the scalar reciprocal-slope formula. In a positive normalized two-atom example with a two-dimensional kernel, the equal-weight unit vector has measured residue 3/4, reciprocal slope 2/3, and measured residue times the temporal mark 9q/8. Thus the scalar conclusion in the subsequent paragraph needs a simple eigenvalue or an equivalent directional condition. The unrestricted unbounded realization remains open.",
+    "scope": "For a common charge insertion the Schur realization gives the exact temporal mark and its Ward relation, including the constructed unbounded orthogonal boundary. For a measured first-order inverse pole with kernel projection P, the compressed temporal mark and residue multiply in either order to qP. A unit vector spanning the kernel gives the scalar reciprocal-slope formula. In a positive normalized two-atom example with a two-dimensional kernel, the equal-weight unit vector has measured residue 3/4, reciprocal slope 2/3, and measured residue times the temporal mark 9q/8. Thus the scalar conclusion in the subsequent paragraph needs a simple eigenvalue or an equivalent directional condition. The measured scalar-residue comparison here uses a bounded realization.",
     "lean": [
       "UV.SectorPlane.closing_temporal_mixed_elimination",
       "UV.SectorPlane.closing_temporal_ward",
@@ -1040,7 +1042,8 @@
       "UV.BoundaryResidue.measured_simple_pole",
       "UV.BoundaryResidue.degenerate_pole_obstruction",
       "UV.BoundaryResidue.actual_charge_discrepancy",
-      "UV.BoundaryResidue.arbitrary_null_vector_charge"
+      "UV.BoundaryResidue.arbitrary_null_vector_charge",
+      "UV.SectorPlane.ClosingUnboundedBlocks.physical_temporal_ward"
     ]
   },
   "eq:s6-freepole": {
