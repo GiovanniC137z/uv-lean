@@ -18,7 +18,7 @@ def normalHeatTrace (C : NormalCircle E) (s θ : ℝ) : ℝ :=
 def windingHeatReal (C : NormalCircle E) (s θ : ℝ) (w : ℤ) : ℝ :=
   Real.exp (-(w : ℝ) ^ 2 * C.length ^ 2 / (4 * s)) * Real.cos (↑w * θ)
 
-private theorem normalWinding_gaussian_summable {a : ℝ} (ha : 0 < a) :
+theorem normalWinding_gaussian_summable {a : ℝ} (ha : 0 < a) :
     Summable (fun n : ℤ => Real.exp (-(a * (n : ℝ) ^ 2))) := by
   have hNat : Summable (fun n : ℕ => Real.exp (-(a * (n : ℝ) ^ 2))) := by
     have hs := Real.summable_pow_mul_exp_neg_nat_mul 0 ha
@@ -61,7 +61,7 @@ private theorem windingHeatReal_summable (C : NormalCircle E) {s : ℝ}
   change Summable (fun n => (windingNormalHeatTerm C s θ n).re) at hm
   simpa only [windingHeatTerm_re] using hm
 
-private theorem normal_heatTrace_real (C : NormalCircle E) {s : ℝ} (hs : 0 < s) (θ : ℝ) :
+theorem normal_heatTrace_real (C : NormalCircle E) {s : ℝ} (hs : 0 < s) (θ : ℝ) :
     normalHeatTrace C s θ = (C.length / Real.sqrt (4 * Real.pi * s)) *
       ∑' n : ℤ, windingHeatReal C s θ n := by
   have h := congrArg Complex.re (normal_heatTrace_poisson C hs θ)

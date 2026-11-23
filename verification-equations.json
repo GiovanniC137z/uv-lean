@@ -1210,5 +1210,13 @@
       "UV.shell_short_time_power_iff",
       "UV.shell_constant_mode_diverges"
     ]
+  },
+  "eq:monomial-circle-uv": {
+    "status": "verified",
+    "scope": "For the specified normal circle at every positive proper time and any real external holonomy, the actual shifted spectrum equals the absolutely summable Poisson series with its complex winding phase and prefactor L/√(4πt). The construction retains the locked sector plane and evolution.",
+    "lean": [
+      "UV.ExtendNativeHolonomy.normal_heatTrace_poisson",
+      "UV.ExtendNativeHolonomy.normal_heatTrace_real"
+    ]
   }
 }

@@ -707,10 +707,15 @@
         "UV.RootMagnetic.rootCartanSpin_heat_trace",
         "UV.RootMagnetic.root_landau_level_density",
         "UV.RootMagnetic.root_landau_fiber_heat",
-        "UV.RootMagnetic.rootFiberMode_eigen"
+        "UV.RootMagnetic.rootFiberMode_eigen",
+        "UV.RootMagnetic.root_gaussian_number_polynomial",
+        "UV.RootMagnetic.root_landau_basis",
+        "UV.RootMagnetic.magnetic_fiber_spectral_graph",
+        "UV.RootMagnetic.magnetic_fiber_operator",
+        "UV.RootMagnetic.normalized_landau_fibre_heat"
       ],
       "lean_projects": {},
-      "scope": "Starting from the specified scalar Landau levels, their area degeneracy, the two spin shifts, three zero shifts, and root/ghost statistics, Lean sums the heat trace and derives the stated negative quadratic coefficient of the finite-interval proper-time integral. The coefficient persists for every fixed real v. Lean bounds log(T/ε) minus the integrated proper-time cost between zero and (T−ε)v². The five-component Yang–Mills plus background gauge-fixing Hessian, Cartan-root polarization frame and heat trace, and area degeneracy of normalized shifted Landau fibers are derived. The Hermite-Gaussian modes solve the actual oscillator differential equation. Completeness and identification with the full Landau operator heat kernel remain distinct spectral obligations.",
+      "scope": "Starting from the specified scalar Landau levels, their area degeneracy, the two spin shifts, three zero shifts, and root/ghost statistics, Lean sums the heat trace and derives the stated negative quadratic coefficient of the finite-interval proper-time integral. The coefficient persists for every fixed real v. Lean bounds log(T/ε) minus the integrated proper-time cost between zero and (T−ε)v². The five-component Yang–Mills plus background gauge-fixing Hessian, Cartan-root polarization frame and heat trace, and area degeneracy of normalized shifted Landau fibers are derived. The Hermite-Gaussian modes solve the actual oscillator differential equation. The normalized Hermite–Gaussian modes form a complete orthonormal basis of the actual Lebesgue fiber. An unbounded self-adjoint operator on its maximal spectral graph agrees with the Landau differential expression on every smooth compactly supported test. Tonelli on the full positive fiber diagonal gives the normalized heat density after integration of the conserved transverse wave number. The direct-integral identification of the full spatial background operator and its heat kernel remains open.",
       "statement_change": "new"
     },
     {
@@ -863,10 +868,21 @@
       "title_tex": "Curvature sampled by a general angular profile",
       "source_line": 6619,
       "statement_tex": "At vertex $i$ insert $r^{-2}b_i(r,\\theta)$, where at almost every\nradius $b_i$ has zero angular mean and\n$M_i=\\mathop{\\rm ess\\,sup}_r\\|b_i(r,\\cdot)\\|_{L^2(\\dd\\theta/2\\pi)}\n<\\infty$. For $n\\ge2$ the sum of the absolute angular contributions\nto the scalar cyclic word, integrated over all positive independent\ndurations with measure $\\prod_i\\dd u_i$, is bounded by\n\\[\n \\left(\\tfrac23\\sqrt{1+\\pi^2/12}\\right)^n\\prod_i M_i .\n\\]\nThe one-insertion diagonal vanishes at positive duration. A fixed\nmultiple of Gaussian curvature is included by absorbing $-12$ into\n$b_i$. The formula controls the coefficients individually for the\nstated readout.",
-      "status": "pending",
-      "lean": [],
+      "status": "partial",
+      "lean": [
+        "UV.RoughCurvature.angularWeight_square_sum",
+        "UV.RoughCurvature.angularMatrix_parseval",
+        "UV.RoughCurvature.frobenius_cycle_le",
+        "UV.RoughCurvature.cycle_trace_formula",
+        "UV.RoughCurvature.collar_green_is_actual_charged",
+        "UV.RoughCurvature.neutral_collar_green_exact",
+        "UV.RoughCurvature.collar_weighted_radial_change",
+        "UV.RoughCurvature.rough_curvature_green_bound",
+        "UV.RoughCurvature.rough_curvature_one_insertion",
+        "UV.RoughCurvature.rough_curvature_proper_bound"
+      ],
       "lean_projects": {},
-      "scope": "Not yet formalized.",
+      "scope": "Proves the exact all-order bound for the full absolute angular sum of the Green word with genuine L² circle profiles, countably many routes and essential radial bounds. The sharp Hilbert–Schmidt constant follows from Parseval and the integer weight sum. Both the charged and neutral Green factors have the source normalization after the weighted radial change of variables. With the stated positive duration kernels and their exact Green integrals, Tonelli makes every independent-duration cycle equal to that Green word. The one-insertion diagonal vanishes by zero angular mean. The singular Friedrichs heat kernel must still be identified with these duration integrals.",
       "statement_change": "new"
     },
     {
@@ -3290,10 +3306,17 @@
       "title_tex": "Charged winding coefficients and the contractible sector",
       "source_line": 26391,
       "statement_tex": "At every finite order in the external four-potential, the sum of\nthe nonzero winding coefficients of this one-fermion-loop source\nconverges absolutely in winding, the continuous loop momentum and\nthe ordered proper times. The same holds after any fixed number of\nnormal holonomy derivatives. The complete parity-even determinant\nhas a divergent bare magnetic quadratic coefficient.",
-      "status": "pending",
-      "lean": [],
+      "status": "partial",
+      "lean": [
+        "UV.ExtendNativeHolonomy.normal_heatTrace_poisson",
+        "UV.ExtendNativeHolonomy.flat_winding_sum_integrable",
+        "UV.ExtendNativeHolonomy.flatLogDet_iteratedDeriv",
+        "UV.ExtendNativeHolonomy.nonzero_winding_proper_time",
+        "UV.ExtendNativeHolonomy.normal_heatTrace_short_lower",
+        "UV.ExtendNativeHolonomy.charged_magnetic_proper_diverges"
+      ],
       "lean_projects": {},
-      "scope": "Not yet formalized.",
+      "scope": "Proves the exact normal circle Poisson expansion including orientation phase, absolute summation and all holonomy derivatives of the flat relative determinant, and the joint absolute winding and proper-time bound for any finite polynomial cost in the duration factors and winding. The full normal heat trace at every real holonomy retains a uniform positive multiple of the zero-winding short-time term. This implies divergence of the literal stated magnetic proper-time coefficient at every holonomy. The derivation of the complete charged orbital, spin and contact Duhamel coefficients at arbitrary external order and their full trace identification remain open.",
       "statement_change": "new"
     },
     {
@@ -3655,10 +3678,15 @@
       "title_tex": "A geometric moment test on each nested set of hard lines",
       "source_line": 42003,
       "statement_tex": "The bare absolute momentum integral is finite if for every ordering\nof the lines, with successive nonempty prefixes $S_i$, the native\ndisplacement measure satisfies\n\\[\n \\int \\prod_i H_{\\delta_{S_i}}(x_{S_i}(d))\\,d|\\pi|(d)<\\infty .\n\\]\nThe moments are joint moments of the complete boundary pairing.",
-      "status": "pending",
-      "lean": [],
+      "status": "partial",
+      "lean": [
+        "UV.SewnFlags.ratioHeat_at_zero_displacement",
+        "UV.SewnFlags.ratioHeat_negative",
+        "UV.SewnFlags.ratioCost_log",
+        "UV.SewnFlags.one_le_displacementCost"
+      ],
       "lean_projects": {},
-      "scope": "Not yet formalized.",
+      "scope": "On one Schwinger ratio, Lean checks the exact power test at zero displacement, the marginal logarithmic upper bound, and the exact Gamma envelope for strictly negative exponent. The endpoint cost preserves infinity at zero displacement. The joint ordered ratios, projected-displacement estimate for the routed Gaussian and full positive or complex phase pairing remain open.",
       "statement_change": "new"
     },
     {
@@ -10962,6 +10990,16 @@
         "UV.shell_maxwell_radial_integral",
         "UV.shell_short_time_power_iff",
         "UV.shell_constant_mode_diverges"
+      ]
+    },
+    {
+      "label": "eq:monomial-circle-uv",
+      "source_line": 26385,
+      "status": "verified",
+      "scope": "For the specified normal circle at every positive proper time and any real external holonomy, the actual shifted spectrum equals the absolutely summable Poisson series with its complex winding phase and prefactor L/√(4πt). The construction retains the locked sector plane and evolution.",
+      "lean": [
+        "UV.ExtendNativeHolonomy.normal_heatTrace_poisson",
+        "UV.ExtendNativeHolonomy.normal_heatTrace_real"
       ]
     },
     {
