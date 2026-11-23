@@ -3141,10 +3141,25 @@
         "UV.wilson_sewn_photon_coordinates",
         "UV.wilson_sewn_photon_bound",
         "UV.wilson_sewn_photon_of_power_envelope",
-        "UV.wilson_independent_sewn_photons"
+        "UV.wilson_independent_sewn_photons",
+        "UV.wilson_single_density_bound",
+        "UV.wilson_displacement_density_bounded",
+        "UV.wilson_heat_transform_bound",
+        "UV.wilson_marked_transform_square_integrable",
+        "UV.wilson_actual_shell_square_integrable",
+        "UV.wilson_actual_shell_sewing",
+        "UV.wilson_actual_independent_photons",
+        "UV.wilson_marked_spin_hop_integrable",
+        "UV.wilson_marked_spin_hop_shift",
+        "UV.wilson_slash_opnorm",
+        "UV.wilson_spin_weight_opnorm",
+        "UV.wilson_spin_hop_opnorm",
+        "UV.wilson_charged_trace_absolute_bound",
+        "UV.wilson_assigned_mark_count",
+        "UV.wilson_all_allocations_summable"
       ],
       "lean_projects": {},
-      "scope": "For each fixed closed polygon the complete geometric Fourier current is transverse, vanishes at zero, is bounded by min(P,|Q|P²) for perimeter P≤2LN on N shell hops, and has the stated linear limit along every unit direction. The full link supplies all finite marked variations. Two closed currents cancel the soft transverse Maxwell denominator. Their sewing and finite products on independent transfers are absolutely integrable under an integrable squared shell envelope, including C(1+|Q|)^(−K) for K>4. The pure polynomially weighted hopping-length majorant is summable for 0≤2λ<1. The actual marked-hop decay, its use for every charged circulation and general photon routing, and the direction-independent summed one-particle-irreducible photon coefficient remain open.",
+      "scope": "For each fixed closed polygon the full current is transverse, vanishes at zero, is bounded by min(P,|Q|P²) for perimeter P≤2LN and has a linear limit along each unit direction. Two incidences cancel the soft Maxwell denominator. The actual projected A4 photon multiplier has integrable squared modulus, proving absolute integrability of a sewing and finite products on independent transfers. Each arbitrarily marked two-shell spin hop has an L¹ transform with shift-independent absolute integral and operator norm bounded by 2(2L)^a for a insertions. The complete ordered spin trace for a charged circulation is absolutely integrable uniformly in its transfers. For any fixed number of labeled photon marks, summation over every allocation and every positive hop length converges for 0≤2λ<1, including λ=1/4. The proof uses Gaussian windows and the bounded physical displacement law. The separate pointwise Bessel derivative estimates, full graph assembly with dependent photon routing, and the rotation-independent limit of the summed one-particle-irreducible two-point coefficient remain open.",
       "statement_change": "new"
     },
     {
@@ -10460,7 +10475,7 @@
       "label": "eq:covhop-source-uv",
       "source_line": 26981,
       "status": "verified",
-      "scope": "The two independent normalized A4 marks, any isometric four-coordinate readout and L>0 yield a four-volume displacement density of mass one supported in |d|≤2L. Its characteristic function is the square of the single-ball transform at LTp. Lean identifies the full straight Wilson hop, including I−γ·d/(2L), with the displayed density integral and proves absolute integrability on continuous spinor probes for a continuous real connection. The source family D_B=L⁻¹(I−λH_B) includes λ=1/4. Its gauge conjugation, all finite link variations, the constant-connection momentum shift, the contracted momentum Ward identity, and sector-chart transport are checked. The neighboring determinant and full graph statements have their own scope.",
+      "scope": "The two independent normalized A4 marks, any isometric four-coordinate readout and L>0 yield an essentially bounded four-volume displacement density of mass one supported in |d|≤2L. Its characteristic function is the square of the single-ball transform at LTp. Lean identifies the full straight Wilson hop, including I−γ·d/(2L), with the displayed density integral and proves absolute integrability on continuous spinor probes for a continuous real connection. The source family D_B=L⁻¹(I−λH_B) includes λ=1/4. Its gauge conjugation, all finite link variations, the constant-connection momentum shift, the contracted momentum Ward identity, and sector-chart transport are checked. The neighboring determinant and full graph statements have their own scope.",
       "lean": [
         "UV.wilson_displacement_density_eq",
         "UV.wilson_displacement_density_mass",
@@ -10474,7 +10489,9 @@
         "UV.wilson_constant_connection_shift",
         "UV.wilson_source_ward_contracted",
         "UV.SectorPlane.Plane.wilson_link_chart",
-        "UV.SectorPlane.Plane.wilson_wave_unit_chart"
+        "UV.SectorPlane.Plane.wilson_wave_unit_chart",
+        "UV.wilson_displacement_density_bounded",
+        "UV.wilson_spin_weight_opnorm"
       ]
     },
     {

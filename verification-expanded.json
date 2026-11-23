@@ -2068,8 +2068,23 @@
       "UV.wilson_sewn_photon_coordinates",
       "UV.wilson_sewn_photon_bound",
       "UV.wilson_sewn_photon_of_power_envelope",
-      "UV.wilson_independent_sewn_photons"
+      "UV.wilson_independent_sewn_photons",
+      "UV.wilson_single_density_bound",
+      "UV.wilson_displacement_density_bounded",
+      "UV.wilson_heat_transform_bound",
+      "UV.wilson_marked_transform_square_integrable",
+      "UV.wilson_actual_shell_square_integrable",
+      "UV.wilson_actual_shell_sewing",
+      "UV.wilson_actual_independent_photons",
+      "UV.wilson_marked_spin_hop_integrable",
+      "UV.wilson_marked_spin_hop_shift",
+      "UV.wilson_slash_opnorm",
+      "UV.wilson_spin_weight_opnorm",
+      "UV.wilson_spin_hop_opnorm",
+      "UV.wilson_charged_trace_absolute_bound",
+      "UV.wilson_assigned_mark_count",
+      "UV.wilson_all_allocations_summable"
     ],
-    "scope": "For each fixed closed polygon the complete geometric Fourier current is transverse, vanishes at zero, is bounded by min(P,|Q|P²) for perimeter P≤2LN on N shell hops, and has the stated linear limit along every unit direction. The full link supplies all finite marked variations. Two closed currents cancel the soft transverse Maxwell denominator. Their sewing and finite products on independent transfers are absolutely integrable under an integrable squared shell envelope, including C(1+|Q|)^(−K) for K>4. The pure polynomially weighted hopping-length majorant is summable for 0≤2λ<1. The actual marked-hop decay, its use for every charged circulation and general photon routing, and the direction-independent summed one-particle-irreducible photon coefficient remain open."
+    "scope": "For each fixed closed polygon the full current is transverse, vanishes at zero, is bounded by min(P,|Q|P²) for perimeter P≤2LN and has a linear limit along each unit direction. Two incidences cancel the soft Maxwell denominator. The actual projected A4 photon multiplier has integrable squared modulus, proving absolute integrability of a sewing and finite products on independent transfers. Each arbitrarily marked two-shell spin hop has an L¹ transform with shift-independent absolute integral and operator norm bounded by 2(2L)^a for a insertions. The complete ordered spin trace for a charged circulation is absolutely integrable uniformly in its transfers. For any fixed number of labeled photon marks, summation over every allocation and every positive hop length converges for 0≤2λ<1, including λ=1/4. The proof uses Gaussian windows and the bounded physical displacement law. The separate pointwise Bessel derivative estimates, full graph assembly with dependent photon routing, and the rotation-independent limit of the summed one-particle-irreducible two-point coefficient remain open."
   }
 }

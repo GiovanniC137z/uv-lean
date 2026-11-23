@@ -724,3 +724,11 @@ import UV.ContinueWilsonMomentumWard
 import UV.ContinueWilsonPhotonSewing
 import UV.ContinueWilsonPolygonCurrent
 import UV.ContinueWilsonSoftPhoton
+import UV.ContinueWilsonActualShell
+import UV.ContinueWilsonCirculation
+import UV.ContinueWilsonFourierHeat
+import UV.ContinueWilsonHopSum
+import UV.ContinueWilsonMarkedHop
+import UV.ContinueWilsonShellDensityBound
+import UV.ContinueWilsonShellFourier
+import UV.ContinueWilsonSpinNorm

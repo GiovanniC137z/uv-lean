@@ -1151,7 +1151,7 @@
   },
   "eq:covhop-source-uv": {
     "status": "verified",
-    "scope": "The two independent normalized A4 marks, any isometric four-coordinate readout and L>0 yield a four-volume displacement density of mass one supported in |d|≤2L. Its characteristic function is the square of the single-ball transform at LTp. Lean identifies the full straight Wilson hop, including I−γ·d/(2L), with the displayed density integral and proves absolute integrability on continuous spinor probes for a continuous real connection. The source family D_B=L⁻¹(I−λH_B) includes λ=1/4. Its gauge conjugation, all finite link variations, the constant-connection momentum shift, the contracted momentum Ward identity, and sector-chart transport are checked. The neighboring determinant and full graph statements have their own scope.",
+    "scope": "The two independent normalized A4 marks, any isometric four-coordinate readout and L>0 yield an essentially bounded four-volume displacement density of mass one supported in |d|≤2L. Its characteristic function is the square of the single-ball transform at LTp. Lean identifies the full straight Wilson hop, including I−γ·d/(2L), with the displayed density integral and proves absolute integrability on continuous spinor probes for a continuous real connection. The source family D_B=L⁻¹(I−λH_B) includes λ=1/4. Its gauge conjugation, all finite link variations, the constant-connection momentum shift, the contracted momentum Ward identity, and sector-chart transport are checked. The neighboring determinant and full graph statements have their own scope.",
     "lean": [
       "UV.wilson_displacement_density_eq",
       "UV.wilson_displacement_density_mass",
@@ -1165,7 +1165,9 @@
       "UV.wilson_constant_connection_shift",
       "UV.wilson_source_ward_contracted",
       "UV.SectorPlane.Plane.wilson_link_chart",
-      "UV.SectorPlane.Plane.wilson_wave_unit_chart"
+      "UV.SectorPlane.Plane.wilson_wave_unit_chart",
+      "UV.wilson_displacement_density_bounded",
+      "UV.wilson_spin_weight_opnorm"
     ]
   }
 }
