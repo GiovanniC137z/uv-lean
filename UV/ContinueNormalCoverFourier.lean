@@ -13,7 +13,7 @@ namespace UV
 
 def normalCoverGamma5 : DiracMatrix := euclideanGamma 0*euclideanGamma 1*euclideanGamma 2*euclideanGamma 3
 
-theorem normal_cover_gamma_norm : ‖normalCoverGamma5‖ = 1 := by
+theorem normal_cover_gamma_unitary : normalCoverGamma5 ∈ Matrix.unitaryGroup (Fin 4) ℂ := by
   have hg (j : Fin 4) : euclideanGamma j ∈ Matrix.unitaryGroup (Fin 4) ℂ := by
     apply Matrix.mem_unitaryGroup_iff'.mpr
     change (euclideanGamma j)ᴴ * euclideanGamma j = 1
@@ -22,9 +22,10 @@ theorem normal_cover_gamma_norm : ‖normalCoverGamma5‖ = 1 := by
     have h := congrArg (fun A : DiracMatrix => A i k) (euclideanGamma_clifford j j)
     simp only [if_true,two_smul,Matrix.add_apply] at h
     linear_combination (1/2:ℂ)*h
-  have h : normalCoverGamma5 ∈ Matrix.unitaryGroup (Fin 4) ℂ :=
-    mul_mem (mul_mem (mul_mem (hg 0) (hg 1)) (hg 2)) (hg 3)
-  exact CStarRing.norm_of_mem_unitary h
+  exact mul_mem (mul_mem (mul_mem (hg 0) (hg 1)) (hg 2)) (hg 3)
+
+theorem normal_cover_gamma_norm : ‖normalCoverGamma5‖ = 1 :=
+  CStarRing.norm_of_mem_unitary normal_cover_gamma_unitary
 
 /-- The representative at the origin is the midpoint of the two normal
 one-sided limits. Their difference is exactly the chirality insertion. -/

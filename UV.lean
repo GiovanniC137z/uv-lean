@@ -769,3 +769,9 @@ import UV.ContinueNormalCoverPath
 import UV.ContinueNormalOpenDirac
 import UV.ContinueNormalCoverFourier
 import UV.ContinueNormalPacketGraph
+import UV.ContinueNormalFrequency
+import UV.ContinueNormalWindingLoop
+import UV.ContinueNormalWindingIntegral
+import UV.ContinueNormalZeroLoop
+import UV.ContinueNormalChargedSector
+import UV.ContinueNormalProtectedGraph

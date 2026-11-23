@@ -3097,10 +3097,20 @@
         "UV.normal_cover_angular_fourier",
         "UV.SectorPlane.Plane.normal_cover_fourier_chart",
         "UV.normal_dirac_cover_bound",
-        "UV.normal_hard_open_graph"
+        "UV.normal_hard_open_graph",
+        "UV.normal_frequency_is_cover_transform",
+        "UV.normal_dirac_frequency_norm",
+        "UV.normal_winding_long_increment",
+        "UV.normal_winding_trace_majorant",
+        "UV.normal_nonzero_windings_absolute",
+        "UV.normal_weight_power_integrable",
+        "UV.normal_zero_winding_six",
+        "UV.normal_hard_protected_graph",
+        "UV.SectorPlane.Plane.normal_cover_transform_norm",
+        "UV.SectorPlane.Plane.normal_winding_chart_absolute"
       ],
       "lean_projects": {},
-      "scope": "For the massive normal-circle comparison, the angular Fourier transform of the explicit oriented cover kernel recovers (m−iγ·p−iγ⁵ξ)/(m²+‖p‖²+ξ²), and the difference of its two one-sided normal limits is exactly γ⁵. The proof uses the four Euclidean gamma matrices and their ordered chirality product, verifies its unit operator norm, and proves a momentum-uniform exponential bound for the propagator. The continuum rank-four hard estimate covers the open-line contribution with its normal integrals, integer windings and tested endpoints. The nonzero-winding and six-insertion closed-loop estimates, the rank-three readout and finite-torus estimates for the complete graph family remain open.",
+      "scope": "For positive mass and normal-circle circumference, the oriented Dirac cover kernel has jump γ⁵ and Fourier multiplier with exact operator norm (m²+‖p‖²+ξ²)⁻¹ᐟ². On nonzero winding, the increment constraint supplies decay in one independent four-momentum, allowing simultaneous short segments and a summable exponential bound in |w|. At zero winding the frequency trace with at least six unit-polarized insertions is absolutely integrable in four carrier directions and one continuous normal frequency, uniformly in the transferred momenta. For the four-dimensional isometric A4 readout in the continuum, finite products of these protected loops and tested open chains are jointly absolutely integrable with routed hard transverse Maxwell photons, summed absolutely over every admitted winding assignment. The periodic trace identification from the charged determinant, general rank-at-least-three readouts and the finite-torus graph theorem remain open.",
       "statement_change": "new"
     },
     {
@@ -3120,10 +3130,13 @@
         "UV.normal_open_all_windings",
         "UV.normal_packet_word_bound",
         "UV.normal_open_graph_integral",
-        "UV.normal_hard_open_graph"
+        "UV.normal_hard_open_graph",
+        "UV.NormalChargedSector.amplitude_budget",
+        "UV.normal_protected_graph_integral",
+        "UV.normal_hard_protected_graph"
       ],
       "lean_projects": {},
-      "scope": "For m>0 and circle length L>0, an open chain of r+1 actual Dirac cover propagators and r unit-polarized vertices has absolute normal-displacement integral at most 2^(r+1)(4/m)^r exp(−m|z′−z+wL|/2). The proof includes r=0, coincident endpoints, the sign jump and every integer winding. In the full-rank isometric A4 continuum readout, arbitrary finite families of these chains, with L² carrier spinor packets, are jointly absolutely integrable with hard Maxwell photons and all independent normal windings are summable. The estimate is uniform in the carrier transfers and uses the fixed infrared convention on dependent photons. The complete periodic four-torus and rank-three comparisons, and joint graphs with the protected closed loops of the preceding proposition, remain open.",
+      "scope": "For m>0 and circle length L>0, an open chain of r+1 actual Dirac cover propagators and r unit-polarized vertices has absolute normal-displacement integral at most 2^(r+1)(4/m)^r exp(−m|z′−z+wL|/2). The proof includes r=0, coincident endpoints, the sign jump and every integer winding. In the full-rank isometric A4 continuum readout, arbitrary finite families of these chains, with L² carrier spinor packets, are jointly absolutely integrable with hard Maxwell photons and all independent normal windings are summable. The estimate is uniform in the carrier transfers and uses the fixed infrared convention on dependent photons. The same joint absolute bound now holds when the tested lines are sewn to nonzero-winding loops and zero-winding loops with at least six unit-polarized insertions. The periodic four-torus graph and general rank-at-least-three readouts remain open.",
       "statement_change": "new"
     },
     {
