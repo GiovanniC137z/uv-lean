@@ -795,3 +795,5 @@ import UV.ContinueNormalConstrainedTransform
 import UV.ContinueNormalZeroIdentification
 import UV.ContinueNormalCircleOpen
 import UV.ContinueNormalPeriodicIntegral
+import UV.ContinueNormalCircleCoordinates
+import UV.ContinueNormalOpenCoordinates
