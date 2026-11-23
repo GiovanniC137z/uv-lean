@@ -1028,8 +1028,8 @@
     ]
   },
   "eq:closing-uv-temporal-mark": {
-    "status": "partial",
-    "scope": "For a common charge insertion the Schur realization gives the exact temporal mark and its Ward relation, including the constructed unbounded orthogonal boundary. For a measured first-order inverse pole with kernel projection P, the compressed temporal mark and residue multiply in either order to qP. A unit vector spanning the kernel gives the scalar reciprocal-slope formula. In a positive normalized two-atom example with a two-dimensional kernel, the equal-weight unit vector has measured residue 3/4, reciprocal slope 2/3, and measured residue times the temporal mark 9q/8. Thus the scalar conclusion in the subsequent paragraph needs a simple eigenvalue or an equivalent directional condition. The measured scalar-residue comparison here uses a bounded realization.",
+    "status": "verified",
+    "scope": "Direct two-frequency elimination from the common scalar insertion on both diagonal blocks gives the displayed vertex for the actual unbounded self-adjoint generator. Its divided-difference Ward identity is exact. The scalar pole formula in the subsequent prose requires a nondegeneracy or directional condition.",
     "lean": [
       "UV.SectorPlane.closing_temporal_mixed_elimination",
       "UV.SectorPlane.closing_temporal_ward",
@@ -1043,7 +1043,8 @@
       "UV.BoundaryResidue.degenerate_pole_obstruction",
       "UV.BoundaryResidue.actual_charge_discrepancy",
       "UV.BoundaryResidue.arbitrary_null_vector_charge",
-      "UV.SectorPlane.ClosingUnboundedBlocks.physical_temporal_ward"
+      "UV.SectorPlane.ClosingUnboundedBlocks.physical_temporal_ward",
+      "UV.SectorPlane.closing_unbounded_temporal_insertion"
     ]
   },
   "eq:s6-freepole": {

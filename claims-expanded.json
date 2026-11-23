@@ -1177,7 +1177,7 @@
       "title_tex": "Positive boundary realization and the charge vertex",
       "source_line": 10298,
       "statement_tex": "Let $G(z)$ on the imaginary axis be the charged matrix of a finite\nset of source slots. A representation\n\\[\n \\begin{gathered}\n G(z)=\\int_{\\mathbb R}(z+E)^{-1}M(\\mathrm dE),\\\\\n M\\ge0,\\quad \\int M=I,\\quad \\int E^2\\,\\operatorname{tr}M<\\infty ,\n \\end{gathered}\n\\]\nis equivalent to the existence of a Hermitian matrix $A$, a\nself-adjoint boundary operator $B$, and a bounded map $T$ from the\nslots to the boundary space such that, for nonreal $z$,\n\\[\n D(z)=z+A-T^*(z+B)^{-1}T,\\qquad G(z)=D(z)^{-1}.\n\\]\nFor data given only at Matsubara frequencies, equivalence means that\nthe right-hand side agrees at those frequencies. The first moment\nis $A$, and the second moment is $A^2+T^*T$. If both sets of slots\ncarry the same conserved charge $q$, the uniform temporal insertion\nof their common first-order kinetic action gives\n\\begin{equation}\n \\Gamma(z',z)=q\\left[I+T^*(z'+B)^{-1}(z+B)^{-1}T\\right].\n \\label{eq:closing-uv-temporal-mark}\n\\end{equation}\nHere the scalar source is in energy units, with $q$ factored out\nwhen defining a unit temporal variation.",
-      "status": "partial",
+      "status": "verified",
       "lean": [
         "UV.SectorPlane.closing_spectral_compression_positive",
         "UV.SectorPlane.closing_matrix_measure_univ",
@@ -1211,10 +1211,20 @@
         "UV.SectorPlane.closing_cayley_law_cauchy",
         "UV.SectorPlane.closing_cayley_law_second_moment",
         "UV.SectorPlane.closing_cayley_compact_state_resolvent",
-        "UV.SectorPlane.closing_compact_state_mass"
+        "UV.SectorPlane.closing_compact_state_mass",
+        "UV.SectorPlane.closing_cayley_state_no_atom",
+        "UV.SectorPlane.closing_domain_slot_mass",
+        "UV.SectorPlane.closing_domain_slot_cauchy",
+        "UV.SectorPlane.closing_domain_slot_first_exact",
+        "UV.SectorPlane.closing_domain_slot_second_exact",
+        "UV.SectorPlane.closing_cayley_forward",
+        "UV.SectorPlane.closing_domain_matrix_quadratic",
+        "UV.SectorPlane.closing_domain_matrix_positive",
+        "UV.SectorPlane.closing_boundary_matrix_measure",
+        "UV.SectorPlane.closing_unbounded_temporal_insertion"
       ],
       "lean_projects": {},
-      "scope": "For a supplied spectral resolution and domain slots, constructs countably additive positive normalized compressed matrix measures and the finite first and second energy moments. Proves the bounded block Schur identity, the moment excess T* T, and the reverse Schur construction for finite atomic measures with real signed energies. The common kinetic insertion and two-frequency Ward identity, diagonal derivative, and algebraic reciprocal-slope normalization are checked in the bounded realization.  For a measured first-order inverse pole with kernel projection P, the compressed temporal mark and residue multiply in either order to qP. A unit vector spanning the kernel gives the scalar reciprocal-slope formula. In a positive normalized two-atom example with a two-dimensional kernel, the equal-weight unit vector has measured residue 3/4, reciprocal slope 2/3, and measured residue times the temporal mark 9q/8. Thus the scalar conclusion in the subsequent paragraph needs a simple eigenvalue or an equivalent directional condition. On any unit null vector, the reciprocal scalar slope is a lower bound on the measured diagonal residue, which is at most one. Equality in the lower bound is characterized by the vector being a residue eigenvector with that eigenvalue. The reverse direction now starts with an arbitrary normalized positive finite-slot matrix measure of finite trace second moment. It constructs the signed-energy operator, its actual orthogonal boundary compression, and the Schur, Cauchy and moment identities at every nonreal energy. In the forward direction the block Hamiltonian and resolvent are constructed; obtaining the measure from completely general unbounded input still requires the spectral representation. For a general self-adjoint operator its unitary Cayley transform gives the actual nonreal resolvent by continuous functional calculus. The signed-energy pushforward on the unit circle has finite second moment with the specified domain-vector weight.",
+      "scope": "For any finite charged-slot space, an arbitrary normalized positive matrix measure on signed real energies with finite trace second moment constructs an actual self-adjoint orthogonal boundary channel, a bounded coupling and a Hermitian slot matrix. Conversely every such block, with arbitrary self-adjoint boundary operator, constructs a positive matrix measure on all Borel sets with unit mass matrix and finite trace second moment. The very same measure has the stated nonreal Cauchy transform and full complex first and second moment matrices A and A²+T* T. These identities restrict to any supplied nonreal Matsubara frequency. Exact two-frequency elimination with the common temporal charge produces the displayed insertion on the actual unbounded domains. The scalar residue statement in the separate paragraph after the named proposition requires a one-dimensional kernel or the directional eigenvector condition; an explicit two-atom measure disproves its unrestricted reading.",
       "statement_change": "new"
     },
     {
@@ -10035,8 +10045,8 @@
     {
       "label": "eq:closing-uv-temporal-mark",
       "source_line": 10321,
-      "status": "partial",
-      "scope": "For a common charge insertion the Schur realization gives the exact temporal mark and its Ward relation, including the constructed unbounded orthogonal boundary. For a measured first-order inverse pole with kernel projection P, the compressed temporal mark and residue multiply in either order to qP. A unit vector spanning the kernel gives the scalar reciprocal-slope formula. In a positive normalized two-atom example with a two-dimensional kernel, the equal-weight unit vector has measured residue 3/4, reciprocal slope 2/3, and measured residue times the temporal mark 9q/8. Thus the scalar conclusion in the subsequent paragraph needs a simple eigenvalue or an equivalent directional condition. The measured scalar-residue comparison here uses a bounded realization.",
+      "status": "verified",
+      "scope": "Direct two-frequency elimination from the common scalar insertion on both diagonal blocks gives the displayed vertex for the actual unbounded self-adjoint generator. Its divided-difference Ward identity is exact. The scalar pole formula in the subsequent prose requires a nondegeneracy or directional condition.",
       "lean": [
         "UV.SectorPlane.closing_temporal_mixed_elimination",
         "UV.SectorPlane.closing_temporal_ward",
@@ -10050,7 +10060,8 @@
         "UV.BoundaryResidue.degenerate_pole_obstruction",
         "UV.BoundaryResidue.actual_charge_discrepancy",
         "UV.BoundaryResidue.arbitrary_null_vector_charge",
-        "UV.SectorPlane.ClosingUnboundedBlocks.physical_temporal_ward"
+        "UV.SectorPlane.ClosingUnboundedBlocks.physical_temporal_ward",
+        "UV.SectorPlane.closing_unbounded_temporal_insertion"
       ]
     },
     {

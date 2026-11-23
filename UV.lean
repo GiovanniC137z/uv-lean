@@ -1007,3 +1007,12 @@ import UV.ContinueCompressedModesFockVerification
 import UV.ContinueGaugeRootOscillator
 import UV.ContinueHeatMaxwellDeterminant
 import UV.ContinueCayleyState
+import UV.ContinueCayleyAtom
+import UV.ContinueCayleyBoundaryEquivalence
+import UV.ContinueCayleyForward
+import UV.ContinueCayleyForwardFamily
+import UV.ContinueCayleyForwardMoments
+import UV.ContinueCayleyForwardPairing
+import UV.ContinueCayleyMatrix
+import UV.ContinueCayleyMatrixEnergy
+import UV.ContinueCayleySlot
