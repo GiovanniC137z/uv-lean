@@ -82,7 +82,7 @@
   },
   "eq:directed-propagator": {
     "status": "partial",
-    "scope": "The literal finite-height scalar line uses the normalized running unit off the null axial hyperplane, the fixed pole unit, and a common positive height. At positive mass each stable-half side now converges on compact Lipschitz complex tests. The same-height shell subtraction leaves an absolutely integrable remainder. Its residue has phase exp(iηam) and weights the difference of the two shells with the exact Jacobian 1/(2ω). At zero mass the stable-half line converges on compact Cartesian C² tests through the cone tip. The separate scalar sides extend to all nonnegative masses for every real-C¹ profile, and more generally for profiles satisfying the documented compact shell estimates. The limiting coefficient acts continuously on every fixed compact C² test space. For two scalar lines carrying the same four-momentum, the positive-height calculation uses both actual running units. For real-C² profiles at distinct nonnegative masses, or at equal positive mass on the same side, the product is a continuous functional on every compact Cartesian C² test space. For the principal stable-half profile at arbitrary nonnegative depths and masses the common-height boundary exists exactly when the squared masses differ or the common mass is positive and both sides agree. At equal mass opposite sides give a shell pinch. Equal zero masses on the same side give a logarithm on a smooth test through the cone tip. For two momenta routed by separate translations on the same locked plane, compact supports without a shared shell point give a continuous boundary for a jointly C² moving numerator. The literal scalar lines satisfy this conclusion for real-C² profiles when the axial shifts are equal or the support avoids both axial-zero slices. The principal stable-half profile also satisfies it for nonnegative depths when the support additionally avoids the zero sets of both routed invariants. The proof retains the two distinct normalized running signs. In the symmetric rest routing with nonzero transfer, the shells meet exactly when the absolute energy is at least the sum of the masses or at most their absolute difference. The coordinates of the intersection and the two running signs on the positive-energy equal-mass common shell are explicit. A nonzero real null shift never creates a common shell at equal positive mass. Products at intersecting translated shells and identification with the completed-source Hessian remain open. For every positive mass and n≥0, at one shared positive height the pole of order n+1 is exactly reduced by n Cartesian Euler integrations by parts to the simple pole on the iterated test. The mass shift m²−iηh is retained before the limit, and the exact boundary divides by m^(2n). Compact C^(n+1) complex tests may cross both axial sheets and the axial hyperplane. The same result is checked for powers of the literal directed inverse, and for jointly C^(n+2) common compact moving tests at height zero. For n+1 literal stable-half scalar lines with individual nonnegative depths, the same positive mass, one prescribed evolution and the same routed four-momentum, the exact common-height product retains each normalized axial running unit and has a directed boundary on compact Cartesian C^(n+2) complex tests. Its character has the summed depth, the factors (iη)^(n+1) and sgn(k∥)^(n+1), and the original pole raised to n+1. A smooth timelike shell collar supplies the iterated Euler term, and the complementary original stable branch and running sign give an absolutely integrable off-shell limit.",
+    "scope": "The literal finite-height scalar line uses the normalized running unit off the null axial hyperplane, the fixed pole unit, and a common positive height. At positive mass each stable-half side now converges on compact Lipschitz complex tests. The same-height shell subtraction leaves an absolutely integrable remainder. Its residue has phase exp(iηam) and weights the difference of the two shells with the exact Jacobian 1/(2ω). At zero mass the stable-half line converges on compact Cartesian C² tests through the cone tip. The separate scalar sides extend to all nonnegative masses for every real-C¹ profile, and more generally for profiles satisfying the documented compact shell estimates. The limiting coefficient acts continuously on every fixed compact C² test space. For two scalar lines carrying the same four-momentum, the positive-height calculation uses both actual running units. For real-C² profiles at distinct nonnegative masses, or at equal positive mass on the same side, the product is a continuous functional on every compact Cartesian C² test space. For the principal stable-half profile at arbitrary nonnegative depths and masses the common-height boundary exists exactly when the squared masses differ or the common mass is positive and both sides agree. At equal mass opposite sides give a shell pinch. Equal zero masses on the same side give a logarithm on a smooth test through the cone tip. For two momenta routed by separate translations on the same locked plane, compact supports without a shared shell point give a continuous boundary for a jointly C² moving numerator. The literal scalar lines satisfy this conclusion for real-C² profiles when the axial shifts are equal or the support avoids both axial-zero slices. The principal stable-half profile also satisfies it for nonnegative depths when the support additionally avoids the zero sets of both routed invariants. The proof retains the two distinct normalized running signs. In the symmetric rest routing with nonzero transfer, the shells meet exactly when the absolute energy is at least the sum of the masses or at most their absolute difference. The coordinates of the intersection and the two running signs on the positive-energy equal-mass common shell are explicit. A nonzero real null shift never creates a common shell at equal positive mass. At the transverse intersection of two equal positive mass shells in symmetric rest routing above twice the mass, the boundary of the original stable-half pair is verified for compact Cartesian C² tests near the common shell, for every pair of prescribed sides and nonnegative depths. The two real normals have determinant −4tr in the unit axial and radial directions. After the exact spatial polar disintegration the chart has factor r/(4|t|) with the sphere area retained. The limiting pairing contains the tensor principal value, the two signed single-shell terms, and the exact double-shell term with the original running-unit and depth phases. Localized pairings act continuously on each fixed compact C² Cartesian test space. The contour matching of the source graphs, degenerate thresholds and the completed-source Hessian identification remain open. For every positive mass and n≥0, at one shared positive height the pole of order n+1 is exactly reduced by n Cartesian Euler integrations by parts to the simple pole on the iterated test. The mass shift m²−iηh is retained before the limit, and the exact boundary divides by m^(2n). Compact C^(n+1) complex tests may cross both axial sheets and the axial hyperplane. The same result is checked for powers of the literal directed inverse, and for jointly C^(n+2) common compact moving tests at height zero. For n+1 literal stable-half scalar lines with individual nonnegative depths, the same positive mass, one prescribed evolution and the same routed four-momentum, the exact common-height product retains each normalized axial running unit and has a directed boundary on compact Cartesian C^(n+2) complex tests. Its character has the summed depth, the factors (iη)^(n+1) and sgn(k∥)^(n+1), and the original pole raised to n+1. A smooth timelike shell collar supplies the iterated Euler term, and the complementary original stable branch and running sign give an absolutely integrable off-shell limit.",
     "lean": [
       "UV.SectorPlane.Plane.scalar_line_plus",
       "UV.SectorPlane.Plane.scalar_line_minus",
@@ -165,7 +165,34 @@
       "UV.SectorPlane.Plane.stable_pole_order_collar_eq",
       "UV.SectorPlane.Plane.massive_stable_pole_order_boundary",
       "UV.SectorPlane.Plane.stable_pole_order_lines_readout",
-      "UV.SectorPlane.Plane.massive_same_side_stable_lines_boundary"
+      "UV.SectorPlane.Plane.massive_same_side_stable_lines_boundary",
+      "UV.SectorPlane.transverse_normal_mixed_difference_bound",
+      "UV.SectorPlane.transverse_normal_remainder_bound",
+      "UV.SectorPlane.transverse_normal_product_split",
+      "UV.SectorPlane.Plane.transverse_normal_product_boundary",
+      "UV.SectorPlane.Plane.transverse_normal_pv_tensor_boundary",
+      "UV.SectorPlane.transverse_normal_family_uniform_lipschitz",
+      "UV.SectorPlane.Plane.transverse_normal_product_moving_boundary",
+      "UV.SectorPlane.Plane.transverse_normal_product_directed_moving_boundary",
+      "UV.SectorPlane.axial_spatial_radial_integral",
+      "UV.SectorPlane.cone_axial_spatial_integral",
+      "UV.SectorPlane.cone_spatial_mean_contDiff",
+      "UV.SectorPlane.symmetric_rest_shell_normals_independent",
+      "UV.SectorPlane.symmetric_rest_shell_abs_jacobian",
+      "UV.SectorPlane.rest_normal_momentum_reconstruction",
+      "UV.SectorPlane.rest_normal_strip_running_signs",
+      "UV.SectorPlane.rest_axial_radial_fderiv_det",
+      "UV.SectorPlane.rest_normal_inverse_fderiv_abs_det",
+      "UV.SectorPlane.rest_normal_radial_integral",
+      "UV.SectorPlane.symmetric_rest_normal_integral",
+      "UV.SectorPlane.Plane.shifted_scalar_pairing_eq_of_numerator",
+      "UV.SectorPlane.Plane.rest_stable_pairing_normal_integral",
+      "UV.SectorPlane.Plane.rest_stable_normal_test_contDiff",
+      "UV.SectorPlane.Plane.rest_stable_normal_test_at_intersection",
+      "UV.SectorPlane.Plane.rest_stable_transverse_boundary",
+      "UV.SectorPlane.Plane.rest_stable_transverse_distribution",
+      "UV.SectorPlane.Plane.rest_stable_double_delta_term",
+      "UV.SectorPlane.Plane.rest_stable_transverse_local_limit"
     ]
   },
   "eq:fixed-carrier-line": {
@@ -641,12 +668,23 @@
   },
   "eq:g5I-cyclic-mark": {
     "status": "verified",
-    "scope": "The ordinary cyclic Gaussian midpoint insertion integrates both positions against Lebesgue measure and gives exactly (4πt)^(-1/2) for a normalized nonnegative integrable position weight. Its massless dt/t cost diverges. For any finite positive joint law, the pushforward by y − r gives the exact relative-diagonal criterion with zero diagonal mass and a finite local inverse-square moment.",
+    "scope": "The ordinary cyclic Gaussian midpoint insertion integrates both positions against Lebesgue measure and gives exactly (4πt)^(-1/2) for a normalized nonnegative integrable position weight. Its massless dt/t cost diverges. For any finite positive joint law, the pushforward by y − r gives the exact relative-diagonal criterion with zero diagonal mass and a finite local inverse-square moment. For the retained-basepoint paragraph at manuscript lines 2895–2901, the actual weighted joint law is ν(dr)|φ_r(y)|²dy, with zero exact diagonal mass. Its relative-coordinate pushforward disintegrates through the translated fiber states. The integrated return is bounded by (2/π) times the ν-integrated normal kinetic energy when almost every continuous fiber is represented by its square-integrable interval derivative and vanishes at its actual basepoint. With finite integrated energy this nodal condition is also necessary and sufficient. The source must supply the retained-basepoint law.",
     "lean": [
       "UV.VerifyVisitCyclic.cyclic_joint_return_eq",
       "UV.VerifyVisitCyclic.cyclic_joint_relative_diagonal_criterion",
       "UV.VerifyVisitCyclic.cyclic_gaussian_insertion_exact",
-      "UV.VerifyVisitCyclic.cyclic_normal_trace_time_diverges"
+      "UV.VerifyVisitCyclic.cyclic_normal_trace_time_diverges",
+      "UV.ContinueVisitMarkedHardy.marked_basepoint_lintegral",
+      "UV.ContinueVisitMarkedHardy.marked_basepoint_law_mass",
+      "UV.ContinueVisitMarkedHardy.marked_basepoint_law_isFinite_of_normalized",
+      "UV.ContinueVisitMarkedHardy.marked_basepoint_diagonal_null",
+      "UV.ContinueVisitMarkedHardy.marked_relative_lintegral",
+      "UV.ContinueVisitMarkedHardy.marked_relative_cyclic_return",
+      "UV.ContinueVisitMarkedHardy.translated_nodal_state_return_bound",
+      "UV.ContinueVisitMarkedHardy.marked_relative_hardy_bound",
+      "UV.ContinueVisitMarkedHardy.marked_relative_hardy_finite",
+      "UV.ContinueVisitMarkedHardy.finite_marked_relative_return_ae_node",
+      "UV.ContinueVisitMarkedHardy.marked_relative_return_finite_iff_ae_node"
     ]
   },
   "eq:g5I-two-loop": {
@@ -849,20 +887,25 @@
   },
   "eq:uvpeN-absolute-model": {
     "status": "verified",
-    "scope": "The implemented absolute integrand evaluates a complex multivariate polynomial on real Euclidean loop momenta, uses the quadratic and linear exponent, and retains each routed massive factor with its affine shift and real power. Fixed shifts change the factors only by positive comparison constants. This verifies the displayed integrand and its shift comparison. The complete semidefinite power test is separately tracked as partial.",
+    "scope": "The implemented absolute integrand evaluates a complex multivariate polynomial on real Euclidean loop momenta, uses the quadratic and linear exponent, and retains each routed massive factor with its affine shift and real power. Fixed shifts change the factors only by positive comparison constants. This verifies the displayed integrand and its shift comparison. The complete semidefinite power test is verified in the linked directional-count equation.",
     "lean": [
       "UV.directionalAbsoluteModel_continuous",
-      "UV.directionalMassiveFactor_shift_compare"
+      "UV.directionalMassiveFactor_shift_compare",
+      "UV.directional_model_complete_square",
+      "UV.directional_model_integrable_iff_unshifted"
     ]
   },
   "eq:uvpeN-directional-count": {
-    "status": "partial",
-    "scope": "For any actual unit line in the Gaussian kernel annihilated by all routes outside S, and with no drift along the line, a nonzero real or imaginary polynomial ray restriction of degree n at any base point requires 1+n < 2 sum of the line exponents in S for the full literal momentum integral. Translation to an orthonormal fiber preserves the witnessed degree. Continuity of its coefficients gives a positive-measure open set of transverse fibers. The routed factor lower bound retains every original exponent, and the one-variable improper integral excludes equality. This proves the necessary one-dimensional power count with a polynomial ray degree witness. The general higher-dimensional and simultaneous-scale power criterion remains open.",
+    "status": "verified",
+    "scope": "For every positive-dimensional physical weak subspace K_S, absolute integrability of the stated model requires the strict decay bound 2 sum_{e in S} ν_e > dim K_S+n_{K_S}(P). Under the necessary sign, drift and visibility conditions the inequalities suffice jointly. The degree is the attained maximum over nonzero polynomial restrictions to actual real affine rays in K_S. Equality for any such subspace forces divergence of the original shifted model.",
     "lean": [
-      "UV.directionalAbsoluteModel_line_power_of_integrable",
-      "UV.directionalNumerator_ray_continuous_coefficients",
-      "UV.directionalAbsoluteModel_one_dimensional_power_necessary",
-      "UV.directionalAbsoluteModel_unit_ray_power_necessary"
+      "UV.ContinueNetworkPrecision.rayDegreeSet_isGreatest_of_chart",
+      "UV.ContinueNetworkPrecision.directionalDegree_eq_weakDegree",
+      "UV.directionalCenteredSchwingerCost_finite_iff_power",
+      "UV.directional_power_subspace_prefix",
+      "UV.route_subset_is_nonempty_prefix",
+      "UV.directionalAbsoluteModel_integrable_iff_directional_power",
+      "UV.directionalAbsoluteModel_not_integrable_at_power_equality"
     ]
   },
   "eq:uv-rigid-edge-constants": {

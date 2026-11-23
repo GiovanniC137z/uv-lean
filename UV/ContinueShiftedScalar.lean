@@ -57,6 +57,28 @@ theorem Plane.shifted_scalar_lines_readout (diamond : Plane E) (ε₁ ε₂ : Ev
   rw [Complex.I_sq]
   ring
 
+/-- Read both original directed lines after integration. The comparison
+numerator need only agree where the test is nonzero and the running units
+are defined. -/
+theorem Plane.shifted_scalar_pairing_eq_of_numerator (diamond : Plane E) (ε₁ ε₂ : Evolution)
+    (h : Height) (φ₁ φ₂ : ℂ → ℂ) (a₁ a₂ m₁ m₂ : ℝ) (c₁ c₂ : MassiveMomentum)
+    {f U : MassiveMomentum → ℂ}
+    (hi : Integrable (fun q => f q * (U q *
+      (diamond.poleCoefficient ε₁ h (shiftedD m₁ c₁ q) * diamond.poleCoefficient ε₂ h (shiftedD m₂ c₂ q)))))
+    (hU : ∀ q, f q ≠ 0 → (q+c₁).1 ≠ 0 → (q+c₂).1 ≠ 0 →
+      U q = diamond.shiftedScalarNumerator ε₁ ε₂ h φ₁ φ₂ a₁ a₂ c₁ c₂ q) :
+    diamond.shiftedScalarPairing ε₁ ε₂ h φ₁ φ₂ a₁ a₂ m₁ m₂ c₁ c₂ f =
+      directed (∫ q, f q * (U q *
+        (diamond.poleCoefficient ε₁ h (shiftedD m₁ c₁ q) * diamond.poleCoefficient ε₂ h (shiftedD m₂ c₂ q)))) := by
+  unfold Plane.shiftedScalarPairing
+  rw [← directed_integral hi]
+  apply integral_congr_ae
+  filter_upwards [shifted_real_axial_nonzero_ae c₁,shifted_real_axial_nonzero_ae c₂] with q h₁ h₂
+  simp only [dif_pos h₁,dif_pos h₂,diamond.shifted_scalar_lines_readout, ← directed_mul]
+  by_cases hq : f q = 0
+  · simp only [hq,zero_mul]
+  · rw [hU q hq h₁ h₂]
+
 private theorem shifted_scalar_boundary_of_comparison (diamond : Plane E) (ε₁ ε₂ : Evolution)
     (K : TopologicalSpace.Compacts MassiveMomentum) (c₁ c₂ : MassiveMomentum) {m₁ m₂ : ℝ}
     (hm₁ : 0 ≤ m₁) (hm₂ : 0 ≤ m₂) (hsep : ∀ q ∈ K, shiftedD m₁ c₁ q ≠ 0 ∨ shiftedD m₂ c₂ q ≠ 0)
@@ -76,16 +98,9 @@ private theorem shifted_scalar_boundary_of_comparison (diamond : Plane E) (ε₁
   have hi : Integrable (fun q => f.value q * (U h q * (P ε₁ m₁ c₁ q * P ε₂ m₂ c₂ q))) :=
     (f.contDiff.continuous.mul ((hU.continuous.comp (continuous_const.prodMk continuous_id)).mul
       ((hp ε₁ m₁ c₁).mul (hp ε₂ m₂ c₂)))).integrable_of_hasCompactSupport f.compact_support.mul_right
-  change directed (∫ q, f.value q * (U h q * (P ε₁ m₁ c₁ q * P ε₂ m₂ c₂ q))) = _
-  rw [← directed_integral hi]
-  apply integral_congr_ae
-  filter_upwards [shifted_real_axial_nonzero_ae c₁,shifted_real_axial_nonzero_ae c₂] with q h₁ h₂
-  simp only [dif_pos h₁,dif_pos h₂, diamond.shifted_scalar_lines_readout, ← directed_mul]
-  by_cases hq : q ∈ K
-  · rw [he h q hq h₁ h₂]
-    rfl
-  · have hz : f.value q = 0 := f.property.1 q hq
-    simp only [hz,zero_mul]
+  symm
+  exact diamond.shifted_scalar_pairing_eq_of_numerator ε₁ ε₂ h φ₁ φ₂ a₁ a₂ m₁ m₂ c₁ c₂ hi
+    (fun q hn h₁ h₂ => he h q (by by_contra hq; exact hn (f.property.1 q hq)) h₁ h₂)
 
 /-- On a support separated from both axial-zero sets the two normalized
 running signs have jointly smooth representatives. With equal axial

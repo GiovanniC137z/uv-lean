@@ -64,6 +64,25 @@ private theorem axial_radial_integrable (G : ℝ × ℝ → F) (hG : AEStronglyM
     rw [hg]
     exact hf.const_mul (4 * π)⁻¹
 
+/-- Keep the axial slot and spatial radius independent, with the original
+four-momentum measure. The factor 4π is the area of the unit spatial sphere. -/
+theorem axial_spatial_radial_integral (G : ℝ × ℝ → F) (hG : AEStronglyMeasurable G volume)
+    (hI : Integrable (fun q : ℝ × Spatial => G (q.1, ‖q.2‖))) :
+    (∫ q : ℝ × Spatial, G (q.1, ‖q.2‖)) =
+      (4 * π) • ∫ q in univ ×ˢ Ioi (0 : ℝ), q.2 ^ 2 • G q := by
+  let H (q : ℝ × ℝ) := q.2 ^ 2 • G q
+  have hH := axial_radial_integrable G hG hI
+  calc
+    _ = ∫ x : ℝ, ∫ p : Spatial, G (x, ‖p‖) := integral_prod _ hI
+    _ = (4 * π) • ∫ x : ℝ, ∫ y in Ioi 0, H (x, y) := by
+      simp_rw [show ∀ x : ℝ, (∫ p : Spatial, G (x, ‖p‖)) =
+        (4 * π) • ∫ y in Ioi 0, H (x, y) from
+          fun x => spatial_radial_integral (fun y => G (x, y))]
+      rw [integral_smul]
+    _ = _ := by
+      congr 1
+      simpa only [setIntegral_univ] using (setIntegral_prod H hH).symm
+
 private theorem polar_upper_image :
     polarCoord.symm '' (Ioi (0 : ℝ) ×ˢ Ioo (0 : ℝ) π) = univ ×ˢ Ioi (0 : ℝ) := by
   ext q
@@ -127,15 +146,7 @@ theorem cone_polar_integral (G : ℝ × ℝ → F) (hG : AEStronglyMeasurable G 
     ring
   have hSl := ae_restrict_mem (μ := volume) hS
   calc
-    _ = ∫ x : ℝ, ∫ p : Spatial, G (x, ‖p‖) := integral_prod _ hI
-    _ = (4 * π) • ∫ x : ℝ, ∫ y in Ioi 0, H (x, y) := by
-      simp_rw [show ∀ x : ℝ, (∫ p : Spatial, G (x, ‖p‖)) =
-        (4 * π) • ∫ y in Ioi 0, H (x, y) from
-          fun x => spatial_radial_integral (fun y => G (x, y))]
-      rw [integral_smul]
-    _ = (4 * π) • ∫ q in univ ×ˢ Ioi 0, H q := by
-      congr 1
-      simpa only [setIntegral_univ] using (setIntegral_prod H hH).symm
+    _ = (4 * π) • ∫ q in univ ×ˢ Ioi 0, H q := axial_spatial_radial_integral G hG hI
     _ = _ := by
       rw [hTrans, setIntegral_congr_fun hS hEq]
       congr 1

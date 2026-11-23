@@ -127,6 +127,42 @@ private theorem cone_spatial_mean_norm_eval {f : ℝ × Spatial → ℂ} (hf : C
   have hne : 4 * π ≠ 0 := by positivity
   field_simp [hne]
 
+private theorem cone_spatial_mean_lift_integrable {f : ℝ × Spatial → ℂ}
+    (hf : Continuous f) (hs : HasCompactSupport f) :
+    Integrable (fun q : ℝ × Spatial => coneSpatialMean f (q.1, ‖q.2‖)) := by
+  have hG := cone_spatial_mean_continuous hf hs
+  obtain ⟨R, hR⟩ := hs.isBounded.subset_closedBall (0 : ℝ × Spatial)
+  have H : Continuous (fun q : ℝ × Spatial => coneSpatialMean f (q.1, ‖q.2‖)) :=
+    hG.comp (continuous_fst.prodMk (continuous_norm.comp continuous_snd))
+  apply H.integrable_of_hasCompactSupport
+  apply HasCompactSupport.intro (isCompact_closedBall (0 : ℝ × Spatial) R)
+  intro q hq
+  unfold coneSpatialMean
+  have hz (ω : ConeSpatialSphere) : f (q.1, ‖q.2‖ • (ω : Spatial)) = 0 := by
+    by_contra hn
+    apply hq
+    have h := hR (subset_tsupport f hn)
+    simpa [Metric.mem_closedBall, dist_zero_right, Prod.norm_def,
+      norm_smul, Real.norm_of_nonneg (norm_nonneg q.2), cone_spatial_direction_norm ω]
+      using h
+  simp [hz]
+
+/-- The spatial angular averaging step on the intrinsic momentum chart.
+This keeps the real axial variable independent of the positive spatial radius. -/
+theorem cone_axial_spatial_integral {f : ℝ × Spatial → ℂ} (hf : Continuous f)
+    (hs : HasCompactSupport f) :
+    (∫ q : ℝ × Spatial, f q) =
+      (4 * π) • ∫ q in univ ×ˢ Ioi (0 : ℝ), q.2 ^ 2 • coneSpatialMean f q := by
+  have hG := cone_spatial_mean_continuous hf hs
+  have hi := cone_spatial_mean_lift_integrable hf hs
+  calc
+    _ = ∫ x : ℝ, ∫ p : Spatial, f (x, p) := integral_prod _ (hf.integrable_of_hasCompactSupport hs)
+    _ = ∫ x : ℝ, ∫ p : Spatial, coneSpatialMean f (x, ‖p‖) := by
+      apply integral_congr_ae
+      exact Eventually.of_forall (cone_spatial_mean_norm_eval hf hs)
+    _ = ∫ q : ℝ × Spatial, coneSpatialMean f (q.1, ‖q.2‖) := (integral_prod _ hi).symm
+    _ = _ := axial_spatial_radial_integral _ hG.aestronglyMeasurable hi
+
 /-- The Cartesian four-momentum integral disintegrates into radial, polar
 and spatial unit-sphere variables, retaining every angular dependence. -/
 theorem cone_full_nonradial_polar_integral {f : ℝ × Spatial → ℂ} (hf : Continuous f)
@@ -135,28 +171,8 @@ theorem cone_full_nonradial_polar_integral {f : ℝ × Spatial → ℂ} (hf : Co
       (4 * π) • ∫ r in Ioi (0 : ℝ), ∫ θ in Ioo (0 : ℝ) π,
         (r ^ 3 * sin θ ^ 2) • coneSpatialMean f (r * cos θ, r * sin θ) := by
   have hG := cone_spatial_mean_continuous hf hs
-  obtain ⟨R, hR⟩ := hs.isBounded.subset_closedBall (0 : ℝ × Spatial)
-  have hi : Integrable (fun q : ℝ × Spatial => coneSpatialMean f (q.1, ‖q.2‖)) := by
-    have H : Continuous (fun q : ℝ × Spatial => coneSpatialMean f (q.1, ‖q.2‖)) :=
-      hG.comp (continuous_fst.prodMk (continuous_norm.comp continuous_snd))
-    apply H.integrable_of_hasCompactSupport
-    apply HasCompactSupport.intro (isCompact_closedBall (0 : ℝ × Spatial) R)
-    intro q hq
-    unfold coneSpatialMean
-    have hz (ω : ConeSpatialSphere) : f (q.1, ‖q.2‖ • (ω : Spatial)) = 0 := by
-      by_contra hn
-      apply hq
-      have h := hR (subset_tsupport f hn)
-      simpa [Metric.mem_closedBall, dist_zero_right, Prod.norm_def,
-        norm_smul, Real.norm_of_nonneg (norm_nonneg q.2), cone_spatial_direction_norm ω]
-        using h
-    simp [hz]
-  calc
-    _ = ∫ x : ℝ, ∫ p : Spatial, f (x, p) := integral_prod _ (hf.integrable_of_hasCompactSupport hs)
-    _ = ∫ x : ℝ, ∫ p : Spatial, coneSpatialMean f (x, ‖p‖) := by
-      apply integral_congr_ae
-      exact Eventually.of_forall (cone_spatial_mean_norm_eval hf hs)
-    _ = ∫ q : ℝ × Spatial, coneSpatialMean f (q.1, ‖q.2‖) := (integral_prod _ hi).symm
-    _ = _ := cone_polar_integral _ hG.aestronglyMeasurable hi
+  have hi := cone_spatial_mean_lift_integrable hf hs
+  rw [cone_axial_spatial_integral hf hs, ← axial_spatial_radial_integral _ hG.aestronglyMeasurable hi]
+  exact cone_polar_integral _ hG.aestronglyMeasurable hi
 
 end UV.SectorPlane
