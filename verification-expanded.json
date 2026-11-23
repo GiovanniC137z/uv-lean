@@ -842,7 +842,7 @@
     "scope": "For arbitrary locally finite setwise-positive two-channel spectral measures on the fixed sector plane, constructs the common Radon–Nikodym densities from the actual positive diagonals and compatible bounded complex cross restrictions. The setwise determinant inequality gives absolute continuity and almost-everywhere positivity of the derived densities. The norm-density measure is the least positive variation measure on every bounded restriction and is concentrated on nonnegative spectral mass squared. The local Jordan transforms converge to the ordinary weighted cross transform. Its weighted transform is integrable at every positive x under finite diagonal weights at one positive reference, and obeys both exact diagonal budgets with independent diagonals. If the first diagonal is a positive multiple of a unit Dirac spectral atom, every bounded cross entry is supported on that atom and its ordinary Stieltjes transform has the exact pure-pole form."
   },
   "prop:update-cross-classification": {
-    "status": "partial",
+    "status": "verified",
     "lean": [
       "UV.RevisionSpectrum.spectralRootUpper_sq",
       "UV.RevisionSpectrum.spectralRootUpper_at_cut",
@@ -865,9 +865,25 @@
       "UV.RevisionSpectrum.verify_cross_jordan_support",
       "UV.RevisionSpectrum.verify_cross_jordan_representation",
       "UV.RevisionSpectrum.verify_weighted_positive_spectrum_locallyFinite",
-      "UV.RevisionSpectrum.verify_cross_signed_spectral_exists_iff"
+      "UV.RevisionSpectrum.verify_cross_signed_spectral_exists_iff",
+      "UV.RevisionSpectrum.crossTailVariation_eq",
+      "UV.RevisionSpectrum.crossTailDensity_momentum_formula",
+      "UV.RevisionSpectrum.crossTailDensity_momentum_error",
+      "UV.RevisionSpectrum.crossTailDensity_cutoff_error_bound",
+      "UV.ContinueCrossTailPeriodic.abs_sine_period_integral",
+      "UV.ContinueCrossTailPeriodic.abs_sine_div_log_remainder_bound",
+      "UV.RevisionSpectrum.crossTailTransform_cutoff_bound",
+      "UV.RevisionSpectrum.crossTailVariation_nonnegative_cutoff_sharp_log",
+      "UV.RevisionSpectrum.crossTailTransform_sharp_log",
+      "UV.RevisionSpectrum.crossTailMatrixCompletion_diagonals",
+      "UV.RevisionSpectrum.crossTailMatrixCompletion_crossStieltjes",
+      "UV.RevisionSpectrum.compact_spectral_measure_eq_of_moments",
+      "UV.RevisionSpectrum.compact_spectral_measure_eq_of_resolvent",
+      "UV.RevisionSpectrum.diagonal_stieltjes_measure_ext",
+      "UV.RevisionSpectrum.signed_stieltjes_jordan_ext",
+      "UV.RevisionSpectrum.verify_cross_signed_spectral_unique"
     ],
-    "scope": "Proves the exact ordinary signed spectral existence criterion and constructs the atom-plus-continuum representation in every admitted case through mutually singular Jordan measures. The integral is absolutely convergent and has finite weighted total variation at every positive reference point. Analytic continuation of any ordinary signed representation to the upper half-plane and extraction of its real atom exclude generic embedded poles and force the stated residue. Also checks the branch jump, the threshold and removable embedded density values, generic local nonintegrability, and the inverse-power tail bound. Full uniqueness of the continuum and the sharp logarithmic total-variation asymptotic remain open."
+    "scope": "Proves the exact ordinary signed spectral existence criterion, constructs the atom-plus-continuum law through mutually singular locally finite Jordan measures, and establishes absolute weighted Stieltjes equality at every positive reference. Analytic continuation and real-atom extraction rule out nonresonant embedded masses and force the stated residue. The checked density has the stated removable and threshold limits. For the actual total variation, proves the oscillatory large-radial-momentum density with integrable inverse-cubic error, its exact sine mean, bounded cutoff remainder on [0,Q], and the precise logarithmic Stieltjes asymptotic with an O(x^{-1}) remainder. Constructs a setwise-positive two-channel completion on the same fixed sector plane with both diagonal measures equal to the Jordan variation and cross Stieltjes transform equal to the stated signed law. The Stieltjes transform uniquely determines both unweighted Jordan parts. The reference-weighted change of variables to [0,1] recovers all compact moments, and inversion of the positive weight and change of variables identifies the actual signed law."
   },
   "cor:update-completed-bubble": {
     "status": "verified",
@@ -1652,5 +1668,42 @@
       "UV.PhotonSewing.invariant_kernel_sewing"
     ],
     "scope": "For a jointly stationary law, the conditioned photon submeasure of each event of the kernel is translation invariant. Its Radon–Nikodym derivative is almost everywhere constant by ergodicity of the photon marginal. This proves independence of the entire measurable kernel under realization-wise translation invariance and covariance. On every finite test projection the signed integrable kernel entries contract to one half of the trace of the mean kernel times the centered photon covariance, with the stated finite second moments and the same two-port weight. The subsequent free-Maxwell mixing example and the source identification of that weight are separate applications."
+  },
+  "thm:uvpeN-directional-power": {
+    "status": "partial",
+    "lean": [
+      "UV.directionalNumerator_exists_ne_zero",
+      "UV.directionalNumerator_real_degree_bound",
+      "UV.directionalMassiveFactor_shift_compare",
+      "UV.directionalAbsoluteModel_integrable_of_posDef",
+      "UV.directionalNumerator_ray_polynomials",
+      "UV.directionalFiber_integrable_ae",
+      "UV.directionalFiber_choose_integrable",
+      "UV.directionalAbsoluteModel_not_integrable_of_common_blind",
+      "UV.directionalAbsoluteModel_not_integrable_of_negative_form",
+      "UV.directionalAbsoluteModel_not_integrable_of_kernel_drift",
+      "UV.directionalAbsoluteModel_sign_drift_visibility",
+      "UV.directionalAbsoluteModel_line_power_of_integrable",
+      "UV.directionalNumerator_ray_continuous_coefficients",
+      "UV.directionalAbsoluteModel_one_dimensional_power_necessary",
+      "UV.directionalAbsoluteModel_unit_ray_power_necessary"
+    ],
+    "scope": "Uses the literal Euclidean absolute coefficient with an arbitrary nonzero complex polynomial, a real symmetric quadratic form, real drift, affine routed massive factors, and real positive exponents. Proves that integrability requires a nonnegative quadratic form, vanishing drift on its kernel, and injectivity of the combined quadratic and line routing. A volume-preserving orthonormal change of momentum variables exhibits an integrable parallel fiber on which the polynomial has a nonzero value if the full integral is finite. The real and imaginary parts restrict to actual one-variable polynomials; the obstruction proofs use their eventual lower bound and keep every massive factor and affine shift. A strictly positive quadratic form gives convergence for arbitrary drift and polynomial. Removing any fixed shift in a massive factor changes it only by explicit positive comparison constants. For any actual unit line in the Gaussian kernel annihilated by all routes outside S, and with no drift along the line, a nonzero real or imaginary polynomial ray restriction of degree n at any base point requires 1+n < 2 sum of the line exponents in S for the full literal momentum integral. Translation to an orthonormal fiber preserves the witnessed degree. Continuity of its coefficients gives a positive-measure open set of transverse fibers. The routed factor lower bound retains every original exponent, and the one-variable improper integral excludes equality. This proves the necessary one-dimensional power count with a polynomial ray degree witness. The general higher-dimensional and simultaneous-scale power criterion remains open."
+  },
+  "prop:uv-rigid-spectral-atom": {
+    "status": "partial",
+    "scope": "Using the normalized axial measure dz/2 on [−1,1], proves the symmetrized Coulomb-minus-transverse integrand and its exact average (1−u²) arctanh(u)/u for 0≤u<1. With the full factor 4π the occupation integral gives the stated α. The scalar threshold expression is strictly positive for every real e under E_c>0 and a>0. Both its exact value at u=0 and its continuous resting limit are checked. Identifying these scalar reductions with the full sphere pushforward and the Fock Hamiltonian, deriving the constant C, and identifying the neutral and charged spectral laws remain open.",
+    "lean": [
+      "UV.ContinueRigidThreshold.normalizedAxialMeasure_probability",
+      "UV.ContinueRigidThreshold.axial_energy_symmetrization",
+      "UV.ContinueRigidThreshold.axial_energy_factor",
+      "UV.ContinueRigidThreshold.axial_unsymmetrized_energy_average",
+      "UV.ContinueRigidThreshold.axial_occupation_average",
+      "UV.ContinueRigidThreshold.rigid_alpha_closed_form",
+      "UV.ContinueRigidThreshold.rigidThreshold_pos",
+      "UV.ContinueRigidThreshold.rigidThreshold_at_rest",
+      "UV.ContinueRigidThreshold.rigidArctanhRatio_rest_limit",
+      "UV.ContinueRigidThreshold.rigidThreshold_rest_limit"
+    ]
   }
 }

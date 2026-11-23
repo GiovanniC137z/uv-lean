@@ -235,10 +235,26 @@
       "title_tex": "Absolute integrability after the normal source integral",
       "source_line": 3275,
       "statement_tex": "For $d>0$ and real symmetric $Q$,\n$\\int_{\\RR^d}I(k)\\dd^dk<\\infty$ precisely under the following\nconditions. The quadratic form satisfies $Q\\ge0$ and $h\\perp\\ker Q$.\nThe combined map with rows from $Q$ and all $C_e$ is injective.\nFor each $S\\subseteq E$ put\n\\[\n K_S=\\ker Q\\cap\\bigcap_{e\\notin S}\\ker C_e .\n\\]\nFor each $K_S$ of positive dimension one must have\n\\begin{equation}\n 2\\sum_{e\\in S}\\nu_e>\n       \\dim K_S+n_{K_S}(P).\n \\label{eq:uvpeN-directional-count}\n\\end{equation}\nEquality on any such subspace fails the absolute integrability test.",
-      "status": "pending",
-      "lean": [],
+      "status": "partial",
+      "lean": [
+        "UV.directionalNumerator_exists_ne_zero",
+        "UV.directionalNumerator_real_degree_bound",
+        "UV.directionalMassiveFactor_shift_compare",
+        "UV.directionalAbsoluteModel_integrable_of_posDef",
+        "UV.directionalNumerator_ray_polynomials",
+        "UV.directionalFiber_integrable_ae",
+        "UV.directionalFiber_choose_integrable",
+        "UV.directionalAbsoluteModel_not_integrable_of_common_blind",
+        "UV.directionalAbsoluteModel_not_integrable_of_negative_form",
+        "UV.directionalAbsoluteModel_not_integrable_of_kernel_drift",
+        "UV.directionalAbsoluteModel_sign_drift_visibility",
+        "UV.directionalAbsoluteModel_line_power_of_integrable",
+        "UV.directionalNumerator_ray_continuous_coefficients",
+        "UV.directionalAbsoluteModel_one_dimensional_power_necessary",
+        "UV.directionalAbsoluteModel_unit_ray_power_necessary"
+      ],
       "lean_projects": {},
-      "scope": "Not yet formalized.",
+      "scope": "Uses the literal Euclidean absolute coefficient with an arbitrary nonzero complex polynomial, a real symmetric quadratic form, real drift, affine routed massive factors, and real positive exponents. Proves that integrability requires a nonnegative quadratic form, vanishing drift on its kernel, and injectivity of the combined quadratic and line routing. A volume-preserving orthonormal change of momentum variables exhibits an integrable parallel fiber on which the polynomial has a nonzero value if the full integral is finite. The real and imaginary parts restrict to actual one-variable polynomials; the obstruction proofs use their eventual lower bound and keep every massive factor and affine shift. A strictly positive quadratic form gives convergence for arbitrary drift and polynomial. Removing any fixed shift in a massive factor changes it only by explicit positive comparison constants. For any actual unit line in the Gaussian kernel annihilated by all routes outside S, and with no drift along the line, a nonzero real or imaginary polynomial ray restriction of degree n at any base point requires 1+n < 2 sum of the line exponents in S for the full literal momentum integral. Translation to an orthonormal fiber preserves the witnessed degree. Continuity of its coefficients gives a positive-measure open set of transverse fibers. The routed factor lower bound retains every original exponent, and the one-variable improper integral excludes equality. This proves the necessary one-dimensional power count with a polynomial ray degree witness. The general higher-dimensional and simultaneous-scale power criterion remains open.",
       "statement_change": "new"
     },
     {
@@ -1736,7 +1752,7 @@
       "title_tex": "Cross-spectrum classification and its unavoidable tail",
       "source_line": 15850,
       "statement_tex": "The function \\eqref{eq:update-cross-family} has an ordinary real signed\nspectral measure with finite weighted total variation precisely when\n$m\\le M$, or when $m>M$ and\n$\\sin(a\\sqrt{m^2-M^2})=0$. In these cases\n\\begin{equation}\n\\begin{aligned}\n \\nu_{c,\\bb}(\\dd s_{\\rm sp})\n   &=c_*\\delta^{\\rm sp}_{\\bb,m^2}(\\dd s_{\\rm sp})\n                      +h(s_{\\rm sp})\\dd s_{{\\rm sp},\\bb},\\\\\n c_*&=\\begin{cases}\n e^{a(M-\\sqrt{M^2-m^2})},&m\\le M,\\\\\n e^{aM}\\cos(a\\sqrt{m^2-M^2}),&m>M,\n \\end{cases}\\\\\n h(s_{\\rm sp})&=\n \\frac{e^{aM}\\sin(a\\sqrt{s_{\\rm sp}-M^2})}{\\pi(m^2-s_{\\rm sp})}\n                    \\mathbf1_{s_{\\rm sp}>M^2}.\n\\end{aligned}\n\\label{eq:update-cross-measure}\n\\end{equation}\nAt an admitted embedded pole the density has its removable value.\nAt $m=M$ it behaves as\n$-ae^{aM}/(\\pi\\sqrt{s_{\\rm sp}-M^2})$, with a separate threshold\natom of weight $e^{aM}$. The total-variation transform satisfies\n\\begin{equation}\n D_c(x)=\\frac{2e^{aM}}{\\pi^2}\\frac{\\log(a^2x)}{x}+O(x^{-1})\n       \\quad(x\\to\\infty).\n\\label{eq:update-cross-cost-tail}\n\\end{equation}",
-      "status": "partial",
+      "status": "verified",
       "lean": [
         "UV.RevisionSpectrum.spectralRootUpper_sq",
         "UV.RevisionSpectrum.spectralRootUpper_at_cut",
@@ -1759,10 +1775,26 @@
         "UV.RevisionSpectrum.verify_cross_jordan_support",
         "UV.RevisionSpectrum.verify_cross_jordan_representation",
         "UV.RevisionSpectrum.verify_weighted_positive_spectrum_locallyFinite",
-        "UV.RevisionSpectrum.verify_cross_signed_spectral_exists_iff"
+        "UV.RevisionSpectrum.verify_cross_signed_spectral_exists_iff",
+        "UV.RevisionSpectrum.crossTailVariation_eq",
+        "UV.RevisionSpectrum.crossTailDensity_momentum_formula",
+        "UV.RevisionSpectrum.crossTailDensity_momentum_error",
+        "UV.RevisionSpectrum.crossTailDensity_cutoff_error_bound",
+        "UV.ContinueCrossTailPeriodic.abs_sine_period_integral",
+        "UV.ContinueCrossTailPeriodic.abs_sine_div_log_remainder_bound",
+        "UV.RevisionSpectrum.crossTailTransform_cutoff_bound",
+        "UV.RevisionSpectrum.crossTailVariation_nonnegative_cutoff_sharp_log",
+        "UV.RevisionSpectrum.crossTailTransform_sharp_log",
+        "UV.RevisionSpectrum.crossTailMatrixCompletion_diagonals",
+        "UV.RevisionSpectrum.crossTailMatrixCompletion_crossStieltjes",
+        "UV.RevisionSpectrum.compact_spectral_measure_eq_of_moments",
+        "UV.RevisionSpectrum.compact_spectral_measure_eq_of_resolvent",
+        "UV.RevisionSpectrum.diagonal_stieltjes_measure_ext",
+        "UV.RevisionSpectrum.signed_stieltjes_jordan_ext",
+        "UV.RevisionSpectrum.verify_cross_signed_spectral_unique"
       ],
       "lean_projects": {},
-      "scope": "Proves the exact ordinary signed spectral existence criterion and constructs the atom-plus-continuum representation in every admitted case through mutually singular Jordan measures. The integral is absolutely convergent and has finite weighted total variation at every positive reference point. Analytic continuation of any ordinary signed representation to the upper half-plane and extraction of its real atom exclude generic embedded poles and force the stated residue. Also checks the branch jump, the threshold and removable embedded density values, generic local nonintegrability, and the inverse-power tail bound. Full uniqueness of the continuum and the sharp logarithmic total-variation asymptotic remain open.",
+      "scope": "Proves the exact ordinary signed spectral existence criterion, constructs the atom-plus-continuum law through mutually singular locally finite Jordan measures, and establishes absolute weighted Stieltjes equality at every positive reference. Analytic continuation and real-atom extraction rule out nonresonant embedded masses and force the stated residue. The checked density has the stated removable and threshold limits. For the actual total variation, proves the oscillatory large-radial-momentum density with integrable inverse-cubic error, its exact sine mean, bounded cutoff remainder on [0,Q], and the precise logarithmic Stieltjes asymptotic with an O(x^{-1}) remainder. Constructs a setwise-positive two-channel completion on the same fixed sector plane with both diagonal measures equal to the Jordan variation and cross Stieltjes transform equal to the stated signed law. The Stieltjes transform uniquely determines both unweighted Jordan parts. The reference-weighted change of variables to [0,1] recovers all compact moments, and inversion of the positive weight and change of variables identifies the actual signed law.",
       "statement_change": "new"
     },
     {
@@ -3108,10 +3140,21 @@
       "title_tex": "The charge threshold and its spectral weight",
       "source_line": 44281,
       "statement_tex": "The bottom $E_*$ of the charged spectrum is strictly positive for\nevery real $e$. In the neutral vacuum the transverse magnetic\ntwo-point function has a positive one-photon atom with laboratory\nenergy $r$ at each fixed $\\mathbf k\\ne0$. In the charged sector,\ntake the probe that prepares the prescribed Gauss field and the\ntransverse Fock vacuum $|0\\rangle$. For $eu\\ne0$ its energy law is\nabsolutely continuous on $[E_*,\\infty)$. With $x=E-E_*\\downarrow0$\nits density is asymptotic to $C x^{\\alpha-1}/\\Gamma(\\alpha)$,\nwhere\n\\begin{equation}\n\\begin{aligned}\n E_*&= E_{\\rm c}+\\frac{e^2}{8\\pi^2a}\n       (1-u^2)\\frac{\\operatorname{arctanh}u}{u},\\\\\n w(\\mathbf n)&=\\frac{e^2}{2(2\\pi)^3}\n       \\frac{u^2-(\\mathbf v\\cdot\\mathbf n)^2}{d^2},\\\\\n \\alpha&=\\int_{S^2} w\\,\\mathrm d\\Omega\n  =\\frac{e^2}{2\\pi^2}\n       \\left(\\frac{\\operatorname{arctanh}u}{u}-1\\right),\\\\\n C&=(2a)^\\alpha\\exp\\!\\left[-\\int_{S^2} w\\log d\\,\\mathrm d\\Omega\\right].\n\\end{aligned}\n\\label{eq:uv-rigid-edge-constants}\n\\end{equation}\nAt $u=0$ use $\\operatorname{arctanh}(u)/u=1$.\nIf $eu=0$, this probe gives a unit atom at $E_*$. In either case\nneutral photons of arbitrarily small positive energy are available.",
-      "status": "pending",
-      "lean": [],
+      "status": "partial",
+      "lean": [
+        "UV.ContinueRigidThreshold.normalizedAxialMeasure_probability",
+        "UV.ContinueRigidThreshold.axial_energy_symmetrization",
+        "UV.ContinueRigidThreshold.axial_energy_factor",
+        "UV.ContinueRigidThreshold.axial_unsymmetrized_energy_average",
+        "UV.ContinueRigidThreshold.axial_occupation_average",
+        "UV.ContinueRigidThreshold.rigid_alpha_closed_form",
+        "UV.ContinueRigidThreshold.rigidThreshold_pos",
+        "UV.ContinueRigidThreshold.rigidThreshold_at_rest",
+        "UV.ContinueRigidThreshold.rigidArctanhRatio_rest_limit",
+        "UV.ContinueRigidThreshold.rigidThreshold_rest_limit"
+      ],
       "lean_projects": {},
-      "scope": "Not yet formalized.",
+      "scope": "Using the normalized axial measure dz/2 on [−1,1], proves the symmetrized Coulomb-minus-transverse integrand and its exact average (1−u²) arctanh(u)/u for 0≤u<1. With the full factor 4π the occupation integral gives the stated α. The scalar threshold expression is strictly positive for every real e under E_c>0 and a>0. Both its exact value at u=0 and its continuous resting limit are checked. Identifying these scalar reductions with the full sphere pushforward and the Fock Hamiltonian, deriving the constant C, and identifying the neutral and charged spectral laws remain open.",
       "statement_change": "new"
     },
     {
@@ -8932,7 +8975,7 @@
       "label": "eq:g5I-codim",
       "source_line": 2855,
       "status": "verified",
-      "scope": "In every positive integer normal dimension b, the product of the two Gaussian half-link factors is the stated midpoint density. The literal proper-time integral gives the upper incomplete Gamma expression by the substitution u = |y|²/t. For a finite positive midpoint law, the integrated cost is finite exactly when the coincident atom vanishes and the local inverse 2b moment is finite. The surrounding smooth Taylor-density specialization is a separate claim.",
+      "scope": "In every positive integer dimension b, the two actual Gaussian half-links give the normalized midpoint density. Tonelli and the substitution u = |y|²/t give the incomplete Gamma cost, and a finite positive law passes exactly the zero-atom and local inverse 2b test. The smooth-state specialization in manuscript lines 2860–2863 derives the uniform leading remainder from the actual diagonal Fréchet jet, proves positivity of the angular coefficient on the unit sphere, and checks finiteness of the literal squared-density midpoint cost exactly when 2j > b. At 2j = b the corresponding critical radial power integrates to log(R/δ). The dimension is supplied by the represented normal block.",
       "lean": [
         "UV.VerifyVisitGamma.upper_gamma_eq_ofReal",
         "UV.VerifyVisitGamma.upper_gamma_antitone",
@@ -8943,7 +8986,19 @@
         "UV.VerifyVisitCodimension.two_normal_half_links",
         "UV.VerifyVisitCodimension.normal_gaussian_midpoint_eq",
         "UV.VerifyVisitCodimension.gaussian_midpoint_integrated_gamma",
-        "UV.VerifyVisitCodimension.gaussian_midpoint_finiteness_iff"
+        "UV.VerifyVisitCodimension.gaussian_midpoint_finiteness_iff",
+        "UV.ContinueVisitNormalPolar.normal_sphere_open_ne_zero",
+        "UV.ContinueVisitNormalPolar.normal_polar_integrable_iff",
+        "UV.ContinueVisitNormalPolar.radial_power_integrable_iff",
+        "UV.ContinueVisitNormalPolar.critical_radial_power_integral",
+        "UV.ContinueVisitTaylorDensity.normal_taylor_angular_coefficient_pos",
+        "UV.ContinueVisitTaylorDensity.normal_taylor_inverse_moment_iff",
+        "UV.ContinueVisitSmoothTaylor.normal_taylor_jet_continuous",
+        "UV.ContinueVisitSmoothTaylor.normal_taylor_jet_homogeneous",
+        "UV.ContinueVisitSmoothTaylor.normal_taylor_jet_remainder",
+        "UV.ContinueVisitSmoothTaylor.smooth_normal_taylor_inverse_moment_iff",
+        "UV.ContinueVisitSmoothMidpoint.normal_state_law_local_inverse_moment",
+        "UV.ContinueVisitSmoothMidpoint.smooth_normal_midpoint_finiteness_iff"
       ]
     },
     {
@@ -8962,7 +9017,7 @@
       "label": "eq:g5I-two-loop",
       "source_line": 2923,
       "status": "verified",
-      "scope": "For the same normalized common relative-coordinate law, the actual cutoff primitive has the stated noncoincident and coincident values and a finite second moment for every positive cutoff. Formal bivariate coefficient extraction of the exponentiated determinant and the connected logarithm gives exactly c² Var(Iδ)/2. The single-visit fourth magnetic jet has no double-tag contribution, and any third-tag remainder contributes zero. The surrounding zero-cutoff criterion and oscillator asymptotic are distinct claims.",
+      "scope": "For the same normalized common relative-coordinate law, the literal positive proper-time cutoff primitive has the stated values and a finite second moment for 0 < δ ≤ T. Formal bivariate coefficient extraction gives exactly c² Var(Iδ)/2 and shows that the single-visit fourth magnetic jet has no double-tag contribution. The adjacent argument at manuscript lines 2929–2932 is checked by monotone convergence of the actual first and squared cutoff moments and by a right cutoff limit for the literal mixed coefficient. When the first uncut mean is finite and c ≠ 0, this limit is finite exactly when the coincident atom vanishes and the local inverse fourth moment is finite. For the actual normalized odd-oscillator density C d² exp(−a d²), with C,a,T>0, the shared-law variance is asymptotic to C(1−2^(−1/2))/(π^(3/2)√δ) as δ decreases to zero. The rescaled second moment has the stated Gaussian integral and the square of the first moment is uniformly bounded. The actual uncut first mean is finite.",
       "lean": [
         "UV.VerifyVisitConnectedJet.exponentiated_visit_jet_coefficients",
         "UV.VerifyVisitConnectedJet.connected_double_visit_variance",
@@ -8970,7 +9025,44 @@
         "UV.VerifyVisitConnectedJet.visit_cutoff_measurable",
         "UV.VerifyVisitConnectedJet.visit_cutoff_exact",
         "UV.VerifyVisitConnectedJet.visit_cutoff_bounds",
-        "UV.VerifyVisitConnectedJet.connected_marked_visit_variance"
+        "UV.VerifyVisitConnectedJet.connected_marked_visit_variance",
+        "UV.ContinueVisitCutoffLimit.cutoff_visit_isup",
+        "UV.ContinueVisitCutoffLimit.cutoff_visit_moment_tendsto",
+        "UV.ContinueVisitCutoffLimit.uncut_visit_first_moment",
+        "UV.ContinueVisitCutoffLimit.cutoff_visit_moment_tendsto_right",
+        "UV.ContinueVisitVarianceLimit.uncut_visit_second_moment_iff",
+        "UV.ContinueVisitVarianceLimit.connected_visit_variance_tendsto_right",
+        "UV.ContinueVisitVarianceLimit.connected_visit_variance_limit_finite_iff",
+        "UV.ContinueVisitVarianceLimit.connected_double_visit_coefficient_cutoff_limit",
+        "UV.ContinueVisitOscillatorIntegral.gaussian_difference_profile_integral",
+        "UV.ContinueVisitOscillatorIntegral.odd_oscillator_scaling_profile_integral",
+        "UV.ContinueVisitOscillator.oscillator_second_moment_scale",
+        "UV.ContinueVisitOscillator.oscillator_second_moment_right_limit",
+        "UV.ContinueVisitOscillator.odd_oscillator_variance_right_limit",
+        "UV.ContinueVisitOscillator.odd_oscillator_variance_asymptotic",
+        "UV.ContinueVisitOscillator.odd_oscillator_uncut_mean_finite"
+      ]
+    },
+    {
+      "label": "eq:uvpeN-absolute-model",
+      "source_line": 3255,
+      "status": "verified",
+      "scope": "The implemented absolute integrand evaluates a complex multivariate polynomial on real Euclidean loop momenta, uses the quadratic and linear exponent, and retains each routed massive factor with its affine shift and real power. Fixed shifts change the factors only by positive comparison constants. This verifies the displayed integrand and its shift comparison. The complete semidefinite power test is separately tracked as partial.",
+      "lean": [
+        "UV.directionalAbsoluteModel_continuous",
+        "UV.directionalMassiveFactor_shift_compare"
+      ]
+    },
+    {
+      "label": "eq:uvpeN-directional-count",
+      "source_line": 3289,
+      "status": "partial",
+      "scope": "For any actual unit line in the Gaussian kernel annihilated by all routes outside S, and with no drift along the line, a nonzero real or imaginary polynomial ray restriction of degree n at any base point requires 1+n < 2 sum of the line exponents in S for the full literal momentum integral. Translation to an orthonormal fiber preserves the witnessed degree. Continuity of its coefficients gives a positive-measure open set of transverse fibers. The routed factor lower bound retains every original exponent, and the one-variable improper integral excludes equality. This proves the necessary one-dimensional power count with a polynomial ray degree witness. The general higher-dimensional and simultaneous-scale power criterion remains open.",
+      "lean": [
+        "UV.directionalAbsoluteModel_line_power_of_integrable",
+        "UV.directionalNumerator_ray_continuous_coefficients",
+        "UV.directionalAbsoluteModel_one_dimensional_power_necessary",
+        "UV.directionalAbsoluteModel_unit_ray_power_necessary"
       ]
     },
     {
@@ -9215,7 +9307,7 @@
       "label": "eq:directed-propagator",
       "source_line": 12564,
       "status": "partial",
-      "scope": "The literal finite-height scalar line uses the normalized running unit off the null axial hyperplane, the fixed pole unit, and a common positive height. At positive mass each stable-half side now converges on compact Lipschitz complex tests. The same-height shell subtraction leaves an absolutely integrable remainder. Its residue has phase exp(iηam) and weights the difference of the two shells with the exact Jacobian 1/(2ω). At zero mass the stable-half line converges on compact Cartesian C² tests through the cone tip. The separate scalar sides extend to all nonnegative masses for every real-C¹ profile, and more generally for profiles satisfying the documented compact shell estimates. The limiting coefficient acts continuously on every fixed compact C² test space. For two scalar lines carrying the same four-momentum, the positive-height calculation uses both actual running units. For real-C² profiles at distinct nonnegative masses, or at equal positive mass on the same side, the product is a continuous functional on every compact Cartesian C² test space. For the principal stable-half profile at arbitrary nonnegative depths and masses the common-height boundary exists exactly when the squared masses differ or the common mass is positive and both sides agree. At equal mass opposite sides give a shell pinch. Equal zero masses on the same side give a logarithm on a smooth test through the cone tip. General graph routings, other singular branches and the completed-source Hessian identification remain open.",
+      "scope": "The literal finite-height scalar line uses the normalized running unit off the null axial hyperplane, the fixed pole unit, and a common positive height. At positive mass each stable-half side now converges on compact Lipschitz complex tests. The same-height shell subtraction leaves an absolutely integrable remainder. Its residue has phase exp(iηam) and weights the difference of the two shells with the exact Jacobian 1/(2ω). At zero mass the stable-half line converges on compact Cartesian C² tests through the cone tip. The separate scalar sides extend to all nonnegative masses for every real-C¹ profile, and more generally for profiles satisfying the documented compact shell estimates. The limiting coefficient acts continuously on every fixed compact C² test space. For two scalar lines carrying the same four-momentum, the positive-height calculation uses both actual running units. For real-C² profiles at distinct nonnegative masses, or at equal positive mass on the same side, the product is a continuous functional on every compact Cartesian C² test space. For the principal stable-half profile at arbitrary nonnegative depths and masses the common-height boundary exists exactly when the squared masses differ or the common mass is positive and both sides agree. At equal mass opposite sides give a shell pinch. Equal zero masses on the same side give a logarithm on a smooth test through the cone tip. For two momenta routed by separate translations on the same locked plane, compact supports without a shared shell point give a continuous boundary for a jointly C² moving numerator. The literal scalar lines satisfy this conclusion for real-C² profiles when the axial shifts are equal or the support avoids both axial-zero slices. The principal stable-half profile also satisfies it for nonnegative depths when the support additionally avoids the zero sets of both routed invariants. The proof retains the two distinct normalized running signs. In the symmetric rest routing with nonzero transfer, the shells meet exactly when the absolute energy is at least the sum of the masses or at most their absolute difference. The coordinates of the intersection and the two running signs on the positive-energy equal-mass common shell are explicit. A nonzero real null shift never creates a common shell at equal positive mass. Products at intersecting translated shells and identification with the completed-source Hessian remain open. For every positive mass and n≥0, at one shared positive height the pole of order n+1 is exactly reduced by n Cartesian Euler integrations by parts to the simple pole on the iterated test. The mass shift m²−iηh is retained before the limit, and the exact boundary divides by m^(2n). Compact C^(n+1) complex tests may cross both axial sheets and the axial hyperplane. The same result is checked for powers of the literal directed inverse, and for jointly C^(n+2) common compact moving tests at height zero. For n+1 literal stable-half scalar lines with individual nonnegative depths, the same positive mass, one prescribed evolution and the same routed four-momentum, the exact common-height product retains each normalized axial running unit and has a directed boundary on compact Cartesian C^(n+2) complex tests. Its character has the summed depth, the factors (iη)^(n+1) and sgn(k∥)^(n+1), and the original pole raised to n+1. A smooth timelike shell collar supplies the iterated Euler term, and the complementary original stable branch and running sign give an absolutely integrable off-shell limit.",
       "lean": [
         "UV.SectorPlane.Plane.scalar_line_plus",
         "UV.SectorPlane.Plane.scalar_line_minus",
@@ -9275,7 +9367,30 @@
         "UV.SectorPlane.Plane.massive_same_side_scalar_distribution",
         "UV.SectorPlane.Plane.massive_same_side_stable_distribution",
         "UV.SectorPlane.Plane.massless_same_side_stable_no_boundary",
-        "UV.SectorPlane.Plane.stable_pair_boundary_iff"
+        "UV.SectorPlane.Plane.stable_pair_boundary_iff",
+        "UV.SectorPlane.Plane.shifted_bare_shell_boundary",
+        "UV.SectorPlane.Plane.shifted_separated_product_distribution",
+        "UV.SectorPlane.Plane.shifted_scalar_pairing_zero",
+        "UV.SectorPlane.Plane.shifted_scalar_lines_readout",
+        "UV.SectorPlane.Plane.shifted_smooth_scalar_distribution",
+        "UV.SectorPlane.Plane.shifted_stable_scalar_distribution",
+        "UV.SectorPlane.symmetric_rest_shell_intersection",
+        "UV.SectorPlane.symmetric_rest_shell_exists_iff",
+        "UV.SectorPlane.symmetric_rest_shell_running_signs",
+        "UV.SectorPlane.symmetric_rest_separated_product_distribution",
+        "UV.SectorPlane.equal_mass_null_transfer_separated",
+        "UV.SectorPlane.Plane.massive_pole_order_parts",
+        "UV.SectorPlane.Plane.massive_pole_order_euler_reduction",
+        "UV.SectorPlane.Plane.massive_same_side_pole_order_boundary",
+        "UV.SectorPlane.Plane.massive_same_side_pole_order_moving_boundary",
+        "UV.SectorPlane.Plane.massive_same_side_pole_order_directed_boundary",
+        "UV.SectorPlane.symmetric_rest_shell_coordinates",
+        "UV.SectorPlane.symmetric_rest_unequal_shell_exists_iff",
+        "UV.SectorPlane.Plane.stable_pole_order_collar_smooth",
+        "UV.SectorPlane.Plane.stable_pole_order_collar_eq",
+        "UV.SectorPlane.Plane.massive_stable_pole_order_boundary",
+        "UV.SectorPlane.Plane.stable_pole_order_lines_readout",
+        "UV.SectorPlane.Plane.massive_same_side_stable_lines_boundary"
       ]
     },
     {
@@ -9384,9 +9499,27 @@
         "UV.RevisionSpectrum.verify_cross_jordan_support",
         "UV.RevisionSpectrum.verify_cross_jordan_representation",
         "UV.RevisionSpectrum.verify_weighted_positive_spectrum_locallyFinite",
-        "UV.RevisionSpectrum.verify_cross_signed_spectral_exists_iff"
+        "UV.RevisionSpectrum.verify_cross_signed_spectral_exists_iff",
+        "UV.RevisionSpectrum.verify_cross_signed_spectral_unique"
       ],
-      "scope": "Constructs the ordinary real signed cross measure by mutually singular positive and negative spectral measures on nonnegative mass squared. Their explicit Dirac weights and Lebesgue densities give the stated atom-plus-continuum equation, with the correct removable embedded value. Their weighted total variation is finite at every positive reference point and the signed Stieltjes transform equals the exact shifted square-root covariance. The existence criterion is necessary and sufficient; the atom is forced for any ordinary weighted signed representation."
+      "scope": "Constructs the ordinary real signed cross measure by mutually singular positive and negative spectral measures on nonnegative mass squared. Their explicit Dirac weights and Lebesgue densities give the stated atom-plus-continuum equation, with the correct removable embedded value. Their weighted total variation is finite at every positive reference point and the signed Stieltjes transform equals the exact shifted square-root covariance. The existence criterion is necessary and sufficient; the atom is forced for any ordinary weighted signed representation. Every admissible ordinary signed representation has exactly these two unweighted Jordan parts."
+    },
+    {
+      "label": "eq:update-cross-cost-tail",
+      "source_line": 15878,
+      "status": "verified",
+      "lean": [
+        "UV.RevisionSpectrum.crossTailVariation_eq",
+        "UV.RevisionSpectrum.crossTailDensity_momentum_formula",
+        "UV.RevisionSpectrum.crossTailDensity_momentum_error",
+        "UV.RevisionSpectrum.crossTailDensity_cutoff_error_bound",
+        "UV.ContinueCrossTailPeriodic.abs_sine_period_integral",
+        "UV.ContinueCrossTailPeriodic.abs_sine_div_log_remainder_bound",
+        "UV.RevisionSpectrum.crossTailTransform_cutoff_bound",
+        "UV.RevisionSpectrum.crossTailVariation_nonnegative_cutoff_sharp_log",
+        "UV.RevisionSpectrum.crossTailTransform_sharp_log"
+      ],
+      "scope": "For the actual Jordan total variation of the admitted signed shifted square-root cross law, proves D_c(x) = [2 exp(aM)/π²] log(a²x)/x + O(x^{-1}) as intrinsic x tends to infinity. Holds for every fixed a>0 and nonnegative squared pole mass satisfying subthreshold, threshold, or embedded sine-zero admission, with all quantities on the fixed sector plane."
     },
     {
       "label": "eq:update-completed-bubble",
@@ -9467,6 +9600,31 @@
         "UV.SectorPlane.cut_arrow_shell_mollifier",
         "UV.SectorPlane.Plane.selected_shell_test_cut_arrow",
         "UV.SectorPlane.Plane.routed_shell_test_limit"
+      ]
+    },
+    {
+      "label": "eq:cut-directed-coefficient-extraction",
+      "source_line": 16724,
+      "status": "verified",
+      "scope": "On a fixed locked regular shell product chart with D as normal coordinate, takes the first character of the literal directed numerator times the vectorial pole inverse at positive height. The individual character boundary is the principal-value pairing minus the shell term with sign −iηπ. A fixed compact C¹ chart test may include the coarea density. Uniform convergence of the regulated numerator and its first derivative on that test's support suffices for this specialization.",
+      "lean": [
+        "UV.SectorPlane.Plane.epsilonVector_direction",
+        "UV.SectorPlane.Plane.cut_directed_product_coefficient",
+        "UV.SectorPlane.Plane.cut_directed_chart_pairing_eq",
+        "UV.SectorPlane.Plane.cut_directed_coefficient_extraction",
+        "UV.SectorPlane.shell_chart_numerator_of_compact_c1_multiplier",
+        "UV.SectorPlane.Plane.cut_directed_compact_c1_coefficient_limit"
+      ]
+    },
+    {
+      "label": "eq:directed-discontinuity-reconstruction",
+      "source_line": 16739,
+      "status": "verified",
+      "scope": "Reconstructs each tested analytic boundary coefficient in the literal carrier quotient. On the same locked chart with η₊ = 1 and η₋ = −1, the difference of the two directed boundary values is the embedding of the complete scalar jump, including the principal value of the numerator difference and the shell integral of its sum with factor −iπ.",
+      "lean": [
+        "UV.SectorPlane.directed_sub",
+        "UV.SectorPlane.Plane.cut_directed_boundary_reconstruction",
+        "UV.SectorPlane.Plane.directed_discontinuity_reconstruction"
       ]
     },
     {
@@ -9726,6 +9884,24 @@
         "UV.SectorPlane.doublet_fourth_coefficient",
         "UV.SectorPlane.doublet_fourth_uv_limit",
         "UV.SectorPlane.Plane.doublet_fourth_not_integrable"
+      ]
+    },
+    {
+      "label": "eq:uv-rigid-edge-constants",
+      "source_line": 44303,
+      "status": "partial",
+      "scope": "Using the normalized axial measure dz/2 on [−1,1], proves the symmetrized Coulomb-minus-transverse integrand and its exact average (1−u²) arctanh(u)/u for 0≤u<1. With the full factor 4π the occupation integral gives the stated α. The scalar threshold expression is strictly positive for every real e under E_c>0 and a>0. Both its exact value at u=0 and its continuous resting limit are checked. Identifying these scalar reductions with the full sphere pushforward and the Fock Hamiltonian, deriving the constant C, and identifying the neutral and charged spectral laws remain open.",
+      "lean": [
+        "UV.ContinueRigidThreshold.normalizedAxialMeasure_probability",
+        "UV.ContinueRigidThreshold.axial_energy_symmetrization",
+        "UV.ContinueRigidThreshold.axial_energy_factor",
+        "UV.ContinueRigidThreshold.axial_unsymmetrized_energy_average",
+        "UV.ContinueRigidThreshold.axial_occupation_average",
+        "UV.ContinueRigidThreshold.rigid_alpha_closed_form",
+        "UV.ContinueRigidThreshold.rigidThreshold_pos",
+        "UV.ContinueRigidThreshold.rigidThreshold_at_rest",
+        "UV.ContinueRigidThreshold.rigidArctanhRatio_rest_limit",
+        "UV.ContinueRigidThreshold.rigidThreshold_rest_limit"
       ]
     },
     {
