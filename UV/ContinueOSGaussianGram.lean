@@ -12,8 +12,12 @@ open scoped SchwartzMap FourierTransform ComplexConjugate RealInnerProductSpace 
 
 namespace UV
 
-private def osPointWave (x k : OSFourSpace) : ℂ :=
+def osPointWave (x k : OSFourSpace) : ℂ :=
   stableFourierPhase ((2*Real.pi) • k) x
+
+theorem osPointWave_continuous (x : OSFourSpace) : Continuous (osPointWave x) := by
+  unfold osPointWave stableFourierPhase
+  fun_prop
 
 private theorem osPointWave_sub (x y k : OSFourSpace) :
     osPointWave (x-y) k = osPointWave x k * conj (osPointWave y k) := by

@@ -1,6 +1,7 @@
 import UV.ContinueAngularMassBracket
 import Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev
 import Mathlib.Analysis.SpecialFunctions.Integrals.Basic
+import Mathlib.Topology.Algebra.Polynomial
 
 /-! Zonal S³ harmonics in the normalized angular coordinate. The integrals
 include the semicircle weight pulled back under u = cos θ. -/
@@ -66,5 +67,30 @@ theorem angular_zonal_orthonormal (j k : ℕ) :
     simp only [h₁,if_false,h₂,sub_zero]
     split_ifs <;> simp [Real.pi_ne_zero]
   all_goals exact (continuous_cos.comp (continuous_const.mul continuous_id)).intervalIntegrable _ _
+
+/-- The same orthonormality for the literal normalized semicircle measure
+in the axial coordinate u on the unit three-sphere. -/
+theorem angular_semicircle_orthonormal (j k : ℕ) :
+    (2/π)*(∫ u in (-1:ℝ)..1,
+      (U ℝ j).eval u*(U ℝ k).eval u*Real.sqrt (1-u^2)) = if j=k then 1 else 0 := by
+  let g := fun u : ℝ => (U ℝ j).eval u*(U ℝ k).eval u*Real.sqrt (1-u^2)
+  have hg : Continuous g := ((U ℝ j).continuous.mul (U ℝ k).continuous).mul
+    ((continuous_const.sub (continuous_id.pow 2)).sqrt)
+  have h := intervalIntegral.integral_comp_mul_deriv (a := (0:ℝ)) (b := π)
+    (fun θ _ => Real.hasDerivAt_cos θ) continuous_sin.neg.continuousOn hg
+  rw [Real.cos_zero,Real.cos_pi] at h
+  have hi : (∫ θ in (0:ℝ)..π, (g ∘ cos) θ*(-sin θ)) =
+      -(∫ θ in (0:ℝ)..π, (U ℝ j).eval (cos θ)*(U ℝ k).eval (cos θ)*(sin θ)^2) := by
+    rw [←intervalIntegral.integral_neg]
+    apply intervalIntegral.integral_congr
+    intro θ hθ
+    rw [Set.uIcc_of_le Real.pi_pos.le] at hθ
+    simp only [g,Function.comp_apply,←Real.sin_eq_sqrt_one_sub_cos_sq hθ.1 hθ.2]
+    ring
+  have he := angular_zonal_orthonormal j k
+  change (2/π)*(∫ u in (-1:ℝ)..1, g u) = _
+  rw [hi,intervalIntegral.integral_symm (a := (-1:ℝ)) (b := 1),neg_inj] at h
+  rw [←h]
+  exact he
 
 end UV

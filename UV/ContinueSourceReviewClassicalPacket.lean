@@ -68,7 +68,7 @@ theorem sea_spin_word_trace_bound {n : ℕ} (A : Fin n → DiracMatrix) (hA : �
   exact Finset.prod_le_one (fun i _ => norm_nonneg _) (fun i _ => hA i)
 
 /-- A Schwartz packet absorbs any fixed power of the external momentum. -/
-private theorem sea_packet_integrable {d : ℕ} (χ : 𝓢(EuclideanSpace ℝ (Fin d),ℂ)) (n : ℕ) :
+theorem sea_packet_integrable {d : ℕ} (χ : 𝓢(EuclideanSpace ℝ (Fin d),ℂ)) (n : ℕ) :
     Integrable (fun q => (1+‖q‖)^n*‖χ q‖) := by
   have hi := ((χ.integrable (μ := volume)).norm.add (χ.integrable_pow_mul volume n)).const_mul (2^n:ℝ)
   apply hi.mono' (by fun_prop)

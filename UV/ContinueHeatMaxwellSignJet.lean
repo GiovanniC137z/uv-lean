@@ -13,19 +13,19 @@ structure HeatScalarJet where
   linear : ℝ
   quadratic : ℝ
 
-private def HeatScalarJet.add (a b : HeatScalarJet) : HeatScalarJet :=
+def HeatScalarJet.add (a b : HeatScalarJet) : HeatScalarJet :=
   ⟨a.constant + b.constant, a.linear + b.linear, a.quadratic + b.quadratic⟩
 
-private def HeatScalarJet.scale (c : ℝ) (a : HeatScalarJet) : HeatScalarJet :=
+def HeatScalarJet.scale (c : ℝ) (a : HeatScalarJet) : HeatScalarJet :=
   ⟨c * a.constant, c * a.linear, c * a.quadratic⟩
 
-private def HeatScalarJet.sub (a b : HeatScalarJet) : HeatScalarJet := a.add (b.scale (-1))
+def HeatScalarJet.sub (a b : HeatScalarJet) : HeatScalarJet := a.add (b.scale (-1))
 
-private def HeatScalarJet.mul (a b : HeatScalarJet) : HeatScalarJet :=
+def HeatScalarJet.mul (a b : HeatScalarJet) : HeatScalarJet :=
   ⟨a.constant * b.constant, a.constant * b.linear + a.linear * b.constant,
     a.constant * b.quadratic + a.linear * b.linear + a.quadratic * b.constant⟩
 
-private def HeatScalarJet.unitInverse (a : HeatScalarJet) : HeatScalarJet :=
+def HeatScalarJet.unitInverse (a : HeatScalarJet) : HeatScalarJet :=
   ⟨1, -a.linear, a.linear ^ 2 - a.quadratic⟩
 
 /-- The normalized denominator inverse cancels through quadratic order. -/
@@ -51,22 +51,22 @@ theorem heatScalarJet_mul_polynomial (p q : Polynomial ℝ) :
 
 private abbrev Components := ℝ × ℝ × ℝ
 
-private structure VectorJet where
+structure VectorJet where
   constant : Components
   linear : Components
   quadratic : Components
 
-private def vectorScale (c : ℝ) (v : Components) : Components :=
+def vectorScale (c : ℝ) (v : Components) : Components :=
   (c * v.1, c * v.2.1, c * v.2.2)
 
-private def vectorZero : Components := (0, 0, 0)
+def vectorZero : Components := (0, 0, 0)
 
-private def dotJet (dot : Components → Components → ℝ) (a b : VectorJet) : HeatScalarJet :=
+def dotJet (dot : Components → Components → ℝ) (a b : VectorJet) : HeatScalarJet :=
   ⟨dot a.constant b.constant,
     dot a.constant b.linear + dot a.linear b.constant,
     dot a.constant b.quadratic + dot a.linear b.linear + dot a.quadratic b.constant⟩
 
-private def normalizedDenominator (q u : ℝ) (dot : Components → Components → ℝ)
+def normalizedDenominator (q u : ℝ) (dot : Components → Components → ℝ)
     (h : VectorJet) : HeatScalarJet :=
   (dotJet dot h h).scale q |>.add ⟨1 - q * u, 0, 0⟩
 

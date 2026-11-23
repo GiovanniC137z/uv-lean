@@ -82,10 +82,8 @@ private theorem osPositiveCountableCylinderLaw (Q : OSPositiveCovariance α)
   rw [hslot]
   rfl
 
-/-- A common probability law on all boundary and point slots, uniquely
-determined on its cylinder sigma algebra by the explicit finite Gaussian
-laws. Measurability of point evaluation jointly in space and sample
-requires a modification and is not assumed in this construction. -/
+/-- Every positive real covariance kernel has a unique Gaussian
+probability law on the cylinder sigma algebra of its full index set. -/
 theorem osPositiveGaussianProcess (Q : OSPositiveCovariance α) :
     ∃! μ : Measure (α → ℝ), IsProjectiveLimit (α := fun _ => ℝ) μ (Q.family) := by
   classical

@@ -37,12 +37,12 @@ theorem heat_contact_local_contDiff (k : EuclideanPlaneMomentum) : ContDiff ℝ 
   unfold heatShiftFactor
   fun_prop
 
-private theorem heat_centered_bound : ∀ᵐ s ∂heatCenteredLaw, |id s|≤1 := by
+theorem heat_centered_bound : ∀ᵐ s ∂heatCenteredLaw, |id s|≤1 := by
   filter_upwards [ae_restrict_mem (μ:=volume) (measurableSet_Ioc (a:=(-1/2:ℝ)) (b:=1/2))] with s hs
   change |s|≤1
   exact abs_le.mpr ⟨by linarith [hs.1],by linarith [hs.2]⟩
 
-private theorem heat_contact_bound : ∀ᵐ p ∂heatContactLaw, |p.1-p.2|≤1 := by
+theorem heat_contact_bound : ∀ᵐ p ∂heatContactLaw, |p.1-p.2|≤1 := by
   have hm : MeasurableSet {p : ℝ×ℝ | |p.1-p.2|≤1} := measurableSet_le (continuous_fst.sub continuous_snd).abs.measurable measurable_const
   apply (Measure.ae_prod_iff_ae_ae hm).mpr
   filter_upwards [ae_restrict_mem (μ:=volume) (measurableSet_Ioc (a:=(0:ℝ)) (b:=1))] with s hs
