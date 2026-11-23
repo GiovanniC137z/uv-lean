@@ -2613,10 +2613,22 @@
       "title_tex": "Physical chiral identification of the optical charged block",
       "source_line": 21641,
       "statement_tex": "Use the onsite operator $m\\beta\\otimes J_o$, where $m>0$ and\n$\\beta=\\gamma^0$ in the Hamiltonian frame. For each electric charge\ntake the optical spatial Dirac hopping of~\\eqref{eq:reference-spin-uv}\nwith the chosen heat lapse, acting identically on paired internal\nmultiplicities. Use the common optical readout on the time connection\nand spatial Wilson links. Restrict the kets and their canonical\nadjoints to $E$, and fill the negative onsite eigenspace on $E$.\nIn this quantization the physical electromagnetic action, boundary\nreference and every charged or photon source derivative are unitarily\nequivalent to those of the optical spinor on $S\\otimes V_L$, with the\ncorresponding electric charges. The graph bound of\nTheorem~\\ref{thm:seam-calibrated-joint-uv} and its angular extension\nin Corollary~\\ref{cor:seam-optical-shifts-uv} therefore apply to the\nfull retained chiral block on their stated domains.",
-      "status": "pending",
-      "lean": [],
+      "status": "partial",
+      "lean": [
+        "UV.omega_physical_range",
+        "UV.omega_mass_identification",
+        "UV.omega_filled_mass_slot",
+        "UV.omega_weyl_spatial_identification",
+        "UV.omega_weyl_charge_identification",
+        "UV.omega_occupation_transport",
+        "UV.omega_sourced_determinant",
+        "UV.omega_component_pairing_iff",
+        "UV.omega_covariant_row_grading",
+        "UV.omega_heat_transfer",
+        "UV.omega_bounded_transfer_exp"
+      ],
       "lean_projects": {},
-      "scope": "Not yet formalized.",
+      "scope": "Identifies the physical chiral eigenspace, the massive occupied slots, electric charge, Weyl spatial block and occupations by explicit unitaries. Proves invariance of a finite determinant conjugated by the identifying unitary. A groupoid proof characterizes compatible pairings by the isotropy representation. The graph estimate requires control of the underlying optical transfer. The opposite row grading and explicit free heat Hamiltonian and its bounded transfer exponentials also intertwine.",
       "statement_change": "new"
     },
     {
@@ -2625,10 +2637,16 @@
       "title_tex": "Bare finiteness on the constitutively selected electromagnetic quotient",
       "source_line": 21736,
       "statement_tex": "For the amended $\\Omega_\\alpha$ electromagnetic action on a finite\nslab and spatial torus with its prescribed harmonic mode, take a\nmassive paired multiplet and a nonzero positive trace-class normal\npreparation, with the onsite matter and photon vacuum at the boundary.\nAt every finite electric order and arbitrary finite hopping strength,\nthe complete connected electromagnetic and elementary dressed charged\ncoefficients on the Abelian physical quotient are ultraviolet finite\nwithout counterterms or momentum cutoffs. This includes every normal\noccupation reached by the specified hopping, loops with zero net\nwinding, exchange of partners, instantaneous Coulomb sewings and\nsimultaneous short-duration limits. The joint absolute estimate uses\none carrier frequency and spatial loop momentum for each closed charged\ntrace and the four-momentum of each internal photon on the finite\nslab, as in Theorem~\\ref{thm:seam-calibrated-joint-uv}.",
-      "status": "pending",
-      "lean": [],
+      "status": "partial",
+      "lean": [
+        "UV.omega_normalized_connected_bound",
+        "UV.omega_connected_graph_integral_bound",
+        "UV.omega_bounded_diagonal_denominator",
+        "UV.omega_marked_collar_exhaustion",
+        "UV.omega_semibounded_spectral_diagonal"
+      ],
       "lean_projects": {},
-      "scope": "Not yet formalized.",
+      "scope": "Derives an explicit bound for every connected coefficient of the normalized formal logarithm after integrating its graph amplitudes, given order-specific integrable majorants and a positive common denominator. Their construction from the physical quotient remains open. The spectral diagonal is strictly positive for each nonzero finite prepared spectral measure supported above a lower bound. The two killing collars exhaust each surviving continuous path under an integrable common majorant. The full physical transfer still has to supply that majorant and its spectral identification.",
       "statement_change": "new"
     },
     {
@@ -2637,10 +2655,18 @@
       "title_tex": "All spatial Maxwell modes in a neutral vacuum response",
       "source_line": 21790,
       "statement_tex": "In the topologically trivial magnetic bundle take the constant\nnormalized holonomy wave function at the two ends with the onsite\nvacuum. Keep the positive diagonal normal preparation of the optical\ntheorem. Quantize the flat connection with its Maxwell kinetic\nenergy and impose zero total electric charge. All finite electric\norders of the bare vacuum logarithm and the connected nonzero-mode\ntransverse photon responses obey the same joint ultraviolet bounds,\nwith every dynamical spatial photon mode included.",
-      "status": "pending",
-      "lean": [],
+      "status": "partial",
+      "lean": [
+        "UV.omega_rotor_pair_integrable",
+        "UV.omega_rotor_pair_covariance",
+        "UV.omega_rotor_finite_sewing",
+        "UV.omega_rotor_joint_majorant",
+        "UV.omega_wilson_large_gauge",
+        "UV.omega_uniform_twist_projection",
+        "UV.omega_rotor_joint_sewing"
+      ],
       "lean_projects": {},
-      "scope": "Not yet formalized.",
+      "scope": "Evaluates the whole-frequency integral for two interval marks and proves the exact finite product of harmonic Maxwell covariances, including coincident times. Joint absolute integrability persists upon adjoining the independent frequencies to an integrable nonzero-mode majorant. The full charged transfer and physical quotient remain dependencies. The exact static uniform-twist integral selects zero integer winding. Large gauge translations give the two phases at the actual ends of a lifted Wilson chord. Repeated harmonic contractions and non-harmonic variables are jointly integrable with a common hard majorant.",
       "statement_change": "new"
     },
     {
@@ -2721,10 +2747,12 @@
       "title_tex": "Instantaneous spatial hopping and the local density test",
       "source_line": 22895,
       "statement_tex": "Suppose the reduced Hamiltonian has a nonzero instantaneous\nparticle--hole hop with kernel between two separated spatial open\nsets. Assume the other terms commute with the occupation-density\nphases. In particular one may take the optical Dirac heat hop at\nzero electromagnetic and scalar coupling, retaining nonzero\nhopping strength. If all $U_f$ belong to local relativistic\nalgebras with the indicated supports on the sector plane, spacelike\ncommutativity fails.",
-      "status": "pending",
-      "lean": [],
+      "status": "partial",
+      "lean": [
+        "UV.sea_hopping_violates_locality"
+      ],
       "lean_projects": {},
-      "scope": "Not yet formalized.",
+      "scope": "For the stated instantaneous Hamiltonian with nonzero off-diagonal pair kernel, constructs disjoint compact smooth spatial tests and a nonzero double commutator in the derivative of the same unitary evolution, contradicting short-time spacelike commutation. The explicit optical heat-spin example is tracked separately.",
       "statement_change": "new"
     },
     {
@@ -2785,10 +2813,16 @@
       "title_tex": "Fixed-width bare graphs with the exact free mass shell",
       "source_line": 23822,
       "statement_tex": "On the finite slab and spatial torus, with the harmonic mode\nprescribed and onsite particle--hole and photon vacuum endpoints,\nthe complete bare coefficients of this action have joint absolute\nbounds at each finite electric order. The result includes neutral\nvacuum coefficients, smooth photon tests and smooth charged\nendpoint tests with the canonical Gauss dressing. The off-diagonal\nhopping multiplier can be any finite real constant for the graph\nestimate; take it equal to one for the mass-shell identity above.\nThe bound keeps the independent carrier and photon integration\nvariables and includes kinetic, hopping and Coulomb contacts.",
-      "status": "pending",
-      "lean": [],
+      "status": "partial",
+      "lean": [
+        "UV.repair_kinetic_root_contDiff",
+        "UV.repair_kinetic_square",
+        "UV.repair_low_momentum",
+        "UV.repair_hamiltonian_shell",
+        "UV.repair_free_inverse"
+      ],
       "lean_projects": {},
-      "scope": "Not yet formalized.",
+      "scope": "Proves the smooth spatial kinetic square root including the origin, its low-momentum remainder, the exact free mass shell at physical hopping, and a two-sided massive Fourier inverse of norm at most 1/m at every real hopping strength. The finite-slab source determinant and all-orders interacting graph estimate remain open.",
       "statement_change": "new"
     },
     {
@@ -2797,7 +2831,7 @@
       "title_tex": "Boost test of the filled reference",
       "source_line": 23934,
       "statement_tex": "For the density delivered by this action, even its unsmeared\ncanonical part cannot be the time component of a nonzero\nconserved Lorentz-vector vacuum current with a positive\ntimelike spectral measure. The obstruction also applies to\ntranslation-invariant finite-slot charged seas whose occupied\nprojector differs from a constant projector by a spatial\nsquare-integrable matrix and whose local density acts by the\nidentity shift.",
-      "status": "partial",
+      "status": "verified",
       "lean": [
         "UV.ContinuationBoostSpectrum.equal_rank_projection_overlap",
         "UV.ContinuationBoostSpectrum.canonicalDensity_bounded",
@@ -2832,10 +2866,14 @@
         "UV.NextOpticalRadial.compactTimelikeDensity_linear_lower",
         "UV.NextOpticalRadial.timelikeTimeSpectrum_real_band",
         "UV.NextOpticalRadial.finite_slot_density_cannot_dominate_timelike_band",
-        "UV.NextOpticalRadial.opticalProjector_cannot_dominate_tested_timelike_band"
+        "UV.NextOpticalRadial.opticalProjector_cannot_dominate_tested_timelike_band",
+        "UV.ContinuationBoostSpectrum.canonicalDensity_variable_rank_limit",
+        "UV.ContinuationBoostSpectrum.variable_rank_cannot_dominate_timelike_band",
+        "UV.ContinuationBoostSpectrum.finite_slot_lorentz_spectral_tensor_vanishes",
+        "UV.ContinuationBoostSpectrum.finite_slot_no_positive_timelike_trace"
       ],
       "lean_projects": {},
-      "scope": "Checks the actual normalized (2π)⁻³ three-dimensional trace density, its uniform finite-slot L² bound, the positive timelike shell-band lower bound, and the same-plane no-go against an admitted Lorentz spectrum of that form. For the specified optical Hamiltonian, verifies unit Clifford coefficients, Hermitian idempotents of exact trace two, Gaussian square-integrability of the departure from the constant projector, strictly positive normalized pair integral on a ball in a compact positive timelike band, and the normalized large-shift density limit via the Gaussian envelope. From matrix conservation, positivity, and the explicit metric-preserving spatial rotations, verifies the exact rest tensor and its boost to the transverse Lorentz tensor on the same locked diamond. Verifies the physical future-shell time entry, the equal-time spectral weight with the mass-shell Jacobian factor, and an explicit Lorentz boost along the unbounded transfer axis. For any square-integrable finite-slot projector departure, checks the exact Hilbert–Schmidt overlap identity and its vanishing under unbounded spatial shifts by separating two translated spatial tails. The normalized density tends to the full projector-departure mass on the fixed diamond. Constructs the positive scalar time-component mass measure of a supplied transverse timelike spectral law and proves its actual compact-band mass and linear lower. For any square-integrable finite-slot sea in the actual sector-plane type, the full canonical weight cannot dominate even this positive sub-band. For the optical action the same conclusion holds under the source’s common positive external exp(−2a|P|) test. The general distributional spectral disintegration from vacuum covariance remains open.",
+      "scope": "For the specified optical projector and for a translation-invariant finite-slot sea differing in L² from a constant Hermitian projector, proves a uniform bound on the actual equal-time canonical density with its (2π)⁻³ normalization. The spatially varying occupied rank is allowed. From a positive locally finite timelike trace measure, its canonical 00 marginal and Lorentz tensor covariance, a compact set of positive mass would have opposite boosts with quadratic diagonal growth but only linear spatial-volume growth. Lean rules out every such nonzero timelike band on the fixed sector plane.",
       "statement_change": "new"
     },
     {
@@ -2844,7 +2882,7 @@
       "title_tex": "A boost obstruction for the full radial mixing law",
       "source_line": 24007,
       "statement_tex": "Suppose that the free density and its conserved current are to\ntransform as a positive-vacuum-measure Lorentz vector with\nnonzero spectral mass in a compact timelike band. The complete\nunsubtracted Euclidean density correlation at nonzero fixed\nspatial transfer cannot then be ultraviolet finite on this\nclass of exact-shell actions. This includes the case where the\noptical factor is applied only to an external test of the\npurported covariant current.",
-      "status": "partial",
+      "status": "verified",
       "lean": [
         "UV.NextOpticalRadial.norm_smul_radialUnit",
         "UV.NextOpticalRadial.spinCoefficients_norm_sq",
@@ -2874,10 +2912,14 @@
         "UV.NextOpticalRadial.canonicalPairSpectrum_real_band",
         "UV.NextOpticalRadial.timelikeTimeSpectrum_real_band",
         "UV.NextOpticalRadial.radialEuclideanDensity_not_integrable_of_compact_lorentz_band",
-        "UV.NextOpticalRadial.radialEuclideanDensity_not_integrable_of_timelike_measure_match"
+        "UV.NextOpticalRadial.radialEuclideanDensity_not_integrable_of_timelike_measure_match",
+        "UV.NextOpticalRadial.canonicalPairBandDensity_upper_all_directions",
+        "UV.NextOpticalRadial.canonicalPairBandDensity_global_sublinear",
+        "UV.NextOpticalRadial.exact_shell_radial_boost_obstruction",
+        "UV.NextOpticalRadial.exact_shell_radial_no_positive_timelike_trace"
       ],
       "lean_projects": {},
-      "scope": "Checks the unit radial spinor, exact canonical trace, transverse angular and temporal resolvent lower bounds, and the harmonic mixing tail required by absolute integrability at one nonzero fixed transfer. On the actual compact invariant-mass band, the exact pair shells confine both constituents to positive longitudinal fractions and a bounded transverse radius. Tonelli and the quadratic tube measure cancel the radial Jacobian, proving the integrated radial interval upper with the exact (2π)⁻³ normalization and both constituents linked by measure-preserving exchange. Constructs the actual canonical pair mass pushforward and checks both compact-band measure evaluations. Equality of the measured pair spectrum and a represented transverse positive timelike model on the same plane forces nonintegrability, allowing a bounded spatial optical amplitude nonzero at the tested transfer. Deriving the represented timelike model from abstract Lorentz covariance of arbitrary vacuum spectral distributions remains open.",
+      "scope": "For the exact massive radial spinor with nonnegative diagonal slot, derives the necessary finite mixing tail from the unsubtracted Euclidean density at a nonzero transfer. On a compact positive timelike band the same tail gives uniform sublinear growth of the actual spatial pair marginal in every direction. A nonzero positive locally finite Lorentz-vector spectral trace measure contradicts this growth under opposite boosts. Covers bounded optical amplitudes and the separately nonzero external factor at the tested transfer.",
       "statement_change": "new"
     },
     {
@@ -2921,10 +2963,16 @@
       "title_tex": "A finite pair cut with a divergent complete source response",
       "source_line": 24496,
       "statement_tex": "The measured tree-level charged-pair current of this action has\nforward-cone support and an integrable high-energy tail in the\nunsubtracted dispersion weight. Its full bare two-source coefficient\nat one charged loop, of order $e^2$, diverges at every fixed\nnonzero Euclidean transverse momentum.",
-      "status": "pending",
-      "lean": [],
+      "status": "partial",
+      "lean": [
+        "UV.portal_pair_and_full_response",
+        "UV.portal_pair_forward_cone",
+        "UV.portal_bare_log_coefficient",
+        "UV.portal_quadratic_contraction",
+        "UV.portal_spectral_partial_fractions"
+      ],
       "lean_projects": {},
-      "scope": "Not yet formalized.",
+      "scope": "For 0<b<4m² and positive fixed Euclidean transfer, proves integrability of the measured positive pair cut against ds/s and the simultaneous logarithmic divergence of the complete displayed two-point proper-time coefficient. Derives its nonzero short-time coefficient and checks the forward-cone kinematics and the mediator contractions. Derivation of the complete determinant response from the continuum action remains open.",
       "statement_change": "new"
     },
     {
@@ -2981,10 +3029,16 @@
       "title_tex": "Strict displacement of the low photon poles",
       "source_line": 25336,
       "statement_tex": "There is a finite constant $K$ determined by the free normal\npreparation and the measured pair and magnetic rows such that, for\neither of the two low eigenvalues and every $\\kappa>0$,\n\\[\n \\mathop{\\rm ess\\,liminf}_{|P|\\downarrow0}\n   \\left(\\frac{E_j(P)}{|P|}-1\\right)\n \\ \\ge\\ \\frac{\\kappa d_0}{2L^2(d_0+\\kappa K^2)}>0 .\n\\]\nThe conclusion requires no differentiability of an eigenvalue branch.",
-      "status": "pending",
-      "lean": [],
+      "status": "partial",
+      "lean": [
+        "UV.magnetic_low_pole_speed",
+        "UV.magnetic_pole_essential_speed",
+        "UV.magnetic_curl_singular",
+        "UV.magnetic_gram_row_bound",
+        "UV.magnetic_covariance_integrable"
+      ],
       "lean_projects": {},
-      "scope": "Not yet formalized.",
+      "scope": "Derives the positive lower bound for the essential soft pole speed from the magnetic row, complement gap and low-pole weight estimates. Proves the transverse unit-polarization curl action and the uniform Gram-kernel Fourier bound. Derivation of the Fock annihilation row and low-pole variational estimate for the interacting Hamiltonian remains open.",
       "statement_change": "new"
     },
     {
@@ -3065,10 +3119,18 @@
       "title_tex": "Short-time and short-segment test on the A4 shell",
       "source_line": 26149,
       "statement_tex": "Fix $m=1/L$ and put $h=u(1-u)$,\n$s_1=tu/L^2$, $s_2=t(1-u)/L^2$.\nConsider a transverse two-curvature form whose scalar polarization\ncoefficient at $X=|Q_E|^2$ is\n\\[\n P_j(X)=\\int_0^\\infty \\frac{dt}{t}e^{-m^2t}\n          \\int_0^1du\\,h\\, e^{-thX}M_j(s_1,s_2).\n\\]\nThe curvature insertions give the transverse Hessian eigenvalue\n$XP_j(X)$, up to its overall positive normalization. Sewing a\nMaxwell port of covariance $1/X$ gives an absolutely finite\nfour-momentum integral exactly when $j>2+n/2$. The statement\nincludes coincident marks and simultaneous short durations.\nIt concerns this specified transverse block of a pairing.",
-      "status": "pending",
-      "lean": [],
+      "status": "partial",
+      "lean": [
+        "UV.shell_mark_flip_sq",
+        "UV.shell_mark_word_selected",
+        "UV.shell_mark_word_inclusive",
+        "UV.shell_inclusive_basis",
+        "UV.shell_maxwell_radial_integral",
+        "UV.shell_short_time_power_iff",
+        "UV.shell_constant_mode_diverges"
+      ],
       "lean_projects": {},
-      "scope": "Not yet formalized.",
+      "scope": "For the two-state shell connection the selected tensor transition has squared modulus |sin(δ/2)|^(2j), while the inclusive sum through all channels is one. The sewn radial integral is exactly [tu(1−u)]⁻². The reduced two-sided time bounds imply the strict threshold j>2+n/2, with divergence at equality. The unit Neumann zero-mode contribution already forces divergence of the unmarked proper-time integral for each interior fraction and each X≥0. The short-time upper and interior lower bounds for the actual Neumann heat kernel on the ball remain open.",
       "statement_change": "new"
     },
     {
@@ -3137,10 +3199,25 @@
         "UV.normal_circle_trace_integral",
         "UV.normal_circle_coordinates_preserving",
         "UV.normal_circle_closing_increment",
-        "UV.normal_periodic_vertex_integral"
+        "UV.normal_periodic_vertex_integral",
+        "UV.normal_shell_characteristic_sharp",
+        "UV.normal_shell_pair_sharp",
+        "UV.MomentumNetwork.routing_exists",
+        "UV.MomentumNetwork.route_recovers",
+        "UV.MomentumMarks.routed_endpoint",
+        "UV.NormalMarkedGraph.continuum",
+        "UV.NormalMarkedGraph.torus",
+        "UV.normal_shell_poisson_formula",
+        "UV.normal_photon_rank_criterion",
+        "UV.MomentumExteriorAttachments.test_integrable",
+        "UV.momentum_wick_endpoints",
+        "UV.MomentumExteriorAttachments.continuum",
+        "UV.MomentumExteriorAttachments.torus",
+        "UV.momentum_source_closed_coefficient",
+        "UV.momentum_source_open_coefficient"
       ],
       "lean_projects": {},
-      "scope": "For positive mass and normal-circle circumference, the oriented Dirac cover kernel has jump γ⁵ and Fourier multiplier with exact operator norm (m²+‖p‖²+ξ²)⁻¹ᐟ². On nonzero winding, the increment constraint supplies decay in one independent four-momentum, allowing simultaneous short segments and a summable exponential bound in |w|. At zero winding the frequency trace with at least six unit-polarized insertions is absolutely integrable in four carrier directions and one continuous normal frequency, uniformly in the transferred momenta. The actual normalized A4 ball characteristic decays at least as C/(1+‖p‖)² in dimension ≥3. This yields integrability of the massless photon with two independent shell incidences for every real readout of rank ≥3. Charged components, routed chord/tree photons, integrable external tests and the absolute winding sum are controlled jointly, in the hard continuum and on any full reciprocal four-lattice with its harmonic photon mode fixed. The finite winding partition allows zero winding exactly on the admitted components. The exact Fourier coefficients of the periodic circle kernel are the shifted, two-sided Dirac inverses. A Haar-preserving change from the actual marked circle positions to their initial position and successive directed differences yields the physical factor L per loop. The integrated periodic ordered trace equals its sum of cover windings with center factor L and phase exp(−iwθ). At fixed carrier momenta and two or more insertions, Fourier inversion identifies its zero-winding integral with the continuous-frequency trace, including L/(2π). Derivation of the routed graphs and their weights from the full interacting determinant remains open. The argument uses a sufficient Fourier decay power and does not establish the sharp dimension-dependent Bessel asymptotic.",
+      "scope": "For positive mass and normal-circle circumference, the oriented Dirac cover kernel has jump γ⁵ and Fourier multiplier with exact operator norm (m²+‖p‖²+ξ²)⁻¹ᐟ². On nonzero winding, the increment constraint supplies decay in one independent four-momentum, allowing simultaneous short segments and a summable exponential bound in |w|. At zero winding the frequency trace with at least six unit-polarized insertions is absolutely integrable in four carrier directions and one continuous normal frequency, uniformly in the transferred momenta. The actual normalized A4 ball characteristic decays at least as C/(1+‖p‖)² in dimension ≥3. This yields integrability of the massless photon with two independent shell incidences for every real readout of rank ≥3. Charged components, routed chord/tree photons, integrable external tests and the absolute winding sum are controlled jointly, in the hard continuum and on any full reciprocal four-lattice with its harmonic photon mode fixed. The finite winding partition allows zero winding exactly on the admitted components. The exact Fourier coefficients of the periodic circle kernel are the shifted, two-sided Dirac inverses. A Haar-preserving change from the actual marked circle positions to their initial position and successive directed differences yields the physical factor L per loop. The integrated periodic ordered trace equals its sum of cover windings with center factor L and phase exp(−iwθ). At fixed carrier momenta and two or more insertions, Fourier inversion identifies its zero-winding integral with the continuous-frequency trace, including L/(2π). The shell transform satisfies the dimension-dependent upper bound C(1+‖p‖)^(-(n+1)/2). Every connected labelled momentum network admits a spanning-tree chart for all conserved flows, including self-edges and parallel edges. Signed incidences compute every charged segment translation and its endpoint transfer in the continuum and lattice estimates. The exact Poisson–Bessel formula also holds. For positive depth the hard continuum photon density is integrable exactly at readout rank at least three. This necessity concerns the individual photon majorant. For arbitrary conserved external transfers the proof keeps the rapid decay supplied by each tested charged path in its endpoint difference. The finite relative determinant gives the actual signed trace weights and the affine inverse gives the open words. Labelled Wick contractions, independently integrated Schwartz tests and the spanning-tree chart give graphs with all transfers conserved.",
       "statement_change": "new"
     },
     {
@@ -3178,10 +3255,25 @@
         "UV.normal_periodic_open_integral",
         "UV.normal_circle_open_integral",
         "UV.normal_endpoint_differences_preserving",
-        "UV.normal_open_position_integral"
+        "UV.normal_open_position_integral",
+        "UV.normal_shell_characteristic_sharp",
+        "UV.normal_shell_pair_sharp",
+        "UV.MomentumNetwork.routing_exists",
+        "UV.MomentumNetwork.route_recovers",
+        "UV.MomentumMarks.routed_endpoint",
+        "UV.NormalMarkedGraph.continuum",
+        "UV.NormalMarkedGraph.torus",
+        "UV.normal_shell_poisson_formula",
+        "UV.normal_photon_rank_criterion",
+        "UV.MomentumExteriorAttachments.test_integrable",
+        "UV.momentum_wick_endpoints",
+        "UV.MomentumExteriorAttachments.continuum",
+        "UV.MomentumExteriorAttachments.torus",
+        "UV.momentum_source_closed_coefficient",
+        "UV.momentum_source_open_coefficient"
       ],
       "lean_projects": {},
-      "scope": "For m>0 and circle length L>0, an open chain of r+1 actual Dirac cover propagators and r unit-polarized vertices has absolute normal-displacement integral at most 2^(r+1)(4/m)^r exp(−m|z′−z+wL|/2). The proof includes r=0, coincident endpoints, the sign jump and every integer winding. For every readout of rank ≥3, arbitrary finite families of such lines with tested spinor endpoints can be sewn to protected closed charged loops and transverse photons. The joint absolute norm is integrable and the independent winding assignments are absolutely summable in the continuum and on all nonzero photon modes of any full reciprocal four-lattice. Continuum endpoints can be L²; the torus result proves a uniform square-sum estimate for translated samples of Schwartz endpoints. Starting at the actual marked positions with both normal endpoints fixed, the directed differences preserve Haar measure and give no center factor. The ordered periodic open word integrates to the sum of these same cover integrals with the endpoint holonomy phase exp(−iθ((z′−z)/L+w)). Its proof includes integration of the integer lifts and coincident endpoints. Derivation of the routed ordered factors and graph weights from the full interacting source expansion remains open.",
+      "scope": "For m>0 and circle length L>0, an open chain of r+1 actual Dirac cover propagators and r unit-polarized vertices has absolute normal-displacement integral at most 2^(r+1)(4/m)^r exp(−m|z′−z+wL|/2). The proof includes r=0, coincident endpoints, the sign jump and every integer winding. For every readout of rank ≥3, arbitrary finite families of such lines with tested spinor endpoints can be sewn to protected closed charged loops and transverse photons. The joint absolute norm is integrable and the independent winding assignments are absolutely summable in the continuum and on all nonzero photon modes of any full reciprocal four-lattice. Continuum endpoints can be L²; the torus result proves a uniform square-sum estimate for translated samples of Schwartz endpoints. Starting at the actual marked positions with both normal endpoints fixed, the directed differences preserve Haar measure and give no center factor. The ordered periodic open word integrates to the sum of these same cover integrals with the endpoint holonomy phase exp(−iθ((z′−z)/L+w)). Its proof includes integration of the integer lifts and coincident endpoints. The shell transform satisfies the dimension-dependent upper bound C(1+‖p‖)^(-(n+1)/2). Every connected labelled momentum network admits a spanning-tree chart for all conserved flows, including self-edges and parallel edges. Signed incidences compute every charged segment translation and its endpoint transfer in the continuum and lattice estimates. The exact Poisson–Bessel formula also holds. For positive depth the hard continuum photon density is integrable exactly at readout rank at least three. This necessity concerns the individual photon majorant. For arbitrary conserved external transfers the proof keeps the rapid decay supplied by each tested charged path in its endpoint difference. The finite relative determinant gives the actual signed trace weights and the affine inverse gives the open words. Labelled Wick contractions, independently integrated Schwartz tests and the spanning-tree chart give graphs with all transfers conserved.",
       "statement_change": "new"
     },
     {
@@ -3190,7 +3282,7 @@
       "title_tex": "Unrestricted charged circulations and a finite photon obstruction",
       "source_line": 26826,
       "statement_tex": "In the Euclidean comparison \\eqref{eq:nativefull-three-compressions-uv},\nevery complete transverse graph at a positive finite\nelectromagnetic order is absolutely ultraviolet convergent with\nthe preceding infrared convention, including interacting vacuum\ngraphs and arbitrary charged normal modes. No winding projection,\nmomentum cutoff or counterterm enters this estimate. Its one-loop\ninverse transverse photon propagator nevertheless acquires a\nnonzero constant at vanishing momentum transfer.",
-      "status": "partial",
+      "status": "verified",
       "lean": [
         "UV.normal_zero_transfer_spin",
         "UV.normal_zero_transfer_hessian",
@@ -3207,10 +3299,33 @@
         "UV.normal_leg_nearby_uniform",
         "UV.normal_leg_integral_unit",
         "UV.normal_leg_photon_obstruction",
-        "UV.SectorPlane.Plane.normal_leg_transverse_limit"
+        "UV.SectorPlane.Plane.normal_leg_transverse_limit",
+        "UV.compressed_cyclic_vertex_trace",
+        "UV.compressed_actual_line_sharp",
+        "UV.compressed_loop_all_modes",
+        "UV.compressed_open_marked_bound",
+        "UV.compressed_photon_actual",
+        "UV.compressed_photon_rank",
+        "UV.CompressedMarkedGraph.continuum",
+        "UV.CompressedMarkedGraph.torus",
+        "UV.CompressedMarkedGraph.endpoint_equation",
+        "UV.compressed_vertex_ward",
+        "UV.compressed_vertex_soft_obstruction_at_large_carriers",
+        "UV.compressed_regular_ward_constant",
+        "UV.SectorPlane.Plane.compressed_first_variation_ward",
+        "UV.compressed_source_closed_coefficient",
+        "UV.compressed_source_open_series",
+        "UV.compressed_source_open_power",
+        "UV.compressed_continuum_external",
+        "UV.compressed_torus_external",
+        "UV.compressed_complete_continuum",
+        "UV.compressed_complete_torus",
+        "UV.compressed_labeled_source_coefficient",
+        "UV.compressed_graph_remove_sections",
+        "UV.compressed_lattice_section_finite"
       ],
       "lean_projects": {},
-      "scope": "Proves the one-loop transverse obstruction for the specified affine three-compression vertex, all m,L>0, any holonomy and any isometric five-momentum readout of the actual A4 shell. The charged and transverse form factors appear separately at each vertex. The unit-polarized Clifford trace, four-carrier radial average, strictly positive shell support on a nearest shifted mode, absolute integral over all carrier momenta and mode sum, and the dominated limit at zero transfer are proved. In the stated Euclidean sign convention the normalized loop tends to a strictly negative constant. Adding the Maxwell eigenvalue leaves the same limit on the transverse plane in either oriented sector chart. The unrestricted joint UV proof for every interacting graph of the three-compression determinant remains open.",
+      "scope": "At every positive finite order of the specified affine three-compression Euclidean operator, all admitted complete transverse graphs have jointly absolutely integrable carrier momenta and an absolutely summable independent normal mode for every charged loop or open path. This includes interacting vacuum graphs and one-insertion loops. The negative log-modulus determinant on finite Fourier sections gives the signed closed trace coefficients, and its affine inverse gives the open words. The actual shell factors occur at each charged and transverse incidence. Kirchhoff routing constructs the shared transfers. External Schwartz tests, the fixed hard continuum prescription or fixed torus harmonic mode, m,L>0 and the rank-four restriction of the isometric five-momentum readout give joint bounds on the unbounded domains. Exhaustion recovers the signed and absolute graph values. The unit-polarized one-loop inverse transverse propagator tends to a strictly negative constant for every holonomy in the stated sign convention. In the adjacent soft-vertex calculation the contracted Ward identity and the two distinct directional limits follow from the source variation on the locked plane.",
       "statement_change": "new"
     },
     {
@@ -3529,10 +3644,21 @@
       "title_tex": "Scalar response of a filled reference sea",
       "source_line": 43774,
       "statement_tex": "Consider a gapped quasifree reference Hamiltonian $h_0$ with filled\nnegative-energy projection $P$. Use its occupied vacuum, and let a\nreal scalar source act by a bounded self-adjoint one-body operator\n$Q$ and its vacuum-normal-ordered second quantization. The normalized\nvacuum functional is identically one for every time profile of every\nallowed scalar source if $[P,Q]=0$ for each source. Conversely,\nwhere the vacuum response exists, this identity requires\n$(1-P)QP=0$ for every such source. The assertion applies first to\nfinite orbital spaces. In the continuum the same necessity holds\non spectral windows where the particle--hole matrix elements and\nthe smeared response exist.",
-      "status": "pending",
-      "lean": [],
+      "status": "verified",
+      "lean": [
+        "UV.sea_current_second_quantization",
+        "UV.sea_current_particle_hole",
+        "UV.sea_two_current_zero_iff",
+        "UV.sea_constant_pulse_evolves",
+        "UV.sea_finite_reference_test",
+        "UV.sea_window_measure_detects",
+        "UV.sea_spectral_window_zero",
+        "UV.sea_dirac_static_response_diverges",
+        "UV.sea_dirac_spin_trace",
+        "UV.sea_dirac_spin_ray_limit"
+      ],
       "lean_projects": {},
-      "scope": "Not yet formalized.",
+      "scope": "For finite orbital spaces, constructs the normal-ordered current on the exterior occupation basis, identifies its particle–hole block, and proves the finite reference test for time-dependent sources via integral evolution and exact constant pulses. On continuum spectral windows with an existing positive particle–hole spectral measure and smeared response, a vanishing response forces the window measure to vanish. This last clause uses the spectral representation on the selected window. In the adjacent massive Dirac-sea example the exact Clifford trace yields the angular coefficient and the unsubtracted static response diverges at every nonzero tested transfer.",
       "statement_change": "new"
     },
     {
@@ -10607,6 +10733,28 @@
         "UV.constitutiveFrequency_ir"
       ],
       "scope": "On a nonzero spatial mode p=k n with n a unit vector, the half-line harmonic energy of a complex amplitude is k|z|². The independent curvature components for both quadratures give the exact transverse oscillator with squared frequency k²+Lk³. Its inverse multiplies the full transverse projector, its frequency integral equals π divided by that frequency and is at most π/k. The limit of squared speed at zero is one."
+    },
+    {
+      "label": "eq:nativefull-shell-mark-uv",
+      "source_line": 26140,
+      "status": "partial",
+      "scope": "For the actual diagonal two-state phase, obtains the tensor transition probability |sin((f(y)−f(z))/2)|^(2j) and proves that the inclusive normalized sum through all internal channels is one. Construction and short-time estimates of the ball Neumann heat kernel remain open.",
+      "lean": [
+        "UV.shell_mark_word_selected",
+        "UV.shell_mark_word_inclusive",
+        "UV.shell_inclusive_basis"
+      ]
+    },
+    {
+      "label": "eq:nativefull-shell-power-uv",
+      "source_line": 26173,
+      "status": "partial",
+      "scope": "Evaluates the radial sewing integral exactly for positive duration and every interior mark fraction. Proves the reduced integrability threshold from two-sided time bounds and the divergence already caused by the constant unmarked mode. The Neumann estimates needed for the selected marked trace remain separate.",
+      "lean": [
+        "UV.shell_maxwell_radial_integral",
+        "UV.shell_short_time_power_iff",
+        "UV.shell_constant_mode_diverges"
+      ]
     },
     {
       "label": "eq:covhop-source-uv",

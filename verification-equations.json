@@ -1169,5 +1169,23 @@
       "UV.wilson_displacement_density_bounded",
       "UV.wilson_spin_weight_opnorm"
     ]
+  },
+  "eq:nativefull-shell-mark-uv": {
+    "status": "partial",
+    "scope": "For the actual diagonal two-state phase, obtains the tensor transition probability |sin((f(y)−f(z))/2)|^(2j) and proves that the inclusive normalized sum through all internal channels is one. Construction and short-time estimates of the ball Neumann heat kernel remain open.",
+    "lean": [
+      "UV.shell_mark_word_selected",
+      "UV.shell_mark_word_inclusive",
+      "UV.shell_inclusive_basis"
+    ]
+  },
+  "eq:nativefull-shell-power-uv": {
+    "status": "partial",
+    "scope": "Evaluates the radial sewing integral exactly for positive duration and every interior mark fraction. Proves the reduced integrability threshold from two-sided time bounds and the divergence already caused by the constant unmarked mode. The Neumann estimates needed for the selected marked trace remain separate.",
+    "lean": [
+      "UV.shell_maxwell_radial_integral",
+      "UV.shell_short_time_power_iff",
+      "UV.shell_constant_mode_diverges"
+    ]
   }
 }
