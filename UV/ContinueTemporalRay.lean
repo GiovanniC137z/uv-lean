@@ -50,7 +50,7 @@ theorem ray_product_integrable {f g c : ℝ → ℝ} (hf : MemLp f 2 normalRayMe
   rw [norm_mul,norm_mul,mul_assoc,Real.norm_eq_abs (c r)]
   exact mul_le_mul_of_nonneg_right (hb r hr) (by positivity)
 
-private theorem ray_limit_zero_of_integrable {F : ℝ → ℝ} {a L : ℝ}
+theorem ray_limit_zero_of_integrable {F : ℝ → ℝ} {a L : ℝ}
     (hF : IntegrableOn F (Ioi a)) (h : Tendsto F atTop (𝓝 L)) : L = 0 := by
   by_contra hL
   have hpos : 0 < ‖L‖/2 := by positivity

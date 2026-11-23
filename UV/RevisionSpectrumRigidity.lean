@@ -9,7 +9,7 @@ open scoped ENNReal Topology
 
 namespace UV.RevisionSpectrum
 
-private theorem normalizedKernel_tendsto {x : ℕ → ℝ} (hx : ∀ n, 0 < x n)
+theorem normalizedKernel_tendsto {x : ℕ → ℝ} (hx : ∀ n, 0 < x n)
     (hxTop : Tendsto x atTop atTop) (s : ℝ) (hs : 0 ≤ s) :
     Tendsto (fun n => x n / (x n+s)) atTop (𝓝 1) := by
   have hi := tendsto_inv_atTop_zero.comp hxTop
@@ -22,7 +22,7 @@ private theorem normalizedKernel_tendsto {x : ℕ → ℝ} (hx : ∀ n, 0 < x n)
   dsimp only
   field_simp [ne_of_gt (hx n), ne_of_gt (add_pos_of_pos_of_nonneg (hx n) hs)]
 
-private theorem normalizedMoment_lintegral {ρ : Measure ℝ} {x : ℕ → ℝ}
+theorem normalizedMoment_lintegral {ρ : Measure ℝ} {x : ℕ → ℝ}
     (hx : ∀ n, 0 < x n) (hmono : Monotone x) (hxTop : Tendsto x atTop atTop)
     (hs : ∀ᵐ s ∂ρ, 0 ≤ s) {f : ℝ → ℝ}
     (hf₀ : ∀ᵐ s ∂ρ, 0 ≤ f s)

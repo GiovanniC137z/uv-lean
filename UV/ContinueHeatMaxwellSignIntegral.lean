@@ -191,7 +191,7 @@ theorem heatMaxwellCoefficient_positive_density {x : ℝ} (hx : 0 < x) :
     ← integral_const_mul]
   exact setIntegral_congr_fun measurableSet_Ioo (fun _ hy => heatBranch_sum hx hy)
 
-private theorem heatPeak_integral_pos {f : ℝ → ℝ} (hi : IntegrableOn f (Ioo 0 heatPeak))
+theorem heatPeak_integral_pos {f : ℝ → ℝ} (hi : IntegrableOn f (Ioo 0 heatPeak))
     (hp : ∀ y ∈ Ioo 0 heatPeak, 0 < f y) : 0 < ∫ y in Ioo 0 heatPeak, f y := by
   let s := Ioo (0 : ℝ) heatPeak
   let μ := (volume : Measure ℝ).restrict s

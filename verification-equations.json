@@ -997,7 +997,7 @@
   },
   "eq:closure-native-flux-uv": {
     "status": "verified",
-    "scope": "For the provided normalized finite-energy normal transfers, derives both squared-carrier-frequency derivatives in the display. The constructed positive half-line Green function satisfies the homogeneous branch equations, zero boundary and decaying infinity conditions, and flux jump −1. The related existence of the transfer with the given general coefficients is separate.",
+    "scope": "Constructs the unique normalized minimizing transfer for all y=ω²≥0 in the stated coefficient class and proves both displayed derivatives. The derivative at y=0 is from the right. The positive Dirichlet kernel has the stated left and infinity boundary conditions and flux jump −1.",
     "lean": [
       "UV.TemporalRay.normal_family_flux_hasDerivWithinAt",
       "UV.TemporalRay.normal_family_readout_green_derivative",
@@ -1005,16 +1005,21 @@
       "UV.TemporalRay.normal_left_flux_hasDerivAt",
       "UV.TemporalRay.normal_green_flux_jump",
       "UV.TemporalRay.normal_green_boundary_zero",
-      "UV.TemporalRay.normal_green_tendsto_zero"
+      "UV.TemporalRay.normal_green_tendsto_zero",
+      "UV.TemporalRay.normal_transfer_exists",
+      "UV.TemporalRay.normal_minimizer_unique",
+      "UV.TemporalRay.normal_curvature_response"
     ]
   },
   "eq:closure-heat-maxwell-sign-uv": {
     "status": "partial",
-    "scope": "The finite two-mark jet with the stipulated normalization, true angular integration and vanishing radial boundary terms equals the exact signed radial integral in the display, whose value is positive. Matching the continuum determinant response to that jet remains open.",
+    "scope": "The finite two-mark jet with the stipulated normalization, true angular integration and vanishing radial boundary terms equals the exact signed radial integral in the display, whose value is strictly completely monotone in (ma)², with the exact all-order derivative from the neighboring positive-density formula. Matching the continuum determinant response to that jet remains open.",
     "lean": [
       "UV.HeatMaxwell.heatBubbleContactJet_quadratic",
       "UV.HeatMaxwell.heatTransverseSoftCoefficient_eq_radial",
-      "UV.HeatMaxwell.heatTransverseSoftCoefficient_pos"
+      "UV.HeatMaxwell.heatTransverseSoftCoefficient_pos",
+      "UV.HeatMaxwell.heatMaxwellCoefficient_iteratedDeriv",
+      "UV.HeatMaxwell.heatMaxwellCoefficient_strict_complete_monotone"
     ]
   },
   "eq:closing-uv-temporal-mark": {
@@ -1025,6 +1030,37 @@
       "UV.SectorPlane.closing_temporal_ward",
       "UV.SectorPlane.closing_inverse_slot_hasDerivAt",
       "UV.SectorPlane.closing_pole_residue_charge"
+    ]
+  },
+  "eq:s6-freepole": {
+    "status": "verified",
+    "scope": "At a,m>0 constructs and exhausts the positive-argument Lambert branches indexed by all integers. The stated free vector coefficient has exactly the displayed poles, all simple with nonzero residue. There is one negative real pole with the stated positive weight and infinitely many nonreal poles. The real-axis limit excludes a nonzero positive unsubtracted spectrum. The positive spectral transform is holomorphic off the negative real cut, and adding a local polynomial cannot match the punctured germ at a nonreal pole. The real residue on each character uses the prescribed vectorial rim, positive height and actual unit spatial routing of the fixed sector plane.",
+    "lean": [
+      "UV.HeatMaxwell.heatLambertUpper_spec",
+      "UV.HeatMaxwell.heatLambert_all_branches",
+      "UV.HeatMaxwell.heatFreeVector_full_pole_locus",
+      "UV.HeatMaxwell.heatVector_zero_simple",
+      "UV.HeatMaxwell.heatFreeVector_residue_limit",
+      "UV.HeatMaxwell.heatFreeVector_unique_real_pole",
+      "UV.HeatMaxwell.heatFreeVector_infinitely_many_nonreal_poles",
+      "UV.HeatMaxwell.heatFreeVector_scaled_tendsto_zero",
+      "UV.HeatMaxwell.heatFreeVector_no_positive_spectrum",
+      "UV.HeatMaxwell.heatVectorStieltjes_hasDerivAt",
+      "UV.HeatMaxwell.heatFreeVector_no_local_spectral_contact",
+      "UV.SectorPlane.Plane.heat_vector_rim_coordinates",
+      "UV.SectorPlane.Plane.heat_vector_rim_residues"
+    ]
+  },
+  "eq:closure-uv-radial-sandwich": {
+    "status": "partial",
+    "scope": "For the actual path-dependent precision on the time slab, verifies the inverse-order inequalities against every square-integrable time probe by the H¹ variational formula. They survive normalized path averaging and any convergent limit. Identifying that limit with the Hamiltonian ground-state covariance and passing from the time-probe bounds to the displayed pointwise frequency inequalities for that covariance remain open.",
+    "lean": [
+      "UV.RadialPhoton.slab_precision_bounds",
+      "UV.RadialPhoton.slab_probe_covariance_sandwich",
+      "UV.RadialPhoton.slab_probe_law_limit",
+      "UV.RadialPhoton.slab_precision_transverse_mode",
+      "UV.RadialPhoton.free_time_probe_covariance_le",
+      "UV.RadialPhoton.radial_photon_no_static_atom"
     ]
   }
 }

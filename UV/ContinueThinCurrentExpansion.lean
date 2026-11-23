@@ -40,7 +40,7 @@ private theorem thinSegment_set_integral (e : ThinCurrentSegment) (p : ThinCurre
   unfold thinCurrentSegmentWave
   rw [intervalIntegral.integral_of_le e.length_nonneg, integral_Ioc_eq_integral_Ioo]
 
-private theorem thinSegmentWave_norm_le (e : ThinCurrentSegment) (p : ThinCurrentPlane) :
+theorem thinSegmentWave_norm_le (e : ThinCurrentSegment) (p : ThinCurrentPlane) :
     ‖thinCurrentSegmentWave e p‖ ≤ e.length := by
   rw [thinSegment_set_integral]
   haveI : IsFiniteMeasure ((volume : Measure ℝ).restrict (Ioo 0 e.length)) :=

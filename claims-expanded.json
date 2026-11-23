@@ -998,10 +998,13 @@
         "UV.HeatMaxwell.heatTransverseSoftCoefficient_eq_radial",
         "UV.HeatMaxwell.heatTransverseSoftCoefficient_pos",
         "UV.HeatMaxwell.heatMaxwellCoefficient_strictAntiOn",
-        "UV.HeatMaxwell.heatSoft_width_transfer"
+        "UV.HeatMaxwell.heatSoft_width_transfer",
+        "UV.HeatMaxwell.heatMaxwellDensity_integrable",
+        "UV.HeatMaxwell.heatMaxwellCoefficient_iteratedDeriv",
+        "UV.HeatMaxwell.heatMaxwellCoefficient_strict_complete_monotone"
       ],
       "lean_projects": {},
-      "scope": "Derives the signed radial integral with coefficient 1/(24π²) from the literal two-mark quadratic jet, including the contact, true normalized transverse directions and the actual S³ angular law. Changes variables on the two radius branches and proves strict positivity of the resulting coefficient for every positive mass and width. Also proves strict decrease in x=(ma)². The interchange of the continuum response limit with the original chord and loop integrals and their identification with the native determinant remain open.",
+      "scope": "Derives the signed radial integral with coefficient 1/(24π²) from the literal two-mark quadratic jet, including the contact, true normalized transverse directions and the actual S³ angular law. Changes variables on the two radius branches and proves strict positivity of the resulting coefficient for every positive mass and width. The positive two-branch density gives the exact iterated derivative and strict complete monotonicity for every order in x=(ma)². The interchange of the continuum response limit with the original chord and loop integrals and their identification with the native determinant remain open.",
       "statement_change": "new"
     },
     {
@@ -2122,7 +2125,7 @@
       "title_tex": "Temporal response of the normal curvature block",
       "source_line": 17307,
       "statement_tex": "Let $u_y(r)$ be the minimizing transfer and let\n$\\Lambda(y)=-a(0)u_y'(0)$ be its boundary flux. With $G_y^D$ the\nDirichlet Green function of the mode operator, one has\n\\begin{equation}\n \\begin{aligned}\n \\partial_y\\Lambda(y)&=\\int_0^\\infty b_{\\parallel}(s)u_y(s)^2\\,\\mathrm ds,\\\\\n -\\partial_yu_y(r)&=\\int_0^\\infty\n      G_y^D(r,s)b_{\\parallel}(s)u_y(s)\\,\\mathrm ds .\n \\end{aligned}\n \\label{eq:closure-native-flux-uv}\n\\end{equation}\nAn interior readout at any $r>0$ is independent of carrier frequency\nexactly when $b_{\\parallel}$ vanishes throughout the connected ray.",
-      "status": "partial",
+      "status": "verified",
       "lean": [
         "UV.SectorPlane.transverse_normal_energy_density",
         "UV.SectorPlane.Plane.transverse_normal_carrier_pole",
@@ -2137,10 +2140,22 @@
         "UV.TemporalRay.normal_family_readout_green_derivative",
         "UV.TemporalRay.normal_readout_frequency_independent_iff",
         "UV.TemporalRay.normal_transfer_optical_strip",
-        "UV.TemporalRay.normal_transfer_optical_strip_mixture_decay"
+        "UV.TemporalRay.normal_transfer_optical_strip_mixture_decay",
+        "UV.TemporalRay.exists_normal_impedance",
+        "UV.TemporalRay.normal_transfer_exists",
+        "UV.TemporalRay.normal_weak_flux_identity",
+        "UV.TemporalRay.normal_minimum_energy_gap",
+        "UV.TemporalRay.normal_minimizes_full_form",
+        "UV.TemporalRay.normal_minimizer_unique",
+        "UV.TemporalRay.normal_curvature_response",
+        "UV.TemporalRay.normal_carrier_frequency_independent_iff",
+        "UV.TemporalRay.temporal_spatial_pairings_compare",
+        "UV.TemporalRay.normalChannelOfRay_coefficients",
+        "UV.TemporalRay.normal_complex_energy_attained",
+        "UV.TemporalRay.normal_complex_minimum_unique"
       ],
       "lean_projects": {},
-      "scope": "On the actual transverse unit directions in the Euclidean sector plane, the mode energy uses b_sp k² + b_parallel y. For a family of finite-energy solutions of the stated normal equation and normalized boundary value, proves energy minimization, strict positivity, the flux derivative, the explicit positive Dirichlet kernel with its unit flux jump, and the retained amplitude derivative against that kernel. Proves the exact frequency-independence criterion on every positive-depth readout. Also derives the neighboring optical-strip comparison and mixed inverse-moment bounds. Construction of the finite-energy transfer for arbitrary coefficients in this class remains open.",
+      "scope": "For the spatially transverse Abelian channel with the actual orthogonal unit directions and k>0 on the fixed sector plane, constructs the normalized transfer for every y=ω²≥0 from the stated bounded continuous coefficients. Proves the real H¹ energy gap and uniqueness of the minimizer against real and complex weak Fourier amplitudes with coefficients specified on the ray. Establishes the positive Dirichlet kernel with flux jump −1, both response derivatives (right derivatives at zero), and the interior frequency-independence criterion on the entire connected ray. The nearby strip bounds apply to this constructed family. The spatial and temporal constant pairings have the displayed transfers and fluxes.",
       "statement_change": "new"
     },
     {
@@ -2156,10 +2171,16 @@
         "UV.thinCurrentShell_radial_perimeter",
         "UV.thinCurrentSpectrum_has_floor",
         "UV.thinCurrent_nonzero_has_piece",
-        "UV.thinCurrent_uv_infinite"
+        "UV.thinCurrent_uv_infinite",
+        "UV.thinCurrent_ensemble_shell_lower",
+        "UV.thinCurrent_ensemble_diverges",
+        "UV.thinCurrentNormSq_le_length_sq",
+        "UV.thinSmeared_current_transverse",
+        "UV.thinSmearedMajorant_mass",
+        "UV.thinSmeared_current_response_bound"
       ],
       "lean_projects": {},
-      "scope": "For the prepared finite signed arclength segments after overlap splitting, with pairwise segment intersections contained in at most one point, proves the literal closed-current transversality and actual normalized momentum-window asymptotic for smooth radial annular windows. The exact line trace is the stated transverse slice coefficient and is strictly positive for a nonnegative nonzero window. It follows that the nonzero net current has infinite quadratic response for the nonzero positive spectral law. The off-diagonal terms are shown to be o(R³), which suffices for the stated limit.",
+      "scope": "For the prepared finite signed arclength segments after overlap splitting, with pairwise segment intersections contained in at most one point, proves the literal closed-current transversality and actual normalized momentum-window asymptotic for smooth radial annular windows. The exact line trace is the stated transverse slice coefficient and is strictly positive for a nonnegative nonzero window. It follows that the nonzero net current has infinite quadratic response for the nonzero positive spectral law. The off-diagonal terms are shown to be o(R³), which suffices for the stated limit. In the adjacent constructions, Fatou gives the lower bound for positive ensembles with history-dependent edge counts, and nonzero net current with positive probability implies divergent averaged response. For a finite positive spectral mass M₀, the same signed current with the spatial harmonic readout stays transverse and has quadratic response bounded by M₀L²/(16π²r²).",
       "statement_change": "new"
     },
     {
@@ -2263,10 +2284,21 @@
       "title_tex": "Unit-speed photon spectral weight with fluctuating depth",
       "source_line": 18189,
       "statement_tex": "For every finite real $e$, let $G(\\omega,k)$ denote the\nground-state covariance of a normalized real transverse spatial mode\nin the state obtained by long Euclidean evolution of that product\nvector. In units of the limiting speed on the selected carrier, set\n$\\delta_k=\\min(1,r_*^2 k^2/4)$. At nonzero frequency,\n\\begin{equation}\n \\frac1{\\omega^2+(1+e^2\\delta_k)k^2}\n   \\ \\le\\ G(\\omega,k)\\ \\le\\ \\frac1{\\omega^2+k^2}.\n \\label{eq:closure-uv-radial-sandwich}\n\\end{equation}\nIts positive measure in squared energy has total weight one.\nIf $Y$ denotes squared energy divided by $k^2$ in this measure,\nthen for $0<\\varepsilon<1$,\n\\[\n \\Pr(|Y-1|\\ge\\varepsilon)\n       \\le \\frac{(2+\\varepsilon)e^2\\delta_k}{\\varepsilon^2}.\n\\]\nThe estimate is uniform in the spatial volume. It implies\nconcentration at unit speed along any sequence of nonzero momenta\ntending to zero. At $e\\ne0$ and finite $k>0$ the measure has more than one point\nin its support for a radial Schr\\\"odinger coordinate with absolutely\ncontinuous position measure.",
-      "status": "pending",
-      "lean": [],
+      "status": "partial",
+      "lean": [
+        "UV.RadialPhoton.depth_difference_bounds",
+        "UV.RadialPhoton.slab_probe_covariance_sandwich",
+        "UV.RadialPhoton.slab_probe_law_limit",
+        "UV.RadialPhoton.photon_sandwich_moments",
+        "UV.RadialPhoton.radial_photon_unit_speed",
+        "UV.RadialPhoton.radial_photon_concentration_limit",
+        "UV.RadialPhoton.radial_stiffness_level_finite",
+        "UV.RadialPhoton.radial_stiffness_no_normalized_state",
+        "UV.RadialPhoton.slab_precision_transverse_mode",
+        "UV.RadialPhoton.radial_photon_no_static_atom"
+      ],
       "lean_projects": {},
-      "scope": "Not yet formalized.",
+      "scope": "Derives the slab precision from orthogonal unit spatial momentum and polarization directions and the actual optical difference exp(−rk/2)−exp(−rk) on the bounded radial slab and proves the time-probe inverse-form bounds on the full time-line Sobolev domain. These bounds persist under normalized measurable path averages and convergent slab limits. The upper form bound rules out any positive static atom. Given the positive nonzero-frequency Stieltjes representation and its scalar sandwich, derives unit mass, finite first moment, the exact probability bound and unit-speed concentration uniformly along volume-dependent laws. For nonzero coupling and momentum, every stiffness level is finite and has zero measure under any absolutely continuous radial position law, excluding a normalized state satisfying the radial multiplication equation. Construction of the interacting ground-state transfer, its frequency representation and derivation of the radial equation from a single positive frequency remain open.",
       "statement_change": "new"
     },
     {
@@ -9382,11 +9414,34 @@
       "label": "eq:closure-heat-maxwell-sign-uv",
       "source_line": 8603,
       "status": "partial",
-      "scope": "The finite two-mark jet with the stipulated normalization, true angular integration and vanishing radial boundary terms equals the exact signed radial integral in the display, whose value is positive. Matching the continuum determinant response to that jet remains open.",
+      "scope": "The finite two-mark jet with the stipulated normalization, true angular integration and vanishing radial boundary terms equals the exact signed radial integral in the display, whose value is strictly completely monotone in (ma)², with the exact all-order derivative from the neighboring positive-density formula. Matching the continuum determinant response to that jet remains open.",
       "lean": [
         "UV.HeatMaxwell.heatBubbleContactJet_quadratic",
         "UV.HeatMaxwell.heatTransverseSoftCoefficient_eq_radial",
-        "UV.HeatMaxwell.heatTransverseSoftCoefficient_pos"
+        "UV.HeatMaxwell.heatTransverseSoftCoefficient_pos",
+        "UV.HeatMaxwell.heatMaxwellCoefficient_iteratedDeriv",
+        "UV.HeatMaxwell.heatMaxwellCoefficient_strict_complete_monotone"
+      ]
+    },
+    {
+      "label": "eq:s6-freepole",
+      "source_line": 8644,
+      "status": "verified",
+      "scope": "At a,m>0 constructs and exhausts the positive-argument Lambert branches indexed by all integers. The stated free vector coefficient has exactly the displayed poles, all simple with nonzero residue. There is one negative real pole with the stated positive weight and infinitely many nonreal poles. The real-axis limit excludes a nonzero positive unsubtracted spectrum. The positive spectral transform is holomorphic off the negative real cut, and adding a local polynomial cannot match the punctured germ at a nonreal pole. The real residue on each character uses the prescribed vectorial rim, positive height and actual unit spatial routing of the fixed sector plane.",
+      "lean": [
+        "UV.HeatMaxwell.heatLambertUpper_spec",
+        "UV.HeatMaxwell.heatLambert_all_branches",
+        "UV.HeatMaxwell.heatFreeVector_full_pole_locus",
+        "UV.HeatMaxwell.heatVector_zero_simple",
+        "UV.HeatMaxwell.heatFreeVector_residue_limit",
+        "UV.HeatMaxwell.heatFreeVector_unique_real_pole",
+        "UV.HeatMaxwell.heatFreeVector_infinitely_many_nonreal_poles",
+        "UV.HeatMaxwell.heatFreeVector_scaled_tendsto_zero",
+        "UV.HeatMaxwell.heatFreeVector_no_positive_spectrum",
+        "UV.HeatMaxwell.heatVectorStieltjes_hasDerivAt",
+        "UV.HeatMaxwell.heatFreeVector_no_local_spectral_contact",
+        "UV.SectorPlane.Plane.heat_vector_rim_coordinates",
+        "UV.SectorPlane.Plane.heat_vector_rim_residues"
       ]
     },
     {
@@ -10181,7 +10236,7 @@
       "label": "eq:closure-native-flux-uv",
       "source_line": 17318,
       "status": "verified",
-      "scope": "For the provided normalized finite-energy normal transfers, derives both squared-carrier-frequency derivatives in the display. The constructed positive half-line Green function satisfies the homogeneous branch equations, zero boundary and decaying infinity conditions, and flux jump −1. The related existence of the transfer with the given general coefficients is separate.",
+      "scope": "Constructs the unique normalized minimizing transfer for all y=ω²≥0 in the stated coefficient class and proves both displayed derivatives. The derivative at y=0 is from the right. The positive Dirichlet kernel has the stated left and infinity boundary conditions and flux jump −1.",
       "lean": [
         "UV.TemporalRay.normal_family_flux_hasDerivWithinAt",
         "UV.TemporalRay.normal_family_readout_green_derivative",
@@ -10189,7 +10244,24 @@
         "UV.TemporalRay.normal_left_flux_hasDerivAt",
         "UV.TemporalRay.normal_green_flux_jump",
         "UV.TemporalRay.normal_green_boundary_zero",
-        "UV.TemporalRay.normal_green_tendsto_zero"
+        "UV.TemporalRay.normal_green_tendsto_zero",
+        "UV.TemporalRay.normal_transfer_exists",
+        "UV.TemporalRay.normal_minimizer_unique",
+        "UV.TemporalRay.normal_curvature_response"
+      ]
+    },
+    {
+      "label": "eq:closure-uv-radial-sandwich",
+      "source_line": 18199,
+      "status": "partial",
+      "scope": "For the actual path-dependent precision on the time slab, verifies the inverse-order inequalities against every square-integrable time probe by the H¹ variational formula. They survive normalized path averaging and any convergent limit. Identifying that limit with the Hamiltonian ground-state covariance and passing from the time-probe bounds to the displayed pointwise frequency inequalities for that covariance remain open.",
+      "lean": [
+        "UV.RadialPhoton.slab_precision_bounds",
+        "UV.RadialPhoton.slab_probe_covariance_sandwich",
+        "UV.RadialPhoton.slab_probe_law_limit",
+        "UV.RadialPhoton.slab_precision_transverse_mode",
+        "UV.RadialPhoton.free_time_probe_covariance_le",
+        "UV.RadialPhoton.radial_photon_no_static_atom"
       ]
     },
     {
