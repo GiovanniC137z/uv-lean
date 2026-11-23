@@ -1062,5 +1062,15 @@
       "UV.RadialPhoton.free_time_probe_covariance_le",
       "UV.RadialPhoton.radial_photon_no_static_atom"
     ]
+  },
+  "eq:seam-selection-uv": {
+    "status": "verified",
+    "scope": "Normalized Haar averaging on the actual simultaneous translation of the two period-2π angles keeps exactly the characters with weights (q,−q). Differentiating this character in the lifted angular coordinates and contracting its two derivatives with the actual inverse metric gives q² nᵀM⁻¹n. The two-by-two adjugate proves the expression q² uᵀMu/det M.",
+    "lean": [
+      "UV.SeamAngular.seam_diagonal_gauss_projection",
+      "UV.SeamAngular.seam_character_directional_derivative",
+      "UV.SeamAngular.seam_character_dirichlet_energy",
+      "UV.SeamAngular.seam_selection_identity"
+    ]
   }
 }

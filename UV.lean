@@ -684,3 +684,6 @@ import UV.ContinueTemporalWeakRay
 import UV.ContinueRadialPhotonStatic
 import UV.ContinueThinCurrentEnsemble
 import UV.ContinueThinCurrentSmearing
+import UV.ContinueSeamAngularMetric
+import UV.ContinueSeamAngularCharacter
+import UV.ContinueSeamAngularTransfer

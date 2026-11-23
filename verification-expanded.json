@@ -1961,5 +1961,20 @@
       "UV.RadialPhoton.slab_precision_transverse_mode",
       "UV.RadialPhoton.radial_photon_no_static_atom"
     ]
+  },
+  "prop:seam-selection-uv": {
+    "status": "partial",
+    "scope": "Constructs both positive angular metrics from their unit principal axes, with the same diagonal Gauss circle, volume factor r⁴, and single-leg energy (1+r⁻⁸)/2. The exact neutral Fourier-character energies are 2q²/r⁸ and 2q². On the finite slab the constant potential preserves finiteness of every positive hopping integral. The quartic model moment r⁴ r^(−n/2) is integrable exactly for n<10, and a charged inverse moment pays the mixed-state cost by Cauchy–Schwarz. Proving the actual charged ground-state inverse moments, phase variance and Coulomb estimates, and the first divergent coefficient of the physical one-hop amplitude remains open.",
+    "lean": [
+      "UV.SeamAngular.seam_diagonal_gauss_projection",
+      "UV.SeamAngular.seam_metric_unit_projectors",
+      "UV.SeamAngular.seam_metric_posDef",
+      "UV.SeamAngular.seam_metric_inverse",
+      "UV.SeamAngular.seam_character_dirichlet_energy",
+      "UV.SeamAngular.seam_distinct_pair_energies",
+      "UV.SeamAngular.seam_constant_potential_finite_iff",
+      "UV.SeamAngular.seam_quartic_tip_moment",
+      "UV.SeamAngular.seam_mixed_radial_moment"
+    ]
   }
 }

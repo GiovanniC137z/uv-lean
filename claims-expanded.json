@@ -2379,10 +2379,20 @@
       "title_tex": "Gauss-neutral pairs with indistinguishable single-leg barriers",
       "source_line": 19394,
       "statement_tex": "There are two positive angular metrics with the same radial measure,\nthe same diagonal Gauss action, and the same angular energy for an\nisolated charge on either leg, for which the neutral pair energies\nare $2q^2r^{-8}$ and $2q^2$, respectively. In the moving-depth\nelectric hopping model, coupling the hop to the corresponding pair\ncharacter gives finite one-hop coefficients at every electric order\nin the first ground-state preparation. The second ground-state\npreparation has its first divergent one-hop coefficient at electric\norder twenty.",
-      "status": "pending",
-      "lean": [],
+      "status": "partial",
+      "lean": [
+        "UV.SeamAngular.seam_diagonal_gauss_projection",
+        "UV.SeamAngular.seam_metric_unit_projectors",
+        "UV.SeamAngular.seam_metric_posDef",
+        "UV.SeamAngular.seam_metric_inverse",
+        "UV.SeamAngular.seam_character_dirichlet_energy",
+        "UV.SeamAngular.seam_distinct_pair_energies",
+        "UV.SeamAngular.seam_constant_potential_finite_iff",
+        "UV.SeamAngular.seam_quartic_tip_moment",
+        "UV.SeamAngular.seam_mixed_radial_moment"
+      ],
       "lean_projects": {},
-      "scope": "Not yet formalized.",
+      "scope": "Constructs both positive angular metrics from their unit principal axes, with the same diagonal Gauss circle, volume factor r⁴, and single-leg energy (1+r⁻⁸)/2. The exact neutral Fourier-character energies are 2q²/r⁸ and 2q². On the finite slab the constant potential preserves finiteness of every positive hopping integral. The quartic model moment r⁴ r^(−n/2) is integrable exactly for n<10, and a charged inverse moment pays the mixed-state cost by Cauchy–Schwarz. Proving the actual charged ground-state inverse moments, phase variance and Coulomb estimates, and the first divergent coefficient of the physical one-hop amplitude remains open.",
       "statement_change": "new"
     },
     {
@@ -10262,6 +10272,18 @@
         "UV.RadialPhoton.slab_precision_transverse_mode",
         "UV.RadialPhoton.free_time_probe_covariance_le",
         "UV.RadialPhoton.radial_photon_no_static_atom"
+      ]
+    },
+    {
+      "label": "eq:seam-selection-uv",
+      "source_line": 19384,
+      "status": "verified",
+      "scope": "Normalized Haar averaging on the actual simultaneous translation of the two period-2π angles keeps exactly the characters with weights (q,−q). Differentiating this character in the lifted angular coordinates and contracting its two derivatives with the actual inverse metric gives q² nᵀM⁻¹n. The two-by-two adjugate proves the expression q² uᵀMu/det M.",
+      "lean": [
+        "UV.SeamAngular.seam_diagonal_gauss_projection",
+        "UV.SeamAngular.seam_character_directional_derivative",
+        "UV.SeamAngular.seam_character_dirichlet_energy",
+        "UV.SeamAngular.seam_selection_identity"
       ]
     },
     {

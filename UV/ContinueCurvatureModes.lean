@@ -34,7 +34,7 @@ theorem torusCharacter_neg (k : TorusMode) (x : Torus) :
   simp only [ContinuousMap.prod_apply, ContinuousMap.comp_apply]
   simp_rw [Pi.neg_apply, fourier_neg, map_prod]
 
-private theorem circle_character_integral (k : ℤ) :
+theorem circle_character_integral (k : ℤ) :
     (∫ x : AddCircle ((2 : ℝ)*π), fourier k x ∂AddCircle.haarAddCircle) =
       if k = 0 then (1 : ℂ) else 0 := by
   split_ifs with hk

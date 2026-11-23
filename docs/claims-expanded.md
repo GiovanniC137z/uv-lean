@@ -6,7 +6,7 @@ This inventory covers labeled theorem-like environments in the expanded upload. 
 
 A **partial** entry means only the stated component is checked. It does not certify the complete source result.
 
-203 environments: 3 assumption, 1 definition, 23 partial, 98 pending, 78 verified.
+203 environments: 3 assumption, 1 definition, 24 partial, 97 pending, 78 verified.
 
 | Source label | Result | Status | Checked scope and remaining work |
 | --- | --- | --- | --- |
@@ -117,7 +117,7 @@ A **partial** entry means only the stated component is checked. It does not cert
 | [prop:physical-neutral-tip-uv](../paper/expanded/UV.tex#L18790) | A divergent complete electric coefficient in the neutral normal sector | pending | New statement. Not yet formalized. |
 | [prop:seam-uv-tip-log](../paper/expanded/UV.tex#L19003) | Neutral-tip charge asymptotic | pending | New statement. Not yet formalized. |
 | [prop:seam-closed-uv](../paper/expanded/UV.tex#L19095) | A divergent connected two-photon coefficient on the neutral chart | pending | New statement. Not yet formalized. |
-| [prop:seam-selection-uv](../paper/expanded/UV.tex#L19394) | Gauss-neutral pairs with indistinguishable single-leg barriers | pending | New statement. Not yet formalized. |
+| [prop:seam-selection-uv](../paper/expanded/UV.tex#L19394) | Gauss-neutral pairs with indistinguishable single-leg barriers | partial | New statement. Constructs both positive angular metrics from their unit principal axes, with the same diagonal Gauss circle, volume factor r⁴, and single-leg energy (1+r⁻⁸)/2. The exact neutral Fourier-character energies are 2q²/r⁸ and 2q². On the finite slab the constant potential preserves finiteness of every positive hopping integral. The quartic model moment r⁴ r^(−n/2) is integrable exactly for n<10, and a charged inverse moment pays the mixed-state cost by Cauchy–Schwarz. Proving the actual charged ground-state inverse moments, phase variance and Coulomb estimates, and the first divergent coefficient of the physical one-hop amplitude remains open. |
 | [prop:seam-uv-resummed](../paper/expanded/UV.tex#L19560) | Resummation at fixed hopping in a neutral comparison | pending | New statement. Not yet formalized. |
 | [prop:physical-moving-ordered-uv](../paper/expanded/UV.tex#L19657) | Ordered electromagnetic graphs with a moving charged depth | pending | New statement. Not yet formalized. |
 | [prop:seam-moving-frequencies-uv](../paper/expanded/UV.tex#L19777) | Joint bare graph bound for a moving charged normal sector | pending | New statement. Not yet formalized. |
