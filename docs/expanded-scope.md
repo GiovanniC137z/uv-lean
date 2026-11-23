@@ -8,6 +8,14 @@ The [machine-readable expanded inventory](../claims-expanded.json) indexes the f
 
 The fixed sector-plane model retains the diamond `(s, b_s)` and its assigned geometric-time carrier as a vector of norm one. The branch, positive boundary height, fixed pole unit, and running unit occupy separate slots. The scalar pole inverse is checked in the literal carrier quotient and both characters keep their prescribed denominator sides. The real clock, cut, and spatial variables use the manuscript’s intrinsic formulas.
 
+### Two qualifications found by proof checking
+
+The scalar residue formula in the paragraph after the positive-boundary proposition requires a one-dimensional nullspace, or a corresponding condition on the selected direction. For the Schur inverse at a first-order pole with kernel projection `P`, Lean proves that the residue and the compressed temporal vertex multiply to `qP` in either order. A normalized positive two-atom measure exhibits the distinction. Along the equal-weight unit slot vector its measured residue is `3/4`, its reciprocal diagonal slope is `2/3`, and the product of its measured residue and its diagonal temporal vertex is `9q/8`. A nondegenerate pole recovers the manuscript formula. [Source paragraph](../paper/expanded/UV.tex#L10348) · [Measured counterexample](../UV/ContinueSourceReviewBoundaryResidue.lean) · [Correct matrix and rank-one identities](../UV/ContinuePoleResidueSchur.lean)
+
+For the invariant-current comparison with positive mass and depth, the total contact cost is finite exactly when `e = 0` or `N ≥ 2`, for positive integer interval count `N`. The one-interval divergence statement in the proof needs a nonzero charge, or applies to the coefficient of `e²`. [Source paragraph](../paper/expanded/UV.tex#L24168) · [Exact contact criterion](../UV/ContinueSourceReviewInvariantPair.lean)
+
+### Checked comparisons
+
 For the inclusive oscillator comparison, Lean constructs the spectral projections of the actual closed position operator. The on-cut exponential gives Poisson weights. With the stated mass ladder and nonzero charge, the unsubtracted ultraviolet tail converges exactly when `4 Δ b ≥ 1`. At equality the inclusive density decays as a positive constant times `M^(-1/4)`. This result concerns the specified comparison on the selected Lorentzian plane. [Oscillator construction](../UV/ContinueOpeningResolved.lean) · [Manuscript](../paper/expanded/UV.tex#L17059)
 
 For the protected three-compression comparison, the winding signs, endpoint phases and closed-loop center factors enter the finite-graph bound. For the local Abelian curvature contacts, the finite Fourier-cutoff covariance and an explicit real external probe give both directions of the graph convergence criterion. [Winding comparison](../UV/ContinueMomentumRoutingFinal.lean) · [Curvature contact criterion](../UV/ContinueOmegaResultContactTheta.lean)

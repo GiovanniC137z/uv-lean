@@ -802,7 +802,7 @@
     "scope": "On the actual flat four-dimensional massive scalar covariance at m,r>0, a compact smooth bump and its local massive derivative are supported strictly in positive oriented GT. The unit-axis Laplacian gives the exact Fourier multiplier and its reflected Schwartz-core resolvent cancellation. The four Hermitian covariance entries give a null diagonal, a strictly positive mixed Poisson pairing and a negative real joint quadratic test. The ordinary Euclidean source matrix has a nonnegative integrable square density. Isometric transportation gives the same obstruction on either fixed sector-plane, and one pair of probes still works for every nonzero finite positive-depth law."
   },
   "prop:update-boundary-quartic-OS": {
-    "status": "partial",
+    "status": "verified",
     "lean": [
       "UV.osGibbsMeasure_probability",
       "UV.osGibbsMeasure_expectation",
@@ -819,9 +819,12 @@
       "UV.osPointSource_four_pairings",
       "UV.osRawQuarticSlope_neg",
       "UV.osRawQuartic_realization",
-      "UV.osQuarticGaussian_joint_modification"
+      "UV.osQuarticGaussian_joint_modification",
+      "UV.osQuarticFiniteLaw_wick",
+      "UV.osQuarticGaussian_realization",
+      "UV.osRawQuartic_fixed_depth"
     ],
-    "scope": "For a jointly measurable free point field realizing the specified fixed-depth covariance and Gaussian Wick moments, the actual normalized quartic expectation has the displayed strictly negative right derivative and is negative for all sufficiently small positive couplings. The proof derives the spacetime product integrability from the eighth point moment, resolves the two massive local probes into the actual Poisson transfers, and proves 0 < v_r ≤ 1/(32π²r²). Construction of a jointly measurable continuum Gaussian field from this covariance and derivation of its Wick law remain open. The covariance has an actual jointly measurable point-field realization from its consistent finite-dimensional Gaussian laws. Higher joint moment identities and their application to the named reflection test require separate proofs."
+    "scope": "Constructs the massive fixed-depth Gaussian on the joint boundary and point slots, its jointly measurable transferred field and every finite Isserlis moment from positive mass and depth. With a nonzero nonnegative smooth compactly supported reflection-even switch, the actual normalized raw quartic tilt has the stated strictly negative right derivative on the boundary witness and violates reflection positivity for every sufficiently small positive coupling. The moment and Fubini bounds certify the expectations."
   },
   "prop:polish-wick-OS": {
     "status": "partial",
@@ -845,9 +848,11 @@
       "UV.osPointSource_four_pairings",
       "UV.osWickQuarticSlope_neg",
       "UV.osWickQuartic_realization",
-      "UV.osQuarticGaussian_joint_modification"
+      "UV.osQuarticGaussian_joint_modification",
+      "UV.osQuarticFiniteLaw_wick",
+      "UV.osQuarticGaussian_realization"
     ],
-    "scope": "For a jointly measurable Gaussian Wick realization of the concrete boundary and point slots, at each m,r>0 the Wick-ordered measure normalizes for every nonnegative coupling, obeys both partition bounds, and has the stated strictly negative right derivative on a centered quadratic witness. The proof derives its spacetime Fubini estimates, the exact point Wick variance I_r^4/24, and all four physical Poisson and massive Green pairings. The Gaussian continuum realization, its Wick law and extension to every boundary smearing in the covariance-form domain remain open. The covariance has an actual jointly measurable point-field realization from its consistent finite-dimensional Gaussian laws. Higher joint moment identities and their application to the named reflection test require separate proofs."
+    "scope": "Constructs the joint Gaussian boundary and point fields, their Wick moments, and joint measurability. For the Wick-ordered tilt, the partition function normalizes at every nonnegative coupling with both partition bounds. The centered quadratic witness has the negative right derivative with the stated variance and kernel pairings. Extension to arbitrary boundary smearings in the covariance-form domain remains outstanding."
   },
   "prop:spex-photon-uv": {
     "status": "partial",
@@ -1541,9 +1546,11 @@
       "UV.ResumeCollarLower.source_bump_lower_scale",
       "UV.ResumeCollarLower.collar_lower_from_bump_test",
       "UV.CollarEigenmode.weighted_eigenfamily_trace",
-      "UV.CollarEigenmode.positive_preparation"
+      "UV.CollarEigenmode.positive_preparation",
+      "UV.CollarEigenmode.dirichlet_wirtinger",
+      "UV.CollarEigenmode.dirichlet_mesh_eigenvalue_lower"
     ],
-    "scope": "The precise t^(-1/3)(1+|log t|)^4 logarithmic upper order is proved for the weighted spectral trace from the manuscript's quadratic eigenvalue lower estimate and the exact per-mode determinant upper estimate. The spectral sum is finite and positive at every positive duration when one mode has positive weight, including the duration beta/2 used in Gibbs preparation. The matching scalar lower order follows from the source bump scale K t^(1/6)(1+|log t|)^(-1/2) and its uniform determinant lower estimate across the bump support, and transfers to the logarithm of the operator-norm scalar under the explicit supported-bump Jensen inequality. Construction of the singular Friedrichs operator and derivation of its mode, supported-bump, and weighted eigenfunction estimates, the Hilbert–Schmidt identification, and transfer to arbitrary positive trace-class inputs and finite-order bare graphs remain open here. The weighted eigenmode estimates give a convergent trace for families satisfying the spectral counting conditions. Identifying the full spectrum and form domain of the singular Friedrichs operator remains essential."
+    "scope": "The precise t^(-1/3)(1+|log t|)^4 logarithmic upper order is proved for the weighted spectral trace from the manuscript's quadratic eigenvalue lower estimate and the exact per-mode determinant upper estimate. The spectral sum is finite and positive at every positive duration when one mode has positive weight, including the duration beta/2 used in Gibbs preparation. The matching scalar lower order follows from the source bump scale K t^(1/6)(1+|log t|)^(-1/2) and its uniform determinant lower estimate across the bump support, and transfers to the logarithm of the operator-norm scalar under the explicit supported-bump Jensen inequality. Construction of the singular Friedrichs operator and derivation of its mode, supported-bump, and weighted eigenfunction estimates, the Hilbert–Schmidt identification, and transfer to arbitrary positive trace-class inputs and finite-order bare graphs remain open here. The weighted eigenmode estimates give a convergent trace for families satisfying the spectral counting conditions. Identifying the full spectrum and form domain of the singular Friedrichs operator remains essential. The sharp interval inequality yields the Dirichlet spectral lower bound from the orthogonal finite-mode Rayleigh estimates."
   },
   "prop:uv-network-phase": {
     "status": "verified",
@@ -1949,7 +1956,7 @@
   },
   "prop:closure-heat-maxwell-sign-uv": {
     "status": "partial",
-    "scope": "Derives the signed radial integral with coefficient 1/(24π²) from the literal two-mark quadratic jet, including the contact, true normalized transverse directions and the actual S³ angular law. Changes variables on the two radius branches and proves strict positivity of the resulting coefficient for every positive mass and width. The positive two-branch density gives the exact iterated derivative and strict complete monotonicity for every order in x=(ma)². The interchange of the continuum response limit with the original chord and loop integrals and their identification with the native determinant remain open.",
+    "scope": "Derives the signed radial integral with coefficient 1/(24π²) from the literal two-mark quadratic jet, including the contact, true normalized transverse directions and the actual S³ angular law. Changes variables on the two radius branches and proves strict positivity of the resulting coefficient for every positive mass and width. The positive two-branch density gives the exact iterated derivative and strict complete monotonicity for every order in x=(ma)². The interchange of the continuum response limit with the original chord and loop integrals and their identification with the native determinant remain open. The native 4×4 Dirac traces of two straight Wilson insertions and the direct contact yield the signed transverse integrand, with the centered chord and direct-contact Taylor moments. Passing the expansion through the unrestricted momentum integral requires further estimates.",
     "lean": [
       "UV.HeatMaxwell.heatBubbleContactJet_quadratic",
       "UV.HeatMaxwell.heatTransverseSoftCoefficient_eq_radial",
@@ -1958,7 +1965,8 @@
       "UV.HeatMaxwell.heatSoft_width_transfer",
       "UV.HeatMaxwell.heatMaxwellDensity_integrable",
       "UV.HeatMaxwell.heatMaxwellCoefficient_iteratedDeriv",
-      "UV.HeatMaxwell.heatMaxwellCoefficient_strict_complete_monotone"
+      "UV.HeatMaxwell.heatMaxwellCoefficient_strict_complete_monotone",
+      "UV.HeatMaxwell.heat_native_response_trace"
     ]
   },
   "prop:quartic-holonomy-uv": {
@@ -1987,7 +1995,7 @@
   },
   "prop:closing-uv-positive-boundary": {
     "status": "partial",
-    "scope": "For a supplied spectral resolution and domain slots, constructs countably additive positive normalized compressed matrix measures and the finite first and second energy moments. Proves the bounded block Schur identity, the moment excess T* T, and the reverse Schur construction for finite atomic measures with real signed energies. The common kinetic insertion and two-frequency Ward identity, diagonal derivative, and residue-times-charge relation are checked in the bounded realization. General reverse construction through an unbounded multiplication operator for an arbitrary normalized positive matrix measure remains open.",
+    "scope": "For a supplied spectral resolution and domain slots, constructs countably additive positive normalized compressed matrix measures and the finite first and second energy moments. Proves the bounded block Schur identity, the moment excess T* T, and the reverse Schur construction for finite atomic measures with real signed energies. The common kinetic insertion and two-frequency Ward identity, diagonal derivative, and algebraic reciprocal-slope normalization are checked in the bounded realization. General reverse construction through an unbounded multiplication operator for an arbitrary normalized positive matrix measure remains open. For a measured first-order inverse pole with kernel projection P, the compressed temporal mark and residue multiply in either order to qP. A unit vector spanning the kernel gives the scalar reciprocal-slope formula. In a positive normalized two-atom example with a two-dimensional kernel, the equal-weight unit vector has measured residue 3/4, reciprocal slope 2/3, and measured residue times the temporal mark 9q/8. Thus the scalar conclusion in the subsequent paragraph needs a simple eigenvalue or an equivalent directional condition.",
     "lean": [
       "UV.SectorPlane.closing_spectral_compression_positive",
       "UV.SectorPlane.closing_matrix_measure_univ",
@@ -2000,7 +2008,15 @@
       "UV.SectorPlane.closing_temporal_mixed_elimination",
       "UV.SectorPlane.closing_temporal_ward",
       "UV.SectorPlane.closing_inverse_slot_hasDerivAt",
-      "UV.SectorPlane.closing_pole_residue_charge"
+      "UV.SectorPlane.closing_pole_residue_charge",
+      "UV.SectorPlane.inverse_pole_kernel_compression",
+      "UV.SectorPlane.closing_schur_measured_charge",
+      "UV.SectorPlane.closing_schur_rank_one_residue",
+      "UV.BoundaryResidue.positive_normalized",
+      "UV.BoundaryResidue.measured_simple_pole",
+      "UV.BoundaryResidue.degenerate_pole_obstruction",
+      "UV.BoundaryResidue.actual_charge_discrepancy",
+      "UV.BoundaryResidue.arbitrary_null_vector_charge"
     ]
   },
   "prop:closure-uv-radial-light": {
@@ -2519,7 +2535,7 @@
       "UV.sea_ordered_packet_graph_integrable",
       "UV.sea_invariant_time_fourier"
     ],
-    "scope": "Checks the conjugate timelike rims, the actual Dirac spin and two-particle phase-space normalization, the invariant cut tail, and the finite contact-plus-dispersion formula. At nonzero charge the contact cost is finite exactly for N≥2. Ordered closed loops have at least two changes of slot and the actual pair readouts control the charged spatial integral with polynomial losses in their transfers. The signed complex rim factors are inserted in the loop itself. The absolute bounds cover ordered carrier times and Schwartz packets. The time Fourier integral is jointly absolutely integrable at each fixed spatial transfer. Derivation of the complete free-vacuum source expansion from the specified Fock current remains a separate step."
+    "scope": "Checks the conjugate timelike rims, the actual Dirac spin and two-particle phase-space normalization, the invariant cut tail, and the finite contact-plus-dispersion formula. At nonzero charge the contact cost is finite exactly for N≥2. Ordered closed loops have at least two changes of slot and the actual pair readouts control the charged spatial integral with polynomial losses in their transfers. The signed complex rim factors are inserted in the loop itself. The absolute bounds cover ordered carrier times and Schwartz packets. The time Fourier integral is jointly absolutely integrable at each fixed spatial transfer. Derivation of the complete free-vacuum source expansion from the specified Fock current remains a separate step. At N=1 the adjacent divergent contact cost requires nonzero charge. With e=0 the density vanishes identically. For positive mass and depth, the exact criterion is e=0 or N≥2."
   },
   "prop:parity-optical-log-uv": {
     "status": "partial",
@@ -2529,5 +2545,19 @@
       "UV.parity_heat_optical_log"
     ],
     "scope": "For any bounded measurable signed phase with the spectral gap and stated positive cut bounds, proves the proper-time representation, cutoff comparison, rank-r logarithmic lower coefficient and divergence. The phase and crossed physical contributions of the general matrix Herglotz determinant and nonzero exterior test at the chosen transfer remain inputs."
+  },
+  "prop:repair-pair-curvature-uv": {
+    "status": "partial",
+    "lean": [
+      "UV.PairCurvature.wedge_transform",
+      "UV.PairCurvature.free_current_ward",
+      "UV.PairCurvature.physical_pair_current",
+      "UV.PairCurvature.rawTransfer_integrable",
+      "UV.PairCurvature.invariantMassSq_threshold",
+      "UV.PairCurvature.spectral_tail_and_threshold",
+      "UV.PairCurvature.ordered_pair_frequency",
+      "UV.PairCurvature.complete_pair_two_source"
+    ],
+    "scope": "The two physical massive energy projectors yield the Ward contraction and the signed curvature current. The original relative-momentum integral is absolutely integrable for each time ordering, with fixed spatial transfer. The center-of-mass density has the stated threshold and finite unsubtracted tail. Verifying the boost change of variables identifying the moving-frame integral with that density would complete the covariant identification."
   }
 }

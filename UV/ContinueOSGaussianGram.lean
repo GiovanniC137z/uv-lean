@@ -100,7 +100,7 @@ theorem osQuarticCovariance_gram {m r : ℝ} (hm : 0 < m) (hr : 0 < r) (i j : OS
       simp_rw [osQuarticGram_points]
       exact congrArg Complex.re (osCovWeight_inverse (by positivity) hm (x-y))
 
-private theorem osQuarticGramEntry_integrable {m r : ℝ} (hm : 0 < m) (hr : 0 < r)
+theorem osQuarticGramEntry_integrable {m r : ℝ} (hm : 0 < m) (hr : 0 < r)
     (i j : OSQuarticSlot) : Integrable (osQuarticGramEntry m r i j) := by
   have hmixed (x : OSFourSpace) (j : OSBoundaryTest) :
       Integrable (osQuarticGramEntry m r (.inr x) (.inl j)) := by

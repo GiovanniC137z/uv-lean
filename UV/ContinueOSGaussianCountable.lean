@@ -18,7 +18,7 @@ private def osAppend (n : ℕ) : osHist n × ℝ ≃ᵐ osHist (n+1) :=
   ((MeasurableEquiv.refl (osHist n)).prodCongr (MeasurableEquiv.piSingleton (X := fun _ => ℝ) n)).trans
     (MeasurableEquiv.IicProdIoc (X := fun _ => ℝ) (Nat.le_succ n))
 
-private theorem osCountableExtension (P : (I : Finset ℕ) → Measure (I → ℝ))
+theorem osCountableExtension (P : (I : Finset ℕ) → Measure (I → ℝ))
     [∀ I, IsProbabilityMeasure (P I)] (hP : IsProjectiveMeasureFamily (α := fun _ => ℝ) P) :
     ∃ μ : Measure (ℕ → ℝ), IsProjectiveLimit μ P := by
   let Q (n : ℕ) := (P (Iic (n+1))).map (osAppend n).symm
