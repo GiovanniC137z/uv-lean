@@ -135,19 +135,14 @@ private theorem measurable_spinTensor {m : ℝ} (hm : 0<m) (P : ChargeSpatialMom
   exact (continuous_invariantMassSq m P).measurable.complex_ofReal.inv.smul
     (((hc i).complex_ofReal.smul (hj j)).sub ((hc j).complex_ofReal.smul (hj i)))
 
-theorem rawTransfer_integrable {m ℓ : ℝ} (hm : 0<m) (hℓ : 0<ℓ)
-    (ω : ℝ) (P : ChargeSpatialMomentum) (i j l h : Fin 4) :
-    Integrable (fun k => rawTransfer m ℓ ω P k i j l h) := by
-  let C := 2*(1+(1+‖P‖^2)/(4*m^2))
-  have hC : 0≤C := by dsimp [C]; positivity
-  have hi := (relative_invariant_gaussian_integrable hm hℓ (show (0:ℝ)≤0 by rfl) P).mul_const (4*C^2/(2*m))
-  have htrace : Measurable (fun k => ((spinTensor m P k i j).conjTranspose*spinTensor m P k l h).trace) := by
-    apply (Matrix.traceLinearMap (Fin 4) ℂ ℂ).toContinuousLinearMap.continuous.measurable.comp
-    exact (continuous_star.measurable.comp (measurable_spinTensor hm P i j)).mul (measurable_spinTensor hm P l h)
-  have hf : Measurable (fun k => rawTransfer m ℓ ω P k i j l h) := by
-    unfold rawTransfer
-    fun_prop (disch := exact htrace)
-  refine hi.mono' hf.aestronglyMeasurable (ae_of_all _ fun k => ?_)
+private def pairSpinTransferBound (m R : ℝ) := 2*(1+(1+R^2)/(4*m^2))
+
+private theorem rawTransfer_norm_bound {m : ℝ} (hm : 0<m) (ℓ ω : ℝ)
+    (P k : ChargeSpatialMomentum) (i j l h : Fin 4) :
+    ‖rawTransfer m ℓ ω P k i j l h‖ ≤
+      Real.exp (-(2*ℓ^4)*invariantMassSq m P k^2)*(4*(pairSpinTransferBound m ‖P‖)^2/(2*m)) := by
+  let C := pairSpinTransferBound m ‖P‖
+  have hC : 0≤C := by dsimp [C,pairSpinTransferBound]; positivity
   let D := relativeEnergy m P k
   have hD : 0<D := add_pos (FurtherOptical.energy_pos hm _) (FurtherOptical.energy_pos hm _)
   have hs := invariantMassSq_threshold hm P k
@@ -160,10 +155,58 @@ theorem rawTransfer_integrable {m ℓ : ℝ} (hm : 0<m) (hℓ : 0<ℓ)
     rw [Matrix.l2_opNorm_conjTranspose,pow_two]
     exact mul_le_mul (spinTensor_uniform hm P k i j) (spinTensor_uniform hm P k l h) (norm_nonneg _) hC
   rw [rawTransfer,norm_div,norm_mul,Complex.norm_real,Real.norm_of_nonneg (Real.exp_pos _).le]
-  have h₀ : 0≤4*C^2/(2*m) := by positivity
   have hbound := div_le_div₀ (show 0≤4*C^2 by positivity) ht (show 0<2*m by positivity) (hmD.trans hω)
   rw [mul_div_assoc]
-  calc _ ≤ Real.exp _ * (4*C^2/(2*m)) := mul_le_mul_of_nonneg_left hbound (Real.exp_pos _).le
-    _ ≤ _ := by simp only [Real.rpow_zero]; nlinarith [mul_nonneg (Real.exp_pos (-(2*ℓ^4)*invariantMassSq m P k^2)).le h₀]
+  exact mul_le_mul_of_nonneg_left hbound (Real.exp_pos _).le
+
+theorem rawTransfer_integrable {m ℓ : ℝ} (hm : 0<m) (hℓ : 0<ℓ)
+    (ω : ℝ) (P : ChargeSpatialMomentum) (i j l h : Fin 4) :
+    Integrable (fun k => rawTransfer m ℓ ω P k i j l h) := by
+  let C := pairSpinTransferBound m ‖P‖
+  have hi := (relative_invariant_gaussian_integrable hm hℓ (show (0:ℝ)≤0 by rfl) P).mul_const (4*C^2/(2*m))
+  have htrace : Measurable (fun k => ((spinTensor m P k i j).conjTranspose*spinTensor m P k l h).trace) := by
+    apply (Matrix.traceLinearMap (Fin 4) ℂ ℂ).toContinuousLinearMap.continuous.measurable.comp
+    exact (continuous_star.measurable.comp (measurable_spinTensor hm P i j)).mul (measurable_spinTensor hm P l h)
+  have hf : Measurable (fun k => rawTransfer m ℓ ω P k i j l h) := by
+    unfold rawTransfer
+    fun_prop (disch := exact htrace)
+  refine hi.mono' hf.aestronglyMeasurable (ae_of_all _ fun k => ?_)
+  apply (rawTransfer_norm_bound hm ℓ ω P k i j l h).trans
+  simp only [Real.rpow_zero]
+  nlinarith [mul_nonneg (Real.exp_pos (-(2*ℓ^4)*invariantMassSq m P k^2)).le
+    (show 0≤4*C^2/(2*m) by positivity)]
+
+/-- The original relative-momentum integral of every spin-tensor entry
+is uniformly absolutely bounded on a compact spatial-transfer ball,
+simultaneously for both carrier-frequency orderings. -/
+theorem rawTransfer_absolute_uniform {m ℓ : ℝ} (hm : 0<m) (hℓ : 0<ℓ)
+    {R : ℝ} (hR : 0 ≤ R) :
+    ∃ B : ℝ, 0 ≤ B ∧ ∀ (P : ChargeSpatialMomentum), ‖P‖ ≤ R → ∀ (ω : ℝ) (i j l h : Fin 4),
+      (∫ k, ‖rawTransfer m ℓ ω P k i j l h‖) ≤ B := by
+  let C := 4*(pairSpinTransferBound m R)^2/(2*m)
+  let G := fun k : ChargeSpatialMomentum =>
+    Real.exp (2*ℓ^4*(1+R^2)) * Real.exp (-(2*ℓ^4*‖k‖^2)) * C
+  have hi : Integrable G := by
+    have h := integrable_real_degree_gaussian (μ := (volume : Measure ChargeSpatialMomentum))
+      (show 0<2*ℓ^4 by positivity) (show (0:ℝ)≤0 by rfl)
+    convert (h.const_mul (Real.exp (2*ℓ^4*(1+R^2))/2)).mul_const C using 1
+    funext k
+    simp only [G,Real.rpow_zero]
+    ring
+  refine ⟨∫ k, G k, integral_nonneg (fun k => by unfold G C; positivity),?_⟩
+  intro P hP ω i j l h
+  apply integral_mono_of_nonneg (ae_of_all _ (fun _ => norm_nonneg _)) hi
+  refine ae_of_all _ (fun k => (rawTransfer_norm_bound hm ℓ ω P k i j l h).trans ?_)
+  have hN : ‖P‖^2 ≤ R^2 := (sq_le_sq₀ (norm_nonneg P) hR).2 hP
+  have hC : 4*(pairSpinTransferBound m ‖P‖)^2/(2*m) ≤ C := by
+    unfold C pairSpinTransferBound
+    gcongr
+  have hExp : Real.exp (2*ℓ^4*(1+‖P‖^2)) ≤ Real.exp (2*ℓ^4*(1+R^2)) := by
+    apply Real.exp_le_exp.mpr
+    gcongr
+  unfold G
+  refine mul_le_mul ?_ hC (by positivity) (by positivity)
+  exact (relative_gaussian_bound hm hℓ P k).trans
+    (mul_le_mul_of_nonneg_right hExp (Real.exp_pos _).le)
 
 end UV.PairCurvature

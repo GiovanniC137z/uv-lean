@@ -1051,3 +1051,4 @@ import UV.ContinueSewnFlagLogPairing
 import UV.ContinueSewnFlagShortCost
 import UV.ContinueSewnFlagLogBounds
 import UV.ContinueSewnFlagLogMoments
+import UV.ContinuePairBoostRawResponse
