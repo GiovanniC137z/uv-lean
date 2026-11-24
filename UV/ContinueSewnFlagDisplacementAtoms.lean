@@ -64,7 +64,7 @@ private theorem marked_inner_kernel_bound (h : ScalarMomentum → E) (h₁ : ∀
   (norm_inner_le_norm _ _).trans (mul_le_one₀ (h₁ _) (norm_nonneg _) (h₁ _))
 
 omit [NormedSpace ℝ E] in
-private theorem marked_phase_integrable (μ : Measure ScalarMomentum) [IsFiniteMeasure μ]
+theorem marked_phase_integrable (μ : Measure ScalarMomentum) [IsFiniteMeasure μ]
     (h : ScalarMomentum → E) (hm : StronglyMeasurable h) (h₁ : ∀ d, ‖h d‖ ≤ 1) (k : ScalarMomentum) :
     Integrable (fun d => stableFourierPhase d k • h d) μ := by
   have hφ : Measurable (fun d => stableFourierPhase d k) :=

@@ -11101,6 +11101,23 @@
       ]
     },
     {
+      "label": "eq:monomial-resolution-uv",
+      "source_line": 42276,
+      "status": "verified",
+      "scope": "For every positive Gaussian width and real four-momentum, constructs the normalized displacement probability and the unit Gaussian pointer in the original complex L² space. Its actual Bochner superposition agrees with the coordinate reading integral. Lean checks the exact pointer overlap and the inclusive squared norm (2/3)² exp(−2ℓ²|k|²/3). In the specified independent product, integrating all readings gives the exact normalized exponential of the sum over affine routed marks. Full routing rank gives absolute momentum integrability with every fixed polynomial growth bound. The derivation of the independent common-width preparation from a physical action remains a separate premise.",
+      "lean": [
+        "UV.SewnFlags.oneScaleDensity_eq",
+        "UV.SewnFlags.oneScaleDisplacementLaw_probability",
+        "UV.SewnFlags.oneScalePointer_eq_sqrt",
+        "UV.SewnFlags.oneScalePointerVector_norm",
+        "UV.SewnFlags.oneScalePointerVector_inner",
+        "UV.SewnFlags.oneScaleMarkedHilbert_eq_readout",
+        "UV.SewnFlags.oneScaleMarkedHilbert_inclusive",
+        "UV.SewnFlags.oneScaleIndependentWeight_eq",
+        "UV.SewnFlags.oneScaleIndependent_routed_integrable"
+      ]
+    },
+    {
       "label": "eq:monomial-doublet-uv",
       "source_line": 42481,
       "status": "verified",

@@ -1069,3 +1069,6 @@ import UV.ContinuePinnedNormalJets
 import UV.ContinuePinnedNormalMinors
 import UV.ContinuePinnedNormalNetwork
 import UV.ContinuePinnedNormalSerial
+import UV.ContinueSewnFlagResolution
+import UV.ContinueSewnFlagResolutionHilbert
+import UV.ContinueSewnFlagResolutionRouting
