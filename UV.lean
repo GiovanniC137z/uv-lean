@@ -1058,3 +1058,7 @@ import UV.ContinueSewnFlagMomentum
 import UV.ContinueSewnFlagSchwinger
 import UV.ContinueSewnFlagSectors
 import UV.ContinueSewnFlagTime
+import UV.ContinueSewnFlagAtomObstruction
+import UV.ContinueSewnFlagDisplacementAtoms
+import UV.ContinueSewnFlagHardCube
+import UV.ContinueSewnWordTrace
