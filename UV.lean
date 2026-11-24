@@ -1062,3 +1062,10 @@ import UV.ContinueSewnFlagAtomObstruction
 import UV.ContinueSewnFlagDisplacementAtoms
 import UV.ContinueSewnFlagHardCube
 import UV.ContinueSewnWordTrace
+import UV.ContinuePinnedNormalDuration
+import UV.ContinuePinnedNormalForest
+import UV.ContinuePinnedNormalGaussian
+import UV.ContinuePinnedNormalJets
+import UV.ContinuePinnedNormalMinors
+import UV.ContinuePinnedNormalNetwork
+import UV.ContinuePinnedNormalSerial

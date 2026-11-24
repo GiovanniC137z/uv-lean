@@ -31,7 +31,7 @@ theorem retainedWidthMeasure_eq_Ioc (n : ℕ) :
   rw [volume_pi, Measure.restrict_pi_pi]
   simp only [restrict_Ioo_eq_restrict_Ioc]
 
-private theorem retainedIntegral_comparable {E : Type*} [MeasurableSpace E] (μ : Measure E)
+theorem retainedIntegral_comparable {E : Type*} [MeasurableSpace E] (μ : Measure E)
     (f g : E → ℝ≥0∞) (lo hi : ℝ≥0∞) (hlo : lo ≠ 0) (hlo' : lo ≠ ⊤) (hhi : hi ≠ ⊤)
     (hb : ∀ᵐ t ∂μ, lo * g t ≤ f t ∧ f t ≤ hi * g t) :
     (∫⁻ t, f t ∂μ) < ⊤ ↔ (∫⁻ t, g t ∂μ) < ⊤ := by
