@@ -11040,13 +11040,17 @@
       "label": "eq:nativefull-log-energy-uv",
       "source_line": 41920,
       "status": "verified",
-      "scope": "For a finite positive displacement measure with nonnegative characteristic and positive comparison mass, the displayed joint Fourier-pairing equality holds at every finite number of marginal loops, including infinity. The proof keeps the correlations, derives the exact Fourier-normalized Gaussian factors and gives K₀(μ|d|)/(8π²) at nonzero displacement. At coincidence the extended kernel is infinite. The following prose states a further signed or complex measure extension.",
+      "scope": "For a finite positive displacement measure with nonnegative characteristic and positive comparison mass, the joint Fourier-pairing equality holds at any finite number of marginal loops, including infinity. It keeps the correlations and gives the exact normalized Bessel kernel, a uniform logarithmic remainder at small nonzero separation, and infinity at coincidence. With a measurable complex density of modulus at most one over a finite positive dominating measure, the complex equality holds if the characteristic is real nonnegative and the joint envelope is integrable. The proof also verifies infinite bare energy for the exactly collapsed positive pairing.",
       "lean": [
         "UV.SewnFlags.joint_marginal_log_energy",
+        "UV.SewnFlags.complex_weighted_joint_marginal_log_energy",
         "UV.SewnFlags.joint_marginal_fourier_gaussian",
         "UV.SewnFlags.logKernel_proper_time",
         "UV.SewnFlags.logKernel_bessel",
-        "UV.SewnFlags.logKernel_zero"
+        "UV.SewnFlags.logKernel_zero",
+        "UV.SewnFlags.logKernel_log_remainder",
+        "UV.SewnFlags.logKernel_antitone",
+        "UV.SewnFlags.collapsed_marginal_pairing_diverges"
       ]
     },
     {

@@ -14,6 +14,12 @@ def logKernel (μ x : ℝ) : ℝ≥0∞ :=
   ENNReal.ofReal (((4*π)^2)⁻¹) * ∫⁻ t in Ioi (0:ℝ),
     ENNReal.ofReal (selectorDensity (μ^2) (x^2/4) 0 t)
 
+theorem logKernel_measurable (μ : ℝ) : Measurable (logKernel μ) := by
+  let f := fun q : ℝ × ℝ => ENNReal.ofReal (selectorDensity (μ^2) (q.1^2/4) 0 q.2)
+  have hf : Measurable f := by unfold f selectorDensity; fun_prop
+  have h : Measurable (fun x => ∫⁻ t in Ioi (0:ℝ), f (x,t)) := hf.lintegral_prod_right'
+  exact measurable_const.mul h
+
 private theorem logKernel_density_nonneg (μ x : ℝ) :
     0 ≤ᵐ[volume.restrict (Ioi (0:ℝ))] selectorDensity (μ^2) (x^2/4) 0 := by
   filter_upwards [ae_restrict_mem measurableSet_Ioi] with t ht
