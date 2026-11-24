@@ -1284,10 +1284,15 @@
   },
   "eq:native-relative-schur-uv": {
     "status": "partial",
-    "scope": "For arbitrary finite sections with invertible onsite matrices, the full two-slot determinant divided by both onsite determinants is exactly the displayed Schur determinant with the actual conjugate hopping. Construction of the infinite-dimensional Hilbert–Schmidt product and Fredholm determinant, and identification of the physical onsite vacuum amplitude, remain open. At every finite section with contractive Schur product the complex determinant equals exp(−Σₙ tr(Kⁿ)/n) including nonnormal products.",
+    "scope": "For finite sections the full block determinant divided by both onsite determinants equals the Schur determinant. The finite-cutoff normal-ordered scalar charge and onsite energy annihilate the filled reference vacuum and yield exactly unit smeared scalar amplitude at every cutoff. On the continuous finite slab the two time-directed operators include the actual periodic heat Wilson hop and onsite scalar transport. Each operator has square-summable columns in every Hilbert basis. Their Schur product is an actual sum of rank-one operators with summable nuclear costs. For contractive operator-norm product, the general orthogonal finite-section determinants converge to the absolutely convergent exponential trace series. The determinant limit outside the contractive regime and the full source correspondence remain open.",
     "lean": [
       "UV.SectorPlane.twoBand_finite_relative_schur",
-      "UV.SectorPlane.twoBand_contractive_det_series"
+      "UV.SectorPlane.twoBand_contractive_det_series",
+      "UV.SectorPlane.orderedOnsite_smeared_vacuum",
+      "UV.SectorPlane.orderedOnsite_cutoff_vacuum",
+      "UV.SectorPlane.twoBand_slab_operator_hilbert_schmidt",
+      "UV.SectorPlane.twoBand_slab_schur_product_nuclear",
+      "UV.SectorPlane.twoBand_hilbert_schmidt_det_limit"
     ]
   },
   "eq:native-relative-word-uv": {
@@ -1327,7 +1332,7 @@
   },
   "eq:aud-positive-coulomb-uv": {
     "status": "verified",
-    "scope": "Computes the occupied-to-empty transition from the spectral projectors of the actual two-slot Hamiltonian and the squared distance between its normalized Bloch vectors. With m,a,σ>0, the doubly normalized Lorentzian frequency density has unit mass at every pair of spatial momenta. The displayed coefficient is jointly absolutely integrable over both spatial momenta and both original frequencies and equals its spatial integral with the stated charge and Fourier factors. Its integrand after charged-frequency integration agrees with the sign-restored relative bubble at fixed transfer. The coefficient is strictly positive exactly when both charge and hopping are nonzero. This concerns the specified two-band spectral coefficient.",
+    "scope": "Computes the occupied-to-empty transition from the spectral projectors of the actual two-slot Hamiltonian and the squared distance between its normalized Bloch vectors. With m,a,σ>0, the doubly normalized Lorentzian frequency density has unit mass at every pair of spatial momenta. The displayed coefficient is jointly absolutely integrable over both spatial momenta and both original frequencies and equals its spatial integral with the stated charge and Fourier factors. Its integrand after charged-frequency integration agrees with the sign-restored relative bubble at fixed transfer. The coefficient is strictly positive exactly when both charge and hopping are nonzero. This concerns the specified two-band spectral coefficient. The actual unit Bloch vector has square-integrable gradient, and its spatial transition weight obeys the stated gradient bound with coefficient 1/4. At finite sets of modes the normal-ordered filled-band density square including self-contractions gives the Coulomb-weighted transition sum.",
     "lean": [
       "UV.SectorPlane.twoBand_projector_spectral",
       "UV.SectorPlane.twoBand_transition_distance",
@@ -1336,7 +1341,10 @@
       "UV.SectorPlane.twoBand_positive_frequency_pair",
       "UV.SectorPlane.twoBand_positive_coulomb_energy",
       "UV.SectorPlane.twoBand_coulomb_spectral_section",
-      "UV.SectorPlane.twoBand_coulomb_energy_pos_iff"
+      "UV.SectorPlane.twoBand_coulomb_energy_pos_iff",
+      "UV.SectorPlane.twoBand_spatial_bloch_gradient_integrable",
+      "UV.SectorPlane.twoBand_spatial_weight_gradient",
+      "UV.SectorPlane.twoBand_filled_coulomb_mode"
     ]
   }
 }

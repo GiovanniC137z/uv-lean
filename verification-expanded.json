@@ -2734,8 +2734,47 @@
       "UV.SectorPlane.hopping_expansion_exact",
       "UV.SectorPlane.hopping_marked_interval_sup",
       "UV.SectorPlane.hopping_marked_interval_pair",
-      "UV.SectorPlane.twoBand_fourier_link_eq_gaussian_wilson_mark"
+      "UV.SectorPlane.twoBand_fourier_link_eq_gaussian_wilson_mark",
+      "UV.SectorPlane.hopping_marks_oriented_fourier",
+      "UV.SectorPlane.hopping_marks_permutation",
+      "UV.SectorPlane.hopping_marked_derivative_pair",
+      "UV.SectorPlane.hopping_charged_loop_frequency"
     ],
-    "scope": "For either signed onsite mass, the exact signed divided difference inserts a mark at every allowed position in a resolvent word. Opposite frequencies on the same interval give the printed centered second difference, and a zero frequency uses the derivative. Arbitrary lists of marks on two distinct carrier intervals admit an absolute frequency integral uniform in all translations, with a factor (1+|ν|)⁻¹ for each end. The spatial straight-link Gaussian identity holds at all mark orders. The complete joint graph in the original charged and photon frequencies, including closure Fourier inversion, the soft subtraction routing, and finite-volume version, remains open."
+    "scope": "For either signed onsite mass, the exact signed divided difference inserts a mark at every allowed position in a resolvent word. Opposite frequencies on the same interval give the printed centered second difference, and a zero frequency uses the derivative. Arbitrary lists of marks on two distinct carrier intervals admit an absolute frequency integral uniform in all translations, with a factor (1+|ν|)⁻¹ for each end. The spatial straight-link Gaussian identity holds at all mark orders. The complete joint graph in the original charged and photon frequencies, including closure Fourier inversion, the soft subtraction routing, and finite-volume version, remains open. Fourier transformation of the actual directed temporal Wilson pulses on either slot gives the complete permuted divided difference. With finitely many extra derivatives from soft subtractions, the complete n-interval carrier integral costs a mark-dependent constant times π m^(1−n), uniformly in all translations."
+  },
+  "prop:closing-uv-ordered-Maxwell": {
+    "status": "partial",
+    "lean": [
+      "UV.SectorPlane.orderedOnsite_solution_unique",
+      "UV.SectorPlane.orderedOnsite_directed_heat",
+      "UV.SectorPlane.orderedOnsite_smeared_vacuum",
+      "UV.SectorPlane.orderedOnsite_cutoff_vacuum",
+      "UV.SectorPlane.orderedHop_log_word_odd",
+      "UV.SectorPlane.orderedHop_marked_log_words_summable",
+      "UV.SectorPlane.orderedHop_torus_integral",
+      "UV.SectorPlane.orderedHop_joint_density_limit",
+      "UV.SectorPlane.OrderedTwoBandPath.density_anchor",
+      "UV.SectorPlane.OrderedTwoBandPath.density_bound",
+      "UV.SectorPlane.OrderedTwoBandPath.ward",
+      "UV.SectorPlane.OrderedTwoBandPath.polarized_bound",
+      "UV.SectorPlane.OrderedTwoBandPath.vertical_displacement",
+      "UV.SectorPlane.OrderedTwoBandPath.locked_density",
+      "UV.SectorPlane.OrderedTwoBandPath.coulomb_time_square",
+      "UV.SectorPlane.OrderedSewingTopology.unlabelled_surviving_card",
+      "UV.WilsonIncidenceBasis.ordered_flow_spatial_ne_zero",
+      "UV.ordered_joint_graph_all_lengths",
+      "UV.ordered_summed_two_point_bound"
+    ],
+    "scope": "At m>2|g| and fixed a,σ>0, derives the signed onsite intervals, unit Wilson phases, zero onsite scalar vacuum response, Gaussian return measure and all absolutely summable polynomially marked log words. The normalized volume limit removes the symmetric time slab and nonzero spatial windings. The closed path satisfies the Ward identity and both soft estimates, on the actual affine carrier with unit spatial polarizations. Temporal self-sewing equals the equal-time squared charge with its diagonal self-contractions. For each connected ordered vacuum or two-point graph the complete products of instantaneous and transverse currents are jointly absolutely integrable over all return paths and independent photon four-momenta and absolutely summable over all independent hop counts. The external transverse two-point amplitude obeys a uniform C(ω²+‖p‖²) bound after the integrations and hop sums. The fixed order has finitely many surviving topologies. Identification of the actual determinant coefficients with the integrated ordered paths and derivation of the complete marked source functional are still being checked."
+  },
+  "cor:physical-joint-open-uv": {
+    "status": "partial",
+    "lean": [
+      "UV.SectorPlane.hopping_marks_oriented_fourier",
+      "UV.SectorPlane.hopping_marks_permutation",
+      "UV.SectorPlane.hopping_open_frequency_bound",
+      "UV.SectorPlane.hopping_charged_loop_frequency"
+    ],
+    "scope": "For arbitrary external shifts, signed mass and assignment of temporal marks, the complete open line with n hops has the uniform m^(−n−1) carrier supremum estimate. This includes the single interval with no hops, the full permutation sum, and vanishing frequencies. The mixed finite-volume photon and charged graph, endpoint and vacuum source, and all probe sewings are separate obligations."
   }
 }
