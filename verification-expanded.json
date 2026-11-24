@@ -2677,6 +2677,21 @@
     ],
     "scope": "Proves the conditional absolute convergence of the original massive Euclidean momentum integral with arbitrary real affine shifts, positive line exponents, spanning routing and every stated joint projected-prefix moment. The finite signed or complex displacement law is represented by a measurable density of modulus at most one almost everywhere over its finite positive dominating measure, which can be the variation measure. The momentum majorant uses the real part of that complete characteristic and assumes it is nonnegative. Lean derives the exact Gamma Schwinger factors, the shifted four-coordinate Fourier Gaussian bound and the finite positive-time integral on all duration orderings, including mixed small and large durations. It uses the original subsets for the face ranks and orthogonal projections. The charged action must still supply the majorant. The massless case requires a separate infrared argument."
   },
+  "prop:native-relative-density-uv": {
+    "status": "partial",
+    "lean": [
+      "UV.SectorPlane.twoBand_resolvent_inverse",
+      "UV.SectorPlane.twoBand_resolvent_norm",
+      "UV.SectorPlane.twoBand_resolvent_difference_bound",
+      "UV.SectorPlane.twoBand_frequency_integral",
+      "UV.SectorPlane.twoBand_relative_word_integrable",
+      "UV.SectorPlane.twoBand_relative_bubble_trace",
+      "UV.SectorPlane.twoBand_frequency_product",
+      "UV.SectorPlane.twoBand_single_spatial_contact_integrable",
+      "UV.SectorPlane.twoBand_spatial_word_integrable"
+    ],
+    "scope": "For the displayed two-band Euclidean inverse, checks the exact operator norm, the pointwise hopping difference, and the full relative all-scalar word with the two products compared at common momentum. Its original four-dimensional absolute norm is uniformly integrable in every external shift, at positive mass and hopping width for arbitrary real hopping. Computes the literal two-mark bubble and the single spatial-contact trace. The mixed-word bound applies with the stated integrable marked multiplier and bounded slot matrices, with the exact translated two-frequency estimate. Deriving the complete vertex multipliers and onsite-vacuum differentiation from the continuum Schur determinant, and the integrated opposite-band spectral formula, remain open."
+  },
   "prop:monomial-charged-winding-uv": {
     "status": "partial",
     "lean": [

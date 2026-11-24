@@ -3781,10 +3781,20 @@
       "title_tex": "Joint four-momentum bound for a complete two-band matter loop",
       "source_line": 42705,
       "statement_tex": "In the translation-invariant vacuum matter coefficients of this\naction, every fixed positive number of external electric marks\n(including spatial Wilson contacts) admits an absolutely integrable\nrepresentation in the original loop variables $(\\omega,k)$. The\nbound is uniform in the external energy and momentum shifts at\nfixed mark order and widths. Here the temporal vertices use the\ncommon onsite normalization in \\eqref{eq:native-relative-schur-uv}.",
-      "status": "pending",
-      "lean": [],
+      "status": "partial",
+      "lean": [
+        "UV.SectorPlane.twoBand_resolvent_inverse",
+        "UV.SectorPlane.twoBand_resolvent_norm",
+        "UV.SectorPlane.twoBand_resolvent_difference_bound",
+        "UV.SectorPlane.twoBand_frequency_integral",
+        "UV.SectorPlane.twoBand_relative_word_integrable",
+        "UV.SectorPlane.twoBand_relative_bubble_trace",
+        "UV.SectorPlane.twoBand_frequency_product",
+        "UV.SectorPlane.twoBand_single_spatial_contact_integrable",
+        "UV.SectorPlane.twoBand_spatial_word_integrable"
+      ],
       "lean_projects": {},
-      "scope": "Not yet formalized.",
+      "scope": "For the displayed two-band Euclidean inverse, checks the exact operator norm, the pointwise hopping difference, and the full relative all-scalar word with the two products compared at common momentum. Its original four-dimensional absolute norm is uniformly integrable in every external shift, at positive mass and hopping width for arbitrary real hopping. Computes the literal two-mark bubble and the single spatial-contact trace. The mixed-word bound applies with the stated integrable marked multiplier and bounded slot matrices, with the exact translated two-frequency estimate. Deriving the complete vertex multipliers and onsite-vacuum differentiation from the continuum Schur determinant, and the integrated opposite-band spectral formula, remain open.",
       "statement_change": "new"
     },
     {
@@ -11131,6 +11141,41 @@
         "UV.SectorPlane.doublet_fourth_coefficient",
         "UV.SectorPlane.doublet_fourth_uv_limit",
         "UV.SectorPlane.Plane.doublet_fourth_not_integrable"
+      ]
+    },
+    {
+      "label": "eq:native-relative-word-uv",
+      "source_line": 42731,
+      "status": "partial",
+      "scope": "The literal mass-gapped ordered trace of the difference at common carrier and spatial momenta has a uniform L¹ bound for any finite number of slots and all affine shifts. The temporal squared envelope integrates to π/m. Identifying the displayed trace with derivatives of the normalized infinite-volume Schur determinant remains open.",
+      "lean": [
+        "UV.SectorPlane.twoBand_resolvent_difference_bound",
+        "UV.SectorPlane.twoBand_frequency_integral",
+        "UV.SectorPlane.twoBand_relative_word_bound",
+        "UV.SectorPlane.twoBand_relative_word_integrable"
+      ]
+    },
+    {
+      "label": "eq:native-relative-bubble-uv",
+      "source_line": 42774,
+      "status": "verified",
+      "scope": "Checks the exact two fractions including the onsite reference from the actual two-by-two inverse products with arbitrary real frequencies and mixing values. The adjacent frequency-integrated spectral formula is a separate calculation.",
+      "lean": [
+        "UV.SectorPlane.twoBand_resolvent_inverse",
+        "UV.SectorPlane.twoBand_trace_pair",
+        "UV.SectorPlane.twoBand_relative_bubble_trace"
+      ]
+    },
+    {
+      "label": "eq:aud-coulomb-sewing-uv",
+      "source_line": 42841,
+      "status": "verified",
+      "scope": "Proves the exact scaled limit at both ends of the independent carrier-frequency line. For nonzero charge and Gaussian hopping, every positive fixed charged frequency and nonzero spatial transfer gives a nonintegrable Coulomb-frequency section with the original affine shift. Fubini gives divergence of the full absolute integral after multiplication by the literal positive Coulomb weight. This proof uses the sectionwise limit. The manuscript's compact-uniform refinement is separate.",
+      "lean": [
+        "UV.SectorPlane.twoBand_coulomb_scaled_limit",
+        "UV.SectorPlane.twoBand_coulomb_frequency_not_integrable",
+        "UV.SectorPlane.twoBand_coulomb_section_not_integrable",
+        "UV.SectorPlane.twoBand_coulomb_routing_not_integrable"
       ]
     },
     {

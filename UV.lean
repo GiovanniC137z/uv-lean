@@ -1073,3 +1073,8 @@ import UV.ContinueSewnFlagResolution
 import UV.ContinueSewnFlagResolutionHilbert
 import UV.ContinueSewnFlagResolutionRouting
 import UV.ContinueMarkedPhotonMomentumMixing
+import UV.ContinueTwoBandCoulombTail
+import UV.ContinueTwoBandDensityTrace
+import UV.ContinueTwoBandRelativeWord
+import UV.ContinueTwoBandResolvent
+import UV.ContinueTwoBandSpatialWord

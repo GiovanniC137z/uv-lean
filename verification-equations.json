@@ -1281,5 +1281,34 @@
       "UV.SewnFlags.oneScaleIndependentWeight_eq",
       "UV.SewnFlags.oneScaleIndependent_routed_integrable"
     ]
+  },
+  "eq:native-relative-word-uv": {
+    "status": "partial",
+    "scope": "The literal mass-gapped ordered trace of the difference at common carrier and spatial momenta has a uniform L¹ bound for any finite number of slots and all affine shifts. The temporal squared envelope integrates to π/m. Identifying the displayed trace with derivatives of the normalized infinite-volume Schur determinant remains open.",
+    "lean": [
+      "UV.SectorPlane.twoBand_resolvent_difference_bound",
+      "UV.SectorPlane.twoBand_frequency_integral",
+      "UV.SectorPlane.twoBand_relative_word_bound",
+      "UV.SectorPlane.twoBand_relative_word_integrable"
+    ]
+  },
+  "eq:native-relative-bubble-uv": {
+    "status": "verified",
+    "scope": "Checks the exact two fractions including the onsite reference from the actual two-by-two inverse products with arbitrary real frequencies and mixing values. The adjacent frequency-integrated spectral formula is a separate calculation.",
+    "lean": [
+      "UV.SectorPlane.twoBand_resolvent_inverse",
+      "UV.SectorPlane.twoBand_trace_pair",
+      "UV.SectorPlane.twoBand_relative_bubble_trace"
+    ]
+  },
+  "eq:aud-coulomb-sewing-uv": {
+    "status": "verified",
+    "scope": "Proves the exact scaled limit at both ends of the independent carrier-frequency line. For nonzero charge and Gaussian hopping, every positive fixed charged frequency and nonzero spatial transfer gives a nonintegrable Coulomb-frequency section with the original affine shift. Fubini gives divergence of the full absolute integral after multiplication by the literal positive Coulomb weight. This proof uses the sectionwise limit. The manuscript's compact-uniform refinement is separate.",
+    "lean": [
+      "UV.SectorPlane.twoBand_coulomb_scaled_limit",
+      "UV.SectorPlane.twoBand_coulomb_frequency_not_integrable",
+      "UV.SectorPlane.twoBand_coulomb_section_not_integrable",
+      "UV.SectorPlane.twoBand_coulomb_routing_not_integrable"
+    ]
   }
 }
