@@ -3791,10 +3791,16 @@
         "UV.SectorPlane.twoBand_relative_bubble_trace",
         "UV.SectorPlane.twoBand_frequency_product",
         "UV.SectorPlane.twoBand_single_spatial_contact_integrable",
-        "UV.SectorPlane.twoBand_spatial_word_integrable"
+        "UV.SectorPlane.twoBand_spatial_word_integrable",
+        "UV.SectorPlane.twoBand_finite_relative_schur",
+        "UV.SectorPlane.twoBand_gaussian_wilson_marks",
+        "UV.SectorPlane.twoBand_wilson_multipliers_integrable",
+        "UV.SectorPlane.twoBand_wilson_contact_integrable",
+        "UV.SectorPlane.twoBand_wilson_spatial_word_integrable",
+        "UV.SectorPlane.twoBand_relative_bubble_fixed_transfer"
       ],
       "lean_projects": {},
-      "scope": "For the displayed two-band Euclidean inverse, checks the exact operator norm, the pointwise hopping difference, and the full relative all-scalar word with the two products compared at common momentum. Its original four-dimensional absolute norm is uniformly integrable in every external shift, at positive mass and hopping width for arbitrary real hopping. Computes the literal two-mark bubble and the single spatial-contact trace. The mixed-word bound applies with the stated integrable marked multiplier and bounded slot matrices, with the exact translated two-frequency estimate. Deriving the complete vertex multipliers and onsite-vacuum differentiation from the continuum Schur determinant, and the integrated opposite-band spectral formula, remain open.",
+      "scope": "Checks the finite Schur determinant relative to both onsite factors, the exact two-band Euclidean operator norm, the pointwise hopping difference, and the full all-scalar word with both products compared at common momentum. Its original four-dimensional absolute norm has a bound independent of every external shift at positive mass and hopping width for arbitrary real hopping. Computes the literal two-mark bubble and the single spatial-contact trace. For each finite Gaussian derivative order, with actual unit polarizations and the original normalized straight-link parameter cube, the marked multiplier is uniformly L¹ and bounded in all affine shifts. The complete specified multiplier products give integrable single-contact and mixed words with the exact translated two-frequency bound. Identifying these words with derivatives of the continuum normalized determinant and deriving the integrated opposite-band spectral formula remain open.",
       "statement_change": "new"
     },
     {
@@ -11144,6 +11150,15 @@
       ]
     },
     {
+      "label": "eq:native-relative-schur-uv",
+      "source_line": 42692,
+      "status": "partial",
+      "scope": "For arbitrary finite sections with invertible onsite matrices, the full two-slot determinant divided by both onsite determinants is exactly the displayed Schur determinant with the actual conjugate hopping. Construction of the infinite-dimensional Hilbert–Schmidt product and Fredholm determinant, and identification of the physical onsite vacuum amplitude, remain open.",
+      "lean": [
+        "UV.SectorPlane.twoBand_finite_relative_schur"
+      ]
+    },
+    {
       "label": "eq:native-relative-word-uv",
       "source_line": 42731,
       "status": "partial",
@@ -11159,20 +11174,23 @@
       "label": "eq:native-relative-bubble-uv",
       "source_line": 42774,
       "status": "verified",
-      "scope": "Checks the exact two fractions including the onsite reference from the actual two-by-two inverse products with arbitrary real frequencies and mixing values. The adjacent frequency-integrated spectral formula is a separate calculation.",
+      "scope": "Checks the exact two fractions including the onsite reference from the actual two-by-two inverse products with arbitrary real frequencies and mixing values. Proves absolute integrability in the original four-momentum at every fixed external transfer for positive mass and Gaussian width. The adjacent frequency-integrated spectral formula is a separate calculation.",
       "lean": [
         "UV.SectorPlane.twoBand_resolvent_inverse",
         "UV.SectorPlane.twoBand_trace_pair",
-        "UV.SectorPlane.twoBand_relative_bubble_trace"
+        "UV.SectorPlane.twoBand_relative_bubble_trace",
+        "UV.SectorPlane.twoBand_relative_bubble_fixed_transfer"
       ]
     },
     {
       "label": "eq:aud-coulomb-sewing-uv",
       "source_line": 42841,
       "status": "verified",
-      "scope": "Proves the exact scaled limit at both ends of the independent carrier-frequency line. For nonzero charge and Gaussian hopping, every positive fixed charged frequency and nonzero spatial transfer gives a nonintegrable Coulomb-frequency section with the original affine shift. Fubini gives divergence of the full absolute integral after multiplication by the literal positive Coulomb weight. This proof uses the sectionwise limit. The manuscript's compact-uniform refinement is separate.",
+      "scope": "Proves the exact scaled limit at both ends of the independent carrier-frequency line, uniformly on each compact set of the remaining frequency and spatial momenta. For nonzero charge and Gaussian hopping, every positive fixed charged frequency and nonzero spatial transfer gives a nonintegrable Coulomb-frequency section with the original affine shift. Fubini gives divergence of the full absolute integral after multiplication by the literal positive Coulomb weight.",
       "lean": [
         "UV.SectorPlane.twoBand_coulomb_scaled_limit",
+        "UV.SectorPlane.twoBand_coulomb_scaled_uniform",
+        "UV.SectorPlane.twoBand_gaussian_coulomb_scaled_uniform",
         "UV.SectorPlane.twoBand_coulomb_frequency_not_integrable",
         "UV.SectorPlane.twoBand_coulomb_section_not_integrable",
         "UV.SectorPlane.twoBand_coulomb_routing_not_integrable"

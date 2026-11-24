@@ -1078,3 +1078,5 @@ import UV.ContinueTwoBandDensityTrace
 import UV.ContinueTwoBandRelativeWord
 import UV.ContinueTwoBandResolvent
 import UV.ContinueTwoBandSpatialWord
+import UV.ContinueTwoBandGaussianMarks
+import UV.ContinueTwoBandRelativeSchur

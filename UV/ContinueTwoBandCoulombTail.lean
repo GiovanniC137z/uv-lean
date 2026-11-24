@@ -10,6 +10,33 @@ open scoped Topology
 
 namespace UV.SectorPlane
 
+theorem twoBand_relative_bubble_fixed_transfer {m σ : ℝ} (hm : 0 < m) (hσ : 0 < σ)
+    (g ν : ℝ) (k : Spatial) :
+    Integrable (fun p : ℝ × Spatial => twoBandRelativeBubble m
+      (twoBandSpatialHop g σ p.2) (twoBandSpatialHop g σ (p.2+k)) p.1 (p.1+ν)) := by
+  let b := fun j : ℕ => if j = 0 then 0 else ν
+  let c := fun j : ℕ => if j = 0 then 0 else k
+  have hI := (twoBand_relative_word_integrable hm hσ g 2 b c).1
+  apply (Complex.reCLM.integrable_comp hI).congr
+  refine ae_of_all _ fun p => ?_
+  change (twoBandRelativeWord m g σ 2 b c p).re = _
+  simp only [twoBandRelativeWord, twoBandOrderedProduct, Matrix.one_mul, b, c, if_true, Nat.one_ne_zero,
+    if_false, add_zero]
+  rw [twoBand_relative_bubble_trace, Complex.ofReal_re]
+
+theorem twoBand_gaussian_coulomb_scaled_uniform {m : ℝ} (hm : 0 < m) (g σ : ℝ)
+    {K : Set (ℝ × (Spatial × Spatial))} (hK : IsCompact K) {ε : ℝ} (hε : 0 < ε) :
+    ∃ R : ℝ, 0 < R ∧ ∀ ξ, R < |ξ| → ∀ p ∈ K,
+      |ξ * twoBandRelativeBubble m (twoBandSpatialHop g σ (p.2.1+p.2.2))
+          (twoBandSpatialHop g σ p.2.1) ξ p.1 -
+        2*p.1*(twoBandSpatialHop g σ p.2.1)^2 /
+          ((p.1^2+m^2)*(p.1^2+m^2+(twoBandSpatialHop g σ p.2.1)^2))| < ε := by
+  let f := fun p : ℝ × (Spatial × Spatial) =>
+    (twoBandSpatialHop g σ (p.2.1+p.2.2), twoBandSpatialHop g σ p.2.1, p.1)
+  have hf : Continuous f := by unfold f; fun_prop
+  obtain ⟨R,hR,H⟩ := twoBand_coulomb_scaled_uniform hm (hK.image hf) hε
+  exact ⟨R,hR,fun ξ hξ p hp => H ξ hξ (f p) (mem_image_of_mem f hp)⟩
+
 theorem twoBand_coulomb_frequency_not_integrable {m w η : ℝ}
     (hm : 0 < m) (hw : w ≠ 0) (hη : 0 < η) (v : ℝ) :
     ¬ Integrable (fun ξ : ℝ => twoBandRelativeBubble m v w ξ η) := by
