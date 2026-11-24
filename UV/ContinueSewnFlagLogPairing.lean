@@ -20,7 +20,7 @@ def marginalCharacteristic {ι : Type*} [Fintype ι] (μ : Measure (ι → Scala
     (q : ι → ScalarMomentum) : ℝ :=
   (∫ d, marginalPhase q d ∂μ).re
 
-private theorem marginalPhase_measurable {ι : Type*} [Fintype ι] :
+theorem marginalPhase_measurable {ι : Type*} [Fintype ι] :
     Measurable (fun q : (ι → ScalarMomentum) × (ι → ScalarMomentum) => marginalPhase q.1 q.2) := by
   let f := fun (i : ι) (q : (ι → ScalarMomentum) × (ι → ScalarMomentum)) =>
     stableFourierPhase (q.2 i) (q.1 i)

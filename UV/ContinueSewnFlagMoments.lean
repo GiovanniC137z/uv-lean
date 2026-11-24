@@ -112,4 +112,21 @@ theorem joint_displacement_ratios {ι D : Type*} [Fintype ι] [MeasurableSpace D
   · rw [lintegral_const_mul _ hmeas]
     exact ENNReal.mul_lt_top hK.lt_top hJoint
 
+/-- Finitely many marginal moments of degree equal to the number of
+faces imply the joint product moment under any correlations. -/
+theorem joint_cost_finite_of_marginals {ι D : Type*} [Fintype ι] [Nonempty ι] [MeasurableSpace D]
+    (μ : Measure D) (cost : ι → D → ℝ≥0∞) (hc : ∀ i, Measurable (cost i))
+    (hm : ∀ i, (∫⁻ d, cost i d ^ Fintype.card ι ∂μ) < ⊤) :
+    (∫⁻ d, ∏ i, cost i d ∂μ) < ⊤ := by
+  have h (d : D) : (∏ i, cost i d) ≤ ∑ i, cost i d ^ Fintype.card ι := by
+    let s := (Finset.univ : Finset ι).sup (fun i => cost i d)
+    obtain ⟨j,hj,he⟩ := Finset.exists_mem_eq_sup Finset.univ Finset.univ_nonempty (fun i => cost i d)
+    calc
+      _ ≤ ∏ _i : ι, s := Finset.prod_le_prod' (fun i hi => Finset.le_sup (f := fun i => cost i d) hi)
+      _ = cost j d ^ Fintype.card ι := by rw [Finset.prod_const,Finset.card_univ,show s = cost j d from he]
+      _ ≤ _ := Finset.single_le_sum (fun i _ => zero_le (cost i d ^ Fintype.card ι)) hj
+  apply (lintegral_mono h).trans_lt
+  rw [lintegral_finset_sum Finset.univ (fun i _ => (hc i).pow_const _)]
+  exact ENNReal.sum_lt_top.mpr (fun i _ => hm i)
+
 end UV.SewnFlags
