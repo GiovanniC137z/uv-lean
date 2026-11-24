@@ -23,6 +23,36 @@ theorem ratioCostConstant_pos (a : ℝ) {c : ℝ} (hc : 0 < c) :
   · have hn : 0 < -a := neg_pos.mpr (lt_of_le_of_ne (le_of_not_gt ha) hzero)
     exact mul_pos (rpow_pos_of_pos hc _) (Gamma_pos_of_pos hn)
 
+/-- Enlarging a common proper-time cap costs at most a power of that
+cap, even at the logarithmic face. -/
+theorem ratioCostConstant_div_le (a : ℝ) {c T : ℝ} (hc : 0 < c) (hT : 1 ≤ T) :
+    ratioCostConstant a (c/T) ≤ ratioCostConstant a c * T^max 1 (-a) := by
+  have ht : 0 < T := zero_lt_one.trans_le hT
+  by_cases ha : 0 < a
+  · simp only [ratioCostConstant,if_pos ha]
+    exact le_mul_of_one_le_right (by positivity) (one_le_rpow hT ((zero_le_one).trans (le_max_left _ _)))
+  by_cases hz : a = 0
+  · subst a
+    simp only [ratioCostConstant,lt_irrefl,if_false,if_true,neg_zero,max_eq_left zero_le_one,rpow_one]
+    have he : log (1/(c/T)) = log T+log (1/c) := by
+      rw [one_div,inv_div,log_div ht.ne' hc.ne',one_div,log_inv]
+      ring
+    rw [he]
+    let B := max 0 (log (1/c))
+    have hB : 0 ≤ B := le_max_left _ _
+    have hmax : max 0 (log T + log (1/c)) ≤ T-1+B :=
+      max_le (by linarith) (add_le_add (log_le_sub_one_of_pos ht) (le_max_right _ _))
+    change 2+_ ≤ (2+B)*T
+    nlinarith [mul_nonneg (sub_nonneg.mpr hT) hB]
+  have han : a < 0 := lt_of_le_of_ne (le_of_not_gt ha) hz
+  rw [ratioCostConstant,if_neg ha,if_neg hz,ratioCostConstant,if_neg ha,if_neg hz,
+    div_rpow hc.le ht.le,div_eq_mul_inv,← rpow_neg ht.le]
+  calc
+    _ = (c^a * Gamma (-a)) * T^(-a) := by ring
+    _ ≤ _ := mul_le_mul_of_nonneg_left
+      (rpow_le_rpow_of_exponent_le hT (le_max_right _ _))
+      (mul_nonneg (rpow_nonneg hc.le _) (Gamma_pos_of_pos (neg_pos.mpr han)).le)
+
 theorem measurable_displacementCost (a : ℝ) : Measurable (displacementCost a) := by
   unfold displacementCost
   split_ifs with ha ha'

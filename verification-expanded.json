@@ -2653,7 +2653,7 @@
     "scope": "Proves the exact all-order bound for the full absolute angular sum of the Green word with genuine L² circle profiles, countably many routes and essential radial bounds. The sharp Hilbert–Schmidt constant follows from Parseval and the integer weight sum. Both the charged and neutral Green factors have the source normalization after the weighted radial change of variables. With the stated positive duration kernels and their exact Green integrals, Tonelli makes every independent-duration cycle equal to that Green word. The one-insertion diagonal vanishes by zero angular mean. The singular Friedrichs heat kernel must still be identified with these duration integrals."
   },
   "prop:nativefull-sewn-flags-uv": {
-    "status": "partial",
+    "status": "verified",
     "lean": [
       "UV.SewnFlags.ratioHeat_at_zero_displacement",
       "UV.SewnFlags.ratioHeat_negative",
@@ -2666,9 +2666,16 @@
       "UV.SewnFlags.ordered_routed_inverse_weight",
       "UV.SewnFlags.reverse_greedy_routed_minor",
       "UV.SewnFlags.short_routed_determinant_bound",
-      "UV.SewnFlags.short_routed_flag_cost_finite"
+      "UV.SewnFlags.short_routed_flag_cost_finite",
+      "UV.SewnFlags.massive_ordered_flag_cost_finite",
+      "UV.SewnFlags.reindexRouting_prefix_cost",
+      "UV.SewnFlags.massive_all_flag_cost_finite",
+      "UV.SewnFlags.routed_affine_wave_bound",
+      "UV.SewnFlags.routed_schwinger_identity",
+      "UV.SewnFlags.routed_bare_momentum_finite",
+      "UV.SewnFlags.routed_bare_momentum_integrable"
     ],
-    "scope": "Lean proves finiteness of the actual determinant-weighted routed Gaussian Schwinger integral on each positive ordered short-time chamber under the joint projected moments, allowing fully correlated displacements. Reverse greedy selection gives one nonzero minor and the exact prefix dimensions, and the inverse Gram bound acts in all four original coordinates. The weighted triangular substitution and the Gamma and logarithmic estimates retain the infinite endpoint cost when the projection is lost. For finitely many equality faces, marginal moments of degree equal to the number of faces suffice for the joint moment. The mixed large- and small-time sector gluing and the general shifted Gaussian Fourier identity for the complete signed or complex boundary law remain open."
+    "scope": "Proves the conditional absolute convergence of the original massive Euclidean momentum integral with arbitrary real affine shifts, positive line exponents, spanning routing and every stated joint projected-prefix moment. The finite signed or complex displacement law is represented by a measurable density of modulus at most one almost everywhere over its finite positive dominating measure, which can be the variation measure. The momentum majorant uses the real part of that complete characteristic and assumes it is nonnegative. Lean derives the exact Gamma Schwinger factors, the shifted four-coordinate Fourier Gaussian bound and the finite positive-time integral on all duration orderings, including mixed small and large durations. It uses the original subsets for the face ranks and orthogonal projections. The charged action must still supply the majorant. The massless case requires a separate infrared argument."
   },
   "prop:monomial-charged-winding-uv": {
     "status": "partial",

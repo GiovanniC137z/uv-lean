@@ -263,23 +263,44 @@ private def coherentReadout {ι : Type*} [Fintype ι] (ell : ℝ)
     (u : ι → SectorPlane.UnitVector ScalarMomentum) (q : ι → ScalarMomentum) :=
   ell * ∑ i, ⟪(u i).val,q i⟫
 
+def coherentProfileDisplacement {ι : Type*} (g : ℝ → ℝ)
+    (u : ι → SectorPlane.UnitVector ScalarMomentum) (p : ℝ × ℝ) (i : ι) : ScalarMomentum :=
+  (g p.1 - g p.2) • (u i).val
+
+theorem coherentProfileDisplacement_measurable {ι : Type*} {g : ℝ → ℝ} (hg : Measurable g)
+    (u : ι → SectorPlane.UnitVector ScalarMomentum) : Measurable (coherentProfileDisplacement g u) := by
+  apply measurable_pi_iff.mpr
+  intro i
+  change Measurable (fun p : ℝ × ℝ => (g p.1 - g p.2) • (u i).val)
+  exact ((hg.comp measurable_fst).sub (hg.comp measurable_snd)).smul measurable_const
+
+def coherentProfileLaw {ι : Type*} (ρ : Measure ℝ) (g : ℝ → ℝ)
+    (u : ι → SectorPlane.UnitVector ScalarMomentum) : Measure (ι → ScalarMomentum) :=
+  Measure.map (coherentProfileDisplacement g u) (ρ.prod ρ)
+
+instance {ι : Type*} (ρ : Measure ℝ) [IsFiniteMeasure ρ] (g : ℝ → ℝ)
+    (u : ι → SectorPlane.UnitVector ScalarMomentum) : IsFiniteMeasure (coherentProfileLaw ρ g u) := by
+  unfold coherentProfileLaw
+  infer_instance
+
 /-- The characteristic of the joint pushforward is the squared
 coherent amplitude, with the same single depth at every readout. -/
-theorem coherent_depth_characteristic {ι : Type*} [Fintype ι] (ell : ℝ)
-    (u : ι → SectorPlane.UnitVector ScalarMomentum) (q : ι → ScalarMomentum) :
-    marginalCharacteristic (coherentDepthLaw ell u) q =
-      Complex.normSq (∫ r in Icc (0:ℝ) 1, Complex.exp (Complex.I*(r*coherentReadout ell u q:ℝ))) := by
-  let B := coherentReadout ell u q
-  let F := fun r : ℝ => Complex.exp (Complex.I*(r*B:ℝ))
+theorem coherent_profile_characteristic {ι : Type*} [Fintype ι] (ρ : Measure ℝ) [IsFiniteMeasure ρ]
+    (g : ℝ → ℝ) (hg : Measurable g) (u : ι → SectorPlane.UnitVector ScalarMomentum)
+    (q : ι → ScalarMomentum) :
+    marginalCharacteristic (coherentProfileLaw ρ g u) q = Complex.normSq
+      (∫ r, Complex.exp (Complex.I*(g r * (∑ i, ⟪(u i).val,q i⟫):ℝ)) ∂ρ) := by
+  let B := ∑ i, ⟪(u i).val,q i⟫
+  let F := fun r : ℝ => Complex.exp (Complex.I*(g r * B:ℝ))
   have hΦ : Measurable (marginalPhase q) := by
     let f := fun d : ι → ScalarMomentum => (q,d)
     have hf : Measurable f := measurable_prodMk_left
     change Measurable ((fun p : (ι → ScalarMomentum) × (ι → ScalarMomentum) => marginalPhase p.1 p.2) ∘ f)
     exact marginalPhase_measurable.comp hf
-  unfold marginalCharacteristic coherentDepthLaw
-  rw [integral_map (coherentDisplacement_measurable ell u).aemeasurable hΦ.aestronglyMeasurable]
-  have he (p : ℝ × ℝ) : marginalPhase q (coherentDisplacement ell u p) = F p.1 * conj (F p.2) := by
-    unfold marginalPhase coherentDisplacement stableFourierPhase F B coherentReadout
+  unfold marginalCharacteristic coherentProfileLaw
+  rw [integral_map (coherentProfileDisplacement_measurable hg u).aemeasurable hΦ.aestronglyMeasurable]
+  have he (p : ℝ × ℝ) : marginalPhase q (coherentProfileDisplacement g u p) = F p.1 * conj (F p.2) := by
+    unfold marginalPhase coherentProfileDisplacement stableFourierPhase F B
     rw [← Complex.exp_sum,← Complex.exp_conj,← Complex.exp_add]
     congr 1
     simp_rw [real_inner_smul_left]
@@ -289,6 +310,23 @@ theorem coherent_depth_characteristic {ι : Type*} [Fintype ι] (ell : ℝ)
     ring
   simp_rw [he]
   rw [integral_prod_mul F (fun r => conj (F r)),integral_conj,Complex.mul_conj,Complex.ofReal_re]
+
+theorem coherent_depth_characteristic {ι : Type*} [Fintype ι] (ell : ℝ)
+    (u : ι → SectorPlane.UnitVector ScalarMomentum) (q : ι → ScalarMomentum) :
+    marginalCharacteristic (coherentDepthLaw ell u) q =
+      Complex.normSq (∫ r in Icc (0:ℝ) 1, Complex.exp (Complex.I*(r*coherentReadout ell u q:ℝ))) := by
+  have he : coherentDepthLaw ell u = coherentProfileLaw coherentDepthVolume (fun r => ell*r) u := by
+    unfold coherentDepthLaw coherentProfileLaw
+    congr 1
+    funext p i
+    change (ell*(p.1-p.2)) • (u i).val = (ell*p.1-ell*p.2) • (u i).val
+    rw [mul_sub]
+  have hg : Measurable (fun r : ℝ => ell*r) := measurable_const.mul measurable_id
+  rw [he,coherent_profile_characteristic _ _ hg u q]
+  have h (r : ℝ) : (ell*r)*(∑ i, ⟪(u i).val,q i⟫) = r*coherentReadout ell u q := by
+    unfold coherentReadout
+    ring
+  simp_rw [h]
   rfl
 
 /-- The genuine coherent unit-square law supplies a finite bare

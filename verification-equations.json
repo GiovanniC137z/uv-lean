@@ -1221,7 +1221,7 @@
   },
   "eq:nativefull-log-energy-uv": {
     "status": "verified",
-    "scope": "For a finite positive displacement measure with nonnegative characteristic and positive comparison mass, the joint Fourier-pairing equality holds at any finite number of marginal loops, including infinity. It keeps the correlations and gives the exact normalized Bessel kernel, a uniform logarithmic remainder at small nonzero separation, and infinity at coincidence. With a measurable complex density of modulus at most one over a finite positive dominating measure, the complex equality holds if the characteristic is real nonnegative and the joint envelope is integrable. The coherent unit-readout pushforward has exactly the squared amplitude and finite bare energy at every finite order. The exactly collapsed pairing has infinite bare energy.",
+    "scope": "For a finite positive displacement measure with nonnegative characteristic and positive comparison mass, the joint Fourier-pairing equality holds at any finite number of marginal loops, including infinity. It keeps the correlations and gives the exact normalized Bessel kernel, a uniform logarithmic remainder at small nonzero separation, and infinity at coincidence. With a measurable complex density of modulus at most one over a finite positive dominating measure, the complex equality holds if the characteristic is real nonnegative and the joint envelope is integrable. The coherent linear unit-readout pushforward has exactly the squared amplitude and finite bare energy at every finite order. Exact collapse has infinite bare energy. The smooth preparation exp(−1/r²) along a unit vector yields a non-atomic displacement law, an infinite logarithmic moment and divergent original one-loop energy at every positive comparison mass.",
     "lean": [
       "UV.SewnFlags.joint_marginal_log_energy",
       "UV.SewnFlags.complex_weighted_joint_marginal_log_energy",
@@ -1231,9 +1231,14 @@
       "UV.SewnFlags.logKernel_zero",
       "UV.SewnFlags.logKernel_log_remainder",
       "UV.SewnFlags.logKernel_antitone",
+      "UV.SewnFlags.coherent_profile_characteristic",
       "UV.SewnFlags.coherent_depth_characteristic",
       "UV.SewnFlags.coherent_depth_marginal_energy_finite",
-      "UV.SewnFlags.collapsed_marginal_pairing_diverges"
+      "UV.SewnFlags.collapsed_marginal_pairing_diverges",
+      "UV.SewnFlags.flatDepth_smooth",
+      "UV.SewnFlags.flat_depth_no_atom",
+      "UV.SewnFlags.flat_depth_log_diverges",
+      "UV.SewnFlags.flat_depth_bare_energy_diverges"
     ]
   }
 }

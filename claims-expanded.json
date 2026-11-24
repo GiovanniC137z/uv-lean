@@ -3684,7 +3684,7 @@
       "title_tex": "A geometric moment test on each nested set of hard lines",
       "source_line": 42003,
       "statement_tex": "The bare absolute momentum integral is finite if for every ordering\nof the lines, with successive nonempty prefixes $S_i$, the native\ndisplacement measure satisfies\n\\[\n \\int \\prod_i H_{\\delta_{S_i}}(x_{S_i}(d))\\,d|\\pi|(d)<\\infty .\n\\]\nThe moments are joint moments of the complete boundary pairing.",
-      "status": "partial",
+      "status": "verified",
       "lean": [
         "UV.SewnFlags.ratioHeat_at_zero_displacement",
         "UV.SewnFlags.ratioHeat_negative",
@@ -3697,10 +3697,17 @@
         "UV.SewnFlags.ordered_routed_inverse_weight",
         "UV.SewnFlags.reverse_greedy_routed_minor",
         "UV.SewnFlags.short_routed_determinant_bound",
-        "UV.SewnFlags.short_routed_flag_cost_finite"
+        "UV.SewnFlags.short_routed_flag_cost_finite",
+        "UV.SewnFlags.massive_ordered_flag_cost_finite",
+        "UV.SewnFlags.reindexRouting_prefix_cost",
+        "UV.SewnFlags.massive_all_flag_cost_finite",
+        "UV.SewnFlags.routed_affine_wave_bound",
+        "UV.SewnFlags.routed_schwinger_identity",
+        "UV.SewnFlags.routed_bare_momentum_finite",
+        "UV.SewnFlags.routed_bare_momentum_integrable"
       ],
       "lean_projects": {},
-      "scope": "Lean proves finiteness of the actual determinant-weighted routed Gaussian Schwinger integral on each positive ordered short-time chamber under the joint projected moments, allowing fully correlated displacements. Reverse greedy selection gives one nonzero minor and the exact prefix dimensions, and the inverse Gram bound acts in all four original coordinates. The weighted triangular substitution and the Gamma and logarithmic estimates retain the infinite endpoint cost when the projection is lost. For finitely many equality faces, marginal moments of degree equal to the number of faces suffice for the joint moment. The mixed large- and small-time sector gluing and the general shifted Gaussian Fourier identity for the complete signed or complex boundary law remain open.",
+      "scope": "Proves the conditional absolute convergence of the original massive Euclidean momentum integral with arbitrary real affine shifts, positive line exponents, spanning routing and every stated joint projected-prefix moment. The finite signed or complex displacement law is represented by a measurable density of modulus at most one almost everywhere over its finite positive dominating measure, which can be the variation measure. The momentum majorant uses the real part of that complete characteristic and assumes it is nonnegative. Lean derives the exact Gamma Schwinger factors, the shifted four-coordinate Fourier Gaussian bound and the finite positive-time integral on all duration orderings, including mixed small and large durations. It uses the original subsets for the face ranks and orthogonal projections. The charged action must still supply the majorant. The massless case requires a separate infrared argument.",
       "statement_change": "new"
     },
     {
@@ -11043,7 +11050,7 @@
       "label": "eq:nativefull-log-energy-uv",
       "source_line": 41920,
       "status": "verified",
-      "scope": "For a finite positive displacement measure with nonnegative characteristic and positive comparison mass, the joint Fourier-pairing equality holds at any finite number of marginal loops, including infinity. It keeps the correlations and gives the exact normalized Bessel kernel, a uniform logarithmic remainder at small nonzero separation, and infinity at coincidence. With a measurable complex density of modulus at most one over a finite positive dominating measure, the complex equality holds if the characteristic is real nonnegative and the joint envelope is integrable. The coherent unit-readout pushforward has exactly the squared amplitude and finite bare energy at every finite order. The exactly collapsed pairing has infinite bare energy.",
+      "scope": "For a finite positive displacement measure with nonnegative characteristic and positive comparison mass, the joint Fourier-pairing equality holds at any finite number of marginal loops, including infinity. It keeps the correlations and gives the exact normalized Bessel kernel, a uniform logarithmic remainder at small nonzero separation, and infinity at coincidence. With a measurable complex density of modulus at most one over a finite positive dominating measure, the complex equality holds if the characteristic is real nonnegative and the joint envelope is integrable. The coherent linear unit-readout pushforward has exactly the squared amplitude and finite bare energy at every finite order. Exact collapse has infinite bare energy. The smooth preparation exp(−1/r²) along a unit vector yields a non-atomic displacement law, an infinite logarithmic moment and divergent original one-loop energy at every positive comparison mass.",
       "lean": [
         "UV.SewnFlags.joint_marginal_log_energy",
         "UV.SewnFlags.complex_weighted_joint_marginal_log_energy",
@@ -11053,9 +11060,14 @@
         "UV.SewnFlags.logKernel_zero",
         "UV.SewnFlags.logKernel_log_remainder",
         "UV.SewnFlags.logKernel_antitone",
+        "UV.SewnFlags.coherent_profile_characteristic",
         "UV.SewnFlags.coherent_depth_characteristic",
         "UV.SewnFlags.coherent_depth_marginal_energy_finite",
-        "UV.SewnFlags.collapsed_marginal_pairing_diverges"
+        "UV.SewnFlags.collapsed_marginal_pairing_diverges",
+        "UV.SewnFlags.flatDepth_smooth",
+        "UV.SewnFlags.flat_depth_no_atom",
+        "UV.SewnFlags.flat_depth_log_diverges",
+        "UV.SewnFlags.flat_depth_bare_energy_diverges"
       ]
     },
     {

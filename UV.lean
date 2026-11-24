@@ -1052,3 +1052,9 @@ import UV.ContinueSewnFlagShortCost
 import UV.ContinueSewnFlagLogBounds
 import UV.ContinueSewnFlagLogMoments
 import UV.ContinuePairBoostRawResponse
+import UV.ContinueSewnFlagFlatDepth
+import UV.ContinueSewnFlagFourier
+import UV.ContinueSewnFlagMomentum
+import UV.ContinueSewnFlagSchwinger
+import UV.ContinueSewnFlagSectors
+import UV.ContinueSewnFlagTime
