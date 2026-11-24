@@ -1088,3 +1088,13 @@ import UV.ContinueTwoBandCoulombSpectralEnergy
 import UV.ContinueTwoBandFourier
 import UV.ContinueTwoBandFourierLink
 import UV.ContinueTwoBandFourierVacuum
+import UV.ContinueSewnAnalyticSlice
+import UV.ContinueSewnAnalyticDirection
+import UV.ContinueSewnAnalyticVolume
+import UV.ContinueSewnAnalyticMoments
+import UV.ContinueSewnAnalyticHolder
+import UV.ContinueSewnAnalyticRouting
+import UV.ContinueTwoBandDeterminantSeries
+import UV.ContinueTwoBandSpectralDifferences
+import UV.ContinueTwoBandSpectralExpansion
+import UV.ContinueTwoBandSpectralMarkedBounds

@@ -2673,9 +2673,15 @@
       "UV.SewnFlags.routed_affine_wave_bound",
       "UV.SewnFlags.routed_schwinger_identity",
       "UV.SewnFlags.routed_bare_momentum_finite",
-      "UV.SewnFlags.routed_bare_momentum_integrable"
+      "UV.SewnFlags.routed_bare_momentum_integrable",
+      "UV.SewnFlags.analytic_unit_direction_at_zero",
+      "UV.SewnFlags.analytic_local_power_volume",
+      "UV.SewnFlags.analytic_compact_power_volume",
+      "UV.SewnFlags.weighted_sublevel_holder",
+      "UV.SewnFlags.analytic_chart_weighted_joint_marginals",
+      "UV.SewnFlags.analytic_paired_charts_routed_graph"
     ],
-    "scope": "Proves the conditional absolute convergence of the original massive Euclidean momentum integral with arbitrary real affine shifts, positive line exponents, spanning routing and every stated joint projected-prefix moment. The finite signed or complex displacement law is represented by a measurable density of modulus at most one almost everywhere over its finite positive dominating measure, which can be the variation measure. The momentum majorant uses the real part of that complete characteristic and assumes it is nonnegative. Lean derives the exact Gamma Schwinger factors, the shifted four-coordinate Fourier Gaussian bound and the finite positive-time integral on all duration orderings, including mixed small and large durations. It uses the original subsets for the face ranks and orthogonal projections. The charged action must still supply the majorant. The massless case requires a separate infrared argument."
+    "scope": "Proves the conditional absolute convergence of the original massive Euclidean momentum integral with arbitrary real affine shifts, positive line exponents, spanning routing and every stated joint projected-prefix moment. The finite signed or complex displacement law is represented by a measurable density of modulus at most one almost everywhere over its finite positive dominating measure, which can be the variation measure. The momentum majorant uses the real part of that complete characteristic and assumes it is nonnegative. Lean derives the exact Gamma Schwinger factors, the shifted four-coordinate Fourier Gaussian bound and the finite positive-time integral on all duration orderings, including mixed small and large durations. It uses the original subsets for the face ranks and orthogonal projections. The charged action must still supply the majorant. The massless case requires a separate infrared argument. On finitely many compact chart regions with analytic displacements on connected open neighborhoods and paired densities in Lᵖ (p>1), one nonidentically zero projected component per marginal face implies all joint logarithmic moments. When the residual powers are nonnegative, these chart hypotheses imply absolute integrability of the massive routed graph. The sublevel estimate allows stationary zeros and arbitrarily correlated faces."
   },
   "prop:native-relative-density-uv": {
     "status": "partial",
@@ -2717,5 +2723,19 @@
       "UV.ExtendNativeHolonomy.charged_magnetic_proper_diverges"
     ],
     "scope": "Proves the exact normal circle Poisson expansion including orientation phase, absolute summation and all holonomy derivatives of the flat relative determinant, and the joint absolute winding and proper-time bound for any finite polynomial cost in the duration factors and winding. The full normal heat trace at every real holonomy retains a uniform positive multiple of the zero-winding short-time term. This implies divergence of the literal stated magnetic proper-time coefficient at every holonomy. The derivation of the complete charged orbital, spin and contact Duhamel coefficients at arbitrary external order and their full trace identification remain open."
+  },
+  "prop:physical-joint-hopping-uv": {
+    "status": "partial",
+    "lean": [
+      "UV.SectorPlane.hopping_difference_tendsto",
+      "UV.SectorPlane.hopping_single_difference",
+      "UV.SectorPlane.hopping_coulomb_pair",
+      "UV.SectorPlane.hopping_word_difference",
+      "UV.SectorPlane.hopping_expansion_exact",
+      "UV.SectorPlane.hopping_marked_interval_sup",
+      "UV.SectorPlane.hopping_marked_interval_pair",
+      "UV.SectorPlane.twoBand_fourier_link_eq_gaussian_wilson_mark"
+    ],
+    "scope": "For either signed onsite mass, the exact signed divided difference inserts a mark at every allowed position in a resolvent word. Opposite frequencies on the same interval give the printed centered second difference, and a zero frequency uses the derivative. Arbitrary lists of marks on two distinct carrier intervals admit an absolute frequency integral uniform in all translations, with a factor (1+|ν|)⁻¹ for each end. The spatial straight-link Gaussian identity holds at all mark orders. The complete joint graph in the original charged and photon frequencies, including closure Fourier inversion, the soft subtraction routing, and finite-volume version, remains open."
   }
 }

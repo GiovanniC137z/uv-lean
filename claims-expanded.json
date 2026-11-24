@@ -3704,10 +3704,16 @@
         "UV.SewnFlags.routed_affine_wave_bound",
         "UV.SewnFlags.routed_schwinger_identity",
         "UV.SewnFlags.routed_bare_momentum_finite",
-        "UV.SewnFlags.routed_bare_momentum_integrable"
+        "UV.SewnFlags.routed_bare_momentum_integrable",
+        "UV.SewnFlags.analytic_unit_direction_at_zero",
+        "UV.SewnFlags.analytic_local_power_volume",
+        "UV.SewnFlags.analytic_compact_power_volume",
+        "UV.SewnFlags.weighted_sublevel_holder",
+        "UV.SewnFlags.analytic_chart_weighted_joint_marginals",
+        "UV.SewnFlags.analytic_paired_charts_routed_graph"
       ],
       "lean_projects": {},
-      "scope": "Proves the conditional absolute convergence of the original massive Euclidean momentum integral with arbitrary real affine shifts, positive line exponents, spanning routing and every stated joint projected-prefix moment. The finite signed or complex displacement law is represented by a measurable density of modulus at most one almost everywhere over its finite positive dominating measure, which can be the variation measure. The momentum majorant uses the real part of that complete characteristic and assumes it is nonnegative. Lean derives the exact Gamma Schwinger factors, the shifted four-coordinate Fourier Gaussian bound and the finite positive-time integral on all duration orderings, including mixed small and large durations. It uses the original subsets for the face ranks and orthogonal projections. The charged action must still supply the majorant. The massless case requires a separate infrared argument.",
+      "scope": "Proves the conditional absolute convergence of the original massive Euclidean momentum integral with arbitrary real affine shifts, positive line exponents, spanning routing and every stated joint projected-prefix moment. The finite signed or complex displacement law is represented by a measurable density of modulus at most one almost everywhere over its finite positive dominating measure, which can be the variation measure. The momentum majorant uses the real part of that complete characteristic and assumes it is nonnegative. Lean derives the exact Gamma Schwinger factors, the shifted four-coordinate Fourier Gaussian bound and the finite positive-time integral on all duration orderings, including mixed small and large durations. It uses the original subsets for the face ranks and orthogonal projections. The charged action must still supply the majorant. The massless case requires a separate infrared argument. On finitely many compact chart regions with analytic displacements on connected open neighborhoods and paired densities in Lᵖ (p>1), one nonidentically zero projected component per marginal face implies all joint logarithmic moments. When the residual powers are nonnegative, these chart hypotheses imply absolute integrability of the massive routed graph. The sublevel estimate allows stationary zeros and arbitrarily correlated faces.",
       "statement_change": "new"
     },
     {
@@ -3817,10 +3823,19 @@
       "title_tex": "Joint four-momentum estimate for the complete hopping vertices",
       "source_line": 42913,
       "statement_tex": "Suppose $2|g|<m$. At each finite electric order, each connected graph\nof complete hopping loops and transverse or Coulomb photons, with no\ninternal photon bridge, has an absolutely integrable momentum\nrepresentation on the spatial continuum. It contains one independent\ncharged four-momentum per loop and every independent photon\nfour-momentum. The estimate is summable in the number of hops and\nholds per unit spacetime volume after the overall delta is removed.\nThe same ultraviolet conclusion holds on a spatial torus with the\nstated Gauss zero-mode convention. No charged frequency must be\nintegrated first.",
-      "status": "pending",
-      "lean": [],
+      "status": "partial",
+      "lean": [
+        "UV.SectorPlane.hopping_difference_tendsto",
+        "UV.SectorPlane.hopping_single_difference",
+        "UV.SectorPlane.hopping_coulomb_pair",
+        "UV.SectorPlane.hopping_word_difference",
+        "UV.SectorPlane.hopping_expansion_exact",
+        "UV.SectorPlane.hopping_marked_interval_sup",
+        "UV.SectorPlane.hopping_marked_interval_pair",
+        "UV.SectorPlane.twoBand_fourier_link_eq_gaussian_wilson_mark"
+      ],
       "lean_projects": {},
-      "scope": "Not yet formalized.",
+      "scope": "For either signed onsite mass, the exact signed divided difference inserts a mark at every allowed position in a resolvent word. Opposite frequencies on the same interval give the printed centered second difference, and a zero frequency uses the derivative. Arbitrary lists of marks on two distinct carrier intervals admit an absolute frequency integral uniform in all translations, with a factor (1+|ν|)⁻¹ for each end. The spatial straight-link Gaussian identity holds at all mark orders. The complete joint graph in the original charged and photon frequencies, including closure Fourier inversion, the soft subtraction routing, and finite-volume version, remains open.",
       "statement_change": "new"
     },
     {
@@ -11161,9 +11176,10 @@
       "label": "eq:native-relative-schur-uv",
       "source_line": 42692,
       "status": "partial",
-      "scope": "For arbitrary finite sections with invertible onsite matrices, the full two-slot determinant divided by both onsite determinants is exactly the displayed Schur determinant with the actual conjugate hopping. Construction of the infinite-dimensional Hilbert–Schmidt product and Fredholm determinant, and identification of the physical onsite vacuum amplitude, remain open.",
+      "scope": "For arbitrary finite sections with invertible onsite matrices, the full two-slot determinant divided by both onsite determinants is exactly the displayed Schur determinant with the actual conjugate hopping. Construction of the infinite-dimensional Hilbert–Schmidt product and Fredholm determinant, and identification of the physical onsite vacuum amplitude, remain open. At every finite section with contractive Schur product the complex determinant equals exp(−Σₙ tr(Kⁿ)/n) including nonnormal products.",
       "lean": [
-        "UV.SectorPlane.twoBand_finite_relative_schur"
+        "UV.SectorPlane.twoBand_finite_relative_schur",
+        "UV.SectorPlane.twoBand_contractive_det_series"
       ]
     },
     {

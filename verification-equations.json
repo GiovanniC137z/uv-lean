@@ -1284,9 +1284,10 @@
   },
   "eq:native-relative-schur-uv": {
     "status": "partial",
-    "scope": "For arbitrary finite sections with invertible onsite matrices, the full two-slot determinant divided by both onsite determinants is exactly the displayed Schur determinant with the actual conjugate hopping. Construction of the infinite-dimensional Hilbert–Schmidt product and Fredholm determinant, and identification of the physical onsite vacuum amplitude, remain open.",
+    "scope": "For arbitrary finite sections with invertible onsite matrices, the full two-slot determinant divided by both onsite determinants is exactly the displayed Schur determinant with the actual conjugate hopping. Construction of the infinite-dimensional Hilbert–Schmidt product and Fredholm determinant, and identification of the physical onsite vacuum amplitude, remain open. At every finite section with contractive Schur product the complex determinant equals exp(−Σₙ tr(Kⁿ)/n) including nonnormal products.",
     "lean": [
-      "UV.SectorPlane.twoBand_finite_relative_schur"
+      "UV.SectorPlane.twoBand_finite_relative_schur",
+      "UV.SectorPlane.twoBand_contractive_det_series"
     ]
   },
   "eq:native-relative-word-uv": {
