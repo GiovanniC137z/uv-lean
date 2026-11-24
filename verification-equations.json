@@ -1283,8 +1283,8 @@
     ]
   },
   "eq:native-relative-schur-uv": {
-    "status": "partial",
-    "scope": "For finite sections the full block determinant divided by both onsite determinants equals the Schur determinant. The finite-cutoff normal-ordered scalar charge and onsite energy annihilate the filled reference vacuum and yield exactly unit smeared scalar amplitude at every cutoff. On the continuous finite slab the two time-directed operators include the actual periodic heat Wilson hop and onsite scalar transport. Each operator has square-summable columns in every Hilbert basis. Their Schur product is an actual sum of rank-one operators with summable nuclear costs. For contractive operator-norm product, the general orthogonal finite-section determinants converge to the absolutely convergent exponential trace series. The determinant limit outside the contractive regime and the full source correspondence remain open.",
+    "status": "verified",
+    "scope": "On the finite symmetric vacuum slab and rectangular torus, the two actual time-directed onsite inverse/Wilson hopping blocks are Hilbert–Schmidt. Their eliminated product has a summable rank-one expansion. The ordinary Fredholm determinant is an absolutely convergent sum of principal minors at arbitrary real hopping and charge, with continuous real electromagnetic backgrounds and positive spatial width and periods. Independently exhausting the modes in the two slots gives this same basis-independent limit for both the normalized block determinant and the eliminated determinant. The normal-ordered onsite vacuum amplitude is one, and the relative determinant at zero hopping is exactly one for positive mass. For |g|<m, the same determinant is nonzero and equals the exponential of its absolutely convergent trace logarithm, with every alternating term identified as an integral of the actual signed kernels around a closed position cycle.",
     "lean": [
       "UV.SectorPlane.twoBand_finite_relative_schur",
       "UV.SectorPlane.twoBand_contractive_det_series",
@@ -1292,17 +1292,25 @@
       "UV.SectorPlane.orderedOnsite_cutoff_vacuum",
       "UV.SectorPlane.twoBand_slab_operator_hilbert_schmidt",
       "UV.SectorPlane.twoBand_slab_schur_product_nuclear",
-      "UV.SectorPlane.twoBand_hilbert_schmidt_det_limit"
+      "UV.SectorPlane.twoBand_hilbert_schmidt_det_limit",
+      "UV.SectorPlane.schur_nuclear_minor_summable",
+      "UV.SectorPlane.twoBand_fredholm_independent_sections",
+      "UV.SectorPlane.schur_nuclear_basis_independent",
+      "UV.SectorPlane.twoBand_slab_relative_determinant",
+      "UV.SectorPlane.twoBand_slab_relative_zero",
+      "UV.SectorPlane.twoBand_slab_determinant_position_cycles",
+      "UV.SectorPlane.twoBand_slab_relative_cycle_value"
     ]
   },
   "eq:native-relative-word-uv": {
     "status": "partial",
-    "scope": "The literal mass-gapped ordered trace of the difference at common carrier and spatial momenta has a uniform L¹ bound for any finite number of slots and all affine shifts. The temporal squared envelope integrates to π/m. Identifying the displayed trace with derivatives of the normalized infinite-volume Schur determinant remains open.",
+    "scope": "The literal mass-gapped ordered trace of the difference at common carrier and spatial momenta has a uniform L¹ bound for any finite number of slots and all affine shifts. The temporal squared envelope integrates to π/m. Identifying the displayed trace with derivatives of the normalized infinite-volume Schur determinant remains open. At finite cutoff the full determinant and the onsite determinant perturbed by the very same scalar source give a quotient whose absolutely convergent complex logarithm contains the difference of the two cyclic powers at every positive order.",
     "lean": [
       "UV.SectorPlane.twoBand_resolvent_difference_bound",
       "UV.SectorPlane.twoBand_frequency_integral",
       "UV.SectorPlane.twoBand_relative_word_bound",
-      "UV.SectorPlane.twoBand_relative_word_integrable"
+      "UV.SectorPlane.twoBand_relative_word_integrable",
+      "UV.SectorPlane.twoBand_finite_relative_source_series"
     ]
   },
   "eq:native-relative-bubble-uv": {

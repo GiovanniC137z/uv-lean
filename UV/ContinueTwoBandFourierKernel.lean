@@ -32,16 +32,16 @@ private theorem row_mem (x : X) : MemLp (fun y => conj (K.val x y)) 2 μ :=
     (K.measurable.comp (measurable_const.prodMk measurable_id))).aestronglyMeasurable K.bound
     (ae_of_all _ fun y => by simpa using K.bounded x y)
 
-private def row (x : X) : Lp ℂ 2 μ := (row_mem μ K x).toLp _
+def row (x : X) : Lp ℂ 2 μ := (row_mem μ K x).toLp _
 
-private theorem row_coe (x : X) : ∀ᵐ y ∂μ, row μ K x y = conj (K.val x y) := (row_mem μ K x).coeFn_toLp
+theorem row_coe (x : X) : ∀ᵐ y ∂μ, row μ K x y = conj (K.val x y) := (row_mem μ K x).coeFn_toLp
 
 private theorem row_bound (x : X) : ‖row μ K x‖ ≤ K.bound * ‖one μ‖ := by
   apply Lp.norm_le_mul_norm_of_ae_le_mul
   filter_upwards [row_coe μ K x,one_coe μ] with y hy h1
   simpa [hy,h1] using K.bounded x y
 
-private theorem row_pair (x : X) (f : Lp ℂ 2 μ) :
+theorem row_pair (x : X) (f : Lp ℂ 2 μ) :
     ⟪row μ K x,f⟫ = ∫ y, K.val x y * f y ∂μ := by
   rw [L2.inner_def]
   apply integral_congr_ae
@@ -82,6 +82,9 @@ def operator : Lp ℂ 2 μ →L[ℂ] Lp ℂ 2 μ :=
 theorem operator_coe (f : Lp ℂ 2 μ) :
     ∀ᵐ x ∂μ, operator μ K f x = ∫ y, K.val x y * f y ∂μ :=
   (output_mem μ K f).coeFn_toLp.mono fun x hx => hx.trans (row_pair μ K x f)
+
+theorem operator_pair_ae (f : Lp ℂ 2 μ) :
+    ∀ᵐ x ∂μ, operator μ K f x = ⟪row μ K x,f⟫ := (output_mem μ K f).coeFn_toLp
 
 theorem operator_square_columns {ι : Type*} (b : HilbertBasis ι ℂ (Lp ℂ 2 μ)) :
     Summable (fun i => ‖operator μ K (b i)‖^2) := by

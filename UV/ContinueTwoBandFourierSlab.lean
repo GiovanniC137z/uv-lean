@@ -48,6 +48,34 @@ private theorem orientation_le (upper : Bool) (t s : ℝ) : |bandOrientation upp
   unfold bandOrientation
   split_ifs <;> norm_num
 
+/-- Signed carrier propagation and temporal Wilson transport at the onsite position. -/
+def twoBandSlabTemporalFactor (upper : Bool) (φ : TwoBandPoint → ℝ) (m q : ℝ) (x y : TwoBandPoint) : ℂ :=
+  (bandOrientation upper x.1 y.1 * Real.exp (-m*|x.1-y.1|) : ℝ) *
+    twoBandOnsiteTransport φ q x.1 y.1 x.2
+
+theorem twoBand_slab_temporal_factor_measurable (upper : Bool) {φ : TwoBandPoint → ℝ} (hφ : Continuous φ)
+    (m q : ℝ) : Measurable (fun p : TwoBandPoint × TwoBandPoint =>
+      twoBandSlabTemporalFactor upper φ m q p.1 p.2) := by
+  have h0 := onsite_primitive_continuous hφ
+  have hphase : Continuous (fun p : TwoBandPoint × TwoBandPoint =>
+      twoBandOnsiteTransport φ q p.1.1 p.2.1 p.1.2) := by
+    have h1 := h0.comp (show Continuous (fun p : TwoBandPoint × TwoBandPoint => (p.2.1,p.1.2)) by fun_prop)
+    have h2 := h0.comp (continuous_fst : Continuous (Prod.fst : TwoBandPoint × TwoBandPoint → TwoBandPoint))
+    unfold twoBandOnsiteTransport
+    exact Complex.continuous_exp.comp (continuous_const.mul <| Complex.continuous_ofReal.comp (h2.sub h1))
+  have ho := (orientation_measurable upper).comp
+    (show Measurable (fun p : TwoBandPoint × TwoBandPoint => (p.1.1,p.2.1)) by fun_prop)
+  have he : Measurable (fun p : TwoBandPoint × TwoBandPoint => Real.exp (-m*|p.1.1-p.2.1|)) := by fun_prop
+  exact (Complex.continuous_ofReal.measurable.comp (ho.mul he)).mul hphase.measurable
+
+theorem twoBand_slab_temporal_factor_norm (upper : Bool) (φ : TwoBandPoint → ℝ)
+    {m : ℝ} (hm : 0 ≤ m) (q : ℝ) (x y : TwoBandPoint) :
+    ‖twoBandSlabTemporalFactor upper φ m q x y‖ ≤ 1 := by
+  unfold twoBandSlabTemporalFactor
+  rw [norm_mul,twoBand_onsite_transport_unit,mul_one,Complex.norm_real,Real.norm_eq_abs,abs_mul,abs_of_pos (Real.exp_pos _)]
+  exact mul_le_one₀ (orientation_le upper _ _) (Real.exp_pos _).le (Real.exp_le_one_iff.mpr
+    (mul_nonpos_of_nonpos_of_nonneg (neg_nonpos.mpr hm) (abs_nonneg _)))
+
 def twoBandDirectedSlabHop (upper : Bool) (A : TwoBandPoint → Spatial →L[ℝ] ℝ)
     (φ : TwoBandPoint → ℝ) (m q g σ L₁ L₂ L₃ : ℝ) (x y : TwoBandPoint) : ℂ :=
   (bandOrientation upper x.1 y.1 * Real.exp (-m*|x.1-y.1|) : ℝ) *
@@ -73,16 +101,6 @@ theorem twoBand_slab_hop_measurable (upper : Bool)
   apply Measurable.ite ((hc.preimage (measurable_snd.comp measurable_fst)).inter
     (hc.preimage (measurable_snd.comp measurable_snd))) _ measurable_const
   have ht := twoBand_periodized_hop_measurable hA q g hσ h₁ h₂ h₃
-  have h0 := onsite_primitive_continuous hφ
-  have hphase : Continuous (fun p : TwoBandPoint × TwoBandPoint =>
-      twoBandOnsiteTransport φ q p.1.1 p.2.1 p.1.2) := by
-    have h1 := h0.comp (show Continuous (fun p : TwoBandPoint × TwoBandPoint => (p.2.1,p.1.2)) by fun_prop)
-    have h2 := h0.comp (continuous_fst : Continuous (Prod.fst : TwoBandPoint × TwoBandPoint → TwoBandPoint))
-    unfold twoBandOnsiteTransport
-    exact Complex.continuous_exp.comp (continuous_const.mul <| Complex.continuous_ofReal.comp (h2.sub h1))
-  have ho := (orientation_measurable upper).comp
-    (show Measurable (fun p : TwoBandPoint × TwoBandPoint => (p.1.1,p.2.1)) by fun_prop)
-  have he : Measurable (fun p : TwoBandPoint × TwoBandPoint => Real.exp (-m*|p.1.1-p.2.1|)) := by fun_prop
   let back : TwoBandPoint × TwoBandPoint → ℝ × Spatial × Spatial := fun p => (p.2.1,p.2.2,p.1.2)
   let forward : TwoBandPoint × TwoBandPoint → ℝ × Spatial × Spatial := fun p => (p.2.1,p.1.2,p.2.2)
   have hback : Measurable back := by unfold back; fun_prop
@@ -95,7 +113,7 @@ theorem twoBand_slab_hop_measurable (upper : Bool)
     cases upper
     · exact hB
     · exact hF
-  exact ((Complex.continuous_ofReal.measurable.comp (ho.mul he)).mul hphase.measurable).mul hf
+  exact (twoBand_slab_temporal_factor_measurable upper hφ m q).mul hf
 
 theorem twoBand_slab_hop_bound (upper : Bool) (A : TwoBandPoint → Spatial →L[ℝ] ℝ)
     (φ : TwoBandPoint → ℝ) {m : ℝ} (hm : 0 ≤ m) (q g : ℝ)

@@ -24,7 +24,7 @@ theorem twoBand_torus_cell_measurable (L₁ L₂ L₃ : ℝ) :
     measurableSet_Ico.preimage ((EuclideanSpace.projₗ i (𝕜 := ℝ)).continuous_of_finiteDimensional.measurable)
   exact (h 0 L₁).inter ((h 1 L₂).inter (h 2 L₃))
 
-private theorem cell_norm {L₁ L₂ L₃ : ℝ} {x : Spatial} (hx : x ∈ twoBandTorusCell L₁ L₂ L₃) :
+theorem twoBand_torus_cell_norm {L₁ L₂ L₃ : ℝ} {x : Spatial} (hx : x ∈ twoBandTorusCell L₁ L₂ L₃) :
     ‖x‖ ≤ L₁+L₂+L₃ := by
   obtain ⟨hx₁,hx₂,hx₃⟩ := hx
   have hxSq := EuclideanSpace.norm_sq_eq x
@@ -49,7 +49,7 @@ instance (T L₁ L₂ L₃ : ℝ) : IsFiniteMeasure (twoBandSlabMeasure T L₁ L
   have h : Icc (-T) T ×ˢ twoBandTorusCell L₁ L₂ L₃ ⊆
       Icc (-T) T ×ˢ Metric.closedBall (0 : Spatial) (L₁+L₂+L₃) := by
     intro x hx
-    exact ⟨hx.1, by simpa using cell_norm hx.2⟩
+    exact ⟨hx.1, by simpa using twoBand_torus_cell_norm hx.2⟩
   exact ne_top_of_le_ne_top (isCompact_Icc.prod (isCompact_closedBall _ _)).measure_lt_top.ne (measure_mono h)
 
 theorem twoBand_slab_cell_ae (T L₁ L₂ L₃ : ℝ) :
@@ -82,7 +82,7 @@ def twoBandPeriodizedHop (A : TwoBandPoint → Spatial →L[ℝ] ℝ)
     (q g σ L₁ L₂ L₃ t : ℝ) (x y : Spatial) : ℂ :=
   ∑' n, twoBandWindingHop A q g σ L₁ L₂ L₃ t x y n
 
-private theorem winding_hop_measurable {A : TwoBandPoint → Spatial →L[ℝ] ℝ} (hA : Continuous A)
+theorem twoBand_winding_hop_measurable {A : TwoBandPoint → Spatial →L[ℝ] ℝ} (hA : Continuous A)
     (q g σ L₁ L₂ L₃ : ℝ) (n : ℤ × ℤ × ℤ) :
     Measurable (fun p : ℝ × Spatial × Spatial => twoBandWindingHop A q g σ L₁ L₂ L₃ p.1 p.2.1 p.2.2 n) := by
   apply Continuous.measurable
@@ -135,7 +135,7 @@ theorem twoBand_periodized_hop_bounded (A : TwoBandPoint → Spatial →L[ℝ] �
   obtain ⟨F,hF,hB⟩ := twoBand_winding_gaussian_bound A q g hσ h₁ h₂ h₃ (2*(L₁+L₂+L₃))
   refine ⟨max 0 (∑' n,F n),le_max_left _ _,?_⟩
   intro t x y hx hy
-  have hb := hB t x y ((norm_sub_le y x).trans (by linarith [cell_norm hx,cell_norm hy]))
+  have hb := hB t x y ((norm_sub_le y x).trans (by linarith [twoBand_torus_cell_norm hx,twoBand_torus_cell_norm hy]))
   have hs := hF.of_nonneg_of_le (fun _ => norm_nonneg _) hb
   exact ⟨hs,(norm_tsum_le_tsum_norm hs).trans ((hs.tsum_le_tsum hb hF).trans (le_max_right _ _))⟩
 
@@ -143,7 +143,7 @@ theorem twoBand_periodized_hop_measurable {A : TwoBandPoint → Spatial →L[ℝ
     (q g : ℝ) {σ L₁ L₂ L₃ : ℝ} (hσ : 0 < σ) (h₁ : 0 < L₁) (h₂ : 0 < L₂) (h₃ : 0 < L₃) :
     Measurable (fun p : ℝ × Spatial × Spatial => twoBandPeriodizedHop A q g σ L₁ L₂ L₃ p.1 p.2.1 p.2.2) := by
   apply measurable_of_tendsto_metrizable' (atTop : Filter (Finset (ℤ × ℤ × ℤ)))
-    (fun S => Finset.measurable_sum S (fun n _ => winding_hop_measurable hA q g σ L₁ L₂ L₃ n))
+    (fun S => Finset.measurable_sum S (fun n _ => twoBand_winding_hop_measurable hA q g σ L₁ L₂ L₃ n))
   apply tendsto_pi_nhds.mpr
   intro p
   obtain ⟨F,hF,hB⟩ := twoBand_winding_gaussian_bound A q g hσ h₁ h₂ h₃ ‖p.2.2-p.2.1‖

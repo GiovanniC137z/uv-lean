@@ -2708,9 +2708,11 @@
       "UV.SectorPlane.twoBand_onsite_trace_not_integrable",
       "UV.SectorPlane.twoBand_occupied_eigenvector",
       "UV.SectorPlane.twoBand_torus_mixing_angles_summable",
-      "UV.SectorPlane.twoBand_torus_cutoff_gram_limit"
+      "UV.SectorPlane.twoBand_torus_cutoff_gram_limit",
+      "UV.SectorPlane.twoBand_slab_relative_determinant",
+      "UV.SectorPlane.twoBand_finite_relative_source_series"
     ],
-    "scope": "Checks the finite Schur determinant relative to both onsite factors, the exact two-band Euclidean operator norm, the pointwise hopping difference, and the full all-scalar word with both products compared at common momentum. Its original four-dimensional absolute norm has a bound independent of every external shift at positive mass and hopping width for arbitrary real hopping. Computes the literal two-mark bubble and the single spatial-contact trace. For each finite Gaussian derivative order, with actual unit polarizations and the original normalized straight-link parameter cube, the marked multiplier is uniformly L¹ and bounded in all affine shifts. The complete specified multiplier products give integrable single-contact and mixed words with the exact translated two-frequency bound. The spatial multiplier is obtained by differentiating the original real straight Wilson link with its normalized heat displacement law. At fixed transfer the normalized frequency integral of the actual two-mark word equals the opposite-band formula, also at coincident energies and zero transfer. The bare onsite trace has zero frequency integral but infinite joint absolute integral. The explicit unit occupied spinor has a nonvanishing overlap with the onsite sea at any fixed rectangular torus, even as the spatial mode cutoff is removed. Recovering every word by differentiation of the normalized continuum determinant remains open."
+    "scope": "Checks the finite Schur determinant relative to both onsite factors, the exact two-band Euclidean operator norm, the pointwise hopping difference, and the full all-scalar word with both products compared at common momentum. Its original four-dimensional absolute norm has a bound independent of every external shift at positive mass and hopping width for arbitrary real hopping. Computes the literal two-mark bubble and the single spatial-contact trace. For each finite Gaussian derivative order, with actual unit polarizations and the original normalized straight-link parameter cube, the marked multiplier is uniformly L¹ and bounded in all affine shifts. The complete specified multiplier products give integrable single-contact and mixed words with the exact translated two-frequency bound. The spatial multiplier is obtained by differentiating the original real straight Wilson link with its normalized heat displacement law. At fixed transfer the normalized frequency integral of the actual two-mark word equals the opposite-band formula, also at coincident energies and zero transfer. The bare onsite trace has zero frequency integral but infinite joint absolute integral. The explicit unit occupied spinor has a nonvanishing overlap with the onsite sea at any fixed rectangular torus, even as the spatial mode cutoff is removed. Recovering every word by differentiation of the normalized continuum determinant remains open. The actual ordinary determinant on the regulated slab now follows by independent mode exhaustion, at arbitrary real hopping. In finite-dimensional scalar-source coefficients the two cyclic powers arise from the identically perturbed full and onsite determinants."
   },
   "prop:monomial-charged-winding-uv": {
     "status": "partial",
@@ -2738,9 +2740,12 @@
       "UV.SectorPlane.hopping_marks_oriented_fourier",
       "UV.SectorPlane.hopping_marks_permutation",
       "UV.SectorPlane.hopping_marked_derivative_pair",
-      "UV.SectorPlane.hopping_charged_loop_frequency"
+      "UV.SectorPlane.hopping_charged_loop_frequency",
+      "UV.SectorPlane.orderedHop_joint_fourier_closure",
+      "UV.hopping_fourier_graph_absolute",
+      "UV.hopping_fourier_graph_summable"
     ],
-    "scope": "For either signed onsite mass, the exact signed divided difference inserts a mark at every allowed position in a resolvent word. Opposite frequencies on the same interval give the printed centered second difference, and a zero frequency uses the derivative. Arbitrary lists of marks on two distinct carrier intervals admit an absolute frequency integral uniform in all translations, with a factor (1+|ν|)⁻¹ for each end. The spatial straight-link Gaussian identity holds at all mark orders. The complete joint graph in the original charged and photon frequencies, including closure Fourier inversion, the soft subtraction routing, and finite-volume version, remains open. Fourier transformation of the actual directed temporal Wilson pulses on either slot gives the complete permuted divided difference. With finitely many extra derivatives from soft subtractions, the complete n-interval carrier integral costs a mark-dependent constant times π m^(1−n), uniformly in all translations."
+    "scope": "For either signed onsite mass, the exact signed divided difference inserts a mark at every allowed position in a resolvent word. Opposite frequencies on the same interval give the printed centered second difference, and a zero frequency uses the derivative. Arbitrary lists of marks on two distinct carrier intervals admit an absolute frequency integral uniform in all translations, with a factor (1+|ν|)⁻¹ for each end. The spatial straight-link Gaussian identity holds at all mark orders. Fourier transformation of the actual directed temporal Wilson pulses on either slot gives the complete permuted divided difference. With finitely many extra derivatives from soft subtractions, the complete n-interval carrier integral costs a mark-dependent constant times π m^(1−n), uniformly in all translations. Fourier inversion with the (2π)⁻⁴ normalization identifies each shifted marked four-momentum loop with its closed signed displacement integral. For the continuum representation after the soft subtraction, each graph is jointly absolutely integrable over all charged momenta and all independent photon momenta, and the resulting integral is absolutely summable in all hop counts. Coulomb lines receive the full squared opposite-frequency weight even for coinciding endpoints. Source-level identification of the soft terms and the complete torus representation remain tracked separately."
   },
   "prop:closing-uv-ordered-Maxwell": {
     "status": "partial",
@@ -2763,9 +2768,13 @@
       "UV.SectorPlane.OrderedSewingTopology.unlabelled_surviving_card",
       "UV.WilsonIncidenceBasis.ordered_flow_spatial_ne_zero",
       "UV.ordered_joint_graph_all_lengths",
-      "UV.ordered_summed_two_point_bound"
+      "UV.ordered_summed_two_point_bound",
+      "UV.SectorPlane.twoBand_slab_relative_cycle_value",
+      "UV.SectorPlane.OrderedTwoBandPath.log_word_fourier_coefficient",
+      "UV.SectorPlane.OrderedTwoBandPath.coulomb_hamiltonian_characteristic",
+      "UV.SectorPlane.OrderedTwoBandPath.transverse_covariance_posSemidef"
     ],
-    "scope": "At m>2|g| and fixed a,σ>0, derives the signed onsite intervals, unit Wilson phases, zero onsite scalar vacuum response, Gaussian return measure and all absolutely summable polynomially marked log words. The normalized volume limit removes the symmetric time slab and nonzero spatial windings. The closed path satisfies the Ward identity and both soft estimates, on the actual affine carrier with unit spatial polarizations. Temporal self-sewing equals the equal-time squared charge with its diagonal self-contractions. For each connected ordered vacuum or two-point graph the complete products of instantaneous and transverse currents are jointly absolutely integrable over all return paths and independent photon four-momenta and absolutely summable over all independent hop counts. The external transverse two-point amplitude obeys a uniform C(ω²+‖p‖²) bound after the integrations and hop sums. The fixed order has finitely many surviving topologies. Identification of the actual determinant coefficients with the integrated ordered paths and derivation of the complete marked source functional are still being checked."
+    "scope": "At m>2|g| and fixed a,σ>0, derives the signed onsite intervals, unit Wilson phases, zero onsite scalar vacuum response, Gaussian return measure and all absolutely summable polynomially marked log words. The normalized volume limit removes the symmetric time slab and nonzero spatial windings. The closed path satisfies the Ward identity and both soft estimates, on the actual affine carrier with unit spatial polarizations. Temporal self-sewing equals the equal-time squared charge with its diagonal self-contractions. For each connected ordered vacuum or two-point graph the complete products of instantaneous and transverse currents are jointly absolutely integrable over all return paths and independent photon four-momenta and absolutely summable over all independent hop counts. The external transverse two-point amplitude obeys a uniform C(ω²+‖p‖²) bound after the integrations and hop sums. The fixed order has finitely many surviving topologies. The actual slab determinant has an absolutely convergent expansion in signed position cycles. Independent real source variations of each signed log word produce the complete product of harmonic Fourier currents, including repeated marks on the same link. A Gaussian Coulomb characteristic function gives the normal-ordered-density square with self-contractions, and the transverse covariance is positive semidefinite. The remaining source identification includes the change from normalized slab vertex cycles to the continuum based marked graph coefficients."
   },
   "cor:physical-joint-open-uv": {
     "status": "partial",
@@ -2773,8 +2782,21 @@
       "UV.SectorPlane.hopping_marks_oriented_fourier",
       "UV.SectorPlane.hopping_marks_permutation",
       "UV.SectorPlane.hopping_open_frequency_bound",
-      "UV.SectorPlane.hopping_charged_loop_frequency"
+      "UV.SectorPlane.hopping_charged_loop_frequency",
+      "UV.SectorPlane.ordered_torus_tree_balance",
+      "UV.SectorPlane.ordered_torus_tree_chord_integrable",
+      "UV.SectorPlane.ordered_torus_external_packet"
     ],
-    "scope": "For arbitrary external shifts, signed mass and assignment of temporal marks, the complete open line with n hops has the uniform m^(−n−1) carrier supremum estimate. This includes the single interval with no hops, the full permutation sum, and vanishing frequencies. The mixed finite-volume photon and charged graph, endpoint and vacuum source, and all probe sewings are separate obligations."
+    "scope": "For arbitrary external shifts, signed mass and assignment of temporal marks, the complete open line with n hops has the uniform m^(−n−1) carrier supremum estimate. This includes the single interval with no hops, the full permutation sum, and vanishing frequencies. The mixed finite-volume photon and charged graph, endpoint and vacuum source, and all probe sewings are separate obligations. The mixed finite-volume graph's photon part is integrable over all independent lattice/frequency chords, with the spatial Gauss zero mode removed, also against L¹ external packets."
+  },
+  "cor:physical-electric-common-depth-uv": {
+    "status": "partial",
+    "lean": [
+      "UV.SectorPlane.ordered_torus_angular_switch",
+      "UV.SectorPlane.ordered_torus_eliminated_switch",
+      "UV.SectorPlane.ordered_torus_periodized_hop_depth",
+      "UV.SectorPlane.ordered_torus_shared_depth_graph"
+    ],
+    "scope": "The smooth compact nonnegative time switch has an explicit Fourier probability density in angular frequency. Each independent switch integrates to mass one, and eliminating one frequency costs at most its uniform density bound. At common depth r the actual periodic spatial Wilson kernel and the integrated Gaussian marks have a translated lattice bound proportional to r^(-3/2). For mixed lattice/frequency photon lines the joint depth and chord integral is finite against the specified exp(c/r³) moment and a charged-word/vacuum majorant. The complete unexpanded vacuum and arbitrary endpoint-source terms remain open."
   }
 }

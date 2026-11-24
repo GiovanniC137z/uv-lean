@@ -25,9 +25,9 @@ private theorem winding_index_shift {L : ℝ} (hL : 0 < L) (x : ℝ) (j : ℤ) :
   rw [he,Int.floor_add_intCast,add_eq_right,Int.floor_eq_zero_iff]
   simp [mem_Ico,le_div_iff₀ hL,div_lt_one hL]
 
-theorem twoBand_torus_cell_unfold
+theorem twoBand_torus_cell_integrals_hasSum
     {L₁ L₂ L₃ : ℝ} (h₁ : 0 < L₁) (h₂ : 0 < L₂) (h₃ : 0 < L₃) {f : Spatial → ℝ} (hf : Integrable f) :
-    (∫ x in twoBandTorusCell L₁ L₂ L₃, ∑' n, f (x+repairTorusMomentum L₁ L₂ L₃ n)) = ∫ x, f x := by
+    HasSum (fun n => ∫ x in twoBandTorusCell L₁ L₂ L₃, f (x+repairTorusMomentum L₁ L₂ L₃ n)) (∫ x, f x) := by
   classical
   let D := fun n : ℤ × ℤ × ℤ => windingIndex L₁ L₂ L₃ ⁻¹' {n}
   have hD (n) : MeasurableSet (D n) := (winding_index_measurable L₁ L₂ L₃) (measurableSet_singleton n)
@@ -42,18 +42,20 @@ theorem twoBand_torus_cell_unfold
       (n₁,n₂,n₃) ↔ _
     rw [Prod.mk.injEq,Prod.mk.injEq,winding_index_shift h₁,winding_index_shift h₂,winding_index_shift h₃]
     rfl
-  have hsum {g : Spatial → ℝ} (hg : Integrable g) :
-      HasSum (fun n => ∫ x in twoBandTorusCell L₁ L₂ L₃, g (x+repairTorusMomentum L₁ L₂ L₃ n)) (∫ x, g x) := by
-    have hs := hasSum_integral_iUnion hD hdis hg.integrableOn
-    rw [hall,setIntegral_univ] at hs
-    apply hs.congr_fun
-    intro n
-    have he := (measurePreserving_add_right volume (repairTorusMomentum L₁ L₂ L₃ n)).setIntegral_preimage_emb
-      (Homeomorph.addRight _).measurableEmbedding g (D n)
-    rwa [hpre n] at he
+  have hs := hasSum_integral_iUnion hD hdis hf.integrableOn
+  rw [hall,setIntegral_univ] at hs
+  apply hs.congr_fun
+  intro n
+  have he := (measurePreserving_add_right volume (repairTorusMomentum L₁ L₂ L₃ n)).setIntegral_preimage_emb
+    (Homeomorph.addRight _).measurableEmbedding f (D n)
+  rwa [hpre n] at he
+
+theorem twoBand_torus_cell_unfold
+    {L₁ L₂ L₃ : ℝ} (h₁ : 0 < L₁) (h₂ : 0 < L₂) (h₃ : 0 < L₃) {f : Spatial → ℝ} (hf : Integrable f) :
+    (∫ x in twoBandTorusCell L₁ L₂ L₃, ∑' n, f (x+repairTorusMomentum L₁ L₂ L₃ n)) = ∫ x, f x := by
   have hi (n) : IntegrableOn (fun x : Spatial => f (x+repairTorusMomentum L₁ L₂ L₃ n)) (twoBandTorusCell L₁ L₂ L₃) :=
     ((measurePreserving_add_right volume _).integrable_comp_of_integrable hf).integrableOn
-  exact (hasSum_integral_of_summable_integral_norm hi (hsum hf.norm).summable).unique (hsum hf)
+  exact (hasSum_integral_of_summable_integral_norm hi (twoBand_torus_cell_integrals_hasSum h₁ h₂ h₃ hf.norm).summable).unique (twoBand_torus_cell_integrals_hasSum h₁ h₂ h₃ hf)
 
 private theorem heat_nonneg (σ : ℝ) (z : Spatial) : 0 ≤ twoBandDisplacementDensity σ z := by
   unfold twoBandDisplacementDensity
