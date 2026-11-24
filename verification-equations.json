@@ -1301,12 +1301,15 @@
   },
   "eq:native-relative-bubble-uv": {
     "status": "verified",
-    "scope": "Checks the exact two fractions including the onsite reference from the actual two-by-two inverse products with arbitrary real frequencies and mixing values. Proves absolute integrability in the original four-momentum at every fixed external transfer for positive mass and Gaussian width. The adjacent frequency-integrated spectral formula is a separate calculation.",
+    "scope": "Checks the exact two fractions including the onsite reference from the actual two-by-two inverse products with arbitrary real frequencies and mixing values. Proves absolute integrability in the original four-momentum at every fixed external transfer for positive mass and Gaussian width. The normalized charged-frequency integral equals the stated opposite-band response for every real transfer. At zero hopping the frequency integral vanishes for each spatial momentum and the full onsite word fails joint absolute integrability.",
     "lean": [
       "UV.SectorPlane.twoBand_resolvent_inverse",
       "UV.SectorPlane.twoBand_trace_pair",
       "UV.SectorPlane.twoBand_relative_bubble_trace",
-      "UV.SectorPlane.twoBand_relative_bubble_fixed_transfer"
+      "UV.SectorPlane.twoBand_relative_bubble_fixed_transfer",
+      "UV.SectorPlane.twoBand_relative_bubble_frequency_integral",
+      "UV.SectorPlane.twoBand_onsite_trace_frequency",
+      "UV.SectorPlane.twoBand_onsite_trace_not_integrable"
     ]
   },
   "eq:aud-coulomb-sewing-uv": {
@@ -1319,6 +1322,20 @@
       "UV.SectorPlane.twoBand_coulomb_frequency_not_integrable",
       "UV.SectorPlane.twoBand_coulomb_section_not_integrable",
       "UV.SectorPlane.twoBand_coulomb_routing_not_integrable"
+    ]
+  },
+  "eq:aud-positive-coulomb-uv": {
+    "status": "verified",
+    "scope": "Computes the occupied-to-empty transition from the spectral projectors of the actual two-slot Hamiltonian and the squared distance between its normalized Bloch vectors. With m,a,σ>0, the doubly normalized Lorentzian frequency density has unit mass at every pair of spatial momenta. The displayed coefficient is jointly absolutely integrable over both spatial momenta and both original frequencies and equals its spatial integral with the stated charge and Fourier factors. Its integrand after charged-frequency integration agrees with the sign-restored relative bubble at fixed transfer. The coefficient is strictly positive exactly when both charge and hopping are nonzero. This concerns the specified two-band spectral coefficient.",
+    "lean": [
+      "UV.SectorPlane.twoBand_projector_spectral",
+      "UV.SectorPlane.twoBand_transition_distance",
+      "UV.SectorPlane.twoBand_transition_projector_trace",
+      "UV.SectorPlane.twoBand_lorentzian_convolution",
+      "UV.SectorPlane.twoBand_positive_frequency_pair",
+      "UV.SectorPlane.twoBand_positive_coulomb_energy",
+      "UV.SectorPlane.twoBand_coulomb_spectral_section",
+      "UV.SectorPlane.twoBand_coulomb_energy_pos_iff"
     ]
   }
 }

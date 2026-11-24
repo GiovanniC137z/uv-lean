@@ -1080,3 +1080,11 @@ import UV.ContinueTwoBandResolvent
 import UV.ContinueTwoBandSpatialWord
 import UV.ContinueTwoBandGaussianMarks
 import UV.ContinueTwoBandRelativeSchur
+import UV.ContinueTwoBandSpectralKernel
+import UV.ContinueTwoBandSpectralIntegral
+import UV.ContinueTwoBandProjectors
+import UV.ContinueTwoBandPositiveCoulomb
+import UV.ContinueTwoBandCoulombSpectralEnergy
+import UV.ContinueTwoBandFourier
+import UV.ContinueTwoBandFourierLink
+import UV.ContinueTwoBandFourierVacuum
